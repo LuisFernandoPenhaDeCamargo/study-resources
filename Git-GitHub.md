@@ -1,8 +1,6 @@
 # Git/GitHub.
-
-# Lista de comandos.
-
 **Up to date:** 05/08/2023.
+# Lista de comandos.
 
 ## Arquivos.
 
