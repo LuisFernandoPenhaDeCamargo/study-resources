@@ -1,5 +1,5 @@
 # Markdown
-**Up to date:** 07/09/2023.
+**Up to date:** 07/09/2023
 
 ## Regras gerais
 - Não aceita recuo (criados por espaços ou por tabulações)
