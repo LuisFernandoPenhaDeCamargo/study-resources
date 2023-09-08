@@ -1,15 +1,20 @@
 # JavaScript.
+
 Up to date: 08/09/2023.
+
 - [Nativo do JavaScript;](#nativojavascript)
 - [Bibliotecas;](#bibliotecas)
 - [Frameworks.](#frameworks)
 
 # <a id = "nativojavascript"></a>Nativo do JavaScript.
+
 - [Operadores de igualdade;](#operadoresigualdade)
 - [Callback;](#callback)
+- [Spread properties](#spreadproperties)
 - [`setTimeout(<callback>, <delay>)`](#settimeout)
 
 ## <a id = "operadoresigualdade"></a>Operadores de igualdade.
+
 - `===` : operador de igualdade estrita;
 
 Compara o **valor** e o **tipo de dado**.
@@ -18,11 +23,17 @@ Compara o **valor** e o **tipo de dado**.
 Compara o **valor** e **converte o tipo de dado**, se necessário.
 
 ## <a id = "callback"></a>Callback.
+
 Uma Callback (ou função de retorno) refere-se a uma **função** que é **passada como argumento para outra função** e é executada após a **conclusão** de uma operação assíncrona ou em reposta a um evento específico.
 São uma parte fundamental da programação assíncrona em JavaScript e são amplamente utilizadas em situações em que você precisa controlar o fluxo de código após uma conclusão de uma operação demorada.
 [Exemplo.](#exemplocallback)
 
+## <a id = "spreadproperties"></a>Spread Properties.
+
+O operador de propagação (`...`) é usado para copiar todas as propriedades enumeráveis de um objeto para outro objeto literal ou objeto existente.
+
 ## <a id = "settimeout"></a>`setTimeout(<callback>, <delay>)`
+
 Função que agenda a execução de uma [`<callback>`](#callback) após um período de tempo especificado em milissegundos (`<delay>`).
 <a id = "exemplocallback"></a>[Exemplo:](fazer_algo_async.js)
 
@@ -48,7 +59,9 @@ Após a conclusão da operação assíncrona, a função callback é chamada. Ne
 - [Axios;](#axios)
 
 ## <a id = "axios"></a>Axios.
+
 Utilizada para fazer requisições HTTP, seja em navegadores ou em Node.js
+
 - `<url>` : URL de destino, para onde a solicitação será enviada;
 - `<corpo da solicitação>` : corpo da solicitação que está sendo enviada.
 
@@ -74,3 +87,9 @@ Interceptadores.
 
 - `.CancelToken` : utilizado para criar um Token de cancelamento que pode ser usado para cancelar uma solicitação HTTP que está em andamento;
 - `.source()` : cria o objeto `.CancelToken` e seu respectivo método `.cancel(<mensagem sobre o cancelamento>)`
+- `.cancel(<mensagem sobre o cancelamento>)` o parâmetro `<mensagem sobre o cancelamento>` que atribui o valor da chave `.reason.message`
+
+Um objeto `.CancelToken` possui um atributo `.token`
+O atributo `.token` é composto por uma `.promise` e uma `.reason`
+A chave `.reason` possui um atributo `.message`
+[Exemplo.](#axios_cancel_token.js)
