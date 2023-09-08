@@ -11,8 +11,10 @@ Up to date: 08/09/2023.
 
 ## <a id = "operadoresigualdade"></a>Operadores de igualdade.
 - `===` : operador de igualdade estrita;
+
 Compara o **valor** e o **tipo de dado**.
 - `==` : operador de igualdade.
+
 Compara o **valor** e **converte o tipo de dado**, se necessário.
 
 ## <a id = "callback"></a>Callback.
