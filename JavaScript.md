@@ -12,6 +12,7 @@
 - [Template Literals (Template Strings);](#templateliterals) <--
 - [Spread properties;](#spreadproperties) <--
 - [Callback;](#callback)
+- [Objetos globais;](#objetosglobais)
 - [`String(<parâmetro>)`](#string)
 - [Funções de string;](#funcoesstring)
 - [Funções para se aplicar sobre arrays;](#funcoesarrays) <--
@@ -38,6 +39,21 @@ O operador de propagação (`...`) é usado para copiar todas as propriedades en
 Uma Callback (ou função de retorno) refere-se a uma **função** que é **passada como argumento para outra função** e é executada após a **conclusão** de uma operação assíncrona ou em reposta a um evento específico.
 São uma parte fundamental da programação assíncrona em JavaScript e são amplamente utilizadas em situações em que você precisa controlar o fluxo de código após uma conclusão de uma operação demorada.
 [Exemplo.](#exemplocallback)
+
+## <a id = "objetosglobais"></a>Objetos globais.
+
+### `JSON`
+
+É usado para trabalhar com dados no formato JSON.
+
+### `.parse(<JSON>)`
+
+Analisa uma string no formato JSON e a converte em um objeto JavaScript. A string precisa estar em um formato JSON válido.
+Exemplo:
+
+```JavaScript
+JSON.parse(content)[version] //Estamos acessando a chave "version" do objeto retornado por JSON.parse(content)
+```
 
 ## <a id = "string"></a>`String(<parâmetro>)`
 
@@ -140,15 +156,14 @@ const identificador = setTimeout(() => {
 
 - [util;](#util)
 - [fs;](#fs)
-
-- [child_process;](#childprocess) <--
+- [child_process.](#childprocess)
 
 ## <a id = "axios"></a>axios
 
 Utilizada para fazer requisições HTTP, seja em navegadores ou em Node.js
 
 - `<url>` (string): URL de destino, para onde a solicitação será enviada;
-- `<corpo da solicitação>` (objetct): corpo da solicitação que está sendo enviada;
+- `<corpo da solicitação>` (object): corpo da solicitação que está sendo enviada;
 - `<configurações>` (object, opcional): objeto de configuração opcional que permite personalizar a solicitação. Este objeto pode conter várias opções de configuração, como cabeçalhos personalizados, autenticação, parâmetros de consulta, entre outros.
 
 ### Métodos.
@@ -190,19 +205,44 @@ Fornece várias funções utilitárias para ajudar na programação assíncrona 
 ## <a id = "fs"></a>fs
 
 **File System** (**Sistema de Arquivos**). Fornece métodos para interagir com o sistema de arquivos do computador, permitindo que você leia, escreva, manipule e gerencie arquivos e diretórios.
+O **"Sync"** no nome das funções, indica que essas funções são **síncronas**.
 
-### `.readdirSync(<__dirname, caminho para o diretório>)`
+`<pwd>` (string): caminho para o arquivo/diretório.
 
-Usado para ler o conteúdo de um diretório de forma síncrona, ou seja, lista os arquivos e subdiretórios.
+### `.readdirSync(<__dirname, pwd>)`
+
+Usado para ler o conteúdo de um diretório, ou seja, lista os arquivos e subdiretórios.
 
 **__dirname** é uma variável global no Node.js que representa o diretório atual.
 
 Retorna uma lista de strings.
 
-### `readFileSync(<caminho para o arquivo>, <opcional, especifica a codificação do arquivo>)`
+### `readFileSync(<pwd>, <opcional, especifica a codificação do arquivo>)`
 
-Lê o conteúdo de um arquivo de forma síncrona.
+Lê o conteúdo de um arquivo.
 
 Retorna o conteúdo do arquivo como uma string.
+
+### `statSync(<pwd>)`
+
+Usado para obter informações sobre um arquivo/diretório especificado.
+
+Retorna um objeto da classe **fs** com propriedades como `.mtime` , que é a data de modificação (timestamp) do arquivo/diretório.
+
+## <a id = ""></a>child_process
+
+É usado para criar e gerenciar processos filhos (subprocessos) a partir de um aplicativo Node.js
+
+### `.exec(<comando>, <opções>, <callback>)`
+
+- `<comando>` (string): representa o comando a ser executado;
+- `<opções>` (object, opcional): pode conter várias opções para controlar o comportamento da execução do comando;
+- `<callback>` (opcional): função de retorno de chamada que será chamada quando a execução do comando for concluída.
+  - `(<erro>, <stdout>, <stderr>) => {}`
+  - `<erro>` (string): variável que conterá informações sobre qualquer erro que ocorrer durante a execução do comando;
+  - `<stdout>` (string): variável que conterá a saída padrão (**stdout**) do comando executado;
+  - `<stderr>` (string): variável que conterá a saída de erro (**stderr**) do comando executado.
+
+É usada para executar comandos do sistema operacional em um subprocesso. Ela é uma forma de criar processos filhos para executar comandos shell ou outros programas externos.
 
 # <a id ="frameworks"></a>Frameworks.
