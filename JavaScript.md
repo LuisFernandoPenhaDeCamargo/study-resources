@@ -18,8 +18,6 @@
 - [`isNaN(<parâmetro>)`](#isnan)
 - [`setTimeout(<callback>, <delay>)`](#settimeout)
 
----
-
 ## <a id = "operadoresigualdade"></a>Operadores de igualdade.
 
 - `===` : operador de igualdade estrita;
@@ -49,8 +47,6 @@ São uma parte fundamental da programação assíncrona em JavaScript e são amp
 
 - [`.trim()`](#trim)
 
----
-
 ### <a id = "trim"></a>`.trim()`
 
 Remove espaçoes em branco (espaços, tabulações e quebras de linha) do início e do final da string. **Ele não afeta os espaçoes em branco dentro da string, apenas os espaçoes em branco externos**.
@@ -59,8 +55,6 @@ Remove espaçoes em branco (espaços, tabulações e quebras de linha) do iníci
 
 - [`.forEach()`;](#foreach) <--
 - [`.filter(<callback(<elemento>, <índice>, <array>)`;](#filter)
-
----
 
 ### <a id = "foreach"></a>`.forEach()` <--
 
@@ -81,8 +75,6 @@ const novoArray = arrayOriginal.filter(callback(elemento, índice, array)) {
   //Retorne true para incluir o elemento no nova array, false para excluí-lo.
 }
 ```
-
----
 
 ## <a id = "isnan"></a> `isNaN(<parâmetro>)`
 
