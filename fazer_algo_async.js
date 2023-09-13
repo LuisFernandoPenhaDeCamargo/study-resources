@@ -5,8 +5,8 @@ function fazerAlgoAsync(callback) {
     }, 2000);     //Espera 2 segundos antes de executar.
   }
   
-  function minhaCallback() {
-    console.log("A callback foi acionada.");
-  }
+function minhaCallback() {
+  console.log("A callback foi acionada.");
+}
   
-  fazerAlgoAsync(minhaCallback);
+fazerAlgoAsync(minhaCallback);

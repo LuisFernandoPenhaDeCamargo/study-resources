@@ -1,5 +1,5 @@
 # Visual Studio Code.
 # Sumário.
-- [Extensões utilizadas](#eu)
+- [Extensões utilizadas;](#eu)
 # <a id="eu"></a>Extensões utilizadas.
-- MarkDown Preview Showdown
+- MarkDown Preview Showdown;
