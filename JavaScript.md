@@ -157,7 +157,7 @@ Utilizada para fazer requisições HTTP, seja em navegadores ou em Node.js
 - [`.interceptors`](#interceptors)
 - [`.CancelToken.source()`](#canceltoken)
 
-## <a id = "interceptors"></a> `.interceptors`
+### <a id = "interceptors"></a> `.interceptors`
 
 Interceptadores.
 
@@ -165,7 +165,7 @@ Interceptadores.
 - `.response` : interceptador de resposta;
 - `.use()` : registra o interceptador.
 
-## <a id = "canceltoken"></a>`.CancelToken.source()`
+### <a id = "canceltoken"></a>`.CancelToken.source()`
 
 - `.CancelToken` : utilizado para criar um Token de cancelamento que pode ser usado para cancelar uma solicitação HTTP que está em andamento;
 - `.source()` : cria o objeto `.CancelToken` e seu respectivo método `.cancel(<mensagem sobre o cancelamento>)`
