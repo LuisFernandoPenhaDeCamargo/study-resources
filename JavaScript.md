@@ -1,6 +1,18 @@
 # JavaScript.
 
+Contexto para o ChatGPT.
+Contexto:
+- Linux;
+- JavaScript;
+- Node.js;
+- Sequelize;
+- API;
+- Git.
+Linguagem: português (BR).
+
 É uma **linguagem de programação** que é **síncrona** e **single-threaded**, o que significa que ela é executada em uma única thread de execução e as operações são processadas uma após a outra, em ordem. No entanto, JavaScript pode lidar com operações **assíncronas** e **não bloqueantes** usando recursos como **callbacks**, **promises** e **async/await**.
+
+**No linux, o Shebang é necessário para a impressão de logs no terminal de comando.**
 
 - [Nativo do JavaScript;](#nativojavascript)
 - [Bibliotecas;](#bibliotecas)
@@ -180,9 +192,12 @@ Interceptadores.
 - `.source()` : cria o objeto `.CancelToken` e seu respectivo método `.cancel(<mensagem sobre o cancelamento>)`
 - `.cancel(<mensagem sobre o cancelamento>)` o parâmetro `<mensagem sobre o cancelamento>` que atribui o valor da chave `.reason.message`
 
-Um objeto `.CancelToken` possui um atributo `.token`\
-O atributo `.token` é composto por uma `.promise` e uma `.reason`\
-A chave `.reason` possui um atributo `.message`\
+Um objeto `.CancelToken` possui um atributo `.token`
+
+O atributo `.token` é composto por uma `.promise` e uma `.reason`
+
+A chave `.reason` possui um atributo `.message`
+
 [Exemplo.](axios_cancel_token.js)
 
 ## <a id = "util"></a>util
