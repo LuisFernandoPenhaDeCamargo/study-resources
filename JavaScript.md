@@ -19,26 +19,23 @@
 - [`isNaN(<parâmetro>)`](#isnan)
 - [`setTimeout(<callback>, <delay>)`](#settimeout)
 
-## <a id = "operadoresigualdade"></a>Operadores de igualdade.
+### <a id = "operadoresigualdade"></a>Operadores de igualdade.
 
-- `===` : operador de igualdade estrita;
-
+- `===` : operador de igualdade estrita;\
 Compara o **valor** e o **tipo do dado**.
-- `==` : operador de igualdade.
-
+- `==` : operador de igualdade.\
 Compara o **valor** e **converte o tipo do dado**, se necessário.
 
-## <a id = "templateliterals"></a>Template Literals.
+### <a id = "templateliterals"></a>Template Literals.
 
-## <a id = "spreadproperties"></a>Spread Properties.
+### <a id = "spreadproperties"></a>Spread Properties.
 
 O operador de propagação (`...`) é usado para copiar todas as propriedades enumeráveis de um objeto para outro objeto literal ou objeto existente.
 
-## <a id = "callback"></a>Callback.
+### <a id = "callback"></a>Callback.
 
-Uma Callback (ou função de retorno) refere-se a uma **função** que é **passada como argumento para outra função** e é executada após a **conclusão** de uma operação assíncrona ou em reposta a um evento específico.
-São uma parte fundamental da programação assíncrona em JavaScript e são amplamente utilizadas em situações em que você precisa controlar o fluxo de código após uma conclusão de uma operação demorada.\
-[Exemplo.](#exemplocallback)
+Uma Callback (ou função de retorno) refere-se a uma **função** que é **passada como argumento para outra função** e é **executada após a conclusão** de uma operação assíncrona ou em reposta a um evento específico.
+São uma parte fundamental da programação assíncrona em JavaScript e são amplamente utilizadas em situações em que você precisa controlar o fluxo de código após uma conclusão de uma operação demorada. [Exemplo.](#exemplocallback)
 
 ## <a id = "objetosglobais"></a>Objetos globais.
 
@@ -48,24 +45,23 @@ São uma parte fundamental da programação assíncrona em JavaScript e são amp
 
 ### `.parse(<JSON>)`
 
-Analisa uma string no formato JSON e a converte em um objeto JavaScript. A string precisa estar em um formato JSON válido.
-Exemplo:
+Analisa uma string no formato JSON e a converte em um objeto JavaScript. A string precisa estar em um formato JSON válido. Exemplo:
 
 ```JavaScript
 JSON.parse(content)[version] //Estamos acessando a chave "version" do objeto retornado por JSON.parse(content)
 ```
 
-## <a id = "string"></a>`String(<parâmetro>)`
+### <a id = "string"></a>`String(<parâmetro>)`
 
 É uma função **construtora** em JavaScript que pode ser usada para criar objetos do tipo string. Também pode ser usada para converter outros tipos de dados em strings.
 
 ## <a id = "funcoesstring"></a>Funções de string.
 
-- [`.trim()`](#trim)
+- [`.trim()`;](#trim)
 
 ### <a id = "trim"></a>`.trim()`
 
-Remove espaçoes em branco (espaços, tabulações e quebras de linha) do início e do final da string. **Ele não afeta os espaçoes em branco dentro da string, apenas os espaçoes em branco externos**.
+Remove espaços em branco (espaços, tabulações e quebras de linha) do início e do final da string. **Ele não afeta os espaçoes em branco dentro da string, apenas os espaçoes em branco externos**.
 
 ## <a id = "funcoesarrays"></a>Funções para se aplicar sobre arrays.
 
@@ -78,8 +74,8 @@ Remove espaçoes em branco (espaços, tabulações e quebras de linha) do iníci
 
 É usado para **criar** um novo array contendo todos os elementos de um array original que atendem a um critério especificado por uma função de callback. Em outras palavras, ele filtra os elementos de um array com base em uma condição e retorna um novo array contendo apenas os elementos que atendem essa condição.
 
-- `callback()` : uma função de callback que define a condição da filtragem;
-- `<elemento>` : o valor atual do elemento sendo avaliado;
+- `callback()`: uma função de callback que define a condição da filtragem;
+- `<elemento>`: o valor atual do elemento sendo avaliado;
 - `<índice>` (opcional): o índice do elemento atual no array;
 - `<array>` (opcional): o próprio array original.
 
@@ -88,19 +84,19 @@ Exemplo:
 ```JavaScript
 const novoArray = arrayOriginal.filter(callback(elemento, índice, array)) {
   //Lógica de filtragem.
-  //Retorne true para incluir o elemento no nova array, false para excluí-lo.
+  //Retorne true para incluir o elemento no novo array, false para excluí-lo.
 }
 ```
 
-## <a id = "isnan"></a> `isNaN(<parâmetro>)`
+### <a id = "isnan"></a> `isNaN(<parâmetro>)`
 
 É usada para determinar se o `<parâmetro>` **não é um número ("is Not A Number")**.
 
 Retorna `true` ou `false`.
 
 Se o `<parâmetro>` for um número ou **puder ser convertido em um**, retornará `false` .
-Como ela tenta converter o `<parâmetro>`, esta função pode se comportar de forma inesperada, quando o `<parâmetro>` não for númerico (especialmente quando se tratar de strings).
-Exemplo:
+Como ela tenta converter o `<parâmetro>`, esta função pode se comportar de forma inesperada, quando o `<parâmetro>` não for númerico (especialmente quando se tratar de strings). Exemplo:
+
 ```JavaScript
 console.log(isNaN(1));       //false (1 é um número).
 console.log(isNaN("1"));     //false (a string "1" pode ser convertida em número).
@@ -109,8 +105,7 @@ console.log(isNaN("Hello")); //true (a string "Hello" não pode ser convertida e
 
 ## <a id = "settimeout"></a>`setTimeout(<callback>, <delay>)`
 
-Função que agenda a execução de uma [`<callback>`](#callback) após um período de tempo especificado em milissegundos (`<delay>`).
-<a id = "exemplocallback"></a>[Exemplo:](fazer_algo_async.js)
+Função que agenda a execução de uma [`<callback>`](#callback) após um período de tempo especificado em milissegundos (`<delay>`). <a id = "exemplocallback"></a>[Exemplo:](fazer_algo_async.js)
 
 ```JavaScript
 function fazerAlgoAsync(callback) {
@@ -126,15 +121,14 @@ function minhaCallback() {
 
 fazerAlgoAsync(minhaCallback);
 ```
-`fazerAlgoAsync()` é uma função que recebe uma função callback como argumento.
-Dentro de `fazerAlgoAsync()` há uma operação assíncrona sendo simulada usando o `setTimeout()` , que espera 2 segundos antes de executar o que está no seu escopo.
+`fazerAlgoAsync()` é uma função que recebe uma função callback como argumento.\
+Dentro de `fazerAlgoAsync()` há uma operação assíncrona sendo simulada usando o `setTimeout()` , que espera 2 segundos antes de executar o que está no seu escopo.\
 Após a conclusão da operação assíncrona, a função callback é chamada. Neste caso, `minhaCallBack()` é passada como função callback, e ela será executada após a conclusão da operação.
 
 ### `clearTimeout(<identificador>)`
 
-Função usada para cancelar um temporizador (timeout) configurado anteriormente com a função `setTimeout()` . Ela permite interromper a execução de uma função ou bloco de código que foi agendado para ser executado após um determinado período de tempo.
-`<identificador>` : é o identificador único retornado quando você configurou o temporizador usando `setTimeout()`
-Exemplo:
+Função usada para cancelar um temporizador (timeout) configurado anteriormente com a função `setTimeout()` . Ela permite interromper a execução de uma função ou bloco de código que foi agendado para ser executado após um determinado período de tempo.\
+`<identificador>` : é o identificador único retornado quando você configurou o temporizador usando `setTimeout()`. Exemplo:
 
 ```JavaScript
 const identificador = setTimeout(() => {
@@ -176,7 +170,7 @@ Utilizada para fazer requisições HTTP, seja em navegadores ou em Node.js
 
 Interceptadores.
 
-- `.request` : interceptador de solicitação (requisição). Isto permite que você execute código antes que cada solicitação seja enviada. Após realizarmos esta "configuração, todas as solicitações posteriores obedeceram esta configuração;
+- `.request` : interceptador de solicitação (requisição). Isto permite que você execute código antes que cada solicitação seja enviada. Após realizarmos esta "configuração", todas as solicitações posteriores obedeceram esta configuração;
 - `.response` : interceptador de resposta;
 - `.use()` : registra o interceptador.
 
@@ -186,12 +180,9 @@ Interceptadores.
 - `.source()` : cria o objeto `.CancelToken` e seu respectivo método `.cancel(<mensagem sobre o cancelamento>)`
 - `.cancel(<mensagem sobre o cancelamento>)` o parâmetro `<mensagem sobre o cancelamento>` que atribui o valor da chave `.reason.message`
 
-Um objeto `.CancelToken` possui um atributo `.token`
-
-O atributo `.token` é composto por uma `.promise` e uma `.reason`
-
-A chave `.reason` possui um atributo `.message`
-
+Um objeto `.CancelToken` possui um atributo `.token`\
+O atributo `.token` é composto por uma `.promise` e uma `.reason`\
+A chave `.reason` possui um atributo `.message`\
 [Exemplo.](axios_cancel_token.js)
 
 ## <a id = "util"></a>util
@@ -237,8 +228,8 @@ Retorna um objeto da classe **fs** com propriedades como `.mtime` , que é a dat
 
 - `<comando>` (string): representa o comando a ser executado;
 - `<opções>` (object, opcional): pode conter várias opções para controlar o comportamento da execução do comando;
-- `<callback>` (opcional): função de retorno de chamada que será chamada quando a execução do comando for concluída.
-  - `(<erro>, <stdout>, <stderr>) => {}`
+- `<callback>` (opcional): função de retorno de chamada que será chamada quando a execução do comando for concluída.\
+  `(<erro>, <stdout>, <stderr>) => {}`
   - `<erro>` (string): variável que conterá informações sobre qualquer erro que ocorrer durante a execução do comando;
   - `<stdout>` (string): variável que conterá a saída padrão (**stdout**) do comando executado;
   - `<stderr>` (string): variável que conterá a saída de erro (**stderr**) do comando executado.
