@@ -1,13 +1,16 @@
 # JavaScript.
 
-Contexto para o ChatGPT.
+### Contexto para o ChatGPT.
+
 Contexto:
+
 - Linux;
 - JavaScript;
 - Node.js;
 - Sequelize;
 - API;
 - Git.
+
 Linguagem: português (BR).
 
 É uma **linguagem de programação** que é **síncrona** e **single-threaded**, o que significa que ela é executada em uma única thread de execução e as operações são processadas uma após a outra, em ordem. No entanto, JavaScript pode lidar com operações **assíncronas** e **não bloqueantes** usando recursos como **callbacks**, **promises** e **async/await**.
