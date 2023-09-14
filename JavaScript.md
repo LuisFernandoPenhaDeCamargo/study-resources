@@ -37,8 +37,7 @@ O operador de propagação (`...`) é usado para copiar todas as propriedades en
 ## <a id = "callback"></a>Callback.
 
 Uma Callback (ou função de retorno) refere-se a uma **função** que é **passada como argumento para outra função** e é executada após a **conclusão** de uma operação assíncrona ou em reposta a um evento específico.
-São uma parte fundamental da programação assíncrona em JavaScript e são amplamente utilizadas em situações em que você precisa controlar o fluxo de código após uma conclusão de uma operação demorada.
-
+São uma parte fundamental da programação assíncrona em JavaScript e são amplamente utilizadas em situações em que você precisa controlar o fluxo de código após uma conclusão de uma operação demorada.\
 [Exemplo.](#exemplocallback)
 
 ## <a id = "objetosglobais"></a>Objetos globais.
