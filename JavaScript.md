@@ -189,10 +189,10 @@ new Promise((resolve, reject) => {
 })
 ```
 
-- `resolve` é o parâmetro que representa a função de resolução;\
-    Retorna um valor.
+- `resolve` é o parâmetro que representa a função de resolução.\
+Retorna um valor;
 - `reject` é o parâmetro que representa a função de rejeição.\
-    Retorna um motivo (geralmente uma mensagem de erro).
+Retorna um motivo (geralmente uma mensagem de erro).
 
 [Exemplo mais complexo com uma Promise.](#settimeoutpromise)
 
