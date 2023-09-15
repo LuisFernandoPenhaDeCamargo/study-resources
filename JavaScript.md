@@ -72,10 +72,12 @@ Isso pode ser útil em situações onde o valor de `this` é importante, como ca
 
 As funções de flecha são especialmente úteis para escrever código mais conciso e expressivo, principalmente em contextos assíncronos e de alto nível.
 
-### <a id = "callback"></a>Callback.
+## <a id = "callback"></a>Callback.
 
 Uma Callback (ou função de retorno) é o conceito que se refere a uma **função** que é **passada como argumento para outra função** e é **executada após a conclusão** de uma **operação assíncrona ou em reposta a um evento específico**.
 São uma parte fundamental da programação assíncrona em JavaScript e são amplamente utilizadas em situações em que você precisa controlar o fluxo de código após uma conclusão de uma operação demorada. [Exemplo.](#exemplocallback)
+
+### Callback helll. <--
 
 ### <a id = "string"></a>`String(<parâmetro>)`
 
@@ -131,9 +133,43 @@ console.log(isNaN("Hello")); //true (a string "Hello" não pode ser convertida e
 
 ## <a id = "objetosglobais"></a>Objetos globais.
 
+### `Object`
+
+Objeto global pré-definido (built-in object).
+
+### `.assign(<destino>, <origem1>, <origem2>, ...);` <--
+
+É usada para copiar os valores de uma ou mais propriedades de objetos de origem (ou fonte) para um objeto de destino. Isso é frequentemente usado para criar um novo objeto que contém uma combinação de propriedades de vários outros objetos.
+
+- `<destino>`: é o objeto de destino onde as propriedades serão copiadas. Este objeto será modificado e retornado;
+- `<origem1>, <origem2>, ...`: são os objetos de origem a partir dos quais as propriedades serão copiadas. Você pode passar múltiplos objetos de origem separados por vírgulas.
+
+O `.assign()` copiará as propriedades de cada objeto de origem para o objeto de destino. Se houver conflitos de propriedades (ou seja, se o objeto de origem e o objeto de destino tiverem uma propriedade com o mesmo nome), o valor da propriedade no objeto de origem substituirá o valor correspondente no objeto de destino. Exemplo:
+
+```JavaScript
+const destino = {};
+const origem1 = {a: 1, b: 2};
+const origem2 = {b: 3, c: 4};
+
+Object.assign(destino, origem1, origem2);
+
+console.log(destino); // { a: 1, b: 3, c: 4 }
+```
+
+Neste exemplo, as propriedades de `origem1` e `origem2` são copiadas para `destino`, e o valor da propriedade `b` do `origem2` substitui o valor da propriedade `b` do `origem1` no objeto de destino.\
+Lembre-se de que o `Object.assign()` funciona apenas para copiar as propriedades enumeráveis e próprias (**não as herdadas**) dos objetos de origem. Além disso, ele retorna o objeto de destino após a cópia das propriedades.
+
+### `.keys(<object>)`
+
+Usado para retornar um array com as chaves (nomes das propriedades) de um `<object>`.
+
 ### `JSON`
 
 É usado para trabalhar com dados no formato JSON.
+
+### `.stringify(<object>)`
+
+Converte um objeto JavaScript em uma string JSON.
 
 ### `.parse(<JSON>)`
 
@@ -181,12 +217,28 @@ const identificador = setTimeout(() => {
 ```
 [Exemplo mais complexo com `setTimeout()`.](#settimeoutpromise)
 
-## <a id = "promise"></a>Promise.
+### <a id = "promise"></a>Promise.
+
+É um objeto JavaScript que representa a **eventual conclusão** ou **falha** de **uma operação assíncrona**. Ele é usado para lidar com operações assíncronas de maneira mais elegante e legível, tornando o código mais organizado e evitando o **callback hell**.
+
+Uma promessa tem três estados possíveis:
+
+- Pendente (Pending): o estado inicial, quando a Promise está esperando para ser cumprida ou rejeitada;
+- Cumprida (Fulfilled): a operação assíncrona foi concluída com sucesso e a Promise foi cumprida, ou seja, a função `resolve()` foi chamada;
+- Rejeitada (Reject): a operação assíncrona falhou e a Promise foi rejeitada, ou seja, a função `reject()` foi chamada.
 
 ```JavaScript
-new Promise((resolve, reject) => {
+const minhaPromise = new Promise((resolve, reject) => {
   //Corpo da promessa.
-})
+
+  /*Código assíncrono a ser executado, como uma chamada API, leitura de arquivo, etc.*/
+
+  /*Se a operação for bem-sucedida, chame "resolve" com o valor resultante.
+  resolve(valorResultado);*/
+
+  /*Se ocorrer um erro, chame "reject" com o motivo da rejeição (erro).
+  reject(motivoErro);*/
+});
 ```
 
 - `resolve` é o parâmetro que representa a função de resolução.\
@@ -194,9 +246,41 @@ Retorna um valor;
 - `reject` é o parâmetro que representa a função de rejeição.\
 Retorna um motivo (geralmente uma mensagem de erro).
 
+Para lidar com o resultado da Promise, você pode utilizar os métodos `.then()` e `.catch()`, ou usar a sintaxe do **async/await** para operações assíncronas mais legíveis.
+
+Exemplo utilizando `.then()` e `.catch()`:
+
+```JavaScript
+minhaPromise
+  .then((resultado) => {
+    console.log("Operação bem-sucedida. Resultado:", resultado);
+  })
+  .catch((erro) => {
+    console.log("Erro na operação:", erro);
+  });
+```
+
+Exemplo utilizando async/await:
+
+
+```JavaScript
+async function executarOperacao() {
+  try{
+    const resultado = await minhaPromise;
+    console.log("Operação bem-sucedida. Resultado:", resultado);
+  }catch(erro){
+    console.error("Erro na operação:", erro);
+  }
+}
+
+executarOperacao();
+```
+
+A utilização de Promises ajuda a tornar o código mais legível e facilita o tratamento de erros em operações assíncronas, melhorando a experiência de desenvolvimento em JavaScript.
+
 [Exemplo mais complexo com uma Promise.](#settimeoutpromise)
 
-## <a id = "settimeoutpromise"></a>Exemplo envolvendo `setTimeout()` e Promise.
+### <a id = "settimeoutpromise"></a>Exemplo envolvendo `setTimeout()` e Promise.
 
 ### Orion Games: orion-data-api
 
