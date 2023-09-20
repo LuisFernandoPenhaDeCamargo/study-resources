@@ -201,9 +201,8 @@ Função que permite iterar sobre todos os elementos do array e executar uma fun
 - `item`: nome da variável temporária que representa cada elemento do array;
 - `{}`: função passada como argumento para o `.forEach()` que é executada uma vez para cada elemento do array.
 
-
-- `<callback>`: função de callback que será chamada para cada elemento do array. Ela recebe três argumentos: o `elemento atual sendo processado`, o `indice` desse elemento e o próprio `array`;
-- `<thisArg>` (opcional): um valor que será usado como `this` dentro da função de callback.
++ `<callback>`: função de callback que será chamada para cada elemento do array. Ela recebe três argumentos: o `elemento atual sendo processado`, o `indice` desse elemento e o próprio `array`;
++ `<thisArg>` (opcional): um valor que será usado como `this` dentro da função de callback.
 
 Exemplo interessante usando `<thisArg>`:
 
