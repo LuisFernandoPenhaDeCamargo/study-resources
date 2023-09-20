@@ -75,13 +75,14 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 
 - [Objeto literal;](#objetoliteral)
 - [Operadores de igualdade;](#operadoresigualdade)
+- [Operador condicional ternário;](#operadorcondicionalternario)
 - [Template Literals (Template Strings);](#templateliterals) <--
 - [Spread properties;](#spreadproperties) <--
 - [Sintaxe da função de flecha x Definição externa de uma função;](#flechaxexterna)
 - [Callback;](#callback)
 - [`String(<parâmetro>)`](#string)
 - [Funções de string;](#funcoesstring)
-- [Funções para se aplicar sobre arrays;](#funcoesarrays) <--
+- [Funções para se aplicar sobre arrays;](#funcoesarrays)
 - [`isNaN(<parâmetro>)`](#isnan)
 - [Objetos globais;](#objetosglobais)
 - [`setTimeout(<callback>, <delay>)`](#settimeout)
@@ -136,6 +137,20 @@ Compara o **valor** e o **tipo do dado**.
 - `==` : operador de igualdade.\
 Compara o **valor** e **converte o tipo do dado**, se necessário.
 
+### <a id = "operadorcondicionalternario"></a>Operador condicional ternário.
+
+Também conhecida como **operação ternária**, é um operador em linguagens de programação que permite fazer uma escolha entre dois valores com base em uma condição. Ele é chamado de "ternário" porque envolve três partes: a condição, o valor que deeve ser retornado se a condição for verdadeira e o valor que deve ser retornado se a condição for falsa. A sintaxe básica de uma operação ternária é:
+
+`<condição> ? (<valor caso a condição seja verdadeira>) : (<valor caso a condição seja falsa>)`
+
+Parênteses são usados para agrupar várias instruções em uma única expressão, enquanto chaves são usadas para definir blocos de código em JavaScript. Exemplo mais complexo:
+
+```JavaScript
+row.accumulated_paid_at = isNaN(row.accumulated_paid_at) ? 0 : moment(row.accumulated_paid_at).format('YYYY-MM-DD HH:mm:ss') //Condição: isNaN(row.accumulated_paid_at)
+```
+
+Lembrando ainda que não é possível declarar variáveis dentro de uma operação ternária diretamente, isso ocorre porque é necessário um escopo de bloco mais amplo do que o oferecido por uma operação ternária.
+
 ### <a id = "templateliterals"></a>Template Literals.
 
 ### <a id = "spreadproperties"></a>Spread Properties.
@@ -172,9 +187,9 @@ São uma parte fundamental da programação assíncrona em JavaScript e são amp
 
 ### Callback helll. <--
 
-### <a id = "string"></a>`String(<parâmetro>)`
+### <a id = "string"></a>`String(<parâmetro>)` <--
 
-É uma função **construtora** em JavaScript que pode ser usada para criar objetos do tipo string. Também pode ser usada para converter outros tipos de dados em strings.
+É uma função **construtora** em JavaScript que cria um novo objeto String a partir do valor passado como argumento. Se você passar um valor não-string, ele criará um novo objeto String com a representação string desse valor. Não altera o objeto original, mas retorna um **novo objeto**.
 
 ## <a id = "funcoesstring"></a>Funções de string.
 
@@ -255,6 +270,8 @@ console.log(isNaN(1));       //false (1 é um número).
 console.log(isNaN("1"));     //false (a string "1" pode ser convertida em número).
 console.log(isNaN("Hello")); //true (a string "Hello" não pode ser convertida em número).
 ```
+
+Observando que `.isNaN()` considera datas como valores númericos válidos em JavaScript. Isso pode ser um comportamento inesperado em alguns casos, á que datas não são números no sentido convencional. No entanto, JavaScript permite que datas sejam usadas em operações matemáticas e, portanto, elas são tratadas como números válidos pelo `isNaN()`.
 
 ## <a id = "objetosglobais"></a>Objetos globais.
 
