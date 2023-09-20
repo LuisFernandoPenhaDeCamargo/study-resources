@@ -15,6 +15,56 @@ Linguagem: português (BR).
 
 É uma **linguagem de programação** que é **síncrona** e **single-threaded**, o que significa que ela é executada em uma única thread de execução e as operações são processadas uma após a outra, em ordem. No entanto, JavaScript pode lidar com operações **assíncronas** e **não bloqueantes** usando recursos como **callbacks**, **promises** e **async/await**.
 
+A **cadeia de protótipos**, também conhecida como **prototype chain**, é um conceito fundamental no JavaScript que descreve como objetos JavaScript estão relacionados uns aos outros através de seus protótipos. Essa cadeia é usada para permitir a herança de propriedades e métodos entre objetos em JavaScript. Pontos-chave sobre a cadeia de protótipos:
+
+- Protótipo (prototype): em JavaScript, cada objeto tem uma referência a um outro objeto chamado "protótipo" (ou "prototype"). **O protótipo é um objeto que é usado como um modelo a partir do qual o objeto herda propriedades e métodos**. O protótipo é acessado através da propriedade `__proto__` (embora essa forma de acesso seja obsoleta e não recomendada) ou usando o método `Object.getPrototypeOf(<objeto>)`;
+- Herança: **quando você tenta acessar uma propriedade ou método de um objeto e essa propriedade ou método não existe no objeto em si, o JavaScript procurará na cadeia de prótipos desse objeto para encontrar a propriedade ou método**. Isso permite a herança de propriedades e métodos de um objeto para outro;
+- Objetos nativos e protótipos: objetos nativos do JavaScript, como `Array`, `String`, `Object`, entre outros, têm protótipos definidos que fornecem funcionalidades compartilhadas para todos os objetos desse tipo. Por exemplo, todos os objetos `Array` herdam métodos como `.push()`, `.pop()`, `forEach()`, etc, de seu protótipo `Array.prototype`;
+- Cadeia de protótipos: a cadeia de protótipos é formada quando um objeto herda de outro objeto, que por sua vez herda de outro objeto, e assim por diante. Isso cria uma hierarquia de protótipos, e o JavaScript percorre essa hierarquia quando você faz referência a propriedades ou métodos em um objeto. Exemplo simples que ilustra a cadeia de protótipos:
+
+```JavaScript
+const pessoa = {
+  nome: "João",
+  idade: 30
+};
+
+const estudante = Object.create(pessoa);
+estudante.matricula = "12345";
+
+console.log(estudante.nome);  //Herda "nome" de pessoa.
+console.log(estudante.idade); //Herda "idade" de pessoa.
+```
+
+Neste exemplo, `estudante` é um objeto filho que herda propriedades de `pessoa` através da cadeia de protótipos. Portanto, ele pode acessar as propriedades `nome` e `idade` que não existem diretamente em `estudante`, mas estão disponíveis através da cadeia de protótipos.
+
+Propriedade enumerável é uma propriedade de um objeto que pode ser percorrida ou listada usando estruturas de controle como `for...in` ou métodos como `Object.keys()`. As propriedades enumeráveis são aquelas que são consideradas "visíveis" durante iterações em objetos.\
+Por padrão, as propriedades que você cria diretamente em um objeto são enumeráveis. No entanto, muitas propriedades internas dos objetos nativos do JavaScript não são enumeráveis.\
+Você pode controlar a enumerabilidade de uma propriedade ao definir ou modificar uma propriedade em um objeto usando o método `Object.defineProperty()`. Este método permite que você especifique várias opções, incluindo se a propriedade deve ser enumerável ou não. Por exemplo:
+
+```JavaScript
+const objeto = {};
+
+//Definindo uma propriedade enumerável.
+Object.defineProperty(objeto, "propriedadeEnumeravel", {
+  value: 42,
+  enumerable: true //Esta propriedade é enumerável.
+});
+
+Object.defineProperty(objeto, "propriedadeNaoEnumeravel", {
+  value: "Não enumerável.",
+  enumerable: false //Esta propriedade não é enumerável.
+});
+
+for (const key in objeto) {
+  console.log(key, objeto[key]);
+}
+
+console.log(Object.keys(objeto)); //["propriedadeEnumeravel"]
+```
+
+No exemplo acima, a propriedade `propriedadeEnumeravel` é definida com o enumerável, enquanto a `propriedadeNaoEnumeravel` é definida como não enumerável. Quando você itera pelas propriedades do objeto usando um loop `for...in` ou obtém as chaves do objeto usando `Object.keys()`, apenas a `propriedadeEnumeravel` é visível, porque é a única propriedade enumerável. A `propriedadeNaoEnumeravel` não é listada.\
+Por padrão, a maioria das propriedades que você cria em objetos é enumerável, mas é importante estar ciente da enumerabilidade ao trabalhar com objetos e definir propriedades personalizadas, especialmente quando você deseja controlar quais propriedades são visíveis durante iterações.
+
 **No linux, o Shebang é necessário para a impressão de logs no terminal de comando.**
 
 - [Nativo do JavaScript;](#nativojavascript)
@@ -23,6 +73,7 @@ Linguagem: português (BR).
 
 # <a id = "nativojavascript"></a>Nativo do JavaScript.
 
+- [Objeto literal;](#objetoliteral)
 - [Operadores de igualdade;](#operadoresigualdade)
 - [Template Literals (Template Strings);](#templateliterals) <--
 - [Spread properties;](#spreadproperties) <--
@@ -35,6 +86,48 @@ Linguagem: português (BR).
 - [Objetos globais;](#objetosglobais)
 - [`setTimeout(<callback>, <delay>)`](#settimeout)
 - [Promise.](#promise)
+
+### <a id = "objetoliteral"></a>Objeto literal.
+
+Um objeto criado com `{}` (chave vazias) em JavaScript é um objeto literal, e ele é estrutura de dados fundamental na linguagem. **Esse objeto é uma coleção não ordenada de pares chave-valor**, onde as **chaves** (também chamadas de **propriedades**) são **strings** (ou símbolos em versões mais recentes do JavaScript) que atuam como **identificadores** exclusivos para acessar os valores associados. Exemplo simples de um objeto criado usando `{}`:
+
+```JavaScript
+const pessoa = {
+  nome: "João",
+  idade: 30,
+  cidade: "São Paulo"
+};
+
+console.log(pessoa.nome);   //Acessando a propriedade "nome".
+console.log(pessoa.idade);  //Acessando a propriedade "idade".
+console.log(pessoa.cidade); //Acessando a propriedade "cidade".
+```
+
+Neste exemplo, `pessoa` é um objeto literal que possui três propriedades: "nome", "idade" e "cidade". Cada propriedade tem um **valor** associado.\
+Você pode adicionar, modificar e excluir propriedades de um objeto literal conforme necessário durante a execução do seu programa. Por exemplo:
+
+```JavaScript
+pessoa.profissao = "Engenheiro"; //Adicionando uma nova propriedade.
+pessoa.idade = 31;               //Modificando o valor de uma propriedade existente.
+delete pessoa.cidade;            //Excluindo uma propriedade.
+```
+
+Objetos literais são usados ára representar dados estruturados em JavaScript e são uma parte essencial da linguagem quando se trata de manipulação de dados e estruturas de dados complexas. Eles também podem ser aninhados para criar estruturas de dados mais complexas, como objetos dentro de objetos.
+
+Se você está considerando que o retorno de `.getPropertyOf()` é um objeto criado com `{}`, isso significa que o resultado de `.getPropertyOf()` é um objeto literal que serve como protótipo de outro objeto.\
+O método `Object.getPropertyOf(<object>)` em JavaScript é usado para obter o protótipo (ou seja, o objeto de onde um objeto herda propriedades) de um objeto específico. Se o protótipo for um objeto criado com `{}` (um objeto literal), significa que o objeto não tem um protótipo personalizado definido e está herdando propriedades diretamente do **prtótipo padrão**, que é o objeto `Object.prototype` em JavaScript. Por exemplo:
+
+```JavaScript
+const objeto = {};
+const prototipo = Object.getPrototypeOf(objeto);
+
+console.log(prototipo === Object.prototype); //true
+```
+
+Você pode adicionar propriedades ao protótipo padrão (`Object.prototype`), e essas propriedades serão herdadas por **todos os objetos que não tem um protótipo personalizado definido**. No entanto, é importante exercer cautela ao adicionar propriedades ao protótipo padrão, pois isso afetará todos os objetos em seu programa.
+
+`console.log(Object.getPrototypeOf(Object.prototype));` não deveria retornar `{}`?\
+A chamada `console.log(Object.getPrototypeOf(Object.prototype));` não retornará `{}` diretamente porque `Object.Prototype` é o protótipo raiz de todos os objetos em JavaScript, incluindo objetos literais criados com `{}`. No entanto, o protótipo de `Object.prototype` é `null`, e não um objeto vazido `{}`.
 
 ### <a id = "operadoresigualdade"></a>Operadores de igualdade.
 
@@ -93,12 +186,44 @@ Remove espaços em branco (espaços, tabulações e quebras de linha) do início
 
 ## <a id = "funcoesarrays"></a>Funções para se aplicar sobre arrays.
 
-- [`.forEach()`;](#foreach) <--
-- [`.filter(<callback(<elemento>, <índice>, <array>)`;](#filter)
+### `.push(<elemento1>, <elemento2>, ...)`
 
-### <a id = "foreach"></a>`.forEach()` <--
+É usada para adicionar um ou mais elementos ao final de um array existente. Esses elementos podem ser valores individuais ou outros arrays, objetos, etc.
 
-### <a id = "filter"></a> `.filter(<callback(<elemento>, <índice>, <array>)>)`
+### `.pop()`
+
+É usada para remover o último elemento de um array. Ele modifica o array original, reduzindo o seu comprimento (`length`) em 1 e **retornando o elemento que foi removido**.
+
+### `.forEach(<item => {}>)` ou `.forEach(<callback(<elemento>, <indice>, <array>)>, <thisArg>)`
+
+Função que permite iterar sobre todos os elementos do array e executar uma função de callback em cada um deles. É uma maneira conveniente de percorrer todos os elementos de um array sem a necessidade de um loop `for` tradicional. **A função altera o array original**.
+
+- `item`: nome da variável temporária que representa cada elemento do array;
+- `{}`: função passada como argumento para o `.forEach()` que é executada uma vez para cada elemento do array.
+
+- `<callback>`: função de callback que será chamada para cada elemento do array. Ela recebe três argumentos: o `elemento atual sendo processado`, o `indice` desse elemento e o próprio `array`;
+- `<thisArg>` (opcional): um valor que será usado como `this` dentro da função de callback.
+
+Exemplo interessante usando `<thisArg>`:
+
+```JavaScript
+const pessoa = {
+  nome: "João",
+  idade: 30,
+  cidade: "São Paulo"
+};
+const frutas = ["maça", "banana", "laranja"];
+
+//Definindo uma função de callback que usa "this".
+function exibirDetalhes(fruta) {
+  console.log(`${this.nome} gosta de ${fruta}`);
+}
+
+//Usando "thisArg" para definir o valor de "this" dentro da função de callback. Sem o this, exibirDetalhes não reconheceria a propriedade nome de pessoa.
+frutas.forEach(exibirDetalhes, pessoa);
+```
+
+### `.filter(<callback(<elemento>, <índice>, <array>)>)`
 
 É usado para **criar** um novo array contendo todos os elementos de um array original que atendem a um critério especificado por uma função de callback. Em outras palavras, ele filtra os elementos de um array com base em uma condição e retorna um novo array contendo apenas os elementos que atendem essa condição.
 
@@ -137,7 +262,7 @@ console.log(isNaN("Hello")); //true (a string "Hello" não pode ser convertida e
 
 Objeto global pré-definido (built-in object).
 
-### `.assign(<destino>, <origem1>, <origem2>, ...);` <--
+### `.assign(<destino>, <origem1>, <origem2>, ...);`
 
 É usada para copiar os valores de uma ou mais propriedades de objetos de origem (ou fonte) para um objeto de destino. Isso é frequentemente usado para criar um novo objeto que contém uma combinação de propriedades de vários outros objetos.
 
@@ -159,17 +284,78 @@ console.log(destino); // { a: 1, b: 3, c: 4 }
 Neste exemplo, as propriedades de `origem1` e `origem2` são copiadas para `destino`, e o valor da propriedade `b` do `origem2` substitui o valor da propriedade `b` do `origem1` no objeto de destino.\
 Lembre-se de que o `Object.assign()` funciona apenas para copiar as propriedades enumeráveis e próprias (**não as herdadas**) dos objetos de origem. Além disso, ele retorna o objeto de destino após a cópia das propriedades.
 
-### `.keys(<object>)`
+### `.keys(<objeto>)`
 
-Usado para retornar um array com as chaves (nomes das propriedades) de um `<object>`.
+Usado para retornar um array com as chaves (nomes das propriedades) de um `<objeto>`.
+
+### `.getPropertyOf(<objeto>)`
+
+Utilizado para retornar o protótipo de um `<objeto>`.
+
+### `.definePropertyOf(<objeto>, <propriedade>, <descritor>)`
+
+Usada para definir uma nova propriedade diretamente em um objeto ou modificar uma propriedade existente com mais controle sobre suas características. Ela permite que você especifique várias opções para a propriedade, como se ela é enumerável, configurável ou gravável.
+
+- `<objeto>`: o objeto no qual você deseja definir ou modificar a propriedade;
+- `<propriedade>`: o nome da propriedade que você deseja definir ou modificar;
+- `<descritor>`: um objeto que descreve as características da propriedade. Este objeto pode ter várias propriedades, incluindo:
+  - `<value>`: o valor da propriedade (opcional);
+  - `<writable>`: um booleano que indica se a propriedade pode ser modificada com o operador de atribuição (por padrão, `false`);
+  - `<enumerable>`: um booleano que indica se a propriedade pode ser percorrida em um loop `for...in` ou listada usando `Object.keys()` (por padrão, `false`);
+  - `<configurable>`: um booleano que indica se a propriedade pode ser reconfigurada ou excluída (por padrão, `false`).
 
 ### `JSON`
 
 É usado para trabalhar com dados no formato JSON.
 
-### `.stringify(<object>)`
+### `.stringify(<objeto, replacer, espaços>)`
 
 Converte um objeto JavaScript em uma string JSON.
+
+Observação importante: **serializar** um objeto significa converter esse objeto em uma representação de dados que possa ser armazenada ou transmitida de uma maneira que possa ser posteriormente desserializada e reconstruída em sua forma original. Geralmente, isso envolve transformar o objeto em uma sequência de caracteres ou bytes que possa ser facilmente armazenada em um arquivo, transmitida através de uma rede ou armazenada em um banco de dados.
+
+- `<objeto>`: o objeto JavaScript que você deseja serializar em uma string JSON.
+  - `replacer` (opcional): uma função ou um array que permite personalizar a serialização, filtrando e transformando os valores antes de serem convertidos em JSON. Você pode passar uma função de substituição para personalizar a serialização, ou um array de strings e números que especifica as propriedades a serem incluídas na serialização;
+  - `espaços` (opcional): um argumento que controla o espaçamento (indentação) na string JSON resultante. Pode ser um número que indica o número de espaços para indentação ou uma string personalizada para a identação.
+
+Exemplo:
+
+```JavaScript
+const objeto = {
+  nome: "João",
+  idade: 30,
+  cidade: "São Paulo"
+};
+
+//replacer é uma função que personaliza a serialização.
+const replacer = (chave, valor) => {
+  //Vamos omitir a propriedade "idade" na serialização.
+  if (chave === "idade") {
+    return undefined;
+  }
+
+  return valor;
+}
+
+//O espaço define a quantidade de espaços de indentação na string JSON.
+const espaco = 2;
+const jsonString = JSON.stringfy(objeto, replacer, espaco);
+
+console.log(jsonString);
+
+/*A saída será algo como:
+{
+  "nome": "João",
+  "cidade": "São Paulo"
+}
+*/
+```
+
+Neste exemplo, estamos usando o `replacer` para personalizar a serialização. Ele verifica se a chave é "idade" e, se for, retorna `undefined`, o que efetivamente **omite a propriedade `idade` da serialização**. O `espaco` é definido como `2`, o que significa que a string JSON resultante será formatada com um recuo de 2 espaços. Observando que:
+
+- Quando `JSON.stringfy()` é chamado com o `replacer` como argumento, ele começa a serialização do objeto a partir do topo (o objeto raiz) e desce na hierarquia das propriedades,
+- A função `replacer` é chamada para cada propriedade do objeto sendo serializado. Elas recebe dois argumentos: a chave da propriedade atual o valor dessa propriedade;
+- A função `replacer` pode retornar um novo valor para a propriedade atual. Se ela retornar `undefined`, a propriedade será omitida da saída final; caso contrário, o valor retornado será incluído na saída JSON.
 
 ### `.parse(<JSON>)`
 
@@ -348,8 +534,8 @@ mesmo a função de resolução sendo passada como argumento para a função de 
 Utilizada para fazer requisições HTTP, seja em navegadores ou em Node.js.
 
 - `<url>` (string): URL de destino, para onde a solicitação será enviada;
-- `<corpo da solicitação>` (object): corpo da solicitação que está sendo enviada;
-- `<configurações>` (object, opcional): objeto de configuração opcional que permite personalizar a solicitação. Este objeto pode conter várias opções de configuração, como cabeçalhos personalizados, autenticação, parâmetros de consulta, entre outros.
+- `<corpo da solicitação>` (objeto): corpo da solicitação que está sendo enviada;
+- `<configurações>` (objeto, opcional): objeto de configuração opcional que permite personalizar a solicitação. Este objeto pode conter várias opções de configuração, como cabeçalhos personalizados, autenticação, parâmetros de consulta, entre outros.
 
 ### Métodos.
 - `.post(<url>, <corpo da solicitação>)`
@@ -434,7 +620,7 @@ Retorna um objeto da classe **fs** com propriedades como `.mtime` , que é a dat
 ### `.exec(<comando>, <opções>, <callback>)`
 
 - `<comando>` (string): representa o comando a ser executado;
-- `<opções>` (object, opcional): pode conter várias opções para controlar o comportamento da execução do comando;
+- `<opções>` (objeto, opcional): pode conter várias opções para controlar o comportamento da execução do comando;
 - `<callback>` (opcional): função de retorno de chamada que será chamada quando a execução do comando for concluída.\
   `(<erro>, <stdout>, <stderr>) => {}`
   - `<erro>` (string): variável que conterá informações sobre qualquer erro que ocorrer durante a execução do comando;
