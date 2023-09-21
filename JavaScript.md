@@ -81,6 +81,7 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 - [Sintaxe da função de flecha x Definição externa de uma função;](#flechaxexterna)
 - [Callback;](#callback)
 - [`String(<parâmetro>)`](#string)
+- [`.toString()`](#tostring)
 - [Funções de string;](#funcoesstring)
 - [Funções para se aplicar sobre arrays;](#funcoesarrays)
 - [`isNaN(<parâmetro>)`](#isnan)
@@ -187,9 +188,17 @@ São uma parte fundamental da programação assíncrona em JavaScript e são amp
 
 ### Callback helll. <--
 
-### <a id = "string"></a>`String(<parâmetro>)` <--
+### <a id = "string"></a>`String(<parâmetro>)`
 
-É uma função **construtora** em JavaScript que cria um novo objeto String a partir do valor passado como argumento. Se você passar um valor não-string, ele criará um novo objeto String com a representação string desse valor. Não altera o objeto original, mas retorna um **novo objeto**.
+- É um construtor que cria um novo objeto String a partir do valor passado como argumento, se não for uma string. Se você passar um valor não-string para `String()`, ele criará um novo objeto String com a representação da string desse valor;
+- **Não altera o objeto original**, mas **retorna um novo objeto String** com a representação da string do valor.
+
+### <a id = "tostring"></a>`.toString()`
+
+- É um método disponível em objetos que são herdeiros da classe Object. Isso inclui tipos primitivos como números, booleanos e strings;
+- Quando você chama `.toString()` em um objeto, ele **retorna uma representação string** desse objeto;
+- `.toString()` **não cria um novo objeto**, mas sim gera uma representação de string do objeto original;
+- Em muitos casos, `.toString()` é usado implicitamente quando você concatena um valor com uma string usando o operador `+`.
 
 ## <a id = "funcoesstring"></a>Funções de string.
 
@@ -647,3 +656,25 @@ Retorna um objeto da classe **fs** com propriedades como `.mtime` , que é a dat
 É usada para executar comandos do sistema operacional em um subprocesso. Ela é uma forma de criar processos filhos para executar comandos shell ou outros programas externos.
 
 # <a id ="frameworks"></a>Frameworks.
+
+- [Vue.js](#vue)
+
+## <a id = "vue"></a>Vue.js
+
+### Resumo.
+
+Framework progressivo usado para construir interfaces de usuário (UI) interativas e baseadas em componentes. Ele é amplamente utilizado no desenvolvimento web front-end e é conhecido por sua simplicidade e facilidade de integração com outros projetos e bibliotecas.
+
+---
+
+Alguns pontos-chave relacionados ao uso de Vue.js:
+
+- Desenvolvimento front-end: Vue.js é usado para criar a camada de interface do usuário em uma aplicação web. Ele permite que os desenvolvedores criem componentes reutilizáveis que podem ser compostos para criar interfaces complexas;
+- Reatividade: uma das características mais poderosas do Vue.js é sua capacidade de criar interfaces reativas. Isso significa que os componentes podem automaticamente reagir a mudanças nos dados e atualizar a interface do usuário correspondente;
+- Facilidade de aprendizado: Vue.js é conhecido por sua curva de aprendizado suave. Mesmo desenvolvedores com conhecimento JavaScript básico podem começar a usá-lo rapidamente;
+- Integração: Vue.js é altamente integrável com outras bibliotecas e frameworks, como Vuex para gerenciamento de estado e Vue Router para roteamento. Isso o torna uma escolha popular para projetos que precisam de uma solução front-end flexível;
+- Comunidade ativa: Vue.js possui uma comunidade ativa e crescente de desenvolvedores. Isso significa que você pode encontrar muitos recursos, tutoriais e plugins disponíveis para ajudar no desenvolvimento;
+- Ferramentas de desenvolvimento: há uma série de ferramentas de desenvolvimento dedicadas ao Vue.js, como o Vue CLI, que facilitam a criação, compilação e gerenciamento de projetos Vue.js;
+- Aplicações em tempo real: Vue.js é frequentemente usado em aplicações em tempo real, como painéis de administração, aplicativos de chat e aplicativos de jogos web, devido à sua reativdade e capacidade de atualização em tempo real;
+- Documentação rica: a documentação oficial do Vue.js é extensa e bem escrita, facilitando a aprendizagem e a consulta de informações quando necessário;
+- Adoção empresarial: muitas empresas, grandes e pequenas, adotaram Vue.js em seus projetos devido à sua eficiência e flexibilidade.
