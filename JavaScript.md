@@ -278,6 +278,8 @@ Como ela tenta converter o `<parâmetro>`, esta função pode se comportar de fo
 console.log(isNaN(1));       //false (1 é um número).
 console.log(isNaN("1"));     //false (a string "1" pode ser convertida em número).
 console.log(isNaN("Hello")); //true (a string "Hello" não pode ser convertida em número).
+console.log(isNaN(undefined)); //true (não é um número).
+console.log(isNaN(null)); //false (não é um número estritamente válido, mas é convertido em 0 durante a verificação).
 ```
 
 Observando que `.isNaN()` considera datas como valores númericos válidos em JavaScript. Isso pode ser um comportamento inesperado em alguns casos, á que datas não são números no sentido convencional. No entanto, JavaScript permite que datas sejam usadas em operações matemáticas e, portanto, elas são tratadas como números válidos pelo `isNaN()`.
@@ -548,6 +550,7 @@ mesmo a função de resolução sendo passada como argumento para a função de 
 ### JavaScript
 
 - [axios;](#axios)
+- [sequelize.](Sequelize.md)
 
 ### Node.js
 
@@ -561,7 +564,8 @@ Utilizada para fazer requisições HTTP, seja em navegadores ou em Node.js.
 
 - `<url>` (string): URL de destino, para onde a solicitação será enviada;
 - `<corpo da solicitação>` (objeto): corpo da solicitação que está sendo enviada;
-- `<configurações>` (objeto, opcional): objeto de configuração opcional que permite personalizar a solicitação. Este objeto pode conter várias opções de configuração, como cabeçalhos personalizados, autenticação, parâmetros de consulta, entre outros.
+- `<configurações>` (objeto, opcional): objeto de configuração opcional que permite personalizar a solicitação. Este objeto pode conter várias opções de configuração, como cabeçalhos personalizados, autenticação, parâmetros de consulta, entre outros.\
+  Como por exemplo a chave: valor `cancelToken: <objeto .CancelToken>.token`, que é o token de cancelamento.
 
 ### Métodos.
 - `.post(<url>, <corpo da solicitação>)`
@@ -592,9 +596,12 @@ axios.interceptors.response.use(response => response, error => {
 
 ### <a id = "canceltoken"></a>`.CancelToken.source()`
 
+Para que o axios saiba qual token de cancelamento está associado a uma requisição específica, você o passa na configuração da requisição usando a propriedade `cancelToken`. Portanto, `cancelToken: <objeto .CancelToken>.token` informa ao axios que esta requisição está vinculada ao `<objeto .CancelToken>.token` que você criou.\
+Então quando você chama `<objeto .CancelToken>.cancel()`, o axios sabe que deve cancelar qualquer requisição que tenha o `<objeto .CancelToken>.token` associado a ela.
+
 - `.CancelToken` : utilizado para criar um Token de cancelamento que pode ser usado para cancelar uma solicitação HTTP que está em andamento;
 - `.source()` : cria o objeto `.CancelToken` e seu respectivo método `.cancel(<mensagem sobre o cancelamento>)`
-- `.cancel(<mensagem sobre o cancelamento>)` o parâmetro `<mensagem sobre o cancelamento>` que atribui o valor da chave `.reason.message`
+- `.cancel(<mensagem sobre o cancelamento>)` o parâmetro `<mensagem sobre o cancelamento>` que atribui o valor da chave `.reason.message`. É o **método utilizado para cancelar a requisição**.
 
 Um objeto `.CancelToken` possui um atributo `.token`
 
@@ -625,13 +632,13 @@ Usado para ler o conteúdo de um diretório, ou seja, lista os arquivos e subdir
 
 **__dirname** é uma variável global no Node.js que representa o diretório atual.
 
-Retorna uma lista de strings.
+Retorna uma matriz.
 
 ### `readFileSync(<pwd>, <opcional, especifica a codificação do arquivo>)`
 
 Lê o conteúdo de um arquivo.
 
-Retorna o conteúdo do arquivo como uma string.
+Retorna o conteúdo do arquivo em formato de buffer ou em uma condição específica, se especificada.
 
 ### `statSync(<pwd>)`
 
