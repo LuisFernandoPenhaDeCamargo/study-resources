@@ -83,7 +83,7 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 - [`String(<parâmetro>)`](#string)
 - [`.toString()`](#tostring)
 - [Funções de string;](#funcoesstring)
-- [Funções para se aplicar sobre arrays;](#funcoesarrays)
+- [Funções de array;](#funcoesarray)
 - [`isNaN(<parâmetro>)`](#isnan)
 - [Objetos globais;](#objetosglobais)
 - [`setTimeout(<callback>, <delay>)`](#settimeout)
@@ -208,7 +208,7 @@ São uma parte fundamental da programação assíncrona em JavaScript e são amp
 
 Remove espaços em branco (espaços, tabulações e quebras de linha) do início e do final da string. **Ele não afeta os espaçoes em branco dentro da string, apenas os espaçoes em branco externos**.
 
-## <a id = "funcoesarrays"></a>Funções para se aplicar sobre arrays.
+## <a id = "funcoesarray"></a>Funções de array.
 
 ### `.push(<elemento1>, <elemento2>, ...)`
 
@@ -218,14 +218,14 @@ Remove espaços em branco (espaços, tabulações e quebras de linha) do início
 
 É usada para remover o último elemento de um array. Ele modifica o array original, reduzindo o seu comprimento (`length`) em 1 e **retornando o elemento que foi removido**.
 
-### `.forEach(<item => {}>)` ou `.forEach(<callback(<elemento>, <indice>, <array>)>, <thisArg>)`
+### `.forEach(<item => {}>)` ou `.forEach(<callback(<elemento>, <índice>, <array>)>, <thisArg>)`
 
 Função que permite iterar sobre todos os elementos do array e executar uma função de callback em cada um deles. É uma maneira conveniente de percorrer todos os elementos de um array sem a necessidade de um loop `for` tradicional. **A função altera o array original**.
 
 - `item`: nome da variável temporária que representa cada elemento do array;
 - `{}`: função passada como argumento para o `.forEach()` que é executada uma vez para cada elemento do array.
 
-+ `<callback>`: função de callback que será chamada para cada elemento do array. Ela recebe três argumentos: o `elemento atual sendo processado`, o `indice` desse elemento e o próprio `array`;
++ `<callback>`: função de callback que será chamada para cada elemento do array. Ela recebe três argumentos: o `elemento atual sendo processado`, o `índice` desse elemento e o próprio `array`;
 + `<thisArg>` (opcional): um valor que será usado como `this` dentro da função de callback.
 
 Exemplo interessante usando `<thisArg>`:
