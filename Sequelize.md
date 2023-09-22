@@ -27,4 +27,39 @@ Retorna um objeto (um array) de tamanho único (com um elemento) que contém o n
 
 ## `.query()`
 
-O Sequelize entende as **interrogações na sua consulta SQL** como **marcadores de posição** que serão substituídos pelos valores fornecidos no objeto
+É usada para executar comandos SQL personalizadas em um banco de dados. Ela oferece maior flexibilidade do que os métodos de comando padrão do Sequelize, permitindo que você escreva consultas SQL completas e complexas conforme necessário.
+
+`sequelize.query(query, options)`
+
+- `query`: é o comando SQL que você deseja executar como uma string;
+- `options` (opcional): é um objeto de opções que pode conter várias configurações, como parâmetros de substituição, tipo de consulta, etc.\
+    - `replacements`: objeto onde as chaves correspondem aos marcadores de posição na operação SQL e os valores são os valores que você deseja substituir.
+
+O Sequelize entende as **interrogações na sua consulta SQL** como **marcadores de posição** que serão substituídos pelos valores fornecidos no objeto identificado pela chave `replacements` na ordem ordem em que as interrogações aparecem na consulta.\
+O Sequelize substituirá cada interrogação na consulta pelo valor correspondente no array identificado por `replacements` na ordem em que aparecerem. Por exemplo, a primeira interrogação será substituída pelo primeiro valor do array, a segunda interrogação, pelo segundo valor, e assim por diante.\
+O Sequelize garantirá que a substituição seja feita de forma adequada e segura, levando em consideração a formatação correta dos valores para evitar problemas de segurança, como injeção de SQL.
+
+```JavaScript
+const query = "REPLACE INTO games (id, name, path_name, mode, status) VALUES (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?)";
+
+const values = [ 
+    85,
+    'Dracula Alpha v000',
+    'alpha-dracula-v000',
+    'vertical',
+    1,
+    89,
+    'Lucky Fortune Alpha v000',
+    'alpha-lucky-fortune-v000',
+    'vertical',
+    1,
+    1,
+    'Lucky Halloween s000',
+    'halloween',
+    'square',
+    1 ];
+
+await sequelize.query(query, { replacements: values });
+```
+
+Cada interrogação será substituída de acordo com a sua posição em relação ao array `values`.

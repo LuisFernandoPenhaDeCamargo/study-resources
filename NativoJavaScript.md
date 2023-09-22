@@ -19,6 +19,7 @@ Retorna ...
 Lista de nomes de objetos:
 
 - array;
+- .
 
 Lista de nomes de parâmetros:
 
