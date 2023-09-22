@@ -1,4 +1,4 @@
-# Parâmetro x argumento.
+# Parâmetro x Argumento.
 
 **Parâmetro** e **argumento** são termos relacionado à passagem de valores em funções, mas eles se referem a conceitos diferentes:
 
@@ -8,6 +8,7 @@
     - Os parâmetros são listados entre os parênteses na declaração da função;
     - Eles são usados para receber e processar os valores de entrada que a função espera para realizar uma tarefa;
     - Os parâmetros são como variáveis locais da função e só existem no escopo da função.
+
 2. Argumento:
     - Um **argumento** é o **valor real fornecido para um parâmetro quando a função é chamada**;
     - Quando você chama uma função, você fornece argumentos que correspondem aos parâmetros da função;
