@@ -7,7 +7,7 @@
 - [`.update()`;](#update)
 - [`.query()`;](#query)
 
-## <a id = "chaged"></a>`.chaged()`
+## <a id = "changed"></a>`.changed()`
 
 Verifica quais atributos foram alterados em um modelo Sequelize.
 
