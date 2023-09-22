@@ -25,6 +25,22 @@ Lista de nomes de parâmetros:
 - objeto;
 - .
 
+# Nativo do JavaScript.
+
+# Função de seta (arrow function).
+
+## Retorno implícito x Retorno explícito.
+
+O `return` é **implícito** em funções de seta de **corpo curto** quando **não há chaves** para definir um escopo e a função consiste em uma ***única operação ou expressão**. Nesse caso, o resultado da expressão é implicitamente retornado com o valor de retorno da função. Exemplo:
+
+```JavaScript
+const somaImplicito = (a, b) => a + b; //O retorno é implícito.
+
+const somaExplicito = (a, b) => {
+  return a + b; //O retorno aqui precisa ser explícito. Pois as chaves criam um bloco de código dentro da função de seta.
+};
+```
+
 # Funções de array.
 
 ## `.map()`
@@ -80,4 +96,9 @@ console.log(novoArray); //[ '?,?,?,?,?', '?,?,?,?,?', '?,?,?,?,?' ]
 
 ## `.concat()`
 
-É usada para concatenar dois ou mais arrays ou valores em um novo array, sem modificar os arrays originais.
+É usada para concatenar dois ou mais arrays ou valores em um novo array, sem modificar os arrays originais. Ela retorna um novo array que contém os elementos dos arrays ou valores que foram concatenados.
+
+`const novoArray = array1.concat(array2, valor1, valo2, ...)`
+
+- `array1`: o primeiro array a ser concatenado;
+- `array2`, `valor1`, `valor2`: outros arrays ou valores que você deseja concatenar ao `array1`.
