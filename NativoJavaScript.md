@@ -26,6 +26,14 @@ Lista de nomes de parâmetros:
 - objeto;
 - .
 
+## Check List.
+
+- JavaScript.md;
+- Markdown.md;
+- Git-GitHub.md;
+- fazer_algo_async.js;
+- axios_cancel_token.js.
+
 # Nativo do JavaScript.
 
 # Função de seta (arrow function).

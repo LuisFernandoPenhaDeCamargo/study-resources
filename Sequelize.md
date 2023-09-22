@@ -1,3 +1,5 @@
+# Sequelize.
+
 # Métodos.
 
 ## `.chaged()`
