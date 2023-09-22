@@ -1,12 +1,12 @@
 # Template.
 
-## Resumo.
+# Resumo.
 
-## Listas.
+# Listas.
 
 Se possuírem itens nominais, eles deverem receber algum tipo de destaque, seja os evidenciado por serem `pedaços de código` ou os destacando em **negrito**.
 
-## `nomeDaFuncao(não incluir os parâmetros no título)`
+# `nomeDaFuncao(não incluir os parâmetros no título)`
 
 Descrição da função. Se na sua descrição o retorno ficar claro, não precisa incluir "Retorna ..." mais abaixo.
 
@@ -30,7 +30,7 @@ Lista de nomes de parâmetros:
 
 - objeto.
 
-## Check List.
+# Check List.
 
 - JavaScript.md;
 - Markdown.md;
