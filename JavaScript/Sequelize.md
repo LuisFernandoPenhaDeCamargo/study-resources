@@ -2,20 +2,25 @@
 
 # Métodos.
 
-## `.chaged()`
+- [`.changed()`;](#changed)
+- [`.save()`;](#save)
+- [`.update()`;](#update)
+- [`.query()`;](#query)
+
+## <a id = "chaged"></a>`.chaged()`
 
 Verifica quais atributos foram alterados em um modelo Sequelize.
 
 Retorna um **objeto** contendo as **chaves dos atributos** que foram alterados.
 
-## `.save()`
+## <a id = "save"></a>`.save()`
 
 Salva o estado atual de um modelo no banco de dados, **sem realizar verificações adicionais**.
 
 Ele simplesmente envia as informações do modelo para o banco de dados e atualiza o registro correspondente com as informações atuais do modelo, substituindo o registro existente, se houver.\
 O método `.save()` não executa validações adicionais por padrão. Se você tiver regras de validações definidas em seu modelo Sequelize, elas não serão acionadas automaticamente quando você chamar `.save()`. Portanto, é importante garantir que os dados no modelo **estejam corretos e atendam às regras de validação** antes de chamar `.save()`.
 
-## `.update()`
+## <a id = "update"></a>`.update()`
 
 É usado para atualizar registros existentes no banco de dados. Ele permite que você faça atualizações em um ou mais registros de uma tabela com base em um critério de pesquisa.
 
@@ -27,7 +32,7 @@ O método `.save()` não executa validações adicionais por padrão. Se você t
 
 Retorna um objeto (um array) de tamanho único (com um elemento) que contém o número de registros afetados pela operação de atualização.
 
-## `.query()`
+## <a id = "query"></a>`.query()`
 
 É usada para executar comandos SQL personalizados em um banco de dados. Ela oferece maior flexibilidade do que os métodos de comando padrão do Sequelize, permitindo que você escreva consultas SQL completas e complexas conforme necessário.
 

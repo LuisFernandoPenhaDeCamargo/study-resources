@@ -16,7 +16,12 @@ const somaExplicito = (a, b) => {
 
 # <a name = "funcoesdearray"></a>Funções de array.
 
-## `.map()`
+- [`.map()`;](#map)
+- [`.join()`;](#join)
+- [`.reduce()`;](#reduce)
+- [`.concat()`;](#concat)
+
+## <a id = "map"></a>`.map()`
 
 É usada para percorrer todos os elementos de um array e aplicar uma função em cada elemento, **gerando um novo array** com os resultados das chamadas de função. A função que você fornece como argumento para o `.map()` é chamada para cada elemento do array e permite que você transforme ou processe cada delemento individualmente.
 
@@ -44,7 +49,7 @@ console.log(array);     //[ {}, {}, {} ]
 console.log(novoArray); //[ '?,?,?,?,?', '?,?,?,?,?', '?,?,?,?,?' ]
 ```
 
-## `.join()`
+## <a id = "join"></a>`.join()`
 
 É usada para criar uma **nova string juntando todos os elementos de um array em uma única string, separando-os por um delimitador específico** que você fornece como argumento.
 
@@ -53,7 +58,7 @@ console.log(novoArray); //[ '?,?,?,?,?', '?,?,?,?,?', '?,?,?,?,?' ]
 - `array`: o array cujos elementos você deseja unir em uma única string;
 - `delimitador` (opcional): o **caractere** ou **string** que será usado como separador entre os elementos no resultado. Este argumento é opcional; se não for fornecido, os elementos do array serão separados por vírgulas por padrão.
 
-## `.reduce()`
+## <a id = "reduce"></a>`.reduce()`
 
 É usada para reduzir (ou acumular) todos os elementos de um array em um único valor. Ele executa uma função de callback em cada elemento do array, acumulando um valor final à medida que percorre os elementos.
 
@@ -67,7 +72,7 @@ console.log(novoArray); //[ '?,?,?,?,?', '?,?,?,?,?', '?,?,?,?,?' ]
     - `array` (opcional): o array original que está sendo percorrido.
 - `initialValue` (opcional): um valor inicial para o acumulador. Se não for fornecido, o primeiro elemento do array será usado como valor inicial e a redução começará a partir do segundo elemento.
 
-## `.concat()`
+## <a id = "concat"></a>`.concat()`
 
 É usada para concatenar dois ou mais arrays ou valores em um novo array, sem modificar os arrays originais. Ela retorna um novo array que contém os elementos dos arrays ou valores que foram concatenados.
 
