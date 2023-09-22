@@ -1,6 +1,6 @@
 # Nativo do JavaScript.
 
-# [Função de seta (arrow function).](#funcaodeseta)
+# <a name = "funcaodeseta"></a>Função de seta (arrow function).
 
 ## Retorno implícito x Retorno explícito.
 
@@ -14,7 +14,7 @@ const somaExplicito = (a, b) => {
 };
 ```
 
-# [Funções de array.](#funcoesdearray)
+# <a name = "funcoesdearray"></a>Funções de array.
 
 ## `.map()`
 
