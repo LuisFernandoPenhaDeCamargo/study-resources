@@ -29,12 +29,12 @@ Retorna um objeto (um array) de tamanho único (com um elemento) que contém o n
 
 ## `.query()`
 
-É usada para executar comandos SQL personalizadas em um banco de dados. Ela oferece maior flexibilidade do que os métodos de comando padrão do Sequelize, permitindo que você escreva consultas SQL completas e complexas conforme necessário.
+É usada para executar comandos SQL personalizados em um banco de dados. Ela oferece maior flexibilidade do que os métodos de comando padrão do Sequelize, permitindo que você escreva consultas SQL completas e complexas conforme necessário.
 
 `sequelize.query(query, options)`
 
 - `query`: é o comando SQL que você deseja executar como uma string;
-- `options` (opcional): é um objeto de opções que pode conter várias configurações, como parâmetros de substituição, tipo de consulta, etc.\
+- `options` (opcional): é um objeto de opções que pode conter várias configurações, como parâmetros de substituição, tipo de consulta, etc.
     - `replacements`: objeto onde as chaves correspondem aos marcadores de posição na operação SQL e os valores são os valores que você deseja substituir.
 
 O Sequelize entende as **interrogações na sua consulta SQL** como **marcadores de posição** que serão substituídos pelos valores fornecidos no objeto identificado pela chave `replacements` na ordem ordem em que as interrogações aparecem na consulta.\
