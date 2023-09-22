@@ -1,6 +1,6 @@
 # Nativo do JavaScript.
 
-# Função de seta (arrow function).
+# [Função de seta (arrow function).](#funcaodeseta)
 
 ## Retorno implícito x Retorno explícito.
 
