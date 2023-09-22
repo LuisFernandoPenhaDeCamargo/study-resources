@@ -1,5 +1,25 @@
 # Template.
 
+# Contexto para o ChatGPT.
+
+Contexto:
+
+- Linux;
+- JavaScript;
+- Node.js;
+- API;
+- Git/GitHub.
+
+Linguagem: português (BR).
+
+# Check List.
+
+- JavaScript.md;
+- Markdown.md;
+- Git-GitHub.md;
+- fazer_algo_async.js;
+- axios_cancel_token.js.
+
 # Resumo.
 
 # Listas.
@@ -29,11 +49,3 @@ Lista de nomes de objetos:
 Lista de nomes de parâmetros:
 
 - objeto.
-
-# Check List.
-
-- JavaScript.md;
-- Markdown.md;
-- Git-GitHub.md;
-- fazer_algo_async.js;
-- axios_cancel_token.js.
