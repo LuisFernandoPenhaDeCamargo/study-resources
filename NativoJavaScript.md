@@ -18,13 +18,11 @@ Retorna ...
 
 Lista de nomes de objetos:
 
-- array;
-- .
+- array.
 
 Lista de nomes de parâmetros:
 
-- objeto;
-- .
+- objeto.
 
 ## Check List.
 
@@ -40,13 +38,13 @@ Lista de nomes de parâmetros:
 
 ## Retorno implícito x Retorno explícito.
 
-O `return` é **implícito** em funções de seta de **corpo curto** quando **não há chaves** para definir um escopo e a função consiste em uma ***única operação ou expressão**. Nesse caso, o resultado da expressão é implicitamente retornado com o valor de retorno da função. Exemplo:
+O `return` é **implícito** em funções de seta de **corpo curto** quando **não há chaves** para definir um escopo e a função consiste em uma **única operação ou expressão**. Nesse caso, o resultado da expressão é implicitamente retornado com o valor de retorno da função. Exemplo:
 
 ```JavaScript
 const somaImplicito = (a, b) => a + b; //O retorno é implícito.
 
 const somaExplicito = (a, b) => {
-  return a + b; //O retorno aqui precisa ser explícito. Pois as chaves criam um bloco de código dentro da função de seta.
+  return a + b; //O retorno aqui precisa ser explícito. Pois as chaves criam um escopo de bloco dentro da função de seta.
 };
 ```
 
@@ -93,13 +91,13 @@ console.log(novoArray); //[ '?,?,?,?,?', '?,?,?,?,?', '?,?,?,?,?' ]
 
 É usada para reduzir (ou acumular) todos os elementos de um array em um único valor. Ele executa uma função de callback em cada elemento do array, acumulando um valor final à medida que percorre os elementos.
 
-`array.reduce(callback(accumulator, currentValue, currnetIndex, array), initialValue);`
+`array.reduce(callback(accumulator, currentValue, currentIndex, array), initialValue);`
 
 - `array`: o array que você deseja reduzir;
 - `callback`: uma função de callback que é chamada para cada elemento no array. Ela recebe quatro argumentos:
     - `accumulator`: o valor acumulado até o momento;
     - `currentValue`: o valor do elemento atual no array;
-    - `cirrentIndex` (opcional): o índice do elemento atual;
+    - `currentIndex` (opcional): o índice do elemento atual;
     - `array` (opcional): o array original que está sendo percorrido.
 - `initialValue` (opcional): um valor inicial para o acumulador. Se não for fornecido, o primeiro elemento do array será usado como valor inicial e a redução começará a partir do segundo elemento.
 
