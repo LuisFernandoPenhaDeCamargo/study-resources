@@ -14,7 +14,7 @@ const somaExplicito = (a, b) => {
 };
 ```
 
-# Funções de array.
+# [Funções de array.](#funcoesdearray)
 
 ## `.map()`
 
