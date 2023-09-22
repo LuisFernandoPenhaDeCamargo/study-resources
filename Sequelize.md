@@ -24,3 +24,7 @@ O método `.save()` não executa validações adicionais por padrão. Se você t
 - `objeto2`: é o objeto que contém o critério de pesquisa para determinar quais registros devem ser atualizados.
 
 Retorna um objeto (um array) de tamanho único (com um elemento) que contém o número de registros afetados pela operação de atualização.
+
+## `.query()`
+
+O Sequelize entende as **interrogações na sua consulta SQL** como **marcadores de posição** que serão substituídos pelos valores fornecidos no objeto
