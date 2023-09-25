@@ -42,6 +42,8 @@ Retorna um objeto (um array) de tamanho único (com um elemento) que contém o n
 - `options` (opcional): é um objeto de opções que pode conter várias configurações, como parâmetros de substituição, tipo de consulta, etc.
     - `replacements`: objeto onde as chaves correspondem aos marcadores de posição na operação SQL e os valores são os valores que você deseja substituir.
 
+Retorna um objeto que representa a operação executada, é necessário acessar os resultados manualmente. Os resultados retornados geralmente são uma matriz de objetos JavaScript.
+
 O Sequelize entende as **interrogações na sua consulta SQL** como **marcadores de posição** que serão substituídos pelos valores fornecidos no objeto identificado pela chave `replacements` na ordem ordem em que as interrogações aparecem na consulta.\
 O Sequelize substituirá cada interrogação na consulta pelo valor correspondente no array identificado por `replacements` na ordem em que aparecerem. Por exemplo, a primeira interrogação será substituída pelo primeiro valor do array, a segunda interrogação, pelo segundo valor, e assim por diante.\
 O Sequelize garantirá que a substituição seja feita de forma adequada e segura, levando em consideração a formatação correta dos valores para evitar problemas de segurança, como injeção de SQL.

@@ -14,12 +14,25 @@ const somaExplicito = (a, b) => {
 };
 ```
 
+# <a name = "funcoesglobais"></a>Funções globais.
+
+- [`Array.isArray().`](#arrayisarray)
+
+## <a id = "arrayisarray"></a>`Array.isArray()`
+
+É usado para verificar se um valor passado como argumento é um array. Retorna `true` se o valor for um array e `false` caso contrário.
+
+`Array.isArray(valor);`
+
+`valor`: o valor que você deseja verificar se é um array.
+
 # <a name = "funcoesdearray"></a>Funções de array.
 
 - [`.map()`;](#map)
 - [`.join()`;](#join)
 - [`.reduce()`;](#reduce)
 - [`.concat()`;](#concat)
+- [`.includes()`.](#includes)
 
 ## <a id = "map"></a>`.map()`
 
@@ -80,3 +93,17 @@ console.log(novoArray); //[ '?,?,?,?,?', '?,?,?,?,?', '?,?,?,?,?' ]
 
 - `array1`: o primeiro array a ser concatenado;
 - `array2`, `valor1`, `valor2`: outros arrays ou valores que você deseja concatenar ao `array1`.
+
+## <a id = "includes"></a>`.includes()`
+
+É usada para verificar se um determinado valor está presente no array.
+
+É usada principalmente para **valores simples** (números, strings, booleanos) e não é adequada para verificar a existência de objetos complexos ou verificar com base em propriedades específicas de objetos.
+
+`array.includes(valor, aPartirDe);`
+
+- `array`: o array no qual você deseja realizar a pesquisa;
+- `valor`: o valor que você deseja verificar se está presente no array;
+- `aPartirDe` (opcional):  o índice a partir do qual você deseja iniciar a pesquisa. Se não for fornecido, a pesquisa começará do início do array.
+
+Retorna `true` se o valor especificado estiver presente no array e `false` caso contrário.
