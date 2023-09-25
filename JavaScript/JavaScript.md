@@ -3,7 +3,7 @@
 # Nativo do JavaScript.
 
 - [Função de seta (arrow function);](NativoJavaScript.md#funcaodeseta)
-- [Funções globais;](#NativoJavaScript.md#funcoesglobais)
+- [Funções globais;](NativoJavaScript.md#funcoesglobais)
 - [Funções de array.](NativoJavaScript.md#funcoesdearray)
 
 # Bibliotecas.
