@@ -217,9 +217,41 @@ Retorna `true` se o valor especificado estiver presente no array e `false` caso 
 
 # <a name = "funcoesdestring"></a>Funções de string.
 
+- [`.forEach()`;](#foreach)
 - [`.trim()`;](#trim)
 - [`.push()`;](#push)
 - [`.pop()`.](#pop)
+
+## <a id = "foreach"></a>`.forEach()`
+
+Função que permite iterar sobre todos os elementos do array e executar uma função de callback em cada um deles. É uma maneira conveniente de percorrer todos os elementos de um array sem a necessidade de um loop `for` tradicional. **A função altera o array original**.
+
+`.forEach(item => {})` ou `.forEach(callback(elemento, indice, array)>, thisArg)`
+
+- `item`: nome da variável temporária que representa cada elemento do array;
+- `{}`: função passada como argumento para o `.forEach()` que é executada uma vez para cada elemento do array.
+
++ `callback`: função de callback que será chamada para cada elemento do array. Ela recebe três argumentos: o `elemento` atual sendo processado, o `indice` desse elemento e o próprio `array`;
++ `thisArg` (opcional): um valor que será usado como `this` dentro da função de callback.
+
+Exemplo interessante usando `thisArg`:
+
+```JavaScript
+const pessoa = {
+  nome: "João",
+  idade: 30,
+  cidade: "São Paulo"
+};
+const frutas = ["maça", "banana", "laranja"];
+
+//Definindo uma função de callback que usa "this".
+function exibirDetalhes(fruta) {
+  console.log(`${this.nome} gosta de ${fruta}`);
+}
+
+//Usando "thisArg" para definir o valor de "this" dentro da função de callback. Sem o this, exibirDetalhes não reconheceria a propriedade nome de pessoa.
+frutas.forEach(exibirDetalhes, pessoa);
+```
 
 ## <a id = "trim"></a>`.trim()`
 
