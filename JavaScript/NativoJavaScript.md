@@ -109,6 +109,18 @@ const somaExplicito = (a, b) => {
 Uma Callback (ou função de retorno) é o conceito que se refere a uma **função** que é **passada como argumento para outra função** e é **executada após a conclusão** de uma **operação assíncrona ou em reposta a um evento específico**.
 São uma parte fundamental da programação assíncrona em JavaScript e são amplamente utilizadas em situações em que você precisa controlar o fluxo de código após uma conclusão de uma operação demorada. [Exemplo.](#exemplocallback)
 
+# <a name = "string"></a>`String(parametro)`
+
+- É um construtor que cria um novo objeto String a partir do valor passado como argumento, se não for uma string. Se você passar um valor não-string para `String()`, ele criará um novo objeto String com a representação da string desse valor;
+- **Não altera o objeto original**, mas **retorna um novo objeto String** com a representação da string do valor.
+
+# <a name = "tostring"></a>`.toString()`
+
+- É um método disponível em objetos que são herdeiros da classe Object. Isso inclui tipos primitivos como números, booleanos e strings;
+- Quando você chama `.toString()` em um objeto, ele **retorna uma representação string** desse objeto;
+- `.toString()` **não cria um novo objeto**, mas sim gera uma representação de string do objeto original;
+- Em muitos casos, `.toString()` é usado implicitamente quando você concatena um valor com uma string usando o operador `+`.
+
 # <a name = "funcoesglobais"></a>Funções globais.
 
 - [`Array.isArray().`](#arrayisarray)

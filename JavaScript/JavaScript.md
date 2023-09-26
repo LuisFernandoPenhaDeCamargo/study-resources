@@ -70,6 +70,8 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 - [Sintaxe da função de flecha x Definição externa de uma função;](NativoJavaScript.md#flechaxexterna)
 - [Função de seta (arrow function);](NativoJavaScript.md#funcaodeseta)
 - [Callback;](NativoJavaScript.md#callback)
+- [`String()`](NativoJavaScript.md#string)
+- [`.toString()`]NativoJavaScript.md(#tostring)
 - [Funções globais;](NativoJavaScript.md#funcoesglobais)
 - [Funções de array.](NativoJavaScript.md#funcoesdearray)
 
@@ -86,8 +88,6 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 
 - [Template Literals (Template Strings);](#templateliterals) <--
 - [Spread properties;](#spreadproperties) <--
-- [`String(<parâmetro>)`](#string)
-- [`.toString()`](#tostring)
 - [Funções de string;](#funcoesstring)
 - [Funções de array;](#funcoesarray)
 - [`isNaN(<parâmetro>)`](#isnan)
@@ -102,18 +102,6 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 O operador de propagação (`...`) é usado para copiar todas as propriedades enumeráveis de um objeto para outro objeto literal ou objeto existente.
 
 ### Callback helll. <--
-
-### <a id = "string"></a>`String(<parâmetro>)`
-
-- É um construtor que cria um novo objeto String a partir do valor passado como argumento, se não for uma string. Se você passar um valor não-string para `String()`, ele criará um novo objeto String com a representação da string desse valor;
-- **Não altera o objeto original**, mas **retorna um novo objeto String** com a representação da string do valor.
-
-### <a id = "tostring"></a>`.toString()`
-
-- É um método disponível em objetos que são herdeiros da classe Object. Isso inclui tipos primitivos como números, booleanos e strings;
-- Quando você chama `.toString()` em um objeto, ele **retorna uma representação string** desse objeto;
-- `.toString()` **não cria um novo objeto**, mas sim gera uma representação de string do objeto original;
-- Em muitos casos, `.toString()` é usado implicitamente quando você concatena um valor com uma string usando o operador `+`.
 
 ## <a id = "funcoesstring"></a>Funções de string.
 
