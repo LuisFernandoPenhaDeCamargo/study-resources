@@ -31,17 +31,9 @@ console.log(estudante.idade); //Herda "idade" de pessoa.
 
 Neste exemplo, `estudante` é um objeto filho que herda propriedades de `pessoa` através da cadeia de protótipos. Portanto, ele pode acessar as propriedades `nome` e `idade` que não existem diretamente em `estudante`, mas estão disponíveis através da cadeia de protótipos.
 
-# Nativo do JavaScript.
+# Propriedades enumeráveis.
 
-- [Função de seta (arrow function);](NativoJavaScript.md#funcaodeseta)
-- [Funções globais;](NativoJavaScript.md#funcoesglobais)
-- [Funções de array.](NativoJavaScript.md#funcoesdearray)
-
-# Bibliotecas.
-
-- [Sequelize.](Sequelize.md#sequelize)
-
-Propriedade enumerável é uma propriedade de um objeto que pode ser percorrida ou listada usando estruturas de controle como `for...in` ou métodos como `Object.keys()`. As propriedades enumeráveis são aquelas que são consideradas "visíveis" durante iterações em objetos.\
+Uma propriedade enumerável é uma propriedade de um objeto que pode ser percorrida ou listada usando estruturas de controle como `for...in` ou métodos como `Object.keys()`. As propriedades enumeráveis são aquelas que são consideradas "visíveis" durante iterações em objetos.\
 Por padrão, as propriedades que você cria diretamente em um objeto são enumeráveis. No entanto, muitas propriedades internas dos objetos nativos do JavaScript não são enumeráveis.\
 Você pode controlar a enumerabilidade de uma propriedade ao definir ou modificar uma propriedade em um objeto usando o método `Object.defineProperty()`. Este método permite que você especifique várias opções, incluindo se a propriedade deve ser enumerável ou não. Por exemplo:
 
@@ -63,11 +55,22 @@ for (const key in objeto) {
   console.log(key, objeto[key]);
 }
 
-console.log(Object.keys(objeto)); //["propriedadeEnumeravel"]
+console.log(Object.keys(objeto));             //[ 'propriedadeEnumeravel' ]
+console.log(objeto.propriedadeNaoEnumeravel); //Não enumerável.
 ```
 
-No exemplo acima, a propriedade `propriedadeEnumeravel` é definida com o enumerável, enquanto a `propriedadeNaoEnumeravel` é definida como não enumerável. Quando você itera pelas propriedades do objeto usando um loop `for...in` ou obtém as chaves do objeto usando `Object.keys()`, apenas a `propriedadeEnumeravel` é visível, porque é a única propriedade enumerável. A `propriedadeNaoEnumeravel` não é listada.\
+No exemplo acima, a propriedade `propriedadeEnumeravel` é definida como enumerável, enquanto a `propriedadeNaoEnumeravel` é definida como não enumerável. Quando você itera pelas propriedades do objeto usando um loop `for...in` ou obtém as chaves do objeto usando `Object.keys()`, apenas a `propriedadeEnumeravel` é visível, porque é a única propriedade enumerável. A `propriedadeNaoEnumeravel` não é listada.\
 Por padrão, a maioria das propriedades que você cria em objetos é enumerável, mas é importante estar ciente da enumerabilidade ao trabalhar com objetos e definir propriedades personalizadas, especialmente quando você deseja controlar quais propriedades são visíveis durante iterações.
+
+# Nativo do JavaScript.
+
+- [Função de seta (arrow function);](NativoJavaScript.md#funcaodeseta)
+- [Funções globais;](NativoJavaScript.md#funcoesglobais)
+- [Funções de array.](NativoJavaScript.md#funcoesdearray)
+
+# Bibliotecas.
+
+- [Sequelize.](Sequelize.md#sequelize)
 
 # <a id = "nativojavascript"></a>Nativo do JavaScript.
 
