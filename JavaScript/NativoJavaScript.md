@@ -104,6 +104,11 @@ const somaExplicito = (a, b) => {
 };
 ```
 
+# <a name = "callback"></a>Callback.
+
+Uma Callback (ou função de retorno) é o conceito que se refere a uma **função** que é **passada como argumento para outra função** e é **executada após a conclusão** de uma **operação assíncrona ou em reposta a um evento específico**.
+São uma parte fundamental da programação assíncrona em JavaScript e são amplamente utilizadas em situações em que você precisa controlar o fluxo de código após uma conclusão de uma operação demorada. [Exemplo.](#exemplocallback)
+
 # <a name = "funcoesglobais"></a>Funções globais.
 
 - [`Array.isArray().`](#arrayisarray)

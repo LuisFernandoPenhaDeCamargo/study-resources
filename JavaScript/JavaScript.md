@@ -69,6 +69,7 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 - [Operador condicional ternário;](NativoJavaScript.md#operadorcondicionalternario)
 - [Sintaxe da função de flecha x Definição externa de uma função;](NativoJavaScript.md#flechaxexterna)
 - [Função de seta (arrow function);](NativoJavaScript.md#funcaodeseta)
+- [Callback;](NativoJavaScript.md#callback)
 - [Funções globais;](NativoJavaScript.md#funcoesglobais)
 - [Funções de array.](NativoJavaScript.md#funcoesdearray)
 
@@ -85,7 +86,6 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 
 - [Template Literals (Template Strings);](#templateliterals) <--
 - [Spread properties;](#spreadproperties) <--
-- [Callback;](#callback)
 - [`String(<parâmetro>)`](#string)
 - [`.toString()`](#tostring)
 - [Funções de string;](#funcoesstring)
@@ -100,11 +100,6 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 ### <a id = "spreadproperties"></a>Spread Properties.
 
 O operador de propagação (`...`) é usado para copiar todas as propriedades enumeráveis de um objeto para outro objeto literal ou objeto existente.
-
-## <a id = "callback"></a>Callback.
-
-Uma Callback (ou função de retorno) é o conceito que se refere a uma **função** que é **passada como argumento para outra função** e é **executada após a conclusão** de uma **operação assíncrona ou em reposta a um evento específico**.
-São uma parte fundamental da programação assíncrona em JavaScript e são amplamente utilizadas em situações em que você precisa controlar o fluxo de código após uma conclusão de uma operação demorada. [Exemplo.](#exemplocallback)
 
 ### Callback helll. <--
 
