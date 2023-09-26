@@ -46,9 +46,30 @@ Você pode adicionar propriedades ao protótipo padrão (`Object.prototype`), e 
 `console.log(Object.getPrototypeOf(Object.prototype));` não deveria retornar `{}`?\
 A chamada `console.log(Object.getPrototypeOf(Object.prototype));` não retornará `{}` diretamente porque `Object.Prototype` é o protótipo raiz de todos os objetos em JavaScript, incluindo objetos literais criados com `{}`. No entanto, o protótipo de `Object.prototype` é `null`, e não um objeto vazio `{}`.
 
+# <a name = "operadoresigualdade"></a>Operadores de igualdade.
+
+- `===` : operador de igualdade estrita;\
+Compara o **valor** e o **tipo do dado**.
+- `==` : operador de igualdade.\
+Compara o **valor** e **converte o tipo do dado**, se necessário.
+
+# <a id = "operadorcondicionalternario"></a>Operador condicional ternário.
+
+Também conhecida como **operação ternária**, é um operador em linguagens de programação que permite fazer uma escolha entre dois valores com base em uma condição. Ele é chamado de "ternário" porque envolve três partes: a condição, o valor que deve ser retornado se a condição for verdadeira e o valor que deve ser retornado se a condição for falsa. A sintaxe básica de uma operação ternária é:
+
+`condicao ? (valorCasoACondicaoSejaVerdadeira) : (valorCasoACondicaoSejaFalsa)`
+
+Parênteses são usados para agrupar várias instruções em uma única expressão, enquanto chaves são usadas para definir blocos de código em JavaScript. Exemplo mais complexo:
+
+```JavaScript
+row.accumulated_paid_at = isNaN(row.accumulated_paid_at) ? 0 : moment(row.accumulated_paid_at).format('YYYY-MM-DD HH:mm:ss') //Condição: isNaN(row.accumulated_paid_at)
+```
+
+Lembrando ainda que não é possível declarar variáveis dentro de uma operação ternária diretamente, isso ocorre porque é necessário um escopo de bloco mais amplo do que o oferecido por uma operação ternária.
+
 # <a name = "funcaodeseta"></a>Função de seta (arrow function).
 
-## Retorno implícito x Retorno explícito.
+### Retorno implícito x Retorno explícito.
 
 O `return` é **implícito** em funções de seta de **corpo curto** quando **não há chaves** para definir um escopo e a função consiste em uma **única operação ou expressão**. Nesse caso, o resultado da expressão é implicitamente retornado com o valor de retorno da função. Exemplo:
 

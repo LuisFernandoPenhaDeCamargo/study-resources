@@ -65,6 +65,8 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 # Nativo do JavaScript.
 
 - [Objeto literal;](NativoJavaScript.md#objetoliteral)
+- [Operadores de igualdade;](NativoJavaScript.md#operadoresigualdade)
+- [Operador condicional ternário;](NativoJavaScript.md#operadorcondicionalternario)
 - [Função de seta (arrow function);](NativoJavaScript.md#funcaodeseta)
 - [Funções globais;](NativoJavaScript.md#funcoesglobais)
 - [Funções de array.](NativoJavaScript.md#funcoesdearray)
@@ -77,8 +79,6 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 
 # <a id = "nativojavascript"></a>Nativo do JavaScript.
 
-- [Operadores de igualdade;](#operadoresigualdade)
-- [Operador condicional ternário;](#operadorcondicionalternario)
 - [Template Literals (Template Strings);](#templateliterals) <--
 - [Spread properties;](#spreadproperties) <--
 - [Sintaxe da função de flecha x Definição externa de uma função;](#flechaxexterna)
@@ -91,27 +91,6 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 - [Objetos globais;](#objetosglobais)
 - [`setTimeout(<callback>, <delay>)`](#settimeout)
 - [Promise.](#promise)
-
-### <a id = "operadoresigualdade"></a>Operadores de igualdade.
-
-- `===` : operador de igualdade estrita;\
-Compara o **valor** e o **tipo do dado**.
-- `==` : operador de igualdade.\
-Compara o **valor** e **converte o tipo do dado**, se necessário.
-
-### <a id = "operadorcondicionalternario"></a>Operador condicional ternário.
-
-Também conhecida como **operação ternária**, é um operador em linguagens de programação que permite fazer uma escolha entre dois valores com base em uma condição. Ele é chamado de "ternário" porque envolve três partes: a condição, o valor que deeve ser retornado se a condição for verdadeira e o valor que deve ser retornado se a condição for falsa. A sintaxe básica de uma operação ternária é:
-
-`<condição> ? (<valor caso a condição seja verdadeira>) : (<valor caso a condição seja falsa>)`
-
-Parênteses são usados para agrupar várias instruções em uma única expressão, enquanto chaves são usadas para definir blocos de código em JavaScript. Exemplo mais complexo:
-
-```JavaScript
-row.accumulated_paid_at = isNaN(row.accumulated_paid_at) ? 0 : moment(row.accumulated_paid_at).format('YYYY-MM-DD HH:mm:ss') //Condição: isNaN(row.accumulated_paid_at)
-```
-
-Lembrando ainda que não é possível declarar variáveis dentro de uma operação ternária diretamente, isso ocorre porque é necessário um escopo de bloco mais amplo do que o oferecido por uma operação ternária.
 
 ### <a id = "templateliterals"></a>Template Literals.
 
