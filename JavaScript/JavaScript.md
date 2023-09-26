@@ -64,6 +64,7 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 
 # Nativo do JavaScript.
 
+- [Objeto literal;](NativoJavaScript.md#objetoliteral)
 - [Função de seta (arrow function);](NativoJavaScript.md#funcaodeseta)
 - [Funções globais;](NativoJavaScript.md#funcoesglobais)
 - [Funções de array.](NativoJavaScript.md#funcoesdearray)
@@ -72,9 +73,10 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 
 - [Sequelize.](Sequelize.md#sequelize)
 
+- `getPropertyOf()`.
+
 # <a id = "nativojavascript"></a>Nativo do JavaScript.
 
-- [Objeto literal;](#objetoliteral)
 - [Operadores de igualdade;](#operadoresigualdade)
 - [Operador condicional ternário;](#operadorcondicionalternario)
 - [Template Literals (Template Strings);](#templateliterals) <--
@@ -89,48 +91,6 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 - [Objetos globais;](#objetosglobais)
 - [`setTimeout(<callback>, <delay>)`](#settimeout)
 - [Promise.](#promise)
-
-### <a id = "objetoliteral"></a>Objeto literal.
-
-Um objeto criado com `{}` (chave vazias) em JavaScript é um objeto literal, e ele é estrutura de dados fundamental na linguagem. **Esse objeto é uma coleção não ordenada de pares chave-valor**, onde as **chaves** (também chamadas de **propriedades**) são **strings** (ou símbolos em versões mais recentes do JavaScript) que atuam como **identificadores** exclusivos para acessar os valores associados. Exemplo simples de um objeto criado usando `{}`:
-
-```JavaScript
-const pessoa = {
-  nome: "João",
-  idade: 30,
-  cidade: "São Paulo"
-};
-
-console.log(pessoa.nome);   //Acessando a propriedade "nome".
-console.log(pessoa.idade);  //Acessando a propriedade "idade".
-console.log(pessoa.cidade); //Acessando a propriedade "cidade".
-```
-
-Neste exemplo, `pessoa` é um objeto literal que possui três propriedades: "nome", "idade" e "cidade". Cada propriedade tem um **valor** associado.\
-Você pode adicionar, modificar e excluir propriedades de um objeto literal conforme necessário durante a execução do seu programa. Por exemplo:
-
-```JavaScript
-pessoa.profissao = "Engenheiro"; //Adicionando uma nova propriedade.
-pessoa.idade = 31;               //Modificando o valor de uma propriedade existente.
-delete pessoa.cidade;            //Excluindo uma propriedade.
-```
-
-Objetos literais são usados ára representar dados estruturados em JavaScript e são uma parte essencial da linguagem quando se trata de manipulação de dados e estruturas de dados complexas. Eles também podem ser aninhados para criar estruturas de dados mais complexas, como objetos dentro de objetos.
-
-Se você está considerando que o retorno de `.getPropertyOf()` é um objeto criado com `{}`, isso significa que o resultado de `.getPropertyOf()` é um objeto literal que serve como protótipo de outro objeto.\
-O método `Object.getPropertyOf(<object>)` em JavaScript é usado para obter o protótipo (ou seja, o objeto de onde um objeto herda propriedades) de um objeto específico. Se o protótipo for um objeto criado com `{}` (um objeto literal), significa que o objeto não tem um protótipo personalizado definido e está herdando propriedades diretamente do **prtótipo padrão**, que é o objeto `Object.prototype` em JavaScript. Por exemplo:
-
-```JavaScript
-const objeto = {};
-const prototipo = Object.getPrototypeOf(objeto);
-
-console.log(prototipo === Object.prototype); //true
-```
-
-Você pode adicionar propriedades ao protótipo padrão (`Object.prototype`), e essas propriedades serão herdadas por **todos os objetos que não tem um protótipo personalizado definido**. No entanto, é importante exercer cautela ao adicionar propriedades ao protótipo padrão, pois isso afetará todos os objetos em seu programa.
-
-`console.log(Object.getPrototypeOf(Object.prototype));` não deveria retornar `{}`?\
-A chamada `console.log(Object.getPrototypeOf(Object.prototype));` não retornará `{}` diretamente porque `Object.Prototype` é o protótipo raiz de todos os objetos em JavaScript, incluindo objetos literais criados com `{}`. No entanto, o protótipo de `Object.prototype` é `null`, e não um objeto vazido `{}`.
 
 ### <a id = "operadoresigualdade"></a>Operadores de igualdade.
 
