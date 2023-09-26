@@ -115,7 +115,7 @@ const minhaFuncao = () => {
 };
 ```
 
-- Palavra-chave `function`: funções de flecha não usam a palavra-chave `function`. Em vez disso, elas são definidas usando `() => `;
+- **Palavra-chave `function`:** funções de flecha não usam a palavra-chave `function`. Em vez disso, elas são definidas usando `() => `;
 - Valor do `this`: funções de flecha não possuem seu próprio valor `this`. Em vez disso, elas **capturam** o valor `this` do contexto que foram definidas.\
 Isso pode ser útil em situações onde o valor de `this` é importante, como callbacks de eventos ou em métodos de objetos;
 - Não podem usar método construtor: funções de flecha não podem ser usadas com a palavra-chave `new` para criar instâncias de objetos. Elas são projetadas para serem funções simples e curtas;
