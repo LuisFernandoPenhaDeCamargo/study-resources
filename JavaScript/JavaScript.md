@@ -75,7 +75,8 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 
 - [Sequelize.](Sequelize.md#sequelize)
 
-- `getPropertyOf()`.
+- `Object.getPropertyOf()`;
+-  `console.error()`.
 
 # <a id = "nativojavascript"></a>Nativo do JavaScript.
 

@@ -53,7 +53,7 @@ Compara o **valor** e o **tipo do dado**.
 - `==` : operador de igualdade.\
 Compara o **valor** e **converte o tipo do dado**, se necessário.
 
-# <a id = "operadorcondicionalternario"></a>Operador condicional ternário.
+# <a name = "operadorcondicionalternario"></a>Operador condicional ternário.
 
 Também conhecida como **operação ternária**, é um operador em linguagens de programação que permite fazer uma escolha entre dois valores com base em uma condição. Ele é chamado de "ternário" porque envolve três partes: a condição, o valor que deve ser retornado se a condição for verdadeira e o valor que deve ser retornado se a condição for falsa. A sintaxe básica de uma operação ternária é:
 
