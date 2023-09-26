@@ -221,4 +221,4 @@ Retorna `true` se o valor especificado estiver presente no array e `false` caso 
 
 ## <a id = "trim"></a>`.trim()`
 
-Remove espaços em branco (espaços, tabulações e quebras de linha) do início e do final da string. **Ele não afeta os espaçoes em branco dentro da string, apenas os espaçoes em branco externos**.
+Remove espaços em branco (espaços, tabulações e quebras de linha) do início e do final da string. **Ele não afeta os espaçoes em branco dentro da string, apenas os espaços em branco externos**.
