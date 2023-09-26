@@ -218,7 +218,8 @@ Retorna `true` se o valor especificado estiver presente no array e `false` caso 
 # <a name = "funcoesdestring"></a>Funções de string.
 
 - [`.trim()`;](#trim)
-- [`.push()`.](#push)
+- [`.push()`;](#push)
+- [`.pop()`.](#pop)
 
 ## <a id = "trim"></a>`.trim()`
 
@@ -230,6 +231,6 @@ Remove espaços em branco (espaços, tabulações e quebras de linha) do início
 
 É usada para adicionar um ou mais elementos ao final de um array existente. Esses elementos podem ser valores individuais ou outros arrays, objetos, etc.
 
-## `.pop()`
+## <a id = "pop"></a>`.pop()`
 
 É usada para remover o último elemento de um array. Ele modifica o array original, reduzindo o seu comprimento (`length`) em 1 e **retornando o elemento que foi removido**.
