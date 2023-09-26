@@ -73,7 +73,9 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 
 # Bibliotecas.
 
-- [Sequelize.](Sequelize.md#sequelize)
+- [Sequelize;](Sequelize.md#sequelize)
+- [request-promise-native.](Bibliotecas.md#requestpromisenative)
+
 
 - `Object.getPropertyOf()`;
 -  `console.error()`.
