@@ -67,6 +67,7 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 - [Objeto literal;](NativoJavaScript.md#objetoliteral)
 - [Operadores de igualdade;](NativoJavaScript.md#operadoresigualdade)
 - [Operador condicional ternário;](NativoJavaScript.md#operadorcondicionalternario)
+- [Sintaxe da função de flecha x Definição externa de uma função;](NativoJavaScript.md#flechaxexterna)
 - [Função de seta (arrow function);](NativoJavaScript.md#funcaodeseta)
 - [Funções globais;](NativoJavaScript.md#funcoesglobais)
 - [Funções de array.](NativoJavaScript.md#funcoesdearray)
@@ -84,7 +85,6 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 
 - [Template Literals (Template Strings);](#templateliterals) <--
 - [Spread properties;](#spreadproperties) <--
-- [Sintaxe da função de flecha x Definição externa de uma função;](#flechaxexterna)
 - [Callback;](#callback)
 - [`String(<parâmetro>)`](#string)
 - [`.toString()`](#tostring)
@@ -100,29 +100,6 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 ### <a id = "spreadproperties"></a>Spread Properties.
 
 O operador de propagação (`...`) é usado para copiar todas as propriedades enumeráveis de um objeto para outro objeto literal ou objeto existente.
-
-### <a id = "flechaxexterna"></a>Sintaxe da função de flecha x Definição externa de uma função.
-
-```JavaScript
-function minhaFuncao() {
-  //Corpo da função.
-}
-```
-
-```JavaScript
-const minhaFuncao = () => {
-  //Corpo da função de flecha.
-};
-```
-
-- **Palavra-chave `function`:** funções de flecha não usam a palavra-chave `function`. Em vez disso, elas são definidas usando `() => `;
-- Valor do `this`: funções de flecha não possuem seu próprio valor `this`. Em vez disso, elas **capturam** o valor `this` do contexto que foram definidas.\
-Isso pode ser útil em situações onde o valor de `this` é importante, como callbacks de eventos ou em métodos de objetos;
-- Não podem usar método construtor: funções de flecha não podem ser usadas com a palavra-chave `new` para criar instâncias de objetos. Elas são projetadas para serem funções simples e curtas;
-- Não possuem propriedade `arguments`: funções de flecha não possuem uma variável `arguments`. Se você precisar de uma lista de argumentos em uma função de flecha, pode usar a sintaxe de rest parameters (`(... args)`) para coletar os argumentos;
-- Não possuem a propriedade `prototype`: funções de flecha não tem uma propriedade `prototype`, o que significa que não podem ser usadas como construtoras para criar objetos e métodos.
-
-As funções de flecha são especialmente úteis para escrever código mais conciso e expressivo, principalmente em contextos assíncronos e de alto nível.
 
 ## <a id = "callback"></a>Callback.
 

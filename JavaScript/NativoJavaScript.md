@@ -67,6 +67,29 @@ row.accumulated_paid_at = isNaN(row.accumulated_paid_at) ? 0 : moment(row.accumu
 
 Lembrando ainda que não é possível declarar variáveis dentro de uma operação ternária diretamente, isso ocorre porque é necessário um escopo de bloco mais amplo do que o oferecido por uma operação ternária.
 
+# <a name = "flechaxexterna"></a>Sintaxe da função de flecha x Definição externa de uma função.
+
+```JavaScript
+function minhaFuncao() {
+  //Corpo da função.
+}
+```
+
+```JavaScript
+const minhaFuncao = () => {
+  //Corpo da função de flecha.
+};
+```
+
+- **Palavra-chave** `function`**:** funções de flecha não usam a palavra-chave `function`. Em vez disso, elas são definidas usando `() => `;
+- **Valor do** `this`**:** funções de flecha não possuem seu próprio valor `this`. Em vez disso, elas **capturam** o valor `this` do contexto que foram definidas.\
+Isso pode ser útil em situações onde o valor de `this` é importante, como callbacks de eventos ou em métodos de objetos;
+- **Não podem usar método construtor:** funções de flecha não podem ser usadas com a palavra-chave `new` para criar instâncias de objetos. Elas são projetadas para serem funções simples e curtas;
+- **Não possuem propriedade** `arguments`**:** funções de flecha não possuem uma variável `arguments`. Se você precisar de uma lista de argumentos em uma função de flecha, pode usar a sintaxe de rest parameters (`(... args)`) para coletar os argumentos;
+- **Não possuem a propriedade** `prototype`**:** funções de flecha não tem uma propriedade `prototype`, o que significa que não podem ser usadas como construtoras para criar objetos e métodos.
+
+As funções de flecha são especialmente úteis para escrever código mais conciso e expressivo, principalmente em contextos assíncronos e de alto nível.
+
 # <a name = "funcaodeseta"></a>Função de seta (arrow function).
 
 ### Retorno implícito x Retorno explícito.
