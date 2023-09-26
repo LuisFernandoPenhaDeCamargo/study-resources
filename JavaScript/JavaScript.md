@@ -73,7 +73,8 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 - [`String()`](NativoJavaScript.md#string)
 - [`.toString()`](NativoJavaScript.md#tostring)
 - [Funções globais;](NativoJavaScript.md#funcoesglobais)
-- [Funções de array.](NativoJavaScript.md#funcoesdearray)
+- [Funções de array;](NativoJavaScript.md#funcoesdearray)
+- [Funções de string.](#NativoJavaScript.mdfuncoesdestring)
 
 # Bibliotecas.
 
@@ -88,7 +89,6 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 
 - [Template Literals (Template Strings);](#templateliterals) <--
 - [Spread properties;](#spreadproperties) <--
-- [Funções de string;](#funcoesstring)
 - [Funções de array;](#funcoesarray)
 - [`isNaN(<parâmetro>)`](#isnan)
 - [Objetos globais;](#objetosglobais)
@@ -102,14 +102,6 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 O operador de propagação (`...`) é usado para copiar todas as propriedades enumeráveis de um objeto para outro objeto literal ou objeto existente.
 
 ### Callback helll. <--
-
-## <a id = "funcoesstring"></a>Funções de string.
-
-- [`.trim()`;](#trim)
-
-### <a id = "trim"></a>`.trim()`
-
-Remove espaços em branco (espaços, tabulações e quebras de linha) do início e do final da string. **Ele não afeta os espaçoes em branco dentro da string, apenas os espaçoes em branco externos**.
 
 ## <a id = "funcoesarray"></a>Funções de array.
 

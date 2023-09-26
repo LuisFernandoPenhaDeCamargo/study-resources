@@ -214,3 +214,11 @@ console.log(novoArray); //[ '?,?,?,?,?', '?,?,?,?,?', '?,?,?,?,?' ]
 - `aPartirDe` (opcional):  o índice a partir do qual você deseja iniciar a pesquisa. Se não for fornecido, a pesquisa começará do início do array.
 
 Retorna `true` se o valor especificado estiver presente no array e `false` caso contrário.
+
+# <a name = "funcoesdestring"></a>Funções de string.
+
+- [`.trim()`.](#trim)
+
+## <a id = "trim"></a>`.trim()`
+
+Remove espaços em branco (espaços, tabulações e quebras de linha) do início e do final da string. **Ele não afeta os espaçoes em branco dentro da string, apenas os espaçoes em branco externos**.
