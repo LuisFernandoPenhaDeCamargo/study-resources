@@ -217,8 +217,15 @@ Retorna `true` se o valor especificado estiver presente no array e `false` caso 
 
 # <a name = "funcoesdestring"></a>Funções de string.
 
-- [`.trim()`.](#trim)
+- [`.trim()`;](#trim)
+- [`.push()`.](#push)
 
 ## <a id = "trim"></a>`.trim()`
 
 Remove espaços em branco (espaços, tabulações e quebras de linha) do início e do final da string. **Ele não afeta os espaçoes em branco dentro da string, apenas os espaços em branco externos**.
+
+## <a id = "push"></a>`.push()`
+
+`.push(<elemento1>, <elemento2>, ...)`
+
+É usada para adicionar um ou mais elementos ao final de um array existente. Esses elementos podem ser valores individuais ou outros arrays, objetos, etc.

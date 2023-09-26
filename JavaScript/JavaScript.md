@@ -103,12 +103,6 @@ O operador de propagação (`...`) é usado para copiar todas as propriedades en
 
 ### Callback helll. <--
 
-## <a id = "funcoesarray"></a>Funções de array.
-
-### `.push(<elemento1>, <elemento2>, ...)`
-
-É usada para adicionar um ou mais elementos ao final de um array existente. Esses elementos podem ser valores individuais ou outros arrays, objetos, etc.
-
 ### `.pop()`
 
 É usada para remover o último elemento de um array. Ele modifica o array original, reduzindo o seu comprimento (`length`) em 1 e **retornando o elemento que foi removido**.
