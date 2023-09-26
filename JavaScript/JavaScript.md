@@ -2,22 +2,19 @@
 
 É uma **linguagem de programação** que é **síncrona** e **single-threaded**, o que significa que ela é executada em uma única thread de execução e as operações são processadas uma após a outra, em ordem. No entanto, JavaScript pode lidar com operações **assíncronas** e **não bloqueantes** usando recursos como **callbacks**, **promises** e **async/await**.
 
-# Nativo do JavaScript.
+**No linux, o Shebang é necessário para a impressão de logs no terminal de comando.**
 
-- [Função de seta (arrow function);](NativoJavaScript.md#funcaodeseta)
-- [Funções globais;](NativoJavaScript.md#funcoesglobais)
-- [Funções de array.](NativoJavaScript.md#funcoesdearray)
+# Cadeia de protótipos.
 
-# Bibliotecas.
+Também conhecida como também conhecida como **prototype chain**, é um conceito fundamental no JavaScript que descreve como **objetos JavaScript estão relacionados uns aos outros através de seus protótipos**. Essa cadeia é usada para permitir a **herança de propriedades e métodos** entre objetos em JavaScript.\
+Pontos-chave sobre a cadeia de protótipos:
 
-- [Sequelize.](Sequelize.md#sequelize)
+- **Protótipo (prototype):** em JavaScript, cada objeto tem uma referência a um outro objeto chamado "protótipo" (ou "prototype"). **O protótipo é um objeto que é usado como um modelo a partir do qual o objeto herda propriedades e métodos**. O protótipo é acessado através da propriedade `__proto__` (embora essa forma de acesso seja obsoleta e não recomendada) ou usando o método `Object.getPrototypeOf(objeto)`;
+- **Herança: quando você tenta acessar uma propriedade ou método de um objeto e essa propriedade ou método não existe no objeto em si, o JavaScript procurará na cadeia de prótipos desse objeto para encontrar a propriedade ou método**. Isso permite a herança de propriedades e métodos de um objeto para outro;
+- **Objetos nativos e protótipos:** objetos nativos do JavaScript, como `Array`, `String`, `Object`, entre outros, têm protótipos definidos que fornecem funcionalidades compartilhadas para todos os objetos desse tipo. Por exemplo, todos os objetos `Array` herdam métodos como `.push()`, `.pop()`, `forEach()`, etc, de seu protótipo `Array.prototype`;
+- **Cadeia de protótipos:** a cadeia de protótipos é formada quando um objeto herda de outro objeto, que por sua vez herda de outro objeto, e assim por diante. Isso cria uma hierarquia de protótipos, e o JavaScript percorre essa hierarquia quando você faz referência a propriedades ou métodos em um objeto.
 
-A **cadeia de protótipos**, também conhecida como **prototype chain**, é um conceito fundamental no JavaScript que descreve como objetos JavaScript estão relacionados uns aos outros através de seus protótipos. Essa cadeia é usada para permitir a herança de propriedades e métodos entre objetos em JavaScript. Pontos-chave sobre a cadeia de protótipos:
-
-- Protótipo (prototype): em JavaScript, cada objeto tem uma referência a um outro objeto chamado "protótipo" (ou "prototype"). **O protótipo é um objeto que é usado como um modelo a partir do qual o objeto herda propriedades e métodos**. O protótipo é acessado através da propriedade `__proto__` (embora essa forma de acesso seja obsoleta e não recomendada) ou usando o método `Object.getPrototypeOf(<objeto>)`;
-- Herança: **quando você tenta acessar uma propriedade ou método de um objeto e essa propriedade ou método não existe no objeto em si, o JavaScript procurará na cadeia de prótipos desse objeto para encontrar a propriedade ou método**. Isso permite a herança de propriedades e métodos de um objeto para outro;
-- Objetos nativos e protótipos: objetos nativos do JavaScript, como `Array`, `String`, `Object`, entre outros, têm protótipos definidos que fornecem funcionalidades compartilhadas para todos os objetos desse tipo. Por exemplo, todos os objetos `Array` herdam métodos como `.push()`, `.pop()`, `forEach()`, etc, de seu protótipo `Array.prototype`;
-- Cadeia de protótipos: a cadeia de protótipos é formada quando um objeto herda de outro objeto, que por sua vez herda de outro objeto, e assim por diante. Isso cria uma hierarquia de protótipos, e o JavaScript percorre essa hierarquia quando você faz referência a propriedades ou métodos em um objeto. Exemplo simples que ilustra a cadeia de protótipos:
+Exemplo simples que ilustra a cadeia de protótipos:
 
 ```JavaScript
 const pessoa = {
@@ -33,6 +30,16 @@ console.log(estudante.idade); //Herda "idade" de pessoa.
 ```
 
 Neste exemplo, `estudante` é um objeto filho que herda propriedades de `pessoa` através da cadeia de protótipos. Portanto, ele pode acessar as propriedades `nome` e `idade` que não existem diretamente em `estudante`, mas estão disponíveis através da cadeia de protótipos.
+
+# Nativo do JavaScript.
+
+- [Função de seta (arrow function);](NativoJavaScript.md#funcaodeseta)
+- [Funções globais;](NativoJavaScript.md#funcoesglobais)
+- [Funções de array.](NativoJavaScript.md#funcoesdearray)
+
+# Bibliotecas.
+
+- [Sequelize.](Sequelize.md#sequelize)
 
 Propriedade enumerável é uma propriedade de um objeto que pode ser percorrida ou listada usando estruturas de controle como `for...in` ou métodos como `Object.keys()`. As propriedades enumeráveis são aquelas que são consideradas "visíveis" durante iterações em objetos.\
 Por padrão, as propriedades que você cria diretamente em um objeto são enumeráveis. No entanto, muitas propriedades internas dos objetos nativos do JavaScript não são enumeráveis.\
@@ -61,12 +68,6 @@ console.log(Object.keys(objeto)); //["propriedadeEnumeravel"]
 
 No exemplo acima, a propriedade `propriedadeEnumeravel` é definida com o enumerável, enquanto a `propriedadeNaoEnumeravel` é definida como não enumerável. Quando você itera pelas propriedades do objeto usando um loop `for...in` ou obtém as chaves do objeto usando `Object.keys()`, apenas a `propriedadeEnumeravel` é visível, porque é a única propriedade enumerável. A `propriedadeNaoEnumeravel` não é listada.\
 Por padrão, a maioria das propriedades que você cria em objetos é enumerável, mas é importante estar ciente da enumerabilidade ao trabalhar com objetos e definir propriedades personalizadas, especialmente quando você deseja controlar quais propriedades são visíveis durante iterações.
-
-**No linux, o Shebang é necessário para a impressão de logs no terminal de comando.**
-
-- [Nativo do JavaScript;](#nativojavascript)
-- [Bibliotecas;](#bibliotecas)
-- [Frameworks.](#frameworks)
 
 # <a id = "nativojavascript"></a>Nativo do JavaScript.
 

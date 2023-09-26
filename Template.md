@@ -24,7 +24,7 @@ Linguagem: português (BR).
 
 # Listas.
 
-Se possuírem itens nominais, eles deverem receber algum tipo de destaque, seja os evidenciado por serem `pedaços de código` ou os destacando em **negrito**.
+Se possuírem itens nominais, eles deverem receber algum tipo de destaque, seja os evidenciado por serem `pedaços de código` ou os destacando em **negrito** (destacar tambéms os **dois pontos**).
 
 # `nomeDaFuncao(não incluir os parâmetros no título)`
 
