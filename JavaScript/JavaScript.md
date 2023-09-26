@@ -1,5 +1,7 @@
 # JavaScript.
 
+É uma **linguagem de programação** que é **síncrona** e **single-threaded**, o que significa que ela é executada em uma única thread de execução e as operações são processadas uma após a outra, em ordem. No entanto, JavaScript pode lidar com operações **assíncronas** e **não bloqueantes** usando recursos como **callbacks**, **promises** e **async/await**.
+
 # Nativo do JavaScript.
 
 - [Função de seta (arrow function);](NativoJavaScript.md#funcaodeseta)
@@ -9,8 +11,6 @@
 # Bibliotecas.
 
 - [Sequelize.](Sequelize.md#sequelize)
-
-É uma **linguagem de programação** que é **síncrona** e **single-threaded**, o que significa que ela é executada em uma única thread de execução e as operações são processadas uma após a outra, em ordem. No entanto, JavaScript pode lidar com operações **assíncronas** e **não bloqueantes** usando recursos como **callbacks**, **promises** e **async/await**.
 
 A **cadeia de protótipos**, também conhecida como **prototype chain**, é um conceito fundamental no JavaScript que descreve como objetos JavaScript estão relacionados uns aos outros através de seus protótipos. Essa cadeia é usada para permitir a herança de propriedades e métodos entre objetos em JavaScript. Pontos-chave sobre a cadeia de protótipos:
 
