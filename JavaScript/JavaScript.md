@@ -74,7 +74,7 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 - [`.toString()`](NativoJavaScript.md#tostring)
 - [Funções globais;](NativoJavaScript.md#funcoesglobais)
 - [Funções de array;](NativoJavaScript.md#funcoesdearray)
-- [Funções de string.](#NativoJavaScript.mdfuncoesdestring)
+- [Funções de string.](NativoJavaScript.md#funcoesdestring)
 
 # Bibliotecas.
 
