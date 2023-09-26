@@ -71,7 +71,7 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 - [Função de seta (arrow function);](NativoJavaScript.md#funcaodeseta)
 - [Callback;](NativoJavaScript.md#callback)
 - [`String()`](NativoJavaScript.md#string)
-- [`.toString()`]NativoJavaScript.md(#tostring)
+- [`.toString()`](NativoJavaScript.md#tostring)
 - [Funções globais;](NativoJavaScript.md#funcoesglobais)
 - [Funções de array.](NativoJavaScript.md#funcoesdearray)
 
