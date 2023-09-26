@@ -77,8 +77,8 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 - [request-promise-native.](Bibliotecas.md#requestpromisenative)
 
 
-- `Object.getPropertyOf()`;
--  `console.error()`.
++ `Object.getPropertyOf()`;
++  `console.error()`.
 
 # <a id = "nativojavascript"></a>Nativo do JavaScript.
 
