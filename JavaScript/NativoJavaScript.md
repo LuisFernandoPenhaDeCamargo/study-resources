@@ -229,3 +229,7 @@ Remove espaços em branco (espaços, tabulações e quebras de linha) do início
 `.push(<elemento1>, <elemento2>, ...)`
 
 É usada para adicionar um ou mais elementos ao final de um array existente. Esses elementos podem ser valores individuais ou outros arrays, objetos, etc.
+
+## `.pop()`
+
+É usada para remover o último elemento de um array. Ele modifica o array original, reduzindo o seu comprimento (`length`) em 1 e **retornando o elemento que foi removido**.

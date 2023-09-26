@@ -103,10 +103,6 @@ O operador de propagação (`...`) é usado para copiar todas as propriedades en
 
 ### Callback helll. <--
 
-### `.pop()`
-
-É usada para remover o último elemento de um array. Ele modifica o array original, reduzindo o seu comprimento (`length`) em 1 e **retornando o elemento que foi removido**.
-
 ### `.forEach(<item => {}>)` ou `.forEach(<callback(<elemento>, <índice>, <array>)>, <thisArg>)`
 
 Função que permite iterar sobre todos os elementos do array e executar uma função de callback em cada um deles. É uma maneira conveniente de percorrer todos os elementos de um array sem a necessidade de um loop `for` tradicional. **A função altera o array original**.
