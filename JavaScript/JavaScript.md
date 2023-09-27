@@ -80,6 +80,7 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 
 # Bibliotecas.
 
+- [`umzug`;](Bibliotecas.md#umzug)
 - [`request-promise-native`.](Bibliotecas.md#requestpromisenative)
 
 ## Node.js
@@ -318,7 +319,6 @@ mesmo a função de resolução sendo passada como argumento para a função de 
 ### JavaScript
 
 - [axios;](#axios)
-- [sequelize.](Sequelize.md)
 
 ### Node.js
 
