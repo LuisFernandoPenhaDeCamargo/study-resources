@@ -128,7 +128,7 @@ São uma parte fundamental da programação assíncrona em JavaScript e são amp
 `isNaN(parametro)`
 
 Retorna `true` ou `false`.\
-Se o `parametro` for um número ou **puder ser convertido em um**, retornará `false` .\
+Se o `parametro` for um número ou **puder ser convertido em um**, retornará `false`.\
 Como ela tenta converter o `parametro`, esta função pode se comportar de forma inesperada, como quando o `parametro` não for númerico (especialmente quando se tratar de strings). Exemplo:
 
 ```JavaScript
