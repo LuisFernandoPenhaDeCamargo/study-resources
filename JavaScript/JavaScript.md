@@ -80,14 +80,24 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 
 # Bibliotecas.
 
-- [Sequelize;](Sequelize.md#sequelize)
-- [request-promise-native.](Bibliotecas.md#requestpromisenative)
+- [`request-promise-native`.](Bibliotecas.md#requestpromisenative)
+
+## Node.js
+
+- [`path`;](Bibliotecas.md#path)
+- [`os`.](Bibliotecas.md#os)
+
+---
+
+- [Sequelize.](Sequelize.md#sequelize)
 
 + Callback hell;
 + Template literals;
 + Spread properties;
-+ `Object.getPropertyOf()`;
++ `.import()`;
 +  `console.error()`.
+
+---
 
 # <a id = "nativojavascript"></a>Nativo do JavaScript.
 
@@ -95,12 +105,6 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 - [Promise.](#promise)
 
 ## Objetos globais.
-
-### `JSON`
-
-É usado para trabalhar com dados no formato JSON.
-
-### `.stringify(<objeto, replacer, espaços>)`
 
 Converte um objeto JavaScript em uma string JSON.
 

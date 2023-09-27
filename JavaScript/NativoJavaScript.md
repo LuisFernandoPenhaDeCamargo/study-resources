@@ -146,9 +146,11 @@ Observando que `isNaN()` considera datas como valores númericos válidos em Jav
 - [`.assign()`;](#assign)
 - [`.keys()`;](#keys)
 - [`.definePropertyOf()`;](#definepropertyof)
-- [`.getPropertyOf()`.](#getpropertyof)
+- [`.getPropertyOf()`;](#getpropertyof)
+- [`.stringify()`;](#stringify)
+- [`.parse()`.](#parse)
 
-## Object.
+## `Object`
 
 Objeto global pré-definido (built-in object).
 
@@ -201,6 +203,18 @@ Usada para definir uma nova propriedade diretamente em um objeto ou modificar um
 `.getPropertyOf(objeto)`
 
 Utilizada para retornar o protótipo de um `objeto`.
+
+## `JSON`
+
+Usado para trabalhar com dados no formato JSON.
+
+### <a id = "stringify"></a>`.stringify()`
+
+`.stringify(objeto, replacer, espaços)`
+
+### <a id = "parse"></a>`.parse()`
+
+`.parse(JSON)`
 
 # <a name = "funcoesglobais"></a>Funções globais.
 
