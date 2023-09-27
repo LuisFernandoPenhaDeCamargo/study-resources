@@ -57,12 +57,12 @@ Compara o **valor** e **converte o tipo do dado**, se necessário.
 
 Também conhecida como **operação ternária**, é um operador em linguagens de programação que permite fazer uma escolha entre dois valores com base em uma condição. Ele é chamado de "ternário" porque envolve três partes: a condição, o valor que deve ser retornado se a condição for verdadeira e o valor que deve ser retornado se a condição for falsa. A sintaxe básica de uma operação ternária é:
 
-`condicao ? (valorCasoACondicaoSejaVerdadeira) : (valorCasoACondicaoSejaFalsa)`
+`condicao ? (valorCasoACondicaoSejaVerdadeira) : (valorCasoACondicaoSejaFalsa);`
 
 Parênteses são usados para agrupar várias instruções em uma única expressão, enquanto chaves são usadas para definir blocos de código em JavaScript. Exemplo mais complexo:
 
 ```JavaScript
-row.accumulated_paid_at = isNaN(row.accumulated_paid_at) ? 0 : moment(row.accumulated_paid_at).format('YYYY-MM-DD HH:mm:ss') //Condição: isNaN(row.accumulated_paid_at)
+row.accumulated_paid_at = isNaN(row.accumulated_paid_at) ? 0 : moment(row.accumulated_paid_at).format('YYYY-MM-DD HH:mm:ss'); //Condição: isNaN(row.accumulated_paid_at)
 ```
 
 Lembrando ainda que não é possível declarar variáveis dentro de uma operação ternária diretamente, isso ocorre porque é necessário um escopo de bloco mais amplo do que o oferecido por uma operação ternária.
@@ -121,6 +121,26 @@ São uma parte fundamental da programação assíncrona em JavaScript e são amp
 - `.toString()` **não cria um novo objeto**, mas sim gera uma representação de string do objeto original;
 - Em muitos casos, `.toString()` é usado implicitamente quando você concatena um valor com uma string usando o operador `+`.
 
+# <a name = "isnan"></a> `isNaN()`
+
+É usada para determinar se o argumento **não é um número ("is Not A Number")**.
+
+`isNaN(parametro)`
+
+Retorna `true` ou `false`.\
+Se o `parametro` for um número ou **puder ser convertido em um**, retornará `false` .\
+Como ela tenta converter o `parametro`, esta função pode se comportar de forma inesperada, como quando o `parametro` não for númerico (especialmente quando se tratar de strings). Exemplo:
+
+```JavaScript
+console.log(isNaN(1));         //false (1 é um número).
+console.log(isNaN("1"));       //false (a string "1" pode ser convertida em número).
+console.log(isNaN("Hello"));   //true (a string "Hello" não pode ser convertida em número).
+console.log(isNaN(undefined)); //true (não é um número).
+console.log(isNaN(null));      //false (não é um número estritamente válido, mas é convertido em 0 durante a verificação).
+```
+
+Observando que `isNaN()` considera datas como valores númericos válidos em JavaScript. Isso pode ser um comportamento inesperado em alguns casos, já que datas não são números no sentido convencional. No entanto, JavaScript permite que datas sejam usadas em operações matemáticas e, portanto, elas são tratadas como números válidos pelo `isNaN()`.
+
 # <a name = "funcoesglobais"></a>Funções globais.
 
 - [`Array.isArray().`](#arrayisarray)
@@ -129,7 +149,7 @@ São uma parte fundamental da programação assíncrona em JavaScript e são amp
 
 É usado para verificar se um valor passado como argumento é um array. Retorna `true` se o valor for um array e `false` caso contrário.
 
-`Array.isArray(valor);`
+`Array.isArray(valor)`
 
 `valor`: o valor que você deseja verificar se é um array.
 
@@ -221,14 +241,14 @@ Exemplo:
 const novoArray = arrayOriginal.filter(callback(elemento, indice, array)) {
   //Lógica de filtragem.
   //Retorne true para incluir o elemento no novo array, false para excluí-lo.
-}
+};
 ```
 
 ## <a id = "join"></a>`.join()`
 
 É usada para criar uma **nova string juntando todos os elementos de um array em uma única string, separando-os por um delimitador específico** que você fornece como argumento.
 
-`array.join(delimitador);`
+`array.join(delimitador)`
 
 - `array`: o array cujos elementos você deseja unir em uma única string;
 - `delimitador` (opcional): o **caractere** ou **string** que será usado como separador entre os elementos no resultado. Este argumento é opcional; se não for fornecido, os elementos do array serão separados por vírgulas por padrão.
@@ -237,7 +257,7 @@ const novoArray = arrayOriginal.filter(callback(elemento, indice, array)) {
 
 É usada para reduzir (ou acumular) todos os elementos de um array em um único valor. Ele executa uma função de callback em cada elemento do array, acumulando um valor final à medida que percorre os elementos.
 
-`array.reduce(callback(accumulator, currentValue, currentIndex, array), initialValue);`
+`array.reduce(callback(accumulator, currentValue, currentIndex, array), initialValue)`
 
 - `array`: o array que você deseja reduzir;
 - `callback`: uma função de callback que é chamada para cada elemento no array. Ela recebe quatro argumentos:
@@ -262,7 +282,7 @@ const novoArray = arrayOriginal.filter(callback(elemento, indice, array)) {
 
 É usada principalmente para **valores simples** (números, strings, booleanos) e não é adequada para verificar a existência de objetos complexos ou verificar com base em propriedades específicas de objetos.
 
-`array.includes(valor, aPartirDe);`
+`array.includes(valor, aPartirDe)`
 
 - `array`: o array no qual você deseja realizar a pesquisa;
 - `valor`: o valor que você deseja verificar se está presente no array;

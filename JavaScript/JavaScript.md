@@ -70,8 +70,9 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 - [Sintaxe da função de flecha x Definição externa de uma função;](NativoJavaScript.md#flechaxexterna)
 - [Função de seta (arrow function);](NativoJavaScript.md#funcaodeseta)
 - [Callback;](NativoJavaScript.md#callback)
-- [`String()`](NativoJavaScript.md#string)
-- [`.toString()`](NativoJavaScript.md#tostring)
+- [`String()`;](NativoJavaScript.md#string)
+- [`.toString()`;](NativoJavaScript.md#tostring)
+- [`isNaN()`;](NativoJavaScript.md#isnan)
 - [Funções globais;](NativoJavaScript.md#funcoesglobais)
 - [Funções de array;](NativoJavaScript.md#funcoesdearray)
 - [Funções de string.](NativoJavaScript.md#funcoesdestring)
@@ -89,7 +90,6 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 
 - [Template Literals (Template Strings);](#templateliterals) <--
 - [Spread properties;](#spreadproperties) <--
-- [`isNaN(<parâmetro>)`](#isnan)
 - [Objetos globais;](#objetosglobais)
 - [`setTimeout(<callback>, <delay>)`](#settimeout)
 - [Promise.](#promise)
@@ -101,25 +101,6 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 O operador de propagação (`...`) é usado para copiar todas as propriedades enumeráveis de um objeto para outro objeto literal ou objeto existente.
 
 ### Callback helll. <--
-
-### <a id = "isnan"></a> `isNaN(<parâmetro>)`
-
-É usada para determinar se o `<parâmetro>` **não é um número ("is Not A Number")**.
-
-Retorna `true` ou `false`.
-
-Se o `<parâmetro>` for um número ou **puder ser convertido em um**, retornará `false` .
-Como ela tenta converter o `<parâmetro>`, esta função pode se comportar de forma inesperada, quando o `<parâmetro>` não for númerico (especialmente quando se tratar de strings). Exemplo:
-
-```JavaScript
-console.log(isNaN(1));       //false (1 é um número).
-console.log(isNaN("1"));     //false (a string "1" pode ser convertida em número).
-console.log(isNaN("Hello")); //true (a string "Hello" não pode ser convertida em número).
-console.log(isNaN(undefined)); //true (não é um número).
-console.log(isNaN(null)); //false (não é um número estritamente válido, mas é convertido em 0 durante a verificação).
-```
-
-Observando que `.isNaN()` considera datas como valores númericos válidos em JavaScript. Isso pode ser um comportamento inesperado em alguns casos, á que datas não são números no sentido convencional. No entanto, JavaScript permite que datas sejam usadas em operações matemáticas e, portanto, elas são tratadas como números válidos pelo `isNaN()`.
 
 ## <a id = "objetosglobais"></a>Objetos globais.
 

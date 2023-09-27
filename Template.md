@@ -48,6 +48,7 @@ Lista de nomes de objetos:
 
 Lista de nomes de parâmetros:
 
+- parametro;
 - callback();
 - objeto;
 - array;
