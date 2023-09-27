@@ -9,7 +9,8 @@ Biblioteca utilizada para fazer solicitações HTTP de forma assíncrona no Node
 # Node.js
 
 - [`.resolve()`;](#resolve)
-- [`.hostname()`.](#hostname)
+- [`.hostname()`;](#hostname)
+- [`.cpus()`.](#cpus)
 
 ## <a name = "path"></a>`path`
 
@@ -57,3 +58,7 @@ console.log(path.resolve("db", "migrations")); ///home/orion/APIs/orion-data-api
 ### <a id = "hostname"></a>`.hostname()`
 
 É usado para obter o nome do host no qual o código Node.js está sendo executado. O nome do host é geralmente o nome do computador ou dispositivo onde o Node.js está em execução. Retorna uma string.
+
+### <a id ="cpus"></a>`.cpus()`
+
+Retorna um array contendo informações sobre todas as CPUs disponíveis no sistema (um array de objetos).
