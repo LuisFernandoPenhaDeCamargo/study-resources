@@ -73,6 +73,7 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 - [`String()`;](NativoJavaScript.md#string)
 - [`.toString()`;](NativoJavaScript.md#tostring)
 - [`isNaN()`;](NativoJavaScript.md#isnan)
+- [Objetos globais;](NativoJavaScript.md#objetosglobais)
 - [Funções globais;](NativoJavaScript.md#funcoesglobais)
 - [Funções de array;](NativoJavaScript.md#funcoesdearray)
 - [Funções de string.](NativoJavaScript.md#funcoesdestring)
@@ -82,53 +83,18 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 - [Sequelize;](Sequelize.md#sequelize)
 - [request-promise-native.](Bibliotecas.md#requestpromisenative)
 
-
++ Callback hell;
++ Template literals;
++ Spread properties;
 + `Object.getPropertyOf()`;
 +  `console.error()`.
 
 # <a id = "nativojavascript"></a>Nativo do JavaScript.
 
-- [Template Literals (Template Strings);](#templateliterals) <--
-- [Spread properties;](#spreadproperties) <--
-- [Objetos globais;](#objetosglobais)
 - [`setTimeout(<callback>, <delay>)`](#settimeout)
 - [Promise.](#promise)
 
-### <a id = "templateliterals"></a>Template Literals.
-
-### <a id = "spreadproperties"></a>Spread Properties.
-
-O operador de propagação (`...`) é usado para copiar todas as propriedades enumeráveis de um objeto para outro objeto literal ou objeto existente.
-
-### Callback helll. <--
-
-## <a id = "objetosglobais"></a>Objetos globais.
-
-### `Object`
-
-Objeto global pré-definido (built-in object).
-
-### `.assign(<destino>, <origem1>, <origem2>, ...);`
-
-É usada para copiar os valores de uma ou mais propriedades de objetos de origem (ou fonte) para um objeto de destino. Isso é frequentemente usado para criar um novo objeto que contém uma combinação de propriedades de vários outros objetos.
-
-- `<destino>`: é o objeto de destino onde as propriedades serão copiadas. Este objeto será modificado e retornado;
-- `<origem1>, <origem2>, ...`: são os objetos de origem a partir dos quais as propriedades serão copiadas. Você pode passar múltiplos objetos de origem separados por vírgulas.
-
-O `.assign()` copiará as propriedades de cada objeto de origem para o objeto de destino. Se houver conflitos de propriedades (ou seja, se o objeto de origem e o objeto de destino tiverem uma propriedade com o mesmo nome), o valor da propriedade no objeto de origem substituirá o valor correspondente no objeto de destino. Exemplo:
-
-```JavaScript
-const destino = {};
-const origem1 = {a: 1, b: 2};
-const origem2 = {b: 3, c: 4};
-
-Object.assign(destino, origem1, origem2);
-
-console.log(destino); // { a: 1, b: 3, c: 4 }
-```
-
-Neste exemplo, as propriedades de `origem1` e `origem2` são copiadas para `destino`, e o valor da propriedade `b` do `origem2` substitui o valor da propriedade `b` do `origem1` no objeto de destino.\
-Lembre-se de que o `Object.assign()` funciona apenas para copiar as propriedades enumeráveis e próprias (**não as herdadas**) dos objetos de origem. Além disso, ele retorna o objeto de destino após a cópia das propriedades.
+## Objetos globais.
 
 ### `.keys(<objeto>)`
 

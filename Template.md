@@ -42,10 +42,6 @@ parâmetro (se é opcional ou não): descrição.
 
 Retorna ...
 
-Lista de nomes de objetos:
-
-- array.
-
 Lista de nomes de parâmetros:
 
 - parametro;
@@ -53,4 +49,5 @@ Lista de nomes de parâmetros:
 - objeto;
 - array;
 - elemento;
-- indice.
+- indice;
+- origem.
