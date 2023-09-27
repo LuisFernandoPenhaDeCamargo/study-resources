@@ -217,10 +217,10 @@ Observação importante: **serializar** um objeto significa converter esse objet
 `.stringify(objeto, replacer, espaços)`
 
 - `objeto`: o objeto JavaScript que você deseja serializar em uma string JSON.
-  - `replacer` (opcional): uma função ou um array que permite personalizar a serialização, filtrando e transformando os valores antes de serem convertidos em JSON. Você pode passar uma função de substituição para personalizar a serialização, ou um array de strings e números que especifica as propriedades a serem incluídas na serialização;
-  - `espaços` (opcional): um argumento que controla o espaçamento (indentação) na string JSON resultante. Pode ser um número que indica o número de espaços para indentação ou uma string personalizada para a identação.
+- `replacer` (opcional): uma função ou um array que permite personalizar a serialização, filtrando e transformando os valores antes de serem convertidos em JSON. Você pode passar uma função de substituição para personalizar a serialização, ou um array de strings e números que especifica as propriedades a serem incluídas na serialização;
+- `espaços` (opcional): um argumento que controla o espaçamento (indentação) na string JSON resultante. Pode ser um número que indica o número de espaços para indentação ou uma string personalizada para a identação.
 
-  Exemplo:
+Exemplo:
 
 ```JavaScript
 const objeto = {
