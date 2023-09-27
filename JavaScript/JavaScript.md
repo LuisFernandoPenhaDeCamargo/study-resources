@@ -96,14 +96,6 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 
 ## Objetos globais.
 
-### `.keys(<objeto>)`
-
-Usado para retornar um array com as chaves (nomes das propriedades) de um `<objeto>`.
-
-### `.getPropertyOf(<objeto>)`
-
-Utilizado para retornar o protótipo de um `<objeto>`.
-
 ### `.definePropertyOf(<objeto>, <propriedade>, <descritor>)`
 
 Usada para definir uma nova propriedade diretamente em um objeto ou modificar uma propriedade existente com mais controle sobre suas características. Ela permite que você especifique várias opções para a propriedade, como se ela é enumerável, configurável ou gravável.

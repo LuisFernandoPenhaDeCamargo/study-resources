@@ -143,11 +143,15 @@ Observando que `isNaN()` considera datas como valores númericos válidos em Jav
 
 # <a name = "objetosglobais"></a>Objetos globais.
 
+- [`.assign()`;](#assign)
+- [`.keys()`;](#keys)
+- [`getPropertyOf()`.](#getpropertyof)
+
 ## Object.
 
 Objeto global pré-definido (built-in object).
 
-### `.assign()`
+### <a id = "assign"></a>`.assign()`
 
 É usada para copiar os valores de uma ou mais propriedades de objetos de origem (ou fonte) para um objeto de destino. Isso é frequentemente usado para criar um novo objeto que contém uma combinação de propriedades de vários outros objetos.
 
@@ -170,6 +174,18 @@ console.log(destino); // { a: 1, b: 3, c: 4 }
 
 Neste exemplo, as propriedades de `origem1` e `origem2` são copiadas para `destino`, e o valor da propriedade `b` do `origem2` substitui o valor da propriedade `b` do `origem1` no objeto de destino.\
 Lembre-se de que o `Object.assign()` funciona apenas para copiar as propriedades enumeráveis e próprias (**não as herdadas**) dos objetos de origem. Além disso, ele retorna o objeto de destino após a cópia das propriedades.
+
+### <a id = "keys"></a>`.keys()`
+
+`.keys(objeto)`
+
+Usada para retornar um array com as chaves (nomes das propriedades) de um `objeto`.
+
+### <a id = "getpropertyof"></a>`.getPropertyOf()`
+
+`.getPropertyOf(objeto)`
+
+Utilizada para retornar o protótipo de um `objeto`.
 
 # <a name = "funcoesglobais"></a>Funções globais.
 
