@@ -96,18 +96,6 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 
 ## Objetos globais.
 
-### `.definePropertyOf(<objeto>, <propriedade>, <descritor>)`
-
-Usada para definir uma nova propriedade diretamente em um objeto ou modificar uma propriedade existente com mais controle sobre suas características. Ela permite que você especifique várias opções para a propriedade, como se ela é enumerável, configurável ou gravável.
-
-- `<objeto>`: o objeto no qual você deseja definir ou modificar a propriedade;
-- `<propriedade>`: o nome da propriedade que você deseja definir ou modificar;
-- `<descritor>`: um objeto que descreve as características da propriedade. Este objeto pode ter várias propriedades, incluindo:
-  - `<value>`: o valor da propriedade (opcional);
-  - `<writable>`: um booleano que indica se a propriedade pode ser modificada com o operador de atribuição (por padrão, `false`);
-  - `<enumerable>`: um booleano que indica se a propriedade pode ser percorrida em um loop `for...in` ou listada usando `Object.keys()` (por padrão, `false`);
-  - `<configurable>`: um booleano que indica se a propriedade pode ser reconfigurada ou excluída (por padrão, `false`).
-
 ### `JSON`
 
 É usado para trabalhar com dados no formato JSON.

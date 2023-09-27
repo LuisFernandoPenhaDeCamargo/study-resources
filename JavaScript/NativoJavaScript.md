@@ -145,7 +145,8 @@ Observando que `isNaN()` considera datas como valores númericos válidos em Jav
 
 - [`.assign()`;](#assign)
 - [`.keys()`;](#keys)
-- [`getPropertyOf()`.](#getpropertyof)
+- [`.definePropertyOf()`;](#definepropertyof)
+- [`.getPropertyOf()`.](#getpropertyof)
 
 ## Object.
 
@@ -180,6 +181,20 @@ Lembre-se de que o `Object.assign()` funciona apenas para copiar as propriedades
 `.keys(objeto)`
 
 Usada para retornar um array com as chaves (nomes das propriedades) de um `objeto`.
+
+### <a id = "definepropertyof"></a>`.definePropertyOf()`
+
+Usada para definir uma nova propriedade diretamente em um objeto ou modificar uma propriedade existente com mais controle sobre suas características. Ela permite que você especifique várias opções para a propriedade, como se ela é enumerável, configurável ou gravável.
+
+`.definePropertyOf(objeto, propriedade, descritor)`
+
+- `objeto`: o objeto no qual você deseja definir ou modificar a propriedade;
+- `propriedade`: o nome da propriedade que você deseja definir ou modificar;
+- `descritor`: um objeto que descreve as características da propriedade. Este objeto pode ter várias propriedades, incluindo:
+  - `value` (opcional): o valor da propriedade;
+  - `writable`: um booleano que indica se a propriedade pode ser modificada com o operador de atribuição (por padrão, `false`);
+  - `enumerable`: um booleano que indica se a propriedade pode ser percorrida em um loop `for...in` ou listada usando `Object.keys()` (por padrão, `false`);
+  - `configurable`: um booleano que indica se a propriedade pode ser reconfigurada ou excluída (por padrão, `false`).
 
 ### <a id = "getpropertyof"></a>`.getPropertyOf()`
 
