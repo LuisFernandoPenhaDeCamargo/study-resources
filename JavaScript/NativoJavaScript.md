@@ -135,11 +135,46 @@ São uma parte fundamental da programação assíncrona em JavaScript e são amp
 
 # <a name = "funcoesdearray"></a>Funções de array.
 
+- [`.forEach()`;](#foreach)
 - [`.map()`;](#map)
+- [`.filter()`;](#filter)
 - [`.join()`;](#join)
 - [`.reduce()`;](#reduce)
 - [`.concat()`;](#concat)
-- [`.includes()`.](#includes)
+- [`.includes()`;](#includes)
+- [`.push()`;](#push)
+- [`.pop()`.](#pop)
+
+## <a id = "foreach"></a>`.forEach()`
+
+Função que permite iterar sobre todos os elementos do array e executar uma função de callback em cada um deles. É uma maneira conveniente de percorrer todos os elementos de um array sem a necessidade de um loop `for` tradicional. **A função altera o array original**.
+
+`.forEach(item => {})` ou `.forEach(callback(elemento, indice, array)>, thisArg)`
+
+- `item`: nome da variável temporária que representa cada elemento do array;
+- `{}`: função passada como argumento para o `.forEach()` que é executada uma vez para cada elemento do array.
+
++ `callback`: função de callback que será chamada para cada elemento do array. Ela recebe três argumentos: o `elemento` atual sendo processado, o `indice` desse elemento e o próprio `array`;
++ `thisArg` (opcional): um valor que será usado como `this` dentro da função de callback.
+
+Exemplo interessante usando `thisArg`:
+
+```JavaScript
+const pessoa = {
+  nome: "João",
+  idade: 30,
+  cidade: "São Paulo"
+};
+const frutas = ["maça", "banana", "laranja"];
+
+//Definindo uma função de callback que usa "this".
+function exibirDetalhes(fruta) {
+  console.log(`${this.nome} gosta de ${fruta}`);
+}
+
+//Usando "thisArg" para definir o valor de "this" dentro da função de callback. Sem o this, exibirDetalhes não reconheceria a propriedade nome de pessoa.
+frutas.forEach(exibirDetalhes, pessoa);
+```
 
 ## <a id = "map"></a>`.map()`
 
@@ -167,6 +202,26 @@ const novoArray = array.map(indice => "?,?,?,?,?"); //Os três objetos literais 
 
 console.log(array);     //[ {}, {}, {} ]
 console.log(novoArray); //[ '?,?,?,?,?', '?,?,?,?,?', '?,?,?,?,?' ]
+```
+
+## <a id = "filter"></a>`.filter()`
+
+É usado para **criar** um novo array contendo todos os elementos de um array original que atendem a um critério especificado por uma função de callback. Em outras palavras, ele filtra os elementos de um array com base em uma condição e retorna um novo array contendo apenas os elementos que atendem essa condição.
+
+`.filter(callback(elemento, indice, array))`
+
+- `callback()`: uma função de callback que define a condição da filtragem;
+- `elemento`: o valor atual do elemento sendo avaliado;
+- `indice` (opcional): o índice do elemento atual no array;
+- `array` (opcional): o próprio array original.
+
+Exemplo:
+
+```JavaScript
+const novoArray = arrayOriginal.filter(callback(elemento, indice, array)) {
+  //Lógica de filtragem.
+  //Retorne true para incluir o elemento no novo array, false para excluí-lo.
+}
 ```
 
 ## <a id = "join"></a>`.join()`
@@ -215,48 +270,6 @@ console.log(novoArray); //[ '?,?,?,?,?', '?,?,?,?,?', '?,?,?,?,?' ]
 
 Retorna `true` se o valor especificado estiver presente no array e `false` caso contrário.
 
-# <a name = "funcoesdestring"></a>Funções de string.
-
-- [`.forEach()`;](#foreach)
-- [`.trim()`;](#trim)
-- [`.push()`;](#push)
-- [`.pop()`.](#pop)
-
-## <a id = "foreach"></a>`.forEach()`
-
-Função que permite iterar sobre todos os elementos do array e executar uma função de callback em cada um deles. É uma maneira conveniente de percorrer todos os elementos de um array sem a necessidade de um loop `for` tradicional. **A função altera o array original**.
-
-`.forEach(item => {})` ou `.forEach(callback(elemento, indice, array)>, thisArg)`
-
-- `item`: nome da variável temporária que representa cada elemento do array;
-- `{}`: função passada como argumento para o `.forEach()` que é executada uma vez para cada elemento do array.
-
-+ `callback`: função de callback que será chamada para cada elemento do array. Ela recebe três argumentos: o `elemento` atual sendo processado, o `indice` desse elemento e o próprio `array`;
-+ `thisArg` (opcional): um valor que será usado como `this` dentro da função de callback.
-
-Exemplo interessante usando `thisArg`:
-
-```JavaScript
-const pessoa = {
-  nome: "João",
-  idade: 30,
-  cidade: "São Paulo"
-};
-const frutas = ["maça", "banana", "laranja"];
-
-//Definindo uma função de callback que usa "this".
-function exibirDetalhes(fruta) {
-  console.log(`${this.nome} gosta de ${fruta}`);
-}
-
-//Usando "thisArg" para definir o valor de "this" dentro da função de callback. Sem o this, exibirDetalhes não reconheceria a propriedade nome de pessoa.
-frutas.forEach(exibirDetalhes, pessoa);
-```
-
-## <a id = "trim"></a>`.trim()`
-
-Remove espaços em branco (espaços, tabulações e quebras de linha) do início e do final da string. **Ele não afeta os espaçoes em branco dentro da string, apenas os espaços em branco externos**.
-
 ## <a id = "push"></a>`.push()`
 
 `.push(<elemento1>, <elemento2>, ...)`
@@ -266,3 +279,11 @@ Remove espaços em branco (espaços, tabulações e quebras de linha) do início
 ## <a id = "pop"></a>`.pop()`
 
 É usada para remover o último elemento de um array. Ele modifica o array original, reduzindo o seu comprimento (`length`) em 1 e **retornando o elemento que foi removido**.
+
+# <a name = "funcoesdestring"></a>Funções de string.
+
+- [`.trim()`.](#trim)
+
+## <a id = "trim"></a>`.trim()`
+
+Remove espaços em branco (espaços, tabulações e quebras de linha) do início e do final da string. **Ele não afeta os espaçoes em branco dentro da string, apenas os espaços em branco externos**.

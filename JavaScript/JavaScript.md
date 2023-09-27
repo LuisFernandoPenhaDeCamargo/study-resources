@@ -89,7 +89,6 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 
 - [Template Literals (Template Strings);](#templateliterals) <--
 - [Spread properties;](#spreadproperties) <--
-- [Funções de array;](#funcoesarray)
 - [`isNaN(<parâmetro>)`](#isnan)
 - [Objetos globais;](#objetosglobais)
 - [`setTimeout(<callback>, <delay>)`](#settimeout)
@@ -102,24 +101,6 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 O operador de propagação (`...`) é usado para copiar todas as propriedades enumeráveis de um objeto para outro objeto literal ou objeto existente.
 
 ### Callback helll. <--
-
-### `.filter(<callback(<elemento>, <índice>, <array>)>)`
-
-É usado para **criar** um novo array contendo todos os elementos de um array original que atendem a um critério especificado por uma função de callback. Em outras palavras, ele filtra os elementos de um array com base em uma condição e retorna um novo array contendo apenas os elementos que atendem essa condição.
-
-- `callback()`: uma função de callback que define a condição da filtragem;
-- `<elemento>`: o valor atual do elemento sendo avaliado;
-- `<índice>` (opcional): o índice do elemento atual no array;
-- `<array>` (opcional): o próprio array original.
-
-Exemplo:
-
-```JavaScript
-const novoArray = arrayOriginal.filter(callback(elemento, índice, array)) {
-  //Lógica de filtragem.
-  //Retorne true para incluir o elemento no novo array, false para excluí-lo.
-}
-```
 
 ### <a id = "isnan"></a> `isNaN(<parâmetro>)`
 
