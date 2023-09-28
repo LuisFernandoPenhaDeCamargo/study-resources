@@ -73,6 +73,7 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 - [`String()`;](nativo.md#string)
 - [`.toString()`;](nativo.md#tostring)
 - [`isNaN()`;](nativo.md#isnan)
+- [`parseInt()`;](nativo.md#parseint)
 - [`setTimeout()`;](nativo.md#settimeout)
 - [Objetos globais;](nativo.md#objetosglobais)
 - [Funções globais;](nativo.md#funcoesglobais)

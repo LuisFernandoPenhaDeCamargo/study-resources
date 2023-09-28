@@ -46,8 +46,12 @@ Lista de nomes de parâmetros:
 - parametro;
 - callback();
 - objeto;
+- objetoDeConfiguracao;
 - array;
+- string;
 - elemento;
 - indice;
 - origem;
-- identificador.
+- identificador;
+- radix;
+- code.

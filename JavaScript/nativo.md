@@ -141,6 +141,38 @@ console.log(isNaN(null));      //false (não é um número estritamente válido,
 
 Observando que `isNaN()` considera datas como valores númericos válidos em JavaScript. Isso pode ser um comportamento inesperado em alguns casos, já que datas não são números no sentido convencional. No entanto, JavaScript permite que datas sejam usadas em operações matemáticas e, portanto, elas são tratadas como números válidos pelo `isNaN()`.
 
+# <a name = "parseint"></a>`parseInt()`
+
+É uma função que converte uma string em um número inteiro. Ela analisa a string do ínicio ao fim até encontrar um caractere que não seja um dígito válido (0-9) ou, no caso de números com sinal, um sinal positivo (+) ou negativo (-). Em seguida, converte os caracteres analisados em um número inteiro e retorna esse valor.
+
+`parseInt(string, radix)`
+
+- `string`**:** a string que você deseja converter em um número inteiro;
+- `radix` **(opcional):** a base numérica usada para interpretar a string. É um número inteiro entre 2 e 36. Se não for fornecido, a função assume que a base é 10.
+
+Exemplo:
+
+```JavaScript
+const numeroString = "42";
+const numeroInteiro = parseInt(numeroString);
+
+console.log(numeroInteiro); //Resultado: 42.
+
+const texto = "ABC";
+const numeroInteiro = parseInt(texto);
+
+console.log(numeroInteiro); //Resultado: NaN (não é um número).
+```
+
+Observando que se a string contiver uma parte que é um número válido no início, `parseInt()` irá extrair o número válido **até encontrar um caractere que não seja parte de um número, que não seja válido**. Exemplo:
+
+```JavaScript
+const texto = "12345texto67890";
+const numeroInteiro = parseInt(texto);
+
+console.log(numeroInteiro); //
+```
+
 # <a id = "settimeout"></a>`setTimeout()`
 
 Função que agenda a execução de uma [`callback`](#callback) após um período de tempo especificado em milissegundos (delay). <a id = "exemplocallback"></a>Exemplo:
@@ -191,7 +223,8 @@ const identificador = setTimeout(() => {
 - [`.definePropertyOf()`;](#definepropertyof)
 - [`.getPropertyOf()`;](#getpropertyof)
 - [`.stringify()`;](#stringify)
-- [`.parse()`.](#parse)
+- [`.parse()`;](#parse)
+- [`.exit()`.](#exit)
 
 ## `Object`
 
@@ -317,6 +350,23 @@ JSON.parse(content)[version]; //Estamos acessando a chave "version" do objeto re
 É um objeto global no **ambiente Node.js** que fornece informações e funcionalidades relacionadas ao processo em execução. Ele é uma parte fundamental do ambiente Node.js e pode ser usado para acessar várias informações e controlar o comportamento do processo Node.js.
 
 Algumas das funcionalidades e informações mais comuns fornecidas pelo objeto `process` estão listadas no arquivo: [objeto global process.](process.md)
+
+### <a id = "exit"></a>`.exit()`
+
+Permite encerrar explicitamente o processo Node.js com um código de saída personalizado.
+
+`.exit(code)`
+
+`code`: número inteiro que representa o código de saída. Normalmente, um código de saída zero (`0`) indica que o processo foi concluído com sucesso, enquanto qualquer outro número indica um erro ou uma saída não bem-sucedida.
+
+Os códigos de saída podem ser capturados pelo SO ou pela plataforma que invoca o aplicativo Node.js para identificar o estado de saída do aplicativo. Exemplo:
+
+```Bash
+node meu_app.js
+echo $?
+```
+
+Se você estiver executando o aplicativo diretamente do terminal ou da linha de comando, o código de saída será retornado como um código de saída do processo. Com o código acima você pode verificar o código de saída após a execução da aplicação. Neste caso `$?` conterá o código de saída personalizado por `process.exit()`.
 
 # <a name = "funcoesglobais"></a>Funções globais.
 

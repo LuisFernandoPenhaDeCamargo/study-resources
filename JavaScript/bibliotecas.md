@@ -1,5 +1,12 @@
 # Bibliotecas.
 
+- [`.pending()`;](#pending)
+- [`.execute()`;](#execute)
+- [`.executed()`;](#executed)
+- [`.resolve()`;](#resolve)
+- [`.hostname()`;](#hostname)
+- [`.cpus()`.](#cpus)
+
 # <a name = "umzug"></a>`umzug`
 
 O pacote `umzug` é uma biblioteca para migração de bancos de dados em Node.js. Ele fornece uma maneira fácil de criar e executar migrações de banco de dados, permitindo que você gerencie alterações na estrutura do banco de dados ao longo do tempo, mantendo um histórico de migrações.
@@ -52,6 +59,34 @@ Ambas as configurações estão relacionadas ao diretório de migrações, mas a
 Na prática, o `Umzug` pode usar essas configurações para localizar e executar as migrações no diretório especificado, seja ele um caminho relativo ou um caminho absoluto. Ambos os métodos têm seu lugar, dependendo de como você deseja configurar a estrutura de diretórios do seu projeto de migração de banco de dados.
 **Tecnicamente falando, não é necessário especificar ambas as propriedades**.
 
+### <a id = "pending"></a>`.pending()`
+
+É usado para listar as migrações pendentes que ainda não foram executadas no bando de dados. Ele retorna uma lista de migrações que estão no diretório de migrações configurado, mas que ainda não foram aplicadas ao banco de dados.\
+Você pode acessar informações sobre as migrações, como o nome do arquivo da migração (`migration.file`), para saber quais migrações estão pendentes.
+
+### <a id = "execute"></a>`.execute()`
+
+Método que permite executar migrações específicas de acordo com as configurações fornecidas.
+
+`.execute(objetoDeConfiguracao)`
+
+Principais campos do `objetoDeConfiguracao`:
+
+- `migrations`**:** este campo deve ser um array de nomes de arquivos de migração que você deseja executar. Geralmente é obtido através  de arquivos de migrações pendentes;
+- `method` **(opcional):** este campo especifica o método de migração a ser aplicado, que pode ser "up" (para aplicar migrações) ou "down" (para reverter migrações). Se não for fornecido, o método padrão é "up";
+- `options` **(opcional):** um objeto de opções adicionais que você pode fornecer para controlar o processo de migração. Isso pode incluir opções específicas de banco de dados ou configurações adicionais;
+- `context` **(opcional):** um contexto opcional que pode ser passado para as migrações. Isso permite que você forneça informações adicionais para as migrações que podem ser úteis durante o processo.
+
+Retorna uma promessa.
+
+### <a id = "executed"></a>`.executed()`
+
+Este método consulta o histórico de migrações executadas anteriormente e retorna informações sobre elas.\
+É usado para obter informações sobre as migrações que já foram aplicadas ao banco de dados.
+
+Retorna uma promessa que resolverá com um array de objetos de migração que representam as migrações que foram executadas com sucesso no passado.
+
+Por exemplo, se você tiver um histórico de migrações registradas no banco de dados, o método `.executed()` retornará essas informações para que você possa determinar quais migrações já foram aplicadas anteriormente. A principal utilidade disso é permitir que você saiba quais migrações já foram executadas, ajudando a evitar a execução repetida de migrações que já foram aplicadas.
 
 # <a name = "requestpromisenative"></a>`request-promise-native`
 
@@ -60,10 +95,6 @@ Biblioteca utilizada para fazer solicitações HTTP de forma assíncrona no Node
 # JavaScript.
 
 # Node.js
-
-- [`.resolve()`;](#resolve)
-- [`.hostname()`;](#hostname)
-- [`.cpus()`.](#cpus)
 
 ## <a name = "path"></a>`path`
 
