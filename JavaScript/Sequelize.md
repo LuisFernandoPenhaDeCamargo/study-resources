@@ -27,9 +27,9 @@ O método `.save()` não executa validações adicionais por padrão. Se você t
 
 `.update(objeto1, objeto2)`
 
-- `objeto1`: especifica os novos valores a serem atribuídos aos campos;\
+- `objeto1`**:** especifica os novos valores a serem atribuídos aos campos;\
     Exemplo: `{ chave: novo valor, ...}`.
-- `objeto2`: é o objeto que contém o critério de pesquisa para determinar quais registros devem ser atualizados.
+- `objeto2`**:** é o objeto que contém o critério de pesquisa para determinar quais registros devem ser atualizados.
 
 Retorna um objeto (um array) de tamanho único (com um elemento) que contém o número de registros afetados pela operação de atualização.
 
@@ -39,9 +39,9 @@ Retorna um objeto (um array) de tamanho único (com um elemento) que contém o n
 
 `sequelize.query(query, options)`
 
-- `query`: é o comando SQL que você deseja executar como uma string;
-- `options` (opcional): é um objeto de opções que pode conter várias configurações, como parâmetros de substituição, tipo de consulta, etc.
-    - `replacements`: objeto onde as chaves correspondem aos marcadores de posição na operação SQL e os valores são os valores que você deseja substituir.
+- `query`**:** é o comando SQL que você deseja executar como uma string;
+- `options` **(opcional):** é um objeto de opções que pode conter várias configurações, como parâmetros de substituição, tipo de consulta, etc.
+    - `replacements`**:** objeto onde as chaves correspondem aos marcadores de posição na operação SQL e os valores são os valores que você deseja substituir.
 
 Retorna um objeto que representa a operação executada, é necessário acessar os resultados manualmente. Os resultados retornados geralmente são uma matriz de objetos JavaScript.
 
@@ -76,3 +76,9 @@ Cada interrogação será substituída de acordo com a sua posição em relaçã
 
 ## <a id = "getqueryinterface"></a>`.getQueryInterface()`
 
+É usado para obter uma instância do objeto `QueryInterface` associado a uma instância Sequelize específica.\
+Um breve explicação do que o `.getQueryInterface()` faz:
+
+- **Instância Sequelize:** primeiro, é necessário ter uma instância do Sequelize configurada no aplicativo. Isso geralmente é feito quando é criada uma instância do Sequelize com as configurações de conexão ao banco de dados;
+- **Acesso ao QueryInterface:** depois de ter uma instância do Sequelize, você pode chamar o método `.getQueryInterface()` nessa instância para obter uma instância do objeto `QueryInterface`. O `QueryInterface` é uma parte importante do Sequelize que permite que você execute consultas SQL diretamente e execute operações de migração no banco de dados;
+- **Uso do** `QueryInterface`**:** com a instância do `QueryInterface`, você pode chamar vários métodos para executar consultas SQL, criar, atualizar ou excluir tabelas, adicionar ou remover colunas, criar índices e realizar outras operações relacionadas ao esquema do banco de dados.

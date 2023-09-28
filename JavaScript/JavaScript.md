@@ -64,34 +64,35 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 
 # Nativo do JavaScript.
 
-- [Objeto literal;](NativoJavaScript.md#objetoliteral)
-- [Operadores de igualdade;](NativoJavaScript.md#operadoresigualdade)
-- [Operador condicional ternário;](NativoJavaScript.md#operadorcondicionalternario)
-- [Sintaxe da função de flecha x Definição externa de uma função;](NativoJavaScript.md#flechaxexterna)
-- [Função de seta (arrow function);](NativoJavaScript.md#funcaodeseta)
-- [Callback;](NativoJavaScript.md#callback)
-- [`String()`;](NativoJavaScript.md#string)
-- [`.toString()`;](NativoJavaScript.md#tostring)
-- [`isNaN()`;](NativoJavaScript.md#isnan)
-- [`setTimeout()`;](NativoJavaScript.md#settimeout)
-- [Objetos globais;](NativoJavaScript.md#objetosglobais)
-- [Funções globais;](NativoJavaScript.md#funcoesglobais)
-- [Funções de array;](NativoJavaScript.md#funcoesdearray)
-- [Funções de string.](NativoJavaScript.md#funcoesdestring)
+- [Objeto literal;](nativo.md#objetoliteral)
+- [Operadores de igualdade;](nativo.md#operadoresigualdade)
+- [Operador condicional ternário;](nativo.md#operadorcondicionalternario)
+- [Sintaxe da função de flecha x Definição externa de uma função;](nativo.md#flechaxexterna)
+- [Função de seta (arrow function);](nativo.md#funcaodeseta)
+- [Callback;](nativo.md#callback)
+- [`String()`;](nativo.md#string)
+- [`.toString()`;](nativo.md#tostring)
+- [`isNaN()`;](nativo.md#isnan)
+- [`setTimeout()`;](nativo.md#settimeout)
+- [Objetos globais;](nativo.md#objetosglobais)
+- [Funções globais;](nativo.md#funcoesglobais)
+- [Funções de array;](nativo.md#funcoesdearray)
+- [Funções de string.](nativo.md#funcoesdestring)
 
 # Bibliotecas.
 
-- [`umzug`;](Bibliotecas.md#umzug)
-- [`request-promise-native`.](Bibliotecas.md#requestpromisenative)
+- [`umzug`;](bibliotecas.md#umzug)
+- [`request-promise-native`.](bibliotecas.md#requestpromisenative)
 
 ## Node.js
 
-- [`path`;](Bibliotecas.md#path)
-- [`os`.](Bibliotecas.md#os)
+- [`path`;](bibliotecas.md#path)
+- [`os`.](bibliotecas.md#os)
 
 # Frameworks.
 
-- [Vue.js.](FrameworksJavaScript.md#vuejs)
+- [Vue.js;](frameworks.md#vuejs)
+- [Next.js.](frameworks.md#nextjs)
 
 ---
 
@@ -108,22 +109,6 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 # <a id = "nativojavascript"></a>Nativo do JavaScript.
 
 - [Promise.](#promise)
-
-### `clearTimeout(<identificador>)`
-
-Função usada para cancelar um temporizador (timeout) configurado anteriormente com a função `setTimeout()` . Ela permite interromper a execução de uma função ou bloco de código que foi agendado para ser executado após um determinado período de tempo.\
-`<identificador>` : é o identificador único retornado quando você configurou o temporizador usando `setTimeout()`. Exemplo:
-
-```JavaScript
-const identificador = setTimeout(() => {
-  console.log("Temporizador expirou."); //Esta função será executada após 3s.
-  },
-  3000);
-
-  //Cancela o temporizador antes que ele expire (por exemplo, se necessário).
-  clearTimeout(identificador);
-```
-[Exemplo mais complexo com `setTimeout()`.](#settimeoutpromise)
 
 ### <a id = "promise"></a>Promise.
 

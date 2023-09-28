@@ -17,7 +17,6 @@ Linguagem: português (BR).
 - JavaScript.md;
 - Markdown.md;
 - Git-GitHub.md;
-- fazer_algo_async.js;
 - axios_cancel_token.js.
 
 # Resumo.
@@ -50,4 +49,5 @@ Lista de nomes de parâmetros:
 - array;
 - elemento;
 - indice;
-- origem.
+- origem;
+- identificador.
