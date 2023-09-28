@@ -6,6 +6,7 @@
 - [`.save()`;](#save)
 - [`.update()`;](#update)
 - [`.query()`;](#query)
+- [`.getQueryInterface()`.](#getqueryinterface)
 
 ## <a id = "changed"></a>`.changed()`
 
@@ -72,3 +73,6 @@ await sequelize.query(query, { replacements: values });
 ```
 
 Cada interrogação será substituída de acordo com a sua posição em relação ao array `values`.
+
+## <a id = "getqueryinterface"></a>`.getQueryInterface()`
+

@@ -8,18 +8,33 @@ Seu método construtor recebe um objeto de configuração como parâmetro e suas
 
 ```JavaScript
 var umzug = new Umzug({
-    storage: 'sequelize', // Tipo de armazenamento para rastrear migrações
+    storage: 'sequelize', //Tipo de armazenamento para rastrear migrações
     storageOptions: {
-        sequelize: models.sequelize // Opções específicas do armazenamento (no caso, Sequelize)
+        sequelize: models.sequelize //Opções específicas do armazenamento (no caso, Sequelize)
     },
     migrations: {
-        path: `${__dirname}/db/migrations/`, // Caminho para o diretório de migrações
-        params: [models.sequelize.getQueryInterface(), models.Sequelize, models] // Parâmetros a serem passados para as migrações
+        path: `${__dirname}/db/migrations/`, //Caminho para o diretório de migrações
+        params: [models.sequelize.getQueryInterface(), models.Sequelize, models] //Parâmetros a serem passados para as migrações
     },
-    'migrations-path': path.resolve('db', 'migrations') // Caminho absoluto para o diretório de migrações
+    'migrations-path': path.resolve('db', 'migrations') //Caminho absoluto para o diretório de migrações
 });
 
 ```
+
+- `storage`: define o tipo de armazenamento a ser usado pelo `Umzug` para rastrear as migrações. No exemplo, está sendo utilizado o armazenamento do Sequelize.\
+    Você está especificando o tipo de armazenamento a ser usado em tempo de código. Nesse contexto, o termo "armazenamento" se refere à maneira como o `Umzug` rastreia e gerencia informações sobre as migrações de banco de dados. Isso geralmente envolve a criação de tabelas no banco de dados para armazenar informações sobre as migrações aplicadas e seus estados;
+- `storageOptions`: fornece opções específicas para o armazenamento escolhido. Neste caso, as opções estão configuradas para o Sequelize, onde você passa a instância do Sequelize como `sequelize`. A propriedade de storageOptions (`sequelize`) recebe uma instância do Sequelize que será usada pelo `Umzug` para interagir com o banco de dados e executar as migrações;
+- `migrations`: define as configurações relacionadas às migrações:
+    - `path`: especifica o caminho para o diretório onde suas migrações estão localizadas;
+    - `params`: define os parâmetros que serão passados para as migrações quando forem executadas. Neste exemplo, está sendo passado três parâmetros:
+        - Um objeto retornado pelo método `.getQueryInterface()`;\
+            Este objeto permite que você execute consultas SQL diretamente ou crie migrações para alterar o esquema do banco de dados. Portanto, este primeiro elemento fornece à migração a capacidade de interagir com o banco de dados por meio do objeto retornado por `.getQueryInterface()`.
+        - A classe `Sequelize`;\
+            Aqui está sendo passada a classe `Sequelize` do Sequelize. Isso pode ser útil para migrações que precisam acessar a funcionalidade **global do Sequelize** ou realizar configurações específicas do Sequelize durante a migração.
+        - E o objeto `models`.\
+            Este é o objeto que contém os modelos Sequelize **desta aplicação**. Passar `models` como parâmetro permite que as migrações acessem os modelos desta aplicação e realizem operações relacionadas ao banco de dados que envolvem esses modelos.
+    Em resumo, ao definir esses parâmetros no `Umzug`, você está fornecendo às migrações a capacidade de interagir com o banco de dados, acessar modelos Sequelize e realizar operações de migração que podem envolver consultas SQL ou alterações no esquema do banco de dados. Cada elemento do array `params` é uma ferramenta que pode ser usada pelas migrações para realizar seu trabalho.
+
 
 # <a name = "requestpromisenative"></a>`request-promise-native`
 
