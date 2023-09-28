@@ -141,6 +141,29 @@ console.log(isNaN(null));      //false (não é um número estritamente válido,
 
 Observando que `isNaN()` considera datas como valores númericos válidos em JavaScript. Isso pode ser um comportamento inesperado em alguns casos, já que datas não são números no sentido convencional. No entanto, JavaScript permite que datas sejam usadas em operações matemáticas e, portanto, elas são tratadas como números válidos pelo `isNaN()`.
 
+# <a id = "settimeout"></a>`setTimeout()`
+
+Função que agenda a execução de uma [`callback`](#callback) após um período de tempo especificado em milissegundos (delay). <a id = "exemplocallback"></a>Exemplo:
+
+```JavaScript
+function fazerAlgoAsync(callback) {
+  setTimeout(function () {
+    console.log("A operação assíncrona está concluída.");
+    callback(); //Chamando a função de callback após a conclusão da operação.
+  }, 2000);     //Espera 2 segundos antes de executar (delay).
+}
+
+function minhaCallback() {
+  console.log("A callback foi acionada.");
+}
+
+fazerAlgoAsync(minhaCallback);
+```
+
+`fazerAlgoAsync()` é uma função que recebe uma função callback como argumento.\
+Dentro de `fazerAlgoAsync()` há uma operação assíncrona sendo simulada usando o `setTimeout()` , que espera 2 segundos antes de executar o que está no seu escopo.\
+Após a conclusão da operação assíncrona, a função callback é chamada. Neste caso, `minhaCallBack()` é passada como função callback e ela será executada após a conclusão da operação.
+
 # <a name = "objetosglobais"></a>Objetos globais.
 
 - [`.assign()`;](#assign)
@@ -262,6 +285,12 @@ Neste exemplo, estamos usando o `replacer` para personalizar a serialização. E
 ### <a id = "parse"></a>`.parse()`
 
 `.parse(JSON)`
+
+Analisa uma string no formato JSON e a converte em um objeto JavaScript. A string precisa estar em um formato JSON válido. Exemplo:
+
+```JavaScript
+JSON.parse(content)[version]; //Estamos acessando a chave "version" do objeto retornado por JSON.parse(content)
+```
 
 # <a name = "funcoesglobais"></a>Funções globais.
 

@@ -73,6 +73,7 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 - [`String()`;](NativoJavaScript.md#string)
 - [`.toString()`;](NativoJavaScript.md#tostring)
 - [`isNaN()`;](NativoJavaScript.md#isnan)
+- [`setTimeout()`;](NativoJavaScript.md#settimeout)
 - [Objetos globais;](NativoJavaScript.md#objetosglobais)
 - [Funções globais;](NativoJavaScript.md#funcoesglobais)
 - [Funções de array;](NativoJavaScript.md#funcoesdearray)
@@ -88,6 +89,10 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 - [`path`;](Bibliotecas.md#path)
 - [`os`.](Bibliotecas.md#os)
 
+# Frameworks.
+
+- [Vue.js.](FrameworksJavaScript#vuejs)
+
 ---
 
 - [Sequelize.](Sequelize.md#sequelize)
@@ -102,40 +107,7 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 
 # <a id = "nativojavascript"></a>Nativo do JavaScript.
 
-- [`setTimeout(<callback>, <delay>)`](#settimeout)
 - [Promise.](#promise)
-
-## Objetos globais.
-
-### `.parse(<JSON>)`
-
-Analisa uma string no formato JSON e a converte em um objeto JavaScript. A string precisa estar em um formato JSON válido. Exemplo:
-
-```JavaScript
-JSON.parse(content)[version] //Estamos acessando a chave "version" do objeto retornado por JSON.parse(content)
-```
-
-## <a id = "settimeout"></a>`setTimeout(<callback>, <delay>)`
-
-Função que agenda a execução de uma [`<callback>`](#callback) após um período de tempo especificado em milissegundos (`<delay>`). <a id = "exemplocallback"></a>[Exemplo:](fazer_algo_async.js)
-
-```JavaScript
-function fazerAlgoAsync(callback) {
-  setTimeout(function () {
-    console.log("A operação assíncrona está concluída.");
-    callback(); //Chamando a função de callback após a conclusão da operação.
-  }, 2000);     //Espera 2 segundos antes de executar.
-}
-
-function minhaCallback() {
-  console.log("A callback foi acionada.");
-}
-
-fazerAlgoAsync(minhaCallback);
-```
-`fazerAlgoAsync()` é uma função que recebe uma função callback como argumento.\
-Dentro de `fazerAlgoAsync()` há uma operação assíncrona sendo simulada usando o `setTimeout()` , que espera 2 segundos antes de executar o que está no seu escopo.\
-Após a conclusão da operação assíncrona, a função callback é chamada. Neste caso, `minhaCallBack()` é passada como função callback, e ela será executada após a conclusão da operação.
 
 ### `clearTimeout(<identificador>)`
 
