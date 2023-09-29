@@ -53,5 +53,7 @@ Lista de nomes de parâmetros:
 - indice;
 - origem;
 - identificador;
+- separador;
+- limite;
 - radix;
 - code.

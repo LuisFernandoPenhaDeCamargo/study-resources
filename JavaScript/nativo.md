@@ -170,7 +170,7 @@ Observando que se a string contiver uma parte que é um número válido no iníc
 const texto = "12345texto67890";
 const numeroInteiro = parseInt(texto);
 
-console.log(numeroInteiro); //
+console.log(numeroInteiro); //12345.
 ```
 
 # <a id = "settimeout"></a>`setTimeout()`
@@ -529,8 +529,40 @@ Retorna `true` se o valor especificado estiver presente no array e `false` caso 
 
 # <a name = "funcoesdestring"></a>Funções de string.
 
-- [`.trim()`.](#trim)
+- [`.trim()`;](#trim)
+- [`.split()`.](#split)
 
 ## <a id = "trim"></a>`.trim()`
 
 Remove espaços em branco (espaços, tabulações e quebras de linha) do início e do final da string. **Ele não afeta os espaçoes em branco dentro da string, apenas os espaços em branco externos**.
+
+## <a id = "split"></a>`.split()`
+
+É usado para dividir uma string em um array de substrings com base em um separador especificado.
+
+`string.split(separador, limite)`
+
+- `string`**:** a string original que você deseja dividir em substrings;
+- `separador`**:** o separador que determina onde a string será dividida em substrings. Pode ser uma string ou uma expressão regular. Se você omitir o separador, a string inteira será considerada como uma única substring no array resultante;
+- `limite` **(opcional):** um número inteiro que especifica o número máximo de divisões a serem feitas. As divisões além desse limite não serão incluídas no array resultante. Se você omitir o limite, todas as divisões possíveis serão feitas.
+
+Exemplo usando um separador de espaõ em branco:
+
+```JavaScript
+const frase = "Isso é uma frase de exemplo.";
+const palavras = frase.split(" ");
+
+console.log(palavras); //["Isso", "é", "uma", "frase", "de", "exemplo."]
+```
+
+Neste exemplo, a string foi dividida em substrings sempre que um espaço em branco foi encontrado como separador.\
+Exemplo usando um separador de vírgula:
+
+```JavaScript
+const lista = "maçã,banana,uva,morango";
+const frutas = lista.split(",");
+
+console.log(frutas); //["maçã", "banana", "uva", "morango"]
+```
+
+Neste exemplo, a string foi dividida em substrings sempre que uma vírgula foi encontrada como separador.
