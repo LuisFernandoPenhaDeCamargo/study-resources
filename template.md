@@ -51,9 +51,12 @@ Lista de nomes de parâmetros:
 - string;
 - opcoes;
 - valores;
+- registros;
 - elemento;
 - indice;
 - nomeDaTabela;
+- nomeDaColuna;
+- propriedadesDaColuna;
 - origem;
 - identificador;
 - separador;

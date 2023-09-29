@@ -1,4 +1,4 @@
-# <a name = "sequelize"></a>Sequelize.
+# Sequelize.
 
 # Objeto `Sequelize` x objeto `QueryInterface`.
 
@@ -119,10 +119,14 @@ Um breve explicação do que o `.getQueryInterface()` faz:
 - **Acesso ao QueryInterface:** depois de ter uma instância do Sequelize, você pode chamar o método `.getQueryInterface()` nessa instância para obter uma instância do objeto `QueryInterface`. O `QueryInterface` é uma parte importante do Sequelize que permite que você execute consultas SQL diretamente e execute operações de migração no banco de dados;
 - **Uso do** `QueryInterface`**:** com a instância do `QueryInterface`, você pode chamar vários métodos para executar consultas SQL, criar, atualizar ou excluir tabelas, adicionar ou remover colunas, criar índices e realizar outras operações relacionadas ao esquema do banco de dados.
 
-# Métodos objeto do `QueryInterface`.
+# Métodos do objeto `QueryInterface`.
+
+`QueryInterface` possui a propriedade `.QueryGenerator` que contém métodos para criar operações SQL, como seleção, inserção, atualização e exclusão, com base nos parâmetros e critérios fornecidos. Isso ajuda a abstrair a geração de SQL manualmente e garante que as consultas geradas sejam compatíveis com o banco de dados específico que você está usando.
 
 - [`.createTable`;](#createtable)
-- [`.dropTable()`.](#droptable)
+- [`.dropTable()`;](#droptable)
+- [`.addColumn()`;](#addcolumn)
+- [`.removeColumn()`.](#removecolumn)
 
 ## <a id = "createtable"></a>`.createTable()`
 
@@ -142,3 +146,41 @@ Retorna uma promessa que representa a criação da tabela.
 `.dropTable(tableName)`
 
 `tableName`: nome da tabela que você deseja excluir.
+
+## <a id = "bulkinsertquery"></a>`.bulkInsertQuery()`
+
+É usado para gerar uma operação SQL para inserção em massa de registros em uma tabela. Ela cria a consulta SQL com base no nome da tabela e na lista de registros que você deseja inserir.
+
+`.QueryGenerator.bulkInsertQuery(nomeDaTabela, registros, opcoes)`
+
+- `nomeDaTabela`**:** o nome do modelo Sequelize correspondente à tabela na qual você deseja inserir os registros em massa;
+- `registros`**:** um array de objetos que representa os registros que você deseja inserir na tabela. Cada objeto de `registros` deve conter pares de chave-valor, onde as chaves correspondem aos nomes das colunas da tabela e os valores são os dados a serem inseridos;
+- `opcoes` **(opcional):** um objeto que pode conter várias opções para controlar o comportamento da operação de inserção em massa. Algumas opções comuns incluem:
+    - `transaction`**:** uma transação Sequelize opcional na qual a operação deve ser executada;
+    - `ignoreDuplicates`**:** um booleano que indica se as duplicatas devem ser ignoradas durante a inserção;
+    - `updateOnDuplicate`**:** um objeto que define as colunas a serem atualizadas em caso de conflito de chave única.
+
+Retorna uma string contendo a operação SQL de inserção em massa.
+
+## <a id = "addcolumn"></a>`.addColumn()`
+
+Adiciona uma nova coluna a uma tabela existente no banco de dados.
+
+`.addColumn(nomeDaTabela, nomeDaColuna, propriedadesDaColuna)`
+
+- `nomeDaTabela`**:** nome da tabela à qual você deseja adicionar a coluna;
+- `nomeDaColuna`**:** nome da nova coluna a ser adicionada;
+- `propriedadesDaColuna`**:** objeto que contém informações sobre a coluna.
+
+Retorna uma promise.
+
+## <a id = "removecolumn"></a>`.removeColumn()`
+
+Remove uma coluna existente de uma tabela no banco de dados.
+
+`.removeColumn(nomeDaTabela, nomeDaColuna)`
+
+- `nomeDaTabela`**:** uma string que especifica o nome da tabela da qual você deseja remover a coluna;
+- `nomeDaColuna`**:** uma string que especifica o nome da coluna a ser removida da tabela.
+
+Retorna uma promise.

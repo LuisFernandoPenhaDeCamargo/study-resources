@@ -212,9 +212,76 @@ const identificador = setTimeout(() => {
   //Cancela o temporizador antes que ele expire (por exemplo, se necessário).
   clearTimeout(identificador);
 ```
-[Exemplo mais complexo com `setTimeout()`.](#settimeoutpromise)
+[Exemplo mais complexo com o `setTimeout()`.](#settimeoutpromise)
 
 # <a name = "promises"></a>Promises.
+
+É um objeto JavaScript que representa a **eventual conclusão** ou **falha** de **uma operação assíncrona**. Ele é usado para lidar com operações assíncronas de maneira mais elegante e legível, tornando o código mais organizado e evitando o [**callback hell**](#callbackhell).
+
+Uma promessa tem três estados possíveis:
+
+- **Pendente (Pending):** o estado inicial, quando a Promise está esperando para ser cumprida ou rejeitada;
+- **Cumprida (Fulfilled):** a operação assíncrona foi concluída com sucesso e a Promise foi cumprida, ou seja, a função `resolve()` foi chamada;
+- **Rejeitada (Reject):** a operação assíncrona falhou e a Promise foi rejeitada, ou seja, a função `reject()` foi chamada.
+
+```JavaScript
+const minhaPromise = new Promise((resolve, reject) => {
+  //Corpo da promessa.
+
+  /*Código assíncrono a ser executado, como uma chamada API, leitura de arquivo, etc.*/
+
+  /*Se a operação for bem-sucedida, chame "resolve" com o valor resultante.
+  resolve(valorResultado);*/
+
+  /*Se ocorrer um erro, chame "reject" com o motivo da rejeição (erro).
+  reject(motivoErro);*/
+});
+```
+
+- `resolve` é o parâmetro que representa a função de resolução.\
+Retorna um valor;
+- `reject` é o parâmetro que representa a função de rejeição.\
+Retorna um motivo (geralmente uma mensagem de erro).
+
+Para lidar com o resultado da Promise, você pode utilizar os métodos `.then()` e `.catch()`, ou usar a sintaxe do **async/await** para operações assíncronas mais legíveis.
+
+Exemplo utilizando `.then()` e `.catch()`:
+
+```JavaScript
+minhaPromise
+  .then((resultado) => {
+    console.log("Operação bem-sucedida. Resultado:", resultado);
+  })
+  .catch((erro) => {
+    console.log("Erro na operação:", erro);
+  });
+```
+
+Exemplo utilizando async/await:
+
+
+```JavaScript
+async function executarOperacao() {
+  try{
+    const resultado = await minhaPromise;
+    console.log("Operação bem-sucedida. Resultado:", resultado);
+  }catch(erro){
+    console.error("Erro na operação:", erro);
+  }
+}
+
+executarOperacao();
+```
+
+A utilização de Promises ajuda a tornar o código mais legível e facilita o tratamento de erros em operações assíncronas, melhorando a experiência de desenvolvimento em JavaScript.
+
+[Exemplo mais complexo utilizando uma Promise.](#settimeoutpromise)
+
+# <a name = "settimeoutpromise"></a>Exemplo envolvendo `setTimeout()` e Promise.
+
+### Orion Games: orion-data-api
+
+
 
 # <a name = "objetosglobais"></a>Objetos globais.
 
