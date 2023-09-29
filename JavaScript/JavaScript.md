@@ -136,53 +136,6 @@ Quando você inclui a diretiva `'use strict'` no início de um arquivo JavaScrip
 
 ---
 
-```JavaScript
-module.exports = function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-```
-
-- `return`: retorna o conteúdo;
-- `new Promise()`: cria uma promessa;
-- `resolve`: argumento de uma função anônima, como só estamos passando um argumento, se trata do parâmetro `resolve`, que representa a função de resolução de uma promessa;
-- `=> setTimeout(resolve, ms)`: escopo da função anônima, nele, atrasamos a chamada da função de resolução da promessa.
-
-Código equivalente ao de cima, mas utilizando de mecanismos para facilitar a sua compreensão.
-
-```JavaScript
-module.exports = function sleep(ms) {
-  return (new Promise((resolve) => {
-    setTimeout(resolve, ms);
-  }))
-}
-```
-
-O ponto chave deste módulo é que estamos **promissificando** o tempo de pausa do `setTimeout()`.
-
-Para podermos repassar um argumento para a função de resolução é necessária a criação da promessa com uma variável que represente o parâmetro `resolve`.
-
-```JavaScript
-module.exports = function sleep(ms) {
-  return (new Promise((resolve) => {
-    setTimeout(() => {
-      resolve("Atribuindo um valor para o parâmetro da função de resolução.")
-    }, ms);
-  }))
-}
-```
-
-Lembrando que `resolve()` (abre e fecha parênteses) resolve imediatamente a promessa. Então
-
-```JavaScript
-module.exports = function sleep(ms) {
-  return (new Promise((resolve) => {
-    setTimeout(resolve("Atribuindo um valor para o parâmetro da função de resolução."), ms);
-  }))
-}
-```
-
-mesmo a função de resolução sendo passada como argumento para a função de atraso, a promessa seria resolvida imediatamente de forma ininterrupta.
-
 # <a id = "bibliotecas"></a>Bibliotecas.
 
 ### JavaScript
