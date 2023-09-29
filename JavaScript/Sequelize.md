@@ -1,12 +1,48 @@
 # <a name = "sequelize"></a>Sequelize.
 
-# Métodos.
+# Objeto `Sequelize` x objeto `QueryInterface`.
 
+O objeto Sequelize é uma parte fundamental do Sequelize ORM e é usado para definir e manipular modelos de dados. Ele lida com operações em registros individuais, como criar, ler, atualizar e excluir (CRUD), bem como validações, associações entre modelos e outras operações de dados.\
+Por outro lado, a Query Interface é responsável por operações de criação e gerenciamento de tabelas no banco de dados, como criar e excluir tabelas, adicionar ou remover colunas, definir índices e outras operações relacionadas ao esquema do banco de dados.\
+Essa divisão de responsabilidades é uma das características do Sequelize que ajuda a manter uma separação clara entre as **operações de esquema** e as **operações de dados**, tornando o código mais organizado e legível.
+
+# Métodos de um objeto model do Sequelize.
+
+- [`.findOne()`;](#findone)
+- [`.update()`;](#update)
 - [`.changed()`;](#changed)
 - [`.save()`;](#save)
 - [`.update()`;](#update)
 - [`.query()`;](#query)
 - [`.getQueryInterface()`.](#getqueryinterface)
+
+<a id = "opcoes"></a>`opcoes` é o objeto que define critérios de pesquisa, é um parâmetro opcional. Algumas das suas principais propriedades são:
+
+- `where`**:** define condições de pesquisa. Você pode usar isso para especificar as colunas e valores pelos quais deseja pesquisar;
+- `attributes`**:** define quais colunas da tabela você deseja retornar. Por padrão, retornará todas as colunas. Você pode listar as colunas desejadas como um array, por exemplo, `{ attributes: ['name', 'path_name']}`;
+- `include`**:** permite incluir associações relacionadas (por exemplo, tabelas associadas) na consulta;
+- `order`**:** define a ordem em que os resultados devem ser retornados;
+- `limit`**:** limita o número de registros que serão atualizados.
+
+## <a id = "findone"></a>`.findOne()`
+
+É usado para encontrar um único registro na tabela correspondente ao modelo, com base em um conjunto de critérios de pesquisa.
+
+`.findOne(`[`opcoes`](#opcoes)`)`
+
+Retorna uma promise que resolve em um objeto que representa o registro encontrado na tabela ou `'null'` se nenhum registro corresponder aos critérios de pesquisa.
+
+## <a id = "update"></a>`.update()`
+
+É usado para atualizar registros em uma tabela do banco de dados. Ele permite que você altere os valores das colunas para um ou mais registros com base em um conjunto de critérios de pesquisa.
+
+`.update(valores, `[`opcoes`](#opcoes)`)`
+
+- `valores`**:** este é um objeto que contém os novos valores que você deseja atribuir às colunas. As chaves do objeto representam o nome das colunas que você deseja atualizar, e os valores são os novos valores que você deseja definir;
+- `opcoes`**:** mais propriedades que fazem sentido para este método:
+    - `returning`**:** especifica se o método deve retornar os registros atualizados.
+
+Retorna um array de duas posições, aonde a primeira posição é a quantidade de registros afetados pela operação de atualização (um número inteiro) e a segunda posição é um objeto que contém informações adicionais sobre a operação (caso `returning: true`).
 
 ## <a id = "changed"></a>`.changed()`
 
@@ -82,3 +118,27 @@ Um breve explicação do que o `.getQueryInterface()` faz:
 - **Instância Sequelize:** primeiro, é necessário ter uma instância do Sequelize configurada no aplicativo. Isso geralmente é feito quando é criada uma instância do Sequelize com as configurações de conexão ao banco de dados;
 - **Acesso ao QueryInterface:** depois de ter uma instância do Sequelize, você pode chamar o método `.getQueryInterface()` nessa instância para obter uma instância do objeto `QueryInterface`. O `QueryInterface` é uma parte importante do Sequelize que permite que você execute consultas SQL diretamente e execute operações de migração no banco de dados;
 - **Uso do** `QueryInterface`**:** com a instância do `QueryInterface`, você pode chamar vários métodos para executar consultas SQL, criar, atualizar ou excluir tabelas, adicionar ou remover colunas, criar índices e realizar outras operações relacionadas ao esquema do banco de dados.
+
+# Métodos objeto do `QueryInterface`.
+
+- [`.createTable`;](#createtable)
+- [`.dropTable()`.](#droptable)
+
+## <a id = "createtable"></a>`.createTable()`
+
+Cria uma nova tabela no banco de dados. Este método permite definir a estrutura da tabela, incluindo o nome das colunas, os tipos de dados das colunas e quaisquer outras restrições desejadas.
+
+`createTable(nomeDaTabela, objeto)`
+
+- `nomeDaTable`**:** o nome da tabela a ser criada;
+- `objeto`**:** objeto que define a estrutura da tabela, incluindo colunas e suas configurações.
+
+Retorna uma promessa que representa a criação da tabela.
+
+## <a id = "droptable"></a>`.dropTable()`
+
+É usado para excluir uma tabela do banco de dados. Ele recebe como argumento o nome da tabela que você deseja excluir e retorna uma promise.
+
+`.dropTable(tableName)`
+
+`tableName`: nome da tabela que você deseja excluir.

@@ -4,6 +4,22 @@
 
 **No linux, o Shebang é necessário para a impressão de logs no terminal de comando.**
 
+# Objeto de objetos indexado por chaves.
+
+Exemplo para entender como você pode acessar objetos de um objeto utilizando suas chaves.
+
+```JavaScript
+const objetoDeObjetos = {
+  chave1: { nome: "Primeiro objeto." },
+  chave2: { nome: "Segundo objeto." },
+  chave1: { nome: "Terceiro objeto." }
+};
+
+console.log(objetoDeObjetos.chave1);    //Saída: { nome: 'Terceiro objeto.' }. O valor da chave foi sobreescrito quando você a utilizou novamente.
+console.log(objetoDeObjetos.chave2);    //Saída: { nome: 'Segundo objeto.' }.
+console.log(objetoDeObjetos['chave1']); //Saída: { nome: 'Terceiro objeto.' }. O objeto é indexado por chaves, então você pode acessar suas propriedades desta forma também.
+```
+
 # Cadeia de protótipos.
 
 Também conhecida como também conhecida como **prototype chain**, é um conceito fundamental no JavaScript que descreve como **objetos JavaScript estão relacionados uns aos outros através de seus protótipos**. Essa cadeia é usada para permitir a **herança de propriedades e métodos** entre objetos em JavaScript.\
@@ -62,6 +78,19 @@ console.log(objeto.propriedadeNaoEnumeravel); //Não enumerável.
 No exemplo acima, a propriedade `propriedadeEnumeravel` é definida como enumerável, enquanto a `propriedadeNaoEnumeravel` é definida como não enumerável. Quando você itera pelas propriedades do objeto usando um loop `for...in` ou obtém as chaves do objeto usando `Object.keys()`, apenas a `propriedadeEnumeravel` é visível, porque é a única propriedade enumerável. A `propriedadeNaoEnumeravel` não é listada.\
 Por padrão, a maioria das propriedades que você cria em objetos é enumerável, mas é importante estar ciente da enumerabilidade ao trabalhar com objetos e definir propriedades personalizadas, especialmente quando você deseja controlar quais propriedades são visíveis durante iterações.
 
+# `'use strict'`
+
+A expressão `'use strict'` é uma diretiva de uso no JavaScript que faz com que o interpretador do JavaScript trate o código em um modo estrito, impondo regras adicionais e evitando comportamentos potencialmente problemáticos. Ela foi introduzida no **ECMAScript 5 (ES5)** como uma forma de melhorar a qualidade e a segurança do código JavaScript.\
+Quando você inclui a diretiva `'use strict'` no início de um arquivo JavaScript ou no início de uma função, ela ativa o modo estrito para todo o código dentro desse escopo. Aqui estão algumas das principais características do modo estrito:
+
+- **Evita a criação automática de variáveis globais:** em modo estrito, você não pode criar variáveis globais acidentalmente. Se você tentar atribuir um valor a uma variável que não foi declarada com `var`, `let` ou `const`, isso resultará em um erro;
+- **Evita a reatribuição de variáveis somente leitura:** em modo estrito, você não pode reatribuir valores a variáveis que foram declaradas como constantes (com `const`). Isso ajuda a evitar erros de reatribuição acidental;
+- **Restringe o uso do objeto** `this`**:** em modo estrito, o valor de `this` em funções anônimas e funções internas não é automaticamente ligado ao objeto global (como em não estrito). Isso ajuda a evitar erros sutis relacionados ao `this`;
+- **Torna as eliminações de variáveis mais restritas:** em modo estrito, você não pode usar a palavra-chave `delete` em variáveis, funções ou funções de nível superior. Isso torna o código mais previsível;
+- **Impede a utilização de palavras reservadas futuras:** o modo estrito proíbe o uso de identificadores que são palavras reservadas que podem ser introduzidas em futuras versões do ECMAScript;
+- **Força parâmetros de função únicos:** em modo estrito, funções com parâmetros nomeados duplicados ou com nomes iguais a palavras-chaves geram erros;
+- **Outras restrições:** existem outras restrições e alterações de comportamento em modo estrito que visam tornar o código mais seguro e mais fácil de otimizar.
+
 # Nativo do JavaScript.
 
 - [Objeto literal;](nativo.md#objetoliteral)
@@ -75,6 +104,7 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 - [`isNaN()`;](nativo.md#isnan)
 - [`parseInt()`;](nativo.md#parseint)
 - [`setTimeout()`;](nativo.md#settimeout)
+- [Promises;](nativo.md#promises)
 - [Objetos globais;](nativo.md#objetosglobais)
 - [Funções globais;](nativo.md#funcoesglobais)
 - [Funções de array;](nativo.md#funcoesdearray)
@@ -108,8 +138,6 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 ---
 
 # <a id = "nativojavascript"></a>Nativo do JavaScript.
-
-- [Promise.](#promise)
 
 ### <a id = "promise"></a>Promise.
 

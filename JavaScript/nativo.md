@@ -173,7 +173,7 @@ const numeroInteiro = parseInt(texto);
 console.log(numeroInteiro); //12345.
 ```
 
-# <a id = "settimeout"></a>`setTimeout()`
+# <a name = "settimeout"></a>`setTimeout()`
 
 Função que agenda a execução de uma [`callback`](#callback) após um período de tempo especificado em milissegundos (delay). <a id = "exemplocallback"></a>Exemplo:
 
@@ -214,7 +214,7 @@ const identificador = setTimeout(() => {
 ```
 [Exemplo mais complexo com `setTimeout()`.](#settimeoutpromise)
 
-#
+# <a name = "promises"></a>Promises.
 
 # <a name = "objetosglobais"></a>Objetos globais.
 

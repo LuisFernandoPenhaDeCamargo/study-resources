@@ -49,8 +49,11 @@ Lista de nomes de parâmetros:
 - objetoDeConfiguracao;
 - array;
 - string;
+- opcoes;
+- valores;
 - elemento;
 - indice;
+- nomeDaTabela;
 - origem;
 - identificador;
 - separador;
