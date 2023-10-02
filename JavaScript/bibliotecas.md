@@ -94,7 +94,7 @@ Biblioteca utilizada para fazer solicitações HTTP de forma assíncrona no Node
 
 # JavaScript.
 
-# Node.js
+# Node.js.
 
 ## <a name = "path"></a>`path`
 

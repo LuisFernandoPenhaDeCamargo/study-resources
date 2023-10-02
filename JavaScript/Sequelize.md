@@ -126,6 +126,7 @@ Um breve explicação do que o `.getQueryInterface()` faz:
 - [`.createTable`;](#createtable)
 - [`.dropTable()`;](#droptable)
 - [`.addColumn()`;](#addcolumn)
+- [`.changeColumn()`;](#changecolumn)
 - [`.removeColumn()`.](#removecolumn)
 
 ## <a id = "createtable"></a>`.createTable()`
@@ -167,6 +168,18 @@ Retorna uma string contendo a operação SQL de inserção em massa.
 Adiciona uma nova coluna a uma tabela existente no banco de dados.
 
 `.addColumn(nomeDaTabela, nomeDaColuna, propriedadesDaColuna)`
+
+- `nomeDaTabela`**:** nome da tabela à qual você deseja adicionar a coluna;
+- `nomeDaColuna`**:** nome da nova coluna a ser adicionada;
+- `propriedadesDaColuna`**:** objeto que contém informações sobre a coluna.
+
+Retorna uma promise.
+
+## <a id = "changecolumn"></a>`.changeColumn()`
+
+Modifica uma coluna existente.
+
+`.changeColumn(nomeDaTabela, nomeDaColuna, propriedadesDaColuna)`
 
 - `nomeDaTabela`**:** nome da tabela à qual você deseja adicionar a coluna;
 - `nomeDaColuna`**:** nome da nova coluna a ser adicionada;
