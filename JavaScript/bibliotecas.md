@@ -88,6 +88,45 @@ Retorna uma promessa que resolverá com um array de objetos de migração que re
 
 Por exemplo, se você tiver um histórico de migrações registradas no banco de dados, o método `.executed()` retornará essas informações para que você possa determinar quais migrações já foram aplicadas anteriormente. A principal utilidade disso é permitir que você saiba quais migrações já foram executadas, ajudando a evitar a execução repetida de migrações que já foram aplicadas.
 
+# <a name = "chai"></a>`chai`
+
+`chai` é uma biblioteca utilizada para realizar afirmações (assertions) em testes unitários. É frequentemente utilizada em conjunto com frameworks de teste como o Mocha ou o Jasmine para facilitar a criação e execução de testes.
+
+### <a id ="expect"></a>`.expect()`
+
+A função `.expect()` é usada para criar afirmações (assertions) em testes unitários. Ela é usada para expressar o que você espera que aconteça em um teste e, em seguida, verificar se essa expectativa é atendida.
+
+`expect(valor).metodoDeAssercao(valorEsperado)`
+
+- `valor`**:** é o valor ou expressão que você deseja testar;
+- `metodoDeAssercao`**:** é um método disponível no `chai` que define a condição que você está testando. Alguns exemplos comuns `.to.equal()`, `.to.be.true`, `.to.be.false`, `.to.be.null`, `.to.be.undefined`, entre outros;
+- `valorEsperado`**:** é o valor que você espera que `valor` tenha após a avaliação da asserção.
+
+Alguns exemplos:
+
+```JavaScript
+const expect = require('chai').expect;
+
+describe('Exemplo de teste', function() {
+    it('Deve verificar se 1 + 1 é igual a 2', function() {
+        expect(1 + 1).to.equal(2);
+    });
+
+    it('Deve verificar se um valor é verdadeiro', function() {
+        expect(true).to.be.true;
+    });
+
+    it('Deve verificar se um valor é nulo', function() {
+        expect(null).to.be.null;
+    });
+
+    it('Deve verificar se uma string é igual a outra', function() {
+        expect('hello').to.equal('hello');
+    });
+});
+
+```
+
 # <a name = "requestpromisenative"></a>`request-promise-native`
 
 Biblioteca utilizada para fazer solicitações HTTP de forma assíncrona no Node.js com suporte a Promises. É uma extensão do módulo request-promise, oferecendo as mesmas funcionalidades, mas com o uso nativo de Promises, o que torna o código mais limpo e legível quando se trata de fazer solicitações HTTP e lidar com respostas.

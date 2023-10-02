@@ -15,11 +15,16 @@ Linguagem: português (BR).
 # Check List.
 
 - JavaScript.md;
+- axios_cancel_token.js;
 - Markdown.md;
-- Git-GitHub.md;
-- axios_cancel_token.js.
+- SQL.md;
+- Git-GitHub.md.
 
 # Resumo.
+
+# Termo e a sua tradução.
+
+Neste caso, colocar o **termo** e a sua **tradução** em **negrito**.
 
 # Listas.
 
@@ -57,6 +62,7 @@ Lista de nomes de parâmetros:
 - nomeDaTabela;
 - nomeDaColuna;
 - propriedadesDaColuna;
+- valor;
 - origem;
 - identificador;
 - separador;

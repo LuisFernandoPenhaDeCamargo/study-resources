@@ -106,8 +106,60 @@ const somaExplicito = (a, b) => {
 
 # <a name = "callback"></a>Callback.
 
-Uma Callback (ou função de retorno) é o conceito que se refere a uma **função** que é **passada como argumento para outra função** e é **executada após a conclusão** de uma **operação assíncrona ou em reposta a um evento específico**.
+Uma Callback (ou função de retorno) é o conceito que se refere a uma **função** que é **passada como argumento para outra função** e é **executada após a conclusão** de um **de um evento específico**.
 São uma parte fundamental da programação assíncrona em JavaScript e são amplamente utilizadas em situações em que você precisa controlar o fluxo de código após uma conclusão de uma operação demorada. [Exemplo.](#exemplocallback)
+
+### Callback hell.
+
+Callback hell é uma expressão usada na programação para descrever uma situação em que o código se torna difícil de ler e manter devido ao aninhamento excessivo de callbacks **assíncronos**. Essa situação ocorre comumente em linguagens de programação que usam callbacks para lidar com operações assíncronas, como JavaScript.\
+Algumas das características típicas do callback hell:
+
+- **Aninhamento profundo:** múltiplas funções de callback são aninhadas dentro de outras funções de callback, criando uma estrutura profundamente aninhada;
+- **Código inclinação para a direita:** o código tende a se inclinar para a direita no editor de texto devido ao alinhamento de várias chamadas de função de callback;
+- **Dificuldade de leitura e manutenção:** o código se torna díficil de ler ou entender devido à complexidade causada pelo aninhamento excessivo;
+- **Gerenciamento de erros complexo:** lidar com erros em callbacks aninhados pode ser complicado, resultando em código propenso a erros;
+- **Dificuldade de reutilização:** o código pode ser difícil de reutilizar ou modificar devido à sua estrutura complexa.
+
+Aqui está um exemplo simplificado que ilustra o callback hell com chamadas de função assíncrona:
+
+```JavaScript
+asyncFunction1(arg1, function (result1) {
+  asyncFunction2(result1, function (result2) {
+    asyncFunction3(result2, function (result3) {
+          //E assim por diante...
+    });
+  });
+});
+```
+
+Para lidar com o callback hell, foram desenvolvidos vários padrões e técnicas, como promises, async/await e bibliotecas como a **async.js**. Essas abordagens tornam o código mais legível, mais organizado e mais fácil de manter, evitando o aninhamento excessivo de callbacks.
+
+### Assíncrona x síncrona.
+
+Nem toda função de callback é necessariamente assíncrona. O termo callback refere-se principalmente a uma função que é passada como argumento para outra função e é executada quando um evento específico ocorre. A natureza síncrona ou assíncrona da função de callback depende do contexto em que é usada e da implementação da função que a chama.\
+Algumas distinções importantes:
+
+Callbacks síncronas: em algunas casos, as callbacks podem ser síncronos, o que significa que são executados imediatamente dentro da mesma pilha de chamadas de função em que são registrados. Isso ocorre quando a função que chama o callback não realiza operações assíncronas, como E/S de arquivo, solicitações de rede, temporizadores, etc. Por exemplo:
+
+```JavaScript
+function sincrona(callback) {
+  callback();
+}
+```
+
+Neste caso, `callback()` é uma função de callback síncrona.
+
+Callbacks assíncronas: as callbacks frequentemente são usadas em operações assíncronas, onde a função que chama a callback retorna imediatamente e a execução da callback ocorre em um momento posterior, geralmente quando a operação assíncrona é concluída. Isso é comum em situações como requisições de rede, leitura de arquivos ou uso de temporizadores. Por exemplo:
+
+```JavaScript
+function assincrona(callback) {
+  setTimeout(callback, 1000);
+}
+```
+
+Neste caso, `callback()` é uma função assíncrona, pois será executada após um atraso de 1 segundo.
+
+Portanto, a chave para entender se uma callback é síncrona ou assíncrona é observar o contexto em que ela é usada e as operações realizadas pela função que a chama. Callbacks são uma técnica de programação poderosa usada em uma variedade de contextos, tanto síncronos quanto assíncronos.
 
 # <a name = "string"></a>`String(parametro)`
 

@@ -125,6 +125,8 @@ Um breve explicação do que o `.getQueryInterface()` faz:
 
 - [`.createTable`;](#createtable)
 - [`.dropTable()`;](#droptable)
+- [`.bulkInsertQuery()`;](#bulkinsertquery)
+- [`.bulkInsert()`;](#bulkinsert)
 - [`.addColumn()`;](#addcolumn)
 - [`.changeColumn()`;](#changecolumn)
 - [`.removeColumn()`.](#removecolumn)
@@ -163,9 +165,25 @@ Retorna uma promessa que representa a criação da tabela.
 
 Retorna uma string contendo a operação SQL de inserção em massa.
 
+## <a id = "bulkinsert"></a>`.bulkInsert()`
+
+Permite inserir múltiplos registros em uma tabela.
+
+`.bulkInsert(nomeDaTabela, registros, opcoes)`
+
+- `nomeDaTabela`**:** o nome do modelo Sequelize correspondente à tabela na qual você deseja inserir os registros em massa;
+- `registros`**:** um array de objetos que representa os registros que você deseja inserir na tabela. Cada objeto no array deve conter propriedades que correspondam às colunas da tabela;
+- `opcoes` **(opcional):** um objeto que pode conter várias opções para controlar o comportamento da operação de inserção em massa. Algumas opções comuns incluem:
+    - `transaction`**:** uma transação Sequelize opcional na qual a operação deve ser executada;
+    - `ignoreDuplicates`**:** um booleano que indica se as duplicatas devem ser ignoradas durante a inserção.
+
+## `.bulkInsert()` x `.bulkInsertQuery()`
+
+A principal diferença entre os dois métodos é que `.bulkInsert()` é responsável por executar a inserção em massa automaticamente, enquanto `.bulkInsertQuery()` apenas gera a operação SQL de inserção em massa e deixa a execução da inserção para você.
+
 ## <a id = "addcolumn"></a>`.addColumn()`
 
-Adiciona uma nova coluna a uma tabela existente no banco de dados.
+Adiciona uma nova coluna a uma tabela.
 
 `.addColumn(nomeDaTabela, nomeDaColuna, propriedadesDaColuna)`
 

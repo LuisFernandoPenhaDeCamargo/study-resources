@@ -114,6 +114,7 @@ Quando você inclui a diretiva `'use strict'` no início de um arquivo JavaScrip
 
 - [`sequelize`;](Sequelize.md)
 - [`umzug`;](bibliotecas.md#umzug)
+- [`chai`;](bibliotecas.md#chai)
 - [`request-promise-native`.](bibliotecas.md#requestpromisenative)
 
 ## Node.js
@@ -128,7 +129,6 @@ Quando você inclui a diretiva `'use strict'` no início de um arquivo JavaScrip
 
 ---
 
-+ Callback hell;
 + Template literals;
 + Spread properties;
 + `.import()`;
