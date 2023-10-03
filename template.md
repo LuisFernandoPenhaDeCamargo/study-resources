@@ -8,6 +8,7 @@ Contexto:
 - JavaScript;
 - Node.js;
 - API;
+- MySQL;
 - Git/GitHub.
 
 Linguagem: português (BR).
@@ -20,52 +21,56 @@ Linguagem: português (BR).
 - SQL.md;
 - Git-GitHub.md.
 
-# Resumo.
+# Estruturas.
 
-# Termo e a sua tradução.
+### Lógica.
 
-Neste caso, colocar o **termo** e a sua **tradução** em **negrito**.
+Todo o arquivo funcionará de forma padronizada, mas também lógica. Se o conteúdo não possuir a seção em específico, ela simplesmente não será incluída no escopo do conteúdo.
 
-# Listas.
+### Títulos.
 
-Se possuírem itens nominais, eles deverem receber algum tipo de destaque, seja os evidenciado por serem `pedaços de código` ou os destacando em **negrito** (destacar tambéms os **dois pontos**).
+Caso o título seja o nome de uma `função`/`método`, ele não deve incluir os seus parâmetros.\
+Os nomes das bibliotecas estão iguais ao nome utilizado em sua importação, por isso estão entre `acentos graves`.
 
-# `nomeDaFuncao(não incluir os parâmetros no título)`
+### Termos.
 
-Descrição da função. Se na sua descrição o retorno ficar claro, não precisa incluir "Retorna ..." mais abaixo.
+Na explicação de um termo (um anagrama, por exemplo), **ele**, **o significado do seu anagrama**, se houver, e sua **tradução**, devem estar em **negrito**.
 
-Mais detalhes sobre a função.
+### Listas.
+
+Os itens nominais de uma lista devem estar em **negrito**, **inclusive os :**. Caso o item seja uma estrutura de programação, ele deve estar entre `acentos graves`.
+
+### Estruturas de programação.
+
+Sempre entre `acentos graves`.
+
+### Escopo de uma estrutura de programação.
+
+Descrição básica e prática da estrutura. Praticamente um resumo.
 
 ```
-- Código exemplificando o seu uso;
-- Aqui devemos incluir todos os seus parâmetros. Utilizar nomes intuitivos.
+Exemplo da sua estrutura.
+
+Pode ser um bloco ou uma estrutura simples (estar somente entre acentos graves).
+Os nomes dos componentes utilizados no exemplo, devem ser intuitivos.
 ```
 
-Descrição de seus parâmetros:\
-parâmetro (se é opcional ou não): descrição.
+- `Objetos da estrutura, como parâmetros.`.
 
-Retorna ...
+Retorno.
 
-Lista de nomes de parâmetros:
+---
 
-- parametro;
-- callback();
-- objeto;
-- objetoDeConfiguracao;
-- array;
-- string;
-- opcoes;
-- valores;
-- registros;
-- elemento;
-- indice;
-- nomeDaTabela;
-- nomeDaColuna;
-- propriedadesDaColuna;
-- valor;
-- origem;
-- identificador;
-- separador;
-- limite;
-- radix;
-- code.
+Há a separação do conteúdo (quebra em dois blocos).
+
+Informação adicional e de maior complexidade da estrutura.
+
+Exemplos mais complexos.
+
+# Global.
+
+- Lista do conteúdo.
+
+# Local.
+
+- Resumo.

@@ -1,11 +1,54 @@
 # Bibliotecas.
 
+# Métodos.
+
 - [`.pending()`;](#pending)
 - [`.execute()`;](#execute)
 - [`.executed()`;](#executed)
+- [`expect()`;](#expect)
+- [`describe()`;](#describe)
+- [`it()`;](#it)
 - [`.resolve()`;](#resolve)
 - [`.hostname()`;](#hostname)
-- [`.cpus()`.](#cpus)
+- [`.cpus()`;](#cpus)
+- [`.existsSync()`;](#existssync)
+- [`.unlinkSync()`.](#unlinksync)
+
+# <a name = "axios"></a>`axios`
+
+Utilizada para fazer requisições HTTP, seja em navegadores ou em Node.js.
+
+- `url` **(string):** URL de destino, para onde a solicitação será enviada;
+- `corpoDaSolicitacao` **(objeto):** corpo da solicitação que está sendo enviada;
+- `configuracoes` **(objeto, opcional):** objeto de configuração opcional que permite personalizar a solicitação. Este objeto pode conter várias opções de configuração, como cabeçalhos personalizados, autenticação, parâmetros de consulta, entre outros.\
+  Como por exemplo a { chave: valor }: `{ cancelToken: objeto.CancelToken.token }`, que é o token de cancelamento.
+
+### `.interceptors`
+
+Ao configurar um interceptador global, este será aplicado a todas as solicitações feitas por todas as partes do código que utilizam a mesma instância global do axios (no caso de um interceptador de requisição) ou será aplicado antes de retonar cada resposta ao código (interceptador de resposta).\
+Lembrando que ele é **aplicado**, ou seja, ele é **executado** antes de cada requisição ou após cada resposta.
+
+- `.request` : interceptador de solicitação (requisição). Isto permite que você execute código antes que cada solicitação seja enviada. Após realizarmos esta "configuração", todas as solicitações posteriores obedeceram esta configuração;
+- `.response` : interceptador de resposta.
+
+`.use()` : registra o interceptador.
+
+```JavaScript
+//Response.
+axios.interceptors.response.use(response => response, error => {
+  return Promise.reject(error);
+});
+```
+
+`response => response`: o interceptador de resposta simplesmente passará a reposta sem fazer alterações. Isso é comum quando você deseja aénas fazer algum trabalho adicional com a resposta, como registro, mas não deseja modificar a resposta em si.
+
+`return Promise.reject(error);`: a promessa com erro é rejeitada. Isso significa que o erro será **propagado** para qualquer código que chamou a solicitação axios original e que lidará com ele lá.
+
+### Métodos.
+
+- `.post(url, corpoDaSolicitacao)`;
+- `.patch(url, corpoDaSolicitacao, configuracoes)` : atualização parcial;
+- [`.CancelToken.source()`.](#canceltoken)
 
 # <a name = "umzug"></a>`umzug`
 
@@ -90,42 +133,92 @@ Por exemplo, se você tiver um histórico de migrações registradas no banco de
 
 # <a name = "chai"></a>`chai`
 
+Utilizada para a realização de testes unitários.
+
 `chai` é uma biblioteca utilizada para realizar afirmações (assertions) em testes unitários. É frequentemente utilizada em conjunto com frameworks de teste como o Mocha ou o Jasmine para facilitar a criação e execução de testes.
 
-### <a id ="expect"></a>`.expect()`
+No caso do mocha:
+- Ele deve estar instalado (se estiver, será listado em **node_modules**);
+- Ser uma dependência do seu projeto (se for, estará presente em **package.json**);
+- Para o teste ser executado deverá ser feito um script. Exemplo:
 
-A função `.expect()` é usada para criar afirmações (assertions) em testes unitários. Ela é usada para expressar o que você espera que aconteça em um teste e, em seguida, verificar se essa expectativa é atendida.
+```JSON
+"scripts": {
+    "chave": "mocha pathParaOArquivo/arquivo.js"
+}
+```
+
+Para executar o teste:
+
+```BASH
+npm run nomeDaChave
+```
+
+### <a id ="expect"></a>`expect()`
+
+Utilizada para criar assertions.
 
 `expect(valor).metodoDeAssercao(valorEsperado)`
 
 - `valor`**:** é o valor ou expressão que você deseja testar;
-- `metodoDeAssercao`**:** é um método disponível no `chai` que define a condição que você está testando. Alguns exemplos comuns `.to.equal()`, `.to.be.true`, `.to.be.false`, `.to.be.null`, `.to.be.undefined`, entre outros;
+- `metodoDeAssercao`**:** é um método disponível no `chai` que define a condição que você está testando;
 - `valorEsperado`**:** é o valor que você espera que `valor` tenha após a avaliação da asserção.
 
-Alguns exemplos:
+---
+
+A função `expect()` é usada para criar afirmações (assertions) em testes unitários. Ela é usada para expressar o que você espera que aconteça em um teste e, em seguida, verificar se essa expectativa é atendida.
+
+Exemplos:
 
 ```JavaScript
-const expect = require('chai').expect;
+const expect = require("chai").expect;
 
-describe('Exemplo de teste', function() {
-    it('Deve verificar se 1 + 1 é igual a 2', function() {
+describe("Exemplo de teste.", function() {
+    it("Deve verificar se 1 + 1 é igual a 2.", function() {
         expect(1 + 1).to.equal(2);
     });
 
-    it('Deve verificar se um valor é verdadeiro', function() {
+    it("Deve verificar se um valor é verdadeiro.", function() {
         expect(true).to.be.true;
     });
 
-    it('Deve verificar se um valor é nulo', function() {
+    it("Deve verificar se um valor é nulo.", function() {
         expect(null).to.be.null;
     });
 
-    it('Deve verificar se uma string é igual a outra', function() {
-        expect('hello').to.equal('hello');
+    it("Deve verificar se uma string é igual a outra", function() {
+        expect("hello").to.equal("hello");
     });
 });
-
 ```
+
+Nesses exemplos, o método `.expect()` é usado para criar afirmações que testam várias condições. Se a afirmação for verdadeira, o teste passa; caso contrário, o teste falha e uma mensagem de erro é gerada, indicando qual expectativa não foi atendida.
+
+### <a id = "describe"></a>`describe()`
+
+Cria blocos de testes.
+
+```JavaScript
+describe("String", function() {
+    //Casos de testes relacionados a string de descrição.
+});
+```
+
+- `String`**:** string que descreve o bloco de teste;
+- `function()`**:** função callback que contém os casos de teste.
+
+### <a id = "it"></a>`it()`
+
+Representa um caso de teste.
+
+```JavaScript
+it("String", function() {
+    //Teste.
+});
+```
+
+- `String`**:** string que descreve o teste;
+- `function()`**:** função callback que contém a lógica do teste.
 
 # <a name = "requestpromisenative"></a>`request-promise-native`
 
@@ -185,3 +278,23 @@ console.log(path.resolve("db", "migrations")); ///home/orion/APIs/orion-data-api
 ### <a id ="cpus"></a>`.cpus()`
 
 Retorna um array contendo informações sobre todas as CPUs disponíveis no sistema (um array de objetos).
+
+## <a name = "fs"></a>`fs`
+
+### <a id = "existssync"></a>`.existsSync()`
+
+Verifica se o arquivo ou diretório existe.
+
+`fs.existsSync(path)`
+
+`path`**:** string que representa o caminho do arquivo/diretório a ser verificado.
+
+Retorna `true` ou `false`.
+
+### <a id = "unlinksync"></a>`.unlinkSync()`
+
+Remove um arquivo do sistema de arquivos.
+
+`fs.unlinkSync(path)`
+
+`path`**:** string que representa o caminho do arquivo/diretório que será excluído.

@@ -67,6 +67,78 @@ row.accumulated_paid_at = isNaN(row.accumulated_paid_at) ? 0 : moment(row.accumu
 
 Lembrando ainda que não é possível declarar variáveis dentro de uma operação ternária diretamente, isso ocorre porque é necessário um escopo de bloco mais amplo do que o oferecido por uma operação ternária.
 
+# <a name = "templateliterals"></a>Template literals.
+
+Os **template literals** (**literais de modelo**) são uma característica introduzida no JavaScript com o ECMAScript 6 (ES6) que permite a criação de strings de uma forma mais flexível e legível. Eles são definidos usando crases (`) em vez de aspas simples ou duplas, e permitem a interpolação de variáveis e a criação de strings multilinhas. Exemplos:
+
+```JavaScript
+//Interpolação de variáveis.
+const nome = "Alice";
+const idade = 30;
+
+const mensagem = `Olá, meu nome é ${nome} e eu tenho ${idade} anos.`;
+
+console.log(mensagem); //Saída: Olá, meu nome é Alice e eu tenho 30 anos.
+```
+
+```JavaScript
+//Strings multilinhas.
+const paragrafo = `
+  Este é um exemplo
+  de uma string
+  multilinhas.
+`;
+
+console.log(paragrafo);
+/*
+Saída:
+  Este é um exemplo
+  de uma string
+  multilinhas.
+*/
+```
+
+```JavaScript
+//Expressões embutidas.
+const valor1 = 10;
+const valor2 = 20;
+
+const resultado = `A soma de ${valor1} e ${valor2} é igual a ${valor1 + valor2}.`;
+
+console.log(resultado); //Saída: A soma de 10 e 20 é igual a 30.
+```
+
+# <a name = "spreadproperties"></a>Spread properties.
+
+**Spread properties** (ou **propriedade de espalhamento**) é uma funcionalidade introduzida no ECMAScript 2018 (também conhecido como ES9) que permite copiar todas as propriedades enumeráveis de um objeto para outro objeto. Isso é útil para criar cópias de objetos, combinar objetos ou adicionar propriedades a objetos existentes de forma concisa. Exemplo:
+
+```JavaScript
+const objeto1 = { a: 1, b: 2 };
+const objeto2 = { ...objeto1 };
+
+console.log(objeto2); //Saída: { a: 1, b: 2 }
+```
+
+Você também pode usar o operador de espalhamento para combinar propriedades de objetos diferentes.
+
+```JavaScript
+const objeto1 = { a: 1, b: 2};
+const objeto2 = { b: 3, c: 4};
+const objeto3 = { ...objeto1, ...objeto2 };
+
+console.log(objeto3); //Saída: { a: 1, b: 3, c: 4 }
+```
+
+Observe que, se houver propriedades com o mesmo nome em ambos os objetos, a última propriedade encontrada prevalecerá.\
+Além disso, o operador de espalhamento também pode ser usado para adicionar propriedades a um objeto existente:
+
+```JavaScript
+const objeto1 = { a: 1, b: 2 };
+const objeto2 = { ...objeto1, c: 3};
+
+console.log(objeto2) //Saída: { a: 1, b: 2, c: 3}
+```
+
 # <a name = "flechaxexterna"></a>Sintaxe da função de flecha x Definição externa de uma função.
 
 ```JavaScript
@@ -382,6 +454,7 @@ Então mesmo a função de resolução sendo passada como argumento para a funç
 
 # <a name = "objetosglobais"></a>Objetos globais.
 
+- [`.error()`;](#error)
 - [`.assign()`;](#assign)
 - [`.keys()`;](#keys)
 - [`.definePropertyOf()`;](#definepropertyof)
@@ -389,6 +462,18 @@ Então mesmo a função de resolução sendo passada como argumento para a funç
 - [`.stringify()`;](#stringify)
 - [`.parse()`;](#parse)
 - [`.exit()`.](#exit)
+
+## `console`
+
+### <a id = "error"></a>`.error()`
+
+Imprime uma mensagem de erro.
+
+`.error(parametro, ...)`
+
+`parametro`**:** argumento a ser exibido.
+
+O JavaScript converte o argumento em uma string antes de exibi-lo.
 
 ## `Object`
 
@@ -637,12 +722,12 @@ const novoArray = arrayOriginal.filter(callback(elemento, indice, array)) {
 
 ## <a id = "join"></a>`.join()`
 
-É usada para criar uma **nova string juntando todos os elementos de um array em uma única string, separando-os por um delimitador específico** que você fornece como argumento.
+Cria uma **nova string juntando todos os elementos de um array em uma única string, separando-os por um** `separador` **específico** que você fornece como argumento.
 
 `array.join(delimitador)`
 
-- `array`**:** o array cujos elementos você deseja unir em uma única string;
-- `delimitador` **(opcional):** o **caractere** ou **string** que será usado como separador entre os elementos no resultado. Este argumento é opcional; se não for fornecido, os elementos do array serão separados por vírgulas por padrão.
+- `array`**:** array cujos elementos você deseja unir em uma única string;
+- `separador` **(opcional):** o **caractere** ou **string** que será usado como separador entre os elementos no resultado. Este argumento é opcional; se não for fornecido, os elementos do array serão separados por vírgulas por padrão.
 
 ## <a id = "reduce"></a>`.reduce()`
 
@@ -669,9 +754,7 @@ const novoArray = arrayOriginal.filter(callback(elemento, indice, array)) {
 
 ## <a id = "includes"></a>`.includes()`
 
-É usada para verificar se um determinado valor está presente no array.
-
-É usada principalmente para **valores simples** (números, strings, booleanos) e não é adequada para verificar a existência de objetos complexos ou verificar com base em propriedades específicas de objetos.
+Verifica se um determinado valor está presente no array.
 
 `array.includes(valor, aPartirDe)`
 
@@ -679,7 +762,9 @@ const novoArray = arrayOriginal.filter(callback(elemento, indice, array)) {
 - `valor`**:** o valor que você deseja verificar se está presente no array;
 - `aPartirDe` **(opcional):**  o índice a partir do qual você deseja iniciar a pesquisa. Se não for fornecido, a pesquisa começará do início do array.
 
-Retorna `true` se o valor especificado estiver presente no array e `false` caso contrário.
+Retorna `true` ou `false`.
+
+É usada principalmente para **valores simples** (números, strings, booleanos) e não é adequada para verificar a existência de objetos complexos ou verificar com base em propriedades específicas de objetos.
 
 ## <a id = "push"></a>`.push()`
 

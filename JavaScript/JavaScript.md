@@ -96,6 +96,8 @@ Quando você inclui a diretiva `'use strict'` no início de um arquivo JavaScrip
 - [Objeto literal;](nativo.md#objetoliteral)
 - [Operadores de igualdade;](nativo.md#operadoresigualdade)
 - [Operador condicional ternário;](nativo.md#operadorcondicionalternario)
+- [Template literals;](nativo.md#templateliterals)
+- [Spread properties;](nativo.md#spreadproperties)
 - [Sintaxe da função de flecha x Definição externa de uma função;](nativo.md#flechaxexterna)
 - [Função de seta (arrow function);](nativo.md#funcaodeseta)
 - [Callback;](nativo.md#callback)
@@ -113,6 +115,7 @@ Quando você inclui a diretiva `'use strict'` no início de um arquivo JavaScrip
 # Bibliotecas.
 
 - [`sequelize`;](Sequelize.md)
+- [`axios`;](bibliotecas.md#axios)
 - [`umzug`;](bibliotecas.md#umzug)
 - [`chai`;](bibliotecas.md#chai)
 - [`request-promise-native`.](bibliotecas.md#requestpromisenative)
@@ -120,69 +123,16 @@ Quando você inclui a diretiva `'use strict'` no início de um arquivo JavaScrip
 ## Node.js
 
 - [`path`;](bibliotecas.md#path)
-- [`os`.](bibliotecas.md#os)
+- [`os`;](bibliotecas.md#os)
+- [`fs`.](bibliotecas.md#fs)
 
 # Frameworks.
 
+- [Mocha;](#frameworks.md#mocha)
 - [Vue.js;](frameworks.md#vuejs)
 - [Next.js.](frameworks.md#nextjs)
 
----
-
-+ Template literals;
-+ Spread properties;
-+ `.import()`;
-+  `console.error()`.
-
----
-
-# <a id = "bibliotecas"></a>Bibliotecas.
-
-### JavaScript
-
-- [axios;](#axios)
-
-### Node.js
-
-- [util;](#util)
-- [fs;](#fs)
-- [child_process.](#childprocess)
-
 ## <a id = "axios"></a>axios
-
-Utilizada para fazer requisições HTTP, seja em navegadores ou em Node.js.
-
-- `<url>` (string): URL de destino, para onde a solicitação será enviada;
-- `<corpo da solicitação>` (objeto): corpo da solicitação que está sendo enviada;
-- `<configurações>` (objeto, opcional): objeto de configuração opcional que permite personalizar a solicitação. Este objeto pode conter várias opções de configuração, como cabeçalhos personalizados, autenticação, parâmetros de consulta, entre outros.\
-  Como por exemplo a chave: valor `cancelToken: <objeto .CancelToken>.token`, que é o token de cancelamento.
-
-### Métodos.
-- `.post(<url>, <corpo da solicitação>)`
-- `.patch(<url>, <corpo da solicitação>, <configurações>)` : atualização parcial;
-- [`.interceptors`](#interceptors)
-- [`.CancelToken.source()`](#canceltoken)
-
-### <a id = "interceptors"></a> `.interceptors`
-
-Ao configurar um interceptador global, este será aplicado a todas as solicitações feitas por todas as partes do código que utilizam a mesma instância global do axios (no caso de um interceptador de requisição) ou será aplicado antes de retonar cada resposta ao código (interceptador de resposta).\
-Lembrando que ele é **aplicado**, ou seja, ele é **executado** antes de cada requisição ou após cada resposta.
-
-- `.request` : interceptador de solicitação (requisição). Isto permite que você execute código antes que cada solicitação seja enviada. Após realizarmos esta "configuração", todas as solicitações posteriores obedeceram esta configuração;
-- `.response` : interceptador de resposta;
-- `.use()` : registra o interceptador.
-
-```JavaScript
-//Response.
-
-axios.interceptors.response.use(response => response, error => {
-  return Promise.reject(error);
-});
-```
-
-`response =: response`: o interceptador de resposta simplesmente passará a reposta sem fazer alterações. Isso é comum quando você deseja aénas fazer algum trabalho adicional com a resposta, como registro, mas não deseja modificar a resposta em si.
-
-`return Promise.reject(error);`: a promessa com erro é rejeitada. Isso significa que o erro será **propagado** para qualquer código que chamou a solicitação axios original e que lidará com ele lá.
 
 ### <a id = "canceltoken"></a>`.CancelToken.source()`
 
