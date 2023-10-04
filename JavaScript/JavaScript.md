@@ -132,25 +132,6 @@ Quando você inclui a diretiva `'use strict'` no início de um arquivo JavaScrip
 - [Vue.js;](frameworks.md#vuejs)
 - [Next.js.](frameworks.md#nextjs)
 
-## <a id = "axios"></a>axios
-
-### <a id = "canceltoken"></a>`.CancelToken.source()`
-
-Para que o axios saiba qual token de cancelamento está associado a uma requisição específica, você o passa na configuração da requisição usando a propriedade `cancelToken`. Portanto, `cancelToken: <objeto .CancelToken>.token` informa ao axios que esta requisição está vinculada ao `<objeto .CancelToken>.token` que você criou.\
-Então quando você chama `<objeto .CancelToken>.cancel()`, o axios sabe que deve cancelar qualquer requisição que tenha o `<objeto .CancelToken>.token` associado a ela.
-
-- `.CancelToken` : utilizado para criar um Token de cancelamento que pode ser usado para cancelar uma solicitação HTTP que está em andamento;
-- `.source()` : cria o objeto `.CancelToken` e seu respectivo método `.cancel(<mensagem sobre o cancelamento>)`
-- `.cancel(<mensagem sobre o cancelamento>)` o parâmetro `<mensagem sobre o cancelamento>` que atribui o valor da chave `.reason.message`. É o **método utilizado para cancelar a requisição**.
-
-Um objeto `.CancelToken` possui um atributo `.token`
-
-O atributo `.token` é composto por uma `.promise` e uma `.reason`
-
-A chave `.reason` possui um atributo `.message`
-
-[Exemplo.](axios_cancel_token.js)
-
 ## <a id = "util"></a>util
 
 Fornece várias funções utilitárias para ajudar na programação assíncrona e em outros aspectos de desenvolvimento.

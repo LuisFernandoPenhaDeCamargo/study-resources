@@ -23,6 +23,12 @@ Utilizada para fazer requisições HTTP, seja em navegadores ou em Node.js.
 - `configuracoes` **(objeto, opcional):** objeto de configuração opcional que permite personalizar a solicitação. Este objeto pode conter várias opções de configuração, como cabeçalhos personalizados, autenticação, parâmetros de consulta, entre outros.\
   Como por exemplo a { chave: valor }: `{ cancelToken: objeto.CancelToken.token }`, que é o token de cancelamento.
 
+### Métodos.
+
+- `.post(url, corpoDaSolicitacao)`;
+- `.patch(url, corpoDaSolicitacao, configuracoes)` : atualização parcial;
+- [`.CancelToken.source()`.](#canceltoken)
+
 ### `.interceptors`
 
 Ao configurar um interceptador global, este será aplicado a todas as solicitações feitas por todas as partes do código que utilizam a mesma instância global do axios (no caso de um interceptador de requisição) ou será aplicado antes de retonar cada resposta ao código (interceptador de resposta).\
@@ -40,15 +46,77 @@ axios.interceptors.response.use(response => response, error => {
 });
 ```
 
-`response => response`: o interceptador de resposta simplesmente passará a reposta sem fazer alterações. Isso é comum quando você deseja aénas fazer algum trabalho adicional com a resposta, como registro, mas não deseja modificar a resposta em si.
+- `response => response`: o interceptador de resposta simplesmente passará a reposta sem fazer alterações. Isso é comum quando você deseja apenas fazer algum trabalho adicional com a resposta, como registro, mas não deseja modificar a resposta em si;
+- `return Promise.reject(error);`: a promessa com erro é rejeitada. Isso significa que o erro será **propagado** para qualquer código que chamou a solicitação axios original e que lidará com ele lá.
 
-`return Promise.reject(error);`: a promessa com erro é rejeitada. Isso significa que o erro será **propagado** para qualquer código que chamou a solicitação axios original e que lidará com ele lá.
+### <a id = "canceltoken"></a>`.CancelToken.source()`
 
-### Métodos.
+Para que o axios saiba qual token de cancelamento está associado a uma requisição específica, você o passa na configuração da requisição usando a propriedade `cancelToken`. Portanto, `cancelToken: objeto.token` informa ao axios que esta requisição está vinculada ao `objeto` que você criou.\
+Então quando você chama `objeto.cancel()`, o axios sabe que deve cancelar qualquer requisição que tenha o `objeto.token` associado a ela.
 
-- `.post(url, corpoDaSolicitacao)`;
-- `.patch(url, corpoDaSolicitacao, configuracoes)` : atualização parcial;
-- [`.CancelToken.source()`.](#canceltoken)
+- `.CancelToken`**:** utilizado para criar um Token de cancelamento que pode ser usado para cancelar uma solicitação HTTP que está em andamento;
+- `.source()`**:** cria o objeto `.CancelToken` e seu respectivo método `.cancel()`
+- `.cancel(mensagem)` o parâmetro `mensagem` que atribui o valor da chave `.reason.message`. É o **método utilizado para cancelar a requisição**.
+
+Um objeto `.CancelToken` possui um atributo `.token`.
+
+O atributo `.token` é composto por uma `.promise` e uma `.reason`.
+
+A chave `.reason` possui um atributo `.message`.
+
+Exemplo:
+
+```JavaScript
+const axios = require("axios");
+
+const source = axios.CancelToken.source();
+
+//Cancela o token com um motivo opcional (aqui, "Motivo do cancelamento." é o motivo).
+source.cancel("Motivo do cancelamento.");
+
+console.log(source);
+/*Saída:
+{ token:
+  CancelToken {
+    promise: Promise { [Object] },
+    reason: Cancel { message: 'Motivo do cancelamento.' } },
+  cancel: [Function: cancel] }
+*/
+
+console.log("");
+console.log("--------------------\n");
+
+console.log(source.token);
+/*Saída:
+CancelToken {
+  promise: Promise { Cancel { message: 'Motivo do cancelamento.' } },
+  reason: Cancel { message: 'Motivo do cancelamento.' } }
+*/
+
+console.log("");
+console.log("--------------------\n");
+
+console.log(source.token.promise);
+//Saída: Promise { Cancel { message: 'Motivo do cancelamento.' } }
+
+console.log("");
+
+console.log(source.token.reason);
+//Saída: Cancel { message: 'Motivo do cancelamento.' }
+
+console.log("");
+console.log("--------------------\n");
+
+console.log(source.token.reason.message);
+//Saída: Motivo do cancelamento.
+
+console.log("");
+console.log("--------------------\n");
+
+//Para acessar o motivo do cancelamento, você pode usar source.token.reason.
+console.log("source.token.reason:", source.token.reason);
+//Saída: source.token.reason: Cancel { message: 'Motivo do cancelamento.' }
+```
 
 # <a name = "umzug"></a>`umzug`
 
