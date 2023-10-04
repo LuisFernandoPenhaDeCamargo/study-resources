@@ -94,9 +94,12 @@ Quando você inclui a diretiva `'use strict'` no início de um arquivo JavaScrip
 # Nativo do JavaScript.
 
 - [Objeto literal;](nativo.md#objetoliteral)
+- [Propriedade { chave: Nome { valor } };](nativo.md#propriedadechavenomevalor)
 - [Operadores de igualdade;](nativo.md#operadoresigualdade)
+- [Operadores lógicos;](nativo.md#operadoreslogicos)
 - [Operador condicional ternário;](nativo.md#operadorcondicionalternario)
 - [Template literals;](nativo.md#templateliterals)
+- [Sequência de escape;](nativo.md#sequenciadeescape)
 - [Spread properties;](nativo.md#spreadproperties)
 - [Sintaxe da função de flecha x Definição externa de uma função;](nativo.md#flechaxexterna)
 - [Função de seta (arrow function);](nativo.md#funcaodeseta)
@@ -122,63 +125,14 @@ Quando você inclui a diretiva `'use strict'` no início de um arquivo JavaScrip
 
 ## Node.js
 
+- [`util`;](bibliotecas.md#util)
 - [`path`;](bibliotecas.md#path)
 - [`os`;](bibliotecas.md#os)
-- [`fs`.](bibliotecas.md#fs)
+- [`fs`;](bibliotecas.md#fs)
+- [`child_process`.](bibliotecas.md#childprocess)
 
 # Frameworks.
 
 - [Mocha;](#frameworks.md#mocha)
 - [Vue.js;](frameworks.md#vuejs)
 - [Next.js.](frameworks.md#nextjs)
-
-## <a id = "util"></a>util
-
-Fornece várias funções utilitárias para ajudar na programação assíncrona e em outros aspectos de desenvolvimento.
-
-### `.promisify(<callback>)`
-
-É usada para converter funções de retorno de chamada (callback) em funções que retornam promessas.
-
-## <a id = "fs"></a>fs
-
-**File System** (**Sistema de Arquivos**). Fornece métodos para interagir com o sistema de arquivos do computador, permitindo que você leia, escreva, manipule e gerencie arquivos e diretórios.
-O **"Sync"** no nome das funções, indica que essas funções são **síncronas**.
-
-`<pwd>` (string): caminho para o arquivo/diretório.
-
-### `.readdirSync(<__dirname, pwd>)`
-
-Usado para ler o conteúdo de um diretório, ou seja, lista os arquivos e subdiretórios.
-
-**__dirname** é uma variável global no Node.js que representa o diretório atual.
-
-Retorna uma matriz.
-
-### `readFileSync(<pwd>, <opcional, especifica a codificação do arquivo>)`
-
-Lê o conteúdo de um arquivo.
-
-Retorna o conteúdo do arquivo em formato de buffer ou em uma condição específica, se especificada.
-
-### `statSync(<pwd>)`
-
-Usado para obter informações sobre um arquivo/diretório especificado.
-
-Retorna um objeto da classe **fs** com propriedades como `.mtime` , que é a data de modificação (timestamp) do arquivo/diretório.
-
-## <a id = "childprocess"></a>child_process
-
-É usado para criar e gerenciar processos filhos (subprocessos) a partir de um aplicativo Node.js
-
-### `.exec(<comando>, <opções>, <callback>)`
-
-- `<comando>` (string): representa o comando a ser executado;
-- `<opções>` (objeto, opcional): pode conter várias opções para controlar o comportamento da execução do comando;
-- `<callback>` (opcional): função de retorno de chamada que será chamada quando a execução do comando for concluída.\
-  `(<erro>, <stdout>, <stderr>) => {}`
-  - `<erro>` (string): variável que conterá informações sobre qualquer erro que ocorrer durante a execução do comando;
-  - `<stdout>` (string): variável que conterá a saída padrão (**stdout**) do comando executado;
-  - `<stderr>` (string): variável que conterá a saída de erro (**stderr**) do comando executado.
-
-É usada para executar comandos do sistema operacional em um subprocesso. Ela é uma forma de criar processos filhos para executar comandos shell ou outros programas externos.

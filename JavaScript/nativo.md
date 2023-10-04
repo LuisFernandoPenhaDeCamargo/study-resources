@@ -46,12 +46,29 @@ Você pode adicionar propriedades ao protótipo padrão (`Object.prototype`), e 
 `console.log(Object.getPrototypeOf(Object.prototype));` não deveria retornar `{}`?\
 A chamada `console.log(Object.getPrototypeOf(Object.prototype));` não retornará `{}` diretamente porque `Object.Prototype` é o protótipo raiz de todos os objetos em JavaScript, incluindo objetos literais criados com `{}`. No entanto, o protótipo de `Object.prototype` é `null`, e não um objeto vazio `{}`.
 
+# <a name = "propriedadechavenomevalor"></a>Propriedade { chave: Nome { valor } }
+
+Objetos em JavaScript são compostos por propriedades. Uma propriedade é uma combinação de chave e o seu valor.\
+Quando encontramos o caso de, por exemplo, imprimir algo no console e aparecer o caso abaixo:
+
+```JavaScript
+{
+  chave: Nome {}
+}
+```
+
+Isso quer dizer que o valor associado a chave é um objeto que é uma instância da classe ou construtor chamado `Nome`.
+
 # <a name = "operadoresigualdade"></a>Operadores de igualdade.
 
 - `===`**:** operador de igualdade estrita;\
 Compara o **valor** e o **tipo do dado**.
 - `==`**:** operador de igualdade.\
 Compara o **valor** e **converte o tipo do dado**, se necessário.
+
+# <a name = "operadoreslogicos"></a>Operadores lógicos.
+
+`||`**: or** (**ou**).
 
 # <a name = "operadorcondicionalternario"></a>Operador condicional ternário.
 
@@ -107,6 +124,10 @@ const resultado = `A soma de ${valor1} e ${valor2} é igual a ${valor1 + valor2}
 
 console.log(resultado); //Saída: A soma de 10 e 20 é igual a 30.
 ```
+
+# <a name = "sequenciadeescape"></a>Sequência de escape.
+
+`\n`**:** é uma sequência de escape usada em muitas linguagens de programação, para representar uma quebra de linha ou caractere de nova linha. Quando você insere `\n` em uma string, ele é interpretado como um comando para iniciar uma nova linha de texto.
 
 # <a name = "spreadproperties"></a>Spread properties.
 
@@ -461,7 +482,8 @@ Então mesmo a função de resolução sendo passada como argumento para a funç
 - [`.getPropertyOf()`;](#getpropertyof)
 - [`.stringify()`;](#stringify)
 - [`.parse()`;](#parse)
-- [`.exit()`.](#exit)
+- [`.exit()`;](#exit)
+- [`.floor()`.](#floor)
 
 ## `console`
 
@@ -617,6 +639,16 @@ echo $?
 
 Se você estiver executando o aplicativo diretamente do terminal ou da linha de comando, o código de saída será retornado como um código de saída do processo. Com o código acima você pode verificar o código de saída após a execução da aplicação. Neste caso `$?` conterá o código de saída personalizado por `process.exit()`.
 
+## `Math`
+
+Fornece uma série de funções e constantes matemáticas que podem ser usadas para realizar operações matemáticas em números.
+
+### <a id = "floor"></a>`.floor()`
+
+Converte um número decimal em um número inteiro, selecionando somente a parte inteira.
+
+`.floor(x)`**:** `x` é um number. Retorna um number.
+
 # <a name = "funcoesglobais"></a>Funções globais.
 
 - [`Array.isArray().`](#arrayisarray)
@@ -638,6 +670,7 @@ Se você estiver executando o aplicativo diretamente do terminal ou da linha de 
 - [`.reduce()`;](#reduce)
 - [`.concat()`;](#concat)
 - [`.includes()`;](#includes)
+- [`.some()`;](#some)
 - [`.push()`;](#push)
 - [`.pop()`.](#pop)
 
@@ -769,6 +802,20 @@ Verifica se um determinado valor está presente no array.
 Retorna `true` ou `false`.
 
 É usada principalmente para **valores simples** (números, strings, booleanos) e não é adequada para verificar a existência de objetos complexos ou verificar com base em propriedades específicas de objetos.
+
+## <a id = "some"></a>`.some()`
+
+Verifica se pelo menos um elemento do array satisfaz a condição especificada.
+
+`array.some(callback[, thisArg])`
+
+- `callback`**:** função chamada para cada elemento do array até que ela retorne `true`. Ela recebe até três argumentos:\
+  -`elemento`**:** o valor do elemento atual do array;
+  - `indice`**(opcional):** o índice do elemento atual no array;
+  - `array`**(opcional):** array original no qual o método `.some()` foi chamado.
+- `thisArg`**(opcional):** valor a ser usado como `this` ao chamar a função de `callback`.
+
+Retorna `true` se pelo menos um elemento do array satisfazer a condição da função de `callback`. Caso contrário, retorna `false`.
 
 ## <a id = "push"></a>`.push()`
 

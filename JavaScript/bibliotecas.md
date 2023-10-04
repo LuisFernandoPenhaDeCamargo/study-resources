@@ -8,11 +8,16 @@
 - [`expect()`;](#expect)
 - [`describe()`;](#describe)
 - [`it()`;](#it)
+- [`.promisify()`;](#promisify)
 - [`.resolve()`;](#resolve)
 - [`.hostname()`;](#hostname)
 - [`.cpus()`;](#cpus)
+- [`.readdirSync()`;](#readdirsync)
+- [`.readFileSync()`;](#readfilesync)
+- [`.statSync()`;](#statsync)
 - [`.existsSync()`;](#existssync)
-- [`.unlinkSync()`.](#unlinksync)
+- [`.unlinkSync()`;](#unlinksync)
+- [`.exec()`.](#exec)
 
 # <a name = "axios"></a>`axios`
 
@@ -83,8 +88,7 @@ console.log(source);
   cancel: [Function: cancel] }
 */
 
-console.log("");
-console.log("--------------------\n");
+console.log("\n--------------------\n");
 
 console.log(source.token);
 /*Saída:
@@ -93,8 +97,7 @@ CancelToken {
   reason: Cancel { message: 'Motivo do cancelamento.' } }
 */
 
-console.log("");
-console.log("--------------------\n");
+console.log("\n--------------------\n");
 
 console.log(source.token.promise);
 //Saída: Promise { Cancel { message: 'Motivo do cancelamento.' } }
@@ -104,14 +107,12 @@ console.log("");
 console.log(source.token.reason);
 //Saída: Cancel { message: 'Motivo do cancelamento.' }
 
-console.log("");
-console.log("--------------------\n");
+console.log("\n--------------------\n");
 
 console.log(source.token.reason.message);
 //Saída: Motivo do cancelamento.
 
-console.log("");
-console.log("--------------------\n");
+console.log("\n--------------------\n");
 
 //Para acessar o motivo do cancelamento, você pode usar source.token.reason.
 console.log("source.token.reason:", source.token.reason);
@@ -296,6 +297,18 @@ Biblioteca utilizada para fazer solicitações HTTP de forma assíncrona no Node
 
 # Node.js.
 
+`__dirname` é uma variável global no Node.js que representa o diretório atual.
+
+## <a name = "util"></a>`util`
+
+Fornece várias funções utilitárias para ajudar na programação assíncrona e em outros aspectos de desenvolvimento.
+
+### <a id = "promisify"><>`.promisify()`
+
+É usada para converter funções de retorno de chamada (`callback`) em funções que retornam promessas.
+
+`.promisify(callback)`
+
 ## <a name = "path"></a>`path`
 
 Fornece utilitários para trabalhar com caminhos de arquivos e diretórios em um sistema de arquivos. Ele é amplamente utilizado para criar caminhos, manipular caminhos relativos e absolutos, extrair informações dos caminhos e realizar operações relacionadas a caminhos.\
@@ -349,6 +362,42 @@ Retorna um array contendo informações sobre todas as CPUs disponíveis no sist
 
 ## <a name = "fs"></a>`fs`
 
+Fornece métodos para interagir com o sistema de arquivos.
+
+**File System** (**Sistema de Arquivos**). Fornece métodos para interagir com o sistema de arquivos do computador, permitindo que você leia, escreva, manipule e gerencie arquivos e diretórios.\
+O **"Sync"** no nome das funções, indica que essas funções são **síncronas**.\
+`pwd` **(string):** caminho para o arquivo/diretório.
+
+### <a id = "readdirsync"></a>`.readdirSync()`
+
+Usado para ler o conteúdo de um diretório.
+
+`.readdirSync(__dirname, pwd)`
+
+Retorna uma matriz.
+
+Usado para ler o conteúdo de um diretório, ou seja, lista os arquivos e subdiretórios.
+
+### <a id = "readfilesync"></a>`.readFileSync()`
+
+Lê o conteúdo de um arquivo.
+
+`readFileSync(pwd, codificacao)`
+
+`codificacao` **(opcional):** especifica a codificação do arquivo.
+
+Retorna o conteúdo do arquivo em formato de buffer ou em uma condição específica, se especificada.
+
+### <a id = "statsync"></a>`.statSync()`
+
+Obtêm informações sobre um arquivo/diretório especificado.
+
+`.statSync(pwd)`
+
+Retorna um objeto da classe **fs**.
+
+O objeto retornado possui propriedades como `.mtime` , que é a data de modificação (timestamp) do arquivo/diretório.
+
 ### <a id = "existssync"></a>`.existsSync()`
 
 Verifica se o arquivo ou diretório existe.
@@ -366,3 +415,23 @@ Remove um arquivo do sistema de arquivos.
 `fs.unlinkSync(path)`
 
 `path`**:** string que representa o caminho do arquivo/diretório que será excluído.
+
+## <a name = "childprocess"></a>`child_process`
+
+Cria e gerencia processos filhos (subprocessos) a partir de um aplicativo Node.js.
+
+### <a id = "exec"></a>`.exec()`
+
+Executa comandos do sistema operacional em um subprocesso.
+
+`.exec(comando, opcoes, callback)`
+
+- `comando` **(string):** representa o comando a ser executado;
+- `opcoes` **(objeto, opcional):** pode conter várias opções para controlar o comportamento da execução do comando;
+- `callback` **(opcional):** função de retorno de chamada que será chamada quando a execução do comando for concluída.\
+  `(erro, stdout, stderr) => {}`
+  - `erro` **(string):** variável que conterá informações sobre qualquer erro que ocorrer durante a execução do comando;
+  - `stdout` **(string):** variável que conterá a saída padrão (`stdout`) do comando executado;
+  - `stderr` **(string):** variável que conterá a saída de erro (`stderr`) do comando executado.
+
+É usada para executar comandos do sistema operacional em um subprocesso. Ela é uma forma de criar processos filhos para executar comandos shell ou outros programas externos.

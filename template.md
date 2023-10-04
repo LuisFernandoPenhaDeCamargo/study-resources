@@ -67,6 +67,10 @@ Informação adicional e de maior complexidade da estrutura.
 
 Exemplos mais complexos.
 
+### Bibliotecas.
+
+Query: `nomeDaBiblioteca` é uma biblioteca do JavaScript ou do Node, ela precisa ser instalada?
+
 # Global.
 
 - Lista do conteúdo.
