@@ -24,14 +24,14 @@ Documentar uma API é essencial para garantir que os desenvolvedores possam ente
 
 Em um diagrama de uma API, é importante ressaltar os principais componentes e como eles se relacionam. Isso pode ser feito de forma visual e esquemáticas para ajudar os desenvolvedores a entenderem a arquitetura da API. Alguns dos elementos mais importantes a serem destacados em um diagrama de API:
 
-- **Endpoints:**
-- **:**
-- **:**
-- **:**
-- **:**
-- **:**
-- **:**
-- **:**
-- **:**
-- **:**
-- **:**
+- **Endpoints:** mostre os endpoints disponíveis na API, incluindo URLs, métodos HTTP e uma breve descrição do que cada endpoint faz;
+- **Clientes:** indique quais clientes ou aplicativos podem acessar a API, isso pode incluir aplicativos da web, aplicativos móveis, sistemas internos, etc;
+- **Servidor:** represente o servidor que hospeda a API. Isso pode ser um servidor web ou qualquer outro servidor de aplicativos que suporte API;
+- **Banco de dados:** se a API interage com um banco de dados, mostre essa conexão. Isso ajuda a ilustrar como os dados são armazenados e recuperados;
+- **Autenticação e autorização:** destaque como a autenticação e a autorização são tratadas na API. Isso pode incluir o uso de tokens, chaves de API ou outros mecanismos;
+- **Camada de segurança:** se a API possui uma camada de segurança, como um firewall ou serviços de segurança, mostre-a para indicar como a segurança é mantida;
+- **Camada de cache:** se a API usa caching para melhorar o desempenho, mostre como isso é implementado;
+- **Integrações externas:** se a API se integra a serviços ou sistemas externos, represente essas integrações;
+- **Formatos de resposta:** indique os formatos de resposta que a API suporta, como JSON, XML, HTML, etc;
+- **Caminhos de dados:** desenhe caminhos de dados para ilustrar como os dados fluem entre os componentes da API. Isso pode incluir o fluxo de solicitação e respostas;
+- **Documentação:** inclua links ou referências à documentação completa da API para que os desenvolvedores possam acessar informações detalhadas.

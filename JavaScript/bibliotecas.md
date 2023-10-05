@@ -23,10 +23,15 @@
 
 Utilizada para fazer requisições HTTP, seja em navegadores ou em Node.js.
 
+### Headers (Cabeçalhos).
+
+No propriedade `'content-type'`, que pode ser acessada ao se utilizar `response.headers['content-type']`, se encontra o valor do formato da resposta.\
+Se o valor da chave `'content-type'` for `application/json`, quer dizer que o conteúdo da resposta é no formato JSON.
+
 - `url` **(string):** URL de destino, para onde a solicitação será enviada;
 - `corpoDaSolicitacao` **(objeto):** corpo da solicitação que está sendo enviada;
 - `configuracoes` **(objeto, opcional):** objeto de configuração opcional que permite personalizar a solicitação. Este objeto pode conter várias opções de configuração, como cabeçalhos personalizados, autenticação, parâmetros de consulta, entre outros.\
-  Como por exemplo a { chave: valor }: `{ cancelToken: objeto.CancelToken.token }`, que é o token de cancelamento.
+  Como por exemplo a { chave: valor }: `{ cancelToken: objetoCancelToken.token }`, que é o token de cancelamento.
 
 ### Métodos.
 

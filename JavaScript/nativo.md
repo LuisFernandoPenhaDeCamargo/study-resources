@@ -59,6 +59,12 @@ Quando encontramos o caso de, por exemplo, imprimir algo no console e aparecer o
 
 Isso quer dizer que o valor associado a chave é um objeto que é uma instância da classe ou construtor chamado `Nome`.
 
+Chaves que estão entre aspas simples indicam que o nome da chave é uma string literal, então você deve usar colchetes para acessá-la.
+
+`objeto['chaveEntreAspasSimples']`
+
+Observe que quando colchetes são utilizados, você não usa o ponto (`.`) para acessar a propriedade.
+
 # <a name = "operadoresigualdade"></a>Operadores de igualdade.
 
 - `===`**:** operador de igualdade estrita;\
