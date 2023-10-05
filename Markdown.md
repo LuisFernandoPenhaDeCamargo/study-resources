@@ -13,6 +13,13 @@ Exemplo:
 | mais | uma | coluna |
 ```
 
+Saída:
+
+| Cabeçalho à esquerda | Cabeçalho centralizado | Cabeçalho à direita |
+|:---|:---:|---:|
+| Alinhado à esquerda | Alinhado ao centro | Alinhado à direita |
+| mais | uma | coluna |
+
 ---
 
 ## Regras gerais.
