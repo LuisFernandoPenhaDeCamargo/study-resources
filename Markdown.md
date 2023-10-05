@@ -1,5 +1,20 @@
 # Markdown
 
+# Tabelas.
+
+Pipes (barras verticais, `|`) delimitam colunas e traços (`-`) criam uma linha de cabeçalho separada das linhas de conteúdo. O número mínimo de traços para construir essa estrutura é três, mas você pode utilizar de mais para ajudar na compreensão em código.\
+Dois pontos (`:`) definem o alinhamento, que por padrão é a esqueda.\
+Exemplo:
+
+```markdown
+| Cabeçalho à esquerda | Cabeçalho centralizado | Cabeçalho à direita |
+|:---|:---:|---:|
+| Alinhado à esquerda | Alinhado ao centro | Alinhado à direita |
+| mais | uma | coluna |
+```
+
+---
+
 ## Regras gerais.
 
 - Não aceita recuo (criados por espaços ou por tabulações);

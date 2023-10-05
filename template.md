@@ -16,7 +16,6 @@ Linguagem: português (BR).
 # Check List.
 
 - JavaScript.md;
-- axios_cancel_token.js;
 - Markdown.md;
 - SQL.md;
 - Git-GitHub.md.
