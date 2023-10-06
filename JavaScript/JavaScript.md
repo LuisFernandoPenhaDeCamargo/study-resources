@@ -95,9 +95,7 @@ Quando você inclui a diretiva `'use strict'` no início de um arquivo JavaScrip
 
 - [Objeto literal;](nativo.md#objetoliteral)
 - [Propriedade { chave: Nome { valor } };](nativo.md#propriedadechavenomevalor)
-- [Operadores de igualdade;](nativo.md#operadoresigualdade)
-- [Operadores lógicos;](nativo.md#operadoreslogicos)
-- [Operador condicional ternário;](nativo.md#operadorcondicionalternario)
+- [Operadores;](nativo.md#operadores)
 - [Template literals;](nativo.md#templateliterals)
 - [Sequência de escape;](nativo.md#sequenciadeescape)
 - [Spread properties;](nativo.md#spreadproperties)
@@ -113,7 +111,8 @@ Quando você inclui a diretiva `'use strict'` no início de um arquivo JavaScrip
 - [Objetos globais;](nativo.md#objetosglobais)
 - [Funções globais;](nativo.md#funcoesglobais)
 - [Funções de array;](nativo.md#funcoesdearray)
-- [Funções de string.](nativo.md#funcoesdestring)
+- [Funções de string;](nativo.md#funcoesdestring)
+- [Import/Export.](nativo.md#importexport)
 
 # Bibliotecas.
 

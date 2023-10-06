@@ -20,6 +20,14 @@ Documentar uma API é essencial para garantir que os desenvolvedores possam ente
 - **Exemplos de clientes:** se possível, inclua exemplos de código ou bibliotecas de clientes em várias linguagens de programação para facilitar a integração;
 - **Segurança:** documente as práticas de segurança recomendadas ao usar a API e forneça orientações sobre como proteger as informações sensíveis.
 
+No contexto da Orion Games, o que eu achei importante documentar foi:
+
+- Descrição geral;
+- Autenticação e autorização;
+- Endpoints;
+- Exemplos de solicitação e resposta;
+- Tipos de resposta.
+
 # Diagrama.
 
 Em um diagrama de uma API, é importante ressaltar os principais componentes e como eles se relacionam. Isso pode ser feito de forma visual e esquemáticas para ajudar os desenvolvedores a entenderem a arquitetura da API. Alguns dos elementos mais importantes a serem destacados em um diagrama de API:
@@ -35,3 +43,10 @@ Em um diagrama de uma API, é importante ressaltar os principais componentes e c
 - **Formatos de resposta:** indique os formatos de resposta que a API suporta, como JSON, XML, HTML, etc;
 - **Caminhos de dados:** desenhe caminhos de dados para ilustrar como os dados fluem entre os componentes da API. Isso pode incluir o fluxo de solicitação e respostas;
 - **Documentação:** inclua links ou referências à documentação completa da API para que os desenvolvedores possam acessar informações detalhadas.
+
+No contexto da Orion Games, o que eu achei importante colocar no diagrama foi:
+
+- Servidor;
+- **Tarefas:** as principais tarefas realizadas pela API;
+- Endpoints;
+- Banco de dados.

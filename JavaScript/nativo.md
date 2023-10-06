@@ -61,24 +61,64 @@ Isso quer dizer que o valor associado a chave é um objeto que é uma instância
 
 Chaves que estão entre aspas simples indicam que o nome da chave é uma string literal, então você deve usar colchetes para acessá-la.
 
-`objeto['chaveEntreAspasSimples']`
+```JavaScript
+const objeto = {
+  chaveLiteral: "Valor literal.",
+  "chaveStringLiteral": "Valor da chave que é uma string literal."
+}
+  
+//Acesso usando a notação de ponto para chaves literais.
+console.log(objeto.chaveLiteral);          //Saída: Valor literal.
+  
+//Acesso usando a notação de colchetes para chaves literais.
+console.log(objeto["chaveLiteral"]);       //Saída: Valor literal.
+  
+//Acesso usando a notação de colchetes para chaves que são strings literais.
+console.log(objeto["chaveStringLiteral"]); //Saída: Valor da chave que é uma string literal.
+```
 
-Observe que quando colchetes são utilizados, você não usa o ponto (`.`) para acessar a propriedade.
+Neste exemplo, você pode ver que a notação de ponto só funciona para chaves literais, enquanto a **notação de colchetes** pode ser usada para acessar **todas as chaves**, independente de serem strings literais ou não. Isso é especialmente útil quando você está lidando com chaves que contêm caracteres especiais, espaços ou quando as chaves são **determinadas dinamicamente em tempo de execução**.
+Observe que quando colchetes são utilizados, você não usa o ponto (`.`) para acessar o valor da chave.
 
-# <a name = "operadoresigualdade"></a>Operadores de igualdade.
+# <a name = "operadores"></a> Operadores.
 
-- `===`**:** operador de igualdade estrita;\
+- [Operadores de igualdade;](#operadoresigualdade)
+- [Operadores lógicos;](#operadorlogicoou)
+- [Operador condicional ternário;](#operadorcondicionalternario)
+- [Operador de exclusão.](#operadorexclusao)
+
+## <a id = "operadoresigualdade"></a>Operadores de igualdade.
+
+- `===`**:** operador de **igualdade estrita**;\
 Compara o **valor** e o **tipo do dado**.
-- `==`**:** operador de igualdade.\
+- `==`**:** operador de **igualdade solta**.\
 Compara o **valor** e **converte o tipo do dado**, se necessário.
 
-# <a name = "operadoreslogicos"></a>Operadores lógicos.
+## <a id = "operadorlogicoou"></a>Operador lógico "ou".
 
-`||`**: or** (**ou**).
+O operador `||` é usado para criar expressões lógicas condicionais. Ele retorna o primeiro valor verdadeiro encontrado em uma sequência de operandos. **Se todos os operandos forem falsos, ele retorna o último valor**. Exemplo:
 
-# <a name = "operadorcondicionalternario"></a>Operador condicional ternário.
+```JavaScript
+const valor1 = false;
+const valor2 = 0;
+const valor3 = null;
 
-Também conhecida como **operação ternária**, é um operador em linguagens de programação que permite fazer uma escolha entre dois valores com base em uma condição. Ele é chamado de "ternário" porque envolve três partes: a condição, o valor que deve ser retornado se a condição for verdadeira e o valor que deve ser retornado se a condição for falsa. A sintaxe básica de uma operação ternária é:
+let resultado = valor1 || valor2 || valor3;
+
+console.log(resultado); //Saída: null
+
+resultado = valor1 || valor3 || valor2;
+
+console.log(resultado); //Saída: 0
+
+resultado = valor3 || valor2 || valor1;
+
+console.log(resultado); //Saída: false
+```
+
+## <a id = "operadorcondicionalternario"></a>Operador condicional ternário.
+
+Também conhecido como **operador ternário**, ajuda na realização de uma **operação ternária**, é um operador em linguagens de programação que permite fazer uma escolha entre dois valores com base em uma condição e é frequentemente usado para criar expressões condicionais concisas. Ele é chamado de "ternário" porque envolve três partes: a condição, o valor que deve ser retornado se a condição for verdadeira e o valor que deve ser retornado se a condição for falsa. A sintaxe básica de uma operação ternária é:
 
 `condicao ? (valorCasoACondicaoSejaVerdadeira) : (valorCasoACondicaoSejaFalsa);`
 
@@ -89,6 +129,38 @@ row.accumulated_paid_at = isNaN(row.accumulated_paid_at) ? 0 : moment(row.accumu
 ```
 
 Lembrando ainda que não é possível declarar variáveis dentro de uma operação ternária diretamente, isso ocorre porque é necessário um escopo de bloco mais amplo do que o oferecido por uma operação ternária.
+
+## <a id = "operadorexclusao"> Operador de exclusão.
+
+A palavra-chave `delete` é um operador de exclusão e é usado para remover uma propriedade de um objeto.\
+O `delete` pode ser usado para excluir qualquer tipo de propriedade de um objeto, incluindo propriedades de objeto, propriedades de matriz (índices) e até funções. No entanto, existem algumas limitações:
+
+- **Objetos padrão (built-in):** você não pode usar o `delete` para excluir propriedades de objetos internos (built-in), como `Object`, `Array`, `Function`, etc. Ele funciona apenas em objetos criados pelo usuário;
+- **Variáveis globais:** o `delete` não pode ser usado para excluir variáveis globais ou propriedades globais declaradas com `var`. Ele só funciona em propriedades de objetos;
+- **Não tem retorno:** o `delete` não retorna um valor específico. Se a propriedade for excluída com sucesso, retorna `true`. Se a propriedade não puder ser excluída (por exemplo, propriedades configuradas como não configuráveis), retorna `false`. No entato, se você tentar usar o `delete` em uma variável ou propriedade que não existe, ele simplesmente não gera um erro e retorna `true`.
+
+Exemplos:
+
+```JavaScript
+const objeto = {
+  chave1: "valor1",
+  chave2: "valor2"
+};
+
+delete objeto.chave1; //Exclui com sucesso a propriedade com chave "chave1".
+
+console.log(objeto.chave1); //Saída: undefined
+
+const globalVar = "globalVar";
+delete globalVar; //Isso não funcionará e não gerará erro.
+
+console.log(globalVar); //"globalVar" ainda existe.
+
+const array = [1, 2, 3];
+delete array[0]; //Exclui com sucesso o elemento de índice 0 do array.
+
+console.log(array);         //Saída: [ <1 empty item>, 2, 3]
+```
 
 # <a name = "templateliterals"></a>Template literals.
 
@@ -872,3 +944,62 @@ console.log(frutas); //["maçã", "banana", "uva", "morango"]
 ```
 
 Neste exemplo, a string foi dividida em substrings sempre que uma vírgula foi encontrada como separador.
+
+# <a name = "importexport"></a>Import/Export.
+
+As palavras-chave `import` e `export` são usadas em JavaScript para lidar com a modularização de código, permitindo que você divida seu código em módulos reutilizáveis.
+
+### Exportação (`export`).
+
+A palavra-chave `export` é usada para exportar funções, variáveis, classes ou qualquer código que você deseja disponibilizar para outros módulos ou arquivos.
+
+Exportação de valor nomeado (Named Exports):
+
+```JavaScript
+//Em um módulo chamado "module.js"
+export const nome = "João";
+export function saudacao() {
+  return "Olá!";
+}
+```
+
+Exportação padrão (Default Export):
+
+```JavaScript
+//Em um módulo chamado "module.js"
+const nome = "Maria";
+
+export default nome;
+```
+
+### Importação (`import`).
+
+A palavra-chave `import` é usada para importar funções, variáveis, classes ou código de outros módulos.
+
+Importação de valor nomeado (Named Imports):
+
+```JavaScript
+import { nome, saudacao } from "./module.js";
+
+console.log(nome);       //Saída: João
+console.log(saudacao()); //Saída: Olá!
+```
+
+Importação padrão (Default Import):
+
+```JavaScript
+import nome from "./module.js";
+
+console.log(nome); //Saída: Maria
+```
+
+Importação de tudo (Import All):
+
+```JavaScript
+import * as modulo from "./module.js";
+
+console.log(modulo.nome);       //Saída: João
+console.log(modulo.saudacao()); //Saída: Olá!
+```
+
+É importante observar que as importações e exportações são específicas do ambiente de módulos ES6 (EcmaScript 2015).
