@@ -953,20 +953,24 @@ As palavras-chave `import` e `export` são usadas em JavaScript para lidar com a
 
 A palavra-chave `export` é usada para exportar funções, variáveis, classes ou qualquer código que você deseja disponibilizar para outros módulos ou arquivos.
 
-Exportação de valor nomeado (Named Exports):
+**Exportação de valor nomeado (Named Exports):**
 
 ```JavaScript
-//Em um módulo chamado "module.js"
+//Em um módulo chamado "module.js".
 export const nome = "João";
 export function saudacao() {
   return "Olá!";
 }
 ```
 
-Exportação padrão (Default Export):
+**Exportação padrão (Default Export):**
+
+- Um módulo pode ter apenas uma exportação padrão;
+- Ao importar uma exportação padrão em outro módulo, você pode dar qualquer nome à variável de importação.
+
 
 ```JavaScript
-//Em um módulo chamado "module.js"
+//Em um módulo chamado "module.js".
 const nome = "Maria";
 
 export default nome;
@@ -976,7 +980,10 @@ export default nome;
 
 A palavra-chave `import` é usada para importar funções, variáveis, classes ou código de outros módulos.
 
-Importação de valor nomeado (Named Imports):
+**Importação de valor nomeado (Named Imports):**
+
+- Um módulo pode ter várias exportações nomeadas;
+- Ao importar exportações nomeadas em outro módulo, você deve usar o mesmo nome das exportações originais.
 
 ```JavaScript
 import { nome, saudacao } from "./module.js";
@@ -985,15 +992,21 @@ console.log(nome);       //Saída: João
 console.log(saudacao()); //Saída: Olá!
 ```
 
-Importação padrão (Default Import):
+**Importação padrão (Default Import):**
 
 ```JavaScript
 import nome from "./module.js";
 
 console.log(nome); //Saída: Maria
+
+//Outra forma de realizar a importação padrão.
+import qualquerNome from "./module.js";
+
+console.log(qualquerNome); //Saída: Maria
 ```
 
-Importação de tudo (Import All):
+**Importação de tudo (Import All):**\
+A exportação padrão não é incluída na importação de tudo pelo seu nome. Se você tiver uma exportação padrão com um nome específico, ele não estará disponível como uma propriedade do objeto importado.
 
 ```JavaScript
 import * as modulo from "./module.js";
@@ -1002,4 +1015,24 @@ console.log(modulo.nome);       //Saída: João
 console.log(modulo.saudacao()); //Saída: Olá!
 ```
 
-É importante observar que as importações e exportações são específicas do ambiente de módulos ES6 (EcmaScript 2015).
+É importante observar que as importações e exportações são específicas do ambiente de módulos ES6 (ECMAScript 2015). Antes disso era utilizada a seguinte sintaxe:
+
+```JavaScript
+//Em um módulo chamado "module.js".
+const nome = "João";
+function saudacao() {
+  return "Olá!";
+}
+
+module.exports = {
+  nome,
+  saudacao
+};
+```
+
+```JavaScript
+const nomeQueVoceQuerDarAoObjeto = require("./module.js");
+
+console.log(nomeQueVoceQuerDarAoObjeto.nome);       //Saída: João
+console.log(nomeQueVoceQuerDarAoObjeto.saudacao()); //Saída: Olá!
+```

@@ -11,14 +11,63 @@ Contexto:
 - MySQL;
 - Git/GitHub.
 
+Python.
+
 Linguagem: português (BR).
 
-# Check List.
+# Estruturas.
 
-- JavaScript.md;
-- Markdown.md;
-- SQL.md;
-- Git-GitHub.md.
+### Títulos.
+
+- Títulos de palavras-chave devem estar entre acentos graves;
+- Títulos de funções/métodos devem estar entre acentos graves, não devem conter nada em seu parâmetro e não terminam em ponto final. Exemplo: `funcao()`
+- Títulos de bibliotecas devem ser nomeados igual ao nome utilizado em sua importação.
+
+### Listas e itens nominais.
+
+Os itens nominais de uma lista e de forma geral devem estar em **negrito**, inclusive os dois pontos (":"). Caso o item seja uma estrutura de programação, ele deve estar entre `acentos graves` ("`").
+
+### Extensões.
+
+Extensões de arquivo devem estar em negrito.
+
+# Programação.
+
+### Roteiro.
+
+Roteiro a se seguir quando tratar de uma linguagem de programação.
+
+- Cada linguagem de programação dever ter seu próprio diretório;
+- Principais pontos sobre a linguagem;
+- Executando arquivos;
+- Funções/métodos;
+- Bibliotecas padrão.
+
+### Palavras-chave.
+
+Pontos importantes da palavra-chave.
+
+### Função/método.
+
+Resumo do que a função faz.
+
+`funcao(parametro)` (exemplo da função)
+
+Quais são seus parâmetros, quais são os tipos deles e o que a função retorna.\
+"a função  aceita o que de parâmetro, qual é o tipo dele e o que ela retorna?"
+
+### Bibliotecas.
+
+Resumo para o que ela serve.
+
+Precisa ser instalada?
+
+# Dúvidas.
+
+- Terminal x Prompt de comando;
+- Diretório x pasta.
+
+---
 
 # Estruturas.
 
@@ -34,10 +83,6 @@ Os nomes das bibliotecas estão iguais ao nome utilizado em sua importação, po
 ### Termos.
 
 Na explicação de um termo (um anagrama, por exemplo), **ele**, **o significado do seu anagrama**, se houver, e sua **tradução**, devem estar em **negrito**.
-
-### Listas.
-
-Os itens nominais de uma lista devem estar em **negrito**, **inclusive os :**. Caso o item seja uma estrutura de programação, ele deve estar entre `acentos graves`.
 
 ### Estruturas de programação.
 
@@ -69,11 +114,3 @@ Exemplos mais complexos.
 ### Bibliotecas.
 
 Query: `nomeDaBiblioteca` é uma biblioteca do JavaScript ou do Node, ela precisa ser instalada?
-
-# Global.
-
-- Lista do conteúdo.
-
-# Local.
-
-- Resumo.
