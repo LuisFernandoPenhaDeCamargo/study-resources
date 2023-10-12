@@ -1,3 +1,44 @@
+### Prompt de comando.
+
+Exemplo: `orion@orion-OptiPlex-7010:`.
+
+- `orion`**:** nome de usuário;
+- `orion-OptoPlex-7010`**:** é o nome do host ou nome da máquina, que pode ser o nome do seu computador;
+- `:`**:** indica o final do prompt.
+
+
+### identificador@IP
+
+Exemplo:\
+`orion-data-server@137.184.223.0` ou `orion-data-server@legacy-api-slotzoe` é uma combinação de um identificador (possivelmente um nome de usuário) e um endereço IP (ou um nome de host, ou um domínio).
+
+- `orion-data-server`**:** o nome do usuário usado para autenticar e se conectar a um servidor, como um servidor SSH. O nome de usuário é geralmente seguido por um símbolo "@" para indicar a separação entre nome de usuário e o endereço IP ou nome de host do servidor;
+- `137.184.223.0`**:** endereço IP. Um endereço IP é um identificador único atribuído a dispositivos em uma rede para permitir a comunicação. No contexto de um servidor, esse endereço IP pode representar o local onde o servidor está hospedado na rede;
+- `legacy-api-slotzoe`**:** é o nome de host ou domínio que identifica o servidor ou serviço ao qual você deseja se conectar. Pode ser um nome de domínio ou um nome de host na rede.
+
+# Diretórios.
+
+## .ssh/
+
+O diretório **.ssh/** é um diretório oculto em sistemas Unix-like. **Ele é usado para armazenar configurações e chaves relacionadas ao SSH (Secure Shell)**, um protocolo de rede seguro amplamente utilizado para acessar e gerenciar sistemas remotos. O diretório **.ssh/** está localizado no diretório inicial do usuário e contém arquivos de configuração e chaves de autenticação.\
+Alguns dos arquivos comuns encontrados no diretório **.ssh/**:
+
+- **id_rsa e id_rsa.pub**:** esses são os arquivos de chave privada e pública do usuário, respectivamente. A chave privada (**id_rsa**) é usada para autenticar o usuário ao se conectar a servidores remotos usando SSH, enquanto a chave pública (**id_rsa.pub**) é copiada para os servidores remotos que o usuário deseja acessar. A chave pública é usada para verificar a identidade do usuário;
+- **config:** este arquivo contém configurações específicas do SSH, como opções de encaminhamento de portas, aliases de host e outros ajustes personalizados;
+- **know_hosts:** este arquivo registra as chaves públicas dos servidores aos quais o usuário se conectou anteriormente. Isso ajuda a verificar a autenticidade dos servidores quando você tenta se conectar novamente;
+- **authorized_keys:** este arquivo é usada no servidor SSH remoto e contém as chaves públicas dos usuários autorizados a fazer login na conta. Isso permite que o usuário autentique-se com sua chave privada.
+
+Lembrando que o diretório **.ssh/** é oculto por padrão, o que significa que seu nome começa com um ponto ("."), tornando-o invisível quando você lista o conteúdo de um diretório com o comando `ls`.
+
+Se você executar o comando `cat id_rsa.pub`, o conteúdo que aparecerá na saída do seu interpretador será algo semelhante a
+
+```BASH
+orion@orion-OptiPlex-7010:~/.ssh$ cat id_rsa.pub 
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC79X+8/39OTfNSh18+n5T41KA6J3hPyVqikASQeBfMqwDFbfxI/s7anmu/rV4XKEkIgqqBKhHvVFvQNGXoCXq0gy0C3BSGMGfFuB93bWqco3OkhxQkPLMTR0LiPT63Re8nj/symIauPuqd76yUWMY+4JxIjahM2JcLV1HA8xUhV8q7KS57M3Jr6dTYw6toatWMZEJTl+gf1wxNQV5am+3Mh4EtYkyawlhnjmcQV9DbM0F5IsFDtoR6UyVAH3g9q8onGJjHvlb1SpQd3YYtJuIAYhvsgZU8rhdxxuTX4xcTnlXSMKlEa8nT3lOx6NrIUFSFe4fSiScCLSFN9u05aPvnut/e9WpyMEbCjV8YbB6C9hja8roU6QA26N++CtsfTXbH37sanqv6GBKwp7hH9KQKnFrsR7t0bHS4hiGLWu2TQdWI/W79+8mpW+8udWO+JSXnpJP7ZkFaEu5BLnl43KMyj+oVMcKBe12CX5pKG/5Ci16wiZZMggRwf/jp2p6Rhm1H7agS5rNkCYD2FFZQFXuO6PZmhcZnR67N9OYcs0qNBLt32tdCApLmGylElqVpTW7Wkz1wWfPglGaFo7GsDuz7ViavdpcKoF7WnfKYu8h8xeTVqGwb3M99f22QT5Mu5eeczaC6naG1asE46iQaTxrUam02fWZyQeDOXGaFViz4zw== luisfernandopenhadecamargo@gmail.com
+```
+
+ou seja, a estrutura é basicamente `ssh-rsa hash e-mail`.
+
 # Cron.
 
 A palavra **Cron** geralmente se refere ao sistema de agendamento de tarefas em sistemas operacionais Unix-like, como o Linux. O Cron permite que os usuários programem a execução automática de tarefas em horários específicos, datas ou intervalos regulares. Essas tarefas agendadas são conhecidas como **cron jobs**. Alguns dos conceitos básicos relacionados ao Cron:
