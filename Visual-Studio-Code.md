@@ -1,5 +1,5 @@
 # Visual Studio Code.
 
-# Extensões utilizadas.
+### Extensões utilizadas.
 
 MarkDown Preview Showdown.
