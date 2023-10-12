@@ -1,8 +1,29 @@
 # Template.
 
+# Check-list.
+
+### Loose.
+
+calma
+o caminho ficou confuso
+basicamente
+eu vou viabilizar meu servidor local
+para a nuvem
+que vai ser acessado por um stand
+através desse cara
+
+### ChatGPT.
+
+To do:
+
+- Git/GitHub;
+- Markdown;
+- Ngrok;
+- JavaScript.
+
 # Contexto para o ChatGPT.
 
-Contexto:
+JavaScript.
 
 - Linux;
 - JavaScript;
@@ -27,9 +48,9 @@ Linguagem: português (BR).
 
 Os itens nominais de uma lista e de forma geral devem estar em **negrito**, inclusive os dois pontos (":"). Caso o item seja uma estrutura de programação, ele deve estar entre `acentos graves` ("`").
 
-### Extensões.
+### Negrito.
 
-Extensões de arquivo devem estar em negrito.
+Diretórios, arquivos e extensões devem estar em negrito. O significado de abreviações e a sua tradução também.
 
 # Programação.
 
@@ -46,6 +67,23 @@ Roteiro a se seguir quando tratar de uma linguagem de programação.
 ### Palavras-chave.
 
 Pontos importantes da palavra-chave.
+
+### Comandos x Lista de comandos.
+
+- **Lista de comandos:** os comandos são explicados sucintamente;
+- **Comandos:** explicação mais completa sobre os comandos e suas particularidades.
+
+Estrutura:
+
+**Lista de comandos.**
+
+**comando:** explicação sucinta. Link para a explicação detalhada.
+
+**Comandos.**
+
+Âncora para o comando. **Comando.**
+
+Explicação detalhada.
 
 ### Função/método.
 

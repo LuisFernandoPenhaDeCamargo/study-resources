@@ -1,44 +1,57 @@
 # SQL.
 
-O nome do host local é `localhost`.
+- O nome do host local é `localhost`;
+- A porta padrão do MySQL é 3306;
+- No MySQL você não pode recuperar a senha de um usuário, pois senhas são armazenadas com criptografia e não podem ser recuperadas em texto simples. O que pode ser feito é redefinir a senha de um usuário;
+- **Comentários de linha única:** você pode criar comentários de linha única com `--` (dois hifens) ou `#` (símbolo do jogo da velha). Qualquer texto após esses caracteres será tratado como um comentário e não terá efeito na execução do código;
+- **Comentário de várias linhas:** você pode criar comentários de várias linhas usando `/*` para iniciar o comentário e `*/` para encerrá-lo. Qualquer texto entre esses delimitadores será tratado como um comentário.
 
-A porta padrão do MySQL é 3306.
+## Mecanismos de autenticação (ou plugin de autenticação).
+
+**As opções de autenticação incluem:**
+    - `caching_sha2_password`;
+    - `mysql_native_password`.
+
+Para alterar o mecanismo <--
 
 # Lista de comandos.
 
-`DESCRIBE nome_da_tabela;` ou `DESC nome_da_tabela;` ou `SHOW COLUMNS FROM nome_da_tabela;`**:** descreve a tabela `nome_da_tabela`.
+- `CREATE USER 'novo_usuario'@'host' IDENTIFIED BY 'senha';`**:** cria um novo usuário, de nome `novo_usuario` para determinado `host`, o usuário é identificado pela `senha`;
+- `SELECT user, host FROM mysql.user;`**:** verifica os usuários disponíveis no MySQL localmente;
+- `ALTER USER 'usuario'@'host' IDENTIFIED BY 'nova_senha';`**:** altera a senha do `usuario` para `nova_senha`;
+- `GRANT USAGE ON *.* TO 'usuario'@'host';`**:** [Explicação detalhada](#grantusage);
+- `GRANT ALL PRIVILEGES ON banco.* TO 'usuario'@'host';`**:** garante todos os privilégios para o banco `banco`;
+- `SHOW GRANTS for 'usuario'@'host';`**:** exibe as permissões concedidas ao usuário `usuario` em um host específico no MySQL;
+- `CREATE DATABASE banco;`**:** cria um novo banco `banco`;
+- `SHOW DATABASES;`**:** lista os bancos de dados. [Explicação detalhada](#showdatabases);
+- `DROP DATABASE banco;`**:** deleta um banco de dados;
+- `DESCRIBE tabela;` ou `DESC tabela;` ou `SHOW COLUMNS FROM tabela;`**:** descreve a tabela `tabela`;
+- `ALTER TABLE tabela ADD coluna tipo_da_coluna;`**:** altera a tabela `tabela` adicionando uma coluna `coluna` a ela, de tipo `tipo_da_coluna`. [Explicação detalhada](#altertable);
+- `SELECT coluna FROM tabela;`**:** seleciona os valores da coluna `coluna` da tabela `tabela`;
+- `UPDATE tabela SET coluna = valor;`**:** atualiza os valores da coluna `coluna` para `valor` na tabela `tabela`.
 
-# Erros.
+# Comandos.
 
-### Access denied for user 'nome_de_usuario'@'enderecoIP' (using password: YES)
+## <a id = "alteruser"></a>`ALTER USER`
 
-Este erro indica que **houve uma tentativa de conexão a um banco de dados, mas o usuário não possui permissão para acessar o banco de dados** a partir do endereço de IP ou **as credenciais (nome de usuário e senha) fornecidas estão incorretas**. Algumas etapas para resolver este problema:
 
-- **Verifique as credenciais:** certifique-se de que o nome de usuário e a senha fornecidos estejam corretos. Verifique se não há espaços em branco ou caracteres extras na senha;
-- **Verifique as permissões:** confirme se o usuário tem permissão para acessar o banco de dados a partir do endereço IP. Você pode verificar e ajustar as permissões no servidor do banco de dados;
-- **Verifique o host:** verifique se o servidor está configurado para permitir conexões do endereço IP. Isso pode ser verificado nas configurações do servidor, geralmente no arquivo **my.cnf** ou **my.ini**, dependendo do sistema operacional;
-- **Firewall e segurança de rede:** certifique-se de que não há um firewall ou regra de segurança de rede que esteja bloqueando a conexão do endereço IP para o servidor;
-- **Tentativa de conexão:** tente se conectar ao banco de dados novamente, garantindo que você esteja usando as credenciais corretas e que o endeço IP esteja acessível.
 
----
+## <a id = "grantusage"></a>`GRANT USAGE`
 
-# SQL.
+O comando `GRANT USAGE ON *.* TO 'usuario'@'host'` concede ao usuário apenas o privilégio `USAGE` em todos os objetos do banco de dados (`*.*`), o que basicamente permite que o usuário faça uma conexão com o servido MySQL, mas não fornece acesso a **nenhum banco de dados ou tabela específios**.
 
-mysql -u legacy-api -p
+## <a id = "showdatabases"></a>`SHOW DATABASES`
 
-show databases;
+Quando você usa o comando `SHOW DATABASES` no MySQL e o usuário não vê um banco de dados na lista, isso significa que o usuário não tem permissões para ver ou acessar esse banco de dados específico.
 
-select user, host, plugin from mysql.user;
+## <a id = "altertable"></a>`ALTER TABLE`
 
-show grants for 'legacy-api'@'localhost';
+`ALTER TABLE tabela ADD coluna tipo_da_coluna;`
 
-CREATE DATABASE nome_do_banco;
-
-mysql -u seu_usuario -p nome_do_banco < dump.sql
-
-- `SELECT db_version FROM settings`;
-- `ALTER TABLE settings ADD COLUMN db_version BIGINT NOT NULL DEFAULT 0`;
-- `UPDATE settings SET id = 0`.
+- `tipo_da_coluna`**:** `BIGINT` define o tipo de dados da coluna como um tipo numérico que pode armazenar números inteiros grandes;
+- `tipo_da_coluna NOT NULL DEFAULT valor`**:**
+    - `NOT NULL`**:** indica que a coluna não pode conter valores nulos, ou seja, sempre deve ter um valor;
+    - `DEFAULT valor`**:** define o valor padrão da coluna como `valor`. Isso significa que se nenhum valor for especificado durante uma inserção de dados, o valor padrão será `valor`.
 
 # Procedure.
 
@@ -62,37 +75,37 @@ CREATE OR REPLACE PROCEDURE \`zoeslots\`.\`update_deviation\`(IN _machine_id INT
 Pode haver erros de sintaxe envolvendo a barra invertida e a crase grave.*/
       
     main: BEGIN
-    //Na linha acima começa o bloco principal da procedure, rotulado como main.
+    #Na linha acima começa o bloco principal da procedure, rotulado como main.
 
         DECLARE x INT;
         DECLARE deviation INT;
         DECLARE deviation_amount INT;
         DECLARE machine_online INT;
-        //DECLARE é utilizada para declaração de variáveis.
+        # DECLARE é utilizada para declaração de variáveis.
 
         SET x = 1;
-        //SET é utilizada para inicializar o valor da variável.
+        #SET é utilizada para inicializar o valor da variável.
       
         if _deviation_amount < -5000 || _deviation_amount > 5000 THEN
             LEAVE main;
         END IF;
       
         SELECT online INTO machine_online FROM machines WHERE id = _machine_id;
-        /*/*Na operação de consulta acima, você está selecionando o valor da coluna online onde o valor de id é igual ao valor de machine_id. O resultado é armazenado na variável machine_online.*/
+        /*Na operação de consulta acima, você está selecionando o valor da coluna online onde o valor de id é igual ao valor de machine_id. O resultado é armazenado na variável machine_online.*/
 
         IF machine_online = 0 THEN
             LEAVE main;
         END IF; 
       
-        loop_label: 
-        //Na linha acima há o início de um loop rotulado como loop_label.              
+        loop_label: LOOP
+        #Na linha acima há o início de um loop rotulado como loop_label.              
             sleep_label: LOOP
-            //Na linha acima há o início de um loop rotulado como sleep_label.
+            #Na linha acima há o início de um loop rotulado como sleep_label.
 
                 SELECT modify_deviation, deviation_amount  INTO deviation, deviation_amount FROM machines where id = _machine_id;
 
                 IF deviation != 0 || deviation_amount != 0 THEN
-                    DO SLEEP(1); //Pausa a execução do bloco em 1 segundo.
+                    DO SLEEP(1); #Pausa a execução do bloco em 1 segundo.
                 ELSE
                     LEAVE sleep_label;
                 END IF;
@@ -110,3 +123,16 @@ Pode haver erros de sintaxe envolvendo a barra invertida e a crase grave.*/
         END LOOP;
     END
 ```
+
+# Erros.
+
+### Access denied for user 'nome_de_usuario'@'enderecoIP' (using password: YES)
+
+Este erro indica que **houve uma tentativa de conexão a um banco de dados, mas o usuário não possui permissão para acessar o banco de dados** a partir do endereço de IP ou **as credenciais (nome de usuário e senha) fornecidas estão incorretas**. Algumas etapas para resolver este problema:
+
+- **Verifique a autenticação (isso no MySQL):** verifique se o MySQL está configurado para autenticar corretamente os usuários. **O MySQL pode usar diferentes métodos de autenticação**, como autenticação por senha ou autenticação baseada em chave. Certifique-se de que a autenticação por senha esteja habilitada; 
+- **Verifique as credenciais:** certifique-se de que o nome de usuário e a senha fornecidos estejam corretos. Verifique se não há espaços em branco ou caracteres extras na senha;
+- **Verifique as permissões:** confirme se o usuário tem permissão para acessar o banco de dados a partir do endereço IP. Você pode verificar e ajustar as permissões no servidor do banco de dados;
+- **Verifique o host:** verifique se o servidor está configurado para permitir conexões do endereço IP. Isso pode ser verificado nas configurações do servidor, geralmente no arquivo **my.cnf** ou **my.ini**, dependendo do sistema operacional;
+- **Firewall e segurança de rede:** certifique-se de que não há um firewall ou regra de segurança de rede que esteja bloqueando a conexão do endereço IP para o servidor;
+- **Tentativa de conexão:** tente se conectar ao banco de dados novamente, garantindo que você esteja usando as credenciais corretas e que o endeço IP esteja acessível.

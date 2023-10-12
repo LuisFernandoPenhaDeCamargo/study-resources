@@ -1,3 +1,6 @@
+
+---
+
 # Sequelize.
 
 # Objeto `Sequelize` x objeto `QueryInterface`.

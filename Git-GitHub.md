@@ -1,4 +1,11 @@
 # Git/GitHub.
+
+# Comandos.
+
+`git clone -b nomeDoBranch URL`**:** clona um branch específico do repositório remoto.
+
+---
+
 **Up to date:** 05/08/2023.
 # Lista de comandos.
 

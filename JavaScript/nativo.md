@@ -1,3 +1,6 @@
+
+---
+
 # Nativo do JavaScript.
 
 # <a name = "objetoliteral"></a>Objeto literal.
