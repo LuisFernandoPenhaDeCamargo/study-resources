@@ -17,6 +17,10 @@ O Python é uma linguagem de programação de alto nível e de código aberto qu
 
 Em Python uma função que não possui uma instrução de retorno explícita sempre retorna `None`.
 
+### Biblioteca padrão.
+
+A expressão "biblioteca padrão do Python" refere-se a um conjunto abrangente de módulos e pacotes que fazem parte da distribuição oficial do Python. Esse módulos são fornecidos junto com a instalação padrão do Python e estão disponíveis para uso imediato sem a necessidade de instalação adicional a partir de fontes externas. Em outras palavras, fazem parte do Python "padrão".
+
 # Executando arquivos .py
 
 Para executar arquivos com extensão **.py** (que são arquivos de código-fonte Python), você precisa de um interpretador Python instalado em seu sistema. Aqui estão os passos básicos para executar um arquivo **.py**:
@@ -31,13 +35,9 @@ Para executar arquivos com extensão **.py** (que são arquivos de código-fonte
 
 Em alguns sistemas operacionais, especialmente em distribuições Unix-like mais recentes, o comando `python` pode se referir à versão 2.x do Python, que pode não estar mais instalada por padrão. Nesse caso, você deve usar `python3` para executar seu programa Python 3.x, uma vez que as versões mais recentes da linguagem são incompatíveis com o Python 2.x.
 
-### Biblioteca padrão.
-
-A expressão "biblioteca padrão do Python" refere-se a um conjunto abrangente de módulos e pacotes que fazem parte da distribuição oficial do Python. Esse módulos são fornecidos junto com a instalação padrão do Python e estão disponíveis para uso imediato sem a necessidade de instalação adicional a partir de fontes externas. Em outras palavras, fazem parte do Python "padrão".
-
 # Palavras chave.
 
-### `import`
+## `import`
 
 A palavra-chave `import` é usada para incluir módulos ou pacotes externos em seu programa. Alguns pontos importantes:
 
@@ -50,9 +50,42 @@ A palavra-chave `import` é usada para incluir módulos ou pacotes externos em s
     `from nome_do_modulo import funcao_especifica, variavel_especifica`
 - **Importação de todos os itens:** você pode importar todos os itens de um módulo usando um asterisco (*). No entanto, isso não é recomendável, pois pode poluir o espaço de nomes e tornar o seu código menos legível;\
     `from nome_do_modulo import *`
-- 
+- **Localização de módulos:** o Python procura módulos em locais específicos, incluindo o diretório atual, os diretórios listados na variável de ambiente `PYTHONPATH` e os diretórios padrão do Python;
+- **Módulo padrão:** o Python possui uma biblioteca padrão rica de módulos que estão prontamente disponíveis para uso com `import`. Você pode importar módulos da biblioteca padrão da mesma maneira que outros módulos;
+- **Módulos personalizados:** você também pode criar seus próprios módulos personalizados em Python, organizar seu código em pacotes e importá-los em outros programas;
+- **Evite importações excessivas:** importar muitos módulos desnecessários pode aumentar o tempo de inicialização de seu programa e a sobrecarga de memória. Portanto, é uma boa prática importar apenas os módulos necessários para a tarefa atual;
+- **Ciclos de importação:** evite ciclos de importação, onde dois ou mais módulos se importam mutuamente. Isso pode levar a problemas de lógica e deve ser evitado.
 
-pontos importantes da key-word import <-- Ponto onde eu parei no GPT.
+### Importação de sintaxe básica x Importação de todos os itens.
+
+Ambas as formas de importação importam todo o conteúdo do módulo. A diferença principal entre elas é a maneira como você acessa os itens importados.
+
+- **Importação de sintaxe básica:**
+    - **Sintaxe:** `import nome_do_modulo`;
+    - Importa todo o conteúdo do módulo especificado;
+    - Você acessa os itens importandos usando a notação de ponto (`nome_do_modulo.item`).
+
+Exemplo:
+
+```Python
+import math
+
+resultado = math.sqrt(25)
+```
+
+- **Importação de todos os itens:**
+    - **Sintaxe:** `from nome_do_modulo import *`;
+    - Importa todo o conteúdo do módulo diretamente, sem notação de ponto;
+    - Essa abordagem é menos recomendada, pois pode poluir o espaço de nomes e causar conflitos de nomes.
+
+Exemplo:
+
+```Python
+from math import *
+
+resultado = sqrt(25) #Você pode usar sqrt diretamente, sem math.
+
+```
 
 # Funções.
 
