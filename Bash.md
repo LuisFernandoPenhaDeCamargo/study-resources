@@ -1,0 +1,89 @@
+### Yes for all.
+
+Para forçar a confirmação automática "sim" (yes) para todas as perguntas de confirmação ao usar comandos, você pode usar a opção `-f` (**force**) ou redirecionar a entrada padrão para `/dev/null`. No entando, tenha cuidado ao fazer isso, pois você pode excluir arquivos e diretórios acidentalmente sem a possibilidade de recuperação.
+
+Usando a opção `-f`:\
+Por exemplo, para remover um diretório chamado "meudiretorio" e responder automaticamente "sim" a todas as perguntas de confirmação, você pode fazer o seguinte:
+
+`rm -rf meudiretorio`
+
+O `-r` é usado para remover recursivamente e o `-f` é usado para forçar a remoção sem confirmação.
+
+Redirecionando a entrada padrão para `/dev/null`:\
+Outra abordagem é redirecionar a entrada padrão do terminal para `/dev/null`, o que efetivamente faz com que o comando pense que você respondeu "sim" a todas as perguntas de confirmação:
+
+`yes | rm -r meudiretorio`
+
+O comando `yes`gera uma saída contínua de "y" (yes) e a pipe `|` redireciona essa saída para o comando `rm`, que interpretará automaticamente como confirmação "sim".
+
+# Lista de comandos.
+
+- `ifconfig`**:** exibe informações sobre a interface de rede. Inclusive o **ip**, que se encontra a frente do **inet**, no bloco da sua interface de rede.\
+[Explicação detalhada](#ifconfig);
+- `cat arquivo`**:** exibe o conteúdo de arquivos de texto. [Explicação detalhada](#cat);
+- `mv`**:** renomea e também pode mover arquivos e diretórios. [Explicação detalhada](#mv);
+- `rm -r nome_do_diretorio`**:** remove um diretório. [Explicação detalhada](#rm).
+
+# Comandos.
+
+## <a id = "ifconfig"></a>`ifconfig`
+
+O comando  `ifconfig` é usado para exibir informações sobre as interfaces de rede em sistemas Unix-like. Ele fornece detalhes sobre as interfaces de rede ativas, como endereço IP, máscara de sub-rede, endereço MAC, pacotes transmitidos e recebidos, e muito mais. No entanto, a partir do macOS Catalina e das versões mais recentes, o `ifconfig` foi substituído pelo `ip`.
+
+## <a id = "cat"></a>`cat`
+
+O comando `cat` é uma ferramenta de linha de comando comumente usada em sistemas Unix-like para exibir o conteúdo de arquivos de texto. O nome "cat" é uma abreviação de "**concatenate**" (**concatenar**), embora também seja usado para imprimir o conteúdo de um único arquivo.
+
+`cat arquivo`
+
+`arquivo`**:** especifica o nome do arquivo cujo conteúdo você deseja exibir.
+
+Por exemplo, para exibir o conteúdo de um arquivo chamado "**exemplo.txt**", você pode usar o seguinte comando:
+
+`cat exemplo.txt`
+
+O comando `cat` irá imprimir o conteúdo completo do arquivo "**exemplo.txt**" no terminal.\
+Você também pode usar o `cat` para exibir o conteúdo de vários arquivos em uma única saída, concatenando-os. Por exemplo:
+
+`cat arquivo1.txt arquivo2.txt`
+
+Isso exibirá o conteúdo de "**arquivo1.txt**" seguindo pelo conteúdo de "**arquivo2.txt**".\
+Além disso, o `cat` pode ser usado em combinação com redirecionamento de saída para criar ou sobrescrever arquivos de saída. Por exemplo, você pode usar o seguinte comando para criar um novo arquivo chamado "**novo_arquivo.txt**" contendo o conteúdo de "**arquivo1.txt**":
+
+`cat arquivo1.txt > novo_arquivo.txt`
+
+Lembre-se de que o `cat` é mais útil para exibir o conteúdo de arquivos de textos simples. Se você precisar visualizar ou manipular arquivos de texto mais complexos ou realizar operações mais avançadas, outras ferramentas e editores de txto podem ser mais apropriados.
+
+## <a id = "mv"></a>`mv`
+
+O comando `mv` é usado para renomear arquivos e diretórios, mas também pode ser usado para mover arquivos entre diretórios.
+
+`mv origem destino`
+
+- `origem`**:** especifique o caminho completo do arquivo que você deseja mover;
+- `destino`**:** especifique o caminho completo do diretório de destino para onde você deseja mover o arquivo.
+
+Exemplo:
+
+`mv /caminho/para/origem/arquivo.txt caminho/para/destino/`
+
+Você pode usar caminhos absolutos ou relativos para especificar a origem e o destino.\
+Lembre-se  de que o comando `mv` também pode ser usado para renomear arquivos, caso você deseje alterar o nome do arquivo ao movê-lo. **Se o arquivo de destino já existir no diretório de destino, o** `mv` **substituirá o arquivo de destino pelo arquivo de origem**.
+
+## <a id = "rm"></a>`rm`
+
+Para remover um diretório você pode usar o comando `rm` com a opção `-r` para excluir o diretório e seu conteúdo de forma recursiva.
+
+`rm -r nome_do_diretorio`
+
+Certifique-se de que você tem permissão para excluir o diretório e seu conteúdo. Se o diretório estiver vazio, você pode usar o comando `rmdir` para removê-lo.\
+Por exemplo, se você deseja excluir um diretório chamado "meudiretorio", você pode usar o seguinte comando:
+
+`rm -r meudiretorio`
+
+Tenha muito cuidado ao usar o comando `rm -r`, pois ele excluir o diretórios e seu conteúdo sem a possibilidade de recuperação.
+
+# `nvm`
+
+- `nvm install versao`**:** instala uma vesão específica do Node.js;
+- `nvm use versao`**:** seleciona uma versão específica do Node.js.
