@@ -1,5 +1,41 @@
 # SQL.
 
+O nome do host local é `localhost`.
+
+A porta padrão do MySQL é 3306.
+
+# Lista de comandos.
+
+`DESCRIBE nome_da_tabela;` ou `DESC nome_da_tabela;` ou `SHOW COLUMNS FROM nome_da_tabela;`**:** descreve a tabela `nome_da_tabela`.
+
+# Erros.
+
+### Access denied for user 'nome_de_usuario'@'enderecoIP' (using password: YES)
+
+Este erro indica que **houve uma tentativa de conexão a um banco de dados, mas o usuário não possui permissão para acessar o banco de dados** a partir do endereço de IP ou **as credenciais (nome de usuário e senha) fornecidas estão incorretas**. Algumas etapas para resolver este problema:
+
+- **Verifique as credenciais:** certifique-se de que o nome de usuário e a senha fornecidos estejam corretos. Verifique se não há espaços em branco ou caracteres extras na senha;
+- **Verifique as permissões:** confirme se o usuário tem permissão para acessar o banco de dados a partir do endereço IP. Você pode verificar e ajustar as permissões no servidor do banco de dados;
+- **Verifique o host:** verifique se o servidor está configurado para permitir conexões do endereço IP. Isso pode ser verificado nas configurações do servidor, geralmente no arquivo **my.cnf** ou **my.ini**, dependendo do sistema operacional;
+- **Firewall e segurança de rede:** certifique-se de que não há um firewall ou regra de segurança de rede que esteja bloqueando a conexão do endereço IP para o servidor;
+- **Tentativa de conexão:** tente se conectar ao banco de dados novamente, garantindo que você esteja usando as credenciais corretas e que o endeço IP esteja acessível.
+
+---
+
+# SQL.
+
+mysql -u legacy-api -p
+
+show databases;
+
+select user, host, plugin from mysql.user;
+
+show grants for 'legacy-api'@'localhost';
+
+CREATE DATABASE nome_do_banco;
+
+mysql -u seu_usuario -p nome_do_banco < dump.sql
+
 - `SELECT db_version FROM settings`;
 - `ALTER TABLE settings ADD COLUMN db_version BIGINT NOT NULL DEFAULT 0`;
 - `UPDATE settings SET id = 0`.
@@ -20,9 +56,9 @@ Algumas características e conceitos-chave relacionados a procedures:
 
 Exemplo de procedure:
 
-```SQL
-`CREATE OR REPLACE PROCEDURE \`zoeslots\`.\`update_deviation\`(IN _machine_id INT(11), _deviation_amount BIGINT(20))
-/*A linha acima cria ou substitui uma procedure chamada update_deviation np esquema do banco de dados zoeslots. A procedure aceita dois parâmetros: _machine_id como INT e _deviation_amount como BIGINT.
+```MySQL
+CREATE OR REPLACE PROCEDURE \`zoeslots\`.\`update_deviation\`(IN _machine_id INT(11), _deviation_amount BIGINT(20))
+/*A linha acima cria ou substitui uma procedure chamada update_deviation no esquema do banco de dados zoeslots. A procedure aceita dois parâmetros: _machine_id como INT e _deviation_amount como BIGINT.
 Pode haver erros de sintaxe envolvendo a barra invertida e a crase grave.*/
       
     main: BEGIN
@@ -72,5 +108,5 @@ Pode haver erros de sintaxe envolvendo a barra invertida e a crase grave.*/
             SET  x = x + 1;
           
         END LOOP;
-    END`
+    END
 ```
