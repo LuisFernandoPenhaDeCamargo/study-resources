@@ -87,3 +87,18 @@ Tenha muito cuidado ao usar o comando `rm -r`, pois ele excluir o diretórios e 
 
 - `nvm install versao`**:** instala uma vesão específica do Node.js;
 - `nvm use versao`**:** seleciona uma versão específica do Node.js.
+
+# `mysql`
+
+- `mysql -u usuario -p`**:** inicia uma sessão do MySQL no terminal, especificado o nome de usuário (`-u`) como `usuario` e solicitando a senha (`-p`) interativamente;
+- `mysql -u usuario -p banco < dump.sql`**:** importa um dump para o banco. [Explicação detalhada](#importacaodedump).
+
+## <a id = "importacaodump"></a> Importando um dump.
+
+O comando `mysql -u usuario -p banco < dump.sql` é usado para importar dados de um arquivo SQL (geralmente um arquivo de despejo ou backup) para um banco de dados MySQL. Abaixo segue uma explicação por partes:
+
+- `- usuario`**:** especifica o nome de usuário que você usará para se conectar ao MySQL;
+- `-p`**:** isso indica ao MySQL para solicitar a senha do usuário interativamente, o que é uma prática mais segura do que colocar a senha diretamente na linha de comando;
+- `banco`**:** especifica o nome do banco de dados no qual você deseja importar os dados;
+- `< dump.sql`**:** redireciona a entrada do arquivo `dump.sql` para o comando MySQL. Isso significa que o MySQL lerá o conteúdo do arquivo `dump.sql` e importará os dados para o banco de dados especificado.\
+Você também pode fornecer o path para o arquivo `.sql`, exemplo: `path/dump.sql`.

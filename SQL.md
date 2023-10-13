@@ -9,16 +9,17 @@
 ## Mecanismos de autenticação (ou plugin de autenticação).
 
 **As opções de autenticação incluem:**
-    - `caching_sha2_password`;
-    - `mysql_native_password`.
+    - `mysql_native_password`**:** autenticação baseada em senha (padrão);
+    - `caching_sha2_password`**:** autenticação baseada em chave (por exemplo, autenticação SSH);
+    - `ed25519`**:** autenticação baseada em chave (mais segura).
 
-Para alterar o mecanismo <--
+[Alterando o mecanismo.](#alteruser)
 
 # Lista de comandos.
 
 - `CREATE USER 'novo_usuario'@'host' IDENTIFIED BY 'senha';`**:** cria um novo usuário, de nome `novo_usuario` para determinado `host`, o usuário é identificado pela `senha`;
-- `SELECT user, host FROM mysql.user;`**:** verifica os usuários disponíveis no MySQL localmente;
-- `ALTER USER 'usuario'@'host' IDENTIFIED BY 'nova_senha';`**:** altera a senha do `usuario` para `nova_senha`;
+- `SELECT user, host, plugin FROM mysql.user;`**:** verifica os usuários disponíveis no MySQL localmente. [Explicação detalhada](#selectuser);
+- `ALTER USER 'usuario'@'host' IDENTIFIED BY 'nova_senha';`**:** altera a senha do `usuario` para `nova_senha`. [Explicação detalhada](#alteruser);
 - `GRANT USAGE ON *.* TO 'usuario'@'host';`**:** [Explicação detalhada](#grantusage);
 - `GRANT ALL PRIVILEGES ON banco.* TO 'usuario'@'host';`**:** garante todos os privilégios para o banco `banco`;
 - `SHOW GRANTS for 'usuario'@'host';`**:** exibe as permissões concedidas ao usuário `usuario` em um host específico no MySQL;
@@ -32,9 +33,17 @@ Para alterar o mecanismo <--
 
 # Comandos.
 
+## <a id = "selectuser"></a>`SELECT user`
+
+Esta query está lidando com a tabela user do banco de dados mysql (mysql.user), ela contém além dos usuários registrados, informações como por qual host este usuário se conecta e o mecanismo de autenticação (plugin) associado a esse usuário.
+
 ## <a id = "alteruser"></a>`ALTER USER`
 
+O comando `ALTER USER` também lhe permite alterar o mecanismo de autenticação do usuário:
 
+`ALTER USER 'usuario'@'host' IDENTIFIED WITH 'mysql_native_password' BY 'senha';`
+
+Tendo em vista que é necessário especificar por qual senha ele é identificado (`BY 'senha'`, mas não é necessário utilizar uma nova, você pode alterar o usuário para utilizar a mesma).
 
 ## <a id = "grantusage"></a>`GRANT USAGE`
 
