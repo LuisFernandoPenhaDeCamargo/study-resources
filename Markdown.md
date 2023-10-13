@@ -1,7 +1,32 @@
+# Markdown.
+
+# Bloco de código.
+
+```
+Abre o bloco com três acentos graves. Na frente deles você especifica o nome da linguagem.
+
+Observando que a capitalização do nome da linguagem dentro do bloco de código em Markdown não é estritamente regulamentada, mas é uma boa prática seguir a convenção de nomenclatura da linguagem.
+
+Lembrando ainda que alguns sistemas e editores de Markdown podem ser sensíveis à capitalização e podem reconhecer apenas um nome de linguagem específico.
+
+Tipos de bloco de código:
+
+- JavaScript;
+- json;
+- MySQL;
+- Python.
+
+Fecha o bloco com três acentos graves.
+```
+
+# Imagens.
+
+`![Texto alternativo](caminho_relativo/imagem.extensão)`
+
+- `![Texto alternativo]`**:** isso é o texto alternativo da imagem, que é exibido se a imagem não puder ser carregada;
+- `(caminho_relativo/imagem.extensão)`**:** o caminho relativo para a imagem.
 
 ---
-
-# Markdown
 
 # Tabelas.
 

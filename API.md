@@ -1,3 +1,5 @@
+# API.
+
 # Documentação.
 
 Documentar uma API é essencial para garantir que os desenvolvedores possam entender e usar efetivamente os recursos e enedpoints disponíveis. Alguns dos aspectos mais importantes a serem documentados em uma API:

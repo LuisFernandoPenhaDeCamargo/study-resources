@@ -1,3 +1,5 @@
+# Unix-like.
+
 ### Prompt de comando.
 
 Exemplo: `orion@orion-OptiPlex-7010:`.

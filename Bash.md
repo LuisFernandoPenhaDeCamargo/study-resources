@@ -22,7 +22,8 @@ O comando `yes`gera uma saída contínua de "y" (yes) e a pipe `|` redireciona e
 [Explicação detalhada](#ifconfig);
 - `cat arquivo`**:** exibe o conteúdo de arquivos de texto. [Explicação detalhada](#cat);
 - `mv`**:** renomea e também pode mover arquivos e diretórios. [Explicação detalhada](#mv);
-- `rm -r nome_do_diretorio`**:** remove um diretório. [Explicação detalhada](#rm).
+- `rm -r nome_do_diretorio`**:** remove um diretório. [Explicação detalhada](#rm);
+- `node -v`**:** exibe a versão do Node.js que está sendo utilizada.
 
 # Comandos.
 
@@ -83,9 +84,20 @@ Por exemplo, se você deseja excluir um diretório chamado "meudiretorio", você
 
 Tenha muito cuidado ao usar o comando `rm -r`, pois ele excluir o diretórios e seu conteúdo sem a possibilidade de recuperação.
 
+# `npm`
+
+`npm install`**:** instala as dependências de um projeto Node.js. [Explicação detalhada](#npminstall).
+
+### <a id = "npminstall"></a>`npm install`
+
+`npm install -g pacote`**:** a opção `-g` é usada para instalar o pacote globalmente no seu sistema usando o npm. Isso significa que o pacote estará disponível em todo o seu sistema e não apenas em um projeto específico. Isso é útil para pacotes que fornecem ferramentas ou utilitários de linha de comando que você deseja acessar em qualquer lugar no sistema.
+
+Lembre-se de que, ao instalar pacotes globalmente, eles não estarão vinculados a projetos específicos, e todas as versões dos pacotes globais serão compartilhadas em todo o sistema. Certifique-se de que o pacote que você está instalando globalmente é apropriado para uso em todo o sistema e que não causará conflitos com outras versões de pacotes instalados localmente em projetos específicos.
+
 # `nvm`
 
-- `nvm install versao`**:** instala uma vesão específica do Node.js;
+- `nvm install versao`**:** instala uma versão específica do Node.js;
+- `nvm ls`**:** lista as versões do Node.js e também mostra qual está atualmente em uso;
 - `nvm use versao`**:** seleciona uma versão específica do Node.js.
 
 # `mysql`
@@ -102,3 +114,7 @@ O comando `mysql -u usuario -p banco < dump.sql` é usado para importar dados de
 - `banco`**:** especifica o nome do banco de dados no qual você deseja importar os dados;
 - `< dump.sql`**:** redireciona a entrada do arquivo `dump.sql` para o comando MySQL. Isso significa que o MySQL lerá o conteúdo do arquivo `dump.sql` e importará os dados para o banco de dados especificado.\
 Você também pode fornecer o path para o arquivo `.sql`, exemplo: `path/dump.sql`.
+
+# `ngrok`
+
+`ngrok http porta`**:** [executa um túnel](Ngrok.md#execucaotunel).

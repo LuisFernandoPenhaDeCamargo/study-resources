@@ -2,7 +2,7 @@
 
 # Comandos.
 
-`git clone -b nomeDoBranch URL`**:** clona um branch específico do repositório remoto.
+`git clone -b nomeDoBranch URL`**:** clona um branch específica do repositório remoto.
 
 ---
 

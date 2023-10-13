@@ -1,7 +1,4 @@
-
----
-
-# Sequelize.
+# `sequelize`
 
 # Objeto `Sequelize` x objeto `QueryInterface`.
 
@@ -11,19 +8,18 @@ Essa divisão de responsabilidades é uma das características do Sequelize que 
 
 # Métodos de um objeto model do Sequelize.
 
-- [`.findOne()`;](#findone)
-- [`.update()`;](#update)
-- [`.changed()`;](#changed)
-- [`.save()`;](#save)
-- [`.update()`;](#update)
-- [`.query()`;](#query)
-- [`.getQueryInterface()`.](#getqueryinterface)
+- [`.findOne()`](#findone);
+- [`.update()`](#update);
+- [`.changed()`](#changed);
+- [`.save()`](#save);
+- [`.query()`](#query);
+- [`.getQueryInterface()`](#getqueryinterface).
 
 <a id = "opcoes"></a>`opcoes` é o objeto que define critérios de pesquisa, é um parâmetro opcional. Algumas das suas principais propriedades são:
 
 - `where`**:** define condições de pesquisa. Você pode usar isso para especificar as colunas e valores pelos quais deseja pesquisar;
 - `attributes`**:** define quais colunas da tabela você deseja retornar. Por padrão, retornará todas as colunas. Você pode listar as colunas desejadas como um array, por exemplo, `{ attributes: ['name', 'path_name']}`;
-- `include`**:** permite incluir associações relacionadas (por exemplo, tabelas associadas) na consulta;
+- `include`**:** permite incluir associações relacionadas (por exemplo, tabelas associadas) na query;
 - `order`**:** define a ordem em que os resultados devem ser retornados;
 - `limit`**:** limita o número de registros que serão atualizados.
 
@@ -60,32 +56,20 @@ Salva o estado atual de um modelo no banco de dados, **sem realizar verificaçõ
 Ele simplesmente envia as informações do modelo para o banco de dados e atualiza o registro correspondente com as informações atuais do modelo, substituindo o registro existente, se houver.\
 O método `.save()` não executa validações adicionais por padrão. Se você tiver regras de validações definidas em seu modelo Sequelize, elas não serão acionadas automaticamente quando você chamar `.save()`. Portanto, é importante garantir que os dados no modelo **estejam corretos e atendam às regras de validação** antes de chamar `.save()`.
 
-## <a id = "update"></a>`.update()`
-
-É usado para atualizar registros existentes no banco de dados. Ele permite que você faça atualizações em um ou mais registros de uma tabela com base em um critério de pesquisa.
-
-`.update(objeto1, objeto2)`
-
-- `objeto1`**:** especifica os novos valores a serem atribuídos aos campos;\
-    Exemplo: `{ chave: novo valor, ...}`.
-- `objeto2`**:** é o objeto que contém o critério de pesquisa para determinar quais registros devem ser atualizados.
-
-Retorna um objeto (um array) de tamanho único (com um elemento) que contém o número de registros afetados pela operação de atualização.
-
 ## <a id = "query"></a>`.query()`
 
-É usada para executar comandos SQL personalizados em um banco de dados. Ela oferece maior flexibilidade do que os métodos de comando padrão do Sequelize, permitindo que você escreva consultas SQL completas e complexas conforme necessário.
+É usada para executar comandos SQL personalizados em um banco de dados. Ela oferece maior flexibilidade do que os métodos de comando padrão do Sequelize, permitindo que você escreva queryss SQL completas e complexas conforme necessário.
 
-`sequelize.query(query, options)`
+`sequelize.query(query, `[`opcoes`](#opcoes)`)`
 
-- `query`**:** é o comando SQL que você deseja executar como uma string;
-- `options` **(opcional):** é um objeto de opções que pode conter várias configurações, como parâmetros de substituição, tipo de consulta, etc.
+- `query` **(string):** é o comando SQL que você deseja executar;
+- `opcoes` **(opcional):** é um objeto de opções que pode conter várias configurações, como parâmetros de substituição, tipo de consulta, etc.
     - `replacements`**:** objeto onde as chaves correspondem aos marcadores de posição na operação SQL e os valores são os valores que você deseja substituir.
 
 Retorna um objeto que representa a operação executada, é necessário acessar os resultados manualmente. Os resultados retornados geralmente são uma matriz de objetos JavaScript.
 
-O Sequelize entende as **interrogações na sua consulta SQL** como **marcadores de posição** que serão substituídos pelos valores fornecidos no objeto identificado pela chave `replacements` na ordem ordem em que as interrogações aparecem na consulta.\
-O Sequelize substituirá cada interrogação na consulta pelo valor correspondente no array identificado por `replacements` na ordem em que aparecerem. Por exemplo, a primeira interrogação será substituída pelo primeiro valor do array, a segunda interrogação, pelo segundo valor, e assim por diante.\
+O Sequelize entende as **interrogações na sua query SQL** como **marcadores de posição** que serão substituídos pelos valores fornecidos no objeto identificado pela chave `replacements` na ordem ordem em que as interrogações aparecem na query.\
+O Sequelize substituirá cada interrogação na query pelo valor correspondente no array identificado por `replacements` na ordem em que aparecerem. Por exemplo, a primeira interrogação será substituída pelo primeiro valor do array, a segunda interrogação, pelo segundo valor, e assim por diante.\
 O Sequelize garantirá que a substituição seja feita de forma adequada e segura, levando em consideração a formatação correta dos valores para evitar problemas de segurança, como injeção de SQL.
 
 ```JavaScript
@@ -116,31 +100,31 @@ Cada interrogação será substituída de acordo com a sua posição em relaçã
 ## <a id = "getqueryinterface"></a>`.getQueryInterface()`
 
 É usado para obter uma instância do objeto `QueryInterface` associado a uma instância Sequelize específica.\
-Um breve explicação do que o `.getQueryInterface()` faz:
+Uma breve explicação do que o `.getQueryInterface()` faz:
 
 - **Instância Sequelize:** primeiro, é necessário ter uma instância do Sequelize configurada no aplicativo. Isso geralmente é feito quando é criada uma instância do Sequelize com as configurações de conexão ao banco de dados;
-- **Acesso ao QueryInterface:** depois de ter uma instância do Sequelize, você pode chamar o método `.getQueryInterface()` nessa instância para obter uma instância do objeto `QueryInterface`. O `QueryInterface` é uma parte importante do Sequelize que permite que você execute consultas SQL diretamente e execute operações de migração no banco de dados;
-- **Uso do** `QueryInterface`**:** com a instância do `QueryInterface`, você pode chamar vários métodos para executar consultas SQL, criar, atualizar ou excluir tabelas, adicionar ou remover colunas, criar índices e realizar outras operações relacionadas ao esquema do banco de dados.
+- **Acesso ao QueryInterface:** depois de ter uma instância do Sequelize, você pode chamar o método `.getQueryInterface()` nessa instância para obter uma instância do objeto `QueryInterface`. O `QueryInterface` é uma parte importante do Sequelize que permite que você execute querys SQL diretamente e execute operações de migração no banco de dados;
+- **Uso do** `QueryInterface`**:** com a instância do `QueryInterface`, você pode chamar vários métodos para executar queryss SQL, criar, atualizar ou excluir tabelas, adicionar ou remover colunas, criar índices e realizar outras operações relacionadas ao esquema do banco de dados.
 
 # Métodos do objeto `QueryInterface`.
 
 `QueryInterface` possui a propriedade `.QueryGenerator` que contém métodos para criar operações SQL, como seleção, inserção, atualização e exclusão, com base nos parâmetros e critérios fornecidos. Isso ajuda a abstrair a geração de SQL manualmente e garante que as consultas geradas sejam compatíveis com o banco de dados específico que você está usando.
 
-- [`.createTable`;](#createtable)
-- [`.dropTable()`;](#droptable)
-- [`.bulkInsertQuery()`;](#bulkinsertquery)
-- [`.bulkInsert()`;](#bulkinsert)
-- [`.addColumn()`;](#addcolumn)
-- [`.changeColumn()`;](#changecolumn)
-- [`.removeColumn()`.](#removecolumn)
+- [`.createTable`](#createtable);
+- [`.dropTable()`](#droptable);
+- [`.bulkInsertQuery()`](#bulkinsertquery);
+- [`.bulkInsert()`](#bulkinsert);
+- [`.addColumn()`](#addcolumn);
+- [`.changeColumn()`](#changecolumn);
+- [`.removeColumn()`](#removecolumn).
 
 ## <a id = "createtable"></a>`.createTable()`
 
 Cria uma nova tabela no banco de dados. Este método permite definir a estrutura da tabela, incluindo o nome das colunas, os tipos de dados das colunas e quaisquer outras restrições desejadas.
 
-`createTable(nomeDaTabela, objeto)`
+`createTable(nome, objeto)`
 
-- `nomeDaTable`**:** o nome da tabela a ser criada;
+- `nome`**:** o nome da tabela a ser criada;
 - `objeto`**:** objeto que define a estrutura da tabela, incluindo colunas e suas configurações.
 
 Retorna uma promessa que representa a criação da tabela.
@@ -149,21 +133,21 @@ Retorna uma promessa que representa a criação da tabela.
 
 É usado para excluir uma tabela do banco de dados. Ele recebe como argumento o nome da tabela que você deseja excluir e retorna uma promise.
 
-`.dropTable(tableName)`
+`.dropTable(nome)`
 
-`tableName`: nome da tabela que você deseja excluir.
+`nome`: nome da tabela que você deseja excluir.
 
 ## <a id = "bulkinsertquery"></a>`.bulkInsertQuery()`
 
 É usado para gerar uma operação SQL para inserção em massa de registros em uma tabela. Ela cria a consulta SQL com base no nome da tabela e na lista de registros que você deseja inserir.
 
-`.QueryGenerator.bulkInsertQuery(nomeDaTabela, registros, opcoes)`
+`.QueryGenerator.bulkInsertQuery(nome, registros, opcoes)`
 
-- `nomeDaTabela`**:** o nome do modelo Sequelize correspondente à tabela na qual você deseja inserir os registros em massa;
-- `registros`**:** um array de objetos que representa os registros que você deseja inserir na tabela. Cada objeto de `registros` deve conter pares de chave-valor, onde as chaves correspondem aos nomes das colunas da tabela e os valores são os dados a serem inseridos;
-- `opcoes` **(opcional):** um objeto que pode conter várias opções para controlar o comportamento da operação de inserção em massa. Algumas opções comuns incluem:
+- `nome`**:** o nome do modelo Sequelize correspondente à tabela na qual você deseja inserir os registros em massa;
+- `registros` **(array):** um array de objetos que representa os registros que você deseja inserir na tabela. Cada objeto de `registros` deve conter pares de chave-valor, onde as chaves correspondem aos nomes das colunas da tabela e os valores são os dados a serem inseridos;
+- `opcoes` **(objeto, opcional):** um objeto que pode conter várias opções para controlar o comportamento da operação de inserção em massa. Algumas opções comuns incluem:
     - `transaction`**:** uma transação Sequelize opcional na qual a operação deve ser executada;
-    - `ignoreDuplicates`**:** um booleano que indica se as duplicatas devem ser ignoradas durante a inserção;
+    - `ignoreDuplicates` **(booleano):** define se as duplicatas devem ser ignoradas durante a inserção;
     - `updateOnDuplicate`**:** um objeto que define as colunas a serem atualizadas em caso de conflito de chave única.
 
 Retorna uma string contendo a operação SQL de inserção em massa.
@@ -172,13 +156,13 @@ Retorna uma string contendo a operação SQL de inserção em massa.
 
 Permite inserir múltiplos registros em uma tabela.
 
-`.bulkInsert(nomeDaTabela, registros, opcoes)`
+`.bulkInsert(nome, registros, opcoes)`
 
-- `nomeDaTabela`**:** o nome do modelo Sequelize correspondente à tabela na qual você deseja inserir os registros em massa;
-- `registros`**:** um array de objetos que representa os registros que você deseja inserir na tabela. Cada objeto no array deve conter propriedades que correspondam às colunas da tabela;
+- `nome`**:** o nome do modelo Sequelize correspondente à tabela na qual você deseja inserir os registros em massa;
+- `registros` **(array):** um array de objetos que representa os registros que você deseja inserir na tabela. Cada objeto no array deve conter propriedades que correspondam às colunas da tabela;
 - `opcoes` **(opcional):** um objeto que pode conter várias opções para controlar o comportamento da operação de inserção em massa. Algumas opções comuns incluem:
     - `transaction`**:** uma transação Sequelize opcional na qual a operação deve ser executada;
-    - `ignoreDuplicates`**:** um booleano que indica se as duplicatas devem ser ignoradas durante a inserção.
+    - `ignoreDuplicates` **(booleano):** define se as duplicatas devem ser ignoradas durante a inserção.
 
 ## `.bulkInsert()` x `.bulkInsertQuery()`
 
@@ -202,8 +186,8 @@ Modifica uma coluna existente.
 
 `.changeColumn(nomeDaTabela, nomeDaColuna, propriedadesDaColuna)`
 
-- `nomeDaTabela`**:** nome da tabela à qual você deseja adicionar a coluna;
-- `nomeDaColuna`**:** nome da nova coluna a ser adicionada;
+- `nomeDaTabela`**:** nome da tabela à qual você deseja modificar a coluna;
+- `nomeDaColuna`**:** nome da coluna a ser modificada;
 - `propriedadesDaColuna`**:** objeto que contém informações sobre a coluna.
 
 Retorna uma promise.
@@ -214,7 +198,7 @@ Remove uma coluna existente de uma tabela no banco de dados.
 
 `.removeColumn(nomeDaTabela, nomeDaColuna)`
 
-- `nomeDaTabela`**:** uma string que especifica o nome da tabela da qual você deseja remover a coluna;
-- `nomeDaColuna`**:** uma string que especifica o nome da coluna a ser removida da tabela.
+- `nomeDaTabela` **(string):** especifica o nome da tabela da qual você deseja remover a coluna;
+- `nomeDaColuna` **(string):** especifica o nome da coluna a ser removida da tabela.
 
 Retorna uma promise.

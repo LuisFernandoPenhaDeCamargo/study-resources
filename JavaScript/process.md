@@ -1,5 +1,4 @@
-
----
+# `process`
 
 - **Argumentos da linha de comando:** você pode acessar os argumentos passados para o script Node.js a partir de `process.argv`. Por exemplo `process.argv[2]` fornecerá o terceiro argumento passado na linha de comando;
 - **Variáveis de ambiente:** você pode acessar variáveis de ambiente do sistema operacional por meio de `process.env`. Isso é útil para configurar seu aplicativo com base em variáveis de ambiente, como chaves de API, portas de servidor, etc;\

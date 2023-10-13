@@ -1,26 +1,43 @@
-
----
-
 # Bibliotecas.
 
-# Métodos.
+### Métodos.
 
-- [`.pending()`;](#pending)
-- [`.execute()`;](#execute)
-- [`.executed()`;](#executed)
-- [`expect()`;](#expect)
-- [`describe()`;](#describe)
-- [`it()`;](#it)
-- [`.promisify()`;](#promisify)
-- [`.resolve()`;](#resolve)
-- [`.hostname()`;](#hostname)
-- [`.cpus()`;](#cpus)
-- [`.readdirSync()`;](#readdirsync)
-- [`.readFileSync()`;](#readfilesync)
-- [`.statSync()`;](#statsync)
-- [`.existsSync()`;](#existssync)
-- [`.unlinkSync()`;](#unlinksync)
-- [`.exec()`.](#exec)
+- [`.query()`](#query);
+- [`.pending()`](#pending);
+- [`.execute()`](#execute);
+- [`.executed()`](#executed);
+- [`expect()`](#expect);
+- [`describe()`](#describe);
+- [`it()`](#it);
+- [`.promisify()`](#promisify);
+- [`.resolve()`](#resolve);
+- [`.hostname()`](#hostname);
+- [`.cpus()`](#cpus);
+- [`.readdirSync()`](#readdirsync);
+- [`.readFileSync()`](#readfilesync);
+- [`.statSync()`](#statsync);
+- [`.existsSync()`](#existssync);
+- [`.unlinkSync()`](#unlinksync);
+- [`.exec()`](#exec).
+
+# <a name = "mariadb"></a>`mariadb`
+
+O MariaDB Connector/Node.js é uma biblioteca que permite que seu aplicativo Node.js se conecte e interaja com um banco de dados MariaDB/MySQL. Ele não inclui o pŕoprio servidor de banco de dados.
+
+### <a id = "query"></a>`.query()`
+
+Executa querys SQL.
+
+`pool.query(sql, values, callback)`
+
+O método `.query()` é um dos métodos principais em uma pool de conexões MariaDB no Node.js. Ele é usado para executar querys SQL no banco de dados MariaDB por meio da conexão que está disponível na pool. A função `.query()` é usada para enviar uma query SQL ao banco de dados e recuperar os resultados, se houver.
+
+- `sql` **(string):** contém a query SQL que você deseja executar. Pode incluir espaços reservados que serão substituídos pelos valores reais quando a query for executada. Por exemplo, você pode usar placeholders como `?` ou nomeá-los com `:nome` ou `?name` e fornecer os valores correspondentes no array `values`;
+- `values` **(array, opcional):** contém os valores a serem inseridos nos espaços reservados da query SQL. Isso é útil para evitar ataques de injeção SQL e para passar dados dinâmicos para a query. Se você não precisar de valores dinâmicos, pode deixar este parâmetro em branco;
+- `callback`**:** é uma função de retorno de chamada que será chamada quando a consulta for executada ou quando ocorrerem erros. A função de retorno de chamada segue o padrão Node.js com dois argumentos: `error` e `results`. `error` conterá qualquer erro que ocorra durante a execução da query, e `results` conterá os resultados da query se ela for bem-sucedida.
+
+O retorno do método `pool.query()` pode variar com base na natureza da query SQL que você está executando e nos resultados da consulta. Em geral, o retorno depende se a query é uma query de seleção (SELECT) ou uma query de modificação (INSERT, UPDATE, DELETE) e se a consulta foi bem-sucedida.\
+Se a query for uma query de seleção e for bem-sucedida, **o retorno será um array que possui um objeto com os registros retornados, entre outros objetos**.
 
 # <a name = "axios"></a>`axios`
 
@@ -31,6 +48,13 @@ Utilizada para fazer requisições HTTP, seja em navegadores ou em Node.js.
 No propriedade `'content-type'`, que pode ser acessada ao se utilizar `response.headers['content-type']`, se encontra o valor do formato da resposta.\
 Se o valor da chave `'content-type'` for `application/json`, quer dizer que o conteúdo da resposta é no formato JSON.
 
+### `.interceptors`
+
+Ao configurar um interceptador global, este será aplicado a todas as solicitações feitas por todas as partes do código que utilizam a mesma instância global do axios (no caso de um interceptador de requisição) ou será aplicado antes de retonar cada resposta ao código (interceptador de resposta).\
+Lembrando que ele é **aplicado**, ou seja, ele é **executado** antes de cada requisição ou após cada resposta.
+
+---
+
 - `url` **(string):** URL de destino, para onde a solicitação será enviada;
 - `corpoDaSolicitacao` **(objeto):** corpo da solicitação que está sendo enviada;
 - `configuracoes` **(objeto, opcional):** objeto de configuração opcional que permite personalizar a solicitação. Este objeto pode conter várias opções de configuração, como cabeçalhos personalizados, autenticação, parâmetros de consulta, entre outros.\
@@ -40,12 +64,11 @@ Se o valor da chave `'content-type'` for `application/json`, quer dizer que o co
 
 - `.post(url, corpoDaSolicitacao)`;
 - `.patch(url, corpoDaSolicitacao, configuracoes)` : atualização parcial;
-- [`.CancelToken.source()`.](#canceltoken)
+- [`.CancelToken.source()`](#canceltoken).
 
-### `.interceptors`
+---
 
-Ao configurar um interceptador global, este será aplicado a todas as solicitações feitas por todas as partes do código que utilizam a mesma instância global do axios (no caso de um interceptador de requisição) ou será aplicado antes de retonar cada resposta ao código (interceptador de resposta).\
-Lembrando que ele é **aplicado**, ou seja, ele é **executado** antes de cada requisição ou após cada resposta.
+<--
 
 - `.request` : interceptador de solicitação (requisição). Isto permite que você execute código antes que cada solicitação seja enviada. Após realizarmos esta "configuração", todas as solicitações posteriores obedeceram esta configuração;
 - `.response` : interceptador de resposta.
@@ -300,8 +323,6 @@ it("String", function() {
 # <a name = "requestpromisenative"></a>`request-promise-native`
 
 Biblioteca utilizada para fazer solicitações HTTP de forma assíncrona no Node.js com suporte a Promises. É uma extensão do módulo request-promise, oferecendo as mesmas funcionalidades, mas com o uso nativo de Promises, o que torna o código mais limpo e legível quando se trata de fazer solicitações HTTP e lidar com respostas.
-
-# JavaScript.
 
 # Node.js.
 

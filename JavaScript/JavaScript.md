@@ -1,3 +1,67 @@
+# JavaScript.
+
+# Arrow functions.
+
+Arrow functions herdam o espoco léxico do contexto em que são definidas. Isso significa que uma arrow function pode acessar variáveis de escopo circundante.\
+Explicando melhor:
+
+- **Escopo léxico:** o termo "escopo léxico" refere-se ao escopo das variáveis em uma determinado trecho de código com base em como o código está estruturado. Em JavaScript, o escopo léxico é determinado pelo local onde as funções são definidas;
+- **Funções regulares:** funções regulares têm seu próprio escopo e não podem acessar diretamente as variáveis de escopo circundante (exceto quando essas variáveis são passadas como argumentos para a função);
+- **Arrow functions:** arrow functions, por outro lado, "herdam" o escopo léxico do contexto em que são definidas. Isso significa que elas têm acesso direto às variáveis do escopo circundante, incluindo variáveis de funções pai, vairáveis globais e assim por diante. **Elas não têm seu próprio objeto** `this` **e não podem ser usadas como construtores**.
+
+Mesmo quando uma arrow function não é definida dentro de outra função, ela ainda tem acesso as variáveis do escopo circundante.
+
+# Função de fechamento ou closure.
+
+Uma função que "captura" variáveis de seu ambiente circundante é conhecida como uma função de fechamento ou closure. Closures são um conceito poderoso em linguagens de programação e são amplamente usados em JavaScript e em muitas outras linguagens. Aqui estão alguns aspectos importantes das funções de fechamento.
+
+- **Definição de closure:** uma closure é uma função que "fecha" sobre variáveis de seu ambiente circundante, permitindo que ela acesse e manipule essas variáveis, mesmo após o término da execução do contexto que a criou. Isso ocorre porque a função "carrega" essas variáveis consigo, mantendo-as vivas;\
+**Quando uma função é definida dentro de outra função, ela "fecha" sobre as variáveis que são declaradas na função externa, permitindo que a função interna acesse essas variáveis mesmo após o término da execução da função externa.**
+- **Variáveis de captura:** as variáveis que uma função de fechamento pode acessar e "capturar" são chamadas de variáveis de captura. Elas são acessíveis mesmo depois que o contexto que as criou foi concluído;
+- **Escopo lexical:** em JavaScript e muitas outras linguagens, o escopo de uma função é determinado por onde ela é definida no código (escopo léxico). Isso significa que as funções de fechamento podem acessar variáveis no escopo de seus pais, incluindo as variáveis locais e parâmetros das funções que as envolvem
+- **Uso comum:** closures são frequentemente usadas para criar funções que mantêm estado entre chamadas, implementar encapsulamento e criar funções de fábrica para objetos. Elas são úteis quando você deseja criar funções que se comportam de maneira personalizada com base em algum contexto específico.
+
+Aqui está um exemplo em JavaScript:
+
+```JavaScript
+function contador() {
+  let count = 0; //Variável de captura.
+
+  return function() {
+    count++; //A função de fechamento acessa a variável "count".
+    return count;
+  }
+}
+
+const increment = contador();
+
+console.log(increment()); //Saída: 1
+console.log(increment()); //Saída: 2
+console.log(increment()); //Saída: 3
+```
+
+Neste exemplo, a função `contador()` retorna uma função de fechamento que mantém o estado da variável `count` entre as chamadas. A função de fechamento captura a variável `count` e a manipula toda vez que é chamada. Isso é um exemplo clássico de uma closure em JavaScript.
+
+Closures são uma característica poderosa que permite criar código mais modular e funcional em JavaScript e em outras linguagens que as suportam. Elas ajudam a manter o encapsulamento e a gerenciar o estado de forma mais eficaz.
+
+# node_modules
+
+Este diretório normalmente não é versionado (o que é uma boa prática). Ele contém as dependências do seu projeto, caso haja dependências ausentes, você pode seguir as seguinte etapas:
+
+- Navegue até o diretório raiz do seu projeto;
+- Execute o comando `npm install`. Isso lerá as depedências listadas no arquivo **package.json** e as instalará no diretório **node_modules**.
+
+Certifique-se de nunca incluir a pasta **node_modules** no seu repositório Git, pois ela pode ser gerada facilmente.
+
+# Bibliotecas.
+
+[`sequelize`](sequelize.md).
+
+# Frameworks.
+
+- [Mocha](#frameworks.md#mocha);
+- [Vue.js](frameworks.md#vuejs);
+- [Next.js](frameworks.md#nextjs).
 
 ---
 
@@ -119,7 +183,6 @@ Quando você inclui a diretiva `'use strict'` no início de um arquivo JavaScrip
 
 # Bibliotecas.
 
-- [`sequelize`;](Sequelize.md)
 - [`axios`;](bibliotecas.md#axios)
 - [`umzug`;](bibliotecas.md#umzug)
 - [`chai`;](bibliotecas.md#chai)
@@ -132,9 +195,3 @@ Quando você inclui a diretiva `'use strict'` no início de um arquivo JavaScrip
 - [`os`;](bibliotecas.md#os)
 - [`fs`;](bibliotecas.md#fs)
 - [`child_process`.](bibliotecas.md#childprocess)
-
-# Frameworks.
-
-- [Mocha;](#frameworks.md#mocha)
-- [Vue.js;](frameworks.md#vuejs)
-- [Next.js.](frameworks.md#nextjs)

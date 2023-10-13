@@ -2,26 +2,20 @@
 
 # Check-list.
 
-### Loose.
+### Repositório.
 
-calma
-o caminho ficou confuso
-basicamente
-eu vou viabilizar meu servidor local
-para a nuvem
-que vai ser acessado por um stand
-através desse cara
+- JavaScript/bibliotecas.md;
+- JavaScript/JavaScript.md;
+- JavaScript/nativo.md;
+- Markdown.md;
+- Git-GitHub.md.
 
-### ChatGPT.
+### Dúvidas.
 
-To do:
+- Terminal x Prompt de comando;
+- Diretório x pasta.
 
-- Git/GitHub;
-- Markdown;
-- Ngrok;
-- JavaScript.
-
-# Contexto para o ChatGPT.
+### Contexto para o ChatGPT.
 
 JavaScript.
 
@@ -42,7 +36,7 @@ Linguagem: português (BR).
 
 - Títulos de palavras-chave devem estar entre acentos graves;
 - Títulos de funções/métodos devem estar entre acentos graves, não devem conter nada em seu parâmetro e não terminam em ponto final. Exemplo: `funcao()`
-- Títulos de bibliotecas devem ser nomeados igual ao nome utilizado em sua importação.
+- Títulos de bibliotecas devem ser nomeados igual ao nome utilizado em sua importação, também devem estar entre acentos graves.
 
 ### Listas e itens nominais.
 
@@ -50,7 +44,7 @@ Os itens nominais de uma lista e de forma geral devem estar em **negrito**, incl
 
 ### Negrito.
 
-Diretórios, arquivos e extensões devem estar em negrito. O significado de abreviações e a sua tradução também.
+Diretórios, arquivos e extensões devem estar em negrito. O significado de anagramas/abreviações e a sua tradução também.
 
 # Programação.
 
@@ -87,68 +81,18 @@ Explicação detalhada.
 
 ### Função/método.
 
-Resumo do que a função faz.
+Resumo do que a função faz. Se a explicação for um pouco mais detalhada mas não possuir um comprimento absurdo, ela pode ser considerada um resumo.
 
-`funcao(parametro)` (exemplo da função)
+`funcao(parametro)` (exemplo da função)\
+Inclua o objeto que a chama.
+
+Explicação mais detalhada.
 
 Quais são seus parâmetros, quais são os tipos deles e o que a função retorna.\
 "a função  aceita o que de parâmetro, qual é o tipo dele e o que ela retorna?"
 
 ### Bibliotecas.
 
+Verificar se ela precisa ser instalada.
+
 Resumo para o que ela serve.
-
-Precisa ser instalada?
-
-# Dúvidas.
-
-- Terminal x Prompt de comando;
-- Diretório x pasta.
-
----
-
-# Estruturas.
-
-### Lógica.
-
-Todo o arquivo funcionará de forma padronizada, mas também lógica. Se o conteúdo não possuir a seção em específico, ela simplesmente não será incluída no escopo do conteúdo.
-
-### Títulos.
-
-Caso o título seja o nome de uma `função`/`método`, ele não deve incluir os seus parâmetros.\
-Os nomes das bibliotecas estão iguais ao nome utilizado em sua importação, por isso estão entre `acentos graves`.
-
-### Termos.
-
-Na explicação de um termo (um anagrama, por exemplo), **ele**, **o significado do seu anagrama**, se houver, e sua **tradução**, devem estar em **negrito**.
-
-### Estruturas de programação.
-
-Sempre entre `acentos graves`.
-
-### Escopo de uma estrutura de programação.
-
-Descrição básica e prática da estrutura. Praticamente um resumo.
-
-```
-Exemplo da sua estrutura.
-
-Pode ser um bloco ou uma estrutura simples (estar somente entre acentos graves).
-Os nomes dos componentes utilizados no exemplo, devem ser intuitivos.
-```
-
-- `Objetos da estrutura, como parâmetros.`.
-
-Retorno.
-
----
-
-Há a separação do conteúdo (quebra em dois blocos).
-
-Informação adicional e de maior complexidade da estrutura.
-
-Exemplos mais complexos.
-
-### Bibliotecas.
-
-Query: `nomeDaBiblioteca` é uma biblioteca do JavaScript ou do Node, ela precisa ser instalada?

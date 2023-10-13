@@ -1,14 +1,11 @@
-
----
-
 # Frameworks.
 
-# Métodos.
+### Métodos.
 
-- [`timeout()`;](#timeout)
-- [`before()`;](#before)
-- [`after()`;](#after)
-- [`done()`.](#done)
+- [`timeout()`](#timeout);
+- [`before()`](#before);
+- [`after()`](#after);
+- [`done()`](#done).
 
 # <a name = "mocha"></a>Mocha
 
@@ -37,6 +34,16 @@ Dentro de um bloco de teste, você pode definir o limite de tempo para a sua exe
 
 Ele pode ser utilizado para configurar recursos necessários ou para realizar tarefas de inicialização que se aplicam a todos os casos de teste dentro desse bloco. Por exemplo, você pode usar `before()` para criar instâncias de objetos que serão usados em vários testes.
 
+### <a id = "after"></a>`after()`
+
+É executado uma vez depois de todos os casos de teste no bloco `describe()`.
+
+`after(callback)`
+
+`callback`**:** função de callback.
+
+Ele é útil para limpar recursos ou realizar tarefas de encerramento que se aplicam a todos os testes no bloco. Por exemplo, você pode usar o gancho `after()` para fechar conexões de banco de dados ou liberar recursos após a execução dos testes.
+
 ### <a id = "done"></a>`done`
 
 O `done` é uma função que é frequentemente usada em testes com a estrutura de testes Mocha, que é uma estrutura popular para escrever testes em JavaScript. Ela não é uma função global, mas sim um argumento que você pode passar para sua função de teste (também conhecida como função de callback) quando você está escrevendo testes usando Mocha.
@@ -60,21 +67,11 @@ it("Deve verificar algo assíncrono.", function(done) {
 });
 ```
 
-Quando você chama `done()`, Mocha entende que o teste está completo e passou. Quando você chama `done(error)`, Mocha entende que o teste falhou com o erro especificado.
-
-### <a id = "after"></a>`after()`
-
-É executado uma vez depois de todos os casos de teste no bloco `describe()`.
-
-`after(callback)`
-
-`callback`**:** função de callback.
-
-Ele é útil para limpar recursos ou realizar tarefas de encerramento que se aplicam a todos os testes no bloco. Por exemplo, você pode usar o gancho `after()` para fechar conexões de banco de dados ou liberar recursos após a execução dos testes.
+Quando você chama `done()` o Mocha entende que o teste está completo e passou. Quando você chama `done(error)` o Mocha entende que o teste falhou com o erro especificado.
 
 # <a name = "vuejs"></a>Vue.js
 
-## Resumo.
+### Resumo.
 
 Framework progressivo usado para construir interfaces de usuário (UI) interativas e baseadas em componentes. Ele é amplamente utilizado no desenvolvimento web front-end e é conhecido por sua simplicidade e facilidade de integração com outros projetos e bibliotecas.
 
@@ -94,7 +91,7 @@ Alguns pontos-chave relacionados ao uso de Vue.js:
 
 # <a name = "nextjs"></a>Next.js
 
-## Resumo.
+### Resumo.
 
 Utilizado para criar aplicativos web do lado do servidor (SSR) e do lado do cliente. Ele é frequentemente usado com React, mas também pode ser usado com outros frameworks de front-end. Next.js é conhecido por suas capacidades avançadas de renderização, roteamento e facilidade de desenvolvimento, o que o torna uma escolha popular para desenvolvedores que desejam criar aplicativos da web modernos e de alto desempenho.
 

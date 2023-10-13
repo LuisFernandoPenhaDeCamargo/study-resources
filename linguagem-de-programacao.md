@@ -1,3 +1,5 @@
+# Linguagem de programação.
+
 # Parâmetro x Argumento.
 
 **Parâmetro** e **argumento** são termos relacionado à passagem de valores em funções, mas eles se referem a conceitos diferentes:
