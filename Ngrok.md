@@ -23,3 +23,6 @@ Se você tiver uma conta Ngrok registrada, poderá acessar o painel de controle 
 ### Problemas de compatibilidade com o Node.js.
 
 No geral, o Ngrok em si não é afetado pela versão do Node.js, mas a compatibilidade de outros pacotes em seu projeto Node.js pode depender da versão do Node.js que você está usando. Portanto, certifique-se de manter a compatibilidade com todas as dependências de seu projeto.
+
+**Observando ainda que se você o instalou em uma versão do Node.js, ele não será listado em outra, nem mesmo no terminal**. Exemplo:\
+Digamos que você está utilizando a versão v8.16.0 do Node.js, mas você o instalou na versão v14.21.3, se você utilizar o comando `ngrok -v` na versão v8.16.0 a mensagem "Comando 'ngrok' não encontrado" irá aparecer. Se você mudar para a versão v14.21.3 e utilizar o mesmo comando, a versão do Ngrok aparecerá.

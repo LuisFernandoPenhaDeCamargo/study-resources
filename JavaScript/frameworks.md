@@ -7,7 +7,11 @@
 - [`after()`](#after);
 - [`done()`](#done).
 
-# <a name = "mocha"></a>Mocha
+# <a name = "express"></a>Express.js.
+
+O Express.js (geralmente conhecido como Express) é um framework de aplicativo web popular para Node.js. Ele fornece uma estrutura flexível para a criação de aplicativos web e APIs de forma eficiente. O Express simplifica o processo de configuração de rotas, manipulação de solicitações e respostas, interação <--
+
+# <a name = "mocha"></a>Mocha.
 
 ### Hooks.
 
@@ -69,7 +73,7 @@ it("Deve verificar algo assíncrono.", function(done) {
 
 Quando você chama `done()` o Mocha entende que o teste está completo e passou. Quando você chama `done(error)` o Mocha entende que o teste falhou com o erro especificado.
 
-# <a name = "vuejs"></a>Vue.js
+# <a name = "vuejs"></a>Vue.js.
 
 ### Resumo.
 
@@ -89,7 +93,7 @@ Alguns pontos-chave relacionados ao uso de Vue.js:
 - **Documentação rica:** a documentação oficial do Vue.js é extensa e bem escrita, facilitando a aprendizagem e a consulta de informações quando necessário;
 - **Adoção empresarial:** muitas empresas, grandes e pequenas, adotaram Vue.js em seus projetos devido à sua eficiência e flexibilidade.
 
-# <a name = "nextjs"></a>Next.js
+# <a name = "nextjs"></a>Next.js.
 
 ### Resumo.
 

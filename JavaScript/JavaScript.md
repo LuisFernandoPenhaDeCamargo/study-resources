@@ -57,9 +57,14 @@ Certifique-se de nunca incluir a pasta **node_modules** no seu repositório Git,
 
 [`sequelize`](sequelize.md).
 
+## Node.js.
+
+[`tls`](bibliotecas.md#tls).
+
 # Frameworks.
 
-- [Mocha](#frameworks.md#mocha);
+- [Express.js](frameworks.md#express);
+- [Mocha](frameworks.md#mocha);
 - [Vue.js](frameworks.md#vuejs);
 - [Next.js](frameworks.md#nextjs).
 

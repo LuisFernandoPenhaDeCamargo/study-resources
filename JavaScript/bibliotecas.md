@@ -3,6 +3,9 @@
 ### Métodos.
 
 - [`.query()`](#query);
+
+---
+
 - [`.pending()`](#pending);
 - [`.execute()`](#execute);
 - [`.executed()`](#executed);
@@ -68,7 +71,67 @@ Lembrando que ele é **aplicado**, ou seja, ele é **executado** antes de cada r
 
 ---
 
-<--
+# Node.js.
+
+## <a name = "tls"></a>`tls`
+
+O módulo `tls` é usado para criar conexões seguras em Node.js.
+
+`require('tls').DEFAULT_ECDH_CURVE = 'auto'`
+
+O código acima altera a curva de ECDH padrão (Elliptic Curve Diffie-Hellman) usada pelo módulo `tls` (**Transport Layer Security**) em Node.js. ECDH é um protocolo de troca de chaves usado para estabelecer uma chave de criptografia compartilhada em uma conexão segura.\
+`..DEFAULT_ECDH_CURVE` se refere à curva de ECDH padrão usada nas negociações de chaves ECDH, que recebe, neste caso, o valor `'auto'`.\
+Ao definir a curva ECDH como `'auto'`, você está configurando o Node.js para escolher automaticamente a curva ECDH mais adequada com base nas capacidades do sistema. Isso é útil quando você deseja que o Node.js selecione a melhor curva ECDH disponível em vez de especificar uma curva específica.\
+Em muitos casos, definir a curva ECDH como `'auto'` é uma boa prática, pois permite que o Node.js escolha a melhor opção de acordo com o ambiente de execução. No entanto, em cenários específicos de segurança ou conformidade, você pode optar por definir uma curva ECDH específica em vez de usar `'auto'`.
+
+## <a name = "fs"></a>`fs`
+
+**File System** (**Sistema de Arquivos**). Fornece métodos para interagir com o sistema de arquivos do computador, permitindo que você leia, escreva, manipule e gerencie arquivos e diretórios.\
+O **"Sync"** no nome das funções, indica que essas funções são **síncronas**.\
+`path` **(string):** caminho para o arquivo/diretório.
+
+### <a id = "readdirsync"></a>`.readdirSync()`
+
+Usado para ler o conteúdo de um diretório, ou seja, lista os arquivos e subdiretórios.
+
+`.readdirSync(__dirname, path)`
+
+Retorna uma matriz.
+
+### <a id = "readfilesync"></a>`.readFileSync()`
+
+Lê o conteúdo de um arquivo.
+
+`readFileSync(path, codificacao)`
+
+`codificacao` **(opcional):** especifica a codificação do arquivo.
+
+Retorna o conteúdo do arquivo em formato de buffer ou em uma condição específica, se especificada.
+
+### <a id = "statsync"></a>`.statSync()`
+
+Obtêm informações sobre um arquivo/diretório especificado.
+
+`.statSync(path)`
+
+Retorna um objeto da classe **fs**.\
+O objeto retornado possui propriedades como `.mtime` , que é a data de modificação (timestamp) do arquivo/diretório.
+
+### <a id = "existssync"></a>`.existsSync()`
+
+Verifica se o arquivo ou diretório existe.
+
+`fs.existsSync(path)`
+
+Retorna `true` ou `false`.
+
+### <a id = "unlinksync"></a>`.unlinkSync()`
+
+Remove um arquivo do sistema de arquivos.
+
+`fs.unlinkSync(path)`
+
+# <--
 
 - `.request` : interceptador de solicitação (requisição). Isto permite que você execute código antes que cada solicitação seja enviada. Após realizarmos esta "configuração", todas as solicitações posteriores obedeceram esta configuração;
 - `.response` : interceptador de resposta.
@@ -388,62 +451,6 @@ console.log(path.resolve("db", "migrations")); ///home/orion/APIs/orion-data-api
 ### <a id ="cpus"></a>`.cpus()`
 
 Retorna um array contendo informações sobre todas as CPUs disponíveis no sistema (um array de objetos).
-
-## <a name = "fs"></a>`fs`
-
-Fornece métodos para interagir com o sistema de arquivos.
-
-**File System** (**Sistema de Arquivos**). Fornece métodos para interagir com o sistema de arquivos do computador, permitindo que você leia, escreva, manipule e gerencie arquivos e diretórios.\
-O **"Sync"** no nome das funções, indica que essas funções são **síncronas**.\
-`pwd` **(string):** caminho para o arquivo/diretório.
-
-### <a id = "readdirsync"></a>`.readdirSync()`
-
-Usado para ler o conteúdo de um diretório.
-
-`.readdirSync(__dirname, pwd)`
-
-Retorna uma matriz.
-
-Usado para ler o conteúdo de um diretório, ou seja, lista os arquivos e subdiretórios.
-
-### <a id = "readfilesync"></a>`.readFileSync()`
-
-Lê o conteúdo de um arquivo.
-
-`readFileSync(pwd, codificacao)`
-
-`codificacao` **(opcional):** especifica a codificação do arquivo.
-
-Retorna o conteúdo do arquivo em formato de buffer ou em uma condição específica, se especificada.
-
-### <a id = "statsync"></a>`.statSync()`
-
-Obtêm informações sobre um arquivo/diretório especificado.
-
-`.statSync(pwd)`
-
-Retorna um objeto da classe **fs**.
-
-O objeto retornado possui propriedades como `.mtime` , que é a data de modificação (timestamp) do arquivo/diretório.
-
-### <a id = "existssync"></a>`.existsSync()`
-
-Verifica se o arquivo ou diretório existe.
-
-`fs.existsSync(path)`
-
-`path`**:** string que representa o caminho do arquivo/diretório a ser verificado.
-
-Retorna `true` ou `false`.
-
-### <a id = "unlinksync"></a>`.unlinkSync()`
-
-Remove um arquivo do sistema de arquivos.
-
-`fs.unlinkSync(path)`
-
-`path`**:** string que representa o caminho do arquivo/diretório que será excluído.
 
 ## <a name = "childprocess"></a>`child_process`
 
