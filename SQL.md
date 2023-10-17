@@ -9,7 +9,9 @@
 # Sumário.
 
 - [Mecanismos de autenticação (ou plugin de autenticação)](#mecanismosautenticacao);
+- [Tipos de dados](#tiposdados);
 - [Lista de comandos](#listadecomandos);
+- [Funções](#funcoes);
 - [Procedure](#procedure);
 - [Erros](#erros).
 
@@ -21,6 +23,17 @@
     - `ed25519`**:** autenticação baseada em chave (mais segura).
 
 [Alterando o mecanismo.](#alteruser)
+
+# <a id = "tiposdados"></a>Tipos de dados.
+
+### `INTERVAL`
+
+O `INTERVAL` é um tipo de dados especial em sistemas de gerenciamento de banco de dados, como o MySQL, usado para representar um intervalo de tempo ou duração. Ele é uma unidade de medida temporal que indica uma quantidade de tempo em relação a um ponto de referência. O `INTERVAL` é composto por dois componentes:
+
+- **Valor numérico:** este é um número que representa a quantidade de tempo. Pode ser qualquer número inteiro ou decimal, como 1, 0.5, 10, etc;
+- **Unidade de medida de tempo:** isso especifica a unidade pela qual o tempo é medido. As unidades comuns incluer `YEAR` (**ano**), `MONTH` (**mês**), `DAY` (**dia**), `HOUR` (**hora**), `MINUTE` (**minuto**), `SECOND` (**segundo**), `MICROSECOND` (**microssegundo**), `WEEK` (**semana**) e outras.
+
+Portanto, o `INTERVAL` é usado para representar uma quantidade específica de tempo em termos da unidade de medida de tempo escolhida. É frequentemente usado em consultas SQL para realizar cálculos relacionados ao tempo, como adicionar ou subtrair intervalos de datas e horas. Um [exemplo](#deletenow) interessante com `INTERVAL`.
 
 # <a id = "listadecomandos"></a>Lista de comandos.
 
@@ -36,7 +49,8 @@
 - `DESCRIBE tabela;` ou `DESC tabela;` ou `SHOW COLUMNS FROM tabela;`**:** descreve a tabela `tabela`;
 - `ALTER TABLE tabela ADD coluna tipo_da_coluna;`**:** altera a tabela `tabela` adicionando uma coluna `coluna` a ela, de tipo `tipo_da_coluna`. [Explicação detalhada](#altertable);
 - `SELECT coluna FROM tabela;`**:** seleciona os valores da coluna `coluna` da tabela `tabela`;
-- `UPDATE tabela SET coluna = valor;`**:** atualiza os valores da coluna `coluna` para `valor` na tabela `tabela`.
+- `UPDATE tabela SET coluna = valor;`**:** atualiza os valores da coluna `coluna` para `valor` na tabela `tabela`;
+- `DELETE FROM tabela WHERE condicao`**:** deleta os registros que atendem determinada `condicao`. [Exemplo interessante](#deletenow).
 
 # Comandos.
 
@@ -68,6 +82,21 @@ Quando você usa o comando `SHOW DATABASES` no MySQL e o usuário não vê um ba
 - `tipo_da_coluna NOT NULL DEFAULT valor`**:**
     - `NOT NULL`**:** indica que a coluna não pode conter valores nulos, ou seja, sempre deve ter um valor;
     - `DEFAULT valor`**:** define o valor padrão da coluna como `valor`. Isso significa que se nenhum valor for especificado durante uma inserção de dados, o valor padrão será `valor`.
+
+# <a id = "funcoes"></a>Funções.
+
+### `NOW()`
+
+`NOW()` é uma função do MySQL que retorna a data e hora atuais no formato "YYYY-MM-DD HH:MM:SS". É frequentemente usada para obter o carimbo de data e hora atual em consultas SQL. É frequentemente usada para obter o carimbo de data e hora atual em consultas SQL. O valor retornado por `NOW()` **depende da data e hora do servidor MySQL onde a consulta é executada**.\
+Você pode usar o `NOW()` em várias partes de uma consulta SQL, como inserções, atualizações, exclusões e seleções, para registrar ou realizar operações com base na data e hora atual. Por exemplo, para registrar o horário exato em que um registro foi inserido em uma tabela, você pode usar `NOW()` na consulta de inserção.\
+Lembre-se de que o valor retornado por `NOW()` é fixo durante a execução de uma consulta, ou seja, o valor da data e hora atual é o mesmo em toda a consulta. Se você desejar uma data e hora que seja atualizada continuadamente durante uma consulta, pode usar `SYSDATE()` em vez de `NOW()`. Exemplo do uso de <a id = "deletenow"></a>`NOW()`:
+
+`DELETE FROM tabela WHERE created_at < NOW() - INTERVAL 1 WEEK`
+
+- `NOW()`**:** isso é uma função que retorna a data e hora atual;
+- `INTERVAL 1 WEEK`**:** isso cria um intervalo de tempo de uma semana (sete dias).
+
+A consulta acima está excluindo todos os registros na tabela `tabela` que foram criados há mais de uma semana a partir do momento atual. Isso é útil para limpar registros antigos que não são mais relevantes ou necessários em um banco de dados.
 
 # <a id = "procedure"></a>Procedure.
 

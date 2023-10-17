@@ -4,7 +4,6 @@
 
 ### Repositório.
 
-- Git-GitHub.md;
 - Markdown.md;
 - JavaScript/bibliotecas.md;
 - JavaScript/JavaScript.md;

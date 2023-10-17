@@ -132,4 +132,7 @@ Se você deseja enviar uma solicitação POST para o servidor Express usando a l
 
 O comando acima faz uma requisição ao servidor definido neste [código](JavaScript/bibliotecas.md#servidor).
 
-O `-X POST` especifica que você está fazendo uma solicitação POST e o `-d` é usado para enviar dados. Entre as aspas duplas estão os dados que serão enviados.
+O `-X POST` especifica que você está fazendo uma solicitação POST e o `-d` é usado para enviar dados. Entre as aspas duplas estão os dados que serão enviados.\
+Considerando ainda que não é estritamente necessário que `X` e `POST` estejam em letras maiúsculas, mas é uma convenção comum escrever essas palavras em letras maiúsculas, de acordo com a especificação HTTP.\
+Em outras palavras, usar `POST` e `X` em letras maiúsculas é a convenção recomendada para manter a consistência com os padrões web. Isso torna o código mais legível e evita possíveis problemas de compatibilidade com servidores e framworks que esperam métodos e cabeçalhos em letras maiúsculas.\
+No entanto, na prática, muitos servidores e frameworks podem não ser sensíveis a maiúsculas e minúsculas e aceitarão `POST` e `X` em minúsculas. Mas é uma boa prática seguir a convenção e usar  `POST` e `X` em letras maiúsculas ao trabalhar com solicitações HTTP, especialmente quando se lida com bibliotecas ou serviçoes que seguem rigorosamente os padrões da web.

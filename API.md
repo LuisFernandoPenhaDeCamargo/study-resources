@@ -1,5 +1,18 @@
 # API.
 
+# Conexão com bancos de dados.
+
+No contexto de APIs, é bastante comum estabelecer conexão com mais de um banco de dados, dependendo dos requisitos e da arquitetura do aplicativo. Isso é especialmente verdade em aplicativos mais complexos e em cenários onde dados de diferentes fontes ou tipos de dados são necessários. Aqui estão algumas situações em que você pode precisar se conectar a mais de um banco de dados:
+
+- **Bancos de dados Relacionais e NoSQL:** você pode ter necessidade de armazenar dados em diferentes sistemas de gerenciamento de banco de dados (DBMS). Por exemplo, pode ser necessário usar um banco de dados relacional, como MySQL ou PostgreSQL, para armazenar dados estruturados, e um banco de dados NoSQL, como MongoDB, para armazenar dados semi-estruturados ou não estruturados;
+- **Múltiplos banco de dados relacionais:** em aplicativos empresariais ou sistemas legados, é possível que você precise se conectar a vários bancos de dados relacionais para acessar dados de diferentes fontes de dados;
+- **Bancos de dados em memória:** você pode usar bancos de dados em memória, como Redis ou Memcached, para armazenar dados em cache e melhorar o desempenho da API;
+- **Bancos de dados distribuídos:** em cenários de alta disponibilidade e escabilidade, é comum usar bancos de dados distribuídos ou sistemas de armazenamento de dados em várias localizações geográficas;
+- **Dados de terceiros:** em integrações com serviços de terceiros ou APIs externas, você pode precisar se conectar a bancos de dados fornecidos por esses serviços;
+- **Arquivos e armazenamento em Nuvem:** aleḿ de bancos de dados tradicionais, você pode se conectar a sistemas de armazenamento em nuvem, como Amazon S3 ou Google Cloud Storage, para acessar dados armazenados em arquivos.
+
+A arquitetura do banco de dados do seu aplicativo dependerá dos requisitos de negócios, do volume de dados, da complexidade da aplicação e das tecnologias escolhidas. No entando, é importante gerenciar essas conexões de banco de dados de forma eficiente, usando pools de conexão e considerando a segurança ao acessar múltiplos bancos de dados em sua API. O uso de **ORM** (**Object-Relational Mapping**) ou bibliotecas de acesso a banco de dados apropriadas podem facilitar a interação com múltiplos bancos de dados em seu aplicativo.
+
 # Documentação.
 
 Documentar uma API é essencial para garantir que os desenvolvedores possam entender e usar efetivamente os recursos e enedpoints disponíveis. Alguns dos aspectos mais importantes a serem documentados em uma API:
