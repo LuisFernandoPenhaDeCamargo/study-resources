@@ -130,6 +130,6 @@ Se você deseja enviar uma solicitação POST para o servidor Express usando a l
 
 `curl -X POST -d "nome=SeuNome&idade=30" http://localhost:3000/processar-dados`
 
-O comando acima faz uma requisição ao servidor definido neste [código](bibliotecas.md#servidor).
+O comando acima faz uma requisição ao servidor definido neste [código](JavaScript/bibliotecas.md#servidor).
 
 O `-X POST` especifica que você está fazendo uma solicitação POST e o `-d` é usado para enviar dados. Entre as aspas duplas estão os dados que serão enviados.
