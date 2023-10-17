@@ -109,7 +109,7 @@ app.listen(3000, () => {
 Neste exemplo, o `body-parser` é usado para analisar os dados do corpo da solicitação e torná-los acessíveis em `req.body` para posterior processamento.\
 O `body-parser` facilita o tratamento de dados nas solicitações HTTP em aplicativos Node.js e Express, economizando tempo e simplificando o código necessário para processar informações vindas do cliente.
 
-Você pode fazer uma requisição ao servidor acima utilizando o seguinte [comando](Bash.md#comando).
+Você pode fazer uma requisição ao servidor acima utilizando o seguinte [comando](../Bash.md#comando).
 
 # Node.js.
 
