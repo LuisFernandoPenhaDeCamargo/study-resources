@@ -58,3 +58,24 @@ A palavra **Cron** geralmente se refere ao sistema de agendamento de tarefas em 
 - **Arquivo Crontab:** os cron jobs são geralmente configurados e gerenciados através do arquivo "crontab". Cada usuário pode ter seu próprio arquivo crontab para definir suas tarefas agendadas. Você pode editar o crontab do usuário usando o comando `crontab - e`;
 - **Logs de saída:** quando um cron job é executado, ele normalmente gera uma saída. Essa saída é frequentemente enviada para o e-mail do usuário ou para um arquivo log, dependendo da configuração;
 - **Ferramentas relacionadas:** existem ferramentas gráficas e utilitários de linha de comando que facilitam a configuração e a administração de cron jobs em sistemas Unix-like.
+
+# .deb
+
+Para atualizar um aplicativo que está instalado a partir de um arquivo **.deb** (**Debian package**) em sistemas Linux baseados em **Debian**, como o Ubuntu, você pode seguir estas etapas:
+
+- **Obtenha a versão mais recente:** primeiro, certifique-se de que há uma versão mais recente do aplicativo disponível como um arquivo **.deb**. Você pode verificar o site oficial do desenvolvedor do aplicativo ou usar os repositórios oficiais da distribuição para verificar se há uma versão mais recente;
+- **Baixe o novo pacote .deb:** baixe o novo arquivo **.deb** da versão atualizada do aplicativo. Você pode fazer isso diretamente do site do desenvolvedor ou de um repositório de pacotes;
+- **Instale o pacote .deb:** use o comando `dpkg` para instalar o novo pacote **.deb**. Substitua `nome-do-arquivo.deb` pelo nome real do arquivo **.deb** que você baixou:
+
+`sudo dpkg -i nome-do-arquivo.deb`
+
+Isso instalará a versão mais recente do aplicativo.
+
+**Resolva dependências:** se houver dependências que não estão satisfeitas no novo pacote, o comando `dpkg` mostrará um erro. Você precisará resolver essas dependências manualmente, instalando os pacotes ausentes. Isso pode ser feito usando o comando `apt`:
+
+`sudo apt-get install -f`
+
+O comando acima tentará corrigir e instalar as dependências ausentes.
+
+Lembre-se de que essa abordagem é útil quando você possui um arquivo **.deb** disponível. Para a maioria dos aplicativos, especialmente aqueles disponíveis nos repositórios oficiais da sua distribuição, é mais recomendável usar o gerenciador de pacotes, como o `apt`, para garantir atualizações automáticas e gerenciamento eficiente de dependências.\
+Além disso, tenha cuidado ao baixar pacotes **.deb** de fontes não oficiais, pois eles podem não ser seguros e podem conter software malicioso. É sempre aconselhável verificar a autenticidade da fonte e preferir os repositórios oficiais da sua distribuição sempre que possível.

@@ -9,11 +9,12 @@ Observando que a capitalização do nome da linguagem dentro do bloco de código
 
 Lembrando ainda que alguns sistemas e editores de Markdown podem ser sensíveis à capitalização e podem reconhecer apenas um nome de linguagem específico.
 
-Tipos de bloco de código:
+Tags do (Tipos de) bloco de código:
 
 - JavaScript;
 - json;
 - MySQL;
+- bash;
 - Python.
 
 Fecha o bloco com três acentos graves.

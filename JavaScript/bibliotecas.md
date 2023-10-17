@@ -3,6 +3,12 @@
 ### Métodos.
 
 - [`.query()`](#query);
+- [`.readdirSync()`](#readdirsync);
+- [`.readFileSync()`](#readfilesync);
+- [`.statSync()`](#statsync);
+- [`.existsSync()`](#existssync);
+- [`.unlinkSync()`](#unlinksync);
+- [`.exec()`](#exec).
 
 ---
 
@@ -16,12 +22,6 @@
 - [`.resolve()`](#resolve);
 - [`.hostname()`](#hostname);
 - [`.cpus()`](#cpus);
-- [`.readdirSync()`](#readdirsync);
-- [`.readFileSync()`](#readfilesync);
-- [`.statSync()`](#statsync);
-- [`.existsSync()`](#existssync);
-- [`.unlinkSync()`](#unlinksync);
-- [`.exec()`](#exec).
 
 # <a name = "mariadb"></a>`mariadb`
 
@@ -69,7 +69,47 @@ Lembrando que ele é **aplicado**, ou seja, ele é **executado** antes de cada r
 - `.patch(url, corpoDaSolicitacao, configuracoes)` : atualização parcial;
 - [`.CancelToken.source()`](#canceltoken).
 
----
+<--
+
+# <a name = "bodyparser"></a>`body-parser`
+
+O módulo `body-parser` é uma extensão de middleware para aplicativos Node.js que executam servidores HTTP, como aqueles criados com o Express.js. Sua principal função é analisar o corpo das solicitações HTTP para extrair dados, como parâmetros de formulário ou cargas úteis JSON, tornando-os acessíveis aos controladores de rotas ou manipuladores de solicitações.\
+O `body-parser` é especialmente útil quando você está construindo aplicativos web ou APIs que lidam com solicitações POST, PUT e DELETE, onde os dados são enviados no corpo da solicitação. Ele oferece suporte a diferentes tipos de dados, incluindo URL-encoded, JSON e dados multipart. Algumas das funcionalidades e características do módulo `body-parser`:
+
+- **Análise de dados:** o `body-parser` permite analisar automaticamente os dados do corpo da solicitação e torná-los acessíveis nas rotas do seu aplicativo;
+- **Tipos de dados suportados:** ele suporta diferentes tipos de dados, incluindo:
+    - **URL-encoded:** dados de formulário enviados no corpo da solicitação no formato `application/x-www-form-urlencoded`;
+    - **JSON:** dados no formato JSON;
+    - **Dados multipart:** suporte a upload de arquivos.
+- **Configuração flexível:** você pode configurar o `body-parser` para tratar diferentes tipos de solicitações com base no tipo de conteúdo (content-type) ou tamanho do corpo;
+- **Integração com Express:** o `body-parser` é frequentemente usado em conjunto com o Express.js para simplificar o processamento de dados nas solicitações.
+
+Aqui está um exemplo de como você pode usar o `body-parser` em um <a name = "servidor"></a>aplicativo Express para analisar dados de formulário URL-encoded:
+
+```JavaScript
+const express = require('express');
+const bodyParser = require('body-parser');
+
+const app = express();
+
+//Adiciona o middleware bodyParser para analisar dados URL-encoded.
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.post("/processar-dados", (req, res) => {
+    //Dados do formulário são acessíveis em req.body.
+    console.log(req.body);
+    res.send("Dados recebidos e processados com sucesso!");
+});
+
+app.listen(3000, () => {
+    console.log("Servidor em execução na porta 3000.");
+});
+```
+
+Neste exemplo, o `body-parser` é usado para analisar os dados do corpo da solicitação e torná-los acessíveis em `req.body` para posterior processamento.\
+O `body-parser` facilita o tratamento de dados nas solicitações HTTP em aplicativos Node.js e Express, economizando tempo e simplificando o código necessário para processar informações vindas do cliente.
+
+Você pode fazer uma requisição ao servidor acima utilizando o seguinte [comando](Bash.md#comando).
 
 # Node.js.
 
@@ -83,6 +123,10 @@ O código acima altera a curva de ECDH padrão (Elliptic Curve Diffie-Hellman) u
 `..DEFAULT_ECDH_CURVE` se refere à curva de ECDH padrão usada nas negociações de chaves ECDH, que recebe, neste caso, o valor `'auto'`.\
 Ao definir a curva ECDH como `'auto'`, você está configurando o Node.js para escolher automaticamente a curva ECDH mais adequada com base nas capacidades do sistema. Isso é útil quando você deseja que o Node.js selecione a melhor curva ECDH disponível em vez de especificar uma curva específica.\
 Em muitos casos, definir a curva ECDH como `'auto'` é uma boa prática, pois permite que o Node.js escolha a melhor opção de acordo com o ambiente de execução. No entanto, em cenários específicos de segurança ou conformidade, você pode optar por definir uma curva ECDH específica em vez de usar `'auto'`.
+
+## <a name = "http"></a>`http`
+
+O módulo `http` é um módulo principal do Node.js que fornece funcionalidades para criar servidores HTTP e interagir com solicitações e respostas HTTP. Com o módulo `http`, você pode criar aplicativos web, APIs, servidores e muito mais. Ele é uma parte essencial da plataforma Node.js para comunicação na web.
 
 ## <a name = "fs"></a>`fs`
 
@@ -130,6 +174,24 @@ Retorna `true` ou `false`.
 Remove um arquivo do sistema de arquivos.
 
 `fs.unlinkSync(path)`
+
+## <a name = "childprocess"></a>`child_process`
+
+Cria e gerencia processos filhos (subprocessos) a partir de um aplicativo Node.js.
+
+### <a id = "exec"></a>`.exec()`
+
+Executa comandos do sistema operacional em um subprocesso. Ele é uma forma de criar processos filhos para executar comandos shell ou outros programas externos.
+
+`.exec(comando, opcoes, callback)`
+
+- `comando` **(string):** representa o comando a ser executado;
+- `opcoes` **(objeto, opcional):** pode conter várias opções para controlar o comportamento da execução do comando;
+- `callback` **(opcional):** função de retorno de chamada que será chamada quando a execução do comando for concluída.\
+  `(erro, stdout, stderr) => {}`
+  - `erro` **(string):** variável que conterá informações sobre qualquer erro que ocorrer durante a execução do comando;
+  - `stdout` **(string):** variável que conterá a saída padrão (`stdout`) do comando executado;
+  - `stderr` **(string):** variável que conterá a saída de erro (`stderr`) do comando executado.
 
 # <--
 
@@ -451,23 +513,3 @@ console.log(path.resolve("db", "migrations")); ///home/orion/APIs/orion-data-api
 ### <a id ="cpus"></a>`.cpus()`
 
 Retorna um array contendo informações sobre todas as CPUs disponíveis no sistema (um array de objetos).
-
-## <a name = "childprocess"></a>`child_process`
-
-Cria e gerencia processos filhos (subprocessos) a partir de um aplicativo Node.js.
-
-### <a id = "exec"></a>`.exec()`
-
-Executa comandos do sistema operacional em um subprocesso.
-
-`.exec(comando, opcoes, callback)`
-
-- `comando` **(string):** representa o comando a ser executado;
-- `opcoes` **(objeto, opcional):** pode conter várias opções para controlar o comportamento da execução do comando;
-- `callback` **(opcional):** função de retorno de chamada que será chamada quando a execução do comando for concluída.\
-  `(erro, stdout, stderr) => {}`
-  - `erro` **(string):** variável que conterá informações sobre qualquer erro que ocorrer durante a execução do comando;
-  - `stdout` **(string):** variável que conterá a saída padrão (`stdout`) do comando executado;
-  - `stderr` **(string):** variável que conterá a saída de erro (`stderr`) do comando executado.
-
-É usada para executar comandos do sistema operacional em um subprocesso. Ela é uma forma de criar processos filhos para executar comandos shell ou outros programas externos.

@@ -4,11 +4,11 @@
 
 ### Repositório.
 
+- Git-GitHub.md;
+- Markdown.md;
 - JavaScript/bibliotecas.md;
 - JavaScript/JavaScript.md;
-- JavaScript/nativo.md;
-- Markdown.md;
-- Git-GitHub.md.
+- JavaScript/nativo.md.
 
 ### Dúvidas.
 

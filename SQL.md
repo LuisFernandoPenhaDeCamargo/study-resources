@@ -6,7 +6,14 @@
 - **Comentários de linha única:** você pode criar comentários de linha única com `--` (dois hifens) ou `#` (símbolo do jogo da velha). Qualquer texto após esses caracteres será tratado como um comentário e não terá efeito na execução do código;
 - **Comentário de várias linhas:** você pode criar comentários de várias linhas usando `/*` para iniciar o comentário e `*/` para encerrá-lo. Qualquer texto entre esses delimitadores será tratado como um comentário.
 
-## Mecanismos de autenticação (ou plugin de autenticação).
+# Sumário.
+
+- [Mecanismos de autenticação (ou plugin de autenticação)](#mecanismosautenticacao);
+- [Lista de comandos](#listadecomandos);
+- [Procedure](#procedure);
+- [Erros](#erros).
+
+## <a id = "mecanismosautenticacao"></a>Mecanismos de autenticação (ou plugin de autenticação).
 
 **As opções de autenticação incluem:**
     - `mysql_native_password`**:** autenticação baseada em senha (padrão);
@@ -15,7 +22,7 @@
 
 [Alterando o mecanismo.](#alteruser)
 
-# Lista de comandos.
+# <a id = "listadecomandos"></a>Lista de comandos.
 
 - `CREATE USER 'novo_usuario'@'host' IDENTIFIED BY 'senha';`**:** cria um novo usuário, de nome `novo_usuario` para determinado `host`, o usuário é identificado pela `senha`;
 - `SELECT user, host, plugin FROM mysql.user;`**:** verifica os usuários disponíveis no MySQL localmente. [Explicação detalhada](#selectuser);
@@ -62,7 +69,7 @@ Quando você usa o comando `SHOW DATABASES` no MySQL e o usuário não vê um ba
     - `NOT NULL`**:** indica que a coluna não pode conter valores nulos, ou seja, sempre deve ter um valor;
     - `DEFAULT valor`**:** define o valor padrão da coluna como `valor`. Isso significa que se nenhum valor for especificado durante uma inserção de dados, o valor padrão será `valor`.
 
-# Procedure.
+# <a id = "procedure"></a>Procedure.
 
 Uma **procedure** (**procedimento armazenado**) é um objeto de banco de dados que contém um ou mais comandos SQL predefinidos e é armazenado no sistema de gerenciamento de banco de dados (SGBD) para ser executado quando necessário. As procedures são usadas para executar tarefas específicas ou operações no banco de dados.
 
@@ -133,7 +140,7 @@ Pode haver erros de sintaxe envolvendo a barra invertida e a crase grave.*/
     END
 ```
 
-# Erros.
+# <a id = "erros"></a>Erros.
 
 ### Access denied for user 'nome_de_usuario'@'enderecoIP' (using password: YES)
 

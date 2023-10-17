@@ -1,38 +1,61 @@
 # Git/GitHub.
 
-# Comandos.
-
-`git clone -b nomeDoBranch URL`**:** clona um branch específica do repositório remoto.
-
----
-
-**Up to date:** 05/08/2023.
 # Lista de comandos.
 
-## Arquivos.
+- `git clone -b nomeDoBranch URL`**:** clona um branch específica do repositório remoto;
+- `git checkout -b novaBranch`**:** cria e alterna para uma nova branch. [Explicação detalhada](#novabranch);
+- `git status`**:** informa o estado dos arquivos;
+- `git add arquivo`**:** adiciona o arquivo ao índice Git. [Explicação detalhada](#gitadd);
+- `git checkout -- arquivo`**:** descarta alterações. [Explicação detalhada](#descartandoalteracoes);
+- `git commit -m "mensagem descritiva"`**:** realiza um commit.
 
-- **[ git status ]:** informa o estado dos arquivos;
-- **[ git add <nome do arquivo 1> <nome do arquivo 2> <nome do arquivo 3> … ]:** adiciona os arquivos ao índice Git;
-    
-    ```bash
-    git add .            //Todos arquivos.
-    git add -u           //Modificados ao índice.
-    git add *.**<extensão>** //Uma extensão específica.
-    ```
-    
-- **[ git checkout -- <nome do arquivo 1> <nome do arquivo 2> <nome do arquivo 3> … ]:** descarta alterações;
-    
-    Restaura os arquivos para **o estado em que estavam no último commit**.
-    
-    ```bash
-    git checkout .               //Todos arquivos.
-    git checkout **<diretório>**     //Um diretório específico.
-    git checkout -- *.**<extensão>** //Uma extensão específica.
-    ```
-    
-- **[ git commit -m <mensagem descritiva> ]:** realiza um commit.
+# Comandos.
 
-## Branches.
+## <a id = "novabranch"></a>Criando uma nova branch.
+
+Você também pode fazer o processo em comandos separados:
+
+- Use o comando `git branch` seguido do nome da nova branch que deseja criar. Por exemplo, para criar uma nova branch chamanda `novaBranch`, você pode usar o seguinte comando:
+
+`git branch novaBranch`
+
+- Agora que a nova branch foi criada, você pode alternar para ela usando o comando `git checkout`. Por exemplo:
+
+`git checkout novaBranch`
+
+Isso fará com que você comece a trabalhar na nova branch.
+
+## <a id = "gitadd"></a>`git add`
+
+Você pode adicionar mais de um arquivo de uma vez para o índice Git:
+
+`git add arquivo1 arquivo2 arquivo3...`
+
+```bash
+git add .          //Adiciona todos os arquivos.
+git add --all      //Também adiciona todos os arquivos.
+git add -u         //Adiciona os arquivos modificados.
+git add *.extensao //Adiciona os arquivos de uma extensão específica.
+```
+
+`git add -u`**:** adiciona ao índice (staging area) os arquivos que foram modificados e removidos, mas não os arquivos não monitorados. A opção `-u` ou `--update` atualiza o índice (staging area) apenas com as modificações (alteraçõs ou remoções) dos arquivos que já estão sob controle de versão do repositório.
+
+`git add '**/*.extensao'`**:** `*.extensao` corresponderá a todos os arquivos com a extensão especificada no diretório atual. Se você quiser adicionar arquivos com a mesma extensão em subdiretórios, pode usar o comando `**` para corresponder recursivamente.\
+O comando corresponderá a todos os arquivos com a extensão `extensao` em todos os subdiretórios a partir do diretório atual.
+
+## <a id = "descartandoalteracoes"></a>Descartando alterações.
+
+Para restaurar os arquivos para **o estado em que estavam no último commit**.
+
+```bash
+git checkout -- arquivo1 arquivo2 arquivo3...
+git checkout .                       //Restaura todos os arquivos.
+git checkout -- diretorio/           //Restaura um diretório específico (Git anterior à versão 2.23).
+git restore --source=HEAD diretorio/ //Restaura um diretório específico (Git 2.23 ou superior).
+git checkout -- *.extensao           //Restaura os arquivos de uma extensão específica.
+```
+
+## Branches. <--
 
 - **[ git branch ]:** lista todas as branches;
     
@@ -200,30 +223,3 @@ style(css): ajusta estilos do botão de login
     ```bash
     revert: revert "feat(auth): adiciona autenticação de usuário"
     ```
-    
-
-# Template.
-
-## Listas.
-
-- **Item 1 em negrito:** conteúdo relacionado ao item 1;
-    
-    Exemplo: exemplo relacionado ao item 1.
-    
-- **Item 2 em negrito:** conteúdo relacionado ao item 2;
-- …
-
-## Comandos.
-
-**[ comando entre colchetes, tudo em negrito; os colchetes também estarão em vermelho. Um espaço entre os colchetes e o comando ]**
-
-**<descrição de um parâmetro. Deve estar em negrito e em vermelho>**
-
-## Lista de estruturas que recebe destaque.
-
-### Negrito.
-
-## Catálogo de termos.
-
-- Diretório > pastas;
-- Branch/branches.

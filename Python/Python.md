@@ -13,15 +13,24 @@ O Python é uma linguagem de programação de alto nível e de código aberto qu
 - **Interpretado e compilado:** Python é uma linguagem interpretada, o que significa que o código fonte é executado diretamente por um interpretador. No entanto, também pode ser compilado para bytecode para melhorar o desempenho;
 - **Comunidade ativa e documentação:** a comunidade Python é conhecida por ser acolhedora e há uma abundância de recursos educacionais, tutoriais e documentação disponíveis para ajudar os programadores a aprender e dominar a linguagem.
 
-### Função sem instrução de retorno explícito.
+# Sumário.
+
+- [Função sem instrução de retorno explícito](#funcaoinstrucaoretornoexplicito);
+- [Biblioteca padrão](#bibliotecapadrao);
+- [Executando arquivos **.py**](#executandoarquivospy);
+- [Palavras chave](#palavraschave);
+- [Funções](#funcoes);
+- [Bibliotecas padrão](#bibliotecaspadrao).
+
+### <a id = "funcaoinstrucaoretornoexplicito"></a>Função sem instrução de retorno explícito.
 
 Em Python uma função que não possui uma instrução de retorno explícita sempre retorna `None`.
 
-### Biblioteca padrão.
+### <a id = "bibliotecapadrao"></a>Biblioteca padrão.
 
 A expressão "biblioteca padrão do Python" refere-se a um conjunto abrangente de módulos e pacotes que fazem parte da distribuição oficial do Python. Esse módulos são fornecidos junto com a instalação padrão do Python e estão disponíveis para uso imediato sem a necessidade de instalação adicional a partir de fontes externas. Em outras palavras, fazem parte do Python "padrão".
 
-# Executando arquivos .py
+# <a id = "executandoarquivospy"></a>Executando arquivos .py
 
 Para executar arquivos com extensão **.py** (que são arquivos de código-fonte Python), você precisa de um interpretador Python instalado em seu sistema. Aqui estão os passos básicos para executar um arquivo **.py**:
 
@@ -35,7 +44,7 @@ Para executar arquivos com extensão **.py** (que são arquivos de código-fonte
 
 Em alguns sistemas operacionais, especialmente em distribuições Unix-like mais recentes, o comando `python` pode se referir à versão 2.x do Python, que pode não estar mais instalada por padrão. Nesse caso, você deve usar `python3` para executar seu programa Python 3.x, uma vez que as versões mais recentes da linguagem são incompatíveis com o Python 2.x.
 
-# Palavras chave.
+# <a id = "palavraschave"></a>Palavras chave.
 
 ## `import`
 
@@ -87,7 +96,7 @@ resultado = sqrt(25) #Você pode usar sqrt diretamente, sem math.
 
 ```
 
-# Funções.
+# <a id = "funcoes"></a>Funções.
 
 ### `print()`
 
@@ -98,7 +107,7 @@ Imprime uma mensagem na saída padrão do terminal.
 - **Argumentos:** a função `print()` aceita zero ou mais argumentos, separados por vírgulas, que podem ser de diferentes tipos, como strings, números, variáveis e até mesmo expressões. Ela irá imprimir todos os argumentos na saída padrão do terminal;
 - **Tipo de retorno:** a função `print()` retorna `None`.
 
-# Bibliotecas padrão.
+# <a id = "bibliotecaspadrao"></a>Bibliotecas padrão.
 
 ### `hashlib`
 

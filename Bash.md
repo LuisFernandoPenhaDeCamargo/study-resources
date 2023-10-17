@@ -1,3 +1,5 @@
+# Bash.
+
 ### Yes for all.
 
 Para forçar a confirmação automática "sim" (yes) para todas as perguntas de confirmação ao usar comandos, você pode usar a opção `-f` (**force**) ou redirecionar a entrada padrão para `/dev/null`. No entando, tenha cuidado ao fazer isso, pois você pode excluir arquivos e diretórios acidentalmente sem a possibilidade de recuperação.
@@ -23,6 +25,7 @@ O comando `yes`gera uma saída contínua de "y" (yes) e a pipe `|` redireciona e
 - `cat arquivo`**:** exibe o conteúdo de arquivos de texto. [Explicação detalhada](#cat);
 - `mv`**:** renomea e também pode mover arquivos e diretórios. [Explicação detalhada](#mv);
 - `rm -r nome_do_diretorio`**:** remove um diretório. [Explicação detalhada](#rm);
+- `sudo dpkg -i nome-do-arquivo.deb`: instala um pacote **.deb**;
 - `node -v`**:** exibe a versão do Node.js que está sendo utilizada.
 
 # Comandos.
@@ -118,3 +121,15 @@ Você também pode fornecer o path para o arquivo `.sql`, exemplo: `path/dump.sq
 # `ngrok`
 
 `ngrok http porta`**:** [executa um túnel](Ngrok.md#execucaotunel).
+
+# `curl`
+
+### Usando o cURL (Linha de comando).
+
+Se você deseja enviar uma solicitação POST para o servidor Express usando a linha de comando, pode usar o `curl`. Certifique-se de que o `curl` esteja instalado em seu sistema e, em seguida, use o seguinte <a name = "comando"></a>comando:
+
+`curl -X POST -d "nome=SeuNome&idade=30" http://localhost:3000/processar-dados`
+
+O comando acima faz uma requisição ao servidor definido neste [código](bibliotecas.md#servidor).
+
+O `-X POST` especifica que você está fazendo uma solicitação POST e o `-d` é usado para enviar dados. Entre as aspas duplas estão os dados que serão enviados.

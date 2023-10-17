@@ -9,7 +9,17 @@
 
 # <a name = "express"></a>Express.js.
 
-O Express.js (geralmente conhecido como Express) é um framework de aplicativo web popular para Node.js. Ele fornece uma estrutura flexível para a criação de aplicativos web e APIs de forma eficiente. O Express simplifica o processo de configuração de rotas, manipulação de solicitações e respostas, interação <--
+O Express.js (geralmente conhecido como Express) é um framework de aplicativo web popular para Node.js. Ele fornece uma estrutura flexível para a criação de aplicativos web e APIs de forma eficiente. O Express simplifica o processo de configuração de rotas, manipulação de solicitações e respostas, interação com bancos de dados e muito mais. Alguns dos principais recursos e conceitos do Express:
+
+- **Roteamento:** o Express permite definir rotas para o seu aplicativo, mapeando URLs para funções de manipulação que você cria. Isso facilita a criação de endpoints para a sua API ou páginas web;
+- **Middlewares:** os **middlewares são funções que podem ser usadas para processar solicitações HTTP no Express**. Você pode usar middlewares para executar ações comuns, como autenticação, tratamento de erros, registro de solicitações e respostas, entre outros;
+- **Solicitações e respostas:** o Express simplifica a manipulação de solicitações HTTP e respostas. Você pode acessar informações da solicitação, como parâmetros, cabeçalhos e corpo, e enviar repostas personalizadas para o cliente;
+- **Templates:** o Express pode ser combinado com mecanismos de template, como EJS, Pug (antigo Jade), Handlebars e outros, para criar visualizações dinâmicas para suas páginas da web;
+- **Conexão a banco de dados:** você pode facilmente se conectar a bancos de dados, como MongoDB, MySQL ou PostgreSQL, usando bibliotecas específicas do banco de dados e middlewares de conexão;
+- **MVC (model-view-controller):** o Express não impõe uma estrutura específica de arquitetura, mas é comumente usado com o padrão de design MVC para organizar aplicativos;
+- **Extensibilidade:** o Express é altamente extensível. Você pode adicionar middlewares de terceiros para adicionar funcionalidades adicionais ao seu aplicativo;
+- **Suporte para WebSocket:** enquanto o Express não oferece suporte direto a WebSocket, você pode combinar o Express com bibliotecas como Socket.io para adicionar funcionalidades de tempo real ao seu aplicativo;
+- **Comunidade ativa:** o Express é amplamente adotado e tem uma comunidade ativa que fornece pacotes, plugins e suporte.
 
 # <a name = "mocha"></a>Mocha.
 

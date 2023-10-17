@@ -1,6 +1,14 @@
 # JavaScript.
 
-# Arrow functions.
+## Sumário.
+
+- [Arrow functions](#arrowfunctions);
+- [Função de fechamento ou closure](#funcaofechamentoclosure);
+- [**node_modules**](#nodemodules);
+- [Bibliotecas](#bibliotecas);
+- [Frameworks](#frameworks).
+
+# <a id = "arrowfunctions"></a>Arrow functions.
 
 Arrow functions herdam o espoco léxico do contexto em que são definidas. Isso significa que uma arrow function pode acessar variáveis de escopo circundante.\
 Explicando melhor:
@@ -11,7 +19,7 @@ Explicando melhor:
 
 Mesmo quando uma arrow function não é definida dentro de outra função, ela ainda tem acesso as variáveis do escopo circundante.
 
-# Função de fechamento ou closure.
+# <a id = "funcaofechamentoclosure"></a>Função de fechamento ou closure.
 
 Uma função que "captura" variáveis de seu ambiente circundante é conhecida como uma função de fechamento ou closure. Closures são um conceito poderoso em linguagens de programação e são amplamente usados em JavaScript e em muitas outras linguagens. Aqui estão alguns aspectos importantes das funções de fechamento.
 
@@ -44,7 +52,7 @@ Neste exemplo, a função `contador()` retorna uma função de fechamento que ma
 
 Closures são uma característica poderosa que permite criar código mais modular e funcional em JavaScript e em outras linguagens que as suportam. Elas ajudam a manter o encapsulamento e a gerenciar o estado de forma mais eficaz.
 
-# node_modules
+# <a id = "nodemodules"></a>node_modules
 
 Este diretório normalmente não é versionado (o que é uma boa prática). Ele contém as dependências do seu projeto, caso haja dependências ausentes, você pode seguir as seguinte etapas:
 
@@ -53,22 +61,28 @@ Este diretório normalmente não é versionado (o que é uma boa prática). Ele 
 
 Certifique-se de nunca incluir a pasta **node_modules** no seu repositório Git, pois ela pode ser gerada facilmente.
 
-# Bibliotecas.
+# <a id = "bibliotecas"></a>Bibliotecas.
 
-[`sequelize`](sequelize.md).
+- [`sequelize`](sequelize.md);
+- [`mariadb`](bibliotecas.md#mariadb);
+- [`axios`](bibliotecas.md#axios);
+- [`body-parser`](bibliotecas.md#bodyparser)
 
 ## Node.js.
 
-[`tls`](bibliotecas.md#tls).
+- [`tls`](bibliotecas.md#tls);
+- [`http`](bibliotecas.md#http);
+- [`fs`](bibliotecas.md#fs);
+- [`child_process`](bibliotecas.md#childprocess).
 
-# Frameworks.
+# <a id = "frameworks"></a>Frameworks.
 
 - [Express.js](frameworks.md#express);
 - [Mocha](frameworks.md#mocha);
 - [Vue.js](frameworks.md#vuejs);
 - [Next.js](frameworks.md#nextjs).
 
----
+# <--
 
 # JavaScript.
 
@@ -188,7 +202,6 @@ Quando você inclui a diretiva `'use strict'` no início de um arquivo JavaScrip
 
 # Bibliotecas.
 
-- [`axios`;](bibliotecas.md#axios)
 - [`umzug`;](bibliotecas.md#umzug)
 - [`chai`;](bibliotecas.md#chai)
 - [`request-promise-native`.](bibliotecas.md#requestpromisenative)
@@ -198,5 +211,3 @@ Quando você inclui a diretiva `'use strict'` no início de um arquivo JavaScrip
 - [`util`;](bibliotecas.md#util)
 - [`path`;](bibliotecas.md#path)
 - [`os`;](bibliotecas.md#os)
-- [`fs`;](bibliotecas.md#fs)
-- [`child_process`.](bibliotecas.md#childprocess)
