@@ -2,6 +2,7 @@
 
 ### Métodos.
 
+- [`.Router`](#router);
 - [`timeout()`](#timeout);
 - [`before()`](#before);
 - [`after()`](#after);
@@ -20,6 +21,31 @@ O Express.js (geralmente conhecido como Express) é um framework de aplicativo w
 - **Extensibilidade:** o Express é altamente extensível. Você pode adicionar middlewares de terceiros para adicionar funcionalidades adicionais ao seu aplicativo;
 - **Suporte para WebSocket:** enquanto o Express não oferece suporte direto a WebSocket, você pode combinar o Express com bibliotecas como Socket.io para adicionar funcionalidades de tempo real ao seu aplicativo;
 - **Comunidade ativa:** o Express é amplamente adotado e tem uma comunidade ativa que fornece pacotes, plugins e suporte.
+
+## <a id = "router"></a>`.Router()`
+
+Cria uma instância de um roteador. Retorna uma instância de um roteador Express que é um objeto do tipo `Router`.
+
+`const router = express.Router();`
+
+Os roteadores são usados para definir grupos de rotas em seu aplicativo. Você pode usar o objeto `router` para definir rotas específicas, middleware e manipuladores de solicitação para esse grupo de rotas.\
+A partir deste ponto, você pode definir rotas e funcionalidades específicas para este roteador. Por exemplo, você pode adicionar manipuladores de solicitação para lidar com solicitações HTTP para URLs específicas usando `router.get()`, `router.post()`, etc. Aqui está um exemplo de como você pode definir uma rota simples usando este roteador:
+
+```JavaScript
+router.get("/", (req, res) => {
+    res.send("Rota inicial do roteador.");
+});
+```
+
+Depois de definir as rotas e middleware para este roteador, você pode montá-lo no seu aplicativo Express usando `app.use()`:
+
+```JavaScript
+const app = express();
+
+app.use("/meu-rota", router);
+```
+
+Isso monta o roteador no caminho `/meu-rota`, para que todas as solicitações que correspondam a esse caminho sejam tratadas pelo roteador. Isso permite que você organize e modularize seu aplicativo Express de forma mais eficiente, mantendo suas rotas separadas em grupos lógicos.
 
 # <a name = "mocha"></a>Mocha.
 

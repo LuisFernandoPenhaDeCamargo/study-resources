@@ -2,74 +2,121 @@
 
 ### Métodos.
 
+- [`.post()`](#post);
+- [`.patch()`](#patch);
 - [`.query()`](#query);
-- [`.readdirSync()`](#readdirsync);
-- [`.readFileSync()`](#readfilesync);
-- [`.statSync()`](#statsync);
-- [`.existsSync()`](#existssync);
-- [`.unlinkSync()`](#unlinksync);
-- [`.exec()`](#exec).
-
----
-
 - [`.pending()`](#pending);
 - [`.execute()`](#execute);
 - [`.executed()`](#executed);
 - [`expect()`](#expect);
 - [`describe()`](#describe);
 - [`it()`](#it);
-- [`.promisify()`](#promisify);
 - [`.resolve()`](#resolve);
+- [`.readdirSync()`](#readdirsync);
+- [`.readFileSync()`](#readfilesync);
+- [`.statSync()`](#statsync);
+- [`.existsSync()`](#existssync);
+- [`.unlinkSync()`](#unlinksync);
 - [`.hostname()`](#hostname);
 - [`.cpus()`](#cpus);
-
-# <a name = "mariadb"></a>`mariadb`
-
-O MariaDB Connector/Node.js é uma biblioteca que permite que seu aplicativo Node.js se conecte e interaja com um banco de dados MariaDB/MySQL. Ele não inclui o pŕoprio servidor de banco de dados.
-
-### <a id = "query"></a>`.query()`
-
-Executa querys SQL.
-
-`pool.query(sql, values, callback)`
-
-O método `.query()` é um dos métodos principais em uma pool de conexões MariaDB no Node.js. Ele é usado para executar querys SQL no banco de dados MariaDB por meio da conexão que está disponível na pool. A função `.query()` é usada para enviar uma query SQL ao banco de dados e recuperar os resultados, se houver.
-
-- `sql` **(string):** contém a query SQL que você deseja executar. Pode incluir espaços reservados que serão substituídos pelos valores reais quando a query for executada. Por exemplo, você pode usar placeholders como `?` ou nomeá-los com `:nome` ou `?name` e fornecer os valores correspondentes no array `values`;
-- `values` **(array, opcional):** contém os valores a serem inseridos nos espaços reservados da query SQL. Isso é útil para evitar ataques de injeção SQL e para passar dados dinâmicos para a query. Se você não precisar de valores dinâmicos, pode deixar este parâmetro em branco;
-- `callback`**:** é uma função de retorno de chamada que será chamada quando a consulta for executada ou quando ocorrerem erros. A função de retorno de chamada segue o padrão Node.js com dois argumentos: `error` e `results`. `error` conterá qualquer erro que ocorra durante a execução da query, e `results` conterá os resultados da query se ela for bem-sucedida.
-
-O retorno do método `pool.query()` pode variar com base na natureza da query SQL que você está executando e nos resultados da consulta. Em geral, o retorno depende se a query é uma query de seleção (SELECT) ou uma query de modificação (INSERT, UPDATE, DELETE) e se a consulta foi bem-sucedida.\
-Se a query for uma query de seleção e for bem-sucedida, **o retorno será um array que possui um objeto com os registros retornados, entre outros objetos**.
+- [`.exec()`](#exec);
+- [`.promisify()`](#promisify).
 
 # <a name = "axios"></a>`axios`
 
 Utilizada para fazer requisições HTTP, seja em navegadores ou em Node.js.
 
-### Headers (Cabeçalhos).
+## Headers (Cabeçalhos).
 
 No propriedade `'content-type'`, que pode ser acessada ao se utilizar `response.headers['content-type']`, se encontra o valor do formato da resposta.\
 Se o valor da chave `'content-type'` for `application/json`, quer dizer que o conteúdo da resposta é no formato JSON.
 
-### `.interceptors`
+## `.interceptors`
 
 Ao configurar um interceptador global, este será aplicado a todas as solicitações feitas por todas as partes do código que utilizam a mesma instância global do axios (no caso de um interceptador de requisição) ou será aplicado antes de retonar cada resposta ao código (interceptador de resposta).\
 Lembrando que ele é **aplicado**, ou seja, ele é **executado** antes de cada requisição ou após cada resposta.
 
----
+- `.request` : interceptador de solicitação (requisição). Isto permite que você execute código antes que cada solicitação seja enviada. Após realizarmos esta "configuração", todas as solicitações posteriores obedeceram esta configuração;
+- `.response` : interceptador de resposta.
+
+`.use()` : registra o interceptador.
+
+```JavaScript
+//Response.
+axios.interceptors.response.use(response => response, error => {
+  return Promise.reject(error);
+});
+```
+
+- `response => response`: o interceptador de resposta simplesmente passará a reposta sem fazer alterações. Isso é comum quando você deseja apenas fazer algum trabalho adicional com a resposta, como registro, mas não deseja modificar a resposta em si;
+- `return Promise.reject(error);`: a promessa com erro é rejeitada. Isso significa que o erro será **propagado** para qualquer código que chamou a solicitação axios original e que lidará com ele lá.
+
+## <a id = "canceltoken"></a>`.CancelToken.source()`
+
+Para que o axios saiba qual token de cancelamento está associado a uma requisição específica, você o passa na configuração da requisição usando a propriedade `cancelToken`. Portanto, `cancelToken: objeto.token` informa ao axios que esta requisição está vinculada ao `objeto` que você criou.\
+Então quando você chama `objeto.cancel()`, o axios sabe que deve cancelar qualquer requisição que tenha o `objeto.token` associado a ela.
+
+- `.CancelToken`**:** utilizado para criar um Token de cancelamento que pode ser usado para cancelar uma solicitação HTTP que está em andamento;
+- `.source()`**:** cria o objeto `.CancelToken` e seu respectivo método `.cancel()`
+- `.cancel(mensagem)` o parâmetro `mensagem` que atribui o valor da chave `.reason.message`. É o **método utilizado para cancelar a requisição**.
+
+- Um objeto `.CancelToken` possui um atributo `.token`;
+- O atributo `.token` é composto por uma `.promise` e uma `.reason`;
+- A chave `.reason` possui um atributo `.message`.
+
+Exemplo:
+
+```JavaScript
+const axios = require("axios");
+
+const source = axios.CancelToken.source();
+
+//Cancela o token com um motivo opcional (aqui, "Motivo do cancelamento." é o motivo).
+source.cancel("Motivo do cancelamento.");
+
+console.log(source);
+/*Saída:
+{ token:
+  CancelToken {
+    promise: Promise { [Object] },
+    reason: Cancel { message: 'Motivo do cancelamento.' } },
+  cancel: [Function: cancel] }
+*/
+
+console.log(source.token);
+/*Saída:
+CancelToken {
+  promise: Promise { Cancel { message: 'Motivo do cancelamento.' } },
+  reason: Cancel { message: 'Motivo do cancelamento.' } }
+*/
+
+console.log(source.token.promise);
+//Saída: Promise { Cancel { message: 'Motivo do cancelamento.' } }
+
+console.log(source.token.reason);
+//Saída: Cancel { message: 'Motivo do cancelamento.' }
+
+console.log(source.token.reason.message);
+//Saída: Motivo do cancelamento.
+
+//Para acessar o motivo do cancelamento, você pode usar source.token.reason.
+console.log("source.token.reason:", source.token.reason);
+//Saída: source.token.reason: Cancel { message: 'Motivo do cancelamento.' }
+```
+
+## Métodos.
 
 - `url` **(string):** URL de destino, para onde a solicitação será enviada;
 - `corpoDaSolicitacao` **(objeto):** corpo da solicitação que está sendo enviada;
 - `configuracoes` **(objeto, opcional):** objeto de configuração opcional que permite personalizar a solicitação. Este objeto pode conter várias opções de configuração, como cabeçalhos personalizados, autenticação, parâmetros de consulta, entre outros.\
   Como por exemplo a { chave: valor }: `{ cancelToken: objetoCancelToken.token }`, que é o token de cancelamento.
 
-### Métodos.
+- <a id = "post"></a>`.post(url, corpoDaSolicitacao)`;
+- <a id = "patch"></a>`.patch(url, corpoDaSolicitacao, configuracoes)` : atualização parcial.
 
-- `.post(url, corpoDaSolicitacao)`;
-- `.patch(url, corpoDaSolicitacao, configuracoes)` : atualização parcial;
-- [`.CancelToken.source()`](#canceltoken).
+# <a name = "requestpromisenative"></a>`request-promise-native`
 
-<--
+Biblioteca utilizada para fazer solicitações HTTP de forma assíncrona no Node.js com suporte a Promises. É uma extensão do módulo request-promise, oferecendo as mesmas funcionalidades, mas com o uso nativo de Promises, o que torna o código mais limpo e legível quando se trata de fazer solicitações HTTP e lidar com respostas.
 
 # <a name = "bodyparser"></a>`body-parser`
 
@@ -111,171 +158,26 @@ O `body-parser` facilita o tratamento de dados nas solicitações HTTP em aplica
 
 Você pode fazer uma requisição ao servidor acima utilizando o seguinte [comando](../Bash.md#comando).
 
-# Node.js.
+# <a name = "mariadb"></a>`mariadb`
 
-## <a name = "tls"></a>`tls`
+O MariaDB Connector/Node.js é uma biblioteca que permite que seu aplicativo Node.js se conecte e interaja com um banco de dados MariaDB/MySQL. Ele não inclui o pŕoprio servidor de banco de dados.
 
-O módulo `tls` é usado para criar conexões seguras em Node.js.
+### <a id = "query"></a>`.query()`
 
-`require('tls').DEFAULT_ECDH_CURVE = 'auto'`
+Executa querys SQL.
 
-O código acima altera a curva de ECDH padrão (Elliptic Curve Diffie-Hellman) usada pelo módulo `tls` (**Transport Layer Security**) em Node.js. ECDH é um protocolo de troca de chaves usado para estabelecer uma chave de criptografia compartilhada em uma conexão segura.\
-`..DEFAULT_ECDH_CURVE` se refere à curva de ECDH padrão usada nas negociações de chaves ECDH, que recebe, neste caso, o valor `'auto'`.\
-Ao definir a curva ECDH como `'auto'`, você está configurando o Node.js para escolher automaticamente a curva ECDH mais adequada com base nas capacidades do sistema. Isso é útil quando você deseja que o Node.js selecione a melhor curva ECDH disponível em vez de especificar uma curva específica.\
-Em muitos casos, definir a curva ECDH como `'auto'` é uma boa prática, pois permite que o Node.js escolha a melhor opção de acordo com o ambiente de execução. No entanto, em cenários específicos de segurança ou conformidade, você pode optar por definir uma curva ECDH específica em vez de usar `'auto'`.
+`pool.query(sql, values, callback)`
 
-## <a name = "http"></a>`http`
+O método `.query()` é um dos métodos principais em uma pool de conexões MariaDB no Node.js. Ele é usado para executar querys SQL no banco de dados MariaDB por meio da conexão que está disponível na pool. A função `.query()` é usada para enviar uma query SQL ao banco de dados e recuperar os resultados, se houver.
 
-O módulo `http` é um módulo principal do Node.js que fornece funcionalidades para criar servidores HTTP e interagir com solicitações e respostas HTTP. Com o módulo `http`, você pode criar aplicativos web, APIs, servidores e muito mais. Ele é uma parte essencial da plataforma Node.js para comunicação na web.
+- `sql` **(string):** contém a query SQL que você deseja executar. Pode incluir espaços reservados que serão substituídos pelos valores reais quando a query for executada. Por exemplo, você pode usar placeholders como `?` ou nomeá-los com `:nome` ou `?name` e fornecer os valores correspondentes no array `values`;
+- `values` **(array, opcional):** contém os valores a serem inseridos nos espaços reservados da query SQL. Isso é útil para evitar ataques de injeção SQL e para passar dados dinâmicos para a query. Se você não precisar de valores dinâmicos, pode deixar este parâmetro em branco;
+- `callback`**:** é uma função de retorno de chamada que será chamada quando a consulta for executada ou quando ocorrerem erros. A função de retorno de chamada segue o padrão Node.js com dois argumentos: `error` e `results`. `error` conterá qualquer erro que ocorra durante a execução da query, e `results` conterá os resultados da query se ela for bem-sucedida.
 
-## <a name = "fs"></a>`fs`
+O retorno do método `pool.query()` pode variar com base na natureza da query SQL que você está executando e nos resultados da consulta. Em geral, o retorno depende se a query é uma query de seleção (SELECT) ou uma query de modificação (INSERT, UPDATE, DELETE) e se a consulta foi bem-sucedida.\
+Se a query for uma query de seleção e for bem-sucedida, **o retorno será um array que possui um objeto com os registros retornados, entre outros objetos**.
 
-**File System** (**Sistema de Arquivos**). Fornece métodos para interagir com o sistema de arquivos do computador, permitindo que você leia, escreva, manipule e gerencie arquivos e diretórios.\
-O **"Sync"** no nome das funções, indica que essas funções são **síncronas**.\
-`path` **(string):** caminho para o arquivo/diretório.
-
-### <a id = "readdirsync"></a>`.readdirSync()`
-
-Usado para ler o conteúdo de um diretório, ou seja, lista os arquivos e subdiretórios.
-
-`.readdirSync(__dirname, path)`
-
-Retorna uma matriz.
-
-### <a id = "readfilesync"></a>`.readFileSync()`
-
-Lê o conteúdo de um arquivo.
-
-`readFileSync(path, codificacao)`
-
-`codificacao` **(opcional):** especifica a codificação do arquivo.
-
-Retorna o conteúdo do arquivo em formato de buffer ou em uma condição específica, se especificada.
-
-### <a id = "statsync"></a>`.statSync()`
-
-Obtêm informações sobre um arquivo/diretório especificado.
-
-`.statSync(path)`
-
-Retorna um objeto da classe **fs**.\
-O objeto retornado possui propriedades como `.mtime` , que é a data de modificação (timestamp) do arquivo/diretório.
-
-### <a id = "existssync"></a>`.existsSync()`
-
-Verifica se o arquivo ou diretório existe.
-
-`fs.existsSync(path)`
-
-Retorna `true` ou `false`.
-
-### <a id = "unlinksync"></a>`.unlinkSync()`
-
-Remove um arquivo do sistema de arquivos.
-
-`fs.unlinkSync(path)`
-
-## <a name = "childprocess"></a>`child_process`
-
-Cria e gerencia processos filhos (subprocessos) a partir de um aplicativo Node.js.
-
-### <a id = "exec"></a>`.exec()`
-
-Executa comandos do sistema operacional em um subprocesso. Ele é uma forma de criar processos filhos para executar comandos shell ou outros programas externos.
-
-`.exec(comando, opcoes, callback)`
-
-- `comando` **(string):** representa o comando a ser executado;
-- `opcoes` **(objeto, opcional):** pode conter várias opções para controlar o comportamento da execução do comando;
-- `callback` **(opcional):** função de retorno de chamada que será chamada quando a execução do comando for concluída.\
-  `(erro, stdout, stderr) => {}`
-  - `erro` **(string):** variável que conterá informações sobre qualquer erro que ocorrer durante a execução do comando;
-  - `stdout` **(string):** variável que conterá a saída padrão (`stdout`) do comando executado;
-  - `stderr` **(string):** variável que conterá a saída de erro (`stderr`) do comando executado.
-
-# <--
-
-- `.request` : interceptador de solicitação (requisição). Isto permite que você execute código antes que cada solicitação seja enviada. Após realizarmos esta "configuração", todas as solicitações posteriores obedeceram esta configuração;
-- `.response` : interceptador de resposta.
-
-`.use()` : registra o interceptador.
-
-```JavaScript
-//Response.
-axios.interceptors.response.use(response => response, error => {
-  return Promise.reject(error);
-});
-```
-
-- `response => response`: o interceptador de resposta simplesmente passará a reposta sem fazer alterações. Isso é comum quando você deseja apenas fazer algum trabalho adicional com a resposta, como registro, mas não deseja modificar a resposta em si;
-- `return Promise.reject(error);`: a promessa com erro é rejeitada. Isso significa que o erro será **propagado** para qualquer código que chamou a solicitação axios original e que lidará com ele lá.
-
-### <a id = "canceltoken"></a>`.CancelToken.source()`
-
-Para que o axios saiba qual token de cancelamento está associado a uma requisição específica, você o passa na configuração da requisição usando a propriedade `cancelToken`. Portanto, `cancelToken: objeto.token` informa ao axios que esta requisição está vinculada ao `objeto` que você criou.\
-Então quando você chama `objeto.cancel()`, o axios sabe que deve cancelar qualquer requisição que tenha o `objeto.token` associado a ela.
-
-- `.CancelToken`**:** utilizado para criar um Token de cancelamento que pode ser usado para cancelar uma solicitação HTTP que está em andamento;
-- `.source()`**:** cria o objeto `.CancelToken` e seu respectivo método `.cancel()`
-- `.cancel(mensagem)` o parâmetro `mensagem` que atribui o valor da chave `.reason.message`. É o **método utilizado para cancelar a requisição**.
-
-Um objeto `.CancelToken` possui um atributo `.token`.
-
-O atributo `.token` é composto por uma `.promise` e uma `.reason`.
-
-A chave `.reason` possui um atributo `.message`.
-
-Exemplo:
-
-```JavaScript
-const axios = require("axios");
-
-const source = axios.CancelToken.source();
-
-//Cancela o token com um motivo opcional (aqui, "Motivo do cancelamento." é o motivo).
-source.cancel("Motivo do cancelamento.");
-
-console.log(source);
-/*Saída:
-{ token:
-  CancelToken {
-    promise: Promise { [Object] },
-    reason: Cancel { message: 'Motivo do cancelamento.' } },
-  cancel: [Function: cancel] }
-*/
-
-console.log("\n--------------------\n");
-
-console.log(source.token);
-/*Saída:
-CancelToken {
-  promise: Promise { Cancel { message: 'Motivo do cancelamento.' } },
-  reason: Cancel { message: 'Motivo do cancelamento.' } }
-*/
-
-console.log("\n--------------------\n");
-
-console.log(source.token.promise);
-//Saída: Promise { Cancel { message: 'Motivo do cancelamento.' } }
-
-console.log("");
-
-console.log(source.token.reason);
-//Saída: Cancel { message: 'Motivo do cancelamento.' }
-
-console.log("\n--------------------\n");
-
-console.log(source.token.reason.message);
-//Saída: Motivo do cancelamento.
-
-console.log("\n--------------------\n");
-
-//Para acessar o motivo do cancelamento, você pode usar source.token.reason.
-console.log("source.token.reason:", source.token.reason);
-//Saída: source.token.reason: Cancel { message: 'Motivo do cancelamento.' }
-```
-
-# <a name = "umzug"></a>`umzug`
+# <a name = "umzug"></a>`umzung`
 
 O pacote `umzug` é uma biblioteca para migração de bancos de dados em Node.js. Ele fornece uma maneira fácil de criar e executar migrações de banco de dados, permitindo que você gerencie alterações na estrutura do banco de dados ao longo do tempo, mantendo um histórico de migrações.
 
@@ -283,17 +185,16 @@ Seu método construtor recebe um objeto de configuração como parâmetro e suas
 
 ```JavaScript
 var umzug = new Umzug({
-    storage: 'sequelize', //Tipo de armazenamento para rastrear migrações
+    storage: 'sequelize', //Tipo de armazenamento para rastrear migrações.
     storageOptions: {
-        sequelize: models.sequelize //Opções específicas do armazenamento (no caso, Sequelize)
+        sequelize: models.sequelize //Opções específicas do armazenamento (no caso, Sequelize).
     },
     migrations: {
-        path: `${__dirname}/db/migrations/`, //Caminho para o diretório de migrações
-        params: [models.sequelize.getQueryInterface(), models.Sequelize, models] //Parâmetros a serem passados para as migrações
+        path: `${__dirname}/db/migrations/`, //Caminho para o diretório de migrações.
+        params: [models.sequelize.getQueryInterface(), models.Sequelize, models] //Parâmetros a serem passados para as migrações.
     },
-    'migrations-path': path.resolve('db', 'migrations') //Caminho absoluto para o diretório de migrações
+    'migrations-path': path.resolve('db', 'migrations') //Caminho absoluto para o diretório de migrações.
 });
-
 ```
 
 - `storage`**:** define o tipo de armazenamento a ser usado pelo `Umzug` para rastrear as migrações. No exemplo, está sendo utilizado o armazenamento do Sequelize.\
@@ -306,7 +207,7 @@ var umzug = new Umzug({
             Este objeto permite que você execute consultas SQL diretamente ou crie migrações para alterar o esquema do banco de dados. Portanto, este primeiro elemento fornece à migração a capacidade de interagir com o banco de dados por meio do objeto retornado por `.getQueryInterface()`.
         - A classe `Sequelize`;\
             Aqui está sendo passada a classe `Sequelize` do Sequelize. Isso pode ser útil para migrações que precisam acessar a funcionalidade **global do Sequelize** ou realizar configurações específicas do Sequelize durante a migração.
-        - E o objeto `models`.\
+        - O objeto `models`.\
             Este é o objeto que contém os modelos Sequelize **desta aplicação**. Passar `models` como parâmetro permite que as migrações acessem os modelos desta aplicação e realizem operações relacionadas ao banco de dados que envolvem esses modelos.\
             \
             Em resumo, ao definir esses parâmetros no `Umzug`, você está fornecendo às migrações a capacidade de interagir com o banco de dados, acessar modelos Sequelize e realizar operações de migração que podem envolver consultas SQL ou alterações no esquema do banco de dados. Cada elemento do array `params` é uma ferramenta que pode ser usada pelas migrações para realizar seu trabalho.
@@ -324,7 +225,7 @@ var umzug = new Umzug({
 - Neste código, está sendo usado o `.resolve()` para construir o caminho absoluto para o diretório de migrações. Isso garante que o caminho seja absoluto e independente do diretório de execução do Node.js.
 
 Ambas as configurações estão relacionadas ao diretório de migrações, mas a diferença principal é que `migrations: { path }` é usado para configurar o caminho relativo das migrações, enquanto `migrations-path` é usado para especificar o caminho absoluto das migrações.\
-Na prática, o `Umzug` pode usar essas configurações para localizar e executar as migrações no diretório especificado, seja ele um caminho relativo ou um caminho absoluto. Ambos os métodos têm seu lugar, dependendo de como você deseja configurar a estrutura de diretórios do seu projeto de migração de banco de dados.
+Na prática, o `Umzug` pode usar essas configurações para localizar e executar as migrações no diretório especificado, seja ele um caminho relativo ou um caminho absoluto. Ambos os métodos têm seu lugar, dependendo de como você deseja configurar a estrutura de diretórios do seu projeto de migração de banco de dados.\
 **Tecnicamente falando, não é necessário especificar ambas as propriedades**.
 
 ### <a id = "pending"></a>`.pending()`
@@ -340,7 +241,7 @@ Método que permite executar migrações específicas de acordo com as configura
 
 Principais campos do `objetoDeConfiguracao`:
 
-- `migrations`**:** este campo deve ser um array de nomes de arquivos de migração que você deseja executar. Geralmente é obtido através  de arquivos de migrações pendentes;
+- `migrations`**:** este campo deve ser um array de nomes de arquivos de migração que você deseja executar. Geralmente é obtido através de arquivos de migrações pendentes;
 - `method` **(opcional):** este campo especifica o método de migração a ser aplicado, que pode ser "up" (para aplicar migrações) ou "down" (para reverter migrações). Se não for fornecido, o método padrão é "up";
 - `options` **(opcional):** um objeto de opções adicionais que você pode fornecer para controlar o processo de migração. Isso pode incluir opções específicas de banco de dados ou configurações adicionais;
 - `context` **(opcional):** um contexto opcional que pode ser passado para as migrações. Isso permite que você forneça informações adicionais para as migrações que podem ser úteis durante o processo.
@@ -358,11 +259,8 @@ Por exemplo, se você tiver um histórico de migrações registradas no banco de
 
 # <a name = "chai"></a>`chai`
 
-Utilizada para a realização de testes unitários.
+`chai` é uma biblioteca utilizada para realizar afirmações (assertions) em testes unitários. É frequentemente utilizada em conjunto com frameworks de teste como o Mocha ou o Jasmine para facilitar a criação e execução de testes. No caso do mocha:
 
-`chai` é uma biblioteca utilizada para realizar afirmações (assertions) em testes unitários. É frequentemente utilizada em conjunto com frameworks de teste como o Mocha ou o Jasmine para facilitar a criação e execução de testes.
-
-No caso do mocha:
 - Ele deve estar instalado (se estiver, será listado em **node_modules**);
 - Ser uma dependência do seu projeto (se for, estará presente em **package.json**);
 - Para o teste ser executado deverá ser feito um script. Exemplo:
@@ -389,11 +287,7 @@ Utilizada para criar assertions.
 - `metodoDeAssercao`**:** é um método disponível no `chai` que define a condição que você está testando;
 - `valorEsperado`**:** é o valor que você espera que `valor` tenha após a avaliação da asserção.
 
----
-
-A função `expect()` é usada para criar afirmações (assertions) em testes unitários. Ela é usada para expressar o que você espera que aconteça em um teste e, em seguida, verificar se essa expectativa é atendida.
-
-Exemplos:
+A função `expect()` é usada para criar afirmações (assertions) em testes unitários. Ela é usada para expressar o que você espera que aconteça em um teste e, em seguida, verificar se essa expectativa é atendida. Exemplos:
 
 ```JavaScript
 const expect = require("chai").expect;
@@ -445,23 +339,22 @@ it("String", function() {
 - `String`**:** string que descreve o teste;
 - `function()`**:** função callback que contém a lógica do teste.
 
-# <a name = "requestpromisenative"></a>`request-promise-native`
-
-Biblioteca utilizada para fazer solicitações HTTP de forma assíncrona no Node.js com suporte a Promises. É uma extensão do módulo request-promise, oferecendo as mesmas funcionalidades, mas com o uso nativo de Promises, o que torna o código mais limpo e legível quando se trata de fazer solicitações HTTP e lidar com respostas.
-
 # Node.js.
 
-`__dirname` é uma variável global no Node.js que representa o diretório atual.
+## <a name = "tls"></a>`tls`
 
-## <a name = "util"></a>`util`
+O módulo `tls` é usado para criar conexões seguras em Node.js.
 
-Fornece várias funções utilitárias para ajudar na programação assíncrona e em outros aspectos de desenvolvimento.
+`require('tls').DEFAULT_ECDH_CURVE = 'auto'`
 
-### <a id = "promisify"><>`.promisify()`
+O código acima altera a curva de ECDH padrão (Elliptic Curve Diffie-Hellman) usada pelo módulo `tls` (**Transport Layer Security**) em Node.js. ECDH é um protocolo de troca de chaves usado para estabelecer uma chave de criptografia compartilhada em uma conexão segura.\
+`..DEFAULT_ECDH_CURVE` se refere à curva de ECDH padrão usada nas negociações de chaves ECDH, que recebe, neste caso, o valor `'auto'`.\
+Ao definir a curva ECDH como `'auto'`, você está configurando o Node.js para escolher automaticamente a curva ECDH mais adequada com base nas capacidades do sistema. Isso é útil quando você deseja que o Node.js selecione a melhor curva ECDH disponível em vez de especificar uma curva específica.\
+Em muitos casos, definir a curva ECDH como `'auto'` é uma boa prática, pois permite que o Node.js escolha a melhor opção de acordo com o ambiente de execução. No entanto, em cenários específicos de segurança ou conformidade, você pode optar por definir uma curva ECDH específica em vez de usar `'auto'`.
 
-É usada para converter funções de retorno de chamada (`callback`) em funções que retornam promessas.
+## <a name = "http"></a>`http`
 
-`.promisify(callback)`
+O módulo `http` é um módulo principal do Node.js que fornece funcionalidades para criar servidores HTTP e interagir com solicitações e respostas HTTP. Com o módulo `http`, você pode criar aplicativos web, APIs, servidores e muito mais. Ele é uma parte essencial da plataforma Node.js para comunicação na web.
 
 ## <a name = "path"></a>`path`
 
@@ -489,7 +382,7 @@ const diretorioAtual = __dirname;
 
 const caminhoAbsoluto = path.resolve(diretorioAtual);
 
-console.log("Caminho absoluto:", caminhoAbsoluto); ///home/orion/APIs/orion-data-api
+console.log("Caminho absoluto:", caminhoAbsoluto); //Saída: /home/orion/APIs/orion-data-api
 ```
 
 Outro exemplo que mostra a **importância de se especificar partes do caminho relativo**.
@@ -497,10 +390,57 @@ Outro exemplo que mostra a **importância de se especificar partes do caminho re
 ```JavaScript
 const path = require('path');
 
-console.log(path.resolve("migrations"));       ///home/orion/APIs/orion-data-api/migrations: este caminho está incorreto.
+console.log(path.resolve("migrations"));       //Saída: /home/orion/APIs/orion-data-api/migrations: este caminho está incorreto.
 
-console.log(path.resolve("db", "migrations")); ///home/orion/APIs/orion-data-api/db/migrations
+console.log(path.resolve("db", "migrations")); //Saída: /home/orion/APIs/orion-data-api/db/migrations
 ```
+
+## <a name = "fs"></a>`fs`
+
+**File System** (**Sistema de Arquivos**). Fornece métodos para interagir com o sistema de arquivos do computador, permitindo que você leia, escreva, manipule e gerencie arquivos e diretórios.\
+O **"Sync"** no nome das funções, indica que essas funções são **síncronas**.\
+`path` **(string):** caminho para o arquivo/diretório.
+
+### <a id = "readdirsync"></a>`.readdirSync()`
+
+Usado para ler o conteúdo de um diretório, ou seja, lista os arquivos e subdiretórios.
+
+`.readdirSync(__dirname, path)`
+
+Retorna uma matriz.
+
+### <a id = "readfilesync"></a>`.readFileSync()`
+
+Lê o conteúdo de um arquivo.
+
+`readFileSync(path, codificacao)`
+
+`codificacao` **(opcional):** especifica a codificação do arquivo.
+
+Retorna o conteúdo do arquivo em formato de buffer ou em uma condição específica, se especificada.
+
+### <a id = "statsync"></a>`.statSync()`
+
+Obtêm informações sobre um arquivo/diretório especificado.
+
+`.statSync(path)`
+
+Retorna um objeto da classe **fs**.\
+O objeto retornado possui propriedades como `.mtime` , que é a data de modificação (timestamp) do arquivo/diretório.
+
+### <a id = "existssync"></a>`.existsSync()`
+
+Verifica se o arquivo ou diretório existe.
+
+`fs.existsSync(path)`
+
+Retorna `true` ou `false`.
+
+### <a id = "unlinksync"></a>`.unlinkSync()`
+
+Remove um arquivo do sistema de arquivos.
+
+`fs.unlinkSync(path)`
 
 ## <a name = "os"></a>`os`
 
@@ -513,3 +453,31 @@ console.log(path.resolve("db", "migrations")); ///home/orion/APIs/orion-data-api
 ### <a id ="cpus"></a>`.cpus()`
 
 Retorna um array contendo informações sobre todas as CPUs disponíveis no sistema (um array de objetos).
+
+## <a name = "childprocess"></a>`child_process`
+
+Cria e gerencia processos filhos (subprocessos) a partir de um aplicativo Node.js.
+
+### <a id = "exec"></a>`.exec()`
+
+Executa comandos do sistema operacional em um subprocesso. Ele é uma forma de criar processos filhos para executar comandos shell ou outros programas externos.
+
+`.exec(comando, opcoes, callback)`
+
+- `comando` **(string):** representa o comando a ser executado;
+- `opcoes` **(objeto, opcional):** pode conter várias opções para controlar o comportamento da execução do comando;
+- `callback` **(opcional):** função de retorno de chamada que será chamada quando a execução do comando for concluída.\
+  `(erro, stdout, stderr) => {}`
+  - `erro` **(string):** variável que conterá informações sobre qualquer erro que ocorrer durante a execução do comando;
+  - `stdout` **(string):** variável que conterá a saída padrão (`stdout`) do comando executado;
+  - `stderr` **(string):** variável que conterá a saída de erro (`stderr`) do comando executado.
+
+## <a name = "util"></a>`util`
+
+Fornece várias funções utilitárias para ajudar na programação assíncrona e em outros aspectos de desenvolvimento.
+
+### <a id = "promisify"><>`.promisify()`
+
+É usada para converter funções de retorno de chamada (`callback`) em funções que retornam promessas.
+
+`.promisify(callback)`

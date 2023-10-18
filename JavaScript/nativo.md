@@ -730,6 +730,10 @@ Converte um número decimal em um número inteiro, selecionando somente a parte 
 
 `.floor(x)`**:** `x` é um number. Retorna um number.
 
+## Node.js.
+
+`__dirname` é uma variável global no Node.js que representa o diretório atual.
+
 # <a name = "funcoesglobais"></a>Funções globais.
 
 - [`Array.isArray().`](#arrayisarray)

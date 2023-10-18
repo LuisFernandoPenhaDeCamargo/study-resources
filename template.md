@@ -5,7 +5,6 @@
 ### Repositório.
 
 - Markdown.md;
-- JavaScript/bibliotecas.md;
 - JavaScript/JavaScript.md;
 - JavaScript/nativo.md.
 
@@ -87,8 +86,13 @@ Inclua o objeto que a chama.
 
 Explicação mais detalhada.
 
-Quais são seus parâmetros, quais são os tipos deles e o que a função retorna.\
-"a função  aceita o que de parâmetro, qual é o tipo dele e o que ela retorna?"
+Quais são seus parâmetros? Quais são os tipos deles? Eles são opcionais? O que a função retorna?\
+Se for especificar a impressão da saída no interpretador, especificar que é uma saída:
+
+```
+//Comando de impressão no interpretador.
+comando("mensagem."); //Saída: mensagem.
+```
 
 ### Bibliotecas.
 
