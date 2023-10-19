@@ -173,8 +173,10 @@ Certifique-se de nunca incluir a pasta **node_modules** no seu repositório Git,
 - [`request-promise-native`](bibliotecas.md#requestpromisenative);
 - [`body-parser`](bibliotecas.md#bodyparser);
 - [`mariadb`](bibliotecas.md#mariadb);
+- [`aws-sdk`](bibliotecas.md#awssdk);
 - [`umzug`](bibliotecas.md#umzug);
-- [`chai`](bibliotecas.md#chai).
+- [`chai`](bibliotecas.md#chai);
+- [`dotenv`](bibliotecas.md#dotenv).
 
 ## Node.js.
 

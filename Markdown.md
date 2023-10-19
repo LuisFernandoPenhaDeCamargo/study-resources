@@ -9,8 +9,8 @@
 - [Títulos e cabeçalhos](#tituloscabecalhos);
 - [Parágrafos](#paragrafos);
 - [Ênfase e formatação de texto](#enfaseformatacaotexto);
-- [Listas](#listas);
 - [Linhas horizontais](#linhashorizontais);
+- [Listas](#listas);
 - [Links](#links);
 - [Imagens](#imagens);
 - [Citações](#citacoes);
@@ -33,7 +33,9 @@ Tags do (Tipos de) bloco de código:
 - json;
 - MySQL;
 - bash;
-- Python.
+- Python;
+- markdown;
+- plaintext.
 
 Fecha o bloco com três acentos graves.
 ```
@@ -61,7 +63,38 @@ São criados simplesmente inserindo texto em linhas.
 
 No Markdown, você pode enfatizar e formatar texto de várias maneiras usando símbolos especiais. Aqui estão algumas das formatações de texto comuns em Markdonw:
 
+- **Negrito:** para tornar o texto em negrito, você pode usar dois asteriscos `**` ou dois sublinhados `__` antes e depois do texto. Por exemplo:
 
+```markdown
+**Texto em negrito.**
+__Texto em negrito.__
+```
+
+- **Itálico:** para tornar o texto em itálico, você pode usar um único asterisco `*` ou um único sublinhado `_` antes e depois do texto. Por exemplo:
+
+```markdown
+*Texto em itálico.*
+_Texto em itálico._
+```
+
+- **Negrito e tálico combinados:** para texto em negrito e itálico ao mesmo tempo, você pode usar três asteriscos `***` ou três sublinhados `___` antes e depois do texto. Por exemplo:
+
+```markdown
+***Texto em negrito e itálico.***
+___Texto em negrito e itálico.___
+```
+
+- **Tachado:** para criar texto tachado (riscado), você pode usar dois til `~~` antes e depois do texto. Por exemplo:
+
+ ```markdown
+ ~~Texto tachado~~
+ ```
+
+ Lembre-se de que a formatação de texto em Markdown pode variar dependendo do interpretador Markdown que você está usando, mas esses exemplos são amplamente suportados e devem funcionar na maioria das plataformas.
+
+# <a id = "linhashorizontais"></a>Linhas horizontais.
+
+Para criar linhas horizontais em Markdown, você pode usar três ou mais caracteres consecutivos, como asteriscos `*`, traços `-` ou sublinhados `_`. Você pode escolher qualquer um desses caracteres para criar a linha horizontal, contanto que haja pelo menos três deles consecutivos, eles estejam no começo do parágrafo e o paragráfo acima deles esteja vazio.
 
 # <a id = "listas"></a>Listas.
 
@@ -80,9 +113,17 @@ Lista ordenada.
 3. Terceiro Item;
 1. Se você colocar um valor não sequencial, o índice é ajustado automaticamente (este item está numerado como `1` e não como `4`).
 
-# <a id = "linhashorizontais"></a>Linhas horizontais.
-
 # <a id = "links"></a>Links.
+
+Em Markdown, você pode criar links de várias maneiras. Aqui estão algumas das formas mais comuns:
+
+- **Link in-line:** use colchetes `[]` para o texto do link e parênteses `()` para a URL do link:
+
+```markdown
+[Texto do Link](https://wwww.exemplo.com).
+```
+
+- **:**
 
 # <a id = "imagens"></a>Imagens.
 

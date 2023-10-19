@@ -4,13 +4,18 @@
 
 - [`.post()`](#post);
 - [`.patch()`](#patch);
+- [`.createPool()`](#createpool);
 - [`.query()`](#query);
+- [`.update()`](#update);
+- [`.IAM()`](#iam);
+- [`.S3()`](#s3);
 - [`.pending()`](#pending);
 - [`.execute()`](#execute);
 - [`.executed()`](#executed);
 - [`expect()`](#expect);
 - [`describe()`](#describe);
 - [`it()`](#it);
+- [`.config()`](#config);
 - [`.resolve()`](#resolve);
 - [`.readdirSync()`](#readdirsync);
 - [`.readFileSync()`](#readfilesync);
@@ -162,6 +167,19 @@ Você pode fazer uma requisição ao servidor acima utilizando o seguinte [coman
 
 O MariaDB Connector/Node.js é uma biblioteca que permite que seu aplicativo Node.js se conecte e interaja com um banco de dados MariaDB/MySQL. Ele não inclui o pŕoprio servidor de banco de dados.
 
+### <a id = "createpool"></a>`.createPool()`
+
+Cria e configura um pool de conexões com um banco de dados MariaDB ou MySQL. Retorna um objeto de pool de conexões que **você pode usar para adquirir e liberar conexões do pool**.
+
+`const pool =  mariadb.createPool(configuracoes);`
+
+`configuracoes` **(objeto):** o método `.createPool()` aceita um objeto de configuração como argumento. Esse objeto contém  informações sobre como conectar ao banco de dados, como host, nome de usuário, senha, nome do banco de dados e outras configurações relacionadas à conexão.
+    - `connectionLimit`**:** você pode especificar o número máximo de conexões que o pool deve manter abertas simultaneamente. Isso evita que seu aplicativo abra um grande número de conexões ao mesmo tempo, o que pode levar a problemas de desempenho;
+    - `acquireTimeout`**:** tempo limite (em milissegundos) para adquirir uma conexão do pool antes de gerar um erro.
+
+Depois de criar um pool de conexões, você pode usar as conexões dele para executar consultas e interações com o banco de dados. Quando você não precisar mais de uma conexão, poderá liberá-la de volta para o pool para que possa ser reutilizada por outras partes do seu aplicativo.\
+O uso de um pool de conexões ajuda a gerenciar eficientemente as conexões de banco de dados e é uma prática recomendada em aplicativos Node.js que interagem com bancos de dados.
+
 ### <a id = "query"></a>`.query()`
 
 Executa querys SQL.
@@ -176,6 +194,64 @@ O método `.query()` é um dos métodos principais em uma pool de conexões Mari
 
 O retorno do método `pool.query()` pode variar com base na natureza da query SQL que você está executando e nos resultados da consulta. Em geral, o retorno depende se a query é uma query de seleção (SELECT) ou uma query de modificação (INSERT, UPDATE, DELETE) e se a consulta foi bem-sucedida.\
 Se a query for uma query de seleção e for bem-sucedida, **o retorno será um array que possui um objeto com os registros retornados, entre outros objetos**.
+
+# <a name = "awssdk"></a>`aws-sdk`
+
+A biblioteca `aws-sdk` é a biblioteca oficial da Amazon Web Services (AWS) que permite interagir com diversos serviços da ASW, como Amazon S3, Amazon DynamoDB, AWS Lambda e outros.
+
+Para utilizar a biblioteca `aws-sdk`, você geralmente precisa configurar as credenciais de acesso à AWS, como a chave de acesso e a chave secreta. Isso é necessário para que o SDK possa autenticar as solicitações à AWS em seu nome.\
+Após configurar as credenciais, você pode começar a utilizar os serviços da AWS, como o Amazon S3 para armazenamento de objetos, o Amazon DynamoDB para banco de dados NoSQL, entre outros. O `aws-sdk` fornece uma API rica para interagir com esses serviços, permitindo que você crie, leia, atualize e exclua recursos da AWS.
+
+### <a id = "update"></a>`.update()`
+
+Atualiza a configuração atual do AWS SDK após a inicialização. Não retorna nenhum valor (retorna `undefined`).
+
+`AWS.config.update(configuracao)`
+
+- `AWS.config`**:** objeto AWS que possui a propriedade `.config`;
+- `configuracao` **(objeto):** um objeto contendo as opções de configuração que você deseja atualizar. Isso inclue as seguintes opções:
+    - `accessKeyId` **(string):** a chave de acesso da AWS;
+    - `secretAccessKey` **(string):** a chave secreta de acesso da AWS;
+    - `region` **(string):** a região da AWS na qual você deseja que as solicitações sejam feitas;
+    - `logger`**:** define o destino de saída de logs.
+
+### <a id = "iam"></a>`.IAM()`
+
+Cria uma instância do serviço AWS **Identity and Access Management** (**IAM**). A instância do IAM é criada com a configuração da versão da API especificada.\
+Retorna uma instância do serviço.
+
+`const iam = new AWS.IAM(configuracao);`
+
+`configuracao` **(objeto):** objeto de configuração.\
+    `apiVersion`**:** especifica a versão da API que você deseja usar para as chamadas do serviço IAM.
+
+O `.IAM()` não é um método do objeto `AWS`, mas sim uma forma de criar uma instância do serviço AWS Identity and Access Management por meio do objeto `AWS`. O objeto `AWS` é um namespace que fornece acesso a vários serviços da Amazon Web Services por meio da biblioteca `aws-sdk` em Node.js.\
+Não é necessário especificar parâmetros ao criar uma instância do serviço IAM usando o construtor. **As configurações, como credenciais e região, são definidas globalmente no objeto** `AWS` por meio do método `.update()`.\
+O objeto `iam` que você cria pode ser usado para fazer chamadas às operações do IAM, como criar usuários, gerenciar grupos, políticas e assim por diante. O retorno dessas chamadas à API depende da operação específica e pode incluir informações ou erros relacionados à operação realizada.
+
+### <a id = "s3"></a>`.S3()`
+
+Cria uma instância do serviço **Amazon Simple Storage Service** (**Amazon S3**).
+
+`const s3 = new AWS.S3();`
+
+Você pode usar essa instância para interagir com o Amazon S3 e realizar operações como criar, listar, baixar ou excluir objetos, gerenciar buckets e configurar permissões.
+
+### <a id = "endpoint"></a></a>`.Endpoint()`
+
+Cria uma instância do objeto `AWS.Endpoint` que é projetado para configurar pontos de extremidade personalizados.
+
+`const spacesEndpoint = new DIGITAL_OCEAN.Endpoint(process.env.SPACES_ENDPOINT);`
+
+Isso é típico ao usar a biblioteca `aws-sdk` da AWS para interagir com serviços da AWS, como o Amazon S3 ou o Amazon Elastic Compute Cloud (EC2).\
+O objeto `AWS.Endpoint` é usado para representar o ponto de extremidade (URL) de um serviço da AWS. Ao criar uma instância desse objeto, você pode especificar a URL do ponto de extremidade do serviço que deseja acessar.
+
+### AWS x DigitalOcean.
+
+`sdk`**: SDKs** (**Software Development Kits**) normamlmente são específicos de cada provedor de serviços em nuvem, como a AWS e a DigitalOcean. Os SDKs são projetados para fornecer acesso e funcionalidades específicas aos serviços do seu provedor.\
+**Você pode usar o SDK da AWS para realizar operações em um ponto de extremidade da DigitalOcean Spaces**, ao fazer isso, você está fazendo uma integração entre serviços de armazenamento de objetos de diferentes provedores.\
+O Amazon S3 é o serviço de armazenamento de objetos da AWS, e a DigitalOcean Spaces é o serviço de armazenamento de objetos da DigitalOcean. Ambos os serviços têm APIs compatíveis com o protocolo S3, o que significa que você pode usar um SDK S3 (como o SDK da AWS) oara acessar e manipular objetos em ambas as plataformas, desde que a configuração seja feita corretamente.z
+Isso é possível porque a DigitalOcean Spaces implementa um conjunto de APIs compatíveis com o protocolo S3, o que permite que aplicativos e SDKs projetados para o Amazon S3 sejam usados para acessar os recursos do Spaces.
 
 # <a name = "umzug"></a>`umzung`
 
@@ -338,6 +414,41 @@ it("String", function() {
 
 - `String`**:** string que descreve o teste;
 - `function()`**:** função callback que contém a lógica do teste.
+
+# <a name = "dotenv"></a>`dotenv`
+
+`dotenv` é uma biblioteca usada para carregar **variáveis de ambiente** a partir de um arquivo **.env** em seu projeto. Isso é especialmente útil para manter informações sensíveis, como credenciais de banco de dados ou chaves de API, fora do seu código-fonte e **configuráveis por meio de variáveis de ambiente**.\
+Em um arquivo **.env** você pode definir variáveis de ambiente no formato `VARIAVEL=valor`. Por exemplo:
+
+```plaintext
+DB_USER=usuario
+DB_PASSWORD=senha
+API_KEY=minha_chave_secreta
+```
+
+Para acessar as variáveis de ambiente definidas no arquivo **.env**, você pode usar o `process.env`. Por exemplo:
+
+```JavaScript
+const dbUser = process.env.DB_USER;
+const dbPassword = process.env.DB_PASSWORD;
+const apiKey = process.env.API_KEY;
+```
+
+Isso permite que você acesse valores configuráveis em seu código sem expor informações sensíveis diretamente no código-fonte.\
+Lembre-se de que as variáveis de ambiente carregadas com `dotenv` são específicas para o ambiente de execução do seu aplicativo. Elas não estarão disponíveis fora do escopo do aplicativo e não serão visíveis para outros processos ou usuários do sistema. Isso é útil para proteger informações confidenciais e facilita a configuração de diferentes ambientes (como desenvolvimento, teste e produção) usando diferentes arquivos **.env**.
+
+### <a id = "config"></a>`.config()`
+
+Configura e carrega variáveis de ambiente a partir de um arquivo **.env**. Retorna um objeto de configuração.
+
+`require('dotenv').config();`
+
+- **Chamada no início do aplicativo:** é uma boa prática chamar o método `.config()` no início do seu aplicativo, antes de qualquer outra operação que dependa das variáveis de ambiente definidas no arquivo **.env**;
+- **Automatiza o carregamento:** o método `.config()` automatiza o processo de leitura do arquivo **.env** e o carregamento de todas as variáveis de ambiente definidas nele;
+- **Retorna um objeto de configuração:** embora o método `.config()` não retorne explicitamente um valor, ele modifica o objeto `process.env` no ambiente Node.js para incluir todas as variáveis de ambiente definidas no arquivo **.env**;
+- **Gestão de erros:** o método `.config()` também pode gerar exceções se houver problemas ao ler ou analisar o arquivo **.env**, como um formato inválido.
+
+**As variáveis de ambiente são acessíveis em todo o escopo do seu aplicativo Node.js** e são usadas para configurar diferentes aspectos do aplicativo, como credenciais de banco de dados, chaves de API e outras configurações específicas do ambiente.
 
 # Node.js.
 
