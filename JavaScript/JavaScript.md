@@ -1,13 +1,49 @@
 # JavaScript.
 
+É uma **linguagem de programação** que é **síncrona** e **single-threaded**, o que significa que ela é executada em uma única thread de execução e as operações são processadas uma após a outra, em ordem. No entanto, JavaScript pode lidar com operações **assíncronas** e **não bloqueantes** usando recursos como **callbacks**, **promises** e **async/await**.
+
+**No linux, o Shebang é necessário para a impressão de logs no terminal de comando.**
+
 ## Sumário.
 
+- [Palavras chave](#palavraschave);
 - [Arrow functions](#arrowfunctions);
 - [Função de fechamento ou closure](#funcaofechamentoclosure);
 - [Como importar um diretório de funções no Node.js e o papel do arquivo de indexação](#importacaonodeindexacao);
+- [Objetos globais](#objetosglobais);
 - [**node_modules**](#nodemodules);
 - [Bibliotecas](#bibliotecas);
 - [Frameworks](#frameworks).
+
+## Métodos.
+
+- [`.stringify()`](#stringify);
+- [`.parse()`](#parse);
+
+# <a id = "palavraschave"></a>Palavras chave.
+
+- `class`**:** é usada para definir uma classe no JavaScript, que **é um modelo para criar objetos**, foi introduzida no ES6 (ECMAScript 2015). Classes podem ter construtores, métodos e propriedades;
+- `static`**:** é usado em uma classe para definir métodos ou propriedades estáticas. **Métodos estáticos pertencem à classe em vez de instâncias individuais** da classe;
+- `get`**:** é usado em uma classe para definir **um método de acesso que permite a leitura de propriedades**. Ele é usado com a sintaxe de propriedade getter.
+
+Exemplo:
+
+```JavaScript
+module.exports = class Config {
+  static get pool() {
+    return pool;
+  }
+}
+```
+
+O código faz a exportação de uma classe Config que tem um método estático chamado `pool()`. O método `pool` retorna um valor chamado `pool`. O propósito deste código é permitir que outros módulos acessem a propriedade `pool` da classe `Config` usando `Config.pool` para obter a referência a `pool`.\
+Observando que a palavra chave `get`, define que a propriedade seja somente leitura, indica que esta é uma propriedade de acesso. **Você não pode atribuir um novo valor a** `pool` **devido à natureza da propriedade somente leitura**.
+
+```JavaScript
+const Config = require("módulo-acima")
+```
+
+**Isso permite o acesso aos elementos exportados, como classes, funções ou variáveis, mas não cria uma instância da classe**.
 
 # <a id = "arrowfunctions"></a>Arrow functions.
 
@@ -157,6 +193,75 @@ As diferenças entre `import` e `require()` estão relacionadas à forma como os
 
   Em resumo, a escolha entre `require()` e `import` depende do ambiente em que você está desenvolvendo e das convenções da linguagem de módulo que está sendo usada.O `require()` é comum em ambientes Node.js, enquanto o `import` é comum em aplicativos da web front-end e em ambientes modernos de execução de JavaScript que suportam ES6+. Ambos têm seu lugar e são adequados em diferentes cenários.
 
+# <a id = "objetosglobais">Objetos globais.
+
+- [`JSON`](#json);
+
+## <a id = "json"></a>`JSON`
+
+Usado para trabalhar com dados no formato JSON.
+
+### <a id = "stringify"></a>`.stringify()`
+
+Converte um objeto JavaScript em uma string JSON.
+
+`.stringify(objeto, replacer, espaços)`
+
+- `objeto`**:** o objeto JavaScript que você deseja serializar em uma string JSON.
+- `replacer` **(opcional):** uma função ou um array que permite personalizar a serialização, filtrando e transformando os valores antes de serem convertidos em JSON. Você pode passar uma função de substituição para personalizar a serialização, ou um array de strings e números que especifica as propriedades a serem incluídas na serialização;
+- `espaços` **(opcional):** um argumento que controla o espaçamento (indentação) na string JSON resultante. Pode ser um número que indica o número de espaços para indentação ou uma string personalizada para a identação.
+
+Observação importante: **serializar** um objeto significa converter esse objeto em uma representação de dados que possa ser armazenada ou transmitida de uma maneira que possa ser posteriormente desserializada e reconstruída em sua forma original. Geralmente, isso envolve transformar o objeto em uma sequência de caracteres ou bytes que possa ser facilmente armazenada em um arquivo, transmitida através de uma rede ou armazenada em um banco de dados.
+
+Exemplo:
+
+```JavaScript
+const objeto = {
+  nome: "João",
+  idade: 30,
+  cidade: "São Paulo"
+};
+
+//replacer é uma função que personaliza a serialização.
+const replacer = (chave, valor) => {
+  //Vamos omitir a propriedade "idade" na serialização.
+  if (chave === "idade") {
+    return undefined;
+  }
+
+  return valor;
+}
+
+//O espaço define a quantidade de espaços de indentação na string JSON.
+const espaco = 2;
+const jsonString = JSON.stringfy(objeto, replacer, espaco);
+
+console.log(jsonString);
+
+/*A saída será algo como:
+{
+  "nome": "João",
+  "cidade": "São Paulo"
+}
+*/
+```
+
+Neste exemplo, estamos usando o `replacer` para personalizar a serialização. Ele verifica se a chave é "idade" e, se for, retorna `undefined`, o que efetivamente **omite a propriedade** `idade` **da serialização**. O `espaco` é definido como `2`, o que significa que a string JSON resultante será formatada com um recuo de 2 espaços. Observando que:
+
+- Quando `JSON.stringfy()` é chamado com o `replacer` como argumento, ele começa a serialização do objeto a partir do topo (o objeto raiz) e desce na hierarquia das propriedades;
+- A função `replacer` é chamada para cada propriedade do objeto sendo serializado. Ela recebe dois argumentos: a `chave` da propriedade atual e o `valor` dessa propriedade;
+- A função `replacer` pode retornar um novo valor para a propriedade atual. Se ela retornar `undefined`, a propriedade será omitida na saída final; caso contrário, o valor retornado será incluído na saída JSON.
+
+### <a id = "parse"></a>`.parse()`
+
+`.parse(JSON)`
+
+Analisa uma string no formato JSON e a converte em um objeto JavaScript. A string precisa estar em um formato JSON válido. Exemplo:
+
+```JavaScript
+JSON.parse(content)[version]; //Estamos acessando a chave "version" do objeto retornado por JSON.parse(content)
+```
+
 # <a id = "nodemodules"></a>node_modules
 
 Este diretório normalmente não é versionado (o que é uma boa prática). Ele contém as dependências do seu projeto, caso haja dependências ausentes, você pode seguir as seguinte etapas:
@@ -196,12 +301,6 @@ Certifique-se de nunca incluir a pasta **node_modules** no seu repositório Git,
 - [Next.js](frameworks.md#nextjs).
 
 # <--
-
-# JavaScript.
-
-É uma **linguagem de programação** que é **síncrona** e **single-threaded**, o que significa que ela é executada em uma única thread de execução e as operações são processadas uma após a outra, em ordem. No entanto, JavaScript pode lidar com operações **assíncronas** e **não bloqueantes** usando recursos como **callbacks**, **promises** e **async/await**.
-
-**No linux, o Shebang é necessário para a impressão de logs no terminal de comando.**
 
 # Objeto de objetos indexado por chaves.
 
@@ -307,7 +406,6 @@ Quando você inclui a diretiva `'use strict'` no início de um arquivo JavaScrip
 - [`parseInt()`;](nativo.md#parseint)
 - [`setTimeout()`;](nativo.md#settimeout)
 - [Promises;](nativo.md#promises)
-- [Objetos globais;](nativo.md#objetosglobais)
 - [Funções globais;](nativo.md#funcoesglobais)
 - [Funções de array;](nativo.md#funcoesdearray)
 - [Funções de string;](nativo.md#funcoesdestring)

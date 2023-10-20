@@ -231,9 +231,12 @@ O objeto `iam` que você cria pode ser usado para fazer chamadas às operações
 
 ### <a id = "s3"></a>`.S3()`
 
-Cria uma instância do serviço **Amazon Simple Storage Service** (**Amazon S3**).
+Cria uma instância do serviço **Amazon Simple Storage Service** (**Amazon S3**). Retorna uma instância do serviço Amazon S3 configurada de acordo com as configurações fornecidas.
 
-`const s3 = new AWS.S3();`
+`const s3 = new AWS.S3(configuracao);`
+
+`configuracao` **(objeto):** objeto de configuração que permite que você configure vários aspectos do comportamento da instância.\
+    - `endpoint`**(opcional):** o ponto de extremidade (URL) personalizado para o serviço S3. Se você estiver usando um serviço de armazenamento de objetos compatível com o protocolo S3, pode especificar o ponto de extremidade personalizado aqui.
 
 Você pode usar essa instância para interagir com o Amazon S3 e realizar operações como criar, listar, baixar ou excluir objetos, gerenciar buckets e configurar permissões.
 

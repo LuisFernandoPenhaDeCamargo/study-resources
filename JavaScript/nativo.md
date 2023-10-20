@@ -561,8 +561,6 @@ Então mesmo a função de resolução sendo passada como argumento para a funç
 - [`.keys()`;](#keys)
 - [`.definePropertyOf()`;](#definepropertyof)
 - [`.getPropertyOf()`;](#getpropertyof)
-- [`.stringify()`;](#stringify)
-- [`.parse()`;](#parse)
 - [`.exit()`;](#exit)
 - [`.floor()`.](#floor)
 
@@ -631,71 +629,6 @@ Usada para definir uma nova propriedade diretamente em um objeto ou modificar um
 `.getPropertyOf(objeto)`
 
 Utilizada para retornar o protótipo de um `objeto`.
-
-## `JSON`
-
-Usado para trabalhar com dados no formato JSON.
-
-### <a id = "stringify"></a>`.stringify()`
-
-Converte um objeto JavaScript em uma string JSON.
-
-Observação importante: **serializar** um objeto significa converter esse objeto em uma representação de dados que possa ser armazenada ou transmitida de uma maneira que possa ser posteriormente desserializada e reconstruída em sua forma original. Geralmente, isso envolve transformar o objeto em uma sequência de caracteres ou bytes que possa ser facilmente armazenada em um arquivo, transmitida através de uma rede ou armazenada em um banco de dados.
-
-`.stringify(objeto, replacer, espaços)`
-
-- `objeto`**:** o objeto JavaScript que você deseja serializar em uma string JSON.
-- `replacer` **(opcional):** uma função ou um array que permite personalizar a serialização, filtrando e transformando os valores antes de serem convertidos em JSON. Você pode passar uma função de substituição para personalizar a serialização, ou um array de strings e números que especifica as propriedades a serem incluídas na serialização;
-- `espaços` **(opcional):** um argumento que controla o espaçamento (indentação) na string JSON resultante. Pode ser um número que indica o número de espaços para indentação ou uma string personalizada para a identação.
-
-Exemplo:
-
-```JavaScript
-const objeto = {
-  nome: "João",
-  idade: 30,
-  cidade: "São Paulo"
-};
-
-//replacer é uma função que personaliza a serialização.
-const replacer = (chave, valor) => {
-  //Vamos omitir a propriedade "idade" na serialização.
-  if (chave === "idade") {
-    return undefined;
-  }
-
-  return valor;
-}
-
-//O espaço define a quantidade de espaços de indentação na string JSON.
-const espaco = 2;
-const jsonString = JSON.stringfy(objeto, replacer, espaco);
-
-console.log(jsonString);
-
-/*A saída será algo como:
-{
-  "nome": "João",
-  "cidade": "São Paulo"
-}
-*/
-```
-
-Neste exemplo, estamos usando o `replacer` para personalizar a serialização. Ele verifica se a chave é "idade" e, se for, retorna `undefined`, o que efetivamente **omite a propriedade** `idade` **da serialização**. O `espaco` é definido como `2`, o que significa que a string JSON resultante será formatada com um recuo de 2 espaços. Observando que:
-
-- Quando `JSON.stringfy()` é chamado com o `replacer` como argumento, ele começa a serialização do objeto a partir do topo (o objeto raiz) e desce na hierarquia das propriedades;
-- A função `replacer` é chamada para cada propriedade do objeto sendo serializado. Ela recebe dois argumentos: a `chave` da propriedade atual e o `valor` dessa propriedade;
-- A função `replacer` pode retornar um novo valor para a propriedade atual. Se ela retornar `undefined`, a propriedade será omitida na saída final; caso contrário, o valor retornado será incluído na saída JSON.
-
-### <a id = "parse"></a>`.parse()`
-
-`.parse(JSON)`
-
-Analisa uma string no formato JSON e a converte em um objeto JavaScript. A string precisa estar em um formato JSON válido. Exemplo:
-
-```JavaScript
-JSON.parse(content)[version]; //Estamos acessando a chave "version" do objeto retornado por JSON.parse(content)
-```
 
 ## `process`
 

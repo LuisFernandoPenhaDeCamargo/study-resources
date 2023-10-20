@@ -9,6 +9,7 @@
 # Sumário.
 
 - [Mecanismos de autenticação (ou plugin de autenticação)](#mecanismosautenticacao);
+- [Cláusulas](#clausulas);
 - [Tipos de dados](#tiposdados);
 - [Lista de comandos](#listadecomandos);
 - [Funções](#funcoes);
@@ -23,6 +24,30 @@
     - `ed25519`**:** autenticação baseada em chave (mais segura).
 
 [Alterando o mecanismo.](#alteruser)
+
+# <a id = "clausulas"></a>Cláusulas.
+
+No contexto de consultas SQL, as cláusulas são equivalentes a palavras chave que têm um significado específico e desempenham um papel crucial na estrutura e no funcionamento das consultas. Cada cláusulas tem uma função específica e ajuda a definir como os resultados da consulta serão recuperados, filtrados, classificados, agrupados e limitados. Algumas das cláusulas SQL comuns incluem:
+
+- `SELECT`**:** usada para selecionar colunas de uma tabela ou calcular valores com base em colunas;
+- `FROM`**:** especifica a tabela da qual os dados são recuperados;
+- `WHERE`**:** define condições de filtro para restringir os registros recuperados;
+- `ORDER BY`**:** classifica os resultados em ordem crescente ou decrescente;
+- `GROUP BY`**:** agrupa os resultados com base em valores comuns em uma ou mais colunas;
+- `HAVING`**:** define condições de filtro para grupos resultantes após a cláusula `GROUP BY`;
+- `JOIN`**:** combina dados de duas ou mais tabelas com base em uma relação específica;
+- `LIMIT`**:** limita o número de linhas retornadas nos resultados. Ela permite que você especifique quantos registros deseja recuperar;
+- `DISTINCT`**:** retorna valores únicos em uma coluna;
+- `DESC`**: Descending order** é usada para especificar que você deseja classificar os resultados em ordem decrescente. Por padrão, as consultas SQL classificam em ordem crescente (do menor para o maior valor). Usando `DESC`, você inverte a ordem e classifica em ordem decrescente (do maior para o menor valor).
+
+### Operadores lógicos.
+
+Enquanto cláusulas são partes principais de uma consulta SQL que definem o que você deseja realizar, operadores lógicos são usados dentro da cláusula `WHERE` para combinar condições e criar expressões lógicas que determinam quais registros devem ser incluídos ou não da consulta.\
+Os operadores lógicos são: `AND`, `OR`, `NOT`.
+
+### Operadores de comparação.
+
+`IS NULL` e `IS NOT NULL` são geralmente classificados como operadores de comparação em SQL, uma vez que são usados para comparar valores em colunas com o valor nulo. Sendo que `NULL` **é um valor especial**
 
 # <a id = "tiposdados"></a>Tipos de dados.
 

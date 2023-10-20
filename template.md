@@ -4,7 +4,9 @@
 
 ### Repositório.
 
+- aplicações.md;
 - Markdown.md;
+- testes.md;
 - JavaScript/JavaScript.md;
 - JavaScript/nativo.md.
 

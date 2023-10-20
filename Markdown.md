@@ -123,7 +123,51 @@ Em Markdown, você pode criar links de várias maneiras. Aqui estão algumas das
 [Texto do Link](https://wwww.exemplo.com).
 ```
 
-- **:**
+- **Link automático:** se você simplesmente colar uma URL em seu documento Markdown, ela será automaticamente convertida em um link:
+
+```markdown
+https://www.exemplo.com
+```
+
+- **Link de referência:** você também pode criar links de referência, onde define a URL em outro lugar no documento. Isso é útil para manter seu documento limpo e legível. Primeiro, defina a referência em algum lugar do seu documento:
+
+```markdown
+[Texto do Link][referencia].
+...
+[referencia]: https://www.exemplo.com
+```
+
+Em seguida, use a referência onde você quiser criar o link. Você pode fazer isso várias vezes no documento usando a mesma referência.
+
+- **Link de e-mail:** para criar um link de e-mail, use a mesma sintaxe, mas coloque `mailto:` antes do endereço de e-mail:
+
+```markdown
+[E-mail de Suporte](mailto: suporte@exemplo.com).
+```
+
+- **Links com âncora:**  são links internos que leval a seções específicas do mesmo documento, para criar links com âncora, você utiliza a seguinte sintaxe:\
+    Primeiro, crie uma âncora no local do documento que você deseja vincular. Use colchetes `[]` e parênteses `()` com um identificador exclusivo após o símbolo `#`.
+
+```markdown
+[Âncora de exemplo](#minhaancora).
+```
+
+Em seguida, vá para a seção do seu documento onde deseja que a âncora seja ancorada e insira a âncora usando o seguinte formato:
+
+```markdown
+<a id = "minhaancora"></a>
+```
+
+Dessa forma, o link com âncora apontará para a âncora criada no documento.
+
+### `<a id = ""> x <a name = "">`
+
+Ambos são utilizados para criar âncoras em documentos HTML, mas há uma diferença histórica de uso entre eles.
+
+- `<a name = "">`**:** esta é uma forma mais antiga de criar âncoras em HTML e costumava ser amplamente usada;
+- `<a id = "">`**:** este é um método mais moderno para criar âncoras em HTML e é considerado mais compatível com os padrões atuais.
+
+A diferença fundamental entre eles é que `< a name = "">` costumava ser usado para criar âncoras em elementos específicos, enquanto `<a id = "">` é mais comum para criar âncoras em elementos de marcação semântica, como títulos ou divs.
 
 # <a id = "imagens"></a>Imagens.
 

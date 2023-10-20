@@ -2,7 +2,8 @@
 
 ### Métodos.
 
-- [`.Router`](#router);
+- [`.Router()`](#router);
+- [`.post()`](#post);
 - [`timeout()`](#timeout);
 - [`before()`](#before);
 - [`after()`](#after);
@@ -46,6 +47,18 @@ app.use("/meu-rota", router);
 ```
 
 Isso monta o roteador no caminho `/meu-rota`, para que todas as solicitações que correspondam a esse caminho sejam tratadas pelo roteador. Isso permite que você organize e modularize seu aplicativo Express de forma mais eficiente, mantendo suas rotas separadas em grupos lógicos.
+
+### <a id = "post"></a>`.post()`
+
+Define uma rota que responde a requisições HTTP POST. Retorna um objeto do tipo `Router`.
+
+`router.post(path, callback, callback)`
+
+- `path` **(string):** especifica o caminho da URL no qual a rota deve corresponder;
+- **Manipulador (handler,** `callback`**, opcional):** uma função que é executada quando a rota corresponde a uma requisição POST e é responsável por lidar com a lógica da rota;
+    - `req` **(requisição, objeto):** este objeto contém informações sobre a requisição HTTP, como parâmetros de consulta, corpo da requisição, cabeçalhos e muito mais;
+    - `res` **(resposta, objeto):** este objeto é usado para construir e enviar uma resposta ao cliente, incluindo status HTTP, cabeçalhos e corpo da resposta.
+- **Funções intermediárias (middleware,** `callback`**, opcional):** você pode fornecer uma ou mais funções intermediárias que são executadas antes do manipulador principal. Isso é útil para adicionar lógica de autenticação, validação, etc. **São chamadas em ordem sequencial, a última função que deve ser chamada é o handler**.
 
 # <a name = "mocha"></a>Mocha.
 
