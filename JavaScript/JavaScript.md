@@ -15,8 +15,10 @@
 - [Bibliotecas](#bibliotecas);
 - [Frameworks](#frameworks).
 
-## Métodos.
+## Construtores/métodos.
 
+- [`Date`](#date);
+- [`.getTime()`](#gettime)
 - [`.stringify()`](#stringify);
 - [`.parse()`](#parse);
 
@@ -192,6 +194,21 @@ As diferenças entre `import` e `require()` estão relacionadas à forma como os
   - `import`**:** é mais moderno e suportado em ambientes baseados em ES6. Não é amplamente suportado em ambientes mais antigos, como navegadores mais antigos e ambientes de servidor legados.
 
   Em resumo, a escolha entre `require()` e `import` depende do ambiente em que você está desenvolvendo e das convenções da linguagem de módulo que está sendo usada.O `require()` é comum em ambientes Node.js, enquanto o `import` é comum em aplicativos da web front-end e em ambientes modernos de execução de JavaScript que suportam ES6+. Ambos têm seu lugar e são adequados em diferentes cenários.
+
+# Construtores.
+
+### <a id = "date"></a>`Date`
+
+Cria objetos que representam datas e horas.
+
+`const dataAtual = new Date;`
+
+Você pode criar um objeto `Date` sem argumentos, o que resultará na data e hora atuais, ou pode fornecer um ou mais argumentos para criar uma data específica.\
+Lembre-se de que, em JavaScript, as datas e horas são baseadas no horário do sistema do computador em que o código está sendo executado, a menos que você especifique um fuso horário específico.
+
+### <a id = "gettime"></a> `getTime()`
+
+
 
 # <a id = "objetosglobais">Objetos globais.
 

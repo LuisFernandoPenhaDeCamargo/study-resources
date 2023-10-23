@@ -184,13 +184,12 @@ O uso de um pool de conexões ajuda a gerenciar eficientemente as conexões de b
 
 Executa querys SQL.
 
-`pool.query(sql, values, callback)`
+`pool.query(sql, values)`
 
 O método `.query()` é um dos métodos principais em uma pool de conexões MariaDB no Node.js. Ele é usado para executar querys SQL no banco de dados MariaDB por meio da conexão que está disponível na pool. A função `.query()` é usada para enviar uma query SQL ao banco de dados e recuperar os resultados, se houver.
 
 - `sql` **(string):** contém a query SQL que você deseja executar. Pode incluir espaços reservados que serão substituídos pelos valores reais quando a query for executada. Por exemplo, você pode usar placeholders como `?` ou nomeá-los com `:nome` ou `?name` e fornecer os valores correspondentes no array `values`;
-- `values` **(array, opcional):** contém os valores a serem inseridos nos espaços reservados da query SQL. Isso é útil para evitar ataques de injeção SQL e para passar dados dinâmicos para a query. Se você não precisar de valores dinâmicos, pode deixar este parâmetro em branco;
-- `callback`**:** é uma função de retorno de chamada que será chamada quando a consulta for executada ou quando ocorrerem erros. A função de retorno de chamada segue o padrão Node.js com dois argumentos: `error` e `results`. `error` conterá qualquer erro que ocorra durante a execução da query, e `results` conterá os resultados da query se ela for bem-sucedida.
+- `values` **(array, opcional):** contém os valores a serem inseridos nos espaços reservados da query SQL. Isso é útil para evitar ataques de injeção SQL e para passar dados dinâmicos para a query. Se você não precisar de valores dinâmicos, pode deixar este parâmetro em branco.
 
 O retorno do método `pool.query()` pode variar com base na natureza da query SQL que você está executando e nos resultados da consulta. Em geral, o retorno depende se a query é uma query de seleção (SELECT) ou uma query de modificação (INSERT, UPDATE, DELETE) e se a consulta foi bem-sucedida.\
 Se a query for uma query de seleção e for bem-sucedida, **o retorno será um array que possui um objeto com os registros retornados, entre outros objetos**.
