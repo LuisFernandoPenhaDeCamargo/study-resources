@@ -192,7 +192,10 @@ O método `.query()` é um dos métodos principais em uma pool de conexões Mari
 - `values` **(array, opcional):** contém os valores a serem inseridos nos espaços reservados da query SQL. Isso é útil para evitar ataques de injeção SQL e para passar dados dinâmicos para a query. Se você não precisar de valores dinâmicos, pode deixar este parâmetro em branco.
 
 O retorno do método `pool.query()` pode variar com base na natureza da query SQL que você está executando e nos resultados da consulta. Em geral, o retorno depende se a query é uma query de seleção (SELECT) ou uma query de modificação (INSERT, UPDATE, DELETE) e se a consulta foi bem-sucedida.\
-Se a query for uma query de seleção e for bem-sucedida, **o retorno será um array que possui um objeto com os registros retornados, entre outros objetos**.
+
+- Se a query for uma query de seleção e for bem-sucedida, **o retorno será um array que possui um objeto com os registros retornados, entre outros objetos**;
+- Se a query for uma query de inserção e for bem-sucedida, o retorno será um objeto `{ affectedRows: valor1, insertedId: valor2, warningStatus: valor3 }`;
+- Se a query for uma query de atualização e for bem-sucedida, o retorno será um objeto `{ affectedRows: valor1, insertedId: valor2, warningStatus: valor3 }` (aparentemente este não é o formato padrão do objeto, deve estar assim por conta de alguma configuração).
 
 # <a name = "awssdk"></a>`aws-sdk`
 

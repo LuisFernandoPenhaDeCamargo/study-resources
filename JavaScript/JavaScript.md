@@ -208,7 +208,31 @@ Lembre-se de que, em JavaScript, as datas e horas são baseadas no horário do s
 
 ### <a id = "gettime"></a> `getTime()`
 
+Obtém o **valor numérico** correspondente à data representada pelo objeto `Date`.
 
+```JavaScript
+const data1 = new Date("2023-10-20T10:30:00");
+const data2 = new Date("2023-10-21T12:45:00");
+
+const valorNumerico1 = data1.getTime();
+const valorNumerico2 = data2.getTime();
+
+console.log("Valor numérico de data1:", valorNumerico1); //Saída: 1697808600000
+console.log("Valor numérico de data2:", valorNumerico2); //Saída: 1697903100000
+```
+
+O método `.getTime()` é um método disponível no objeto `Date` em JavaScript que permite obter o valor numérico correspondente à data representada pelo objeto `Date`. **Esse valor é uma representação de tempo, medido em milissegundos desde a meia-noite (00:00:00), 1 de janeiro de 1970, UTC (Coordinated Universal Time)**.\
+A principal utilidade do método `.getTime()` está em permitir a comparação de datas e a realização de cálculos de intervalo de tempo. Você pode obter o valor numérico de uma data e compará-lo com outros valores para determinar qual data ocorreu antes ou depois. Por exemplo, usando o código acima, podemos realizar comparações simples usando os valores numéricos para determinar qual data é anterior ou posterior:
+
+```JavaScript
+if (valorNumerico1 < valorNumerico2) {
+  console.log("data1 ocorreu antes de data2.");
+} else if (valorNumerico1 > valorNumerico2) {
+  console.log("data2 ocorreu antes de data1.");
+} else {
+  console.log("data1 e data2 são iguais em termos de tempo.");
+}
+```
 
 # <a id = "objetosglobais">Objetos globais.
 

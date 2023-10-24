@@ -4,9 +4,9 @@
 
 ### Repositório.
 
-- aplicações.md;
-- Markdown.md;
 - testes.md;
+- MEI.md;
+- Markdown.md;
 - JavaScript/JavaScript.md;
 - JavaScript/nativo.md.
 
@@ -17,7 +17,9 @@
 
 ### Contexto para o ChatGPT.
 
-JavaScript.
+**JavaScript.**
+
+Contexto:
 
 - Linux;
 - JavaScript;
@@ -25,6 +27,12 @@ JavaScript.
 - API;
 - MySQL;
 - Git/GitHub.
+
+Linguagem: português (BR).
+
+**Python.**
+
+Contexto:
 
 Python.
 
