@@ -42,34 +42,21 @@ Devolver uma autorização única (fica a sua escolha qual o método).
     - **Nome do local:** até 30 caracteres;
     - **Cidade**.
 
-# <--
-
-* campos requiridos:
-    - Distribuidor: EUA, México, Chile
-    - Linguagem: Inglês, Espanhol
-    - Contrato: Jogos multíplos, Único jogo
-    - Porcentagem: Para jogos multíplos 30%, para único 10%
-    - Quantidade de placas: até 10 por local
-    - Jogos: "Halloween", "Valentine's day", "Easter Sunday", "New Year", "Lunar New Year", "Thanksgiving", "Día de Muertos"
-      - Limite de 5 jogos por local
-    - Nome do local: até 30 caracteres
-    - Cidade
-
-    Deverá devolver sucesso ou não da requisição, e gerar um "sku" com os dados acima como identificador único no banco (a seu critério, tente ser sucinto e claro nele, até 25 caracteres)
+Deverá devolver sucesso ou não da requisição, e gerar um "sku" com os dados acima como identificador único no banco (a seu critério, tente ser sucinto e claro nele, até 25 caracteres).
 
 ### `api/locals` (necessário estar autorizado)
 
-    - devolver informações sobre os locais usando pesquisa parcial de sku e/ou nome e/ou cidade
-## Extras:
+Devolver informações sobre os locais usando pesquisa parcial de sku e/ou nome e/ou cidade.
 
+## Extras:
 
 ### `admin/local_approval` (precisa estar autorizado)
 
-    - Criar um endpoint que aprove os locais que foram criados (neste caso eles ficam em uma lista de espera para aprovação).
-    - Ser capaz de deletar ou atualizar dados dos pedidos antes da aprovação.
+- Criar um endpoint que aprove os locais que foram criados (neste caso eles ficam em uma lista de espera para aprovação);
+- Ser capaz de deletar ou atualizar os dados dos pedidos antes da aprovação.
 
+## Diferenciais:
 
-## Diferencias:
-    - Fazer o uso testes automatizados e/ou TDD
-    - Seguir o padrão de conventional commits
-    - Seguir alguma arquitetura de software e explicar sua decisão e trade-offs escolhidos
+- Fazer o uso de testes automatizados e/ ou TDD;
+- Seguir o padrão convencional de commits;
+- Seguir alguma arquitetura de software e explicar sua decisão e trade-offs escolhidos.

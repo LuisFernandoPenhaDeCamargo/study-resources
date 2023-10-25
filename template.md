@@ -4,9 +4,7 @@
 
 ### Repositório.
 
-- testes.md;
 - MEI.md;
-- Markdown.md;
 - JavaScript/JavaScript.md;
 - JavaScript/nativo.md.
 
@@ -96,7 +94,7 @@ Inclua o objeto que a chama.
 
 Explicação mais detalhada.
 
-Quais são seus parâmetros? Quais são os tipos deles? Eles são opcionais? O que a função retorna?\
+`metodo` tem quais parâmetros, quais os tipos deles e o que o método retorna?\
 Se for especificar a impressão da saída no interpretador, especificar que é uma saída:
 
 ```

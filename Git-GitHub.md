@@ -13,6 +13,7 @@
 - `git checkout -b novaBranch`**:** cria e alterna para uma nova branch **a partir da branch em que eu me encontro**. [Explicação detalhada](#novabranch);
 - `git branch`**:** lista as branches **locais** e **destaca com um asterisco em qual você se encontra**;
 - `git push origin branch`**:** envia a branch para o repositório remoto;
+- `git pull origin branch`**:** atualiza a branch. [Explicação detalhada](#gitpull);
 - `git status`**:** informa o estado dos arquivos;
 - `git add arquivo`**:** adiciona o arquivo ao índice Git. [Explicação detalhada](#gitadd);
 - `git checkout -- arquivo`**:** descarta alterações. [Explicação detalhada](#descartandoalteracoes);
@@ -39,6 +40,10 @@ Você também pode fazer o processo em comandos separados:
 `git checkout novaBranch`
 
 Isso fará com que você comece a trabalhar na nova branch.
+
+## <a id = "gitpull"></a>`git pull`
+
+Para realizar um "pull" (ou atualização) em um repositório Git, você pode usar o comando `git pull`. O `git pull` combina dois comandos: `git fetch`, que recupera as mudanças do repositório remoto, e `git merge` ou `git rebase`, que integra essas mudanças no seu branch local. O comando exato que você usará depende do seu fluxo de trabalho preferido.
 
 ## <a id = "gitadd"></a>`git add`
 

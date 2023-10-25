@@ -4,6 +4,8 @@
 
 - [`.post()`](#post);
 - [`.patch()`](#patch);
+- [GET/`axios()`](#getaxios);
+- [`request()`](#request);
 - [`.createPool()`](#createpool);
 - [`.query()`](#query);
 - [`.update()`](#update);
@@ -16,6 +18,9 @@
 - [`describe()`](#describe);
 - [`it()`](#it);
 - [`.config()`](#config);
+- [`.createTransport()`](#createtransport);
+- [`.sendMail()`](#sendmail);
+- [`.stringify()`](#stringify);
 - [`.resolve()`](#resolve);
 - [`.readdirSync()`](#readdirsync);
 - [`.readFileSync()`](#readfilesync);
@@ -35,6 +40,14 @@ Utilizada para fazer requisições HTTP, seja em navegadores ou em Node.js.
 
 No propriedade `'content-type'`, que pode ser acessada ao se utilizar `response.headers['content-type']`, se encontra o valor do formato da resposta.\
 Se o valor da chave `'content-type'` for `application/json`, quer dizer que o conteúdo da resposta é no formato JSON.
+
+As chaves `"x-real-ip"`, `"x-fowarded-for"` e `remoteAddress` em uma requisição HTTP geralmente se relacionam com informações sobre o endereço IP do cliente que fez a requisição. Elas podem ser usadas para rastrear a origem da requisição, especialmente quando um servidor proxy ou balanceador de carga está envolvido.
+
+- `x-real-ip`**:** esta chave é geralmente usada para conter o endereço IP real do cliente que fez a requisição. Em muitos casos, quando um servidor proxy está na frente de um servidor web, o endereço IP do cliente é mascarado e substituído pelo endereço IP do proxy. O cabeçalho `x-real-ip` é usado para recuperar o endereço IP real do cliente, especialmente quando é confiável;
+- `x-forwarded-for`**:** este é outro cabeçalho frequentemente usado para obter o endereço IP do cliente quando um servidor proxy está envolvido. O cabeçalho `x-forwarded-for` contém uma lista de endereços IP, onde o primeiro endereço da lista é geralmente o endereço IP real do cliente e os endereços subsequentes são os IPs dos proxies pelos quais a requisição passou. É importante lembrar que esse cabeçalho pode ser falsificado, portanto, deve ser usado com cuidado em ambientes confiáveis;
+- `remoteAddress`**:** é baseado no endereço IP do cliente conforme detectado pelo servidor, e isso pode ser afetado pela configuração do servidor e pela presença de proxies.
+
+Em resumo, essas chaves e propriedades são usadas para obter informações sobre o endereço IP do cliente que fez a requisição HTTP. No entanto, é importante ter em mente que, em ambientes com proxies, os endereços IP podem ser mascarados ou falsificados, portanto, é crucial usá-los com cuidado e considerar a confiabilidade das fontes de dados.
 
 ## `.interceptors`
 
@@ -117,11 +130,57 @@ console.log("source.token.reason:", source.token.reason);
   Como por exemplo a { chave: valor }: `{ cancelToken: objetoCancelToken.token }`, que é o token de cancelamento.
 
 - <a id = "post"></a>`.post(url, corpoDaSolicitacao)`;
-- <a id = "patch"></a>`.patch(url, corpoDaSolicitacao, configuracoes)` : atualização parcial.
+- <a id = "patch"></a>`.patch(url, corpoDaSolicitacao, configuracoes)` : atualização parcial;
+- [GET/`axios()`](#getaxios).
+
+### <a id = "getaxios"></a>GET/`axios()`
+
+O método `axios()` é a função principal do módulo Axios, que é amplamente utilizado para fazer solicitações HTTP em aplicativos JavaScript, incluindo aplicativos Node.js e aplicativos da web no navegador. O `axios()` é usado para iniciar uma solicitação HTTP. Retorna uma promessa que representa a resposta da solicitação HTTP.
+
+`axios(obejto)`
+
+`objeto` **(objeto):** um objeto de configuração que define os detalhes da solicitação HTTP, como a URL de destino, o método HTTP, os cabeçalhos, os dados do corpo da solicitação e outras configurações relacionadas à solicitação.
+    - `url` **(string):** a URL para qual a solicitação será enviada;
+    - `method` **(string, opcional):** o método HTTP da solicitação (por exemplo, "GET", "POST", "PUT", "DELETE", etc.). O valor padrão é "GET";
+    - `headers` **(objeto, opcional):** um objeto contendo cabeçalhos da solicitação;
+    - `data` **(objeto, string, ou FormData, opcional):** os dados a serem enviados no copor da solicitação. Isso pode ser um objeto JavaScript, uma string, ou um objeto `FormData`;
+    - `params` **(objeto, opcional):** parâmetros de consulta que são anexados à URL da solicitação. Normalmente, isso é usado para solicitações GET.
+
+Se você passar somente uma URL para o método `axios()`, e essa URL incluir parâmetros de consulta, que podem ser montados usando o módulo `querystring` em um objeto JavaScript, isso significa que você está fazendo uma solicitação **GET** com parâmetros de consulta codificados na própria URL.\
+O Axios é inteligente o suficiente para reconhecer que a URL fornecida inclui parâmetros de consulta e os envia como parte da solicitação. Assim, o resultado é o mesmo que se você tivesse definido os parâmetros de consulta separadamente na configuração da solicitação.\
+Essa é uma maneira conveniente de fazer solicitações GET com parâmetros de consulta diretamente na URL, especialmente quando você precisa construir dinamicamente a URL com base em um objeto de parâmetros. O Axios simplifica o processo de envio dessas solicitações HTTP.
 
 # <a name = "requestpromisenative"></a>`request-promise-native`
 
 Biblioteca utilizada para fazer solicitações HTTP de forma assíncrona no Node.js com suporte a Promises. É uma extensão do módulo request-promise, oferecendo as mesmas funcionalidades, mas com o uso nativo de Promises, o que torna o código mais limpo e legível quando se trata de fazer solicitações HTTP e lidar com respostas.
+
+### <a id = "request"></a>`request()`
+
+Faz solicitações HTTP e retorna uma promessa.
+
+`request(opcoes)`
+
+`opcoes` **(objeto):** um objeto que contém as opções da solicitação HTTP. Este objeto pode incluir várias configurações, como a URÇ de destino, os cabeçalhos da solicitação, o método HTTP (por exemplo, GET, POST, etc.), os dados do corpo da solicitação e outras configurações específicas da solicitação.\
+O método `request()` retonar uma promessa (Promise) que é resolvida quando a solicitação HTTP é concluída com sucesso ou rejeitada em caso de erro. Isso permite que você trabalhe com o resultado da solicitação de maneira assíncrona usando o modelo de promessas. Exemplo de uso do `request()`:
+
+```JavaScript
+const request = require("request-promise-native");
+
+//Exemplo de solicitação GET.
+request({
+    uri: "https://jsonplaceholder.typicode.com/posts/1",
+    method: "GET",
+    json: true //Especifica que a reposta deve ser analisada como JSON.
+})
+    .then(response => {
+        console.log("Resposta:", response);
+    })
+    .catch(error => {
+        console.error("Erro na solicitação:", error);
+    });
+```
+
+Neste exemplo, o método `request()` é usado para fazer uma solicitação GET para uma URL específica. A promessa retornada é então manipulada usando `.then()` para lidar com a resposta bem-sucedida e `.catch()` para lidar com erros na solicitação.
 
 # <a name = "bodyparser"></a>`body-parser`
 
@@ -455,6 +514,86 @@ Configura e carrega variáveis de ambiente a partir de um arquivo **.env**. Reto
 
 **As variáveis de ambiente são acessíveis em todo o escopo do seu aplicativo Node.js** e são usadas para configurar diferentes aspectos do aplicativo, como credenciais de banco de dados, chaves de API e outras configurações específicas do ambiente.
 
+# <a name = "nodemailer"></a>`nodemailer`
+
+O `nodemailer` é uma biblioteca de terceiros muito popular para o Node.js que facilita o envio de e-mails a partir de aplicativos Node.js. Ele fornece uma API simples e poderosa para configurar e enviar e-mails, suportando diversos serviços de e-mail, como SMTP, SMTP seguro (SSL/TLS), além de possibilitar o envio de e-mails diretamente do aplicativo.
+
+### <a id = "createtransport"></a>`.createTransport()`
+
+Cria um objeto de transporte que define como o Nodemailer enviará e-mails. Retorna um **objeto de transporte do** `nodemailer`**, que você pode usar para enviar e-mails usando as configurações especificadas no objeto de opções**.
+
+`const transporter = nodemailer.createTransport(opcoes);`
+
+`opcoes` **(objeto):** objeto de configuração, suas principais propriedades são:
+    - `service` **(string):** o serviço de e-mail a ser usado. Pode ser um serviço predefinido, como "Gmail" ou "Outlook", ou você pode configurar os detalhes de um serviço personalizado. Exemplo: `service: "Gmail"`;
+    - `host` **(string):** o host do servidor de e-mail SMTP. Isso é necessário se você não estiver usando um serviço predefinido. Exemplo: `host: "smtp.example.com"`;
+    - `port` **(number):** a porta do servidor SMTP. Geralmente, a porta **465** é usada para SMTP seguro (SSL/TLS) e a porta 587 para SMTP padrão;
+    - `secure` **(boolean):** define se a conexão deve ser segura. Geralmente, é `true` para SMTP seguro (SSL/TLS) e `false` para SMTP padrão;
+    - `auth` **(objeto):** um objeto que contém as credenciais de autenticação, incluindo `user` (seu endereço de e-mail) e `pass` (sua senha). Exemplo:
+
+```JavaScript
+auth: {
+    user: "seu_email@example.com",
+    pass: "sua_senha"
+}
+```
+
+### <a id = "sendmail"></a>`.sendMail()`
+
+Envia e-mails.
+
+`transporter.sendMail(opces, callback);`
+
+`opcoes` **(objeto):** objeto de configuração, suas principais propriedades são:
+    - `from` **(string):** o endereço de e-mail do remetente. Deve ser uma string no formato `"nome <email>"`. Exemplo: `from: "John Doe <johndoe@example.com>"`;
+    - `to` **(string ou array de strings):** o(s) endereço(s) de e-mail do(s) destinatário(s). Pode ser uma única string ou um array de strings se você deseja enviar o e-mail para múltiplos destinatários. Exemplo:
+
+```JavaScript
+to: "destinatario@example.com"
+
+//ou
+
+to: ["destinatario1@example.com", "destinatario2@example.com"]
+```
+
+- `subject` **(string):** o assunto do e-mail. Exemplo: `subject: "Assunto de E-mail".`;
+- `text` **(string):** o conteúdo do e-mail no formato de texto simples. Este é o corpo do e-mail que será exibido se o cliente de e-mail não suportar HTML. Exemplo: `text: "Conteúdo do E-mail em Texto Puro."`;
+- `html` **(string):** o conteúdo do e-mail no formato HTML. Este é o corpo do e-mail que será exibido se o cliente de e-mail suportar HTML. Exemplo: `html: "<h1>Conteúdo do E-mail em HTML</h1>`;
+- `attachments` **(array de objetos):** anexos que você deseja incluir no e-mail. Cada objeto deve ter informações sobre o anexo, como nome do arquivo, conteúdo e tipo MIME. Exemplo:
+
+```JavaScript
+attachments: [
+    {
+        filename: "anexo.txt",
+        content: "Conteúdo do anexo",
+        contentType: "text/plain"
+    }
+]
+```
+
+- `cc` **(string ou array de strings):** cópias carbono (CC) do e-mail. Pode ser uma única string ou um array de strings para múltiplos destinatários. Exemplo:
+
+```JavaScript
+cc: "copia@example.com"
+
+//ou
+
+cc: ["copia1@example.com", "copia2@example.com"]
+```
+
+- `bcc` **(string ou array de strings):** cópias carbono ocultas (BCC) do e-mail. Pode ser uma única string ou um array de strings para múltiplos destinatários. Exemplo:
+
+```JavaScript
+bcc: "copia_oculta@example.com"
+
+//ou
+
+bcc: ["copia_oculta1@example.com", "copia_oculta2@example.com"]
+```
+
+`callback`**:** a função de retorno de chamada é chamada quando o e-mail é enviado ou se ocorrer um erro durante o processo de envio. O callback é chamado com dois argumentos, o primeiro é um possível erro e o segundo é um objeto de infomações sobre o envio do e-mail (`error, info`).\
+`info` tem as chaves `response` e `messageId`.
+
 # Node.js.
 
 ## <a name = "tls"></a>`tls`
@@ -464,13 +603,48 @@ O módulo `tls` é usado para criar conexões seguras em Node.js.
 `require('tls').DEFAULT_ECDH_CURVE = 'auto'`
 
 O código acima altera a curva de ECDH padrão (Elliptic Curve Diffie-Hellman) usada pelo módulo `tls` (**Transport Layer Security**) em Node.js. ECDH é um protocolo de troca de chaves usado para estabelecer uma chave de criptografia compartilhada em uma conexão segura.\
-`..DEFAULT_ECDH_CURVE` se refere à curva de ECDH padrão usada nas negociações de chaves ECDH, que recebe, neste caso, o valor `'auto'`.\
+`.DEFAULT_ECDH_CURVE` se refere à curva de ECDH padrão usada nas negociações de chaves ECDH, que recebe, neste caso, o valor `'auto'`.\
 Ao definir a curva ECDH como `'auto'`, você está configurando o Node.js para escolher automaticamente a curva ECDH mais adequada com base nas capacidades do sistema. Isso é útil quando você deseja que o Node.js selecione a melhor curva ECDH disponível em vez de especificar uma curva específica.\
 Em muitos casos, definir a curva ECDH como `'auto'` é uma boa prática, pois permite que o Node.js escolha a melhor opção de acordo com o ambiente de execução. No entanto, em cenários específicos de segurança ou conformidade, você pode optar por definir uma curva ECDH específica em vez de usar `'auto'`.
 
 ## <a name = "http"></a>`http`
 
 O módulo `http` é um módulo principal do Node.js que fornece funcionalidades para criar servidores HTTP e interagir com solicitações e respostas HTTP. Com o módulo `http`, você pode criar aplicativos web, APIs, servidores e muito mais. Ele é uma parte essencial da plataforma Node.js para comunicação na web.
+
+## <a name = "querystring">`querystring`
+
+O módulo `querystring` fornece funcionalidades para analisar e manipular strings de consulta (query strings). Query strings são frequentemente usadas em URLS para transmitir parâmetros ou dados em formato de chave-valor.
+
+### <a id = ""></a>`.stringify()`
+
+Cria strings de consulta (query strings) a partir de objetos JavaScript.
+
+`querystring.stringify(objeto[, separador[, atributo[, opcoes]]]);`
+
+- `objeto` **(objeto, opcional):** o objeto que você deseja converter em uma string de consulta. Normalmente, esse objeto contém pares de chave e valor que você deseja incluir na string de consulta;
+- `separador` **(string, opcional):** o caractere usado para separar os pares chave-valor na string de consulta;
+- `atributo` **(string, opcional):** o caractere usado para separar as chaves dos valores nos pares chave-valor na string de consulta. O valor padrão é `"="`;
+- `opcoes` **(objeto, opcional):** um objeto de opções que pode ser usado para configurar o comportamento do método. Geralmente, as opções não são necessárias para o uso básico do método.
+    - `encodeURIComponent` **(função, opcional):** uma função personalizada para codificar componentes da string de consulta. Isso é útil quando você deseja substituir a função de codificação padrão. O valor padrão é `querystring.escape`;
+    - `separator` **(string, opcional):** especifica o separador a ser usado na string de consulta. Este parâmetro substitui o separador global;
+    - `equals` **(string, opcional):** especifica o caractere a ser usado para separar chaves e valores. Este parâmetro substitui o atributo global.
+
+O método `.stringify()` retorna uma string de consulta gerada a partir do objeto fornecido. A string de consulta incluirá os pares chave-valor do objeto, codificados com as regras de condificação URLs. Exemplo de uso:
+
+```JavaScript
+const querystring = require("querystring");
+
+const objeto = {
+    nome: "Alice";
+    idade: 30
+};
+
+const queryString = querystring.stringify(objeto);
+
+console.log(queryString); //Saída: nome=Alice&idade=30
+```
+
+Observe que o método `.stringify()` converte as chaves e valores do objeto em uma string de consulta no formato "chave=valor" separada por `&`, com os caracteres codificados de acordo com as regras URLs. quando necessário.
 
 ## <a name = "path"></a>`path`
 

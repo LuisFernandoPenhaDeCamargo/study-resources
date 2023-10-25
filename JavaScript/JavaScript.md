@@ -10,6 +10,7 @@
 - [Arrow functions](#arrowfunctions);
 - [Função de fechamento ou closure](#funcaofechamentoclosure);
 - [Como importar um diretório de funções no Node.js e o papel do arquivo de indexação](#importacaonodeindexacao);
+- [Funções de string](#funcoesstring);
 - [Objetos globais](#objetosglobais);
 - [**node_modules**](#nodemodules);
 - [Bibliotecas](#bibliotecas);
@@ -18,7 +19,8 @@
 ## Construtores/métodos.
 
 - [`Date`](#date);
-- [`.getTime()`](#gettime)
+- [`.getTime()`](#gettime);
+- [`.split()`](#split);
 - [`.stringify()`](#stringify);
 - [`.parse()`](#parse);
 
@@ -46,6 +48,8 @@ const Config = require("módulo-acima")
 ```
 
 **Isso permite o acesso aos elementos exportados, como classes, funções ou variáveis, mas não cria uma instância da classe**.
+
+# Objeto de objetos indexado por chaves.
 
 # <a id = "arrowfunctions"></a>Arrow functions.
 
@@ -206,7 +210,7 @@ Cria objetos que representam datas e horas.
 Você pode criar um objeto `Date` sem argumentos, o que resultará na data e hora atuais, ou pode fornecer um ou mais argumentos para criar uma data específica.\
 Lembre-se de que, em JavaScript, as datas e horas são baseadas no horário do sistema do computador em que o código está sendo executado, a menos que você especifique um fuso horário específico.
 
-### <a id = "gettime"></a> `getTime()`
+### <a id = "gettime"></a> `.getTime()`
 
 Obtém o **valor numérico** correspondente à data representada pelo objeto `Date`.
 
@@ -233,6 +237,17 @@ if (valorNumerico1 < valorNumerico2) {
   console.log("data1 e data2 são iguais em termos de tempo.");
 }
 ```
+
+# <a id = "funcoesstring">Funções de string.
+
+### <a id = "split">`.split()`
+
+Divide uma string em partes. Retorna um array contendo as partes da string original que foram divididas com base no separador.
+
+`string.split([separador[, limite]]);`
+
+- `separador` **(string ou expressão regular, opcional):** este é um parâmetro opcional que define o critério pelo qual a string será dividida. Pode ser uma string ou uma expressão regular. Se omitido, a string será dividida em um array contendo um único elemento que é a string original;
+- `limite` **(number, opcional):** um número opcional que define o limite de divisões. O método `.split()` dividirá a string até que o número de divisões atinja esse limite. Se omitido ou não for um número válido, não haverá limite.
 
 # <a id = "objetosglobais">Objetos globais.
 
@@ -322,12 +337,14 @@ Certifique-se de nunca incluir a pasta **node_modules** no seu repositório Git,
 - [`aws-sdk`](bibliotecas.md#awssdk);
 - [`umzug`](bibliotecas.md#umzug);
 - [`chai`](bibliotecas.md#chai);
-- [`dotenv`](bibliotecas.md#dotenv).
+- [`dotenv`](bibliotecas.md#dotenv);
+- [`nodemailer`](bibliotecas.md#nodemailer)
 
 ## Node.js.
 
 - [`tls`](bibliotecas.md#tls);
 - [`http`](bibliotecas.md#http);
+- [`querystring`](bibliotecas.md#querystring);
 - [`path`](bibliotecas.md#path);
 - [`fs`](bibliotecas.md#fs);
 - [`os`](bibliotecas.md#os);
@@ -429,25 +446,3 @@ Quando você inclui a diretiva `'use strict'` no início de um arquivo JavaScrip
 - **Impede a utilização de palavras reservadas futuras:** o modo estrito proíbe o uso de identificadores que são palavras reservadas que podem ser introduzidas em futuras versões do ECMAScript;
 - **Força parâmetros de função únicos:** em modo estrito, funções com parâmetros nomeados duplicados ou com nomes iguais a palavras-chaves geram erros;
 - **Outras restrições:** existem outras restrições e alterações de comportamento em modo estrito que visam tornar o código mais seguro e mais fácil de otimizar.
-
-# Nativo do JavaScript.
-
-- [Objeto literal;](nativo.md#objetoliteral)
-- [Propriedade { chave: Nome { valor } };](nativo.md#propriedadechavenomevalor)
-- [Operadores;](nativo.md#operadores)
-- [Template literals;](nativo.md#templateliterals)
-- [Sequência de escape;](nativo.md#sequenciadeescape)
-- [Spread properties;](nativo.md#spreadproperties)
-- [Sintaxe da função de flecha x Definição externa de uma função;](nativo.md#flechaxexterna)
-- [Função de seta (arrow function);](nativo.md#funcaodeseta)
-- [Callback;](nativo.md#callback)
-- [`String()`;](nativo.md#string)
-- [`.toString()`;](nativo.md#tostring)
-- [`isNaN()`;](nativo.md#isnan)
-- [`parseInt()`;](nativo.md#parseint)
-- [`setTimeout()`;](nativo.md#settimeout)
-- [Promises;](nativo.md#promises)
-- [Funções globais;](nativo.md#funcoesglobais)
-- [Funções de array;](nativo.md#funcoesdearray)
-- [Funções de string;](nativo.md#funcoesdestring)
-- [Import/Export.](nativo.md#importexport)

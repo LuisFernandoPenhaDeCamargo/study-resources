@@ -4,6 +4,7 @@
 
 - [`.Router()`](#router);
 - [`.post()`](#post);
+- [`.status()`](#status);
 - [`.json()`](#json);
 - [`timeout()`](#timeout);
 - [`before()`](#before);
@@ -61,14 +62,26 @@ Define uma rota que responde a requisições HTTP POST. Retorna um objeto do tip
     - `res` **(resposta, objeto):** este objeto é usado para construir e enviar uma resposta ao cliente, incluindo status HTTP, cabeçalhos e corpo da resposta.
 - **Funções intermediárias (middleware,** `callback`**, opcional):** você pode fornecer uma ou mais funções intermediárias que são executadas antes do manipulador principal. Isso é útil para adicionar lógica de autenticação, validação, etc. **São chamadas em ordem sequencial, a última função que deve ser chamada é o handler**.
 
+## Objeto Response e seus métodos.
+
+No Express.js, o objeto `response` (às vezes abreviado como `res`) é passado como argumento para a função de callback que é definida para as rotas do seu aplicativo. O objeto `response` fornece métodos que permitem que você envie respostas HTTP para o cliente.
+
+### <a id = "status"></a>`.status()`
+
+Define o código de status HTTP da resposta que será enviada para o cliente. Retorna o próprio objeto `response` para permitir o encadeamento de métodos.
+
+`res.status(statusCode)`
+
+`statusCode` **(number):** o código de status HTTP que você deseja definir na resposta. Isso deve ser um número inteiro representando um código de status HTTP válido, como 200 (OK), 404 (Not Found), 500 (Internal Server Error), etc.
+
 ### <a id = "json"></a>`.json()`
 
-Envia uma resposta no formato JSON.
+Envia uma resposta no formato JSON. Retorna o próprio objeto `response` para permitir o encadeamento de métodos.
 
 `res.json(resposta);`
 
 - `res` **(callback)** ;
-- `resposta`**(objeto):** objeto que você deseja enviar como uma resposta JSON para o cliente que fez a solicitação. O método `.json()` converte automaticamente este objeto em uma resposta JSON e define o cabeçalho `Content-Type` para `application/json`, indicando que a resposta é JSON. Portanto, o argumento passado para `.json()` é o objeto que será enviado como resposta JSON.
+- `resposta`**(objeto):** objeto que você deseja enviar como uma resposta JSON para o cliente que fez a solicitação, pode ser qualquer objeto JavaScript válido. O método `.json()` converte automaticamente este objeto em uma resposta JSON e define o cabeçalho `Content-Type` para `application/json`, indicando que a resposta é JSON. Portanto, o argumento passado para `.json()` é o objeto que será enviado como resposta JSON.
 
 Ao usar o Express.js e criar uma callback de resposta para uma rota que lida com uma solicitação HTTP POST, você pode usar o método `.json()` para enviar uma resposta no formato JSON. Este método é usado para enviar objetos JSON como resposta ao cliente.
 

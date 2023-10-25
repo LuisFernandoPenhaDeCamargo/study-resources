@@ -178,7 +178,24 @@ A diferença fundamental entre eles é que `< a name = "">` costumava ser usado 
 
 # <a id = "citacoes"></a>Citações.
 
-# <a id = "blocoscitacaomultiplaslinhas"></a>Blocos de citação de múltiplas linhas.
+Em Markdown, você pode formatar citações usando o caractere `>` (sinal de maior que). As citações são comumente usadas para destacar trechos de texto que são citados de outras fonte ou para criar blocos de texto recuados.
+
+- **Citações de texto único:** para criar uma única linha de citação, use o caractere `>` seguido pelo texto que deseja citar. Por exemplo: `> Isto é uma citação de texto.`;
+- **Citações de vários parágrafos:** para criar citações de vários parágrafos, coloque o caractere `>` no início de cada parágrafo que deseja citar. Certifique-se de deixar uma linha em branco entre os parágrafos citados. Por exemplo
+
+```markdown
+> Este é o primeiro parágrafo da citação.
+>
+> Este é o segundo paragráfo da citação.
+```
+
+- **Citações aninhadas:** você também pode criar citações aninhadas, adicionando mais caracteres `>` no ínicio das linhas. Por exemplo:
+
+```markdown
+> Nível 1 da citação.
+>> Nível 2 da citação.
+>>> Nível 3 da citação.
+```
 
 # <a id = "tabelas"></a>Tabelas.
 
