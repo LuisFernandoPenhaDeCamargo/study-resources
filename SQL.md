@@ -123,6 +123,16 @@ Lembre-se de que o valor retornado por `NOW()` é fixo durante a execução de u
 
 A consulta acima está excluindo todos os registros na tabela `tabela` que foram criados há mais de uma semana a partir do momento atual. Isso é útil para limpar registros antigos que não são mais relevantes ou necessários em um banco de dados.
 
+### `CONVERT_TZ()`
+
+A função `CONVERT_TZ()` em MySQL é usada para converter um valor de data e hora de um fuso horário para outro fuso horário,
+
+`CONVERT_TZ(valor, fusoHorarioOrigem, fusoHorarioDestino)`
+
+- `valor`**:** a data e hora que você deseja converter;
+- `fusoHorarioOrigem`**:** o fuso horário atual do valor (coloque o valor entre aspas simples, `'fusoHorarioOrigem'`);
+- `fusoHorarioDestino`**:** o fuso horário para qual você deseja converter o valor (coloque o valor entre aspas simples, `'fusoHorarioDestino'`).
+
 # <a id = "procedure"></a>Procedure.
 
 Uma **procedure** (**procedimento armazenado**) é um objeto de banco de dados que contém um ou mais comandos SQL predefinidos e é armazenado no sistema de gerenciamento de banco de dados (SGBD) para ser executado quando necessário. As procedures são usadas para executar tarefas específicas ou operações no banco de dados.

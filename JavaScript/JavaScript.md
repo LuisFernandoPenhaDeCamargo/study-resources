@@ -10,6 +10,7 @@
 - [Arrow functions](#arrowfunctions);
 - [Função de fechamento ou closure](#funcaofechamentoclosure);
 - [Como importar um diretório de funções no Node.js e o papel do arquivo de indexação](#importacaonodeindexacao);
+- [Funções de array](#funcoesarray);
 - [Funções de string](#funcoesstring);
 - [Objetos globais](#objetosglobais);
 - [**node_modules**](#nodemodules);
@@ -20,7 +21,10 @@
 
 - [`Date`](#date);
 - [`.getTime()`](#gettime);
+- [`.pop()`](#pop);
 - [`.split()`](#split);
+- [`.startsWith()`](#startswith);
+- [`.replace()`](#replace);
 - [`.stringify()`](#stringify);
 - [`.parse()`](#parse);
 
@@ -238,6 +242,18 @@ if (valorNumerico1 < valorNumerico2) {
 }
 ```
 
+# <a id = "funcoesarray"></a>Funções de array.
+
+### <a id = "pop"></a>`.pop()`
+
+Remove o último elemento de um array. Retorna o elemento removido.
+
+`array.pop();`
+
+- Diminui o comprimento (propriedade `lenght`) do arary em 1;
+- Modifica o array original;
+- Não é apropriado para arrays vazios, pois não haverá nenhum elemento a ser removido e retornado.
+
 # <a id = "funcoesstring">Funções de string.
 
 ### <a id = "split">`.split()`
@@ -248,6 +264,68 @@ Divide uma string em partes. Retorna um array contendo as partes da string origi
 
 - `separador` **(string ou expressão regular, opcional):** este é um parâmetro opcional que define o critério pelo qual a string será dividida. Pode ser uma string ou uma expressão regular. Se omitido, a string será dividida em um array contendo um único elemento que é a string original;
 - `limite` **(number, opcional):** um número opcional que define o limite de divisões. O método `.split()` dividirá a string até que o número de divisões atinja esse limite. Se omitido ou não for um número válido, não haverá limite.
+
+### <a id = "startswith"></a>`.startsWith()`
+
+Determina se uma string começa com os caracteres de outra string. Retorna um booleano.
+
+`string.startsWith(valorProcurado[, posicao]);`
+
+- `valorProcurado` **(string):** a string que você deseja verificar se é o prefixo da string original;
+- `posicao` **(number, opcional):** especifica a posição na string original a partir da qual você deseja iniciar a verificação. O valor padrão é 0, o que significa que a verificação começa no início da string.
+
+Exemplos de uso:
+
+```JavaScript
+const texto = "Isso é um exemplo.";
+
+console.log(texto.startsWith("Isso"));        //true, porque a string começa com "Isso".
+console.log(texto.startsWith("um", 8));       //true, começa com "um" a partir da posição 8.
+console.log(texto.startsWith("exemplo", 11)); //true, começa com "exemplo" a partir da posição 11.
+console.log(texto.startsWith("exemplo", 12)); //false, "exemplo" não começa na posição 12
+console.log(texto.startsWith("É"));            //false, porque a comparação é sensível a maiúsculas e minúsculas.
+```
+
+### <a id = "replace"></a>`.replace()`
+
+Substitui substrings dentro de uma string por outras substrings. Retorna uma nova string.
+
+`string.replace(valorProcurado, valorSubstituto);`
+
+- `valorProcurado` **(string ou expressão regular):** a substring ou padrão a ser encontrado na string original e substituído;
+- `valorSubstituto` **(string ou função):** a substring que substituirá à `valorProcurado` na string original. Isso pode ser uma string simples ou uma função que gera a string de substituição.
+
+Exemplo mais complexo substituindo os espaços reservados de uma consulta SQL.
+
+```JavaScript
+let update_query = "UPDATE tabela SET coluna = :valor WHERE id = :id";
+
+const update_values = {
+  valor: 42,
+  id: 1
+}
+
+update_query = update_query.replace(/\:(\w+)/g, (txt, key) => {
+  if (update_values.hasOwnProperty(key)) {
+    return `'${update_values[key]}'`;
+  }
+
+  return txt;
+}); /*O valor da variável update_query será a consulta SQL atualizada: UPDATE tabela SET coluna = '42' WHERE id = '1'*/
+```
+
+Neste exemplo, os marcadores de espaço reservado `:valor` e `:id` foram substituídos pelos valores correspondentes no objeto `update_values`, resultando na consulta SQL atualizada. Isso é útil ao criar consultas SQL dinâmicas em que você deseja injetar valores nas consultas com segurança.\
+A expressão regular `/\:(\w+)/g` é usada para encontrar todas as ocorrências em uma string onde o padrão corresponde a uma sequência que começa com `:` seguida por um ou mais caracteres alfanuméricos (palavra). O `g` no final da expressão regular significa "global", o que indica que ele deve encontrar todas as ocorrências, não apenas a primeira.\
+A expressão regular tem dois componentes principais:
+
+- `:`**:** corresponde ao caractere `:` literalmente. **Ele é usado para identificar o ínicio do padrão que estamos procurando**;
+- `(\w+)`**:** este é um **grupo de captura** que corresponde a uma ou mais ocorrências de caracteres alfanuméricos (letras, dígitos ou sublinhados).
+  - `\w`**:** corresponde a qualquer caractere alfanumérico;
+  - `+`**:** indica que deve haver pelo menos um caractere alfanumérico, mas pode haver mais.
+
+A função de retorno `(txt, key) => {}` seria chamada para cada correspondência encontrada na string. O primeiro argumento `txt` conteria a correspondência completa encontrada (a substring que corresponde à expressão regular)...
+
+Pontuar sobre expressões regulares: `/gato/` no **pratico.js** e como a função, por padrão, só substitui a primeira ocorrência.
 
 # <a id = "objetosglobais">Objetos globais.
 
