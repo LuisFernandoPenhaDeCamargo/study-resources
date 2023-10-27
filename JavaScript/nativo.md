@@ -1,6 +1,3 @@
-
----
-
 # Nativo do JavaScript.
 
 # <a name = "objetoliteral"></a>Objeto literal.
@@ -682,8 +679,6 @@ Converte um número decimal em um número inteiro, selecionando somente a parte 
 # <a name = "funcoesdearray"></a>Funções de array.
 
 - [`.forEach()`;](#foreach)
-- [`.map()`;](#map)
-- [`.filter()`;](#filter)
 - [`.join()`;](#join)
 - [`.reduce()`;](#reduce)
 - [`.concat()`;](#concat)
@@ -725,54 +720,6 @@ function exibirDetalhes(fruta) {
 
 //Usando "thisArg" para definir o valor de "this" dentro da função de callback. Sem o this, exibirDetalhes não reconheceria a propriedade nome de pessoa.
 frutas.forEach(exibirDetalhes, pessoa);
-```
-
-## <a id = "map"></a>`.map()`
-
-É usada para percorrer todos os elementos de um array e aplicar uma função em cada elemento, **gerando um novo array** com os resultados das chamadas de função. A função que você fornece como argumento para o `.map()` é chamada para cada elemento do array e permite que você transforme ou processe cada delemento individualmente.
-
-```JavaScript
-const novoArray = arrayOriginal.map(funcaoDeMapeamento(elemento, indice, arrayOriginal) => {
-  //Código que processa o elemento e retorna um novo valor.
-});
-```
-
-- `arraOriginal`: o array original que você deseja percorrer;
-- `funcaoDeMapeamento()`: função chamada para cada elementos do array. Ela pode receber três argumentos:
-  - `elemento`: elemento atual sendo processado;
-  - `indice` (opcional): o índice do elemento atual;
-  - `arrayOriginal` (opcional): o array original que está sendo percorrido.
-- `novoArray`: o novo array gerado pelo `.map()`.
-
-Exemplo interessante:
-
-```JavaScript
-const array = [{}, {}, {}];
-
-const novoArray = array.map(indice => "?,?,?,?,?"); //Os três objetos literais vazios (cada um deles) foram substituídos pela string ?,?,?,?,? no novoArray.
-
-console.log(array);     //[ {}, {}, {} ]
-console.log(novoArray); //[ '?,?,?,?,?', '?,?,?,?,?', '?,?,?,?,?' ]
-```
-
-## <a id = "filter"></a>`.filter()`
-
-É usado para **criar** um novo array contendo todos os elementos de um array original que atendem a um critério especificado por uma função de callback. Em outras palavras, ele filtra os elementos de um array com base em uma condição e retorna um novo array contendo apenas os elementos que atendem essa condição.
-
-`.filter(callback(elemento, indice, array))`
-
-- `callback()`**:** uma função de callback que define a condição da filtragem;
-- `elemento`**:** o valor atual do elemento sendo avaliado;
-- `indice` **(opcional):** o índice do elemento atual no array;
-- `array` **(opcional):** o próprio array original.
-
-Exemplo:
-
-```JavaScript
-const novoArray = arrayOriginal.filter(callback(elemento, indice, array)) {
-  //Lógica de filtragem.
-  //Retorne true para incluir o elemento no novo array, false para excluí-lo.
-};
 ```
 
 ## <a id = "join"></a>`.join()`

@@ -18,6 +18,9 @@
 - [`describe()`](#describe);
 - [`it()`](#it);
 - [`.config()`](#config);
+- [`moment()`](#moment);
+- [`.format()`](#format);
+- [`.subtract()`](#subtract)
 - [`.createTransport()`](#createtransport);
 - [`.sendMail()`](#sendmail);
 - [`.stringify()`](#stringify);
@@ -513,6 +516,38 @@ Configura e carrega variáveis de ambiente a partir de um arquivo **.env**. Reto
 - **Gestão de erros:** o método `.config()` também pode gerar exceções se houver problemas ao ler ou analisar o arquivo **.env**, como um formato inválido.
 
 **As variáveis de ambiente são acessíveis em todo o escopo do seu aplicativo Node.js** e são usadas para configurar diferentes aspectos do aplicativo, como credenciais de banco de dados, chaves de API e outras configurações específicas do ambiente.
+
+# <a name = "moment"></a>`moment`
+
+Utilizada para manipulação, formatação e análise de datas e horas.
+
+### <a id = "moment"></a>`moment()`
+
+Cria um objeto Moment representando a data e a hora atual.
+
+`const data = moment();`
+
+### <a id = "format"></a>`.format()`
+
+Formata a data no padrão desejado.
+
+`const data = moment().format("DD-MM-YYYY)`
+
+### <a id = "subtract"></a>`.subtract()`
+
+Subtrai uma quantidade de tempo específica de um objeto Moment, resultando em um novo objeto Moment. Retorna um novo objeto Moment, o original não é alterado.
+
+`moment.subtract(quantidade, unidade);`
+
+- `quantidade` **(number):** a quantidade de tempo que você deseja subtrair do objeto Moment,
+- `unidade` **(string):** a unidade de tempo que você deseja subtrair. Pode ser uma das seguintes strings:
+    - `"years"`,
+    - `"months"`,
+    - `"weeks"`,
+    - `"days"`,
+    - `"hours"`,
+    - `"minutes"`,
+    - `"seconds"`.
 
 # <a name = "nodemailer"></a>`nodemailer`
 
