@@ -4,8 +4,7 @@
 
 ### Repositório.
 
-- JavaScript/JavaScript.md;
-- JavaScript/nativo.md.
+JavaScript/nativo.md.
 
 ### Dúvidas.
 

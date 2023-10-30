@@ -13,6 +13,7 @@
 - [`if (!variavel){}`](#ifexclamacaovariavel;)
 - [Arrow functions](#arrowfunctions);
 - [Função de fechamento ou closure](#funcaofechamentoclosure);
+- [Métodos estáticos](#metodosestaticos);
 - [Construtores](#construtores);
 - [Funções de array](#funcoesarray);
 - [Funções de string](#funcoesstring);
@@ -196,6 +197,19 @@ Neste exemplo, a função `contador()` retorna uma função de fechamento que ma
 
 Closures são uma característica poderosa que permite criar código mais modular e funcional em JavaScript e em outras linguagens que as suportam. Elas ajudam a manter o encapsulamento e a gerenciar o estado de forma mais eficaz.
 
+# <a id = "metodosestaticos"></a>Métodos estáticos.
+
+A necessidade de usar métodos estáticos em uma classe **geralmente está relacionada à funcionalidade que não depende do estado interno de uma instância da classe, mas está relacionada à lógica da classe como um todo**. Algumas razões para usar métodos estáticos.
+
+- **Acesso a dados ou recursos compartilhados:** em alguns casos, você pode precisar acessar dados ou recursos que são compartilhados por todas as instâncias da classe. Métodos estáticos podem ser úteis para gerenciar esse acesso, pois não dependem do estdado de uma instância específica;
+- **Utilitários de classe:** métodos estáticos podem ser usados para criar funções utilitárias relacionadas à classe que **não precisam de instâncias para serem invocadas**. Por exemplo, um método estático pode ser usado para calcular estatísticas com base em uma coleção de objetos da classe;
+- **Isolamento de contexto:** às vezes, você deseja criar funções que esetjam relacionadas a uma classe, mas não fazem parte da instância da classe. Usar métodos estáticos permite manter essas funções dentro do escopo da classe, evitando a poluição do escopo global;
+- **Melhor organização do código:** usar métodos estáticos pode tornar o código mais organizado e legível, especialmente quando você têm várias funções relacionadas à classe, mas que não precisam do estado da instância.
+
+Em resumo, o uso de métodos estáticos em uma classe depende da natureza da funcionalidade que você está implementando e **se ela se encaixa melhor como uma operação que pertence à classe como um todo, em vez de depender de instâncias específicas da classe**.\
+Métodos estáticos não compartilham valores ou estado entre instâncias da classe. Métodos estáticos estão associados à classe em si, não as instâncias individuais da classe. Portanto, se você tiver um método estático que armazena um valor, esse valor não será compartilhado entre as instâncias da classe. Cada instância terá seu próprio estado separado.\
+Para compartilhar um valor ou estado entre todas as instâncias de uma classe, você pode definir uma variável da classe ou uma propriedade estática. Uma vairável de classe estática é compartilhada entre todas as instâncias da classe.
+
 # <a id = "construtores"></a>Construtores.
 
 ### <a id = "date"></a>`Date`
@@ -267,6 +281,19 @@ const novoArray = arrayOriginal.filter(callback(elemento, indice, array)) {
 };
 ```
 
+---
+
+Caso interessante:
+
+```JavaScript
+!!(promises.filter(i => i).length)
+```
+
+Considerando que `promises` é um array de valores booleanos e a função filter **retorna um array contendo apenas os elementos que atendem a condição da callback**:\
+Vamos considerar também que `promises` possui 3 de comprimento. Se ele for `[ false, false, false ]`, `.filter(i => i)` **retornará um array vazio, pois nenhum elemento atende a condição da callback** e `[].length` é `0`, então `!0` é `true`, logo a negativa dupla "`!!`" vai fazer com que a saída seja `false`.\
+Se `promises` possuir uma posição igual a `true` ou mais, `.filter(i => i)` **retornará um array composto por todos os elementos iguais a** `true`**, pois a callback verifica que o elemento é igual a** `true`**, o que satisfaz a sua condição** e seu `.length` será diferente de `0`, então qualquer número maior que zero antecedido por `!` é `false`, logo a negativa dupla vai fazer com que a saída seja `true`.\
+**Então essa linha verifica se o array possui pelo menos uma posição com o valor** `true`**.**
+
 ### <a id = "map"></a>`.map()`
 
 É usada para percorrer todos os elementos de um array e aplicar uma função em cada elemento, **gerando um novo array** com os resultados das chamadas de função. A função que você fornece como argumento para o `.map()` é chamada para cada elemento do array e permite que você transforme ou processe cada delemento individualmente.
@@ -294,6 +321,20 @@ const novoArray = array.map(indice => "?,?,?,?,?"); //Os três objetos literais 
 console.log(array);     //Saída: [ {}, {}, {} ]
 console.log(novoArray); //Saída: [ '?,?,?,?,?', '?,?,?,?,?', '?,?,?,?,?' ]
 ```
+
+---
+
+Outro caso interessante é quando utilizamos a função `.map()` junto de promessas:
+
+```JavaScript
+const results = candidates.map(async (candidate) => await crypto.compare(candidate, comparable));
+const promises = await Promise.all(results.map(async (i) => await i));
+```
+
+Eu esperava que o código acima se comportasse da seguinte maneira, tendo em vista que `candidates` é um array e `.compare()` é uma função que retorna uma promessa:\
+`results` fosse um array de promessas resolvidas, pois utilizamos o `await` para esperar a comparação entre `candidate` e `comparable`. Mas na verdade não, se imprimirmos a saída de `results`, ela será a seguinte `[ Promise { <pending> }, Promise { <pending> } ]`.
+O problema está no uso do `await` dentro do mapeamento. Quando você usa `await` dentro de uma função assíncrona no contexto do mapeamento, ele aguardará a resolução da promessa retornada por `crypto.compare()`, mas não aguardará a resolução das promessas em todo o array.\
+Por isso, se você deseja aguardar a resolução de todas as promessas no array `results`, você deve usar o `Promise.all()` depois do mapeamento. Dessa forma, `Promise.all()` aguardará a resolução de todas as promessas em `results` e retornará um array de valores booleanos representando os resultados das comparações.
 
 # <a id = "funcoesstring"></a>Funções de string.
 
@@ -627,7 +668,7 @@ Certifique-se de nunca incluir a pasta **node_modules** no seu repositório Git,
 - [Vue.js](frameworks.md#vuejs);
 - [Next.js](frameworks.md#nextjs).
 
-# `'use strict'` <--
+# `'use strict'`
 
 A expressão `'use strict'` é uma diretiva de uso no JavaScript que faz com que o interpretador do JavaScript trate o código em um modo estrito, impondo regras adicionais e evitando comportamentos potencialmente problemáticos. Ela foi introduzida no **ECMAScript 5 (ES5)** como uma forma de melhorar a qualidade e a segurança do código JavaScript.\
 Quando você inclui a diretiva `'use strict'` no início de um arquivo JavaScript ou no início de uma função, ela ativa o modo estrito para todo o código dentro desse escopo. Aqui estão algumas das principais características do modo estrito:
