@@ -1,5 +1,3 @@
-# Nativo do JavaScript.
-
 # <a name = "objetoliteral"></a>Objeto literal.
 
 Um objeto criado com `{}` (chave vazias) em JavaScript é um objeto literal, e ele é estrutura de dados fundamental na linguagem. **Esse objeto é uma coleção não ordenada de pares chave-valor**, onde as **chaves** (também chamadas de **propriedades**) são **strings** (ou símbolos em versões mais recentes do JavaScript) que atuam como **identificadores** exclusivos para acessar os valores associados. Exemplo simples de um objeto criado usando `{}`:
@@ -206,37 +204,6 @@ console.log(resultado); //Saída: A soma de 10 e 20 é igual a 30.
 # <a name = "sequenciadeescape"></a>Sequência de escape.
 
 `\n`**:** é uma sequência de escape usada em muitas linguagens de programação, para representar uma quebra de linha ou caractere de nova linha. Quando você insere `\n` em uma string, ele é interpretado como um comando para iniciar uma nova linha de texto.
-
-# <a name = "spreadproperties"></a>Spread properties.
-
-**Spread properties** (ou **propriedade de espalhamento**) é uma funcionalidade introduzida no ECMAScript 2018 (também conhecido como ES9) que permite copiar todas as propriedades enumeráveis de um objeto para outro objeto. Isso é útil para criar cópias de objetos, combinar objetos ou adicionar propriedades a objetos existentes de forma concisa. Exemplo:
-
-```JavaScript
-const objeto1 = { a: 1, b: 2 };
-const objeto2 = { ...objeto1 };
-
-console.log(objeto2); //Saída: { a: 1, b: 2 }
-```
-
-Você também pode usar o operador de espalhamento para combinar propriedades de objetos diferentes.
-
-```JavaScript
-const objeto1 = { a: 1, b: 2};
-const objeto2 = { b: 3, c: 4};
-const objeto3 = { ...objeto1, ...objeto2 };
-
-console.log(objeto3); //Saída: { a: 1, b: 3, c: 4 }
-```
-
-Observe que, se houver propriedades com o mesmo nome em ambos os objetos, a última propriedade encontrada prevalecerá.\
-Além disso, o operador de espalhamento também pode ser usado para adicionar propriedades a um objeto existente:
-
-```JavaScript
-const objeto1 = { a: 1, b: 2 };
-const objeto2 = { ...objeto1, c: 3};
-
-console.log(objeto2) //Saída: { a: 1, b: 2, c: 3}
-```
 
 # <a name = "flechaxexterna"></a>Sintaxe da função de flecha x Definição externa de uma função.
 
@@ -678,58 +645,10 @@ Converte um número decimal em um número inteiro, selecionando somente a parte 
 
 # <a name = "funcoesdearray"></a>Funções de array.
 
-- [`.forEach()`;](#foreach)
-- [`.join()`;](#join)
 - [`.reduce()`;](#reduce)
 - [`.concat()`;](#concat)
 - [`.includes()`;](#includes)
 - [`.some()`;](#some)
-- [`.push()`;](#push)
-- [`.pop()`.](#pop)
-
-## <a id = "foreach"></a>`.forEach()`
-
-Itera sobre os elementos de um array e executa uma função de callback em cada um deles.
-
-`.forEach(item => {})` ou `.forEach(callback(elemento, indice, array), thisArg)`
-
-- `item`**:** nome da variável temporária que representa cada elemento do array;
-- `{}`**:** função passada como argumento para o `.forEach()` que é executada uma vez para cada elemento do array.
-
-+ `callback`**:** função de callback que será chamada para cada elemento do array. Ela recebe três argumentos: o `elemento` atual sendo processado, o `indice` desse elemento e o próprio `array`;
-+ `thisArg` **(opcional):** um valor que será usado como `this` dentro da função de callback.
-
----
-
-Função que permite iterar sobre todos os elementos do array e executar uma função de callback em cada um deles. É uma maneira conveniente de percorrer todos os elementos de um array sem a necessidade de um loop `for` tradicional. **A função altera o array original**.
-
-Exemplo interessante usando `thisArg`:
-
-```JavaScript
-const pessoa = {
-  nome: "João",
-  idade: 30,
-  cidade: "São Paulo"
-};
-const frutas = ["maça", "banana", "laranja"];
-
-//Definindo uma função de callback que usa "this".
-function exibirDetalhes(fruta) {
-  console.log(`${this.nome} gosta de ${fruta}`);
-}
-
-//Usando "thisArg" para definir o valor de "this" dentro da função de callback. Sem o this, exibirDetalhes não reconheceria a propriedade nome de pessoa.
-frutas.forEach(exibirDetalhes, pessoa);
-```
-
-## <a id = "join"></a>`.join()`
-
-Cria uma **nova string juntando todos os elementos de um array em uma única string, separando-os por um** `separador` **específico** que você fornece como argumento.
-
-`array.join(delimitador)`
-
-- `array`**:** array cujos elementos você deseja unir em uma única string;
-- `separador` **(opcional):** o **caractere** ou **string** que será usado como separador entre os elementos no resultado. Este argumento é opcional; se não for fornecido, os elementos do array serão separados por vírgulas por padrão.
 
 ## <a id = "reduce"></a>`.reduce()`
 
@@ -781,16 +700,6 @@ Verifica se pelo menos um elemento do array satisfaz a condição especificada.
 - `thisArg`**(opcional):** valor a ser usado como `this` ao chamar a função de `callback`.
 
 Retorna `true` se pelo menos um elemento do array satisfazer a condição da função de `callback`. Caso contrário, retorna `false`.
-
-## <a id = "push"></a>`.push()`
-
-`.push(<elemento1>, <elemento2>, ...)`
-
-É usada para adicionar um ou mais elementos ao final de um array existente. Esses elementos podem ser valores individuais ou outros arrays, objetos, etc.
-
-## <a id = "pop"></a>`.pop()`
-
-É usada para remover o último elemento de um array. Ele modifica o array original, reduzindo o seu comprimento (`length`) em 1 e **retornando o elemento que foi removido**.
 
 # <a name = "funcoesdestring"></a>Funções de string.
 

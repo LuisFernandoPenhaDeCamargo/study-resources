@@ -49,6 +49,10 @@ Os operadores lógicos são: `AND`, `OR`, `NOT`.
 
 `IS NULL` e `IS NOT NULL` são geralmente classificados como operadores de comparação em SQL, uma vez que são usados para comparar valores em colunas com o valor nulo. Sendo que `NULL` **é um valor especial**
 
+### `ON DUPLICATE KEY UPDATE`
+
+Essa construção é uma **extensão do comando** `INSERT` e é usada para controlar o comportamento de inserções em relação a registros duplicados.
+
 # <a id = "tiposdados"></a>Tipos de dados.
 
 ### `INTERVAL`

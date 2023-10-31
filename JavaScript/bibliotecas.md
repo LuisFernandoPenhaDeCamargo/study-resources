@@ -20,7 +20,9 @@
 - [`.config()`](#config);
 - [`moment()`](#moment);
 - [`.format()`](#format);
-- [`.subtract()`](#subtract)
+- [`.add()`](#add);
+- [`.subtract()`](#subtract);
+- [`.hour()`](#hour);
 - [`.createTransport()`](#createtransport);
 - [`.sendMail()`](#sendmail);
 - [`.stringify()`](#stringify);
@@ -533,6 +535,22 @@ Formata a data no padrão desejado.
 
 `const data = moment().format("DD-MM-YYYY)`
 
+### <a id = "add"></a>`.add()`
+
+Adiciona uma quantidade específica de tempo a um objeto Moment. Retonar um novo objeto moment que é o resultado da adição da quantidade de tempo especificada ao objeto Moment original, o objeto Moment original não é modificado.
+
+`moment.add(quantidade, unidade);`
+
+- `quantidade` **(number):** a quantidade de tempo que você deseja adicionar. O valor deve ser um número inteiro ou decimal. O valor negativo pode ser usado para subtrair tempo;
+- `unidade` **(string):** a unidade de tempo que você deseja subtrair. Pode ser uma das seguintes strings:
+    - `"years"`,
+    - `"months"`,
+    - `"weeks"`,
+    - `"days"`,
+    - `"hours"`,
+    - `"minutes"`,
+    - `"seconds"`.
+
 ### <a id = "subtract"></a>`.subtract()`
 
 Subtrai uma quantidade de tempo específica de um objeto Moment, resultando em um novo objeto Moment. Retorna um novo objeto Moment, o original não é alterado.
@@ -548,6 +566,17 @@ Subtrai uma quantidade de tempo específica de um objeto Moment, resultando em u
     - `"hours"`,
     - `"minutes"`,
     - `"seconds"`.
+
+### <a id = "hour"></a>``
+
+Obtém ou define a hora de um objeto Moment. O objeto Moment original não é modificado.
+
+```JavaScript
+moment().hour();       //Obtém a hora.
+moment().hour(numero); //Define a hora.
+```
+
+`numero` **(number, opcional):** se fornecido, é um número inteiro que representa a nova hora que você deseja definir no objeto Moment. Esse número deve estar no intervalo de 0 a 23, representando as 24 horas do dia.
 
 # <a name = "nodemailer"></a>`nodemailer`
 

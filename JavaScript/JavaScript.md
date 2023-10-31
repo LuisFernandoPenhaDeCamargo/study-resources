@@ -10,6 +10,7 @@
 - [Objeto de objetos indexado por chaves](#objetoobjetosindexadochaves);
 - [Cadeia de protótipos](#cadeiaprototipos);
 - [Propriedades enumeráveis](#propriedadesenumeraveis);
+- [Spread properties](#spreadproperties);
 - [`if (!variavel){}`](#ifexclamacaovariavel;)
 - [Arrow functions](#arrowfunctions);
 - [Função de fechamento ou closure](#funcaofechamentoclosure);
@@ -29,8 +30,13 @@
 
 - [`Date`](#date);
 - [`.getTime()`](#gettime);
+- [`Set`](#set);
+- [`.add()`](#add);
+- [`.push()`](#push);
 - [`.pop()`](#pop);
+- [`.join()`](#join);
 - [`.filter()`](#filter);
+- [`.forEach()`](#foreach);
 - [`.map()`](#map);
 - [`.split()`](#split);
 - [`.startsWith()`](#startswith);
@@ -138,6 +144,37 @@ console.log(objeto.propriedadeNaoEnumeravel); //Saída: Não enumerável.
 
 No exemplo acima, a propriedade `propriedadeEnumeravel` é definida como enumerável, enquanto a `propriedadeNaoEnumeravel` é definida como não enumerável. Quando você itera pelas propriedades do objeto usando um loop `for...in` ou obtém as chaves do objeto usando `Object.keys()`, apenas a `propriedadeEnumeravel` é visível, porque é a única propriedade enumerável. A `propriedadeNaoEnumeravel` não é listada.\
 Por padrão, a maioria das propriedades que você cria em objetos é enumerável, mas é importante estar ciente da enumerabilidade ao trabalhar com objetos e definir propriedades personalizadas, especialmente quando você deseja controlar quais propriedades são visíveis durante iterações.
+
+# <a id = "spreadproperties"></a>Spread properties.
+
+**Spread properties** (ou **propriedade de espalhamento**) é uma funcionalidade introduzida no ECMAScript 2018 (também conhecido como ES9) que permite copiar todas as propriedades enumeráveis de um objeto para outro objeto. Isso é útil para criar cópias de objetos, combinar objetos ou adicionar propriedades a objetos existentes de forma concisa. Exemplo:
+
+```JavaScript
+const objeto1 = { a: 1, b: 2 };
+const objeto2 = { ...objeto1 };
+
+console.log(objeto2); //Saída: { a: 1, b: 2 }
+```
+
+Você também pode usar o operador de espalhamento para combinar propriedades de objetos diferentes.
+
+```JavaScript
+const objeto1 = { a: 1, b: 2};
+const objeto2 = { b: 3, c: 4};
+const objeto3 = { ...objeto1, ...objeto2 };
+
+console.log(objeto3); //Saída: { a: 1, b: 3, c: 4 }
+```
+
+Observe que, se houver propriedades com o mesmo nome em ambos os objetos, a última propriedade encontrada prevalecerá.\
+Além disso, o operador de espalhamento também pode ser usado para adicionar propriedades a um objeto existente:
+
+```JavaScript
+const objeto1 = { a: 1, b: 2 };
+const objeto2 = { ...objeto1, c: 3};
+
+console.log(objeto2) //Saída: { a: 1, b: 2, c: 3}
+```
 
 # <a id = "fexclamacaovariavel"></a>`if (!variavel){}`
 
@@ -249,7 +286,55 @@ if (valorNumerico1 < valorNumerico2) {
 }
 ```
 
+### <a id = "set"></a>`Set`
+
+Cria um novo objeto `Set`, que é uma coleção de valores únicos.
+
+```JavaScript
+//Criar um novo Set vazio.
+const mySet = new Set();
+
+//Adicionar valores ao Set.
+mySet.add(1);
+mySet.add(2);
+mySet.add(3);
+
+//Verificar o tamanho do Set.
+console.log(mySet.size);   //Saída: 3
+
+//Verificar se um valor existe no Set.
+console.log(mySet.has(2)); //Saída: true
+console.log(mySet.has(4)); //Saída: false
+
+//Remover um valor do Set.
+mySet.delete(2);
+
+//Iterar spbre os valores do Set usando um loop forEach().
+mySet.forEach(value => {
+  console.log(value);
+})
+```
+
+Um set em JavaScript não permite elementos duplicados, o que significa que ele armazena apenas valores únicos.\
+Os Sets são úteis quando você precisa armazenar um conjunto de valores únicos e deseja garantir que não haja duplicatas. Eles são frequentemente usados para eliminar valores duplicados de uma lista ou para manter o controle de elementos únicos de uma coleção.
+
+### <a id = "add"></a>`.add()`
+
+Adiciona um novo valor ao conjunto. Retorna o próprio objeto Set, após a adição do valor especificado, modifica o conjunto original.
+
+`set.add(valor);`
+
+`valor` **(qualquer tipo):** o valor que você deseja adicionar ao conjunto. Pode ser qualquer tipo de dado, incluindo números, strings, objetos, etc.
+
 # <a id = "funcoesarray"></a>Funções de array.
+
+### <a id = "push"></a>`.push()`
+
+Adiciona um ou mais elementos ao final de um array. Retorna o novo comprimento do array após a adição dos elementos, modifica o array original.
+
+`array.push(elemento1, elemento2, ..., elementoN);`
+
+`elemento1`, `elemento2`, ..., `elementoN` **(opcionais):** são os elementos que você deseja adicionar ao final do array. Você pode passar um ou mais elementos separados por vírgulas. `.push()` sem argumentos adiciona um elemento `undefined` ao final do array.
 
 ### <a id = "pop"></a>`.pop()`
 
@@ -260,6 +345,14 @@ Remove o último elemento de um array. Retorna o elemento removido.
 - Diminui o comprimento (propriedade `lenght`) do arary em 1;
 - Modifica o array original;
 - Não é apropriado para arrays vazios, pois não haverá nenhum elemento a ser removido e retornado.
+
+### <a id = "join"></a>`.join()`
+
+Cria uma nova string, concatenando todos os elementos de um array em uma única string. Retorna uma string que é o resultado da concatenação de todos os elementos do array, separados pelo separador especificado. O array original não é modificado.
+
+`array.join(separador);`
+
+`separador` **(opcional):** o caractere ou sequência de caracteres que será usado como separador entre os elementos na string resultante. Se este parâmetro não for fornecido, os elementos serão concatenados sem nenhum separador.
 
 ### <a id = "filter"></a>`.filter()`
 
@@ -294,6 +387,41 @@ Vamos considerar também que `promises` possui 3 de comprimento. Se ele for `[ f
 Se `promises` possuir uma posição igual a `true` ou mais, `.filter(i => i)` **retornará um array composto por todos os elementos iguais a** `true`**, pois a callback verifica que o elemento é igual a** `true`**, o que satisfaz a sua condição** e seu `.length` será diferente de `0`, então qualquer número maior que zero antecedido por `!` é `false`, logo a negativa dupla vai fazer com que a saída seja `true`.\
 **Então essa linha verifica se o array possui pelo menos uma posição com o valor** `true`**.**
 
+### <a id = "foreach"></a>`.forEach()`
+
+Itera sobre os elementos de um array e executa uma função de callback em cada um deles.
+
+`.forEach(item => {})` ou `.forEach(callback(elemento, indice, array), thisArg)`
+
+- `item`**:** nome da variável temporária que representa cada elemento do array;
+- `{}`**:** função passada como argumento para o `.forEach()` que é executada uma vez para cada elemento do array.
+
++ `callback`**:** função de callback que será chamada para cada elemento do array. Ela recebe três argumentos:
+  + O `elemento` atual sendo processado;
+  + O `indice` desse elemento;
+  + O próprio `array`.
++ `thisArg` **(opcional):** um valor que será usado como `this` dentro da função de callback.
+
+Esta função permite iterar sobre todos os elementos do array e executar uma função de callback em cada um deles. É uma maneira conveniente de percorrer todos os elementos de um array sem a necessidade de um loop `for` tradicional. **A função altera o array original**.\
+Exemplo interessante usando `thisArg`:
+
+```JavaScript
+const pessoa = {
+  nome: "João",
+  idade: 30,
+  cidade: "São Paulo"
+};
+const frutas = ["maça", "banana", "laranja"];
+
+//Definindo uma função de callback que usa "this".
+function exibirDetalhes(fruta) {
+  console.log(`${this.nome} gosta de ${fruta}.`);
+}
+
+//Usando "thisArg" para definir o valor de "this" dentro da função de callback. Sem o this, exibirDetalhes não reconheceria a propriedade nome de pessoa.
+frutas.forEach(exibirDetalhes, pessoa);
+```
+
 ### <a id = "map"></a>`.map()`
 
 É usada para percorrer todos os elementos de um array e aplicar uma função em cada elemento, **gerando um novo array** com os resultados das chamadas de função. A função que você fornece como argumento para o `.map()` é chamada para cada elemento do array e permite que você transforme ou processe cada delemento individualmente.
@@ -304,12 +432,12 @@ const novoArray = arrayOriginal.map(funcaoDeMapeamento(elemento, indice, arrayOr
 });
 ```
 
-- `arraOriginal`: o array original que você deseja percorrer;
-- `funcaoDeMapeamento()`: função chamada para cada elementos do array. Ela pode receber três argumentos:
-  - `elemento`: elemento atual sendo processado;
-  - `indice` (opcional): o índice do elemento atual;
-  - `arrayOriginal` (opcional): o array original que está sendo percorrido.
-- `novoArray`: o novo array gerado pelo `.map()`.
+- `arraOriginal`**:** o array original que você deseja percorrer;
+- `funcaoDeMapeamento()`**:** função chamada para cada elementos do array. Ela pode receber três argumentos:
+  - `elemento`**:** elemento atual sendo processado;
+  - `indice` **(opcional):** o índice do elemento atual;
+  - `arrayOriginal` **(opcional):** o array original que está sendo percorrido.
+- `novoArray`**:** o novo array gerado pelo `.map()`.
 
 Exemplo interessante:
 
