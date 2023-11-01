@@ -147,34 +147,70 @@ Por padrão, a maioria das propriedades que você cria em objetos é enumerável
 
 # <a id = "spreadproperties"></a>Spread properties.
 
-**Spread properties** (ou **propriedade de espalhamento**) é uma funcionalidade introduzida no ECMAScript 2018 (também conhecido como ES9) que permite copiar todas as propriedades enumeráveis de um objeto para outro objeto. Isso é útil para criar cópias de objetos, combinar objetos ou adicionar propriedades a objetos existentes de forma concisa. Exemplo:
+**Spread properties** (ou **propriedades de espalhamento**) é uma funcionalidade introduzida no ECMAScript 2018 (também conhecido como ES9) que permite copiar todas as propriedades **enumeráveis** de um objeto para outro objeto. Isso é útil para criar cópias de objetos, combinar objetos ou adicionar propriedades a objetos existentes de forma concisa. Exemplo:
 
 ```JavaScript
 const objeto1 = { a: 1, b: 2 };
 const objeto2 = { ...objeto1 };
 
 console.log(objeto2); //Saída: { a: 1, b: 2 }
-```
 
-Você também pode usar o operador de espalhamento para combinar propriedades de objetos diferentes.
+//Você também pode usar o operador de espalhamento para combinar propriedades de objetos diferentes.
 
-```JavaScript
 const objeto1 = { a: 1, b: 2};
 const objeto2 = { b: 3, c: 4};
 const objeto3 = { ...objeto1, ...objeto2 };
 
 console.log(objeto3); //Saída: { a: 1, b: 3, c: 4 }
-```
 
-Observe que, se houver propriedades com o mesmo nome em ambos os objetos, a última propriedade encontrada prevalecerá.\
-Além disso, o operador de espalhamento também pode ser usado para adicionar propriedades a um objeto existente:
+//Observe que, se houver propriedades com o mesmo nome em ambos os objetos, a última propriedade encontrada prevalecerá.
+//Além disso, o operador de espalhamento também pode ser usado para adicionar propriedades a um objeto existente:
 
-```JavaScript
 const objeto1 = { a: 1, b: 2 };
 const objeto2 = { ...objeto1, c: 3};
 
 console.log(objeto2) //Saída: { a: 1, b: 2, c: 3}
 ```
+
+Sobre a criação de copias, uma **cópia rasa** (**shallow copy**) significa que a nova estrutura de dados criada é uma cópia dos elementos do array original, mas não uma cópia dos próprios elementos. Portanto, se os elementos do array original forem **objetos ou estruturas de dados complexas**, ambos o array original e a cópia compartilharão referências aos mesmos objetos.\
+Isso significa que, se você alterar um elemento (por exemplo, um objeto) no array original, essa alteração será refletida na cópia, e vice-versa, porque ambas as estruturas de dados se referem ao mesmo objeto. No entanto, se você substituir um elemento no array original ou na cópia por um novo valor (**não por modificação do valor existente**), isso não afetará a outra estrutura de dados. Um exemplo para ilustrar isso:
+
+```JavaScript
+const objeto = { nome: "Alice"};
+const result = [objeto];
+const copia = [...result];
+
+console.log(objeto);         //Saída: { nome: 'Alice'}
+console.log(result);         //Saída: [ { nome: 'Alice'} ]
+console.log(copia);          //Saída: [ { nome: 'Alice'} ]
+
+console.log(objeto.nome);    //Saída: Alice
+console.log(result[0].nome); //Saída: Alice
+console.log(copia[0].nome);  //Saída: Alice
+
+//Alterando o valor no objeto original.
+objeto.nome = "Bob";
+
+console.log(objeto.nome);    //Saída: Bob
+console.log(result[0].nome); //Saída: Bob
+console.log(copia[0].nome);  //Saída: Bob (reflete a alteração)
+
+result[0].nome = "Charlie";
+
+console.log(objeto.nome);    //Saída: Charlie
+console.log(result[0].nome); //Saída: Charlie
+console.log(copia[0].nome);  //Saída: Charlie
+
+//Substituindo o objeto no array original.
+result[0] = { nome: "Dalton" };
+
+console.log(objeto.nome);    //Saída: Charlie
+console.log(result[0].nome); //Saída: Dalton
+console.log(copia[0].nome);  //Saída: Charlie (não reflete a substituição)
+```
+
+A substituição em `result`, que envolve a substituição do objeto no array, desvincula a propriedade `nome` do objeto orginal que estava contido em `result`. O objeto original que foi substituído no array `result` não está mais relacionado à propriedade `nome` no objeto `objeto`.\
+**Observe que a propriedade está vinculada entre todas as estruturas**. A substituição em si, em `result[0] = { nome: "Dalton" };`, atribui um novo objeto a ele, este objeto pode até possuir uma chave de mesmo nome que o objeto anterior, mas é **um objeto diferente**.
 
 # <a id = "fexclamacaovariavel"></a>`if (!variavel){}`
 

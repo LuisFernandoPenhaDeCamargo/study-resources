@@ -33,23 +33,173 @@ No contexto de consultas SQL, as cláusulas são equivalentes a palavras chave q
 - `FROM`**:** especifica a tabela da qual os dados são recuperados;
 - `WHERE`**:** define condições de filtro para restringir os registros recuperados;
 - `ORDER BY`**:** classifica os resultados em ordem crescente ou decrescente;
-- `GROUP BY`**:** agrupa os resultados com base em valores comuns em uma ou mais colunas;
+- `GROUP BY`**:** agrupa os resultados da consulta com base em valores comuns em uma ou mais colunas. Isso significa que, em vez de retornar um registro para cada linha correspondente na tabela, a consulta irá agrupar esses registros em grupos com base nos valores dessas colunas.\
+    Agrupar os resultados de uma consulta permite realizar cálculos agregados, como a soma, a média, a contagem, o valor máximo ou mínimo, etc., para cada grupo de registros. É especialmente útil quando você deseja resumir os dados em sua consulta, como calcular a soma das vendas por categoria de produto ou a contagem de clientes por cidade.
+
+| coluna1 | coluna2 | valor |
+|---|---|---|
+| A | B | 1 |
+| C | D | 2 |
+| A | B | 3 |
+
+```MySQL
+SELECT coluna1, coluna2, SUM(valor)
+From tabela
+GROUP BY coluna1, coluna2;
+```
+
+Saída:
+
+```MySQL
+| coluna1 | coluna2 | SUM(valor) |
+|---|---|---|
+| A | B | 4 |
+| C | D | 2 |
+```
+
+Considerando que o `GROUP BY` trata de todas as combinações possíves dos valores das colunas. Por exemplo, considere a seguinte tabela e que iremos agrupar considerando todas as colunas.
+
+| coluna1 | coluna2 | coluna3 |
+|---|---|---|
+| A | B | C |
+| D | E | F |
+
+Saída:
+
+| coluna1 | coluna2 | coluna3 |
+|---|---|---|
+| A | B | C |
+| A | B | F |
+| A | E | C |
+| A | E | F |
+| D | B | C |
+| D | B | F |
+| D | E | C |
+| D | E | F |
+
 - `HAVING`**:** define condições de filtro para grupos resultantes após a cláusula `GROUP BY`;
 - `JOIN`**:** combina dados de duas ou mais tabelas com base em uma relação específica;
 - `LIMIT`**:** limita o número de linhas retornadas nos resultados. Ela permite que você especifique quantos registros deseja recuperar;
 - `DISTINCT`**:** retorna valores únicos em uma coluna;
-- `DESC`**: Descending order** é usada para especificar que você deseja classificar os resultados em ordem decrescente. Por padrão, as consultas SQL classificam em ordem crescente (do menor para o maior valor). Usando `DESC`, você inverte a ordem e classifica em ordem decrescente (do maior para o menor valor).
+- `DESC`**: Descending order** é usada para especificar que você deseja classificar os resultados em ordem decrescente. Por padrão, as consultas SQL classificam em ordem crescente (do menor para o maior valor). Usando `DESC`, você inverte a ordem e classifica em ordem decrescente (do maior para o menor valor);
 
-### Operadores lógicos.
+```MySQL
+CASE
+    WHEN condicao1 THEN resultado1
+    WHEN condicao2 THEN resultado2
+    ELSE resultado_padrao
+END AS nome_da_coluna_resultante
+```
+
+- `CASE` **e** `END`**:** são claúsulas condicionais que podem ser usadas em uma consulta SQL para criar lógica condicional. **Cada expressão condicional pode retornar somente um valor**.
+    - `CASE`**:** é uma cláusula usada para criar expressões condicionais em SQL. Ela permite que você avalie diferentes condições e retorne um valor com base na primeira condição que seja verdadeira. Pode ser usado em várias partes de uma consulta, como instruções `SELECT`, `WHERE` e outras;
+        - `WHEN`**:** palavra chave específica da `CASE` e é usado para definir uma condição a ser avaliada;
+        - `THEN`**:** palavra chave específica da `CASE` e é usada para especificar o que fazer se a condição definida em `WHEN`for verdadeira;
+        - `ELSE` **(opcional):** palavra chave específica da `CASE` e é usada para definir um resultado padrão se nenhuma das condições em `WHEN` for verdadeira. Caso não seja especificada e nenhuma condição for atendida, a cláusula `CASE` retornará `NULL`.
+    - `END`**:** é usado para encerrar a cláusula `CASE` e marcar o fim da expressão condicional;
+    - `AS`**:** é usado para atribuir um alias (nome alternativo) à coluna resultante da expressão condicional. **Considere o cenário em que a expressão condicional calcula um novo valor, para conseguirmos nos referenciar a ele, usamos o alias**.
+
+## Operadores matemáticos.
+
+SQL pode utilizar operadores matemáticos em expressões para realizar cálculos matemáticos. Os operadores matemáticos padrão incluem adição (`+`), subtração (`-`), multiplicação (`*`), divisão (`/`) e também a porcentagem (`%`).
+
+## Operadores lógicos.
 
 Enquanto cláusulas são partes principais de uma consulta SQL que definem o que você deseja realizar, operadores lógicos são usados dentro da cláusula `WHERE` para combinar condições e criar expressões lógicas que determinam quais registros devem ser incluídos ou não da consulta.\
 Os operadores lógicos são: `AND`, `OR`, `NOT`.
 
-### Operadores de comparação.
+## Operadores de comparação.
 
 `IS NULL` e `IS NOT NULL` são geralmente classificados como operadores de comparação em SQL, uma vez que são usados para comparar valores em colunas com o valor nulo. Sendo que `NULL` **é um valor especial**
 
-### `ON DUPLICATE KEY UPDATE`
+## Operações de junção.
+
+### `STRAIGHT_JOIN`
+
+A expressão `STRAIGHT_JOIN` não é uma cláusula SQL padrão, mas pode ser específica de um **sistema de gerenciamento de banco de dados** (**SGBD**) em particular ou uma extensão não padronizada de SQL. Ela não é amplamente suportada em todos os SGBDs.\
+A expressão `STRAIGHT_JOIN` é usada para forçar o otimizador de consultas a usar a ordem de junção especificada, em vez de determinar a ordem de junção mais eficiente com base nas estatísticas e índices disponíveis. Isso pode ser útil em casos específicos em que você deseja controlar a ordem de junção parar melhorar o desempenho da consulta. A sintaxe geral da expressão `STRAIGHT_JOIN` pode ser algo como:
+
+```MySQL
+SELECT colunas
+FROM tabela1
+STRAIGHT JOIN tabela2
+ON condicao_de_juncao;
+```
+
+Neste caso, a consulta forçaria uma junção direta entre `tabela1` e `tabela2`, seguindo as condições de junção especificadas. Por exemplo:\
+Tabela1.
+
+```
+| coluna1 | coluna2 | coluna3 |
+|---|---|---|
+| 1 | 2 | A |
+| 3 | 4 | B |
+```
+
+Tabela2.
+
+```
+| coluna1 | coluna2 | coluna4 |
+|---|---|---|
+| 1 | 2 | C |
+| 3 | 5 | D |
+```
+
+```MySQL
+SELECT Tabela1.coluna1, Tabela1.coluna2, Tabela1.coluna3, Tabela2.coluna4
+FROM tabela1
+STRAIGHT JOIN tabela2
+ON Tabela1.coluna1 = Tabela2.coluna1 AND Tabela1.coluna2 = Tabela2.coluna2;
+```
+
+```
+| coluna1 | coluna2 | coluna3 | coluna4 |
+|---|---|---|---|
+| 1 | 2 | A | C |
+```
+
+O uso de `STRAIGHT_JOIN` pode ser mais eficiente quando você tem muitos registros que não atendem à condição de junção e deseja evitá-los desde o início.
+
+### `LEFT JOIN`
+
+A expressão `LEFT JOIN`, também conhecida como `LEFT OUTER JOIN`, é uma operação de junção usada em consultas SQL para combinar registros de duas ou mais tabelas com base em uma condição especificada e recuperar todas as linhas da tabela à esquerda (tabela principal), mesmo que não haja correspondência na tabela à direita (tabela secundária). A sintaxe geral de uma consulta SQL com `LEFT JOIN`:
+
+```MySQL
+SELECT colunas
+FROM tabela_esquerda
+LEFT JOIN tabela_direita
+ON condicao_de_juncao;
+```
+
+O resultado de um `LEFT JOIN` incluirá todos os registros da tabela à esquerda, juntamente com os registros correspondentes da tabela à direita. Se não houver correspondência na tabela à direita, as colunas da tabela à direita conterão valores nulos.\
+Essa operação é útil quando você deseja obter todos os registros da tabela principal, mesmo que não haja correspondência na tabela secundária. É comumente usado para reunir dados de diferentes tabelas em consultas complexas, como ao buscar informações relacionadas em uma tabela de pedidos e uma tabela de clientes, onde nem todos os clientes fizeram pedidos.\
+Em resumo, o `LEFT JOIN` é uma operação de junção que mantém todos os registros da tabela à esquerda, independente da existência de correspondências na tabela à direita, tornando-o uma ferramenta valiosa em consultas SQL para combinar e analisar dados de várias fontes.
+
+---
+
+REPLACE INTO compact_billing
+    (board_id, server_id, game, total_in, total_out, percentage, calculated_value, reference_date, created, percentage_pendence)
+    SELECT c.board_id, c.server_id, c.game_id, c.money_in, c.money_out, 
+      IF(p.percentage IS NULL, 0, p.percentage) as percentage,
+      ((c.money_in - c.money_out) * IF(p.percentage IS NULL, 0, p.percentage) / 100) AS calculated_value,
+      c.created,
+      c.inserted_at,
+      IF(p.percentage IS NULL, 1, 0) as percentage_pendence
+    FROM cashier_compact AS c
+    LEFT JOIN place_machines AS p ON (c.board_id = p.board_id AND c.server_id = p.server_id)
+    WHERE c.server_id = ? AND (${billing_dates(createds)})`
+
+## Comandos SQL distintos com propósitos específicos.
+
+### `REPLACE`
+
+Estrutura geral.
+
+`REPLACE INTO tabela (colunas) VALUES (valores);`
+
+O comportamento do comando `REPLACE` é semelhante ao `INSERT`, mas ele verifica se há uma chave primária ou única duplicada na tabela. Se uma chave duplicada for encontrada, ele exclui o registro existente e insere um novo registro com os valores fornecidos. Se não houver uma chave duplicada, ele simplesmente insere um novo registro.
+
+## `ON DUPLICATE KEY UPDATE`
 
 Essa construção é uma **extensão do comando** `INSERT` e é usada para controlar o comportamento de inserções em relação a registros duplicados.
 
@@ -114,6 +264,25 @@ Quando você usa o comando `SHOW DATABASES` no MySQL e o usuário não vê um ba
 
 # <a id = "funcoes"></a>Funções.
 
+### `IF()`
+
+A função `IF()` em MySQL é uma função condicional em SQL que permite avaliar uma expressão lógica e retornar um valor com base nessa avaliação. A sintaxe geral da função `IF()` é a seguinte:
+
+`IF(expressao_logica, valor_se_verdadeiro, valor_se_falso)`
+
+- `expressao_logica`**:** é a condição que você deseja avaliar. Se esta condição for verdadeira, a função retornará `valor_se_verdadeiro`; caso contrário, retornará `valor_se_falso`;
+- `valor_se_verdadeiro`**:** é o valor retornado se a `expressao_logica` for verdadeira;
+- `valor_se_falso`**:** é o valor retornado se a `expressao_logica` for falsa.
+
+Por exemplo, você pode usar a função `IF()` para definir um valor padrão quando uma coluna for nula:
+
+```MySQL
+SELECT nome, IF(idade IS NULL, 'Idade desconhecida', idade) AS idade
+FROM clientes;
+```
+
+Neste exemplo, se a coluna `idade` for nula, a função `IF()` retorna a string `'Idade desconhecida'`; caso contrário, retorna o valor da coluna `idade`. A função `IF()` é útil para lidar com situações condicionais em consultas SQL.
+
 ### `NOW()`
 
 `NOW()` é uma função do MySQL que retorna a data e hora atuais no formato "YYYY-MM-DD HH:MM:SS". É frequentemente usada para obter o carimbo de data e hora atual em consultas SQL. É frequentemente usada para obter o carimbo de data e hora atual em consultas SQL. O valor retornado por `NOW()` **depende da data e hora do servidor MySQL onde a consulta é executada**.\
@@ -136,6 +305,84 @@ A função `CONVERT_TZ()` em MySQL é usada para converter um valor de data e ho
 - `valor`**:** a data e hora que você deseja converter;
 - `fusoHorarioOrigem`**:** o fuso horário atual do valor (coloque o valor entre aspas simples, `'fusoHorarioOrigem'`);
 - `fusoHorarioDestino`**:** o fuso horário para qual você deseja converter o valor (coloque o valor entre aspas simples, `'fusoHorarioDestino'`).
+
+### `DATE()`
+
+A função `DATE()` em MySQL é usada para extrair a parte da data de um valor de data ou carimbo de data/hora. Elas retorna a data (ano, mês e dia) do valor de data ou carimbo de data/hora fornecido como argumento. Por exemplo, se você tiver um valor de data/hora como "2023-10-26 15:30:00", a função `DATE()` aplicada a esse valor retornará a data "2023-10-26".
+
+`SELECT HOUR('2023-10-26 15:30:00') AS Data;`
+
+```MySQL
+| Data |
+|---|
+| 2023-10-26 |
+```
+
+### `DATE_SUB()`
+
+A função `DATE_SUB()` em MySQL é usada para subtrair um intervalo de tempo de um valor de data ou carimbo de data/hora. Ela é comumente usada para calcular uma nova data ou carimbo de data/hora subtraindo um período de tempo específico, como dias, horas, minutos, etc., de um valor de data/hpra existente.
+
+`DATE_SUB(valor_de_data_hora, INTERVAL quantidade unidade);`
+
+- `valor_de_data_hora`**:** o valor de data ou carimbo de data/hora do qual você deseja subtrair o intervalo;
+- `quantidade`**:** a quantidade de unidades a ser subtraída;
+- `unidade`**:** a unidade de tempo (por exemplo, `DAY`, `HOUR`, `MINUTE`) que define o intervalo de tempo a ser subtraído.
+
+Aqui está um exemplo de como usar a função `DATE_SUB()` para subtrair um dia de um valor de data:
+
+`DATE_SUB('2023-10-26', INTERVAL 1 day) AS NovaData;`
+
+```MySQL
+| NovaData |
+|---|
+| 2023-10-25 |
+```
+
+### `HOUR()`
+
+A função `HOUR()` em MySQL é usada para extrair a parte da hora de um valor de data ou carimbo de data/hora. Ela retorna um número inteiro que representa a hora do dia, variando de 0 a 23, com base no valor de data ou carimbo de data/hora fornecido como argumento. Por exemplo, se você tiver um valor de data/hora como "2023-10-26 15:30:00", a função `HOUR()` aplicada a esse valor retornará o número 15, que representa a hora.
+
+`SELECT HOUR('2023-10-26 15:30:00') AS Hora;`
+
+```MySQL
+| Hora |
+|---|
+| 15 |
+```
+
+### `SUM()`
+
+A função `SUM()` em MySQL é uma função de agregação que é usada para calcular a soma dos valores em uma coluna numérica de um conjunto de registros. Ela é frequentemente usada em conjunto com a cláusula `GROUP BY` para calcular somas em grupos de registros com base em uma ou mais colunas.
+
+`SUM(nome_da_coluna)`
+
+`nome_da_coluna`**:** o nome da coluna numérica da qual você deseja calcular a soma.
+
+A função `SUM()` adiciona todos os valores na coluna especificada e retorna o resultado como um único valor. Aqui está um exemplo simples de como usar a função `SUM()` para calcular a soma dos valores em uma coluna:\
+Suponha que você tenha a seguinte `TabelaDeVendas`:
+
+```MySQL
+| ID | Valor |
+|---|---|
+| 1 | 100 |
+| 2 | 150 |
+| 3 | 200 |
+```
+
+Você pode usar a função `SUM()` para calcular a soma dos valores na coluna `Valor` da seguinte forma:
+
+```MySQL
+SELECT SUM(Valor) AS SomaTotal
+FROM TabelaDeVendas;
+```
+
+```MySQL
+| SomaTotal |
+|---|
+| 450 |
+```
+
+Neste exemplo, a função `SUM()` calcula a soma dos valores na coluna `Valor`, resultando em uma soma total de `450`. A função `SUM()` é útil para calcular valores agregados, como a soma total, em conjuntos de dados.
 
 # <a id = "procedure"></a>Procedure.
 
