@@ -11,7 +11,9 @@
 - [Cadeia de protótipos](#cadeiaprototipos);
 - [Propriedades enumeráveis](#propriedadesenumeraveis);
 - [Spread properties](#spreadproperties);
+- [Desestruturação](#desestruturacao);
 - [`if (!variavel){}`](#ifexclamacaovariavel;)
+- [Parâmetro nomeado](#parametronomeado);
 - [Arrow functions](#arrowfunctions);
 - [Função de fechamento ou closure](#funcaofechamentoclosure);
 - [Métodos estáticos](#metodosestaticos);
@@ -20,6 +22,7 @@
 - [Funções de string](#funcoesstring);
 - [Funções de objetos](#funcoesobjetos);
 - [Objetos globais](#objetosglobais);
+- [Funções](#funções);
 - [Como importar um diretório de funções no Node.js e o papel do arquivo de indexação](#importacaonodeindexacao);
 - [**node_modules**](#nodemodules);
 - [Bibliotecas](#bibliotecas);
@@ -28,13 +31,16 @@
 
 ## Construtores, métodos e funções.
 
+- [.fromCharCode()`](#fromcharcode);
 - [`Date`](#date);
 - [`.getTime()`](#gettime);
 - [`Set`](#set);
 - [`.add()`](#add);
 - [`.push()`](#push);
 - [`.pop()`](#pop);
+- [`.concat()`](#concat);
 - [`.join()`](#join);
+- [`.includes()`](#includes);
 - [`.filter()`](#filter);
 - [`.forEach()`](#foreach);
 - [`.map()`](#map);
@@ -44,7 +50,14 @@
 - [`.hasOwnProperty()`](#hasownproperty);
 - [`.all()`](#all);
 - [`.stringify()`](#stringify);
-- [`.parse()`](#parse).
+- [`.parse()`](#parse);
+- [`.assign()`](#assign);
+- [`.keys()`](#keys);
+- [`.values()`](#values);
+- [`.definepropertyof`()](#definepropertyof);
+- [`.getpropertyof()`](#getpropertyof);
+- [`parseInt()`](#parseint);
+- [`setInterval()`](#setinterval).
 
 # <a id = "palavraschave"></a>Palavras chave.
 
@@ -70,6 +83,33 @@ const Config = require("módulo-acima")
 ```
 
 **Isso permite o acesso aos elementos exportados, como classes, funções ou variáveis, mas não cria uma instância da classe**.
+
+### `delete`
+
+A instrução `delete` em JavaScript é usada para remover uma propriedade de um objeto. No entanto, é importante observar que a palavra-chave `delete` tem comportamentos específicos e algumas restrições em relação ao que pode ser excluído. Aqui está um exemplo de como usar o `delete` para remover uma propriedade de um objeto:
+
+```JavaScript
+const objeto = {
+  propriedade1: "valor1",
+  propriedade2: "valor2"
+};
+
+console.log(objeto); //Saída: { propriedade1: 'valor1', propriedade2: 'valor2' }
+
+//Usando "delete" para remover uma propriedade.
+delete objeto.propriedade1;
+
+console.log(objeto); //Saída: { propriedade2: 'valor2' }
+```
+
+Neste exemplo, usamos `delete objeto.propriedade1` para remover a propriedade `propriedade1` do objeto `objeto`.\
+No entanto, tenha em mente que existem algumas limitações e considerações importantes ao usar o `delete`:
+
+- O `delete` só funciona para propriedades de objetos. Você não pode remover variáveis comuns ou elementos de arrays;
+- Algumas propriedades de objetos não podem ser excluídas. Por exemplo, propriedades definidas com `const` ou `Object.defineProperty()` com a configuração `configurable` definada como `false` não podem ser excluídas;
+- A exclusão de propriedades em objetos pode afetar o desempenho e a otimização do código, portanto, é geralmente recomendado evitá-la, a menos que seja realmente necessário.
+
+Em muitos casos, em vez de usar `delete`, é preferível definir a propriedade como `undefined` ou `null` se você deseja indicar que ela não tem um valor válido. Isso mantém a propriedade no objeto, mas a torna sem valor.
 
 # <a id = "objetoobjetosindexadochaves"></a>Objeto de objetos indexado por chaves.
 
@@ -212,6 +252,28 @@ console.log(copia[0].nome);  //Saída: Charlie (não reflete a substituição)
 A substituição em `result`, que envolve a substituição do objeto no array, desvincula a propriedade `nome` do objeto orginal que estava contido em `result`. O objeto original que foi substituído no array `result` não está mais relacionado à propriedade `nome` no objeto `objeto`.\
 **Observe que a propriedade está vinculada entre todas as estruturas**. A substituição em si, em `result[0] = { nome: "Dalton" };`, atribui um novo objeto a ele, este objeto pode até possuir uma chave de mesmo nome que o objeto anterior, mas é **um objeto diferente**.
 
+# <a id = ""></a>Desestruturação.
+
+Desestruturação lhe permite extrair valores de objetos ou arrays e os atribuir a variáveis individuais em uma única instrução. Aqui estão alguns exemplos de desestruturação com objetos:
+
+```JavaScript
+const pessoa = { nome: "Alice", idade: 30};
+const { nome, idade } = pessoa;
+
+console.log(nome);  //Saída: 'Alice'
+console.log(idade); //Saída: 30
+```
+
+Aqui estão alguns exemplos de desestruturação com arrays:
+
+```JavaScript
+const numeros = [1, 2, 3];
+const [primeiro, segundo, terceiro] = numeros;
+
+console.log(primeiro); //Saída: 1
+console.log(segundo);  //Saída: 2
+```
+
 # <a id = "fexclamacaovariavel"></a>`if (!variavel){}`
 
 A condicional `if (!variavel){}` verifica se a variável `variavel` é avaliada como "falsa" ou "falsy" em JavaScript. Em JavaScript, valores "falsos" ou "falsy" são aqueles que são considerados como `false` quando avaliados em um contexto booleano. Os valores considerados "falsos" em JavaScript incluem:
@@ -225,6 +287,20 @@ A condicional `if (!variavel){}` verifica se a variável `variavel` é avaliada 
 - `document.all`**:** uma propriedade específica do navegador que é considerada falsa em alguns navegadores antigos,
 - `[]`**:** um array vazio,
 - `{}`**:** um objeto vazio.
+
+# <a id = "parametronomeado"></a>Parâmetro nomeado.
+
+É comum uar o caractere `_` como parâmetro nomeado (às vezes chamado de "descartável") quando você não precisa usar o valor do elemento durante a iteração. É uma convenção amplamente aceita em JavaScript.\
+Por exemplo, quando você usa `.map()`, `forEach()`, ou outras funções de iteração de array, o callback recebe o elemento atual como seu primeiro parâmetro, mas se você não precisa usá-lo, é uma prática comum usar `_` (ou às vezes `unused`, `item`, ou outros nomes descritivos) para indicar que o valor é ignorado. Isso torna o código mais claro para outros desenvolvedores, mostrando que o valor do elemento não é usado itencionalmente. Aqui está um exemplo de como `_` é usado:
+
+```JavaScript
+cost numbers = [1, 2, 3];
+
+// Usando `_` para indicar que o valor do elemento é ignorado.
+const squared = numbers.map(_ => 2); //Saída: [2, 2, 2]
+```
+
+Neste exemplo `_` é usado como um indicador de que o valor do elemento não é relevante para a operação realizada dentro da função de mapeamento. É uma prática comum para escrever código mais legível e conciso.
 
 # <a id = "arrowfunctions"></a>Arrow functions.
 
@@ -283,7 +359,38 @@ Em resumo, o uso de métodos estáticos em uma classe depende da natureza da fun
 Métodos estáticos não compartilham valores ou estado entre instâncias da classe. Métodos estáticos estão associados à classe em si, não as instâncias individuais da classe. Portanto, se você tiver um método estático que armazena um valor, esse valor não será compartilhado entre as instâncias da classe. Cada instância terá seu próprio estado separado.\
 Para compartilhar um valor ou estado entre todas as instâncias de uma classe, você pode definir uma variável da classe ou uma propriedade estática. Uma vairável de classe estática é compartilhada entre todas as instâncias da classe.
 
+## Getters e setters.
+
+Métodos getters permitem que você acesse uma propriedade de uma classe como se fosse uma propriedade direta, **sem a necessidade de chamar a função como um método**.\
+Quando você define uma função `static get` dentro de uma classe, como no exemplo:
+
+```JavaScript
+class Config {
+  static get pool() {
+    return pool;
+  }
+}
+```
+
+Você pode acessar a propriedade `pool` da classe `Config` diretamente, como se fosse uma propriedade de objeto comum. Portanto, quando você importa a classe `Config` e usa `Config.pool`, está obtendo o valor retornado pela função getter `pool()`, como se fosse uma propriedade.\
+Isso torna o código mais legível e fornece uma maneira conveniente de acessar configurações ou valores específicos de uma classe sem a necessidade de chamá-los como funções. O uso de getters é uma característica poderosa e útil da programação orientada a objetos em JavaScript.
+
 # <a id = "construtores"></a>Construtores.
+
+### <a id = "fromcharcode"></a>`.fromCharCode()`
+
+O método `.fromCharCode()` é um método estático da classe `String` em JavaScript. Ele aceita um ou mais parâmetros numéricos (códigos de caractere Unicode) e retorna a string correspondente aos caracteres representados por esses códigos.
+
+```JavaScript
+const charCode1 = 65; //Código Unicode para "A".
+const charCode2 = 66; //Código Unicode para "B".
+
+const result = String.fromCharCode(charCode1, charCode2);
+
+console.log(result); //Saída: 'AB'
+```
+
+Os argumentos devem ser números inteiros que representam códigos Unicode válidos.
 
 ### <a id = "date"></a>`Date`
 
@@ -354,6 +461,24 @@ mySet.forEach(value => {
 Um set em JavaScript não permite elementos duplicados, o que significa que ele armazena apenas valores únicos.\
 Os Sets são úteis quando você precisa armazenar um conjunto de valores únicos e deseja garantir que não haja duplicatas. Eles são frequentemente usados para eliminar valores duplicados de uma lista ou para manter o controle de elementos únicos de uma coleção.
 
+Um exemplo interessante envolvendo um objeto `Set` e [Spread properties](#spreadproperties):
+
+```JavaScript
+const set = new Set();
+
+set.add(`"a"`);
+set.add(`"b"`);
+set.add(`"c"`);
+
+console.log(set);    //Saída: Set(3) { '"a"', '"b"', '"c"' }
+
+const string = [...set].join("SEPARADOR");
+
+console.log(string); //Saída: "a"SEPARADOR"b"SEPARADOR"c"
+```
+
+O objeto `Set` é composto por strings, você utiliza spread properties para criar um array de strings e ai sim poder aplicar a função `.join()` sobre ele.
+
 ### <a id = "add"></a>`.add()`
 
 Adiciona um novo valor ao conjunto. Retorna o próprio objeto Set, após a adição do valor especificado, modifica o conjunto original.
@@ -382,6 +507,26 @@ Remove o último elemento de um array. Retorna o elemento removido.
 - Modifica o array original;
 - Não é apropriado para arrays vazios, pois não haverá nenhum elemento a ser removido e retornado.
 
+### <a id = "concat"></a>`.concat()`
+
+Concatena dois ou mais arrays ou valores em um novo array, sem modificar os arrays originais. Ela retorna um novo array que contém os elementos dos arrays ou valores que foram concatenados.
+
+`const novoArray = array1.concat(array2, valor1, valo2, ...);`
+
+- `array1`**:** o primeiro array a ser concatenado;
+- `array2`**,** `valor1`**,** `valor2`**:** outros arrays ou valores que você deseja concatenar ao `array1`.
+
+Um exemplo interessante usando `.concat()` e [Spread properties](#spreadproperties):
+
+```JavaScript
+const arrayDeArrays = [[1, 2], [3, 4], [5, 6]];
+const novoArray = [].concat(...array);
+
+console.log(novoArray); //Saída: [ 1, 2, 3, 4, 5, 6 ]
+```
+
+O função `.concat()` precisa de um primeiro array a ser concatenado e a spread properties permite você passar vários arrays como argumento para ela.
+
 ### <a id = "join"></a>`.join()`
 
 Cria uma nova string, concatenando todos os elementos de um array em uma única string. Retorna uma string que é o resultado da concatenação de todos os elementos do array, separados pelo separador especificado. O array original não é modificado.
@@ -389,6 +534,18 @@ Cria uma nova string, concatenando todos os elementos de um array em uma única 
 `array.join(separador);`
 
 `separador` **(opcional):** o caractere ou sequência de caracteres que será usado como separador entre os elementos na string resultante. Se este parâmetro não for fornecido, os elementos serão concatenados sem nenhum separador.
+
+### <a id = "includes"></a>`.includes()`
+
+Verifica se um determinado valor está presente no array. Retorna `true` ou `false`.
+
+`array.includes(valor, aPartirDe);`
+
+- `array`**:** o array no qual você deseja realizar a pesquisa;
+- `valor`**:** o valor que você deseja verificar se está presente no array;
+- `aPartirDe` **(opcional):**  o índice a partir do qual você deseja iniciar a pesquisa. Se não for fornecido, a pesquisa começará do início do array.
+
+É usada principalmente para **valores simples** (números, strings, booleanos) e não é adequada para verificar a existência de objetos complexos ou verificar com base em propriedades específicas de objetos.
 
 ### <a id = "filter"></a>`.filter()`
 
@@ -599,7 +756,8 @@ Vefica se um objeto possui uma propriedade com um nome específico. Retonar um b
 # <a id = "objetosglobais"></a>Objetos globais.
 
 - [`Promise`](#promise);
-- [`JSON`](#json).
+- [`JSON`](#json);
+- [`Object`](#object).
 
 ## <a id = "promise"></a>`Promise`
 
@@ -686,6 +844,97 @@ Analisa uma string no formato JSON e a converte em um objeto JavaScript. A strin
 ```JavaScript
 JSON.parse(content)[version]; //Estamos acessando a chave "version" do objeto retornado por JSON.parse(content)
 ```
+
+## <a id = ""></a>`Object`
+
+Objeto global pré-definido (built-in object).
+
+### <a id = "assign"></a>`.assign()`
+
+É usada para copiar os valores de uma ou mais propriedades de objetos de origem (ou fonte) para um objeto de destino. Isso é frequentemente usado para criar um novo objeto que contém uma combinação de propriedades de vários outros objetos.
+
+`.assign(destino, origem1, origem2, ...)`
+
+- `destino`**:** é o objeto de destino onde as propriedades serão copiadas. Este objeto será modificado e retornado;
+- `origem1, origem2, ...`**:** são os objetos de origem a partir dos quais as propriedades serão copiadas. Você pode passar múltiplos objetos de origem separados por vírgulas.
+
+O `.assign()` copiará as propriedades de cada objeto de origem para o objeto de destino. Se houver conflitos de propriedades (ou seja, se o objeto de origem e o objeto de destino tiverem uma propriedade com o mesmo nome), o valor da propriedade no objeto de origem substituirá o valor correspondente no objeto de destino. Exemplo:
+
+```JavaScript
+const destino = {};
+const origem1 = {a: 1, b: 2};
+const origem2 = {b: 3, c: 4};
+
+Object.assign(destino, origem1, origem2);
+
+console.log(destino); //Saída: { a: 1, b: 3, c: 4 }
+```
+
+Neste exemplo, as propriedades de `origem1` e `origem2` são copiadas para `destino`, e o valor da propriedade `b` do `origem2` substitui o valor da propriedade `b` do `origem1` no objeto de destino.\
+Lembre-se de que o `Object.assign()` funciona apenas para copiar as propriedades enumeráveis e próprias (**não as herdadas**) dos objetos de origem. Além disso, ele retorna o objeto de destino após a cópia das propriedades.
+
+### <a id = "keys"></a>`.keys()`
+
+`.keys(objeto)`
+
+Usada para retornar um array com as chaves (nomes das propriedades) de um `objeto`.
+
+### <a id = ""></a>`.values()`
+
+Retorna um array contendo os valores das **propriedades enumeráveis** de uma objeto.
+
+`const valores = Object.values(objeto);`
+
+### <a id = "definepropertyof"></a>`.definePropertyOf()`
+
+Usada para definir uma nova propriedade diretamente em um objeto ou modificar uma propriedade existente com mais controle sobre suas características. Ela permite que você especifique várias opções para a propriedade, como se ela é enumerável, configurável ou gravável.
+
+`.definePropertyOf(objeto, propriedade, descritor)`
+
+- `objeto`**:** o objeto no qual você deseja definir ou modificar a propriedade;
+- `propriedade`**:** o nome da propriedade que você deseja definir ou modificar;
+- `descritor`**:** um objeto que descreve as características da propriedade. Este objeto pode ter várias propriedades, incluindo:
+  - `value` **(opcional):** o valor da propriedade;
+  - `writable`**:** um booleano que indica se a propriedade pode ser modificada com o operador de atribuição (por padrão, `false`);
+  - `enumerable`**:** um booleano que indica se a propriedade pode ser percorrida em um loop `for...in` ou listada usando `Object.keys()` (por padrão, `false`);
+  - `configurable`**:** um booleano que indica se a propriedade pode ser reconfigurada ou excluída (por padrão, `false`).
+
+### <a id = "getpropertyof"></a>`.getPropertyOf()`
+
+`.getPropertyOf(objeto)`
+
+Utilizada para retornar o protótipo de um `objeto`.
+
+# <a id = "funcoes"></a>Funções.
+
+### <a id = "parseint"></a>`parseInt()`
+
+O método `parseInt()` é usado para converter uma string em um número inteiro com base em uma base numérica especificada.
+
+```JavaScript
+const binaryString = "1010";
+const decimalString = "42";
+const hexString = "1A";
+
+const binaryResult = parseInt(binaryString, 2); //Converte de binário para decimal.
+const decimalResult = parseInt(decimalString); //Converte de decimal para decimal (base padrão).
+const hexResult = parseInt(hexString, 16); //Converte de hexadecimal para decimal.
+
+console.log(binaryResult);  //Saída: 10
+console.log(decimalResult); //Saída: 42
+console.log(hexResult);     //Saída: 26
+```
+
+Parâmetros:
+
+- `string`**:** a string que você deseja converter em um número;
+- `radix` **(number, opcional):** a base numérica que deve ser usada para a conversão. É um número inteiro entre 2 e 36, que representa a base do sistema numérico. Se este parâmetro for omitido, o JavaScript usará a base 10 por padrão.
+
+Retorna um número inteiro representado pela string fornecida, de acordo com a base especificada. Se a conversão for bem-sucedida, o método retornará o número inteiro. Se a conversão não for possível, o método retornará `NaN` (Not-a-Number).
+
+### <a id = "setinterval"></a>`setInterval()`
+
+
 
 # <a id = "importacaonodeindexacao"></a>Como importar um diretório de funções no Node.js e o papel do arquivo de indexação.
 

@@ -253,7 +253,8 @@ Executa querys SQL.
 O método `.query()` é um dos métodos principais em uma pool de conexões MariaDB no Node.js. Ele é usado para executar querys SQL no banco de dados MariaDB por meio da conexão que está disponível na pool. A função `.query()` é usada para enviar uma query SQL ao banco de dados e recuperar os resultados, se houver.
 
 - `sql` **(string):** contém a query SQL que você deseja executar. Pode incluir espaços reservados que serão substituídos pelos valores reais quando a query for executada. Por exemplo, você pode usar placeholders como `?` ou nomeá-los com `:nome` ou `?name` e fornecer os valores correspondentes no array `values`;
-- `values` **(array, opcional):** contém os valores a serem inseridos nos espaços reservados da query SQL. Isso é útil para evitar ataques de injeção SQL e para passar dados dinâmicos para a query. Se você não precisar de valores dinâmicos, pode deixar este parâmetro em branco.
+- `values` **(array, opcional):** contém os valores a serem inseridos nos espaços reservados da query SQL. Isso é útil para evitar ataques de injeção SQL e para passar dados dinâmicos para a query. Se você não precisar de valores dinâmicos, pode deixar este parâmetro em branco.\
+    Quando há mais valores que espaços reservados isso quer dizer que você vai inserir mais de um registro de uma vez.
 
 O retorno do método `pool.query()` pode variar com base na natureza da query SQL que você está executando e nos resultados da consulta. Em geral, o retorno depende se a query é uma query de seleção (SELECT) ou uma query de modificação (INSERT, UPDATE, DELETE) e se a consulta foi bem-sucedida.\
 

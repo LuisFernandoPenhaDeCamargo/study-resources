@@ -521,10 +521,6 @@ Então mesmo a função de resolução sendo passada como argumento para a funç
 # <a name = "objetosglobais"></a>Objetos globais.
 
 - [`.error()`;](#error)
-- [`.assign()`;](#assign)
-- [`.keys()`;](#keys)
-- [`.definePropertyOf()`;](#definepropertyof)
-- [`.getPropertyOf()`;](#getpropertyof)
 - [`.exit()`;](#exit)
 - [`.floor()`.](#floor)
 
@@ -539,60 +535,6 @@ Imprime uma mensagem de erro.
 `parametro`**:** argumento a ser exibido.
 
 O JavaScript converte o argumento em uma string antes de exibi-lo.
-
-## `Object`
-
-Objeto global pré-definido (built-in object).
-
-### <a id = "assign"></a>`.assign()`
-
-É usada para copiar os valores de uma ou mais propriedades de objetos de origem (ou fonte) para um objeto de destino. Isso é frequentemente usado para criar um novo objeto que contém uma combinação de propriedades de vários outros objetos.
-
-`.assign(destino, origem1, origem2, ...)`
-
-- `destino`**:** é o objeto de destino onde as propriedades serão copiadas. Este objeto será modificado e retornado;
-- `origem1, origem2, ...`**:** são os objetos de origem a partir dos quais as propriedades serão copiadas. Você pode passar múltiplos objetos de origem separados por vírgulas.
-
-O `.assign()` copiará as propriedades de cada objeto de origem para o objeto de destino. Se houver conflitos de propriedades (ou seja, se o objeto de origem e o objeto de destino tiverem uma propriedade com o mesmo nome), o valor da propriedade no objeto de origem substituirá o valor correspondente no objeto de destino. Exemplo:
-
-```JavaScript
-const destino = {};
-const origem1 = {a: 1, b: 2};
-const origem2 = {b: 3, c: 4};
-
-Object.assign(destino, origem1, origem2);
-
-console.log(destino); // { a: 1, b: 3, c: 4 }
-```
-
-Neste exemplo, as propriedades de `origem1` e `origem2` são copiadas para `destino`, e o valor da propriedade `b` do `origem2` substitui o valor da propriedade `b` do `origem1` no objeto de destino.\
-Lembre-se de que o `Object.assign()` funciona apenas para copiar as propriedades enumeráveis e próprias (**não as herdadas**) dos objetos de origem. Além disso, ele retorna o objeto de destino após a cópia das propriedades.
-
-### <a id = "keys"></a>`.keys()`
-
-`.keys(objeto)`
-
-Usada para retornar um array com as chaves (nomes das propriedades) de um `objeto`.
-
-### <a id = "definepropertyof"></a>`.definePropertyOf()`
-
-Usada para definir uma nova propriedade diretamente em um objeto ou modificar uma propriedade existente com mais controle sobre suas características. Ela permite que você especifique várias opções para a propriedade, como se ela é enumerável, configurável ou gravável.
-
-`.definePropertyOf(objeto, propriedade, descritor)`
-
-- `objeto`**:** o objeto no qual você deseja definir ou modificar a propriedade;
-- `propriedade`**:** o nome da propriedade que você deseja definir ou modificar;
-- `descritor`**:** um objeto que descreve as características da propriedade. Este objeto pode ter várias propriedades, incluindo:
-  - `value` **(opcional):** o valor da propriedade;
-  - `writable`**:** um booleano que indica se a propriedade pode ser modificada com o operador de atribuição (por padrão, `false`);
-  - `enumerable`**:** um booleano que indica se a propriedade pode ser percorrida em um loop `for...in` ou listada usando `Object.keys()` (por padrão, `false`);
-  - `configurable`**:** um booleano que indica se a propriedade pode ser reconfigurada ou excluída (por padrão, `false`).
-
-### <a id = "getpropertyof"></a>`.getPropertyOf()`
-
-`.getPropertyOf(objeto)`
-
-Utilizada para retornar o protótipo de um `objeto`.
 
 ## `process`
 
@@ -663,29 +605,6 @@ Converte um número decimal em um número inteiro, selecionando somente a parte 
     - `currentIndex` **(opcional):** o índice do elemento atual;
     - `array` **(opcional):** o array original que está sendo percorrido.
 - `initialValue` **(opcional):** um valor inicial para o acumulador. Se não for fornecido, o primeiro elemento do array será usado como valor inicial e a redução começará a partir do segundo elemento.
-
-## <a id = "concat"></a>`.concat()`
-
-É usada para concatenar dois ou mais arrays ou valores em um novo array, sem modificar os arrays originais. Ela retorna um novo array que contém os elementos dos arrays ou valores que foram concatenados.
-
-`const novoArray = array1.concat(array2, valor1, valo2, ...)`
-
-- `array1`**:** o primeiro array a ser concatenado;
-- `array2`**,** `valor1`**,** `valor2`**:** outros arrays ou valores que você deseja concatenar ao `array1`.
-
-## <a id = "includes"></a>`.includes()`
-
-Verifica se um determinado valor está presente no array.
-
-`array.includes(valor, aPartirDe)`
-
-- `array`**:** o array no qual você deseja realizar a pesquisa;
-- `valor`**:** o valor que você deseja verificar se está presente no array;
-- `aPartirDe` **(opcional):**  o índice a partir do qual você deseja iniciar a pesquisa. Se não for fornecido, a pesquisa começará do início do array.
-
-Retorna `true` ou `false`.
-
-É usada principalmente para **valores simples** (números, strings, booleanos) e não é adequada para verificar a existência de objetos complexos ou verificar com base em propriedades específicas de objetos.
 
 ## <a id = "some"></a>`.some()`
 

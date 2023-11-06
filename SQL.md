@@ -13,6 +13,8 @@
 - [Tipos de dados](#tiposdados);
 - [Lista de comandos](#listadecomandos);
 - [Funções](#funcoes);
+- [Alias](#alias);
+- [Querys utilizando múltiplas tabelas](#querysmultiplastabelas);
 - [Procedure](#procedure);
 - [Erros](#erros).
 
@@ -78,7 +80,7 @@ Saída:
 | D | E | F |
 
 - `HAVING`**:** define condições de filtro para grupos resultantes após a cláusula `GROUP BY`;
-- `JOIN`**:** combina dados de duas ou mais tabelas com base em uma relação específica;
+- [`JOIN`](#join)**:** combina dados de duas ou mais tabelas com base em uma relação específica;
 - `LIMIT`**:** limita o número de linhas retornadas nos resultados. Ela permite que você especifique quantos registros deseja recuperar;
 - `DISTINCT`**:** retorna valores únicos em uma coluna;
 - `DESC`**: Descending order** é usada para especificar que você deseja classificar os resultados em ordem decrescente. Por padrão, as consultas SQL classificam em ordem crescente (do menor para o maior valor). Usando `DESC`, você inverte a ordem e classifica em ordem decrescente (do maior para o menor valor);
@@ -112,7 +114,27 @@ Os operadores lógicos são: `AND`, `OR`, `NOT`.
 
 `IS NULL` e `IS NOT NULL` são geralmente classificados como operadores de comparação em SQL, uma vez que são usados para comparar valores em colunas com o valor nulo. Sendo que `NULL` **é um valor especial**
 
-## Operações de junção.
+## <a id = "join"></a>Operações de junção.
+
+### `INNER JOIN`
+
+Quando você especifica apenas `JOIN` sem especificar um tipo específico de `JOIN` (`INNER`, `LEFT`, `RIGHT`, `FULL`, etc.), o tipo de `JOIN` padrão é um `INNER JOIN`.\
+`INNER JOIN` retorna apenas as linhas que têm valores correspondentes em ambas as tabelas sendo unidas.
+
+### `LEFT JOIN`
+
+A expressão `LEFT JOIN`, também conhecida como `LEFT OUTER JOIN`, é uma operação de junção usada em consultas SQL para combinar registros de duas ou mais tabelas com base em uma condição especificada e recuperar todas as linhas da tabela à esquerda (tabela principal), mesmo que não haja correspondência na tabela à direita (tabela secundária). A sintaxe geral de uma consulta SQL com `LEFT JOIN`:
+
+```MySQL
+SELECT colunas
+FROM tabela_esquerda
+LEFT JOIN tabela_direita
+ON condicao_de_juncao;
+```
+
+O resultado de um `LEFT JOIN` incluirá todos os registros da tabela à esquerda, juntamente com os registros correspondentes da tabela à direita. Se não houver correspondência na tabela à direita, as colunas da tabela à direita conterão valores nulos.\
+Essa operação é útil quando você deseja obter todos os registros da tabela principal, mesmo que não haja correspondência na tabela secundária. É comumente usado para reunir dados de diferentes tabelas em consultas complexas, como ao buscar informações relacionadas em uma tabela de pedidos e uma tabela de clientes, onde nem todos os clientes fizeram pedidos.\
+Em resumo, o `LEFT JOIN` é uma operação de junção que mantém todos os registros da tabela à esquerda, independente da existência de correspondências na tabela à direita, tornando-o uma ferramenta valiosa em consultas SQL para combinar e analisar dados de várias fontes.
 
 ### `STRAIGHT_JOIN`
 
@@ -159,35 +181,6 @@ ON Tabela1.coluna1 = Tabela2.coluna1 AND Tabela1.coluna2 = Tabela2.coluna2;
 ```
 
 O uso de `STRAIGHT_JOIN` pode ser mais eficiente quando você tem muitos registros que não atendem à condição de junção e deseja evitá-los desde o início.
-
-### `LEFT JOIN`
-
-A expressão `LEFT JOIN`, também conhecida como `LEFT OUTER JOIN`, é uma operação de junção usada em consultas SQL para combinar registros de duas ou mais tabelas com base em uma condição especificada e recuperar todas as linhas da tabela à esquerda (tabela principal), mesmo que não haja correspondência na tabela à direita (tabela secundária). A sintaxe geral de uma consulta SQL com `LEFT JOIN`:
-
-```MySQL
-SELECT colunas
-FROM tabela_esquerda
-LEFT JOIN tabela_direita
-ON condicao_de_juncao;
-```
-
-O resultado de um `LEFT JOIN` incluirá todos os registros da tabela à esquerda, juntamente com os registros correspondentes da tabela à direita. Se não houver correspondência na tabela à direita, as colunas da tabela à direita conterão valores nulos.\
-Essa operação é útil quando você deseja obter todos os registros da tabela principal, mesmo que não haja correspondência na tabela secundária. É comumente usado para reunir dados de diferentes tabelas em consultas complexas, como ao buscar informações relacionadas em uma tabela de pedidos e uma tabela de clientes, onde nem todos os clientes fizeram pedidos.\
-Em resumo, o `LEFT JOIN` é uma operação de junção que mantém todos os registros da tabela à esquerda, independente da existência de correspondências na tabela à direita, tornando-o uma ferramenta valiosa em consultas SQL para combinar e analisar dados de várias fontes.
-
----
-
-REPLACE INTO compact_billing
-    (board_id, server_id, game, total_in, total_out, percentage, calculated_value, reference_date, created, percentage_pendence)
-    SELECT c.board_id, c.server_id, c.game_id, c.money_in, c.money_out, 
-      IF(p.percentage IS NULL, 0, p.percentage) as percentage,
-      ((c.money_in - c.money_out) * IF(p.percentage IS NULL, 0, p.percentage) / 100) AS calculated_value,
-      c.created,
-      c.inserted_at,
-      IF(p.percentage IS NULL, 1, 0) as percentage_pendence
-    FROM cashier_compact AS c
-    LEFT JOIN place_machines AS p ON (c.board_id = p.board_id AND c.server_id = p.server_id)
-    WHERE c.server_id = ? AND (${billing_dates(createds)})`
 
 ## Comandos SQL distintos com propósitos específicos.
 
@@ -383,6 +376,16 @@ FROM TabelaDeVendas;
 ```
 
 Neste exemplo, a função `SUM()` calcula a soma dos valores na coluna `Valor`, resultando em uma soma total de `450`. A função `SUM()` é útil para calcular valores agregados, como a soma total, em conjuntos de dados.
+
+# <a id = "alias"></a>Alias.
+
+Os aliases são usados principalmente para tornar o código mais legível e compreensível para os desenvolvedores e não tem impacto direto nos resultados dos cálculos ou na inserção de dados. Ele são úteis para dar nomes descritivos às colunas resultantes ou para simplificar expressões complexas.\
+A ordem dos valores em uma query é o que realmente importa em SQL, é atráves desta ordem que ele associa uma coluna a um valor, independente se uma das colunas tem o mesmo nome que um alias.
+
+# <a id = "querysmultiplastabelas"></a>Querys utilizando múltiplas tabelas.
+
+Quando você tem uma consulta SQL com várias tabelas envolvidas e você faz referência a uma coluna sem especificar de qual tabela ela pertence, o sistema geralmente usa uma heurística para determinar de qual tabela a coluna deve ser recuperada. A heurística normalmente procura na ordem em que as tabelas estão listadas na consulta. Ela selecionará a primeira tabela na qual encontrar a coluna.\
+Para torna a consulta mais clara e evitar ambiguidades, é uma boa prática especificar a tabela da qual a coluna deve ser recuperada, mesmo que a coluna tenha o mesmo nome em várias tabelas.
 
 # <a id = "procedure"></a>Procedure.
 
