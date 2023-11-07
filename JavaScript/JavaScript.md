@@ -1,63 +1,34 @@
-# JavaScript.
+# Template. (Ok)
 
-É uma **linguagem de programação** que é **síncrona** e **single-threaded**, o que significa que ela é executada em uma única thread de execução e as operações são processadas uma após a outra, em ordem. No entanto, JavaScript pode lidar com operações **assíncronas** e **não bloqueantes** usando recursos como **callbacks**, **promises** e **async/await**.
+### Bloco de código. (Ok)
 
-**No linux, o Shebang é necessário para a impressão de logs no terminal de comando.**
+Descrição do método/função. Exemplo(s) de uso:
 
-## Sumário.
+Bloco de código.
 
-- [Palavras chave](#palavraschave);
-- [Objeto de objetos indexado por chaves](#objetoobjetosindexadochaves);
-- [Cadeia de protótipos](#cadeiaprototipos);
-- [Propriedades enumeráveis](#propriedadesenumeraveis);
-- [Spread properties](#spreadproperties);
-- [Desestruturação](#desestruturacao);
-- [`if (!variavel){}`](#ifexclamacaovariavel;)
-- [Parâmetro nomeado](#parametronomeado);
-- [Arrow functions](#arrowfunctions);
-- [Função de fechamento ou closure](#funcaofechamentoclosure);
-- [Métodos estáticos](#metodosestaticos);
-- [Construtores](#construtores);
-- [Funções de array](#funcoesarray);
-- [Funções de string](#funcoesstring);
-- [Funções de objetos](#funcoesobjetos);
-- [Objetos globais](#objetosglobais);
-- [Funções](#funções);
-- [Como importar um diretório de funções no Node.js e o papel do arquivo de indexação](#importacaonodeindexacao);
-- [**node_modules**](#nodemodules);
-- [Bibliotecas](#bibliotecas);
-- [Frameworks](#frameworks);
-- [`"use strict"`](#usestrict).
+`versão resumida`
 
-## Construtores, métodos e funções.
+Parâmetros, retorno e mais explicações.
 
-- [.fromCharCode()`](#fromcharcode);
-- [`Date`](#date);
-- [`.getTime()`](#gettime);
-- [`Set`](#set);
-- [`.add()`](#add);
-- [`.push()`](#push);
-- [`.pop()`](#pop);
-- [`.concat()`](#concat);
-- [`.join()`](#join);
-- [`.includes()`](#includes);
-- [`.filter()`](#filter);
-- [`.forEach()`](#foreach);
-- [`.map()`](#map);
-- [`.split()`](#split);
-- [`.startsWith()`](#startswith);
-- [`.replace()`](#replace);
-- [`.hasOwnProperty()`](#hasownproperty);
-- [`.all()`](#all);
-- [`.stringify()`](#stringify);
-- [`.parse()`](#parse);
-- [`.assign()`](#assign);
-- [`.keys()`](#keys);
-- [`.values()`](#values);
-- [`.definepropertyof`()](#definepropertyof);
-- [`.getpropertyof()`](#getpropertyof);
-- [`parseInt()`](#parseint);
-- [`setInterval()`](#setinterval).
+---
+
+Eu separo as linhas de declaração de variáveis e as linhas de `console.log()`. Exemplo:
+
+```JavaScript
+const variavel1 = 1;
+const variavel2 = "A";
+
+// Separei a declaração das variáveis da linha em que eu chamo o console.log().
+// Eu exemplifico as saídas, pontuando que são saídas com "Saída:"
+console.log(variavel1); // Saída: 1
+console.log(variavel2); // Saída: 'A'
+// Quando há mais de uma "Saída", eu alinho elas na mesma coluna, tomando como referência, a "Saída" mais a direita.
+```
+
+### Divisão dos tópicos.
+
+**Funções de string**.\
+Fazer diferenciação das funções, por exemplo, entre básicas e de substituição.
 
 # <a id = "palavraschave"></a>Palavras chave.
 
@@ -185,73 +156,6 @@ console.log(objeto.propriedadeNaoEnumeravel); //Saída: Não enumerável.
 No exemplo acima, a propriedade `propriedadeEnumeravel` é definida como enumerável, enquanto a `propriedadeNaoEnumeravel` é definida como não enumerável. Quando você itera pelas propriedades do objeto usando um loop `for...in` ou obtém as chaves do objeto usando `Object.keys()`, apenas a `propriedadeEnumeravel` é visível, porque é a única propriedade enumerável. A `propriedadeNaoEnumeravel` não é listada.\
 Por padrão, a maioria das propriedades que você cria em objetos é enumerável, mas é importante estar ciente da enumerabilidade ao trabalhar com objetos e definir propriedades personalizadas, especialmente quando você deseja controlar quais propriedades são visíveis durante iterações.
 
-# <a id = "spreadproperties"></a>Spread properties.
-
-**Spread properties** (ou **propriedades de espalhamento**) é uma funcionalidade introduzida no ECMAScript 2018 (também conhecido como ES9) que permite copiar todas as propriedades **enumeráveis** de um objeto para outro objeto. Isso é útil para criar cópias de objetos, combinar objetos ou adicionar propriedades a objetos existentes de forma concisa. Exemplo:
-
-```JavaScript
-const objeto1 = { a: 1, b: 2 };
-const objeto2 = { ...objeto1 };
-
-console.log(objeto2); //Saída: { a: 1, b: 2 }
-
-//Você também pode usar o operador de espalhamento para combinar propriedades de objetos diferentes.
-
-const objeto1 = { a: 1, b: 2};
-const objeto2 = { b: 3, c: 4};
-const objeto3 = { ...objeto1, ...objeto2 };
-
-console.log(objeto3); //Saída: { a: 1, b: 3, c: 4 }
-
-//Observe que, se houver propriedades com o mesmo nome em ambos os objetos, a última propriedade encontrada prevalecerá.
-//Além disso, o operador de espalhamento também pode ser usado para adicionar propriedades a um objeto existente:
-
-const objeto1 = { a: 1, b: 2 };
-const objeto2 = { ...objeto1, c: 3};
-
-console.log(objeto2) //Saída: { a: 1, b: 2, c: 3}
-```
-
-Sobre a criação de copias, uma **cópia rasa** (**shallow copy**) significa que a nova estrutura de dados criada é uma cópia dos elementos do array original, mas não uma cópia dos próprios elementos. Portanto, se os elementos do array original forem **objetos ou estruturas de dados complexas**, ambos o array original e a cópia compartilharão referências aos mesmos objetos.\
-Isso significa que, se você alterar um elemento (por exemplo, um objeto) no array original, essa alteração será refletida na cópia, e vice-versa, porque ambas as estruturas de dados se referem ao mesmo objeto. No entanto, se você substituir um elemento no array original ou na cópia por um novo valor (**não por modificação do valor existente**), isso não afetará a outra estrutura de dados. Um exemplo para ilustrar isso:
-
-```JavaScript
-const objeto = { nome: "Alice"};
-const result = [objeto];
-const copia = [...result];
-
-console.log(objeto);         //Saída: { nome: 'Alice'}
-console.log(result);         //Saída: [ { nome: 'Alice'} ]
-console.log(copia);          //Saída: [ { nome: 'Alice'} ]
-
-console.log(objeto.nome);    //Saída: Alice
-console.log(result[0].nome); //Saída: Alice
-console.log(copia[0].nome);  //Saída: Alice
-
-//Alterando o valor no objeto original.
-objeto.nome = "Bob";
-
-console.log(objeto.nome);    //Saída: Bob
-console.log(result[0].nome); //Saída: Bob
-console.log(copia[0].nome);  //Saída: Bob (reflete a alteração)
-
-result[0].nome = "Charlie";
-
-console.log(objeto.nome);    //Saída: Charlie
-console.log(result[0].nome); //Saída: Charlie
-console.log(copia[0].nome);  //Saída: Charlie
-
-//Substituindo o objeto no array original.
-result[0] = { nome: "Dalton" };
-
-console.log(objeto.nome);    //Saída: Charlie
-console.log(result[0].nome); //Saída: Dalton
-console.log(copia[0].nome);  //Saída: Charlie (não reflete a substituição)
-```
-
-A substituição em `result`, que envolve a substituição do objeto no array, desvincula a propriedade `nome` do objeto orginal que estava contido em `result`. O objeto original que foi substituído no array `result` não está mais relacionado à propriedade `nome` no objeto `objeto`.\
-**Observe que a propriedade está vinculada entre todas as estruturas**. A substituição em si, em `result[0] = { nome: "Dalton" };`, atribui um novo objeto a ele, este objeto pode até possuir uma chave de mesmo nome que o objeto anterior, mas é **um objeto diferente**.
-
 # <a id = ""></a>Desestruturação.
 
 Desestruturação lhe permite extrair valores de objetos ou arrays e os atribuir a variáveis individuais em uma única instrução. Aqui estão alguns exemplos de desestruturação com objetos:
@@ -377,21 +281,6 @@ Isso torna o código mais legível e fornece uma maneira conveniente de acessar 
 
 # <a id = "construtores"></a>Construtores.
 
-### <a id = "fromcharcode"></a>`.fromCharCode()`
-
-O método `.fromCharCode()` é um método estático da classe `String` em JavaScript. Ele aceita um ou mais parâmetros numéricos (códigos de caractere Unicode) e retorna a string correspondente aos caracteres representados por esses códigos.
-
-```JavaScript
-const charCode1 = 65; //Código Unicode para "A".
-const charCode2 = 66; //Código Unicode para "B".
-
-const result = String.fromCharCode(charCode1, charCode2);
-
-console.log(result); //Saída: 'AB'
-```
-
-Os argumentos devem ser números inteiros que representam códigos Unicode válidos.
-
 ### <a id = "date"></a>`Date`
 
 Cria objetos que representam datas e horas.
@@ -487,7 +376,326 @@ Adiciona um novo valor ao conjunto. Retorna o próprio objeto Set, após a adiç
 
 `valor` **(qualquer tipo):** o valor que você deseja adicionar ao conjunto. Pode ser qualquer tipo de dado, incluindo números, strings, objetos, etc.
 
-# <a id = "funcoesarray"></a>Funções de array.
+
+
+# <a id = "funcoesobjetos"></a>Funções de objetos.
+
+### <a id = "hasownproperty"></a>`.hasOwnProperty()`
+
+Vefica se um objeto possui uma propriedade com um nome específico. Retonar um booleano.
+
+`objeto.hasOwnProperty(propriedade);`
+
+`propriedade` **(string):** o nome da propriedade que você deseja verificar se o objeto possui.
+
+# <a id = "objetosglobais"></a>Objetos globais. (Ok: posição em relação a "Construtores")
+
+- [`String`](#string);
+- [`Promise`](#promise);
+- [`JSON`](#json);
+- [`Object`](#object).
+
+## <a id = "string"></a>`String` (Ok)
+
+O construtor `String()` converte valores ou variáveis de outros tipos em objetos do tipo string.
+
+`String(valor)`
+
+`valor` **(opcional)** o valor ou variável que você deseja converter em um objeto string.
+
+Retorna um objeto do tipo string que contém o valor convertido. Se nenhum valor for fornecido, ele retorna uma string vazia.
+
+```JavaScript
+const numero = 42;
+const array = [1, 2, 3];
+const objeto = { chave: "valor" };
+
+const numeroComoString = String(numero);
+const arrayComoString = String(array);
+const objetoComoString = String(objeto);
+
+console.log(numeroComoString); //Saída: 42
+console.log(arrayComoString);  //Saída: 1, 2, 3
+console.log(objetoComoString); //Saída: [ object Object]
+
+const stringVazia = String(); //Retorna uma string vazia
+
+console.log(stringVazia);      //Saída: 
+```
+
+Lembre-se de que, na prática, é mais comum usar a conversão de tipo com a função `String()` em vez do construtor `String` para criar strings.
+
+### <a id = "fromcharcode"></a>`.fromCharCode()`
+
+O método `.fromCharCode()` é um método estático da classe `String` em JavaScript. Ele aceita um ou mais parâmetros numéricos (códigos de caractere Unicode) e retorna a string correspondente aos caracteres representados por esses códigos.
+
+```JavaScript
+const charCode1 = 65; //Código Unicode para "A".
+const charCode2 = 66; //Código Unicode para "B".
+
+const result = String.fromCharCode(charCode1, charCode2);
+
+console.log(result); //Saída: 'AB'
+```
+
+Os argumentos devem ser números inteiros que representam códigos Unicode válidos.
+
+## <a id = "promise"></a>`Promise`
+
+`Promise` é um objeto global em JavaScript e um recurso fundamental para trabalhar com operações assíncronas, faz parte do padrão ECMAScript (a especificação JavaScript) desde o ECMAScript 6 (ES6).\
+Representa um valor que pode estar disponível agora, no futuro ou nunca. Tem três estados principais:
+
+- **Pendente (Pending):** o estado inicial da promessa, quando a operação assíncrona ainda não foi concluída;
+- **Resolvida (Fulfilled):**  a operação assíncrona foi bem-sucedida e a promessa tem um valor resultante;
+- **Rejeitada (Rejected):** a operação assíncrona falhou e a promessa tem um motivo (um erro) que explica por que a operação falhou.
+
+As promessa são frequentemente usadas para lidar com código assíncrono de forma mais legível e eficiente, especialmente quando se trata de solicitações de rede, leitura/gravação de arquivos, tempo de espera e outras operações que não podem ser concluídas instantaneamente. Elas fornecem uma maneira estruturada de tratar o resultado de operações assíncronas.
+
+### <a id = "all"></a>`.all()`
+
+Cria uma nova `Promise` que é resolvida quando todas as promessas de um array passado como argumento forem resolvidas. ou rejeitada se qualquer uma das promessas for rejeitada. Retorna uma nova promessa que será resolvida com um array contendo os valores resolvidos de tadas as promessas no array `iteravel`.
+
+`Promise.all(iteravel);`
+
+`iteravel` **(array ou um objeto iterável):** um array ou objeto iterável (como um objeto Map ou Set) contendo as promessas que você deseja acompanhar.
+
+A ordem das promessas no array, se manterá a mesma. Se qualquer uma das promessas for rejeitada, a nova promessa também será rejeitada imediatamente com a razão (erro) da primeira promessa rejeitada encontrada.
+
+## <a id = "json"></a>`JSON`
+
+Usado para trabalhar com dados no formato JSON.
+
+### <a id = "stringify"></a>`.stringify()`
+
+Converte um objeto JavaScript em uma string JSON.
+
+`.stringify(objeto, replacer, espaços)`
+
+- `objeto`**:** o objeto JavaScript que você deseja serializar em uma string JSON.
+- `replacer` **(opcional):** uma função ou um array que permite personalizar a serialização, filtrando e transformando os valores antes de serem convertidos em JSON. Você pode passar uma função de substituição para personalizar a serialização, ou um array de strings e números que especifica as propriedades a serem incluídas na serialização;
+- `espaços` **(opcional):** um argumento que controla o espaçamento (indentação) na string JSON resultante. Pode ser um número que indica o número de espaços para indentação ou uma string personalizada para a identação.
+
+Observação importante: **serializar** um objeto significa converter esse objeto em uma representação de dados que possa ser armazenada ou transmitida de uma maneira que possa ser posteriormente desserializada e reconstruída em sua forma original. Geralmente, isso envolve transformar o objeto em uma sequência de caracteres ou bytes que possa ser facilmente armazenada em um arquivo, transmitida através de uma rede ou armazenada em um banco de dados.
+
+Exemplo:
+
+```JavaScript
+const objeto = {
+  nome: "João",
+  idade: 30,
+  cidade: "São Paulo"
+};
+
+//replacer é uma função que personaliza a serialização.
+const replacer = (chave, valor) => {
+  //Vamos omitir a propriedade "idade" na serialização.
+  if (chave === "idade") {
+    return undefined;
+  }
+
+  return valor;
+}
+
+//O espaço define a quantidade de espaços de indentação na string JSON.
+const espaco = 2;
+const jsonString = JSON.stringfy(objeto, replacer, espaco);
+
+console.log(jsonString);
+
+/*A saída será algo como:
+{
+  "nome": "João",
+  "cidade": "São Paulo"
+}
+*/
+```
+
+Neste exemplo, estamos usando o `replacer` para personalizar a serialização. Ele verifica se a chave é "idade" e, se for, retorna `undefined`, o que efetivamente **omite a propriedade** `idade` **da serialização**. O `espaco` é definido como `2`, o que significa que a string JSON resultante será formatada com um recuo de 2 espaços. Observando que:
+
+- Quando `JSON.stringfy()` é chamado com o `replacer` como argumento, ele começa a serialização do objeto a partir do topo (o objeto raiz) e desce na hierarquia das propriedades;
+- A função `replacer` é chamada para cada propriedade do objeto sendo serializado. Ela recebe dois argumentos: a `chave` da propriedade atual e o `valor` dessa propriedade;
+- A função `replacer` pode retornar um novo valor para a propriedade atual. Se ela retornar `undefined`, a propriedade será omitida na saída final; caso contrário, o valor retornado será incluído na saída JSON.
+
+### <a id = "parse"></a>`.parse()`
+
+`.parse(JSON)`
+
+Analisa uma string no formato JSON e a converte em um objeto JavaScript. A string precisa estar em um formato JSON válido. Exemplo:
+
+```JavaScript
+JSON.parse(content)[version]; //Estamos acessando a chave "version" do objeto retornado por JSON.parse(content)
+```
+
+## <a id = ""></a>`Object`
+
+Objeto global pré-definido (built-in object).
+
+### <a id = "assign"></a>`.assign()`
+
+É usada para copiar os valores de uma ou mais propriedades de objetos de origem (ou fonte) para um objeto de destino. Isso é frequentemente usado para criar um novo objeto que contém uma combinação de propriedades de vários outros objetos.
+
+`.assign(destino, origem1, origem2, ...)`
+
+- `destino`**:** é o objeto de destino onde as propriedades serão copiadas. Este objeto será modificado e retornado;
+- `origem1, origem2, ...`**:** são os objetos de origem a partir dos quais as propriedades serão copiadas. Você pode passar múltiplos objetos de origem separados por vírgulas.
+
+O `.assign()` copiará as propriedades de cada objeto de origem para o objeto de destino. Se houver conflitos de propriedades (ou seja, se o objeto de origem e o objeto de destino tiverem uma propriedade com o mesmo nome), o valor da propriedade no objeto de origem substituirá o valor correspondente no objeto de destino. Exemplo:
+
+```JavaScript
+const destino = {};
+const origem1 = {a: 1, b: 2};
+const origem2 = {b: 3, c: 4};
+
+Object.assign(destino, origem1, origem2);
+
+console.log(destino); //Saída: { a: 1, b: 3, c: 4 }
+```
+
+Neste exemplo, as propriedades de `origem1` e `origem2` são copiadas para `destino`, e o valor da propriedade `b` do `origem2` substitui o valor da propriedade `b` do `origem1` no objeto de destino.\
+Lembre-se de que o `Object.assign()` funciona apenas para copiar as propriedades enumeráveis e próprias (**não as herdadas**) dos objetos de origem. Além disso, ele retorna o objeto de destino após a cópia das propriedades.
+
+### <a id = "keys"></a>`.keys()`
+
+`.keys(objeto)`
+
+Usada para retornar um array com as chaves (nomes das propriedades) de um `objeto`.
+
+### <a id = ""></a>`.values()`
+
+Retorna um array contendo os valores das **propriedades enumeráveis** de uma objeto.
+
+`const valores = Object.values(objeto);`
+
+### <a id = "definepropertyof"></a>`.definePropertyOf()`
+
+Usada para definir uma nova propriedade diretamente em um objeto ou modificar uma propriedade existente com mais controle sobre suas características. Ela permite que você especifique várias opções para a propriedade, como se ela é enumerável, configurável ou gravável.
+
+`.definePropertyOf(objeto, propriedade, descritor)`
+
+- `objeto`**:** o objeto no qual você deseja definir ou modificar a propriedade;
+- `propriedade`**:** o nome da propriedade que você deseja definir ou modificar;
+- `descritor`**:** um objeto que descreve as características da propriedade. Este objeto pode ter várias propriedades, incluindo:
+  - `value` **(opcional):** o valor da propriedade;
+  - `writable`**:** um booleano que indica se a propriedade pode ser modificada com o operador de atribuição (por padrão, `false`);
+  - `enumerable`**:** um booleano que indica se a propriedade pode ser percorrida em um loop `for...in` ou listada usando `Object.keys()` (por padrão, `false`);
+  - `configurable`**:** um booleano que indica se a propriedade pode ser reconfigurada ou excluída (por padrão, `false`).
+
+### <a id = "getpropertyof"></a>`.getPropertyOf()`
+
+`.getPropertyOf(objeto)`
+
+Utilizada para retornar o protótipo de um `objeto`.
+
+# <a id = "funcoesstring"></a>Funções de string. (Ok: posição em relação a "Construtores" e "Objetos globais")
+
+### <a id = "split">`.split()`
+
+Divide uma string em partes. Retorna um array contendo as partes da string original que foram divididas com base no separador.
+
+`string.split([separador[, limite]]);`
+
+- `separador` **(string ou expressão regular, opcional):** este é um parâmetro opcional que define o critério pelo qual a string será dividida. Pode ser uma string ou uma expressão regular. Se omitido, a string será dividida em um array contendo um único elemento que é a string original;
+- `limite` **(number, opcional):** um número opcional que define o limite de divisões. O método `.split()` dividirá a string até que o número de divisões atinja esse limite. Se omitido ou não for um número válido, não haverá limite.
+
+### <a id = "startswith"></a>`.startsWith()`
+
+Determina se uma string começa com os caracteres de outra string. Retorna um booleano.
+
+`string.startsWith(valorProcurado[, posicao]);`
+
+- `valorProcurado` **(string):** a string que você deseja verificar se é o prefixo da string original;
+- `posicao` **(number, opcional):** especifica a posição na string original a partir da qual você deseja iniciar a verificação. O valor padrão é 0, o que significa que a verificação começa no início da string.
+
+Exemplos de uso:
+
+```JavaScript
+const texto = "Isso é um exemplo.";
+
+console.log(texto.startsWith("Isso"));        //true, porque a string começa com "Isso".
+console.log(texto.startsWith("um", 8));       //true, começa com "um" a partir da posição 8.
+console.log(texto.startsWith("exemplo", 11)); //true, começa com "exemplo" a partir da posição 11.
+console.log(texto.startsWith("exemplo", 12)); //false, "exemplo" não começa na posição 12
+console.log(texto.startsWith("É"));            //false, porque a comparação é sensível a maiúsculas e minúsculas.
+```
+
+### <a id = "replace"></a>`.replace()`
+
+Substitui substrings dentro de uma string por outras substrings. Retorna uma nova string.
+
+`string.replace(valorProcurado, valorSubstituto);`
+
+- `valorProcurado` **(string ou expressão regular):** a substring ou padrão a ser encontrado na string original e substituído;
+- `valorSubstituto` **(string ou função):** a substring que substituirá à `valorProcurado` na string original. Isso pode ser uma string simples ou uma função que gera a string de substituição.
+
+Exemplo mais complexo substituindo os espaços reservados de uma consulta SQL.
+
+```JavaScript
+let update_query = "UPDATE tabela SET coluna = :valor WHERE id = :id";
+
+const update_values = {
+  valor: 42,
+  id: 1
+}
+
+update_query = update_query.replace(/\:(\w+)/g, (txt, key) => {
+  if (update_values.hasOwnProperty(key)) {
+    return `'${update_values[key]}'`;
+  }
+
+  return txt;
+}); /*O valor da variável update_query será a consulta SQL atualizada: UPDATE tabela SET coluna = '42' WHERE id = '1'*/
+```
+
+Neste exemplo, os marcadores de espaço reservado `:valor` e `:id` foram substituídos pelos valores correspondentes no objeto `update_values`, resultando na consulta SQL atualizada. Isso é útil ao criar consultas SQL dinâmicas em que você deseja injetar valores nas consultas com segurança.\
+A expressão regular `/\:(\w+)/g` é usada para encontrar todas as ocorrências em uma string onde o padrão corresponde a uma sequência que começa com `:` seguida por um ou mais caracteres alfanuméricos (palavra). O `g` no final da expressão regular significa "global", o que indica que ele deve encontrar todas as ocorrências, não apenas a primeira.\
+A expressão regular tem dois componentes principais:
+
+- `:`**:** corresponde ao caractere `:` literalmente. **Ele é usado para identificar o ínicio do padrão que estamos procurando**;
+- `(\w+)`**:** este é um **grupo de captura** que corresponde a uma ou mais ocorrências de caracteres alfanuméricos (letras, dígitos ou sublinhados).
+  - `\w`**:** corresponde a qualquer caractere alfanumérico;
+  - `+`**:** indica que deve haver pelo menos um caractere alfanumérico, mas pode haver mais.
+
+A função de retorno `(txt, key) => {}` seria chamada para cada correspondência encontrada na string. O primeiro argumento `txt` conteria a correspondência completa encontrada (a substring que corresponde à expressão regular), e o segundo argumento `key` conteria a parte correspondente ao grupo de captura `(\w+)`, ou seja, a sequência de caracteres açfanuméricos após `:` na string.
+
+Em relação a expressões regulares, vamos estudar um pouco mais elas no exemplo abaixo:
+
+```JavaScript
+const frase = "O gato é um animal e o gato é fofo.";
+
+//Substitui a primeira ocorrência de "gato" por "cachorro".
+let novaFrase = frase.replace("gato", "cachorro"); //Saída: O cachorro é um animal e o gato é fofo.
+
+//Substitui a primeira ocorrência de "gato" por "cachorro". Aqui, gato é uma expressão regular.
+novaFrase = frase.replace(/gato/, "cachorro"); //Saída: O cachorro é um animal e o gato é fofo.
+
+//Substitui todas as ocorrências de "gato" por "cachorro". Aqui, gato é uma expressão regular.
+novaFrase = frase.replace(/gato/g, "cachorro"); //Saída: O cachorro é um animal e o cachorro é fofo.
+```
+
+## Funções de substituição. (Ok)
+
+São funções usadas para modificar o conteúdo de strings.
+
+### <a id = "padstart"></a>`.padStart()` (Ok)
+
+O método `.padStart()` é usado para preencher o início de uma string com um caractere especificado até que a string alcance um determinado comprimento. Exemplos de uso:
+
+```JavaScript
+const stringOriginal = "42";
+const paddedString = stringOriginal.padStart(5, "0");
+
+console.log(paddedString); // Saída: 00042
+```
+
+`const paddedString = string.padStart(targetLength, padString);`
+
+- `targetLength` **(number):** o comprimento desejado da string resultante após o preenchimento. Caso a `string` já possua um tamanho maior que o `targetLength`, o método não fará nada e a string permanecerá inalterada;
+- `padString` **(string):** o caractere (ou sequência de caracteres) a ser usado para preencher a string original. Caso o seu valor não seja especificado, a string é alterada, você pode perceber isso pela propriedade `.length` dela.\
+  Uma caso interessante é se você definir ela como uma string vazia `''`, nada acontece.
+
+Retorna uma nova string que é a tring original preenchida no início com o caractere especificado até que alcance o comprimento desejado.
+
+# <a id = "funcoesarray"></a>Funções de array. (Ok: posição em relação a "Construtores", "Objetos globais" e "Funções de string")
 
 ### <a id = "push"></a>`.push()`
 
@@ -657,253 +865,9 @@ Eu esperava que o código acima se comportasse da seguinte maneira, tendo em vis
 O problema está no uso do `await` dentro do mapeamento. Quando você usa `await` dentro de uma função assíncrona no contexto do mapeamento, ele aguardará a resolução da promessa retornada por `crypto.compare()`, mas não aguardará a resolução das promessas em todo o array.\
 Por isso, se você deseja aguardar a resolução de todas as promessas no array `results`, você deve usar o `Promise.all()` depois do mapeamento. Dessa forma, `Promise.all()` aguardará a resolução de todas as promessas em `results` e retornará um array de valores booleanos representando os resultados das comparações.
 
-# <a id = "funcoesstring"></a>Funções de string.
+## Funções de redução.
 
-### <a id = "split">`.split()`
-
-Divide uma string em partes. Retorna um array contendo as partes da string original que foram divididas com base no separador.
-
-`string.split([separador[, limite]]);`
-
-- `separador` **(string ou expressão regular, opcional):** este é um parâmetro opcional que define o critério pelo qual a string será dividida. Pode ser uma string ou uma expressão regular. Se omitido, a string será dividida em um array contendo um único elemento que é a string original;
-- `limite` **(number, opcional):** um número opcional que define o limite de divisões. O método `.split()` dividirá a string até que o número de divisões atinja esse limite. Se omitido ou não for um número válido, não haverá limite.
-
-### <a id = "startswith"></a>`.startsWith()`
-
-Determina se uma string começa com os caracteres de outra string. Retorna um booleano.
-
-`string.startsWith(valorProcurado[, posicao]);`
-
-- `valorProcurado` **(string):** a string que você deseja verificar se é o prefixo da string original;
-- `posicao` **(number, opcional):** especifica a posição na string original a partir da qual você deseja iniciar a verificação. O valor padrão é 0, o que significa que a verificação começa no início da string.
-
-Exemplos de uso:
-
-```JavaScript
-const texto = "Isso é um exemplo.";
-
-console.log(texto.startsWith("Isso"));        //true, porque a string começa com "Isso".
-console.log(texto.startsWith("um", 8));       //true, começa com "um" a partir da posição 8.
-console.log(texto.startsWith("exemplo", 11)); //true, começa com "exemplo" a partir da posição 11.
-console.log(texto.startsWith("exemplo", 12)); //false, "exemplo" não começa na posição 12
-console.log(texto.startsWith("É"));            //false, porque a comparação é sensível a maiúsculas e minúsculas.
-```
-
-### <a id = "replace"></a>`.replace()`
-
-Substitui substrings dentro de uma string por outras substrings. Retorna uma nova string.
-
-`string.replace(valorProcurado, valorSubstituto);`
-
-- `valorProcurado` **(string ou expressão regular):** a substring ou padrão a ser encontrado na string original e substituído;
-- `valorSubstituto` **(string ou função):** a substring que substituirá à `valorProcurado` na string original. Isso pode ser uma string simples ou uma função que gera a string de substituição.
-
-Exemplo mais complexo substituindo os espaços reservados de uma consulta SQL.
-
-```JavaScript
-let update_query = "UPDATE tabela SET coluna = :valor WHERE id = :id";
-
-const update_values = {
-  valor: 42,
-  id: 1
-}
-
-update_query = update_query.replace(/\:(\w+)/g, (txt, key) => {
-  if (update_values.hasOwnProperty(key)) {
-    return `'${update_values[key]}'`;
-  }
-
-  return txt;
-}); /*O valor da variável update_query será a consulta SQL atualizada: UPDATE tabela SET coluna = '42' WHERE id = '1'*/
-```
-
-Neste exemplo, os marcadores de espaço reservado `:valor` e `:id` foram substituídos pelos valores correspondentes no objeto `update_values`, resultando na consulta SQL atualizada. Isso é útil ao criar consultas SQL dinâmicas em que você deseja injetar valores nas consultas com segurança.\
-A expressão regular `/\:(\w+)/g` é usada para encontrar todas as ocorrências em uma string onde o padrão corresponde a uma sequência que começa com `:` seguida por um ou mais caracteres alfanuméricos (palavra). O `g` no final da expressão regular significa "global", o que indica que ele deve encontrar todas as ocorrências, não apenas a primeira.\
-A expressão regular tem dois componentes principais:
-
-- `:`**:** corresponde ao caractere `:` literalmente. **Ele é usado para identificar o ínicio do padrão que estamos procurando**;
-- `(\w+)`**:** este é um **grupo de captura** que corresponde a uma ou mais ocorrências de caracteres alfanuméricos (letras, dígitos ou sublinhados).
-  - `\w`**:** corresponde a qualquer caractere alfanumérico;
-  - `+`**:** indica que deve haver pelo menos um caractere alfanumérico, mas pode haver mais.
-
-A função de retorno `(txt, key) => {}` seria chamada para cada correspondência encontrada na string. O primeiro argumento `txt` conteria a correspondência completa encontrada (a substring que corresponde à expressão regular), e o segundo argumento `key` conteria a parte correspondente ao grupo de captura `(\w+)`, ou seja, a sequência de caracteres açfanuméricos após `:` na string.
-
-Em relação a expressões regulares, vamos estudar um pouco mais elas no exemplo abaixo:
-
-```JavaScript
-const frase = "O gato é um animal e o gato é fofo.";
-
-//Substitui a primeira ocorrência de "gato" por "cachorro".
-let novaFrase = frase.replace("gato", "cachorro"); //Saída: O cachorro é um animal e o gato é fofo.
-
-//Substitui a primeira ocorrência de "gato" por "cachorro". Aqui, gato é uma expressão regular.
-novaFrase = frase.replace(/gato/, "cachorro"); //Saída: O cachorro é um animal e o gato é fofo.
-
-//Substitui todas as ocorrências de "gato" por "cachorro". Aqui, gato é uma expressão regular.
-novaFrase = frase.replace(/gato/g, "cachorro"); //Saída: O cachorro é um animal e o cachorro é fofo.
-```
-
-# <a id = "funcoesobjetos"></a>Funções de objetos.
-
-### <a id = "hasownproperty"></a>`.hasOwnProperty()`
-
-Vefica se um objeto possui uma propriedade com um nome específico. Retonar um booleano.
-
-`objeto.hasOwnProperty(propriedade);`
-
-`propriedade` **(string):** o nome da propriedade que você deseja verificar se o objeto possui.
-
-# <a id = "objetosglobais"></a>Objetos globais.
-
-- [`Promise`](#promise);
-- [`JSON`](#json);
-- [`Object`](#object).
-
-## <a id = "promise"></a>`Promise`
-
-`Promise` é um objeto global em JavaScript e um recurso fundamental para trabalhar com operações assíncronas, faz parte do padrão ECMAScript (a especificação JavaScript) desde o ECMAScript 6 (ES6).\
-Representa um valor que pode estar disponível agora, no futuro ou nunca. Tem três estados principais:
-
-- **Pendente (Pending):** o estado inicial da promessa, quando a operação assíncrona ainda não foi concluída;
-- **Resolvida (Fulfilled):**  a operação assíncrona foi bem-sucedida e a promessa tem um valor resultante;
-- **Rejeitada (Rejected):** a operação assíncrona falhou e a promessa tem um motivo (um erro) que explica por que a operação falhou.
-
-As promessa são frequentemente usadas para lidar com código assíncrono de forma mais legível e eficiente, especialmente quando se trata de solicitações de rede, leitura/gravação de arquivos, tempo de espera e outras operações que não podem ser concluídas instantaneamente. Elas fornecem uma maneira estruturada de tratar o resultado de operações assíncronas.
-
-### <a id = "all"></a>`.all()`
-
-Cria uma nova `Promise` que é resolvida quando todas as promessas de um array passado como argumento forem resolvidas. ou rejeitada se qualquer uma das promessas for rejeitada. Retorna uma nova promessa que será resolvida com um array contendo os valores resolvidos de tadas as promessas no array `iteravel`.
-
-`Promise.all(iteravel);`
-
-`iteravel` **(array ou um objeto iterável):** um array ou objeto iterável (como um objeto Map ou Set) contendo as promessas que você deseja acompanhar.
-
-A ordem das promessas no array, se manterá a mesma. Se qualquer uma das promessas for rejeitada, a nova promessa também será rejeitada imediatamente com a razão (erro) da primeira promessa rejeitada encontrada.
-
-## <a id = "json"></a>`JSON`
-
-Usado para trabalhar com dados no formato JSON.
-
-### <a id = "stringify"></a>`.stringify()`
-
-Converte um objeto JavaScript em uma string JSON.
-
-`.stringify(objeto, replacer, espaços)`
-
-- `objeto`**:** o objeto JavaScript que você deseja serializar em uma string JSON.
-- `replacer` **(opcional):** uma função ou um array que permite personalizar a serialização, filtrando e transformando os valores antes de serem convertidos em JSON. Você pode passar uma função de substituição para personalizar a serialização, ou um array de strings e números que especifica as propriedades a serem incluídas na serialização;
-- `espaços` **(opcional):** um argumento que controla o espaçamento (indentação) na string JSON resultante. Pode ser um número que indica o número de espaços para indentação ou uma string personalizada para a identação.
-
-Observação importante: **serializar** um objeto significa converter esse objeto em uma representação de dados que possa ser armazenada ou transmitida de uma maneira que possa ser posteriormente desserializada e reconstruída em sua forma original. Geralmente, isso envolve transformar o objeto em uma sequência de caracteres ou bytes que possa ser facilmente armazenada em um arquivo, transmitida através de uma rede ou armazenada em um banco de dados.
-
-Exemplo:
-
-```JavaScript
-const objeto = {
-  nome: "João",
-  idade: 30,
-  cidade: "São Paulo"
-};
-
-//replacer é uma função que personaliza a serialização.
-const replacer = (chave, valor) => {
-  //Vamos omitir a propriedade "idade" na serialização.
-  if (chave === "idade") {
-    return undefined;
-  }
-
-  return valor;
-}
-
-//O espaço define a quantidade de espaços de indentação na string JSON.
-const espaco = 2;
-const jsonString = JSON.stringfy(objeto, replacer, espaco);
-
-console.log(jsonString);
-
-/*A saída será algo como:
-{
-  "nome": "João",
-  "cidade": "São Paulo"
-}
-*/
-```
-
-Neste exemplo, estamos usando o `replacer` para personalizar a serialização. Ele verifica se a chave é "idade" e, se for, retorna `undefined`, o que efetivamente **omite a propriedade** `idade` **da serialização**. O `espaco` é definido como `2`, o que significa que a string JSON resultante será formatada com um recuo de 2 espaços. Observando que:
-
-- Quando `JSON.stringfy()` é chamado com o `replacer` como argumento, ele começa a serialização do objeto a partir do topo (o objeto raiz) e desce na hierarquia das propriedades;
-- A função `replacer` é chamada para cada propriedade do objeto sendo serializado. Ela recebe dois argumentos: a `chave` da propriedade atual e o `valor` dessa propriedade;
-- A função `replacer` pode retornar um novo valor para a propriedade atual. Se ela retornar `undefined`, a propriedade será omitida na saída final; caso contrário, o valor retornado será incluído na saída JSON.
-
-### <a id = "parse"></a>`.parse()`
-
-`.parse(JSON)`
-
-Analisa uma string no formato JSON e a converte em um objeto JavaScript. A string precisa estar em um formato JSON válido. Exemplo:
-
-```JavaScript
-JSON.parse(content)[version]; //Estamos acessando a chave "version" do objeto retornado por JSON.parse(content)
-```
-
-## <a id = ""></a>`Object`
-
-Objeto global pré-definido (built-in object).
-
-### <a id = "assign"></a>`.assign()`
-
-É usada para copiar os valores de uma ou mais propriedades de objetos de origem (ou fonte) para um objeto de destino. Isso é frequentemente usado para criar um novo objeto que contém uma combinação de propriedades de vários outros objetos.
-
-`.assign(destino, origem1, origem2, ...)`
-
-- `destino`**:** é o objeto de destino onde as propriedades serão copiadas. Este objeto será modificado e retornado;
-- `origem1, origem2, ...`**:** são os objetos de origem a partir dos quais as propriedades serão copiadas. Você pode passar múltiplos objetos de origem separados por vírgulas.
-
-O `.assign()` copiará as propriedades de cada objeto de origem para o objeto de destino. Se houver conflitos de propriedades (ou seja, se o objeto de origem e o objeto de destino tiverem uma propriedade com o mesmo nome), o valor da propriedade no objeto de origem substituirá o valor correspondente no objeto de destino. Exemplo:
-
-```JavaScript
-const destino = {};
-const origem1 = {a: 1, b: 2};
-const origem2 = {b: 3, c: 4};
-
-Object.assign(destino, origem1, origem2);
-
-console.log(destino); //Saída: { a: 1, b: 3, c: 4 }
-```
-
-Neste exemplo, as propriedades de `origem1` e `origem2` são copiadas para `destino`, e o valor da propriedade `b` do `origem2` substitui o valor da propriedade `b` do `origem1` no objeto de destino.\
-Lembre-se de que o `Object.assign()` funciona apenas para copiar as propriedades enumeráveis e próprias (**não as herdadas**) dos objetos de origem. Além disso, ele retorna o objeto de destino após a cópia das propriedades.
-
-### <a id = "keys"></a>`.keys()`
-
-`.keys(objeto)`
-
-Usada para retornar um array com as chaves (nomes das propriedades) de um `objeto`.
-
-### <a id = ""></a>`.values()`
-
-Retorna um array contendo os valores das **propriedades enumeráveis** de uma objeto.
-
-`const valores = Object.values(objeto);`
-
-### <a id = "definepropertyof"></a>`.definePropertyOf()`
-
-Usada para definir uma nova propriedade diretamente em um objeto ou modificar uma propriedade existente com mais controle sobre suas características. Ela permite que você especifique várias opções para a propriedade, como se ela é enumerável, configurável ou gravável.
-
-`.definePropertyOf(objeto, propriedade, descritor)`
-
-- `objeto`**:** o objeto no qual você deseja definir ou modificar a propriedade;
-- `propriedade`**:** o nome da propriedade que você deseja definir ou modificar;
-- `descritor`**:** um objeto que descreve as características da propriedade. Este objeto pode ter várias propriedades, incluindo:
-  - `value` **(opcional):** o valor da propriedade;
-  - `writable`**:** um booleano que indica se a propriedade pode ser modificada com o operador de atribuição (por padrão, `false`);
-  - `enumerable`**:** um booleano que indica se a propriedade pode ser percorrida em um loop `for...in` ou listada usando `Object.keys()` (por padrão, `false`);
-  - `configurable`**:** um booleano que indica se a propriedade pode ser reconfigurada ou excluída (por padrão, `false`).
-
-### <a id = "getpropertyof"></a>`.getPropertyOf()`
-
-`.getPropertyOf(objeto)`
-
-Utilizada para retornar o protótipo de um `objeto`.
+O método `.reduce()` é usado para reduzir um array a um únbico valor.
 
 # <a id = "funcoes"></a>Funções.
 
@@ -934,7 +898,27 @@ Retorna um número inteiro representado pela string fornecida, de acordo com a b
 
 ### <a id = "setinterval"></a>`setInterval()`
 
+O método `setInterval()` é uma função global em JavaScript que é usada para executar uma função ou código repetidamente com um invervalo de tempo especificado.
 
+```JavaScript
+function minhaFuncao() {
+  console.log("Executando a função a cada 2 segundos.");
+}
+
+const intervalId = setInterval(minhaFuncao, 2000); //Executa minhaFuncao a cada 2 segundos.
+
+setTimeout(() => {
+  clearInverval(intervalId); //Interrompe o setInterval().
+  console.log("Intervalo interrompido.");
+}, 10000); //Interrompe o setInterval() após 10 segundos.
+```
+
+Parâmetros:
+
+- `callback`**:** a função ou código que deve ser executado em intervalos regulares;
+- `delay` **(number):** o intervalo de tempo, em milissegundos, entre cada chamada da função `callback`. O `delay` especifica a quantidade de tempo que deve passar antes de a função ser executada novamente.
+
+Retorna um valor que pode ser usado para interromper a execução do intervalo. Esse valor é um identificador numérico (ID) que é retornado quando você chama `setInterval()`. Você pode passar esse ID para o método `clearInterval()` para interromper o intervalo.
 
 # <a id = "importacaonodeindexacao"></a>Como importar um diretório de funções no Node.js e o papel do arquivo de indexação.
 
