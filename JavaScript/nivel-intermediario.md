@@ -1,8 +1,22 @@
 # Nível Intermediário.
 
-# Objetos em JavaScript.
+### Sumário
 
-# Operador `...` (Spread e Rest).
+9. [Objetos em JavaScript](#objetos-em-javascript)
+10. [Operador `...` (Spread e Rest)](#operador--spread-e-rest)
+11. [Funções de ordem superior](#funcoes-de-ordem-superior)
+12. [Promises](#promises)
+13. [Event Loop](#event-loop)
+14. [Async/Await](#asyncawait)
+15. [Manipulação do DOM](#manipulacao-do-dom)
+16. [Trabalhando com Arrays e Objetos (forEach, map, filter)](#trabalhando-com-arrays-e-objetos-foreach-map-filter)
+17. [Herança e Prototypes](#heranca-e-prototypes)
+18. [Closures](#closures)
+19. [Tratadores de eventos e Event Delegation](#tratadores-de-eventos-e-event-delegation)
+
+# <a name = "objetos-em-javascript"></a>Objetos em JavaScript
+
+# <a name = "operador--spread-e-rest"></a>Operador `...` (Spread e Rest)
 
 O operador `...` é um recurso poderoso em JavaScript que desempenha duas funções principais: espalhar elementos de arrays e objetos, conhecidos como "spread", e coletar argumentos em funções, chamado "rest". Foi introduzido no ECMAScript 6 (ES6).
 
@@ -95,10 +109,28 @@ console.log(copia[0].nome);     //Saída: Charlie
 // Substituindo o objeto no array original.
 resultado[0] = { nome: "Dalton" };
 
-console.log(objeto.nome);    //Saída: Charlie
-console.log(result[0].nome); //Saída: Dalton
-console.log(copia[0].nome);  //Saída: Charlie (não reflete a substituição)
+console.log(objeto.nome);       //Saída: Charlie
+console.log(resultado[0].nome); //Saída: Dalton
+console.log(copia[0].nome);     //Saída: Charlie (não reflete a substituição)
 ```
 
 A substituição em `result`, que envolve a substituição do objeto no array, desvincula a propriedade `nome` do objeto orginal que estava contido em `result`. O objeto original que foi substituído no array `result` não está mais relacionado à propriedade `nome` no objeto `objeto`.\
 **Observe que a propriedade está vinculada entre todas as estruturas**. A substituição em si, em `result[0] = { nome: "Dalton" };`, atribui um novo objeto a ele, este objeto pode até possuir uma chave de mesmo nome que o objeto anterior, mas é **um objeto diferente**.
+
+# <a name = "funcoes-de-ordem-superior"></a>Funções de ordem superior
+
+# <a name = "promises"></a>Promises
+
+# <a name = "event-loop"></a>Event Loop
+
+# <a name = "asyncawait"></a>Async/Await
+
+# <a name = "manipulacao-do-dom"></a>Manipulação do DOM
+
+# <a name = "trabalhando-com-arrays-e-objetos-foreach-map-filter"></a>Trabalhando com Arrays e Objetos (forEach, map, filter)
+
+# <a name = "heranca-e-prototypes"></a>Herança e Prototypes
+
+# <a name = "closures"></a>Closures
+
+# <a name = "tratadores-de-eventos-e-event-delegation"></a>Tratadores de eventos e Event Delegation

@@ -1,6 +1,12 @@
-Contexto:
+# Template
 
-**Nível Inicial: Fundamentos**
+# Contexto para o Chat GPT
+
+## JavaScript
+
+Lista de tópicos para o aprendizado da linguagem de programação JavaScript que considera a curva de aprendizado:
+
+Nível Inicial: Fundamentos
 
 1. Variáveis (var, let, const)
 2. Tipos de dados (números, strings, booleanos)
@@ -11,88 +17,61 @@ Contexto:
 7. Tratamento de erros (try...catch)
 8. Callbacks e funções anônimas
 
-**Nível Intermediário: Programação Assíncrona e Objetos**
+Nível Intermediário: Programação Assíncrona e Objetos
 
 9. Objetos em JavaScript
-10. Funções de ordem superior
-11. Promises
-12. Event Loop
-13. Async/Await
-14. Manipulação do DOM
-15. Trabalhando com Arrays e Objetos (forEach, map, filter)
-16. Herança e Prototypes
-17. Closures
-18. Tratadores de eventos e Event Delegation
+10. 
+11. Funções de ordem superior
+12. Promises
+13. Event Loop
+14. Async/Await
+15. Manipulação do DOM
+16. Trabalhando com Arrays e Objetos (forEach, map, filter)
+17. Herança e Prototypes
+18. Closures
+19. Tratadores de eventos e Event Delegation
 
-**Nível Avançado: Conceitos Mais Avançados**
+Nível Avançado: Conceitos Mais Avançados
 
-19. Classes em JavaScript (introduzidas no ES6)
-20. Desestruturação
-21. Proxy e Reflect
-22. Currying e Composição de funções
-23. WebSockets
-24. Web Workers
-25. Métodos avançados de arrays (reduce, some, every)
-26. Manipulação de strings avançada
-27. Uso de modules (CommonJS, ES6 Modules)
+20. Classes em JavaScript (introduzidas no ES6)
+21. Desestruturação
+22. Proxy e Reflect
+23. Currying e Composição de funções
+24. WebSockets
+25. Web Workers
+26. Métodos avançados de arrays (reduce, some, every)
+27. Manipulação de strings avançada
+28. Uso de modules (CommonJS, ES6 Modules)
 
----
+## Novos arquivos
 
-**Nível Inicial: Fundamentos**
+Lista de tópicos para o aprendizado da _____ que considere a curva de aprendizado.
 
-1. Introdução ao JavaScript e Node.js
-2. Configuração do ambiente de desenvolvimento
-3. Manipulação de módulos e pacotes com o npm
-4. Noções básicas de APIs e solicitações HTTP
+# Funções/métodos
 
-**Nível Intermediário: Trabalhando com APIs**
+`codigo` é um método ou uma função?
 
-5. Conceitos de RESTful APIs
-6. Uso do módulo `axios` para fazer solicitações HTTP
-7. Tratamento de respostas JSON
-8. Autenticação em APIs (Tokens, OAuth)
-9. Gerenciamento de erros em solicitações
-10. Uso do Postman ou Insomnia para testar APIs
+- O que ele faz;
+- Assinatura do método;
+- Parâmetros: quais os tipos deles, se eles são opcionais ou não;
+- Retorno;
+- Se ele possui uma subcategoria, por exemplo, é uma função de iteração e transformação ou de redução e agregação?
+- Exemplo de uso.
 
-**Nível Avançado: Construindo Aplicações com APIs**
+Para demonstrar a sua saída, utilize a estrutura `// Saída:`. Se no mesmo bloco de código houver mais de uma demonstração de "saída", as alinhe de acordo com a coluna da direita.
 
-11. Construção de uma aplicação web simples usando uma API
-12. Uso de bibliotecas de manipulação de dados como `Lodash` ou `Ramda`
-13. Paginação e manipulação de resultados
-14. Uso de WebSocket para comunicação em tempo real
-15. Testes automatizados para APIs (Jest, Mocha)
+# Sumário
 
-**Nível Especializado: Otimização e Técnicas Avançadas**
+- Listas enumeradas;
+- Não utilizar de pontuação ao final.
 
-16. Cache de solicitações
-17. Otimização de consultas em APIs
-18. Monitoramento e depuração de solicitações
-19. Uso de Docker para empacotar aplicações com Node.js
-20. Integração contínua (CI) e implantação contínua (CD) para aplicações com APIs
+# Markdown e VS Code
 
----
+Deixe o VS Code sugerir as âncoras, mas não utilize acentuação nela.
 
-1. **Funções Gerais de JavaScript:**
-   - Funções que não estão diretamente associadas a um tipo específico de dado, como `setTimeout()`, `setInterval()`, `parseInt()`, `parseFloat()`, entre outras. Essas funções podem ser consideradas funções "globais" ou de uso geral em JavaScript.
+# Marcadores de posição
 
-2. **Funções de Strings:**
-   - Funções que operam em strings, como métodos de manipulação de strings, conversão de caixa (maiúsculas/minúsculas), busca e substituição de substrings, entre outros.
-
-3. **Funções de Arrays:**
-   - Funções que operam em arrays, como métodos de iteração (forEach, map, filter), métodos de redução (reduce, reduceRight), métodos de verificação (some, every), métodos de localização (find, findIndex), entre outros.
-
-4. **Funções de Objetos:**
-   - Funções que operam em objetos JavaScript, como funções de clonagem, mesclagem, iteração, entre outras.
-
-5. **Funções de Bibliotecas Específicas:**
-   - Funções associadas a bibliotecas ou frameworks específicos, como funções relacionadas a bibliotecas de terceiros, como mariadb ou aws-sdk, que não fazem parte dos métodos nativos do JavaScript.
-
-6. **Outros Tópicos Relacionados:**
-   - Outras categorias de funções que não se encaixam diretamente nas categorias acima, como funções relacionadas a manipulação de data e hora, funções matemáticas avançadas, funções de manipulação de eventos, etc.
-
----
-
-Spread Properties, me fale sobre e onde incluir.
+Eu uso cinco underscore.
 
 # JavaScript: Uma Introdução.
 
@@ -113,14 +92,6 @@ Em sistemas Linux, é comum usar um Shebang (linha que começa com #!) para espe
 Me gere um conjunto de tópicos do básico ao avançado para meu arquivo de estudo **tema**, até então eu tenho os tópicos (se for o caso):
 
 ---
-
-# Template.
-
-# Check-list.
-
-### Repositório.
-
-JavaScript/nativo.md.
 
 ### Dúvidas.
 
@@ -199,32 +170,8 @@ Estrutura:
 
 Explicação detalhada.
 
-### Função/método.
-
-Resumo do que a função faz. Se a explicação for um pouco mais detalhada mas não possuir um comprimento absurdo, ela pode ser considerada um resumo.
-
-`funcao(parametro)` (exemplo da função)\
-Inclua o objeto que a chama.
-
-Explicação mais detalhada.
-
-`metodo`
-- O que ele faz;
-- Assinatura do método;
-- Parâmetros: quais os tipos deles, se eles são opcionais ou não;
-- Retorno;
-- Exemplo de uso.
 
 Se for o caso, fazer uma subclassificação, por exemplo, se é uma função básicas ou de substituição.
-
-tem quais parâmetros, quais os tipos deles, se eles são opcionais ou não e o que o método retorna?\
-Também quero a assinatura do método.\
-Se for especificar a impressão da saída no interpretador, especificar que é uma saída:
-
-```
-//Comando de impressão no interpretador.
-comando("mensagem."); //Saída: mensagem.
-```
 
 ### Bibliotecas.
 
