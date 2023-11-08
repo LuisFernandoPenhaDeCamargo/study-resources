@@ -4,6 +4,8 @@
 
 ## JavaScript
 
+Contexto:
+
 Lista de tópicos para o aprendizado da linguagem de programação JavaScript que considera a curva de aprendizado:
 
 Nível Inicial: Fundamentos
@@ -20,7 +22,7 @@ Nível Inicial: Fundamentos
 Nível Intermediário: Programação Assíncrona e Objetos
 
 9. Objetos em JavaScript
-10. 
+10. Operador `...` (Spread e Rest)
 11. Funções de ordem superior
 12. Promises
 13. Event Loop
@@ -43,6 +45,11 @@ Nível Avançado: Conceitos Mais Avançados
 27. Manipulação de strings avançada
 28. Uso de modules (CommonJS, ES6 Modules)
 
+- Ubuntu;
+- Node.js;
+- APIs;
+- SQL.
+
 ## Novos arquivos
 
 Lista de tópicos para o aprendizado da _____ que considere a curva de aprendizado.
@@ -59,6 +66,11 @@ Lista de tópicos para o aprendizado da _____ que considere a curva de aprendiza
 - Exemplo de uso.
 
 Para demonstrar a sua saída, utilize a estrutura `// Saída:`. Se no mesmo bloco de código houver mais de uma demonstração de "saída", as alinhe de acordo com a coluna da direita.
+
+# Documentação
+
+Descrição geral sobre o que o arquivo se trata no ínicio dele.\
+Parece útil deixar anotado as tabelas que ele manipula; assim como os endpoints.
 
 # Sumário
 

@@ -219,7 +219,7 @@ Portanto, o `INTERVAL` é usado para representar uma quantidade específica de t
 - `SHOW DATABASES;`**:** lista os bancos de dados. [Explicação detalhada](#showdatabases);
 - `DROP DATABASE banco;`**:** deleta um banco de dados;
 - `DESCRIBE tabela;` ou `DESC tabela;` ou `SHOW COLUMNS FROM tabela;`**:** descreve a tabela `tabela`;
-- `ALTER TABLE tabela ADD coluna tipo_da_coluna;`**:** altera a tabela `tabela` adicionando uma coluna `coluna` a ela, de tipo `tipo_da_coluna`. [Explicação detalhada](#altertable);
+- `ALTER TABLE tabela ADD coluna tipo_da_coluna;`**:** altera a tabela `tabela` adicionando uma coluna `coluna` a ela, de tipo `tipo_da_coluna`. [Explicação detalhada](#altertable); <-- Uma descrição melhor dos campos do comando.
 - `SELECT coluna FROM tabela;`**:** seleciona os valores da coluna `coluna` da tabela `tabela`;
 - `UPDATE tabela SET coluna = valor;`**:** atualiza os valores da coluna `coluna` para `valor` na tabela `tabela`;
 - `DELETE FROM tabela WHERE condicao`**:** deleta os registros que atendem determinada `condicao`. [Exemplo interessante](#deletenow).
