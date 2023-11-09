@@ -2,21 +2,21 @@
 
 ### Sumário
 
-10. [Objetos em JavaScript](#objetos-em-javascript)
-11. [Operador `...` (Spread e Rest)](#operador--spread-e-rest)
+11. [Objetos em JavaScript](#objetos-em-javascript)
+12. [Operador `...` (Spread e Rest)](#operador--spread-e-rest)
     - Operador de Espalhamento (Spread Operator)
     - Operador de Coleta (Rest Parameter)
     - Aplicações do Operador `...`
     - Shallow Copy
-12. [Funções de ordem superior](#funcoes-de-ordem-superior)
-13. [Promises](#promises)
-14. [Event Loop](#event-loop)
-15. [Async/Await](#asyncawait)
-16. [Manipulação do DOM](#manipulacao-do-dom)
-17. [Trabalhando com Arrays e Objetos (forEach, map, filter)](#trabalhando-com-arrays-e-objetos-foreach-map-filter)
-18. [Herança e Prototypes](#heranca-e-prototypes)
-19. [Closures](#closures)
-20. [Tratadores de eventos e Event Delegation](#tratadores-de-eventos-e-event-delegation)
+13. [Funções de ordem superior](#funcoes-de-ordem-superior)
+14. [Promises](#promises)
+15. [Event Loop](#event-loop)
+16. [Async/Await](#asyncawait)
+17. [Manipulação do DOM](#manipulacao-do-dom)
+18. [Trabalhando com Arrays e Objetos (forEach, map, filter)](#trabalhando-com-arrays-e-objetos-foreach-map-filter)
+19. [Herança e Prototypes](#heranca-e-prototypes)
+20. [Closures](#closures)
+21. [Tratadores de eventos e Event Delegation](#tratadores-de-eventos-e-event-delegation)
 
 # <a name = "objetos-em-javascript"></a>Objetos em JavaScript
 

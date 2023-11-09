@@ -55,33 +55,6 @@ const Config = require("módulo-acima")
 
 **Isso permite o acesso aos elementos exportados, como classes, funções ou variáveis, mas não cria uma instância da classe**.
 
-### `delete`
-
-A instrução `delete` em JavaScript é usada para remover uma propriedade de um objeto. No entanto, é importante observar que a palavra-chave `delete` tem comportamentos específicos e algumas restrições em relação ao que pode ser excluído. Aqui está um exemplo de como usar o `delete` para remover uma propriedade de um objeto:
-
-```JavaScript
-const objeto = {
-  propriedade1: "valor1",
-  propriedade2: "valor2"
-};
-
-console.log(objeto); //Saída: { propriedade1: 'valor1', propriedade2: 'valor2' }
-
-//Usando "delete" para remover uma propriedade.
-delete objeto.propriedade1;
-
-console.log(objeto); //Saída: { propriedade2: 'valor2' }
-```
-
-Neste exemplo, usamos `delete objeto.propriedade1` para remover a propriedade `propriedade1` do objeto `objeto`.\
-No entanto, tenha em mente que existem algumas limitações e considerações importantes ao usar o `delete`:
-
-- O `delete` só funciona para propriedades de objetos. Você não pode remover variáveis comuns ou elementos de arrays;
-- Algumas propriedades de objetos não podem ser excluídas. Por exemplo, propriedades definidas com `const` ou `Object.defineProperty()` com a configuração `configurable` definada como `false` não podem ser excluídas;
-- A exclusão de propriedades em objetos pode afetar o desempenho e a otimização do código, portanto, é geralmente recomendado evitá-la, a menos que seja realmente necessário.
-
-Em muitos casos, em vez de usar `delete`, é preferível definir a propriedade como `undefined` ou `null` se você deseja indicar que ela não tem um valor válido. Isso mantém a propriedade no objeto, mas a torna sem valor.
-
 # <a id = "objetoobjetosindexadochaves"></a>Objeto de objetos indexado por chaves.
 
 Exemplo para entender como você pode acessar objetos de um objeto utilizando suas chaves.
