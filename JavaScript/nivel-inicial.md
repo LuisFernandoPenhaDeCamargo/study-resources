@@ -11,7 +11,8 @@
 7. [Tratamento de erros (try...catch)](#tratamento-de-erros-trycatch)
 8. [Callbacks e funções anônimas](#callbacks-e-funcoes-anonimas)
 9. [Objeto Literal](#objeto-literal)
-10. [Operadores](#operadores)
+10. [Template Literals](#template-literals)
+11. [Operadores](#operadores)
 
 # <a name = "variaveis-var-let-const"></a>Variáveis (var, let, const)
 
@@ -158,6 +159,47 @@ Você pode adicionar propriedades ao protótipo padrão (`Object.prototype`) e e
 `console.log(Object.getPrototypeOf(Object.prototype))` não deveria retornar `{}`?
 
 A chamada `console.log(Object.getPrototypeOf(Object.prototype));` não retornará `{}` diretamente porque `Object.Prototype` é o protótipo raiz de todos os objetos em JavaScript, incluindo objetos literais criados com `{}`. No entanto, o protótipo de `Object.prototype` é `null`, e não um objeto vazio `{}`.
+
+# <a name = "template-literals"></a> Template Literals
+
+**Template Literals** (**Literais de Modelo**, também conhecido como Template Strings) é uma funcionalidade do JavaScript que permite criar strings de maneira mais flexível e dinâmica. Eles são delimitados por crases (\`\`) em vez de aspas simples ou aspas duplas e permitem a interpolação de valores ou expressões dentro da string usando `${}` como marcador de posição. Esta funcionalidade foi introduzida no JavaScript com o ECMAScript 6 (ES6).\
+Aqui está um exemplo de como usar Template Literals:
+
+```JavaScript
+const nome = "Alice";
+const idade = 30;
+const mensagem = `Olá, meu nome é ${nome} e tenho ${idade} anos.`; // Saída: Olá, meu nome é Alice e tenho 30 anos.
+
+console.log(mensagem);
+
+// Strings multilinhas.
+const paragrafo = `
+  Este é um exemplo
+  de uma string
+  multilinhas.
+`;
+
+console.log(paragrafo);
+/*
+Saída:
+  Este é um exemplo
+  de uma string
+  multilinhas.
+*/
+```
+
+Neste exemplo, a variável `mensagem` é uma Template Literal que inclui a interpolação de valores entre `${}`. Quando a string é avaliada, os valores das variáveis `nome` e `idade` são inseridos na string, criando uma mensagem personalizada.
+
+As Template Literals oferecem uma forma mais legível e conveniente de criar strings dinâmicas em comparação com a concatenação de strings tradicional, e são amplamente usadas para criar saídas de texto, mensagens de log e até mesmo consultas SQL dinâmicas em JavaScript.
+
+Observe ainda que quando você insere um array entre `${}` em um Template Literal, o JavaScript automaticamente converte o array em uma string concatenando os elementos com uma vírgula como separador.
+
+```JavaScript
+const array = [1, 2, 3];
+const templateLiteral = `Transformando um array em uma string: ${array}.`;
+
+console.log(templateLiteral); // Saída: Transformando um array em uma string: 1,2,3.
+```
 
 # <a name = "operadores"></a>Operadores
 

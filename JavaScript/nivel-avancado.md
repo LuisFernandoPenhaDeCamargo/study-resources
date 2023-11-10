@@ -2,15 +2,15 @@
 
 ### Sumário
 
-22. [Classes em JavaScript (introduzidas no ES6)](#classes-em-javascript-introduzidas-no-es6)
-23. [Desestruturação](#desestruturacao)
-24. [Proxy e Reflect](#proxy-e-reflect)
-25. [Currying e Composição de funções](#currying-e-composicao-de-funcoes)
-26. [WebSockets](#websockets)
-27. [Web Workers](#web-workers)
-28. [Métodos avançados de arrays (reduce, some, every)](#metodos-avancados-de-arrays-reduce-some-every)
-29. [Manipulação de strings avançada](#manipulacao-de-strings-avancada)
-30. [Uso de modules (CommonJS, ES6 Modules)](#uso-de-modules-commonjs-es6-modules)
+23. [Classes em JavaScript (introduzidas no ES6)](#classes-em-javascript-introduzidas-no-es6)
+24. [Desestruturação](#desestruturacao)
+25. [Proxy e Reflect](#proxy-e-reflect)
+26. [Currying e Composição de funções](#currying-e-composicao-de-funcoes)
+27. [WebSockets](#websockets)
+28. [Web Workers](#web-workers)
+29. [Métodos avançados de arrays (reduce, some, every)](#metodos-avancados-de-arrays-reduce-some-every)
+30. [Manipulação de strings avançada](#manipulacao-de-strings-avancada)
+31. [Uso de modules (CommonJS, ES6 Modules)](#uso-de-modules-commonjs-es6-modules)
 
 # <a name = "classes-em-javascript-introduzidas-no-es6"></a> Classes em JavaScript (introduzidas no ES6)
 
