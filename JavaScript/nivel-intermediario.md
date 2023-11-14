@@ -127,6 +127,28 @@ arrayObjeto[0].nome = "Hannah";
 A substituição em `arrayObjeto`, que envolve a substituição do objeto no array, desvincula a propriedade `nome` do objeto orginal que estava contido em `arrayObjeto`. O objeto original que foi substituído no array `arrayObjeto` não está mais relacionado à propriedade `nome` no objeto `objeto`.\
 **Observe que a propriedade está vinculada entre todas as estruturas**. A substituição em si, em `arrayObjeto[0] = { nome: "Grace" }`, atribui um novo objeto a ele, este objeto pode até possuir uma chave de mesmo nome que o objeto anterior, mas é **um objeto diferente**.
 
+É importante observar que isto se trata de elementos de estrutas complexas quando o próprio elemento é uma estrutura complexa. Quando tratamos de tipos primitivos ou quando o elemento é um tipo primitivo, uma cópia é gerada, não uma referência:
+
+```JavaScript
+let tipoPrimitivo1 = 1;
+let tipoPrimitivo2 = tipoPrimitivo1;
+
+tipoPrimitivo1 = 2;
+
+console.log(tipoPrimitivo2); // Saída: 1 O tipoPrimitivo2 recebe uma cópia do valor de tipoPrimitivo1, não uma referência ao valor.
+
+let objeto1 = { tipoPrimitivo: 1, objeto: { chave: 2 }};
+let objeto2 = {...objeto1};
+let objeto3 = objeto1;
+
+objeto1.tipoPrimitivo = 100;
+objeto1.objeto.chave = 200;
+
+console.log(objeto1);        // Saida: { tipoPrimitivo: 100, objeto: { chave: 200 } }
+console.log(objeto2);        /* Saida: { tipoPrimitivo: 1, objeto: { chave: 200 } } O primeiro elemento é um tipo primitivo, então uma cópia é gerada, o segundo, um objeto, então uma referência é realizada.*/
+console.log(objeto3);        /* Saida: { tipoPrimitivo: 100, objeto: { chave: 200 } } O objeto3 foi criado utilizando o operador de atribuição e não o operador de espalhamento, então uma referência ao objeto1 como um todo é realizada.*/
+```
+
 # <a name = "funcoes-de-ordem-superior"></a>Funções de ordem superior
 
 # <a name = "promises"></a>Promises
@@ -142,5 +164,103 @@ A substituição em `arrayObjeto`, que envolve a substituição do objeto no arr
 # <a name = "heranca-e-prototypes"></a>Herança e Prototypes
 
 # <a name = "closures"></a>Closures
+
+No exemplo abaixo, vamos observar vários pontos importantes sobre a chamada de funções, o retorno de funções, callbacks e closures:
+
+```JavaScript
+class Exemplo {
+    static funcao() {
+        let body = [
+            { "validation": "hash1", "game": "A" },
+            { "validation": "hash2", "game": "B" },
+            { "validation": "hash3", "game": "C" }
+        ];
+        try {
+            const arrayValidacao = [
+                { "validation": "hash1" },
+                { "validation": "hash2" }
+            ];
+
+            if (arrayValidacao.length > 0) {
+                body = body.filter(funcaoValidacao(arrayValidacao));
+                /* É importante observar que funcaoValidacao não é uma callback, pois você não passa a função como argumento e sim o retorno dela, afinal você faz a chamada dela, ela está sendo passada com os parentêses e não sem eles:
+                - .filter(funcaoValidacao): passando a própria função como argumento;
+                - .filter(funcaoValidacao()): passando o que a função retorna como argumento.
+                O uso de parênteses após o nome da função faz a chamada da função, enquanto sem os parênteses você está referenciando a pŕopria função.*/
+                // console.log(body); Saída: [ { validation: 'hash3', game: 'C' } ]
+            }
+        }catch(err){
+            console.error(err);
+        }
+    }
+}
+
+function funcaoValidacao(arrayValidacao) {
+    // console.log(arrayValidacao); Saída: [ { validation: 'hash1' }, { validation: 'hash2' } ] O array foi recebido como argumento.
+    return function (body) {
+        // console.log(body);
+        // console.log(arrayValidacao);
+        /* Saída:
+        { validation: 'hash1', game: 'A' }
+        [ { validation: 'hash1' }, { validation: 'hash2' } ]
+        { validation: 'hash2', game: 'B' }
+        [ { validation: 'hash1' }, { validation: 'hash2' } ]
+        { validation: 'hash3', game: 'C' }
+        [ { validation: 'hash1' }, { validation: 'hash2' } ]
+        A função anônima é uma callback que é aplicada a cada elemento do "body". A função recebe o elemento atual, por isso sabemos os valores do body.
+        O valor do arrayValidacao é conhecido porque a função anônima é uma closure, uma função aninhada dentro de outra, a qual captura os valores das variáveis do escopo circundante, os valores das variáveis do escopo das funções externas.
+        Closures são funções internas as quais capturam e retém o escopo em que foi criada, mesmo quando é chamada fora desse escopo. Uma observação importante é que closures lembram dos valores das variáveis no momento da sua criação (da criação da closure), se uma closure for chamada novamente mais para frente ela não possuirá o valor atualizado daquela variável.*/
+      /*console.log(duplicateds.filter(function (duplicated) {
+        return duplicated.validation === records.validation
+      }).length == 0)*/
+        return arrayValidacao.filter(function (elementoAtual) {
+            // console.log(body);
+            // console.log(elementoAtual);
+            /* Saída: a função arrayValidacao.filter() aplica a callback para cada elemento do arrayValidacao.
+            Observe que os espaços foram adicionados para auxiliar na compreensão assim como os tracejados.
+
+            { validation: 'hash1' }
+            { validation: 'hash1', game: 'A' } Isto é true.
+
+            { validation: 'hash2' }
+            { validation: 'hash1', game: 'A' } Isto é false.
+
+            Então a primeira passagem da função arrayValidacao.filter() retorna o array "[ { validation: 'hash1' } ]", cujo o qual não possui o comprimento igual a zero:
+            
+            return [ { validation: 'hash1' } ].length == 0;
+            
+            é false, por isso o valor do body que está sendo percorrido por body.filter() não é adicionado ao array na função funcao().
+            
+            ----------------------------------
+
+            { validation: 'hash1' }
+            { validation: 'hash2', game: 'B' } Isto é false.
+
+            { validation: 'hash2' }
+            { validation: 'hash2', game: 'B' } Isto é true.
+
+            return [ { validation: 'hash2' } ].length == 0;
+            
+            é false, novamente o valor do body que está sendo percorrido por body.filter() não é adicionado ao array na função funcao().
+
+            ----------------------------------
+
+            { validation: 'hash1' }
+            { validation: 'hash3', game: 'C' } Isto é false.
+
+            { validation: 'hash2' }
+            { validation: 'hash3', game: 'C' } Isto é false.
+
+            return [].length == 0;
+
+            é true, por isso o valor do body que está sendo percorrido por body.filter() é adicionado ao array na função funcao().*/
+            return elementoAtual.validation === body.validation
+        })
+        .length == 0;
+    }
+}
+
+Exemplo.funcao();
+```
 
 # <a name = "tratadores-de-eventos-e-event-delegation"></a>Tratadores de eventos e Event Delegation

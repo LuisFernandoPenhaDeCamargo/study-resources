@@ -742,10 +742,10 @@ Verifica se um determinado valor está presente no array. Retorna `true` ou `fal
 Exemplo:
 
 ```JavaScript
-const novoArray = arrayOriginal.filter(callback(elemento, indice, array)) {
+const novoArray = arrayOriginal.filter(callback(elemento, indice, array) {
   //Lógica de filtragem.
   //Retorne true para incluir o elemento no novo array, false para excluí-lo.
-};
+});
 ```
 
 ---

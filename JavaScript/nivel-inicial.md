@@ -219,7 +219,8 @@ Usado para realizar operações matemáticas.
 
 Usados para atribuir valores a variáveis.
 
-- `=` (atribuição simples)
+- `=` (atribuição simples)\
+    Para objetos e arrays (estrutura complexas), uma referência é realizada, quando se trata de tipos primitivos, uma cópia é gerada.
 - `+=` (atribuição de adição)
 - `-=` (atribuição de subtração)
 - `*=` (atribuição de multiplicação)
