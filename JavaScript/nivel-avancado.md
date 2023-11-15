@@ -16,6 +16,21 @@
 
 # <a name = "desestruturacao"></a> Desestruturação
 
+No caso de desestruturação de arrays, você coloca colchetes à esquerda da variável e o JavaScript irá atribuir os valores correspondentes do array para as variáveis.
+
+```JavaScript
+const array = [1, 2, 3];
+const [posicao0, posicao1, posicao2] = array;
+
+console.log(posicao0); // Saída: 1
+console.log(posicao1); // Saída: 2
+console.log(posicao2); // Saída: 3
+
+const [,posicao] = array;
+
+console.log(posicao);  // Saída: 2 Você pode omitir valores para selecionar a posição (["espaço vazio", posicao]).
+```
+
 # <a name = "proxy-e-reflect"></a> Proxy e Reflect
 
 # <a name = "currying-e-composicao-de-funcoes"></a> Currying e Composição de funções
