@@ -39,3 +39,4 @@
 29. [Métodos avançados de arrays (reduce, some, every)](nivel-avancado.md#metodos-avancados-de-arrays-reduce-some-every)
 30. [Manipulação de strings avançada](nivel-avancado.md#manipulacao-de-strings-avancada)
 31. [Uso de modules (CommonJS, ES6 Modules)](nivel-avancado.md#uso-de-modules-commonjs-es6-modules)
+32. [Casos Específicos Interessantes](nivel-avancado.md#casos-especificos-interessantes)

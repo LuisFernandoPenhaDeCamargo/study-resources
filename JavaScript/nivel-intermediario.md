@@ -8,7 +8,7 @@
     - Operador de Coleta (Rest Parameter)
     - Aplicações do Operador `...`
     - Shallow Copy
-14. [Funções de ordem superior](#funcoes-de-ordem-superior)
+14. [Funções de Ordem Superior](#funcoes-de-ordem-superior)
 15. [Promises](#promises)
 16. [Event Loop](#event-loop)
 17. [Async/Await](#asyncawait)
@@ -149,7 +149,7 @@ console.log(objeto2);        /* Saida: { tipoPrimitivo: 1, objeto: { chave: 200 
 console.log(objeto3);        /* Saida: { tipoPrimitivo: 100, objeto: { chave: 200 } } O objeto3 foi criado utilizando o operador de atribuição e não o operador de espalhamento, então uma referência ao objeto1 como um todo é realizada.*/
 ```
 
-# <a name = "funcoes-de-ordem-superior"></a>Funções de ordem superior
+# <a name = "funcoes-de-ordem-superior"></a>Funções de Ordem Superior
 
 # <a name = "promises"></a>Promises
 
@@ -263,4 +263,4 @@ function funcaoValidacao(arrayValidacao) {
 Exemplo.funcao();
 ```
 
-# <a name = "tratadores-de-eventos-e-event-delegation"></a>Tratadores de eventos e Event Delegation
+# <a name = "tratadores-de-eventos-e-event-delegation"></a>Tratadores de Eventos e Event Delegation
