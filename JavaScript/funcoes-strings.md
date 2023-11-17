@@ -8,7 +8,7 @@
 
 O método `.substring()` retorna uma parte da string entre dois índices, começando do índice inicial até (mas não incluindo) o índice final.
 
-`str.substring(startIndex[, endIndex])`
+`str.substring(startIndex[, endIndex]);`
 
 - `startIndex` **(number: int):** o índice inicial a partir do qual extrair a substring;
 - `headerName` **(number: int, opcional):** o índice (não incluído) até o qual extrair a substring. Se este parâmetro for omitido, a substring ser[a extraída até o final da string].

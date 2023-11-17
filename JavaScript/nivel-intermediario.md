@@ -16,7 +16,14 @@
 19. [Trabalhando com Arrays e Objetos (forEach, map, filter)](#trabalhando-com-arrays-e-objetos-foreach-map-filter)
 20. [Herança e Prototypes](#heranca-e-prototypes)
 21. [Closures](#closures)
-22. [Tratadores de eventos e Event Delegation](#tratadores-de-eventos-e-event-delegation)
+22. [Contexto](#contexto)
+    - Escopo de Variáveis
+    - Closures
+    - Contexto de Execução
+    - Contexto Lexical
+    - `this` em Diferentes Contextos
+    - Contexto no Event Loop
+23. [Tratadores de eventos e Event Delegation](#tratadores-de-eventos-e-event-delegation)
 
 # <a name = "objetos-em-javascript"></a>Objetos em JavaScript
 
@@ -262,5 +269,38 @@ function funcaoValidacao(arrayValidacao) {
 
 Exemplo.funcao();
 ```
+
+# <a name = "contexto"></a>Contexto
+
+### Escopo de Variáveis
+
+- Definição e tipos de escopo (global, de função, de bloco);
+- Como as variáveis são acessadas dentro de diferentes escopos.
+
+### Closures
+
+- Explicação do conceito de closures;
+- Como as closures são formadas;
+- Uso prático de closures.
+
+### Contexto de Execução
+
+- Fases do contexto de execução;
+- Pilha de chamadas e execução de código.
+
+### Contexto Lexical
+
+- Definição de contexto lexical;
+- Como as funções mantêm uma referência ao seu contexto léxico.
+
+### `this` em Diferentes Contextos
+
+- Comportamento da palavra-chave `this` em diferentes situações;
+- Diferenças entre funções regulares e arrow functions.
+
+### Contexto no Event Loop
+
+- Como o contexto influencia operações assíncronas;
+- Relação entre contextos e o Event Loop.
 
 # <a name = "tratadores-de-eventos-e-event-delegation"></a>Tratadores de Eventos e Event Delegation

@@ -50,15 +50,15 @@ Nível Avançado: Conceitos Mais Avançados
 - APIs;
 - SQL.
 
-## Novos arquivos
+## Novos Arquivos
 
 Lista de tópicos para o aprendizado da _____ que considere a curva de aprendizado.
 
 # Funções/métodos
 
-`codigo` é um método ou uma função?
+`funcao/metodo` é um método ou uma função?
 
-- O que ele faz;
+- O que ele faz?
 - Assinatura do método;
 - Parâmetros: quais os tipos deles, se eles são opcionais ou não;
 - Retorno;
@@ -67,10 +67,16 @@ Lista de tópicos para o aprendizado da _____ que considere a curva de aprendiza
 
 Para demonstrar a sua saída, utilize a estrutura `// Saída:`. Se no mesmo bloco de código houver mais de uma demonstração de "saída", as alinhe de acordo com a coluna da direita.
 
+# Bibliotecas/Frameworks
+
+- `modulo` é uma biblioteca ou um framework?
+- Precisa ser instalado?
+- Para o que ele serve?
+
 # Documentação
 
 Descrição geral sobre o que o arquivo se trata no ínicio dele.\
-Parece útil deixar anotado as tabelas que ele manipula; assim como os endpoints.
+Parece útil deixar anotado as tabelas que ele manipula assim como os endpoints.
 
 # Sumário
 
@@ -79,11 +85,13 @@ Parece útil deixar anotado as tabelas que ele manipula; assim como os endpoints
 
 # Markdown e VS Code
 
-Deixe o VS Code sugerir as âncoras, mas não utilize acentuação nela.
+Deixe o VS Code sugerir as âncoras, mas não utilize acentuação nelas.
 
-# Marcadores de posição
+# Marcadores de Posição
 
 Eu uso cinco underscore.
+
+---
 
 # JavaScript: Uma Introdução.
 
@@ -102,8 +110,6 @@ O modelo de execução síncrona e single-threaded do JavaScript implica que as 
 Em sistemas Linux, é comum usar um Shebang (linha que começa com #!) para especificar o interpretador que deve ser usado para executar um script. Isso é útil para impressão de logs no terminal de comando e pode ser relevante ao executar scripts JavaScript.
 
 Me gere um conjunto de tópicos do básico ao avançado para meu arquivo de estudo **tema**, até então eu tenho os tópicos (se for o caso):
-
----
 
 ### Dúvidas.
 

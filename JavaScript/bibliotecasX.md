@@ -1,41 +1,23 @@
-# Bibliotecas.
+# Bibliotecas
 
-### Métodos.
+### Sumário
 
-- [`.post()`](#post);
-- [`.patch()`](#patch);
-- [GET/`axios()`](#getaxios);
-- [`request()`](#request);
-- [`.createPool()`](#createpool);
-- [`.query()`](#query);
-- [`.update()`](#update);
-- [`.IAM()`](#iam);
-- [`.S3()`](#s3);
-- [`.pending()`](#pending);
-- [`.execute()`](#execute);
-- [`.executed()`](#executed);
-- [`expect()`](#expect);
-- [`describe()`](#describe);
-- [`it()`](#it);
-- [`.config()`](#config);
-- [`moment()`](#moment);
-- [`.format()`](#format);
-- [`.add()`](#add);
-- [`.subtract()`](#subtract);
-- [`.hour()`](#hour);
-- [`.createTransport()`](#createtransport);
-- [`.sendMail()`](#sendmail);
-- [`.stringify()`](#stringify);
-- [`.resolve()`](#resolve);
-- [`.readdirSync()`](#readdirsync);
-- [`.readFileSync()`](#readfilesync);
-- [`.statSync()`](#statsync);
-- [`.existsSync()`](#existssync);
-- [`.unlinkSync()`](#unlinksync);
-- [`.hostname()`](#hostname);
-- [`.cpus()`](#cpus);
-- [`.exec()`](#exec);
-- [`.promisify()`](#promisify).
+- [`aws-sdk`](#aws-sdk);
+- [`util`](#util).
+
+# <a id = "aws-sdk"></a>`aws-sdk`
+
+A biblioteca `aws-sdk` precisa ser instalada, é uma biblioteca para interação com os serviços da AWS na linguagem JavaScript (Node.js), ela facilita a interação programática com os serviços da AWS usando JavaScript/Node.js.\
+A biblioteca `aws-sdk` é a biblioteca oficial da Amazon Web Services (AWS) que permite interagir com diversos serviços da ASW, como Amazon S3, Amazon DynamoDB, AWS Lambda e outros.\
+
+# <a id = "util"></a>`util`
+
+A bilbioteca `util` é uma parte do conjunto de módulos padrão do Node.js e não precisa ser instalada separadamente. Portanto, não é uma biblioteca ou framework independente.\
+O módulo `util` fornece várias utilidades e funções auxiliares que são úteis em várias situações ao trabalhar com Node.js. Como funções utilitárias para ajudar na programação assíncrona e em outros aspectos de desenvolvimento.
+Para utilizar a biblioteca `aws-sdk`, você geralmente precisa configurar as credenciais de acesso à AWS, como a chave de acesso e a chave secreta. Isso é necessário para que o SDK possa autenticar as solicitações à AWS em seu nome.\
+Após configurar as credenciais, você pode começar a utilizar os serviços da AWS, como o Amazon S3 para armazenamento de objetos, o Amazon DynamoDB para banco de dados NoSQL, entre outros. O `aws-sdk` fornece uma API rica para interagir com esses serviços, permitindo que você crie, leia, atualize e exclua recursos da AWS.
+
+---
 
 # <a name = "axios"></a>`axios`
 
@@ -261,60 +243,6 @@ O retorno do método `pool.query()` pode variar com base na natureza da query SQ
 - Se a query for uma query de seleção e for bem-sucedida, **o retorno será um array que possui um objeto com os registros retornados, entre outros objetos**;
 - Se a query for uma query de inserção e for bem-sucedida, o retorno será um objeto `{ affectedRows: valor1, insertedId: valor2, warningStatus: valor3 }`;
 - Se a query for uma query de atualização e for bem-sucedida, o retorno será um objeto `{ affectedRows: valor1, insertedId: valor2, warningStatus: valor3 }` (aparentemente este não é o formato padrão do objeto, deve estar assim por conta de alguma configuração).
-
-# <a name = "awssdk"></a>`aws-sdk`
-
-A biblioteca `aws-sdk` é a biblioteca oficial da Amazon Web Services (AWS) que permite interagir com diversos serviços da ASW, como Amazon S3, Amazon DynamoDB, AWS Lambda e outros.
-
-Para utilizar a biblioteca `aws-sdk`, você geralmente precisa configurar as credenciais de acesso à AWS, como a chave de acesso e a chave secreta. Isso é necessário para que o SDK possa autenticar as solicitações à AWS em seu nome.\
-Após configurar as credenciais, você pode começar a utilizar os serviços da AWS, como o Amazon S3 para armazenamento de objetos, o Amazon DynamoDB para banco de dados NoSQL, entre outros. O `aws-sdk` fornece uma API rica para interagir com esses serviços, permitindo que você crie, leia, atualize e exclua recursos da AWS.
-
-### <a id = "update"></a>`.update()`
-
-Atualiza a configuração atual do AWS SDK após a inicialização. Não retorna nenhum valor (retorna `undefined`).
-
-`AWS.config.update(configuracao)`
-
-- `AWS.config`**:** objeto AWS que possui a propriedade `.config`;
-- `configuracao` **(objeto):** um objeto contendo as opções de configuração que você deseja atualizar. Isso inclue as seguintes opções:
-    - `accessKeyId` **(string):** a chave de acesso da AWS;
-    - `secretAccessKey` **(string):** a chave secreta de acesso da AWS;
-    - `region` **(string):** a região da AWS na qual você deseja que as solicitações sejam feitas;
-    - `logger`**:** define o destino de saída de logs.
-
-### <a id = "iam"></a>`.IAM()`
-
-Cria uma instância do serviço AWS **Identity and Access Management** (**IAM**). A instância do IAM é criada com a configuração da versão da API especificada.\
-Retorna uma instância do serviço.
-
-`const iam = new AWS.IAM(configuracao);`
-
-`configuracao` **(objeto):** objeto de configuração.\
-    `apiVersion`**:** especifica a versão da API que você deseja usar para as chamadas do serviço IAM.
-
-O `.IAM()` não é um método do objeto `AWS`, mas sim uma forma de criar uma instância do serviço AWS Identity and Access Management por meio do objeto `AWS`. O objeto `AWS` é um namespace que fornece acesso a vários serviços da Amazon Web Services por meio da biblioteca `aws-sdk` em Node.js.\
-Não é necessário especificar parâmetros ao criar uma instância do serviço IAM usando o construtor. **As configurações, como credenciais e região, são definidas globalmente no objeto** `AWS` por meio do método `.update()`.\
-O objeto `iam` que você cria pode ser usado para fazer chamadas às operações do IAM, como criar usuários, gerenciar grupos, políticas e assim por diante. O retorno dessas chamadas à API depende da operação específica e pode incluir informações ou erros relacionados à operação realizada.
-
-### <a id = "s3"></a>`.S3()`
-
-Cria uma instância do serviço **Amazon Simple Storage Service** (**Amazon S3**). Retorna uma instância do serviço Amazon S3 configurada de acordo com as configurações fornecidas.
-
-`const s3 = new AWS.S3(configuracao);`
-
-`configuracao` **(objeto):** objeto de configuração que permite que você configure vários aspectos do comportamento da instância.\
-    - `endpoint`**(opcional):** o ponto de extremidade (URL) personalizado para o serviço S3. Se você estiver usando um serviço de armazenamento de objetos compatível com o protocolo S3, pode especificar o ponto de extremidade personalizado aqui.
-
-Você pode usar essa instância para interagir com o Amazon S3 e realizar operações como criar, listar, baixar ou excluir objetos, gerenciar buckets e configurar permissões.
-
-### <a id = "endpoint"></a></a>`.Endpoint()`
-
-Cria uma instância do objeto `AWS.Endpoint` que é projetado para configurar pontos de extremidade personalizados.
-
-`const spacesEndpoint = new DIGITAL_OCEAN.Endpoint(process.env.SPACES_ENDPOINT);`
-
-Isso é típico ao usar a biblioteca `aws-sdk` da AWS para interagir com serviços da AWS, como o Amazon S3 ou o Amazon Elastic Compute Cloud (EC2).\
-O objeto `AWS.Endpoint` é usado para representar o ponto de extremidade (URL) de um serviço da AWS. Ao criar uma instância desse objeto, você pode especificar a URL do ponto de extremidade do serviço que deseja acessar.
 
 ### AWS x DigitalOcean.
 
@@ -826,13 +754,3 @@ Executa comandos do sistema operacional em um subprocesso. Ele é uma forma de c
   - `erro` **(string):** variável que conterá informações sobre qualquer erro que ocorrer durante a execução do comando;
   - `stdout` **(string):** variável que conterá a saída padrão (`stdout`) do comando executado;
   - `stderr` **(string):** variável que conterá a saída de erro (`stderr`) do comando executado.
-
-## <a name = "util"></a>`util`
-
-Fornece várias funções utilitárias para ajudar na programação assíncrona e em outros aspectos de desenvolvimento.
-
-### <a id = "promisify"><>`.promisify()`
-
-É usada para converter funções de retorno de chamada (`callback`) em funções que retornam promessas.
-
-`.promisify(callback)`
