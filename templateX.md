@@ -65,7 +65,9 @@ Lista de tópicos para o aprendizado da _____ que considere a curva de aprendiza
 - Se ele possui uma subcategoria, por exemplo, é uma função de iteração e transformação ou de redução e agregação?
 - Exemplo de uso.
 
-Para demonstrar a sua saída, utilize a estrutura `// Saída:`. Se no mesmo bloco de código houver mais de uma demonstração de "saída", as alinhe de acordo com a coluna da direita.
+- Para demonstrar a sua saída, utilize a estrutura `// Saída:`. Se no mesmo bloco de código houver mais de uma demonstração de "saída", as alinhe de acordo com a coluna da direita;
+- Quando o comentário for muito grande, o coloque na linha acima da linha de código em questão ao invés de na mesma linha;
+- Para valores de chave, quando eles forem uma string e você quiser indicar um espaçamento, você pode utilizar o underscore.
 
 # Bibliotecas/Frameworks
 

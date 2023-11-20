@@ -374,7 +374,6 @@ Converte um número decimal em um número inteiro, selecionando somente a parte 
 
 - [`.reduce()`;](#reduce)
 - [`.concat()`;](#concat)
-- [`.includes()`;](#includes)
 - [`.some()`;](#some)
 
 ## <a id = "reduce"></a>`.reduce()`

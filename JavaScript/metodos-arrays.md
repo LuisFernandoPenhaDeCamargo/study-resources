@@ -1,0 +1,88 @@
+# Métodos de Arrays
+
+### Sumário
+
+- [`.includes()`](#includes)
+- [`.isArray()`](#isarray);
+- [`.filter()`](#filter)
+
+# Método de Busca
+
+## <a id = "includes">`.includes()`
+
+O método `.includes()` verifica se um array contém um determinado elemento e retorna `true` se o elemento estiver presente, e `false` caso contrário.
+
+`array.includes(element, startIndex);`
+
+- `element` **(value):** o valor que você deseja verificar se está presente no array;
+- `startIndex` **(int, opcional):**  o índice no array a partir do qual a busca deve começar.
+
+```JavaScript
+const array = [1, 2, 3, 4, 5];
+
+console.log(array.includes(3)); // Saída: true
+console.log(array.includes(6)); // Saída: false
+```
+
+É usada principalmente para **valores simples** (números, strings, booleanos) e **não é adequada para verificar a existência de objetos complexos ou verificar com base em propriedades específicas de objetos**.
+
+# Métodos de Verificação de Tipo
+
+Métodos que ajudam a identificar o tipo de dado.
+
+## <a id = "isarray"></a>`isArray()`
+
+Verifica se o valor passado como argumento é um array.
+
+`Array.isArray(valor);`
+
+`valor`**:** valor que você deseja verificar se é um array.
+
+Retorna um booleano. `true` se o valor for um array e `false` se não for.
+
+```JavaScript
+const array = [1, 2, 3];
+const naoEhArray = "Isso não é um array.";
+
+console.log(Array.isArray(array));      // Saída: true
+console.log(Array.isArray(naoEhArray)); // Saída: false
+```
+
+# Métodos de Iteração e Transformação
+
+Métodos que iteram sobre cada elemento do array, resultando em um novo array transformado.
+
+## <a id = "filter"></a>`.filter()`
+
+Cria um novo array com todos os elementos que passam no teste implementado pela função fornecida. Em outras palavras, ele filtra os elementos de um array com base em uma condição e retorna um novo array contendo apenas os elementos que atendem essa condição.
+
+`const newArray = array.filter(callback(element[, index[, array]])[, thisArg]);`
+
+- `callback` **(function):** função é um predicado, para testar cada elemento do array. Deve retornar `true` para manter o elemento, `false` caso contrário. Aceita três argumentos:
+    - `element`**:** o elemento atual sendo processado no array;
+    - `index` **(opcional):** o índice do elemento atual sendo processado no array;
+    - `array` **(opcional):** o array ao qual a função `.filter()` foi chamada.
+- `thisArg` **(opcional):** um valor para ser usado como `this` ao executar a função de `callback`.
+
+Retorna um novo array contendo os elementos que passam no teste implementado pela função de `callback`.
+
+```JavaScript
+const numbers = [1, 2, 3, 4, 5];
+const evenNumbers = numbers.filter(function (number) {
+    retunr number % 2 === 0;
+});
+
+console.log(evenNumbers); // Saída: [2,4]
+```
+
+Este exemplo usa `.filter()` para criar um novo array contendo apenas os números pares do array original.\
+Caso interessante:
+
+```JavaScript
+!!(promises.filter(i => i).length)
+```
+
+Considerando que `promises` é um array de valores booleanos e a função filter **retorna um array contendo apenas os elementos que atendem a condição da callback**.\
+Vamos considerar também que `promises` possui 3 de comprimento. Se ele for `[ false, false, false ]`, `.filter(i => i)` **retornará um array vazio, pois nenhum elemento atende a condição da callback** e `[].length` é `0`, então `!0` é `true`, logo a negativa dupla "`!!`" vai fazer com que a saída seja `false`.\
+Se `promises` possuir uma posição igual a `true` ou mais, `.filter(i => i)` **retornará um array composto por todos os elementos iguais a** `true`**, pois a callback verifica que o elemento é igual a** `true`**, o que satisfaz a sua condição** e seu `.length` será diferente de `0`, então qualquer número maior que zero antecedido por `!` é `false`, logo a negativa dupla vai fazer com que a saída seja `true`.\
+**Então essa linha verifica se o array possui pelo menos uma posição com o valor** `true`**.**

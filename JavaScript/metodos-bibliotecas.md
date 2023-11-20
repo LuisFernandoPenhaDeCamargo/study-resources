@@ -9,10 +9,13 @@
 
 - [`.update()`](#update);
 - [`.IAM()`](#iam);
+- [`.createUser()`](#createuser);
+- [`.createPolicy()`](#createpolicy);
+- [`.getUser()`](#getuser);
+- [`.attachUserPolicy()`](#attachuserpolicy);
 - [`.listAccessKeys()`](#listaccesskeys);
-- []();
-- []();
-- []();
+- [`.deleteAccessKey()`](#deleteaccesskey);
+- [`.createAccessKey()`](#createaccesskey);
 - [`.S3()`](#s3);
 - [`.Endpoint()`](#endpoint).
 
@@ -80,6 +83,102 @@ O `.IAM()` não é um método do objeto `AWS`, mas sim uma forma de criar uma in
 Não é necessário especificar parâmetros ao criar uma instância do serviço IAM usando o construtor. **As configurações, como credenciais e região, são definidas globalmente no objeto** `AWS` por meio do método `.update()`.\
 O objeto `iam` que você cria pode ser usado para fazer chamadas às operações do IAM, como criar usuários, gerenciar grupos, políticas e assim por diante. O retorno dessas chamadas à API depende da operação específica e pode incluir informações ou erros relacionados à operação realizada.
 
+## <a id = "createuser"></a>`.createUser()`
+
+`.createUser()` é um método do serviço AWS Identity and Access Management (IAM) no AWS SDK para JavaScript (Node.js), ele é usado para criar um novo usuário no AWS IAM.
+
+- A assinatura exata pode variar, mas geralmente envolve um objeto de parâmetros, incluindo `UserName` (nome do usuário);
+- Os parâmetros podem incluir informações específicas do usuário, como `UserName` e opções adicionais, como `Path` (caminho no IAM para o usuário);
+-  O retorno geralmente inclui informações sobre o usuário recém-criado, como o ARN do usuário, credenciais de acesso e assim por diante.
+
+```JavaScript
+const AWS = require("aws-sdk");
+const iam = new AWS.IAM();
+const createUserParams = {
+    if (err) {
+        console.error("Erro ao criar o usuário:", err);
+    } else {
+        console.log("Usuário criado com sucesso:", data.User);
+    }
+};
+```
+
+## <a id = "getuser"></a>`.getUser()`
+
+`.getUser()` é um método do serviço AWS Identity and Access Management (IAM) no AWS SDK para JavaScript (Node.js), ele é usado para obter informações sobre um usuário específico no AWS IAM.
+
+- A assinatura exata pode variar, mas geralmente envolve um objeto de parâmetros, incluindo `UserName` (nome do usuário) ou nenhum parâmetro, pois ele opera no contexto do usuário autenticado;
+- O parâmetro pode incluir `UserName` (opcional) para especificar o usuário sobre o qual deseja obter informações;
+- O retorno inclui informações detalhadas sobre o usuário consultado, como o ARN do usuário, as políticas associadas e outras informações.
+
+```JavaScript
+const AWS = require("aws-sdk");
+const iam = new AWS.IAM();
+const getUserParams = {
+    // UserName: "NomeUsuarioOpcional", // O nome de usuário é opcional.
+};
+
+iam.getUser(getUserParams, (err, data) => {
+    if (err) {
+        console.error("Erro ao obter informações do usuário:", err);
+    } else {
+        console.log("Informações do usuário:", data.User);
+    }
+});
+```
+
+## <a id = "createpolicy"></a>`.createPolicy()`
+
+`.createPolicy()` é um método do serviço AWS Identity and Access Management (IAM) no AWS SDK para JavaScript (Node.js), ele é usado para criar uma nova política de acesso no AWS IAM. Ele define as permissões associadas a essa política.
+
+- A assinatura exata pode variar, mas geralmente envolve um objeto de parâmetros com informações sobre a política a ser criada;
+- Os parâmentros podem incluir detalhes sobre a política a ser criada, como o `PolicyName`, `PolicyDocument` (um documento JSON que define as permissões) e outros detalhes relevantes;
+- O retorno geralmente inclui informações sobre a política recém-criada, como o ARN (Amazon Resource Name) da política.
+
+```JavaScript
+const AWS = require("aws-sdk");
+const iam = new AWS.IAM();
+const policyParams = {
+    PolicyName: "MyPolicy",
+    PolicyDocument: JSON.stringify({
+        // Definição das permissões da política.
+    })
+};
+
+iam.createPolicy(PolicyParams, (err, data) => {
+    if (err) {
+        console.error("Erro ao criar a política:", err);
+    } else {
+        console.log("Política criada com sucesso:", data);
+    }
+});
+```
+
+## <a id = "attachuserpolicy"></a>`.attachUserPolicy()`
+
+`.attachUserPolicy()` é um método do serviço AWS Identity and Access Management (IAM) no AWS SDK para JavaScript (Node.js), ele é usado para associar uma política existente a um usuário específico no AWS IAM.
+
+- A assinatura exata pode variar, mas geralmente envolve um objeto de parâmetros, incluindo `UserName` e `PolicyArn` (ARN da política a ser associada);
+- Os parâmetros podem incluir informações específicas do usuário, como `UserName`, e a política a ser associada, identifica por `PolicyArn`;
+- O retorno geralmente inclui informações sobre a associação bem-sucedida, mas pode variar.
+
+```JavaScript
+const AWS = require("aws-sdk");
+const iam = new AWS.IAM();
+const attachPolicyParams = {
+    UserName: "NomeDoUsuario",
+    PolicyArn: "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess"
+};
+
+iam.attachUserPolicy(attachUserPolicy, (err, data) => {
+    if (err) {
+        console.error("Erro ao associar a política ao usuário:", err);
+    } else {
+        console.log("Política associada ao usuário com sucesso:", data);
+    }
+});
+```
+
 ## <a id = "listaccesskeys"></a>`.listAccessKeys()`
 
 `.listAccessKeys()` é um método do serviço AWS Identity and Access Management (IAM) no AWS SDK para JavaScript (Node.js), ele retorna uma lista das chaves de acessos associadas a um usuário IAM.
@@ -99,7 +198,7 @@ const iam = new AWS.IAM();
 
 // Parâmetros para listar as chaves de acesso de um usuário específico.
 const params = {
-    UserName: "nome-do-usuario"
+    UserName: "nome_do_usuario"
 };
 
 // Listar as chaves de acesso e lidar com os resultados usando uma função de callback.
@@ -114,11 +213,57 @@ iam.listAccessKeys(params, (err, data) => {
 
 Neste exemplo, `iam.listAccessKeys` é usado para listar as chaves de acesso associadas a um usuário específico no IAM. A função de retorno de chamada lida com os resultados da operação.
 
-##
+## <a id = "deleteaccesskey"></a>`.deleteAccessKey()`
 
-##
+`.deleteAccessKey()` é um método do serviço AWS Identity and Access Management (IAM) no AWS SDK para JavaScript (Node.js), ele exclui uma chave de acesso associada a um usuário IAM.
 
-##
+`iam.deleteAccessKey(params, callback);`
+
+- `params` **(object):** um objeto contendo informações sobre a chave de acesso a ser excluída;
+- `callback` **(function):** uma função de retorno de chamada para lidar com o resultado da operação.
+
+Não há um valor de retorno significativo para essa operação. A resposta pode ser tratada na função de retorno de chamada.
+
+```JavaScript
+const AWS = require("aws-sdk");
+const iam = new AWS.IAM();
+const params = {
+    UserName: "nome_do_usuario", // Nome do usário IAM.
+    AccessKeyId: "ID_DA_CHAVE_SER_EXCLUIDA" // ID da chave de acesso a ser excluída.
+};
+
+iam.deleteAcessKey(params, function(err, data) {
+    if (err) console.log(err, err.stack);
+    else console.log("Chave de acesso excluída com sucesso:", data);
+});
+```
+Este exemplo assume que você já configurou suas credenciais AWS e inicializou o objeto `IAM`. O método `.deleteAccessKey()` é usada para excluir uma chave de acesso associada a um usuário específico.
+
+## <a id = "createaccesskey"></a>`.createAccessKey()`
+
+`.createAccessKey()` é um método do serviço AWS Identity and Access Management (IAM) no AWS SDK para JavaScript (Node.js), ele cria uma nova chave de acesso (access key) para um usuário IAM.
+
+`iam.createAcessKey(params, callback);`
+
+- `params` **(object):** um objeto contendo informações sobre o usuário IAM para o qual a chave de acesso será criada;
+- `callback` **(function):** uma função de retorno de chamada para lidar com o resultado da operação.
+
+O resultado da operação geralmente retorna informações sobre a nova chave de acesso criada.
+
+```JavaScript
+const AWS = require("aws-sdk");
+const iam = new AWS.IAM();
+const params = {
+    UserName: "nome_do_usuario" // Nome do usuário IAM para o qual a chave de acesso será criada.
+};
+
+iam.createAccessKay(params, function (err, data) => {
+    if (err) console.log(err, err.stack);
+    else console.log("Nova chave de acesso criada:", data);
+});
+```
+
+Este exemplo assume que você já configurou suas credenciais AWS e inicializou o objeto `IAM`. A função `.createAccessKey()` é usada para criar uma nova chave de acesso para um usário específico.
 
 ## <a id = "s3"></a>`.S3()`
 
@@ -172,7 +317,6 @@ Retorna uma instância do objeto `AWS.Endpoint`.
 const AWS = require("aws-sdk");
 
 const customEndpoint = new AWS.Endpoint("https://seu-endpoint-customizado.com");
-
 const s3 = new AWS.S3({
     endpoint: customEndpoint,
     accessKeyId: "SUA_ACCESS_KEY",
@@ -202,7 +346,6 @@ Retorna uma versão da função `original` que retorna uma Promise.
 ```JavaScript
 const util = require("util");
 const fs = require("fs");
-
 const readFileAsync = util.promisify(fs.ReadFile);
 
 // Agora você pode usar readFileAsync como uma função que retorna uma Promise.

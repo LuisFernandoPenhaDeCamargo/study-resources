@@ -31,3 +31,4 @@
 18. [Monitoramento e depuração de solicitações](nivel-especializado.md#monitoramento-e-depuracao-de-solicitacoes)
 19. [Uso de Docker para empacotar aplicações com Node.js](nivel-especializado.md#uso-de-docker-para-empacotar-aplicacoes-com-nodejs)
 20. [Integração contínua (CI) e implantação contínua (CD) para aplicações com APIs](nivel-especializado.md#integracao-continua-ci-e-implantacao-continua-cd-para-aplicacoes-com-apis)
+21. [AWS IAM (Identity and Access Management)](nivel-especializado.md#aws-iam-identity-and-access-management-e-aws-s3-simple-storage-service)

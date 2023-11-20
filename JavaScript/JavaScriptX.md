@@ -716,51 +716,6 @@ Cria uma nova string, concatenando todos os elementos de um array em uma única 
 
 `separador` **(opcional):** o caractere ou sequência de caracteres que será usado como separador entre os elementos na string resultante. Se este parâmetro não for fornecido, os elementos serão concatenados sem nenhum separador.
 
-### <a id = "includes"></a>`.includes()`
-
-Verifica se um determinado valor está presente no array. Retorna `true` ou `false`.
-
-`array.includes(valor, aPartirDe);`
-
-- `array`**:** o array no qual você deseja realizar a pesquisa;
-- `valor`**:** o valor que você deseja verificar se está presente no array;
-- `aPartirDe` **(opcional):**  o índice a partir do qual você deseja iniciar a pesquisa. Se não for fornecido, a pesquisa começará do início do array.
-
-É usada principalmente para **valores simples** (números, strings, booleanos) e não é adequada para verificar a existência de objetos complexos ou verificar com base em propriedades específicas de objetos.
-
-### <a id = "filter"></a>`.filter()`
-
-É usado para **criar** um novo array contendo todos os elementos de um array original que atendem a um critério especificado por uma função de callback. Em outras palavras, ele filtra os elementos de um array com base em uma condição e retorna um novo array contendo apenas os elementos que atendem essa condição.
-
-`.filter(callback(elemento, indice, array))`
-
-- `callback()`**:** uma função de callback que define a condição da filtragem;
-- `elemento`**:** o valor atual do elemento sendo avaliado;
-- `indice` **(opcional):** o índice do elemento atual no array;
-- `array` **(opcional):** o próprio array original.
-
-Exemplo:
-
-```JavaScript
-const novoArray = arrayOriginal.filter(callback(elemento, indice, array) {
-  //Lógica de filtragem.
-  //Retorne true para incluir o elemento no novo array, false para excluí-lo.
-});
-```
-
----
-
-Caso interessante:
-
-```JavaScript
-!!(promises.filter(i => i).length)
-```
-
-Considerando que `promises` é um array de valores booleanos e a função filter **retorna um array contendo apenas os elementos que atendem a condição da callback**:\
-Vamos considerar também que `promises` possui 3 de comprimento. Se ele for `[ false, false, false ]`, `.filter(i => i)` **retornará um array vazio, pois nenhum elemento atende a condição da callback** e `[].length` é `0`, então `!0` é `true`, logo a negativa dupla "`!!`" vai fazer com que a saída seja `false`.\
-Se `promises` possuir uma posição igual a `true` ou mais, `.filter(i => i)` **retornará um array composto por todos os elementos iguais a** `true`**, pois a callback verifica que o elemento é igual a** `true`**, o que satisfaz a sua condição** e seu `.length` será diferente de `0`, então qualquer número maior que zero antecedido por `!` é `false`, logo a negativa dupla vai fazer com que a saída seja `true`.\
-**Então essa linha verifica se o array possui pelo menos uma posição com o valor** `true`**.**
-
 ### <a id = "foreach"></a>`.forEach()`
 
 Itera sobre os elementos de um array e executa uma função de callback em cada um deles.
