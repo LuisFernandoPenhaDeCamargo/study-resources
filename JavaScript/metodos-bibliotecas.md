@@ -10,9 +10,14 @@
 - [`.update()`](#update);
 - [`.IAM()`](#iam);
 - [`.createUser()`](#createuser);
-- [`.createPolicy()`](#createpolicy);
 - [`.getUser()`](#getuser);
+- [`.addUserToGroup()`](#addusertogroup);
+- [`.createPolicy()`](#createpolicy);
+- [`.getPolicy()`](#getpolicy);
 - [`.attachUserPolicy()`](#attachuserpolicy);
+- [`.createPolicyVersion()`](#createpolicyversion);
+- [`.getPolicyVersion()`](#getpolicyversion);
+- [`.deletePolicyVersion()`](#deletepolicyversion);
 - [`.listAccessKeys()`](#listaccesskeys);
 - [`.deleteAccessKey()`](#deleteaccesskey);
 - [`.createAccessKey()`](#createaccesskey);
@@ -127,6 +132,34 @@ iam.getUser(getUserParams, (err, data) => {
 });
 ```
 
+## <a id = "addusertogroup"></a>`.addUserToGroup()`
+
+`.addUserToGroup()` é um método do serviço AWS Identity and Access Management (IAM) no AWS SDK para JavaScript (Node.js), ele é usado para adicionar um usuário a um grupo específico no IAM.
+
+A assinatura exata pode variar, mas geralmente envolve um objeto de parâmetros, incluindo `GroupName` (nome do grupo) e `UserName` (nome do usuário).
+
+- `GroupName`**:** o nome do grupo ao qual o usuário será adicionado;
+- `UserName`**:** o nome do usuário que será adicionado ao grupo.
+
+Este método geralmente não retorna dados significativos, apenas confirmações sobre a operação bem-sucedida.
+
+```JavaScript
+const AWS = require("aws-sdk");
+const iam =  new AWS.IAM();
+const addUserToGroupParams = {
+    GroupName: "NomeDoGrupo",
+    UserName: "NomeDoUsuario"
+};
+
+iam.addUserToGroup(addUserToGroupParams, (err, data) => {
+    if (err) {
+        console.error("Erro ao adicionar usuário ao grupo:", err);
+    } else {
+        console.log("Usuário adicionado ao grupo com sucesso:", data);
+    }
+});
+```
+
 ## <a id = "createpolicy"></a>`.createPolicy()`
 
 `.createPolicy()` é um método do serviço AWS Identity and Access Management (IAM) no AWS SDK para JavaScript (Node.js), ele é usado para criar uma nova política de acesso no AWS IAM. Ele define as permissões associadas a essa política.
@@ -145,11 +178,37 @@ const policyParams = {
     })
 };
 
-iam.createPolicy(PolicyParams, (err, data) => {
+iam.createPolicy(policyParams, (err, data) => {
     if (err) {
         console.error("Erro ao criar a política:", err);
     } else {
         console.log("Política criada com sucesso:", data);
+    }
+});
+```
+
+## <a id = "getpolicy"></a>`.getPolicy()`
+
+`.getPolicy()` é um método do serviço AWS Identity and Access Management (IAM) no AWS SDK para JavaScript (Node.js), ele é usado para obter informações sobre uma política específica no AWS IAM.
+
+A assinatura exata pode variar, mas geralmente envolve um objeto de parâmetros, incluindo `PolicyArn` (Amazon Resouce Name da política).
+
+`PolicyArn`**:** o amazon resource name (ARN) da política da qual você deseja obter informações.
+
+Este método geralmente retorna um objeto com informações detalhadas sobre a política consultada.
+
+```JavaScript
+const AWS = require("aws-sdk");
+const iam = new AWS.IAM();
+const getPolicyParams = {
+    PolicyArn: "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess"
+};
+
+iam.getPolicy(getPolicyParams, (err, data) => {
+    if (err) {
+        console.error("Erro ao obter informações da política:", err);
+    } else {
+        console.log("Informações da política:", data.Policy);
     }
 });
 ```
@@ -175,6 +234,96 @@ iam.attachUserPolicy(attachUserPolicy, (err, data) => {
         console.error("Erro ao associar a política ao usuário:", err);
     } else {
         console.log("Política associada ao usuário com sucesso:", data);
+    }
+});
+```
+
+## <a id = "createpolicyversion"></a>`.createPolicyVersion()`
+
+`.createPolicyVersion()` é um método do serviço AWS Identity and Access Management (IAM) no AWS SDK para JavaScript (Node.js), ele é usado para criar uma nova versão de uma política existente no AWS IAM.
+
+A assinatura exata pode variar, mas geralmente envolve um objeto de parâmetros, incluindo `PolicyArn` (Amazon Resource Name da política) e `PolicyDocument` (documento JSON que define a política).
+
+- `PolicyArn`**:** o Amazon Resource Name (ARN) da política para a qual você deseja criar uma nova versão;
+- `PolicyDocument`**:** o documento JSON que define a nova versão da política.
+
+Este método geralmente retorna informações sobre a nova versão da política.
+
+```JavaScript
+const AWS = require("aws-sdk");
+const iam = new AWS.IAM();
+const createPolicyVersionParams = {
+    PolicyArn: "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess",
+    PolicyDocument: `{
+        "Version": "2012-10-17",
+        "Statement": [{
+            "Effect:" "Allow",
+            "Action": "s3:ListBucket",
+            "Resource": "arn.aws.s3:::*"
+        }]}`
+};
+
+iam.createPolicyVersion(createPolicyVersionsParams, (err, data) => {
+    if (err) {
+        console.error("Erro ao criar nova versão política:", err);
+    } else {
+        console.log("Nova versão da política criada:", data.PolicyVersion);
+    }
+});
+```
+
+## <a id = "getpolicyversion"></a>`.getPolicyVersion()`
+
+`.getPolicyVersion()` é um método do serviço AWS Identity and Access Management (IAM) no AWS SDK para JavaScript (Node.js), ele é usado para recuperar informações sobre uma versão específica de uma política no AWS IAM.
+
+A assinatura exata pode variar, mas geralmente envolve um objeto de parâmetros, incluindo `PolicyArn` (Amazon Resource Name da política) e `VersionId` (identificador da versão da política).
+
+- `PolicyArn`**:** o Amazon Resource Name (ARN) da política para a qual você deseja obter informações sobre uma versão;
+- `VersionId`**:** o identificador da versão específica da política.
+
+Este método geralmente retorna informações detalhadas sobre a versão da política solicitada.
+
+```JavaScript
+const AWS = require("aws-sdk");
+const iam = new AWS.IAM();
+const getPolicyVersionParams = {
+    PolicyArn: "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess",
+    VersionId: "v1" // Substitua com a versão específica que você deseja recuperar.
+};
+
+iam.getPolicyVersion(getPolicyVersionsParams, (err, data) => {
+    if (err) {
+        console.error("Erro ao obter informações da versão da política:", err);
+    } else {
+        console.log("Informações da versão da política:", data.PolicyVersion);
+    }
+});
+```
+
+## <a id = "deletepolicyversion"></a>`.deletePolicyVersion()`
+
+`.deletePolicyVersion()` é um método do serviço AWS Identity and Access Management (IAM) no AWS SDK para JavaScript (Node.js), ele é usado para excluir uma versão específica de uma política no AWS IAM.
+
+A assinatura exata pode variar, mas geralmente envolve um objeto de parâmetros, incluindo `PolicyArn` (Amazon Resource Name da política) e `VersionId` (identificador da versão da política).
+
+- `PolicyArn`**:** o Amazon Resource Name (ARN) da política para a qual você deseja excluir uma versão;
+- `VersionId`**:** o identificador da versão específica da política que você deseja excluir.
+
+Este método geralmente não possui um retorno significativo, ou o retorno pode incluir informações sobre a operação de exclusão.
+
+```JavaScript
+const AWS = require("aws-sdk");
+const iam = new AWS.IAM();
+const deletePolicyVersionParams = {
+    PolicyArn: "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess",
+    VersionId: "v1" // Substitua com a versão específica que você deseja excluir.
+};
+
+iam.deletePolicyVersion(deletePolicyVersionsParams, (err, data) => {
+    if (err) {
+        console.error("Erro ao excluir a versão da política:", err);
+    } else {
+        console.log("Versão da política excluída com sucesso:", data);
     }
 });
 ```
