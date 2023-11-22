@@ -269,7 +269,8 @@ console.log(retorno);        // Saída: false
 No entanto, tenha em mente que existem algumas limitações e considerações importantes ao usar o `delete`:
 
 Tenha em mente que a exclusão de propriedades em objetos pode afetar o desempenho e a otimização do código, portanto, é geralmente recomendado evitá-la, a menos que seja realmente necessário.\
-Em muitos casos, em vez de usar `delete`, é preferível definir a propriedade como `undefined` ou `null` se você deseja indicar que ela não tem um valor válido. Isso mantém a propriedade no objeto, mas a torna sem valor.
+Em muitos casos, em vez de usar `delete`, é preferível definir a propriedade como `undefined` ou `null` se você deseja indicar que ela não tem um valor válido. Isso mantém a propriedade no objeto, mas a torna sem valor.\
+Vale notar também que se você tentar excluir uma propriedade de um objeto que é `undefined`, isso resultará em um erro. O JavaScript não permitirá que você acesse ou exclua propriedades de algo que é `undefined` ou `null`. Isso ocorre porque `undefined` e `null` não tem propriedades.
 
 ### Operadores de Comparação
 

@@ -1,8 +1,33 @@
 # Sumário
 
-[`.bind()`](#bind).
+- [`.isInteger()`](#isinteger);
+- [`.bind()`](#bind).
 
-# <a id = "bind"></a>`.bind()`
+# `Number`
+
+## <a id = "isinteger"></a>`.isInteger()`
+
+`.isInteger()` é um método estático do objeto `Number`, ele verifica se um valor é um número inteiro.
+
+`Number.isInteger(value);`
+
+`value`**:** valor a ser verificado.
+
+Retorna `true` se o valor fornecido for um número inteiro, caso contrário, retorna `false`.
+
+```JavaScript
+console.log(Number.isInteger(42));        // Saída: true
+console.log(Number.isInteger(42.1));      // Saída: false
+console.log(Number.isInteger("42"));      // Saída: false
+console.log(Number.isInteger(NaN));       // Saída: false
+console.log(Number.isInteger(undefined)); // Saída: false 
+```
+
+Lembre-se de que `Number.isInteger()` é usado para verificar se os valores fornecidos são inteiros, ele não converte o valor para um número inteiro, apenas verifica se o tipo e o valor correspondem a um número inteiro.
+
+# Function
+
+## <a id = "bind"></a>`.bind()`
 
 O método `bind()` é um método de objetos (os objetos em questão são funções, ou seja, um método de funções), ele cria uma nova função que, quando chamada, tem uma palavra-chave `this` predefinida com um valor específico, e alguns argumentos iniciais também podem ser fixados.\
 Cria uma nova função **vinculada a um determinado objeto ou valor** para a palavra-chave `this`.

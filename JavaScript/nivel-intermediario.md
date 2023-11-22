@@ -164,6 +164,9 @@ console.log(objeto3);        /* Saida: { tipoPrimitivo: 100, objeto: { chave: 20
 
 # <a name = "asyncawait"></a>Async/Await
 
+Funções assíncronas sempre retornam Promises. Quando você declara uma função como `async`, ela automaticamente retorna uma Promise.\
+Lembre-se de que, mesmo que você retorne um valor diretamente, **a função assíncrona irá implicitamente envolver esse valor em uma Promisse**. Portanto, quando você chama uma função assíncrona, você geralmente usa `.then()` ou `await` para acessar o resultado da Promise que ela retorna.
+
 # <a name = "manipulacao-do-dom"></a>Manipulação do DOM
 
 # <a name = "trabalhando-com-arrays-e-objetos-foreach-map-filter"></a>Trabalhando com Arrays e Objetos (forEach, map, filter)

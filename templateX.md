@@ -75,6 +75,12 @@ Lista de tópicos para o aprendizado da _____ que considere a curva de aprendiza
 - Precisa ser instalado?
 - Para o que ele serve?
 
+# Objetos/Propriedades
+
+Para verificar o tipo deles:
+
+`console.log("typeof:", Object.prototype.toString.call(objectOrPropriety))`
+
 # Documentação
 
 Descrição geral sobre o que o arquivo se trata no ínicio dele.\

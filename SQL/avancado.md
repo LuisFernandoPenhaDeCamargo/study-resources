@@ -2,31 +2,31 @@
 
 ### Sumário
 
-9. [Transações e Controle de Concorrência:](#transacoes-e-controle-de-concorrencia)
+10. [Transações e Controle de Concorrência:](#transacoes-e-controle-de-concorrencia)
     - O que é uma Transação
     - COMMIT, ROLLBACK, SAVEPOINT
     - Controle de Concorrência
 
-10. [Stored Procedures e Funções:](#stored-procedures-e-funcoes)
+11. [Stored Procedures e Funções:](#stored-procedures-e-funcoes)
     - Criar e Executar Stored Procedures
     - Parâmetros de Entrada e Saída
     - Criar e Executar Funções
 
-11. [Triggers:](#triggers)
+12. [Triggers:](#triggers)
     - O que são Triggers
     - Quando Usar Triggers
     - Exemplos Práticos
 
-12. [Segurança:](#seguranca)
+13. [Segurança:](#seguranca)
     - GRANT e REVOKE
     - Níveis de Permissão
     - Melhores Práticas de Segurança em SQL
 
-13. [Backup e Recuperação:](#backup-e-recuperacao)
+14. [Backup e Recuperação:](#backup-e-recuperacao)
     - Estratégias de Backup
     - RESTORE e RECOVERY
 
-14. [Noções de Modelagem de Dados:](#nocoes-de-modelagem-de-dados)
+15. [Noções de Modelagem de Dados:](#nocoes-de-modelagem-de-dados)
     - Normalização
     - Relacionamentos entre Tabelas
 

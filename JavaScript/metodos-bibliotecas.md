@@ -1,6 +1,7 @@
 # Sumário
 
 - [`aws-sdk`](#aws-sdk);
+- [`crypto`](#crypto);
 - [`util`](#util).
 
 # <a id = "aws-sdk"></a>`aws-sdk`
@@ -475,6 +476,44 @@ const s3 = new AWS.S3({
 
 Neste exemplo, `AWS.Endpoint` é usado para criar uma instância de um objeto de ponto de extremidade. Esta instância pode ser então utilizada para configurar a opção `endpoint` de serviços AWS que suportam tal configuração, como o Amazon S3.\
 Essa funcionalidade pode ser útil quando você precisa interagir com serviços compatíveis com a AWS, mas que estão hospedados em um ambiente com um endpoint personalizado, como por exemplo, em implementações locais ou ambientes de desenvolvimento.
+
+# <a id = "crypto"></a>`crypto`
+
+`crypto` pe um módulo embutido (não precisa ser instalado separadamente) no Node.js. Não é uma biblioteca ou framework, mas sim um conjunto de funcionalidades relacionadas à criptografia disponíveis no ambiente Node.js. Ele faz parte do conjunto de módulos principais do Node.js e está disponível por padrão.\
+O módulo `crypto` fornece funcionalidades criptográficas, como hash, cifra, e geração de números aleatórios. Ele é frequentemente usado para implementar segurança em aplicações, como a geração de hashes para senhas, assinaturas digitais, criptografia, etc. Além disso, é uma parte essencial para lidar com conceitos de segurança em ambientes Node.js.
+
+### Sumário
+
+- [`createHmac()`](#createhmac);
+.update()
+.digest()
+
+## <a id = "createhmac"></a>`createHmac()`
+
+`createHmac()` é usado para criar um objeto **Hmac** (**Hash-based Message Authentication Code**) para fins de autenticação baseada em hash.
+
+`crypto.createHmac(algorithm, key, [options]);`
+
+- `algorithm` **(string):** string indicando o algoritmo de hash a ser usado (por exemplo, "sha256", "sha512", etc.);
+- `key` **(string):** buffer ou string contendo a chave para o HMAC;
+- `options` **(opcional):** um objeto com opções adicionais.
+
+Retorna um objeto Hmac.
+
+```JavaScript
+const crypto = require("crypto");
+
+const secretKey = "mySecretKey";
+const hmac = crypto.createHmac("sha256", secretKey);
+const data = "Hello, World.";
+
+hmac.update(data);
+
+const hash = hmac.digest("hex");
+console.log(hash);
+```
+
+Neste exemplo, é criado um objeto Hmac usando o algoritmo SHA-256 e uma chave secreta. O objeto Hmac é então atualizado com os dados (no caso, a string "Hello, World.") e, finalmente, é gerado o hash.
 
 # <a id = "util"></a>`util`
 

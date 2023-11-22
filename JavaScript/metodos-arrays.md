@@ -4,6 +4,7 @@
 
 - [`.includes()`](#includes)
 - [`.isArray()`](#isarray);
+- [`.find()`](#find);
 - [`.filter()`](#filter)
 
 # Método de Busca
@@ -46,6 +47,33 @@ const naoEhArray = "Isso não é um array.";
 
 console.log(Array.isArray(array));      // Saída: true
 console.log(Array.isArray(naoEhArray)); // Saída: false
+```
+
+# Métodos de Iteração
+
+Métodos que percorrem os elementos do array.
+
+## <a id = "find"></a>`.find()`
+
+O método `.find()` retorna o primeiro elemento em um array que satisfaça uma condição fornecida por uma função de callback. Ele percorre cada elemento do array e retorna o primeiro elemento para o qual a função de callback retorna `true`, ou `undefined` se nenhum elemento satisfazer a condição.
+
+`array.find(callback(element, index, array), thisArg);`
+
+- `callback` **(function):** função que é chamada para cada elemento do array. Ela recebe três argumentos:
+    - `element`**:** o elemento atual;
+    - `index`**:** o índice do elemento atual;
+    - `array`**:** o array original.
+- `thisArg` **(opcional):** valor para usar como `this` quando executar a função de callback.
+
+Retorna o primeiro elemento do array que satisfaz a condição especificada pela função de callback; caso contrário, `undefined` se nenhum elemento satisfizer a condição.
+
+```JavaScript
+const numbers = [1, 2, 3, 4, 5];
+
+// Encontrar o primeiro número mais que 3.
+const foundNumber = numbers.find(num => num > 3);
+
+console.log(foundNumber); // Saída: 4
 ```
 
 # Métodos de Iteração e Transformação
