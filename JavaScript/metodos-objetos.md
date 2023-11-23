@@ -1,13 +1,16 @@
 # Sumário
 
 - [`.isInteger()`](#isinteger);
-- [`.bind()`](#bind).
+- [`.isNaN()`](#isnan);
+- [`.floor()`](#floor);
+- [`.bind()`](#bind);
+- [`.now()`](#now)
 
 # `Number`
 
 ## <a id = "isinteger"></a>`.isInteger()`
 
-`.isInteger()` é um método estático do objeto `Number`, ele verifica se um valor é um número inteiro.
+`.isInteger()` é um método estático do objeto global `Number`, ele verifica se um valor é um número inteiro.
 
 `Number.isInteger(value);`
 
@@ -24,6 +27,49 @@ console.log(Number.isInteger(undefined)); // Saída: false
 ```
 
 Lembre-se de que `Number.isInteger()` é usado para verificar se os valores fornecidos são inteiros, ele não converte o valor para um número inteiro, apenas verifica se o tipo e o valor correspondem a um número inteiro.
+
+## <a id = "isnan"></a>`.isNaN()`
+
+`.isNaN()` é um método estático do objeto global `Number`, ele retorna `true` se o valor fornecido for um `NaN` e `false`, caso contrário.
+
+`Number.isNaN(value);`
+
+`value`**:** o valor a ser testado se é um `NaN`.
+
+Retorna um booleano. `true` se o valor for um `NaN` e `false`, caso contrário.
+
+```JavaScript
+Number.isNaN(NaN);       // Saída: true
+Number.isNaN(123);       // Saída: false
+Number.isNaN("abc");     // Saída: false
+Number.isNaN(undefined); // Saída: false
+```
+
+`NaN` é uma propriedade do objeto global `Number` e ela é considerada um valor primitivo do tipo `Number`. Quando você imprime o tipo de `NaN`, a saída é `[object Number]`.
+
+# `Math`
+
+Objeto global. `Math` é um objeto incorporado que fornece operações matemáticas e constantes.\
+Diferentemente dos métodos que são associados a instâncias de objetos, como métodos de array ou de string, os métodos do objeto `Math` são chamados diretamente no objeto global e não exigem uma instância específica. Portanto, é mais apropriado chamá-lo de uma função global do que um método de objeto.
+
+## <a id = "floor"></a>`.floor()`
+
+`.floor()` é uma função global no JavaScript usada para arredondar para baixo um número decial para o inteiro mais próximo, ele retorna o maior número inteiro menor ou igual a um determinado número.
+
+`Math.floor(x);`
+
+`x`**:** o número para o qual você deseja calcular o maior número inteiro menor ou igual.
+
+Retorna o maior número inteiro menor ou igual a `x`.
+
+```JavaScript
+const number = 8.75;
+const roundedDown = Math.floor(number);
+
+console.log(roundedDown); // Saída: 8
+```
+
+Neste exemplo, `Math.floor()` é usado para arredondar para baixo o número decimal 8.75 para o inteiro mais próximo, que é 8.
 
 # Function
 
@@ -86,3 +132,22 @@ objeto2.imprimeValor = objeto2.imprimeValor.bind(objeto);
 
 objeto2.imprimeValor(); // Saída:
 ```
+
+# `Date`
+
+## <a id = "now"></a>`.now()`
+
+`.now()` é um método estático do objeto `Date` em JavaScript, ele retorna o número de milissegundos desde primeiro de janeiro de 1970 00:00:00 UTC até o momento atual.\
+Ele retorna o número de milissegundos desde o Unix Epoch até o momento atual.
+
+`Date.now();`
+
+Retorna um número representando os milissegundos desde o Unix Epoch.
+
+```JaVaScript
+let timestamp = Date.now();
+
+console.log(timestamp);
+```
+
+O código acima imprime o número de milissegundos desde o Unix Epocj até o momento em que `Date.now()` foi chamado.

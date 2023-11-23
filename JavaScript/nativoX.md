@@ -319,7 +319,6 @@ Então mesmo a função de resolução sendo passada como argumento para a funç
 
 - [`.error()`;](#error)
 - [`.exit()`;](#exit)
-- [`.floor()`.](#floor)
 
 ## `console`
 
@@ -355,16 +354,6 @@ echo $?
 ```
 
 Se você estiver executando o aplicativo diretamente do terminal ou da linha de comando, o código de saída será retornado como um código de saída do processo. Com o código acima você pode verificar o código de saída após a execução da aplicação. Neste caso `$?` conterá o código de saída personalizado por `process.exit()`.
-
-## `Math`
-
-Fornece uma série de funções e constantes matemáticas que podem ser usadas para realizar operações matemáticas em números.
-
-### <a id = "floor"></a>`.floor()`
-
-Converte um número decimal em um número inteiro, selecionando somente a parte inteira.
-
-`.floor(x)`**:** `x` é um number. Retorna um number.
 
 ## Node.js.
 

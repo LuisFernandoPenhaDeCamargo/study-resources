@@ -2,13 +2,14 @@
 
 - [`aws-sdk`](#aws-sdk);
 - [`crypto`](#crypto);
-- [`util`](#util).
+- [`util`](#util);
+- [`joi`](#joi)
 
 # <a id = "aws-sdk"></a>`aws-sdk`
 
 ### Sumário
 
-- [`.update()`](#update);
+- [`.update()`](#aws-sdk-update);
 - [`.IAM()`](#iam);
 - [`.createUser()`](#createuser);
 - [`.getUser()`](#getuser);
@@ -25,7 +26,7 @@
 - [`.S3()`](#s3);
 - [`.Endpoint()`](#endpoint).
 
-## <a id = "update"></a>`.update()`
+## <a id = "aws-sdk-update"></a>`.update()`
 
 O método `.update()` atualiza a configuração do AWS SDK, incluindo configurações como credenciais de acesso, região. etc.
 
@@ -479,14 +480,15 @@ Essa funcionalidade pode ser útil quando você precisa interagir com serviços 
 
 # <a id = "crypto"></a>`crypto`
 
-`crypto` pe um módulo embutido (não precisa ser instalado separadamente) no Node.js. Não é uma biblioteca ou framework, mas sim um conjunto de funcionalidades relacionadas à criptografia disponíveis no ambiente Node.js. Ele faz parte do conjunto de módulos principais do Node.js e está disponível por padrão.\
+`crypto` é um módulo embutido (não precisa ser instalado separadamente) no Node.js. Não é uma biblioteca ou framework, mas sim um conjunto de funcionalidades relacionadas à criptografia disponíveis no ambiente Node.js. Ele faz parte do conjunto de módulos principais do Node.js e está disponível por padrão.\
 O módulo `crypto` fornece funcionalidades criptográficas, como hash, cifra, e geração de números aleatórios. Ele é frequentemente usado para implementar segurança em aplicações, como a geração de hashes para senhas, assinaturas digitais, criptografia, etc. Além disso, é uma parte essencial para lidar com conceitos de segurança em ambientes Node.js.
 
 ### Sumário
 
 - [`createHmac()`](#createhmac);
-.update()
-.digest()
+- [`.update()`](#crypto-update);
+- [`.digest()`](#digest);
+- [`.randomInt()`](#randomint).
 
 ## <a id = "createhmac"></a>`createHmac()`
 
@@ -515,6 +517,77 @@ console.log(hash);
 
 Neste exemplo, é criado um objeto Hmac usando o algoritmo SHA-256 e uma chave secreta. O objeto Hmac é então atualizado com os dados (no caso, a string "Hello, World.") e, finalmente, é gerado o hash.
 
+## <a id = "crypto-update"></a>`.update()`
+
+`.update()` é um método do objeto Hmac no módulo `crypto` do Node.js, ele é usado para alimentar dado para o objeto Hmac, que são usados para calcular o hash,
+
+`hmac.update(data, [inputEncoding]);`
+
+- `data`**:** os dados a serem alimentados para o Hmac, pode ser uma string ou um Buffer;
+- `inputEncoding` **(opcional):** a codificação dos dados de entrada (por exemplo, "utf8", "hex", "base64", etc.).
+
+Retorna o próprio objeto Hmac, permitindo chamadas encadeadas.
+
+```JavaScript
+const crypto = require("crypto");
+const secretKey = "mySecretKey";
+const hmac = crypto.createHmac("sha256", secretKey);
+const data = "Hello, World.";
+
+hmac.update(data);
+
+const hash = hmac.digest("hex");
+
+console.log(hash);
+```
+
+Neste exemplo, o método `.update()` é usado para alimentar a string "Hello, World." para o objeto Hmac antes de calcular o hash final.
+
+## <a id = "digest"></a>`.digest()`
+
+`.digest()` é um método do objeto Hmac no módulo `crypto` do Node.js, ele é usado para finalizar o cálculo do hash e obter o resultado.
+
+`hash.digest([enconding]);`
+
+`enconding` **(opcional):** a codificação do resultado (por exemplo, "hex", "base64", "binary", etc.).
+
+Retorna a representação do hash como uma string ou Buffer, dependendo da codificação especificada ou do padrão.
+
+```JavaScript
+const crypto = require("crypto");
+const hash = crypto.createHash("sha256");
+const data = "Hello, World.";
+
+hash.update(data);
+
+const hashResult = hash.digest("hex");
+
+console.log(hashResult);
+```
+
+Neste exemplo, o método `.digest()` é usado para obter o hash final no formato hexadecimal.
+
+## <a id =  "randomint"></a>`.randomInt()`
+
+`.randomInt()` é usado para gerar um número inteiro aleatório entre `min` (inclusivo) e `max` (exclusivo).
+
+`crypto.randomInt();`
+
+- `min`**(opcional):** valor mínimo (inclusivo) do intervalo. Se não fornecido, o default é zero;
+- `max`**:** valor máximo (exclusivo )do intervalo.
+
+Retorna um número inteiro aleatório no intervalo [min, max).
+
+```JavaScript
+const crypto = require("crypto");
+
+const randomNum = crypto.randomInt(1, 100);
+
+console.log(randomNum);
+```
+
+Este exemplo gerará um número aleatório entre 1 (inclusivo) e 100 (exclusivo) e o imprimirá no console.
+
 # <a id = "util"></a>`util`
 
 ### Sumário
@@ -541,3 +614,188 @@ readFileAsync("arquivo.txt", "utf8")
     .then(data => console.log(data))
     .catch(err => console.log(err));
 ```
+
+# <a id = ""></a>`joi`
+
+`joi` é uma biblioteca que precisa ser instalada, ele é utilizada para validação de objetos em JavaScript e é especialmente útil para validar dados de entrada em aplicativos Node.js.\
+`joi` é usada para definir esquemas (schemas) que descrevem a estrutura esperada de um objeto. Ela fornece métodos para validar se um objeto atende aos critérios definidos no esquema.\
+Aqui está um exemplo simples de como você pode usar a `joi`:
+
+```JavaScript
+const Joi = require("joi");
+
+// Definindo um esquema simples para validar um objeto.
+const schema = Joi.object({
+    username: Joi.string().alphanum().min(3).max(30).required(),
+    email: Joi.string().email().required(),
+    age: Joi.number().integer().min(0)
+});
+
+// Objeto para validar.
+const data = {
+    username: "john_doe",
+    email: "john@example.com",
+    age: 25
+};
+
+const result = schema.validate(data);
+
+if (result.error) {
+    console.error(result.error.details);
+} else {
+    console.log("Objeto válido", result.value);
+}
+```
+
+Neste exemplo, o esquema define que um objeto válido deve ter uma propriedade `username` que é uma string alfanumérica de pelo menos 3 caracteres e no máximo 30 caracteres, uma propriedade `email` que é uma string válida de e-mail e uma propriedade `age` que é um número inteiro não negativo.\
+`joi` é bastante flexível e pode ser configurada para validar uma variedade de tipos de dados e critérios. Ela é frequentemente usada em conjunto com servidores Node.js para validar dados de solicitações HTTP, por exemplo.
+
+### Sumário
+
+- [`.object`](#object);
+- [`.validate()`](#validate);
+- [`.number()`](#number);
+- [`.integer()`](#integer);
+- [`.positive()`](#positive);
+- [`.required()`](#required);
+- [`.allow()`](#allow).
+
+## <a id = "object"></a>`.object()`
+
+`.object()` é um método do `joi` que é usado para definir um esquema para objetos JavaScript, ele define um esquema para validar objetos.
+
+`Joi.object([schema]);`
+
+`schema` **(opcional):** um objeto que define o esquema para os objetos. Se não fornecido, o método `object` apenas verifica se o valor é um objeto.
+
+Retona um esquema `joi` que pode ser usado para validar objetos.
+
+## <a id = "validate"></a>`.validate()`
+
+`.validate()` é um método do `joi` que é usado para validar valores em relação a um esquema definido.
+
+`validate(value, [schema], [options], [callback]);`
+
+- `value`**:** o valor a ser validado;
+- `schema` **(opcional):** o esquema `joi` usado para validar o valor;
+- `options` **(opcional):** opções de validação;
+- `callback` **(function, opcional):** uma função de retorno de chamada que será chamada com o resultado da validação.
+
+Retorna um objeto com informações sobre o resultado da validação. Normalmente. possui propriedades como `error` (se houve erros de validação) e `value` (o valor validado).
+
+```JavaScript
+const Joi = require("joi");
+
+// Definindo um esquema para validar uma string.
+const stringSchema = Joi.string()min(3).max(30).required();
+
+// Valor a ser validado.
+const stringValue = "Hello";
+
+// Validando o valor em relação ao esquema.
+const result = Joi.validate(stringValue, stringSchema);
+
+if (result.error) {
+    console.error(result.error.details);
+} else {
+    console.log("Valor válido:", resulte.value);
+}
+```
+
+Neste exemplo, `Joi.validate()` é usado para validar a string `stringValue` em relação ao esquema `stringSchema`. O resultado da validação é então verificado para determinar se há erros ou se o valor é válido.
+
+## <a id = "number"></a>`.number()`
+
+`.number()` é um método usado para validar se um valor é do tipo número.
+
+Ele é parte de uma expressão de validação em cadeia e não retorna um valor significativo por conta própria. A expressão de validação como um todo retornará um objeto Joi que pode ser utilizado para validar dados.
+
+```JavaScript
+const Joi = require("joi");
+
+const schema = Joi.object({
+    age: Joi.number().integer().min(18)
+});
+const result = schema.validate({ age: 25});
+// result.error contém informações de erro se a validação falhar.
+```
+
+Neste exemplo, `.number()` é usado para especificar que o valor associado à chave `age` deve ser um número.
+
+## <a id = "integer"></a>`.integer()`
+
+`.integer()` é um método usado para validar se um valor é um número inteiro.
+
+Ele é parte de uma expressão de validação em cadeia e não retorna um valor significativo por conta própria. A expressão de validação como um todo retornará um objeto Joi que pode ser utilizado para validar dados.
+
+```JavaScript
+const Joi = require("joi");
+
+const schema = Joi.object({
+    age: Joi.number().integer().min(18)
+});
+const result = schema.validate({ age: 25});
+// result.error contém informações de erro se a validação falhar.
+```
+
+Neste exemplo, `.integer()` é usado para especificar que o valor associado à chave `age` deve ser um número inteiro.
+
+## <a id = "positive"></a>`.positive()`
+
+`.positive()` é um método usado para validar se um número é positivo (maior que zero).
+
+Ele é parte de uma expressão de validação em cadeia e não retorna um valor significativo por conta própria. A expressão de validação como um todo retornará um objeto Joi que pode ser utilizado para validar dados.
+
+```JavaScript
+const Joi = require("joi");
+
+const schema = Joi.object({
+    price: Joi.number().positive()
+});
+const result = schema.validate({ price: 42.99 });
+// result.error contém informações de erro se a validação falhar.
+```
+
+Neste exemplo, `.positive()` é usado para garantir que o valor associado à chave `price` seja um número positivo.
+
+## <a id = "required"></a>`.required()`
+
+`.required()` é um método usado para especificar que um campo é obrigatório. Ele impõe que o valor associado a um determinado campo em um objeto deve estar presente.
+
+Ele é parte de uma expressão de validação em cadeia e não retorna um valor significativo por conta própria. A expressão de validação como um todo retornará um objeto Joi que pode ser utilizado para validar dados.
+
+```JavaScript
+const Joi = require("joi");
+
+const schema = Joi.object({
+    username: Joi.string().required(),
+    password: Joi.string().required()
+});
+const result = schema.validate({ username: "john_doe", passwdor: "s3cr3t" })
+// result.error contém informações de erro se a validação falhar.
+```
+
+Neste exemplo, `.required()` é usado para indicar que tento `username` quanto `password` são campos obrigatórios no objeto a ser validado.
+
+## <a id = "allow"></a>`.allow()`
+
+`.allow()` é um método usado para especificar valores permitidos para um campo durante a validação. Ou seja, você pode usar `.allow()` para indicar quais valores são válidos para um campo específico.
+
+`.allow(value);`
+
+`value`**:** o valor permitido para o campo.
+
+Ele é parte de uma expressão de validação em cadeia e não retorna um valor significativo por conta própria. A expressão de validação como um todo retornará um objeto Joi que pode ser utilizado para validar dados.
+
+```JavaScript
+const Joi = require("joi");
+
+const schema = Joi.object({
+    gender: Joi.string().allow("male", "female", "other").required(),
+    age: Joi.number().integer().min(18).required()
+});
+const result = schema.validate({ gender: "male", age: 25 });
+// result.error contém informações de erro se a validação falhar.
+```
+
+Neste caso `.allow("male", "female", "other")` é usado para indicar que o campo `gender` só aceita os valores "male", "female" e "other".
