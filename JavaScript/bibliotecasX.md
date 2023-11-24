@@ -2,13 +2,9 @@
 
 ### Sumário
 
-- [`aws-sdk`](#aws-sdk);
-- [`util`](#util).
-
-# <a id = "aws-sdk"></a>`aws-sdk`
-
-A biblioteca `aws-sdk` precisa ser instalada, é uma biblioteca para interação com os serviços da AWS na linguagem JavaScript (Node.js), ela facilita a interação programática com os serviços da AWS usando JavaScript/Node.js.\
-A biblioteca `aws-sdk` é a biblioteca oficial da Amazon Web Services (AWS) que permite interagir com diversos serviços da ASW, como Amazon S3, Amazon DynamoDB, AWS Lambda e outros.\
+- [`util`](#util);
+- [`querystring`](#querystring);
+- [`aws-sdk`](#aws-sdk).
 
 # <a id = "util"></a>`util`
 
@@ -16,6 +12,37 @@ A bilbioteca `util` é uma parte do conjunto de módulos padrão do Node.js e n�
 O módulo `util` fornece várias utilidades e funções auxiliares que são úteis em várias situações ao trabalhar com Node.js. Como funções utilitárias para ajudar na programação assíncrona e em outros aspectos de desenvolvimento.
 Para utilizar a biblioteca `aws-sdk`, você geralmente precisa configurar as credenciais de acesso à AWS, como a chave de acesso e a chave secreta. Isso é necessário para que o SDK possa autenticar as solicitações à AWS em seu nome.\
 Após configurar as credenciais, você pode começar a utilizar os serviços da AWS, como o Amazon S3 para armazenamento de objetos, o Amazon DynamoDB para banco de dados NoSQL, entre outros. O `aws-sdk` fornece uma API rica para interagir com esses serviços, permitindo que você crie, leia, atualize e exclua recursos da AWS.
+
+# <a id = "querystring">`querystring`
+
+`querystring` é um módulo nativo do Node.js, não é uma biblioteca ou framework separado. Isso significa que você não precisa instalá-lo separadamente, pois faz parte da biblioteca padrão do Node.js.z
+O módulo `querystring` é usado para manipular e analisar cadeias de consulta (query strings) em URLs. Ele fornece métodos para converter objetos JavaScript em strings de consulta e vice-versa, facilitando o trabalho com parâmetros de consulta em URLs. Query strings são frequentemente usadas em URLs para transmitir parâmetros ou dados em formato de chave-valor.
+
+```JavaScript
+const querystring = require("querystring");
+
+// Convertendo um objeto em uma string de consulta.
+const params = {
+    name: "John",
+    age: 30,
+    city: "New York"
+};
+const queryString = querystring.stringify(params);
+
+console.log(querystring);  // Saída: name=John&age=30&city=New%20York
+
+// Convertendo uma string de consulta em um objeto.
+const parsedParams = querystring.parse(queryString);
+
+console.log(parsedParams); // Saída: [Object: null prototype] { name: 'John', age: '30', city: 'New York' }
+```
+
+O módulo `querystring` é útil ao lidar com URLs em aplicativos Node.js, especialmente ao analisar ou construir URLs que contêm parâmetros de consulta.
+
+# <a id = "aws-sdk"></a>`aws-sdk`
+
+A biblioteca `aws-sdk` precisa ser instalada, é uma biblioteca para interação com os serviços da AWS na linguagem JavaScript (Node.js), ela facilita a interação programática com os serviços da AWS usando JavaScript/Node.js.\
+A biblioteca `aws-sdk` é a biblioteca oficial da Amazon Web Services (AWS) que permite interagir com diversos serviços da ASW, como Amazon S3, Amazon DynamoDB, AWS Lambda e outros.
 
 ---
 
@@ -605,8 +632,6 @@ Em muitos casos, definir a curva ECDH como `'auto'` é uma boa prática, pois pe
 O módulo `http` é um módulo principal do Node.js que fornece funcionalidades para criar servidores HTTP e interagir com solicitações e respostas HTTP. Com o módulo `http`, você pode criar aplicativos web, APIs, servidores e muito mais. Ele é uma parte essencial da plataforma Node.js para comunicação na web.
 
 ## <a name = "querystring">`querystring`
-
-O módulo `querystring` fornece funcionalidades para analisar e manipular strings de consulta (query strings). Query strings são frequentemente usadas em URLS para transmitir parâmetros ou dados em formato de chave-valor.
 
 ### <a id = ""></a>`.stringify()`
 

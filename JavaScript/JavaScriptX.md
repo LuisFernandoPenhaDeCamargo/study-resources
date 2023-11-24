@@ -645,29 +645,6 @@ novaFrase = frase.replace(/gato/, "cachorro"); //Saída: O cachorro é um animal
 novaFrase = frase.replace(/gato/g, "cachorro"); //Saída: O cachorro é um animal e o cachorro é fofo.
 ```
 
-## Funções de substituição. (Ok)
-
-São funções usadas para modificar o conteúdo de strings.
-
-### <a id = "padstart"></a>`.padStart()` (Ok)
-
-O método `.padStart()` é usado para preencher o início de uma string com um caractere especificado até que a string alcance um determinado comprimento. Exemplos de uso:
-
-```JavaScript
-const stringOriginal = "42";
-const paddedString = stringOriginal.padStart(5, "0");
-
-console.log(paddedString); // Saída: 00042
-```
-
-`const paddedString = string.padStart(targetLength, padString);`
-
-- `targetLength` **(number):** o comprimento desejado da string resultante após o preenchimento. Caso a `string` já possua um tamanho maior que o `targetLength`, o método não fará nada e a string permanecerá inalterada;
-- `padString` **(string):** o caractere (ou sequência de caracteres) a ser usado para preencher a string original. Caso o seu valor não seja especificado, a string é alterada, você pode perceber isso pela propriedade `.length` dela.\
-  Uma caso interessante é se você definir ela como uma string vazia `''`, nada acontece.
-
-Retorna uma nova string que é a tring original preenchida no início com o caractere especificado até que alcance o comprimento desejado.
-
 # <a id = "funcoesarray"></a>Funções de array. (Ok: posição em relação a "Construtores", "Objetos globais" e "Funções de string")
 
 ### <a id = "push"></a>`.push()`
@@ -964,7 +941,6 @@ Certifique-se de nunca incluir a pasta **node_modules** no seu repositório Git,
 # <a id = "bibliotecas"></a>Bibliotecas.
 
 - [`sequelize`](sequelize.md);
-- [`axios`](bibliotecas.md#axios);
 - [`request-promise-native`](bibliotecas.md#requestpromisenative);
 - [`body-parser`](bibliotecas.md#bodyparser);
 - [`mariadb`](bibliotecas.md#mariadb);
@@ -979,7 +955,6 @@ Certifique-se de nunca incluir a pasta **node_modules** no seu repositório Git,
 
 - [`tls`](bibliotecas.md#tls);
 - [`http`](bibliotecas.md#http);
-- [`querystring`](bibliotecas.md#querystring);
 - [`path`](bibliotecas.md#path);
 - [`fs`](bibliotecas.md#fs);
 - [`os`](bibliotecas.md#os);

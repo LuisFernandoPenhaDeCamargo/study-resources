@@ -4,7 +4,8 @@
 - [`.isNaN()`](#isnan);
 - [`.floor()`](#floor);
 - [`.bind()`](#bind);
-- [`.now()`](#now)
+- [`.now()`](#now);
+- [`.toString()`](#tostring).
 
 # `Number`
 
@@ -151,3 +152,22 @@ console.log(timestamp);
 ```
 
 O código acima imprime o número de milissegundos desde o Unix Epocj até o momento em que `Date.now()` foi chamado.
+
+# Objeto
+
+## <a id = "tostring"></a>`.toString()`
+
+`.toString()` é um método de objetos em JavaScript, ele converte um objeto para uma string.
+
+`.toString();`
+
+Retorna uma string que representa o objeto.
+
+```JavaScript
+const number = 42;
+const stringRepresentation = number.toString();
+
+console.log(stringRepresentation); // Saída: 42
+```
+
+No exemplo acima, `.tostring()` é chamado no número `42`, convertendo-o para a string `42`.

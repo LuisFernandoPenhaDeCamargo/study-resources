@@ -3,6 +3,7 @@
 ### Sumário
 
 1. [Variáveis (var, let, const)](#variaveis-var-let-const)
+    - Conveções de Nomenclatura
 2. [Tipos de Dados (Números, Strings, Booleanos)](#tipos-de-dados-numeros-strings-booleanos)
 3. [Estruturas de Controle de Fluxo (if, else)](#estruturas-de-controle-de-fluxo-if-else)
 4. [Funções (Declaração, Chamada)](#funcoes-declaracao-chamada)
@@ -15,6 +16,21 @@
 11. [Operadores](#operadores)
 
 # <a name = "variaveis-var-let-const"></a>Variáveis (var, let, const)
+
+### Conveções de Nomenclatura
+
+Colocar um underscore (`_`) antes do nome de uma variável é uma convenção em muitas linguagens de programação para indicar que a variável é "privada" ou "interna" a aquele escopo específico. Essa é uma convenção de nomenclatura e não afeta diretamente o comportamento da variável no código.\
+Por exemplo, em algumas linguagens como JavaScript, Python ou Ruby, você pode ver algo assim:
+
+```JavaScript
+let _internalVariable = 42;
+
+function _privateFunction() {
+    // código da função.
+}
+```
+
+Isso indica aos outros desenvolvedores que essas entidades (variável ou função) não devem ser acessadas diretamente fora do escopo em que foram definidas. No entanto, é importante notar que, em muitas linguagens, isso é apenas uma convenção e não impede o acesso direto. É mais uma indicação de boas práticas para colaboradores no código. Em linguagens que oferecem modificadores de acesso, como o `private` em algumas linguagens orientadas a objetos, isso teria um efeito mais direto sobre a visibilidade da variável ou função.
 
 # <a name = "tipos-de-dados-numeros-strings-booleanos"></a>Tipos de Dados (números, strings, booleanos)
 

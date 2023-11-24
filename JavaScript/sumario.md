@@ -3,6 +3,7 @@
 ### Nível Inicial: Fundamentos
 
 1. [Variáveis (var, let, const)](nivel-inicial.md#variaveis-var-let-const)
+    - Conveções de Nomenclatura
 2. [Tipos de dados (números, strings, booleanos)](nivel-inicial.md#tipos-de-dados-numeros-strings-booleanos)
 3. [Estruturas de controle de fluxo (if, else)](nivel-inicial.md#estruturas-de-controle-de-fluxo-if-else)
 4. [Funções (declaração, chamada)](nivel-inicial.md#funcoes-declaracao-chamada)

@@ -19,8 +19,13 @@
 
 8. [Funções de Data e Hora:](#funcoes-de-data-e-hora)\
     - `FROM_UNIXTIME()`
+
+9. [ENUM no SQL](#enum-no-sql)
+    - O que é ENUM
+    - Como Definir e Usar ENUM
+    - Considerações e Boas práticas
  
-9. [Índices e Otimização:](#indices-e-otimizacao)
+10. [Índices e Otimização:](#indices-e-otimizacao)
     - O que São Índices
     - Como Criar Índices
     - Otimização de Consultas
@@ -92,6 +97,30 @@ SELECT FROM_UNIXTIME(1609459200, '%Y-%m-%d') AS data_fora_formatada;
 ```
 
 Neste caso, o resultado será "2021-01-01".
+
+# <a name = "enum-no-sql"></a>ENUM no SQL
+
+### O que é ENUM
+
+### Como Definir e Usar ENUM
+
+### Considerações e Boas práticas
+
+Você pode usar inteiros para se referenciar à posição em um tipo `ENUM`, isso é uma prática válida e funcional no MySQL. Por exemplo, se a coluna `validate_status` é definida como um tipo `ENUM` com os valores "ativo", "inativo" e "pendente", e você atribui 1, 2 ou 3 a essa coluna, o MySQL interpretará esses valores como referências às posições correspondentes no `ENUM`.
+
+```sql
+CREATE TABLE access_token (
+    validate_status ENUM('ativo', 'inativo', 'pendente')
+);
+```
+
+Você pode usar a seguinte consulta para inserir dados:
+
+`INSERT INTO access_token (validate_status) VALUES (1);`
+
+Isso funcionará e o MySQL interpretará o valor `1` como referente à primeira posição no  `ENUM` ("`ativo`").\
+No entanto, ao fazer isso, é importante garantir que os valores associados aos inteiros estejam alinhados com a ordem do `ENUM`. Se a ordem mudar no futuro, os valores dos inteiros ainda estarão associados às posições antigas.\
+Se você encontrar algum comportamento inesperado, verifique se a definição do `ENUM` está correta e se os valores dos inteiros estão correspondendo à ordem desehada no `ENUM`. Se possível, use os valores literais associados diretamente para maior clareza e menos propensão  a erros.
 
 # <a name = "indices-e-otimizacao"></a>Índices e Otimização
 
