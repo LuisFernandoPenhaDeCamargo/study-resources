@@ -1,5 +1,3 @@
-<!-- qs.stringify(), axios() -->
-
 # Template
 
 # Contexto para o Chat GPT

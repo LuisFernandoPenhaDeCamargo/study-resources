@@ -4,6 +4,7 @@
 
 1. [Variáveis (var, let, const)](#variaveis-var-let-const)
     - Conveções de Nomenclatura
+    - Uso Defensivo do Ponto e Vírgula (no Ínicio de Uma Linha)
 2. [Tipos de Dados (Números, Strings, Booleanos)](#tipos-de-dados-numeros-strings-booleanos)
 3. [Estruturas de Controle de Fluxo (if, else)](#estruturas-de-controle-de-fluxo-if-else)
 4. [Funções (Declaração, Chamada)](#funcoes-declaracao-chamada)
@@ -16,6 +17,8 @@
 11. [Operadores](#operadores)
 
 # <a name = "variaveis-var-let-const"></a>Variáveis (var, let, const)
+
+Talvez removerei os tópicos abaixo desta seção, criarei uma chamada "Boas Pŕaticas" no nível avançado e as adicionarei lá.
 
 ### Conveções de Nomenclatura
 
@@ -31,6 +34,13 @@ function _privateFunction() {
 ```
 
 Isso indica aos outros desenvolvedores que essas entidades (variável ou função) não devem ser acessadas diretamente fora do escopo em que foram definidas. No entanto, é importante notar que, em muitas linguagens, isso é apenas uma convenção e não impede o acesso direto. É mais uma indicação de boas práticas para colaboradores no código. Em linguagens que oferecem modificadores de acesso, como o `private` em algumas linguagens orientadas a objetos, isso teria um efeito mais direto sobre a visibilidade da variável ou função.
+
+### Uso Defensivo do Ponto e Vírgula (no Ínicio de Uma Linha)
+
+O ponto e vírgula `;` no ínicio de uma linha de código é uma prática defensiva que os desenvolvedores usam para evitar problemas de interpretação do código, especialmente quando estão minificando ou concatenando arquivos em JavaScript.\
+Em alguns casos, se você tiver código anterior que não termina com um ponto e vírgula e, em seguida, começar uma linha com um parêntese `(`, isso pode resultar em problemas de interpretação pelo JavaScript, porque o interpretador pode interpretar a linha anterior como uma expressão que não foi terminada adequadamente.\
+Adicionar o ponto e vírgula no início de uma linha ajuda a garantir que, independentemente do código que precede essa linha, ela será interpretada corretamente como uma instrução independente.\
+Em resumo, é uma boa prática defensiva para evitar problemas de interpretação e garantir que o código seja executado corretamente, especialmente em contextos nos quais o código pode ser minificado ou concatenado. Em muitos casos, especialmente em ambientes modernos e com o uso adequado de ferramentas de construção, essa prática pode não ser necessária, mas algumas pessoas preferem incluí-la para maior segurança.
 
 # <a name = "tipos-de-dados-numeros-strings-booleanos"></a>Tipos de Dados (números, strings, booleanos)
 

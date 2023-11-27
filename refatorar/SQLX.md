@@ -311,26 +311,6 @@ A função `DATE()` em MySQL é usada para extrair a parte da data de um valor d
 | 2023-10-26 |
 ```
 
-### `DATE_SUB()`
-
-A função `DATE_SUB()` em MySQL é usada para subtrair um intervalo de tempo de um valor de data ou carimbo de data/hora. Ela é comumente usada para calcular uma nova data ou carimbo de data/hora subtraindo um período de tempo específico, como dias, horas, minutos, etc., de um valor de data/hpra existente.
-
-`DATE_SUB(valor_de_data_hora, INTERVAL quantidade unidade);`
-
-- `valor_de_data_hora`**:** o valor de data ou carimbo de data/hora do qual você deseja subtrair o intervalo;
-- `quantidade`**:** a quantidade de unidades a ser subtraída;
-- `unidade`**:** a unidade de tempo (por exemplo, `DAY`, `HOUR`, `MINUTE`) que define o intervalo de tempo a ser subtraído.
-
-Aqui está um exemplo de como usar a função `DATE_SUB()` para subtrair um dia de um valor de data:
-
-`DATE_SUB('2023-10-26', INTERVAL 1 day) AS NovaData;`
-
-```MySQL
-| NovaData |
-|---|
-| 2023-10-25 |
-```
-
 ### `HOUR()`
 
 A função `HOUR()` em MySQL é usada para extrair a parte da hora de um valor de data ou carimbo de data/hora. Ela retorna um número inteiro que representa a hora do dia, variando de 0 a 23, com base no valor de data ou carimbo de data/hora fornecido como argumento. Por exemplo, se você tiver um valor de data/hora como "2023-10-26 15:30:00", a função `HOUR()` aplicada a esse valor retornará o número 15, que representa a hora.

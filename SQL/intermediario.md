@@ -98,6 +98,25 @@ SELECT FROM_UNIXTIME(1609459200, '%Y-%m-%d') AS data_fora_formatada;
 
 Neste caso, o resultado será "2021-01-01".
 
+### `DATE_SUB()`
+
+`DATE_SUB()` é uma função no MySQL utilizada para subtrair um intervalo específico de uma data, ele é frequentemente utilizado para calcular uma nova data subtraindo dias, horas, minutos, etc., da data original.
+
+`DATA_SUB(date, INTERVAL expr unit)`
+
+- `date`**:** a data qual você deseja subtrair o intervalo. Pode ser uma expressão de data ou uma coluna de data;
+- `expr`**:** a quantidade de tempo a ser subtraída. Pode ser um número inteiro ou uma expressão que resulta em um número;
+- `unit`**:** a unidade do intervalo (por exemplo, DAY, MONTH, HOUR, MINUTE, etc.).
+
+Retorna a data resultante após a subtração do intervalo.
+
+```sql
+SELECT DATE_SUB('2023-01-01', INTERVAL 7 DAY) AS nova_data;
+```
+
+Este exemplo subtrai `7` dias da data `'2023-01-01'`, resultando em `2022-12-25`.\
+É importante notar que o MySQL oferece outras funções relacionadas para adicionar ou subtrair intervalos de datas, como `DATE_ADD()` para adição, e essas funções são bastante úteis em consultas SQL para manipulação de datas.
+
 # <a name = "enum-no-sql"></a>ENUM no SQL
 
 ### O que é ENUM

@@ -3,8 +3,11 @@
 ### Sumário
 
 - [`util`](#util);
+- [`crypto`](#crypto);
 - [`querystring`](#querystring);
-- [`aws-sdk`](#aws-sdk).
+- [`aws-sdk`](#aws-sdk);
+- [`axios`](#axios);
+- [`joi`](#joi).
 
 # <a id = "util"></a>`util`
 
@@ -12,6 +15,11 @@ A bilbioteca `util` é uma parte do conjunto de módulos padrão do Node.js e n�
 O módulo `util` fornece várias utilidades e funções auxiliares que são úteis em várias situações ao trabalhar com Node.js. Como funções utilitárias para ajudar na programação assíncrona e em outros aspectos de desenvolvimento.
 Para utilizar a biblioteca `aws-sdk`, você geralmente precisa configurar as credenciais de acesso à AWS, como a chave de acesso e a chave secreta. Isso é necessário para que o SDK possa autenticar as solicitações à AWS em seu nome.\
 Após configurar as credenciais, você pode começar a utilizar os serviços da AWS, como o Amazon S3 para armazenamento de objetos, o Amazon DynamoDB para banco de dados NoSQL, entre outros. O `aws-sdk` fornece uma API rica para interagir com esses serviços, permitindo que você crie, leia, atualize e exclua recursos da AWS.
+
+# <a id = "crypto"></a>`crypto`
+
+`crypto` é um módulo embutido (não precisa ser instalado separadamente) no Node.js. Não é uma biblioteca ou framework, mas sim um conjunto de funcionalidades relacionadas à criptografia disponíveis no ambiente Node.js. Ele faz parte do conjunto de módulos principais do Node.js e está disponível por padrão.\
+O módulo `crypto` fornece funcionalidades criptográficas, como hash, cifra, e geração de números aleatórios. Ele é frequentemente usado para implementar segurança em aplicações, como a geração de hashes para senhas, assinaturas digitais, criptografia, etc. Além disso, é uma parte essencial para lidar com conceitos de segurança em ambientes Node.js.
 
 # <a id = "querystring">`querystring`
 
@@ -44,99 +52,170 @@ O módulo `querystring` é útil ao lidar com URLs em aplicativos Node.js, espec
 A biblioteca `aws-sdk` precisa ser instalada, é uma biblioteca para interação com os serviços da AWS na linguagem JavaScript (Node.js), ela facilita a interação programática com os serviços da AWS usando JavaScript/Node.js.\
 A biblioteca `aws-sdk` é a biblioteca oficial da Amazon Web Services (AWS) que permite interagir com diversos serviços da ASW, como Amazon S3, Amazon DynamoDB, AWS Lambda e outros.
 
----
+# <a id = "axios"></a>`axios`
 
-# <a name = "axios"></a>`axios`
-
-Utilizada para fazer requisições HTTP, seja em navegadores ou em Node.js.
-
-## Headers (Cabeçalhos).
-
-No propriedade `'content-type'`, que pode ser acessada ao se utilizar `response.headers['content-type']`, se encontra o valor do formato da resposta.\
-Se o valor da chave `'content-type'` for `application/json`, quer dizer que o conteúdo da resposta é no formato JSON.
-
-As chaves `"x-real-ip"`, `"x-fowarded-for"` e `remoteAddress` em uma requisição HTTP geralmente se relacionam com informações sobre o endereço IP do cliente que fez a requisição. Elas podem ser usadas para rastrear a origem da requisição, especialmente quando um servidor proxy ou balanceador de carga está envolvido.
-
-- `x-real-ip`**:** esta chave é geralmente usada para conter o endereço IP real do cliente que fez a requisição. Em muitos casos, quando um servidor proxy está na frente de um servidor web, o endereço IP do cliente é mascarado e substituído pelo endereço IP do proxy. O cabeçalho `x-real-ip` é usado para recuperar o endereço IP real do cliente, especialmente quando é confiável;
-- `x-forwarded-for`**:** este é outro cabeçalho frequentemente usado para obter o endereço IP do cliente quando um servidor proxy está envolvido. O cabeçalho `x-forwarded-for` contém uma lista de endereços IP, onde o primeiro endereço da lista é geralmente o endereço IP real do cliente e os endereços subsequentes são os IPs dos proxies pelos quais a requisição passou. É importante lembrar que esse cabeçalho pode ser falsificado, portanto, deve ser usado com cuidado em ambientes confiáveis;
-- `remoteAddress`**:** é baseado no endereço IP do cliente conforme detectado pelo servidor, e isso pode ser afetado pela configuração do servidor e pela presença de proxies.
-
-Em resumo, essas chaves e propriedades são usadas para obter informações sobre o endereço IP do cliente que fez a requisição HTTP. No entanto, é importante ter em mente que, em ambientes com proxies, os endereços IP podem ser mascarados ou falsificados, portanto, é crucial usá-los com cuidado e considerar a confiabilidade das fontes de dados.
-
-## `.interceptors`
-
-Ao configurar um interceptador global, este será aplicado a todas as solicitações feitas por todas as partes do código que utilizam a mesma instância global do axios (no caso de um interceptador de requisição) ou será aplicado antes de retonar cada resposta ao código (interceptador de resposta).\
-Lembrando que ele é **aplicado**, ou seja, ele é **executado** antes de cada requisição ou após cada resposta.
-
-- `.request` : interceptador de solicitação (requisição). Isto permite que você execute código antes que cada solicitação seja enviada. Após realizarmos esta "configuração", todas as solicitações posteriores obedeceram esta configuração;
-- `.response` : interceptador de resposta.
-
-`.use()` : registra o interceptador.
+A biblioteca `axios` precisa ser instalada, é uma biblioteca para fazer requisições HTTP no navegador e no Node.js. Não é um framwork independente, mas sim uma biblioteca especializada em facilitar a comunicação via HTTP.\
+`axios` é amplamente utilizada para fazer solicitações HTTP, como requisições GET, POST, PUT, DELETE, etc. Ele fornece uma API simples e baseada em Promises para trabalhar com solicitações e respostas HTTP de forma assíncrona. Além disso, ele suporta funcionalidades como interceptadores de requisições, transformadores de dados e muito mais.
 
 ```JavaScript
-//Response.
+// Importar o axios no ambiente de desenvolvimento no navegador.
+// (não é necessário instalar o axios no navegador, pois pode ser carregado de uma CDN).
+
+const axios = require("axios");
+
+// Fazer uma requisição GET.
+axios.get("https://api.example.com/data")
+    .then(response => {
+        console.log(response.data); // Dados da resposta.
+    }).catch(error => {
+        console.error(error); // Lidar com erros.
+    });
+```
+
+o exemplo acima é uma versão simplificada. No ambiente do navegador, você pode carregar o `axios` diretamente de uma CDN sem a necessidade de instalação via npm. No ambiente Node.js, você precisa instalá-la usando  npm ou yarn.
+
+### Headers (Cabeçalhos)
+
+Na propriedade `content-type`, que pode ser acessada ao se utilizar `response.headers['content-type']`, se encontra o valor do formato da resposta. Se o valor da chave `content-type` for `application/json`, isso quer dizer que o conteúdo da resposta está no formato JSON.
+
+As chaves `x-real-ip`, `x-fowarded-for` e `remoteAddress` em uma requisição HTTP geralmente se relacionam com informações sobre o endereço IP do cliente que fez a requisição. Elas podem ser usadas para rastrear a origem da requisição, especialmente quando um servidor proxy ou balanceador de carga está envolvido.
+
+- `x-real-ip`**:** esta chave geralmente contém o endereço IP real do cliente que fez a requisição. Em muitos casos, quando um servidor proxy está na frente de um servidor web, o endereço IP do cliente é mascarado e substituído pelo endereço IP do proxy. O cabeçalho `x-real-ip` é usado para recuperar o endereço IP real do cliente, especialmente quando é confiável;
+- `x-forwarded-for`**:** este é outro cabeçalho frequentemente usado para obter o endereço IP do cliente quando um servidor proxy está envolvido. O cabeçalho `x-forwarded-for` contém uma lista de endereços IP, onde o primeiro endereço da lista é geralmente o endereço IP real do cliente e os endereços subsequentes são os IPs dos proxies pelos quais a requisição passou. É importante lembrar que esse cabeçalho pode ser falsificado, portanto, deve ser usado com cuidado em ambientes confiáveis;
+- `remoteAddress`**:** é baseado no endereço IP do cliente conforme detectado pelo servidor, e isso pode ser afetado pela configuração do servidor e pela presença de proxies.
+Em resumo, essas chaves e propriedades são usadas para obter informações sobre o endereço IP do cliente que fez a requisição HTTP. No entanto, é importante ter em mente que, em ambientes com proxies, os endereços IP podem ser mascarados ou falsificados, portanto, é crucial usá-los com cuidado e considerar a confiabilidade das fontes de dados.
+
+### `.interceptors` 
+
+No `axios`, ao configurar um interceptador global (`.interceptors`), este será aplicado a **todas as solicitações feitas por todas as partes do código que utilizam a mesma instância global do axios**  (no caso de um interceptador de requisição) ou será aplicado antes de retornar cada resposta ao código (no caso de um interceptador de resposta).\
+Lembrando que ele é **aplicado**, ou seja, ele é **executado** antes de cada requisição ou antes de entregar cada resposta.
+
+- `.request`**:** interceptador de solicitação (requisição). Isto permite que o código seja executado antes que cada solicitação seja enviada. Após realizarmos esta "configuração", todas as solicitações posteriores obedeceram esta configuração;
+- `.response`**:** interceptador de resposta. Neste caso, antes de repassarmos a resposta para o código, o código de "configuração" será aplicado;
+- `.use()`**:** registra o interceptador.
+
+```JavaScript
+// Response.
 axios.interceptors.response.use(response => response, error => {
-  return Promise.reject(error);
+    return Promise.reject(error);
 });
 ```
 
-- `response => response`: o interceptador de resposta simplesmente passará a reposta sem fazer alterações. Isso é comum quando você deseja apenas fazer algum trabalho adicional com a resposta, como registro, mas não deseja modificar a resposta em si;
-- `return Promise.reject(error);`: a promessa com erro é rejeitada. Isso significa que o erro será **propagado** para qualquer código que chamou a solicitação axios original e que lidará com ele lá.
+- `(response) => { response; }`**:** o código foi colocado desta forma neste ponto para facilitar a sua compreensão, o interceptador de resposta simplesmente passará a resposta sem fazer alterações. Isto é comum quando você deseja apenas fazer algum trabalho adicional com a resposta, como registro, mas não deseja modificar a resposta em si;
+- `(error) => { return Promise.reject(error); }`**:** o código foi colocado desta forma neste ponto para facilitar a sua compreensão, a promessa com erro é rejeitada. Isto significa que o erro será **propagado** para qualquer código que chamou a solicitação axios original e que lidará com o erro lá.
 
-## <a id = "canceltoken"></a>`.CancelToken.source()`
+### Token de Cancelamento
 
-Para que o axios saiba qual token de cancelamento está associado a uma requisição específica, você o passa na configuração da requisição usando a propriedade `cancelToken`. Portanto, `cancelToken: objeto.token` informa ao axios que esta requisição está vinculada ao `objeto` que você criou.\
-Então quando você chama `objeto.cancel()`, o axios sabe que deve cancelar qualquer requisição que tenha o `objeto.token` associado a ela.
+Para que o axios saiba qual é o token de cancelamento que está associado com uma requisição específica, você o passa na configuração da requisição usando a propriedade `cancelToken`. Portanto `cancelToken: objeto.token` informa ao axios que esta requisição está vinculada ao `objeto` que você criou.\
+Então, quando você chama `objeto.cancel()`, o axios sabe que deve cancelar qualquer requisição que tenha o `objeto.token` associado a ela.
 
-- `.CancelToken`**:** utilizado para criar um Token de cancelamento que pode ser usado para cancelar uma solicitação HTTP que está em andamento;
-- `.source()`**:** cria o objeto `.CancelToken` e seu respectivo método `.cancel()`
-- `.cancel(mensagem)` o parâmetro `mensagem` que atribui o valor da chave `.reason.message`. É o **método utilizado para cancelar a requisição**.
+- `.CancelToken`**:** utilizado para criar um token de cancelamento que pode ser usado para cancelar uma solicitação HTTP que está em andamento;
+- `.source()`**:** criar o objeto `.CancelToken` e seu respectivo método `.cancel()`;
+- `.cancel(message)`**:** o parâtro `message` que atribui o valor da chave  `reason.message`. É o **método utilizado para cancelar a requisição.**
 
-- Um objeto `.CancelToken` possui um atributo `.token`;
-- O atributo `.token` é composto por uma `.promise` e uma `.reason`;
+- Um objeto `.CancelToken` possui uma propriedade `.token`;
+- A propriedade `.token` é composta por uma `.promise` e uma `.reason`;
 - A chave `.reason` possui um atributo `.message`.
-
-Exemplo:
 
 ```JavaScript
 const axios = require("axios");
 
 const source = axios.CancelToken.source();
 
-//Cancela o token com um motivo opcional (aqui, "Motivo do cancelamento." é o motivo).
-source.cancel("Motivo do cancelamento.");
+source.cancel("Motivo do cancelamento."); // Cancela a requisição. Você pode passar uma mensagem como argumento que explique o motivo do cancelamento.
 
 console.log(source);
-/*Saída:
-{ token:
-  CancelToken {
-    promise: Promise { [Object] },
-    reason: Cancel { message: 'Motivo do cancelamento.' } },
-  cancel: [Function: cancel] }
-*/
+/* Saída:
+{
+    token: CancelToken {
+        promise: Promise { [Object] },
+        reason: Cancel { message: 'Motivo do cancelamento.' }
+    },
+    cancel: [Function: cancel]
+}*/
 
 console.log(source.token);
-/*Saída:
+/* Saída:
 CancelToken {
-  promise: Promise { Cancel { message: 'Motivo do cancelamento.' } },
-  reason: Cancel { message: 'Motivo do cancelamento.' } }
-*/
+    promise: Promise { Cancel { message: 'Motivo do cancelamento.' } },
+    reason: Cancel { message: 'Motivo do cancelamento.' }
+}*/
+
 
 console.log(source.token.promise);
-//Saída: Promise { Cancel { message: 'Motivo do cancelamento.' } }
+/* Saída: Promise { Cancel { message: 'Motivo do cancelamento.' } }*/
 
 console.log(source.token.reason);
-//Saída: Cancel { message: 'Motivo do cancelamento.' }
+/* Saída: Cancel { message: 'Motivo do cancelamento.' }*/
 
 console.log(source.token.reason.message);
-//Saída: Motivo do cancelamento.
-
-//Para acessar o motivo do cancelamento, você pode usar source.token.reason.
-console.log("source.token.reason:", source.token.reason);
-//Saída: source.token.reason: Cancel { message: 'Motivo do cancelamento.' }
+// Saída: Motivo do cancelamento.
 ```
 
-## Métodos.
+```JavaScript
+// Criando um token de cancelamento.
+const source = axios.CancelToken.source();
+
+// Fazendo uma requisição com o token de cancelamento associado.
+axios.get("sua_url", { cancelToken: source.token })
+    .then(response => {
+        // Manipular a resposta se a requisição for bem-sucedida.
+    })
+    .catch(error => {
+        if (axios.isCancel(error)) {
+            console.log("Rquisição cancelada:", error.message);
+        } else {
+            // Manipular outros erros.
+        }
+    });
+
+// Cancelando a requisição antes que ela seja concluida.
+souce.cancel("Requisição cancelada pelo usuário.");
+```
+
+Ao chamar `source.cancel("Requisição cancelada pelo usuário.")`, a requisição será interrompida, e a Promise resultante entrará no estado de rejeição com a mensagem fornecida ("Requisição cancelada pelo usuário." no exemplo).\
+Esse recurso é útil em situações em que você precisa cancelar uma requisição, por exemplo, se o usuário navegar para fora de uma página ou executar alguma ação que torne a resposta da requisição desnecessária.
+
+# <a id = "joi"></a>`joi`
+
+`joi` é uma biblioteca que precisa ser instalada, ele é utilizada para validação de objetos em JavaScript e é especialmente útil para validar dados de entrada em aplicativos Node.js.\
+`joi` é usada para definir esquemas (schemas) que descrevem a estrutura esperada de um objeto. Ela fornece métodos para validar se um objeto atende aos critérios definidos no esquema.\
+Aqui está um exemplo simples de como você pode usar a `joi`:
+
+```JavaScript
+const Joi = require("joi");
+
+// Definindo um esquema simples para validar um objeto.
+const schema = Joi.object({
+    username: Joi.string().alphanum().min(3).max(30).required(),
+    email: Joi.string().email().required(),
+    age: Joi.number().integer().min(0)
+});
+
+// Objeto para validar.
+const data = {
+    username: "john_doe",
+    email: "john@example.com",
+    age: 25
+};
+
+const result = schema.validate(data);
+
+if (result.error) {
+    console.error(result.error.details);
+} else {
+    console.log("Objeto válido", result.value);
+}
+```
+
+Neste exemplo, o esquema define que um objeto válido deve ter uma propriedade `username` que é uma string alfanumérica de pelo menos 3 caracteres e no máximo 30 caracteres, uma propriedade `email` que é uma string válida de e-mail e uma propriedade `age` que é um número inteiro não negativo.\
+`joi` é bastante flexível e pode ser configurada para validar uma variedade de tipos de dados e critérios. Ela é frequentemente usada em conjunto com servidores Node.js para validar dados de solicitações HTTP, por exemplo.
+
+# `mariadb` x `mysql`
+
+Aparentemente o método `.query()` do `mariadb` não aceita callbacks, enquanto o do `mysql`, aceita.
+
+# --- Métodos (axios).
 
 - `url` **(string):** URL de destino, para onde a solicitação será enviada;
 - `corpoDaSolicitacao` **(objeto):** corpo da solicitação que está sendo enviada;
@@ -145,24 +224,6 @@ console.log("source.token.reason:", source.token.reason);
 
 - <a id = "post"></a>`.post(url, corpoDaSolicitacao)`;
 - <a id = "patch"></a>`.patch(url, corpoDaSolicitacao, configuracoes)` : atualização parcial;
-- [GET/`axios()`](#getaxios).
-
-### <a id = "getaxios"></a>GET/`axios()`
-
-O método `axios()` é a função principal do módulo Axios, que é amplamente utilizado para fazer solicitações HTTP em aplicativos JavaScript, incluindo aplicativos Node.js e aplicativos da web no navegador. O `axios()` é usado para iniciar uma solicitação HTTP. Retorna uma promessa que representa a resposta da solicitação HTTP.
-
-`axios(obejto)`
-
-`objeto` **(objeto):** um objeto de configuração que define os detalhes da solicitação HTTP, como a URL de destino, o método HTTP, os cabeçalhos, os dados do corpo da solicitação e outras configurações relacionadas à solicitação.
-    - `url` **(string):** a URL para qual a solicitação será enviada;
-    - `method` **(string, opcional):** o método HTTP da solicitação (por exemplo, "GET", "POST", "PUT", "DELETE", etc.). O valor padrão é "GET";
-    - `headers` **(objeto, opcional):** um objeto contendo cabeçalhos da solicitação;
-    - `data` **(objeto, string, ou FormData, opcional):** os dados a serem enviados no copor da solicitação. Isso pode ser um objeto JavaScript, uma string, ou um objeto `FormData`;
-    - `params` **(objeto, opcional):** parâmetros de consulta que são anexados à URL da solicitação. Normalmente, isso é usado para solicitações GET.
-
-Se você passar somente uma URL para o método `axios()`, e essa URL incluir parâmetros de consulta, que podem ser montados usando o módulo `querystring` em um objeto JavaScript, isso significa que você está fazendo uma solicitação **GET** com parâmetros de consulta codificados na própria URL.\
-O Axios é inteligente o suficiente para reconhecer que a URL fornecida inclui parâmetros de consulta e os envia como parte da solicitação. Assim, o resultado é o mesmo que se você tivesse definido os parâmetros de consulta separadamente na configuração da solicitação.\
-Essa é uma maneira conveniente de fazer solicitações GET com parâmetros de consulta diretamente na URL, especialmente quando você precisa construir dinamicamente a URL com base em um objeto de parâmetros. O Axios simplifica o processo de envio dessas solicitações HTTP.
 
 # <a name = "requestpromisenative"></a>`request-promise-native`
 
@@ -630,39 +691,6 @@ Em muitos casos, definir a curva ECDH como `'auto'` é uma boa prática, pois pe
 ## <a name = "http"></a>`http`
 
 O módulo `http` é um módulo principal do Node.js que fornece funcionalidades para criar servidores HTTP e interagir com solicitações e respostas HTTP. Com o módulo `http`, você pode criar aplicativos web, APIs, servidores e muito mais. Ele é uma parte essencial da plataforma Node.js para comunicação na web.
-
-## <a name = "querystring">`querystring`
-
-### <a id = ""></a>`.stringify()`
-
-Cria strings de consulta (query strings) a partir de objetos JavaScript.
-
-`querystring.stringify(objeto[, separador[, atributo[, opcoes]]]);`
-
-- `objeto` **(objeto, opcional):** o objeto que você deseja converter em uma string de consulta. Normalmente, esse objeto contém pares de chave e valor que você deseja incluir na string de consulta;
-- `separador` **(string, opcional):** o caractere usado para separar os pares chave-valor na string de consulta;
-- `atributo` **(string, opcional):** o caractere usado para separar as chaves dos valores nos pares chave-valor na string de consulta. O valor padrão é `"="`;
-- `opcoes` **(objeto, opcional):** um objeto de opções que pode ser usado para configurar o comportamento do método. Geralmente, as opções não são necessárias para o uso básico do método.
-    - `encodeURIComponent` **(função, opcional):** uma função personalizada para codificar componentes da string de consulta. Isso é útil quando você deseja substituir a função de codificação padrão. O valor padrão é `querystring.escape`;
-    - `separator` **(string, opcional):** especifica o separador a ser usado na string de consulta. Este parâmetro substitui o separador global;
-    - `equals` **(string, opcional):** especifica o caractere a ser usado para separar chaves e valores. Este parâmetro substitui o atributo global.
-
-O método `.stringify()` retorna uma string de consulta gerada a partir do objeto fornecido. A string de consulta incluirá os pares chave-valor do objeto, codificados com as regras de condificação URLs. Exemplo de uso:
-
-```JavaScript
-const querystring = require("querystring");
-
-const objeto = {
-    nome: "Alice";
-    idade: 30
-};
-
-const queryString = querystring.stringify(objeto);
-
-console.log(queryString); //Saída: nome=Alice&idade=30
-```
-
-Observe que o método `.stringify()` converte as chaves e valores do objeto em uma string de consulta no formato "chave=valor" separada por `&`, com os caracteres codificados de acordo com as regras URLs. quando necessário.
 
 ## <a name = "path"></a>`path`
 

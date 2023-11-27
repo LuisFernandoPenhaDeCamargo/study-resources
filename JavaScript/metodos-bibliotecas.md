@@ -1,9 +1,181 @@
 # Sumário
 
-- [`aws-sdk`](#aws-sdk);
-- [`crypto`](#crypto);
 - [`util`](#util);
-- [`joi`](#joi)
+- [`crypto`](#crypto);
+- [`querystring`](#querystring);
+- [`aws-sdk`](#aws-sdk);
+- [`axios`](#axios);
+- [`joi`](#joi).
+
+# <a id = "util"></a>`util`
+
+### Sumário
+
+[.promisify()](#promisify)
+
+## <a id = "promisify"></a>`promisify()`
+
+`.promisify()` é uma função que converte funções assíncronas que usam callbacks para uma forma que retorna Promises, permitindo que você trabalhe com código assíncrono usando Promises em vez de callbacks.
+
+`util.promisify(original);`
+
+`original` **(function):** a função original que usa callbacks.
+
+Retorna uma versão da função `original` que retorna uma Promise.
+
+```JavaScript
+const util = require("util");
+const fs = require("fs");
+const readFileAsync = util.promisify(fs.ReadFile);
+
+// Agora você pode usar readFileAsync como uma função que retorna uma Promise.
+readFileAsync("arquivo.txt", "utf8")
+    .then(data => console.log(data))
+    .catch(err => console.log(err));
+```
+
+# <a id = "crypto"></a>`crypto`
+
+### Sumário
+
+- [`createHmac()`](#createhmac);
+- [`.update()`](#crypto-update);
+- [`.digest()`](#digest);
+- [`.randomInt()`](#randomint).
+
+## <a id = "createhmac"></a>`createHmac()`
+
+`createHmac()` é usado para criar um objeto **Hmac** (**Hash-based Message Authentication Code**) para fins de autenticação baseada em hash.
+
+`crypto.createHmac(algorithm, key, [options]);`
+
+- `algorithm` **(string):** string indicando o algoritmo de hash a ser usado (por exemplo, "sha256", "sha512", etc.);
+- `key` **(string):** buffer ou string contendo a chave para o HMAC;
+- `options` **(opcional):** um objeto com opções adicionais.
+
+Retorna um objeto Hmac.
+
+```JavaScript
+const crypto = require("crypto");
+
+const secretKey = "mySecretKey";
+const hmac = crypto.createHmac("sha256", secretKey);
+const data = "Hello, World.";
+
+hmac.update(data);
+
+const hash = hmac.digest("hex");
+console.log(hash);
+```
+
+Neste exemplo, é criado um objeto Hmac usando o algoritmo SHA-256 e uma chave secreta. O objeto Hmac é então atualizado com os dados (no caso, a string "Hello, World.") e, finalmente, é gerado o hash.
+
+## <a id = "crypto-update"></a>`.update()`
+
+`.update()` é um método do objeto Hmac no módulo `crypto` do Node.js, ele é usado para alimentar dado para o objeto Hmac, que são usados para calcular o hash,
+
+`hmac.update(data, [inputEncoding]);`
+
+- `data`**:** os dados a serem alimentados para o Hmac, pode ser uma string ou um Buffer;
+- `inputEncoding` **(opcional):** a codificação dos dados de entrada (por exemplo, "utf8", "hex", "base64", etc.).
+
+Retorna o próprio objeto Hmac, permitindo chamadas encadeadas.
+
+```JavaScript
+const crypto = require("crypto");
+const secretKey = "mySecretKey";
+const hmac = crypto.createHmac("sha256", secretKey);
+const data = "Hello, World.";
+
+hmac.update(data);
+
+const hash = hmac.digest("hex");
+
+console.log(hash);
+```
+
+Neste exemplo, o método `.update()` é usado para alimentar a string "Hello, World." para o objeto Hmac antes de calcular o hash final.
+
+## <a id = "digest"></a>`.digest()`
+
+`.digest()` é um método do objeto Hmac no módulo `crypto` do Node.js, ele é usado para finalizar o cálculo do hash e obter o resultado.
+
+`hash.digest([enconding]);`
+
+`enconding` **(opcional):** a codificação do resultado (por exemplo, "hex", "base64", "binary", etc.).
+
+Retorna a representação do hash como uma string ou Buffer, dependendo da codificação especificada ou do padrão.
+
+```JavaScript
+const crypto = require("crypto");
+const hash = crypto.createHash("sha256");
+const data = "Hello, World.";
+
+hash.update(data);
+
+const hashResult = hash.digest("hex");
+
+console.log(hashResult);
+```
+
+Neste exemplo, o método `.digest()` é usado para obter o hash final no formato hexadecimal.
+
+## <a id =  "randomint"></a>`.randomInt()`
+
+`.randomInt()` é usado para gerar um número inteiro aleatório entre `min` (inclusivo) e `max` (exclusivo).
+
+`crypto.randomInt();`
+
+- `min`**(opcional):** valor mínimo (inclusivo) do intervalo. Se não fornecido, o default é zero;
+- `max`**:** valor máximo (exclusivo )do intervalo.
+
+Retorna um número inteiro aleatório no intervalo [min, max).
+
+```JavaScript
+const crypto = require("crypto");
+
+const randomNum = crypto.randomInt(1, 100);
+
+console.log(randomNum);
+```
+
+Este exemplo gerará um número aleatório entre 1 (inclusivo) e 100 (exclusivo) e o imprimirá no console.
+
+# <a id = "querystring"></a>`querystring`
+
+### Sumário
+
+[`.stringify()`](#stringify).
+
+## <a id = ""></a>`.stringify()`
+
+O método `.stringify()` é usado para serializar objetos JavaScript em uma string de consulta (query string). Ele converte um objeto em uma string no formato "`chave1=valor1&chave2=valor2`", que é comumente usado em URLs para enviar parâmetros.
+
+`querystring.stringify(object[, separator[, KeyValuePairSeparator[, options]]]);`
+
+- `object`**:** o objeto a ser serializado;
+- `separator` **(string, opcional):** o separador para as partes da string de consulta, o padrão é "`&`";
+- `KeyValueSeparator` **(string, opcional):** o separador para chaves e valores, o padrõa é "`=`";
+- `options` **(object, opcional):** um objeto que pode conter uma propriedade `encondedURIComponent` para personalizar a codificação. Outras propriedade:
+    - `separator` **(string):** especifica o separador a ser usado na string de consulta. Este parâmetro substitui o separador global;
+    - `equals` **(string):** especifica o caracter a ser usado para separar chaves e valores. Este parâmetro substitui o atributo global.
+
+Retorna uma string que representa a versão serializada do objeto.
+
+```JavaScript
+const querystring = require("querystring");
+
+const object = {
+    name: "John",
+    age: 25,
+    city: "ExampleCity"
+};
+const queryString = querystring.stringify(object);
+
+console.log(querysString); // Saída: name=John&age=25&city=ExampleCity
+```
+
+Neste exemplo, o objeto é transformado em uma string de consulta. Os valores são codificados para serem seguros em URLs, e o resultado pode ser anexado a uma URL para envio de parâmetros.
 
 # <a id = "aws-sdk"></a>`aws-sdk`
 
@@ -478,177 +650,56 @@ const s3 = new AWS.S3({
 Neste exemplo, `AWS.Endpoint` é usado para criar uma instância de um objeto de ponto de extremidade. Esta instância pode ser então utilizada para configurar a opção `endpoint` de serviços AWS que suportam tal configuração, como o Amazon S3.\
 Essa funcionalidade pode ser útil quando você precisa interagir com serviços compatíveis com a AWS, mas que estão hospedados em um ambiente com um endpoint personalizado, como por exemplo, em implementações locais ou ambientes de desenvolvimento.
 
-# <a id = "crypto"></a>`crypto`
-
-`crypto` é um módulo embutido (não precisa ser instalado separadamente) no Node.js. Não é uma biblioteca ou framework, mas sim um conjunto de funcionalidades relacionadas à criptografia disponíveis no ambiente Node.js. Ele faz parte do conjunto de módulos principais do Node.js e está disponível por padrão.\
-O módulo `crypto` fornece funcionalidades criptográficas, como hash, cifra, e geração de números aleatórios. Ele é frequentemente usado para implementar segurança em aplicações, como a geração de hashes para senhas, assinaturas digitais, criptografia, etc. Além disso, é uma parte essencial para lidar com conceitos de segurança em ambientes Node.js.
+# <a id = "axios"></a>`axios`
 
 ### Sumário
 
-- [`createHmac()`](#createhmac);
-- [`.update()`](#crypto-update);
-- [`.digest()`](#digest);
-- [`.randomInt()`](#randomint).
+[`axios()`](#funcaoaxios).
 
-## <a id = "createhmac"></a>`createHmac()`
+## <a id = "funcaoaxios"></a>`axios()`
 
-`createHmac()` é usado para criar um objeto **Hmac** (**Hash-based Message Authentication Code**) para fins de autenticação baseada em hash.
+`axios()` é uma função, ela cria uma instância do cliente Axios que permite fazer requisições HTTP. Essas instâncias podem ser personalizadas com configurações específicas, como baseURL, headers, interceptadores, entre outros.
 
-`crypto.createHmac(algorithm, key, [options]);`
+`axios([config]);`
 
-- `algorithm` **(string):** string indicando o algoritmo de hash a ser usado (por exemplo, "sha256", "sha512", etc.);
-- `key` **(string):** buffer ou string contendo a chave para o HMAC;
-- `options` **(opcional):** um objeto com opções adicionais.
+`config` **(object, opcional)** um objeto de configuração que define as opções para a requisição, como método, URL, parâmetros, headers, etc.
+    - `method` **(string):** o método HTTP da solicitação (por exemplo, "GET", "POST", "PUT", "DELETE", etc.). **O valor padrão é "GET"**;
+    - `url` **(string):** a URL para qual a solicitação será enviada;
+    - `params` **(object):** parâmetros de consulta qie são anexados à URL da solicitação. Normalmente, isso é usada para solicitações GET;
+    - `headers` **(object):** um objeto contendo os cabeçalhos da solicitação;
+    - `data` **(object, string ou FormData):** os dados a serem enviados no corpo da solicitação. Isso pode ser um objeto JavaScript, uma string ou um objeto FormData.
 
-Retorna um objeto Hmac.
-
-```JavaScript
-const crypto = require("crypto");
-
-const secretKey = "mySecretKey";
-const hmac = crypto.createHmac("sha256", secretKey);
-const data = "Hello, World.";
-
-hmac.update(data);
-
-const hash = hmac.digest("hex");
-console.log(hash);
-```
-
-Neste exemplo, é criado um objeto Hmac usando o algoritmo SHA-256 e uma chave secreta. O objeto Hmac é então atualizado com os dados (no caso, a string "Hello, World.") e, finalmente, é gerado o hash.
-
-## <a id = "crypto-update"></a>`.update()`
-
-`.update()` é um método do objeto Hmac no módulo `crypto` do Node.js, ele é usado para alimentar dado para o objeto Hmac, que são usados para calcular o hash,
-
-`hmac.update(data, [inputEncoding]);`
-
-- `data`**:** os dados a serem alimentados para o Hmac, pode ser uma string ou um Buffer;
-- `inputEncoding` **(opcional):** a codificação dos dados de entrada (por exemplo, "utf8", "hex", "base64", etc.).
-
-Retorna o próprio objeto Hmac, permitindo chamadas encadeadas.
+Retorna uma Promise que se resolve com a resposta da requisição.
 
 ```JavaScript
-const crypto = require("crypto");
-const secretKey = "mySecretKey";
-const hmac = crypto.createHmac("sha256", secretKey);
-const data = "Hello, World.";
+// Importando o Axios.
+const axios = require("axios");
 
-hmac.update(data);
-
-const hash = hmac.digest("hex");
-
-console.log(hash);
+// Fazendo uma requisição GET.
+axios({
+    method: "get",
+    url: "https://api.example.com/data",
+    params: {
+        Key: "valor"
+    }
+})
+.then(response => {
+    // Manipular a resposta se a requisição for bem-sucedida.
+    console.log(response.data);
+})
+.catch(error = > {
+    // Manipular erros.
+    console.error(error);
+});
 ```
 
-Neste exemplo, o método `.update()` é usado para alimentar a string "Hello, World." para o objeto Hmac antes de calcular o hash final.
+Neste exemplo, uma instância do cliente Axios é usada para fazer uma requisição GET para uma URL específica com parâmetros. A resposta ou erro resultante é manipulado na Promise.
 
-## <a id = "digest"></a>`.digest()`
-
-`.digest()` é um método do objeto Hmac no módulo `crypto` do Node.js, ele é usado para finalizar o cálculo do hash e obter o resultado.
-
-`hash.digest([enconding]);`
-
-`enconding` **(opcional):** a codificação do resultado (por exemplo, "hex", "base64", "binary", etc.).
-
-Retorna a representação do hash como uma string ou Buffer, dependendo da codificação especificada ou do padrão.
-
-```JavaScript
-const crypto = require("crypto");
-const hash = crypto.createHash("sha256");
-const data = "Hello, World.";
-
-hash.update(data);
-
-const hashResult = hash.digest("hex");
-
-console.log(hashResult);
-```
-
-Neste exemplo, o método `.digest()` é usado para obter o hash final no formato hexadecimal.
-
-## <a id =  "randomint"></a>`.randomInt()`
-
-`.randomInt()` é usado para gerar um número inteiro aleatório entre `min` (inclusivo) e `max` (exclusivo).
-
-`crypto.randomInt();`
-
-- `min`**(opcional):** valor mínimo (inclusivo) do intervalo. Se não fornecido, o default é zero;
-- `max`**:** valor máximo (exclusivo )do intervalo.
-
-Retorna um número inteiro aleatório no intervalo [min, max).
-
-```JavaScript
-const crypto = require("crypto");
-
-const randomNum = crypto.randomInt(1, 100);
-
-console.log(randomNum);
-```
-
-Este exemplo gerará um número aleatório entre 1 (inclusivo) e 100 (exclusivo) e o imprimirá no console.
-
-# <a id = "util"></a>`util`
-
-### Sumário
-
-[.promisify()](#promisify)
-
-## <a id = "promisify"></a>`promisify()`
-
-`.promisify()` é uma função que converte funções assíncronas que usam callbacks para uma forma que retorna Promises, permitindo que você trabalhe com código assíncrono usando Promises em vez de callbacks.
-
-`util.promisify(original);`
-
-`original` **(function):** a função original que usa callbacks.
-
-Retorna uma versão da função `original` que retorna uma Promise.
-
-```JavaScript
-const util = require("util");
-const fs = require("fs");
-const readFileAsync = util.promisify(fs.ReadFile);
-
-// Agora você pode usar readFileAsync como uma função que retorna uma Promise.
-readFileAsync("arquivo.txt", "utf8")
-    .then(data => console.log(data))
-    .catch(err => console.log(err));
-```
+Se você passar somente uma URL como argumento para o método `axios()` e essa URL incluir parâmetros de consulta, isso significa que você está fazendo uma solicitação HTTP **GET** com parâmetros de consulta codificados na própria URL.\
+O Axios é inteligente o suficiente para reconhecer que a URL fornecida inclui parâmetros de consulta e os envia como parte da solicitação. Assim, o resultado é o mesmo que se você tivesse definido os parâmetros de consulta separadamente na configuração da solicitação.\
+Essa é uma maneira conveniente de fazer solicitações GET com parâmetros de consulta diretamente na URL, especialmente quando você precisa construir dinamicamente a URL com base em um objeto de parâmetros. O Axios simplifica o processo de envio dessas solicitações HTTP.
 
 # <a id = ""></a>`joi`
-
-`joi` é uma biblioteca que precisa ser instalada, ele é utilizada para validação de objetos em JavaScript e é especialmente útil para validar dados de entrada em aplicativos Node.js.\
-`joi` é usada para definir esquemas (schemas) que descrevem a estrutura esperada de um objeto. Ela fornece métodos para validar se um objeto atende aos critérios definidos no esquema.\
-Aqui está um exemplo simples de como você pode usar a `joi`:
-
-```JavaScript
-const Joi = require("joi");
-
-// Definindo um esquema simples para validar um objeto.
-const schema = Joi.object({
-    username: Joi.string().alphanum().min(3).max(30).required(),
-    email: Joi.string().email().required(),
-    age: Joi.number().integer().min(0)
-});
-
-// Objeto para validar.
-const data = {
-    username: "john_doe",
-    email: "john@example.com",
-    age: 25
-};
-
-const result = schema.validate(data);
-
-if (result.error) {
-    console.error(result.error.details);
-} else {
-    console.log("Objeto válido", result.value);
-}
-```
-
-Neste exemplo, o esquema define que um objeto válido deve ter uma propriedade `username` que é uma string alfanumérica de pelo menos 3 caracteres e no máximo 30 caracteres, uma propriedade `email` que é uma string válida de e-mail e uma propriedade `age` que é um número inteiro não negativo.\
-`joi` é bastante flexível e pode ser configurada para validar uma variedade de tipos de dados e critérios. Ela é frequentemente usada em conjunto com servidores Node.js para validar dados de solicitações HTTP, por exemplo.
 
 ### Sumário
 

@@ -41,6 +41,7 @@
 
 8. [Funções de Data e Hora:](intermediario.md#funcoes-de-data-e-hora)
     - `FROM_UNIXTIME()`
+    - `DATE_SUB()`
 
 9. [ENUM no SQL:](intermediario.md#enum-no-sql)
     - O que é ENUM
