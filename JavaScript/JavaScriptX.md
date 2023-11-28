@@ -1,35 +1,3 @@
-# Template. (Ok)
-
-### Bloco de código. (Ok)
-
-Descrição do método/função. Exemplo(s) de uso:
-
-Bloco de código.
-
-`versão resumida`
-
-Parâmetros, retorno e mais explicações.
-
----
-
-Eu separo as linhas de declaração de variáveis e as linhas de `console.log()`. Exemplo:
-
-```JavaScript
-const variavel1 = 1;
-const variavel2 = "A";
-
-// Separei a declaração das variáveis da linha em que eu chamo o console.log().
-// Eu exemplifico as saídas, pontuando que são saídas com "Saída:"
-console.log(variavel1); // Saída: 1
-console.log(variavel2); // Saída: 'A'
-// Quando há mais de uma "Saída", eu alinho elas na mesma coluna, tomando como referência, a "Saída" mais a direita.
-```
-
-### Divisão dos tópicos.
-
-**Funções de string**.\
-Fazer diferenciação das funções, por exemplo, entre básicas e de substituição.
-
 # <a id = "palavraschave"></a>Palavras chave.
 
 - `class`**:** é usada para definir uma classe no JavaScript, que **é um modelo para criar objetos**, foi introduzida no ES6 (ECMAScript 2015). Classes podem ter construtores, métodos e propriedades;
@@ -489,16 +457,6 @@ Neste exemplo, estamos usando o `replacer` para personalizar a serialização. E
 - A função `replacer` é chamada para cada propriedade do objeto sendo serializado. Ela recebe dois argumentos: a `chave` da propriedade atual e o `valor` dessa propriedade;
 - A função `replacer` pode retornar um novo valor para a propriedade atual. Se ela retornar `undefined`, a propriedade será omitida na saída final; caso contrário, o valor retornado será incluído na saída JSON.
 
-### <a id = "parse"></a>`.parse()`
-
-`.parse(JSON)`
-
-Analisa uma string no formato JSON e a converte em um objeto JavaScript. A string precisa estar em um formato JSON válido. Exemplo:
-
-```JavaScript
-JSON.parse(content)[version]; //Estamos acessando a chave "version" do objeto retornado por JSON.parse(content)
-```
-
 ## <a id = ""></a>`Object`
 
 Objeto global pré-definido (built-in object).
@@ -800,30 +758,6 @@ Parâmetros:
 - `radix` **(number, opcional):** a base numérica que deve ser usada para a conversão. É um número inteiro entre 2 e 36, que representa a base do sistema numérico. Se este parâmetro for omitido, o JavaScript usará a base 10 por padrão.
 
 Retorna um número inteiro representado pela string fornecida, de acordo com a base especificada. Se a conversão for bem-sucedida, o método retornará o número inteiro. Se a conversão não for possível, o método retornará `NaN` (Not-a-Number).
-
-### <a id = "setinterval"></a>`setInterval()`
-
-O método `setInterval()` é uma função global em JavaScript que é usada para executar uma função ou código repetidamente com um invervalo de tempo especificado.
-
-```JavaScript
-function minhaFuncao() {
-  console.log("Executando a função a cada 2 segundos.");
-}
-
-const intervalId = setInterval(minhaFuncao, 2000); //Executa minhaFuncao a cada 2 segundos.
-
-setTimeout(() => {
-  clearInverval(intervalId); //Interrompe o setInterval().
-  console.log("Intervalo interrompido.");
-}, 10000); //Interrompe o setInterval() após 10 segundos.
-```
-
-Parâmetros:
-
-- `callback`**:** a função ou código que deve ser executado em intervalos regulares;
-- `delay` **(number):** o intervalo de tempo, em milissegundos, entre cada chamada da função `callback`. O `delay` especifica a quantidade de tempo que deve passar antes de a função ser executada novamente.
-
-Retorna um valor que pode ser usado para interromper a execução do intervalo. Esse valor é um identificador numérico (ID) que é retornado quando você chama `setInterval()`. Você pode passar esse ID para o método `clearInterval()` para interromper o intervalo.
 
 # <a id = "importacaonodeindexacao"></a>Como importar um diretório de funções no Node.js e o papel do arquivo de indexação.
 

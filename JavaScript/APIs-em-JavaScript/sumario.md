@@ -15,20 +15,21 @@
 8. [Autenticação em APIs (Tokens, OAuth)](nivel-intermediario.md#autenticacao-em-apis-tokens-oauth)
 9. [Gerenciamento de erros em solicitações](nivel-intermediario.md#gerenciamento-de-erros-em-solicitacoes)
 10. [Uso do Postman ou Insomnia para testar APIs](nivel-intermediario.md#uso-do-postman-ou-insomnia-para-testar-apis)
+11. [Interagindo com o Registro NPM](nivel-intermediario.md#interagindo-com-o-registro-npm)
 
 ### Nível Avançado: Construindo Aplicações com APIs
 
-11. [Construção de uma aplicação web simples usando uma API](nivel-avancado.md#construcao-de-uma-aplicacao-web-simples-usando-uma-api)
-12. [Uso de bibliotecas de manipulação de dados como `Lodash` ou `Ramda`](nivel-avancado.md#uso-de-bibliotecas-de-manipulacao-de-dados-como-lodash-ou-ramda)
-13. [Paginação e manipulação de resultados](nivel-avancado.md#paginacao-e-manipulacao-de-resultados)
-14. [Uso de WebSocket para comunicação em tempo real](nivel-avancado.md#uso-de-websocket-para-comunicacao-em-tempo-real)
-15. [Testes automatizados para APIs (Jest, Mocha)](nivel-avancado.md#testes-automatizados-para-apis-jest-mocha)
+12. [Construção de uma aplicação web simples usando uma API](nivel-avancado.md#construcao-de-uma-aplicacao-web-simples-usando-uma-api)
+13. [Uso de bibliotecas de manipulação de dados como `Lodash` ou `Ramda`](nivel-avancado.md#uso-de-bibliotecas-de-manipulacao-de-dados-como-lodash-ou-ramda)
+14. [Paginação e manipulação de resultados](nivel-avancado.md#paginacao-e-manipulacao-de-resultados)
+15. [Uso de WebSocket para comunicação em tempo real](nivel-avancado.md#uso-de-websocket-para-comunicacao-em-tempo-real)
+16. [Testes automatizados para APIs (Jest, Mocha)](nivel-avancado.md#testes-automatizados-para-apis-jest-mocha)
 
 ### Nível Especializado: Otimização e Técnicas Avançadas
 
-16. [Cache de solicitações](nivel-especializado.md#cache-de-solicitacoes)
-17. [Otimização de consultas em APIs](nivel-especializado.md#otimizacao-de-consultas-em-apis)
-18. [Monitoramento e depuração de solicitações](nivel-especializado.md#monitoramento-e-depuracao-de-solicitacoes)
-19. [Uso de Docker para empacotar aplicações com Node.js](nivel-especializado.md#uso-de-docker-para-empacotar-aplicacoes-com-nodejs)
-20. [Integração contínua (CI) e implantação contínua (CD) para aplicações com APIs](nivel-especializado.md#integracao-continua-ci-e-implantacao-continua-cd-para-aplicacoes-com-apis)
-21. [AWS IAM (Identity and Access Management)](nivel-especializado.md#aws-iam-identity-and-access-management-e-aws-s3-simple-storage-service)
+17. [Cache de solicitações](nivel-especializado.md#cache-de-solicitacoes)
+18. [Otimização de consultas em APIs](nivel-especializado.md#otimizacao-de-consultas-em-apis)
+19. [Monitoramento e depuração de solicitações](nivel-especializado.md#monitoramento-e-depuracao-de-solicitacoes)
+20. [Uso de Docker para empacotar aplicações com Node.js](nivel-especializado.md#uso-de-docker-para-empacotar-aplicacoes-com-nodejs)
+21. [Integração contínua (CI) e implantação contínua (CD) para aplicações com APIs](nivel-especializado.md#integracao-continua-ci-e-implantacao-continua-cd-para-aplicacoes-com-apis)
+22. [AWS IAM (Identity and Access Management)](nivel-especializado.md#aws-iam-identity-and-access-management-e-aws-s3-simple-storage-service)

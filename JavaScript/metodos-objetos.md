@@ -3,6 +3,7 @@
 - [`.isInteger()`](#isinteger);
 - [`.isNaN()`](#isnan);
 - [`.floor()`](#floor);
+- [`.parse()`](#parse);
 - [`.bind()`](#bind);
 - [`.now()`](#now);
 - [`.toString()`](#tostring).
@@ -71,6 +72,41 @@ console.log(roundedDown); // Saída: 8
 ```
 
 Neste exemplo, `Math.floor()` é usado para arredondar para baixo o número decimal 8.75 para o inteiro mais próximo, que é 8.
+
+# `JSON`
+
+### <a id = "parse"></a>`.parse()`
+
+`.parse()` é um método em JavaScript, ele converte uma string JSON em um objeto JavaScript.
+
+`JSON.parse(text[, reviver]);`
+
+- `text`**:** a string JSON que será convertida em um objeto JavaScript;
+- `reviver` **(opcional):** uma função que permite modificar o processo de reviver.
+
+Retorna um objeto JavaScript representando a string JSON fornecida.
+
+```JavaScript
+const jsonString = '{ "name": "John", "age": 30, "city": "New York" }';
+const person = JSON.parse(jsonString);
+
+console.log(person); // Saída: { name: 'John', age: 30, city: 'New York' }
+```
+
+Observações sobre `reviver`:\
+O parâmetro `reviver` é uma função opcional que pode ser fornecida para personalizar o processo de transformação. Essa função é chamada para cada item do objeto sendo transformado e permite modificar o valor final.
+
+```JavaScript
+const jsonString = '{ "name": "John", "age": 30, "city": "New York" }';
+const person = JSON.parse(jsonString, (key, value)=> {
+    if (key === "age") {
+        return value + 5; // Incrementa a idade em cinco anos.
+    }
+    return value; // Retorna o valor original para outras chaves.
+});
+
+console.log(person); // Saída: { name: 'John', age: 35, city: 'New York' }
+```
 
 # Function
 

@@ -654,7 +654,10 @@ Essa funcionalidade pode ser útil quando você precisa interagir com serviços 
 
 ### Sumário
 
-[`axios()`](#funcaoaxios).
+- [`axios()`](#funcaoaxios);
+- [`.post()`](#post);
+- [`.patch()`](#patch);
+- [`.delete()`](#delete).
 
 ## <a id = "funcaoaxios"></a>`axios()`
 
@@ -698,6 +701,92 @@ Neste exemplo, uma instância do cliente Axios é usada para fazer uma requisiç
 Se você passar somente uma URL como argumento para o método `axios()` e essa URL incluir parâmetros de consulta, isso significa que você está fazendo uma solicitação HTTP **GET** com parâmetros de consulta codificados na própria URL.\
 O Axios é inteligente o suficiente para reconhecer que a URL fornecida inclui parâmetros de consulta e os envia como parte da solicitação. Assim, o resultado é o mesmo que se você tivesse definido os parâmetros de consulta separadamente na configuração da solicitação.\
 Essa é uma maneira conveniente de fazer solicitações GET com parâmetros de consulta diretamente na URL, especialmente quando você precisa construir dinamicamente a URL com base em um objeto de parâmetros. O Axios simplifica o processo de envio dessas solicitações HTTP.
+
+## <a id = "post"></a>`.post()`
+
+`.post()` é um método que realiza uma requisição HTTP POST.
+
+`axios.post(url [, data [, config]]);`
+
+- `url` **(string):** a URL para a qual a requisição POST será feita;
+- `data` **(object, opcional):** os dados a serem enviados no corpo da requisição;
+- `config` **(object, opcional):** configurações adicionais da requisição.
+
+Retorna uma Promise que resolve com a resposta da requisição.
+
+```JavaScript
+const axios = require("axios");
+
+const postData = {
+    username: "exampleUser",
+    password: "examplePassword"
+};
+
+axios.post("https://api.example.com/login", postData)
+    .then(response => {
+        console.log("Resposta da requisição:", response.data);
+    })
+    .catch(error => {
+        console.error("Erro na requisição:", error);
+    });
+```
+
+Neste exemplo, `.post()` é usado para fazer uma requisição POST para a URL "https://api.example.com/login" com os dados do usuário. O método retorna uma Promise que é tratada usando `.then()` para lidar com a reposta bem-sucedida e `.catch()` para lidar com erros.
+
+## <a id = "patch"></a>`.patch()`
+
+`.patch()` é um método que realiza uma requisição HTTP PATCH.
+
+`axios.patch(url [, data [, config]]);`
+
+- `url` **(string):** a url para qual a requisição PATCH será feita;
+- `data` **(object, opcional):** os dados a serem enviados no corpo da requisição;
+- `config` **(object, opcional):** configurações adicionais da requisição.
+
+Retorna uma Promise que resolver com a resposta da requisição.
+
+```JavaScript
+const axios = require("axios");
+
+const patchData = {
+    updatedField: "new value"
+};
+
+axios.patch("https://api.example.com/resource/123", patchData)
+    .then(response => {
+        console.log("Resposta da requisição:", response.data);
+    })
+    .catch(error => {
+        console.error("Error na requisição:", error);
+    });
+```
+
+Neste exemplo, `.patch()` é usado para fazer uma requisição PATCH para a URL "https://api.example/resource/123" com os dados a serem atualizados. O método retorna uma Promise que é tratada usando `.then` para lidar com a resposta bem-sucedida e `.catch()` para lidar com erros.
+
+## <a id = "delete"></a>`.delete()`
+
+`.delete()` é um método que realiza uma requisição HTTP DELETE.
+
+`axios.delete(url[, config]);`
+
+- `url` **(string):** a URL para a qual a requisição DELETE será feita;
+- `config` **(object, opcional):** configurações adicionais da requisição.
+
+Retorna uma Promise que resolve com a resposta da requisição.
+
+```JavaScript
+const axios = require("axios");
+
+axios.delete("https://api.example.com/resource/123")
+    .then(response => {
+        console.log("Resposta da requisição:", response.data);
+    })
+    .catch(error => {
+        console.error("Erro na requisição:", error);
+    });
+```
+
+Neste exemplo, `.delete()` é usado para fazer uma requisição DELETE para a URL "https://api.example.com/resource/123". O método retorna uma Promise que é tratada usando `.then()` para lidar com a resposta bem-sucedida e `.catch()` para lidar com erros.
 
 # <a id = ""></a>`joi`
 

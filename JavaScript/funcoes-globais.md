@@ -1,6 +1,37 @@
 # Sumário
 
-[`decodeURIComponent()`](#decodeuricomponent).
+- [`setInterval()`](#setinterval);
+- [`decodeURIComponent()`](#decodeuricomponent).
+
+# <a id = ""></a>`setInterval()`
+
+`setInterval()` é uma função global que executa uma função ou avalia uma expressão em intervalos de tempo regulares, especificados em milissegundos.
+
+`setInterval(callback, delay, ...args)`
+
+- `callback` **(function):** uma função a ser executada a cada intervalo de tempo;
+- `delay`**:** o número de milissegundos entre cada chamada da função;
+- `...args` **(opcional):** argumentos adicionais que podem ser passados para a função.
+
+Retorna um identificador que pode ser usado com `clearInterval()` para cancelar o intervalo
+
+```JavaScript
+function showTime() {
+    const now = new Date();
+    
+    console.log(now.toLocaleTimeString());
+}
+
+// Executa a função showTime a cada 1 segundo (1000 milissegundos).
+const intervalId = setInterval(showTime(), 1000);
+
+// Após 5 segundos, cancela o intervalo.
+setTimeout(() => {
+    clearInterval(intervalId);
+
+    console.log("Intervalo cancelado após 5 segundos.");
+}, 5000);
+```
 
 # <a id = "decodeuricomponent"></a>`decodeURIComponent()`
 

@@ -2,12 +2,12 @@
 
 ### Sumário
 
-16. [Cache de solicitações](#cache-de-solicitacoes)
-17. [Otimização de consultas em APIs](#otimizacao-de-consultas-em-apis)
-18. [Monitoramento e depuração de solicitações](#monitoramento-e-depuracao-de-solicitacoes)
-19. [Uso de Docker para empacotar aplicações com Node.js](#uso-de-docker-para-empacotar-aplicacoes-com-nodejs)
-20. [Integração contínua (CI) e implantação contínua (CD) para aplicações com APIs](#integracao-continua-ci-e-implantacao-continua-cd-para-aplicacoes-com-apis)
-21. [AWS IAM (Identity and Access Management) e AWS S3 (Simple Storage Service)](#aws-iam-identity-and-access-management-e-aws-s3-simple-storage-service)
+17. [Cache de solicitações](#cache-de-solicitacoes)
+18. [Otimização de consultas em APIs](#otimizacao-de-consultas-em-apis)
+19. [Monitoramento e depuração de solicitações](#monitoramento-e-depuracao-de-solicitacoes)
+20. [Uso de Docker para empacotar aplicações com Node.js](#uso-de-docker-para-empacotar-aplicacoes-com-nodejs)
+21. [Integração contínua (CI) e implantação contínua (CD) para aplicações com APIs](#integracao-continua-ci-e-implantacao-continua-cd-para-aplicacoes-com-apis)
+22. [AWS IAM (Identity and Access Management) e AWS S3 (Simple Storage Service)](#aws-iam-identity-and-access-management-e-aws-s3-simple-storage-service)
 
 # <a name = "cache-de-solicitacoes"></a> Cache de solicitações
 

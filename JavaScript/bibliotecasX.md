@@ -215,17 +215,7 @@ Neste exemplo, o esquema define que um objeto válido deve ter uma propriedade `
 
 Aparentemente o método `.query()` do `mariadb` não aceita callbacks, enquanto o do `mysql`, aceita.
 
-# --- Métodos (axios).
-
-- `url` **(string):** URL de destino, para onde a solicitação será enviada;
-- `corpoDaSolicitacao` **(objeto):** corpo da solicitação que está sendo enviada;
-- `configuracoes` **(objeto, opcional):** objeto de configuração opcional que permite personalizar a solicitação. Este objeto pode conter várias opções de configuração, como cabeçalhos personalizados, autenticação, parâmetros de consulta, entre outros.\
-  Como por exemplo a { chave: valor }: `{ cancelToken: objetoCancelToken.token }`, que é o token de cancelamento.
-
-- <a id = "post"></a>`.post(url, corpoDaSolicitacao)`;
-- <a id = "patch"></a>`.patch(url, corpoDaSolicitacao, configuracoes)` : atualização parcial;
-
-# <a name = "requestpromisenative"></a>`request-promise-native`
+# <a name = "requestpromisenative"></a>--- `request-promise-native`
 
 Biblioteca utilizada para fazer solicitações HTTP de forma assíncrona no Node.js com suporte a Promises. É uma extensão do módulo request-promise, oferecendo as mesmas funcionalidades, mas com o uso nativo de Promises, o que torna o código mais limpo e legível quando se trata de fazer solicitações HTTP e lidar com respostas.
 

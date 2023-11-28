@@ -2,11 +2,11 @@
 
 ### Sumário
 
-11. [Construção de uma aplicação web simples usando uma API](#construcao-de-uma-aplicacao-web-simples-usando-uma-api)
-12. [Uso de bibliotecas de manipulação de dados como `Lodash` ou `Ramda`](#uso-de-bibliotecas-de-manipulacao-de-dados-como-lodash-ou-ramda)
-13. [Paginação e manipulação de resultados](#paginacao-e-manipulacao-de-resultados)
-14. [Uso de WebSocket para comunicação em tempo real](#uso-de-websocket-para-comunicacao-em-tempo-real)
-15. [Testes automatizados para APIs (Jest, Mocha)](#testes-automatizados-para-apis-jest-mocha)
+12. [Construção de uma aplicação web simples usando uma API](#construcao-de-uma-aplicacao-web-simples-usando-uma-api)
+13. [Uso de bibliotecas de manipulação de dados como `Lodash` ou `Ramda`](#uso-de-bibliotecas-de-manipulacao-de-dados-como-lodash-ou-ramda)
+14. [Paginação e manipulação de resultados](#paginacao-e-manipulacao-de-resultados)
+15. [Uso de WebSocket para comunicação em tempo real](#uso-de-websocket-para-comunicacao-em-tempo-real)
+16. [Testes automatizados para APIs (Jest, Mocha)](#testes-automatizados-para-apis-jest-mocha)
 
 # <a name = "construcao-de-uma-aplicacao-web-simples-usando-uma-api"></a> Construção de uma aplicação web simples usando uma API
 
