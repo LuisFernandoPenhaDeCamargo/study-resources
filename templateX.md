@@ -36,8 +36,26 @@ Para verificar o tipo deles:
 
 # Documentação
 
-Descrição geral sobre o que o arquivo se trata no ínicio dele.\
+Descrição geral sobre o que o arquivo se trata no ínicio dele. Pule uma linha entre a descrição geral e o código.\
 Parece útil deixar anotado as tabelas que ele manipula assim como os endpoints.
+
+### Check-list Template
+
+- Considerações gerais sobre o arquivo;
+- Considerações linha a linha;
+
+**TABELA(S):**.
+
+**Request params**.
+
+**Request body**.
+
+**Response body**.
+
+Os três itens acima:
+
+- Colocar o conteúdo dentro de um bloco JSON;
+- Especificar na frente de cada item se o conteúdo utilizado no bloco JSON é baseado em valores de um banco de dados (SQL values), ou no seu valor em código (tipo do objeto) ou uma mistura de ambos.
 
 # Sumário
 

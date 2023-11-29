@@ -4,10 +4,18 @@
 
 - [`util`](#util);
 - [`crypto`](#crypto);
+- [`http`](#http)
+- [`tls`](#tls);
 - [`querystring`](#querystring);
+- [`child_process`](#child_process);
+- [`fs`](#fs);
 - [`aws-sdk`](#aws-sdk);
 - [`axios`](#axios);
-- [`joi`](#joi).
+- [`request`](#request)
+- [`body-parser`](#body-parser);
+- [`joi`](#joi);
+- [`dotenv`](#dotenv);
+- [`express-graceful-shutdown`](#express-graceful-shutdown).
 
 # <a id = "util"></a>`util`
 
@@ -20,6 +28,58 @@ Após configurar as credenciais, você pode começar a utilizar os serviços da 
 
 `crypto` é um módulo embutido (não precisa ser instalado separadamente) no Node.js. Não é uma biblioteca ou framework, mas sim um conjunto de funcionalidades relacionadas à criptografia disponíveis no ambiente Node.js. Ele faz parte do conjunto de módulos principais do Node.js e está disponível por padrão.\
 O módulo `crypto` fornece funcionalidades criptográficas, como hash, cifra, e geração de números aleatórios. Ele é frequentemente usado para implementar segurança em aplicações, como a geração de hashes para senhas, assinaturas digitais, criptografia, etc. Além disso, é uma parte essencial para lidar com conceitos de segurança em ambientes Node.js.
+
+# <a id = "http"></a>`http`
+
+`http` é um módulo HTTP integrado no core do Node.js, ele permite criar servidores HTTP. Ele fornece funcionalidades para manipular solicitações e respostas HTTP.
+
+```JavaScript
+const http = require("http");
+
+const server = http.createServer((req, res) => {
+    res.writeHead(200, {"Content-Type": "text/plain"});
+    res.end("Hello, World!\n");
+});
+const port = 3000;
+
+server.listen(port, () => {
+    console.log(`Servidor HTTP está escutando em http://localhost:${port}`);
+});
+```
+
+# <a id = "tls"></a>`tls`
+
+`tls` é um módulo integrado no Node.js core, ele faz parte dos módulos principais fornecidos com Node.js.\
+Este é o módulo que fornece suporte para o protocolo TLS (Transport Layer Security), que é uma versão mais recente e segura do SSL (Secure Sockets Layer). O módulo `tls` no Node.js permite criar servidores e clientes seguros usando criptografia para proteger a comunicação.\
+Ele é usado para criar conexões seguras entre clientes e servidores, geralmente em aplicações que necessitam de segurança na comunicação, como em servidores HTTPS.
+
+```JavaScript
+const tls = require("tls");
+const fs = require("fs");
+
+const options = {
+    key: fs.readFileSync("caminho/para/sua/chave-privada.pem"),
+    cert: fs.readFileSync("caminho/para/seu/certificado.oem")
+};
+const server = tls.createServer(options, (cleartextStream) => {
+    console.log("Cliente conectado!");
+    cleartextStream.write("Bem-vindo à conexão segura!\n");
+    cleartextStream.pipe(cleartextStream);
+});
+
+server.listen(8000, () => {
+    console.log("Servidor TLS está escutando na porta 8000");
+});
+```
+
+Neste exemplo, o módulo `tls` é usado para criar um servidor TLS (HTTPS) que escuta na porta 8000. É importante fornecer certificados e chaves privadas válidos para tornar a comunicação segura. Este é apenas um exemplo básico; em uma aplicação real, você pode precisar configurar opções adicionais, como verificação de certificado.
+
+`require('tls').DEFAULT_ECDH_CURVE = 'auto'`
+
+O código acima altera a curva de ECDH padrão (Elliptic Curve Diffie-Hellman) usada pelo módulo `tls` (**Transport Layer Security**) em Node.js. ECDH é um protocolo de troca de chaves usado para estabelecer uma chave de criptografia compartilhada em uma conexão segura.\
+`.DEFAULT_ECDH_CURVE` se refere à curva de ECDH padrão usada nas negociações de chaves ECDH, que recebe, neste caso, o valor `'auto'`.\
+Ao definir a curva ECDH como `'auto'`, você está configurando o Node.js para escolher automaticamente a curva ECDH mais adequada com base nas capacidades do sistema. Isso é útil quando você deseja que o Node.js selecione a melhor curva ECDH disponível em vez de especificar uma curva específica.\
+Em muitos casos, definir a curva ECDH como `'auto'` é uma boa prática, pois permite que o Node.js escolha a melhor opção de acordo com o ambiente de execução. No entanto, em cenários específicos de segurança ou conformidade, você pode optar por definir uma curva ECDH específica em vez de usar `'auto'`.
 
 # <a id = "querystring">`querystring`
 
@@ -46,6 +106,59 @@ console.log(parsedParams); // Saída: [Object: null prototype] { name: 'John', a
 ```
 
 O módulo `querystring` é útil ao lidar com URLs em aplicativos Node.js, especialmente ao analisar ou construir URLs que contêm parâmetros de consulta.
+
+# <a id = "child_process"></a>`child_process`
+
+`child_process` é um módulo integrado no core do Node.js, ele fornece funcionalidades para execução de processos secundários (filhos) a partir do seu aplicativo Node.js. Ele permite que você inicie comandos do sistema operacional, interaja com eles e manipule a entrada e saída.\
+O módulo `child_process` é usado quando você precisa executar comandos do sistema operacional a partir do seu aplicativo Node.js. Isso pode incluir executar programas externos, scripts ou qualquer outra coisa que possa ser invocada a partir da linha de comando.\
+Existem várias funções disponíveis no `child_process`, incluindo `spawn()`, `exec`, `execFile` e `fork`, cada uma com seu propósito específico.
+
+```JavaScript
+const { spawn } = require("child_process");
+
+// Executa o comando "ls" para listar os arquivos no diretório atual.
+const ls = spawn("ls", ["-l", "-a"]);
+
+// Manipula a saída do comando.
+ls.stdout.on("data", (data) => {
+    console.log(`Saída do comando: ${data}`);
+});
+
+// Manipula eventos de erro e término.
+ls.on("error", (error) => {
+    console.error("Erro ao executar o comando:: ${error.message}");
+});
+
+ls.on("close", (code) => {
+    console.log(`O comando foi encerrado com código de saída ${code}`);
+});
+```
+
+Neste exemplo, o `spawn()` é utilizado para executar o comando "`ls`" com as opções `-l` e `-a`, e os eventos são usados para lidar com a saída, erros e o término do processo filho.
+
+# <a id = "fs"></a>`fs`
+
+`fs` é um módulo da biblioteca padrão do Node.js chamado "File System"  (Sistema de Arquivos). Ele fornece uma API para interagir com o sistema de arquivos no ambiente do Node.js, ele oferece métodos para ler, gravar, atualizar, excluir e manipular arquivos e diretórios.\
+O módulo `fs` é utilizado para realizar operações relacionadas a arquivos e diretórios, como leitura e gravação de arquivos, criação e remoção de diretórios, entre outras tarefas de manipulação de arquivos. Aqui estão alguns exemplos de operações comuns que podem ser realizadas com o `fs`:
+
+- Leitura e gravação de arquivos;
+- Manipulação de diretórios (criação, exclusão, listagem);
+- Verificação da existência de um arquivo ou diretório;
+- Obtendo informações sobre um arquivo (tamanho, data de modificação, etc.).
+
+```JavaScript
+const fs = require("fs");
+
+fs.readFile("arquivo.txt", "utf8", () => {
+    if (err) {
+        console.error("Erro ao ler o arquivo:", err);
+        return;
+    }
+    console.log("Conteudo do arquivo:", data);
+});
+```
+
+Neste exemplo, o `fs` é utilizado para ler o conteúdo de um arquivo chamado "arquivo.txt".
 
 # <a id = "aws-sdk"></a>`aws-sdk`
 
@@ -176,6 +289,68 @@ souce.cancel("Requisição cancelada pelo usuário.");
 Ao chamar `source.cancel("Requisição cancelada pelo usuário.")`, a requisição será interrompida, e a Promise resultante entrará no estado de rejeição com a mensagem fornecida ("Requisição cancelada pelo usuário." no exemplo).\
 Esse recurso é útil em situações em que você precisa cancelar uma requisição, por exemplo, se o usuário navegar para fora de uma página ou executar alguma ação que torne a resposta da requisição desnecessária.
 
+# <a id = "request"></a>`request` (OBSOLETA)
+
+`request` é uma biblioteca simplificada pra fazer solicitações HTTP em Node.js, ela fornece uma interface fácil de usar para interagir com APIs web, fazer requisições a servidores HTTP e manipular dados de respostas.\
+O principal propósito do `request` é simplificar a realização de solicitações HTTP em Node.js. Ele oferece uma abordagem fácil para enviar solicitações HTTP, gerenciar cookies, lidar com redirecionamentos e manipular respostas.
+
+```JavaScript
+const request = require("request");
+
+const url = "https://api.example.com/data";
+
+request(url, (error, response, body) => {
+    if (error){
+        console.error("Erro ao fazer a solicitação:", error);
+    } else {
+        console.log("Corpo da resposta:", body);
+    }
+});
+```
+
+Neste exemplo, `request` é usado para fazer uma solicitação GET para a URL fornecida. O callback é acionado quando a solicitação é concluída, permitindo que você manipule a resposta ou lide com erros.\
+Vale observar que a biblioteca `request` está agora obsoleta, e os desenvolvedores são incetivados a considerar o uso de alternativas mais modernas, como `axios` ou o módulo `fetch` integrado no JavaScript. Estas alternativas oferecem funcionalidades similares e são mais amplamente adotadas na comunidade.
+
+# <a id = "body-parser"></a>`body-parser`
+
+`body-parser` é uma biblioteca para Node.js, ele é uma biblioteca que facilita a extração de dados do corpo de uma solicitação HTTP. Ele é frequentemente usado em conjunto com frameworks web, como o Express, para processar dados enviados por meio de solicitações POST e PUT.\
+`body-parser` precisa ser instalado se a sua versão for antes da 4.16.0, pois era uma dependência separada, mas agora é parte integrante do próprio Express. Se você estiver usando uma versão mais recente do Express, não será necessário instalar o `body-parser` separadamente.\
+O principal propósito do `body-parser` é facilitar o processamento do corpo das solicitações HTTP, especialmente solicitações POST e PUT, onde os dados do formulário ou o corpo JSON podem ser enviados. ele analisa o corpo da solicitação e faz o parsing dos dados, disponibilizando-os no objeto `req.body` para facilitar o acesso no código do seu servidor.
+Ele também pode ser descrito como uma extensão de middleware para aplicativos Node.js, que executam servidores HTTP, como aqueles criados com o Express.js. Sua principal função é analisar o corpo das solicitações HTTP para extrair dados, como parâmetros de formulário ou cargas úteis JSON, tornando-os acessíveis aos controladores de rotas ou manipuladores de solicitações.\
+O `body-parser` é especialmente útil quando você está construindo aplicativos web ou APIs que lidam com solicitações POST, PUT e DELETE, onde os dados são enviados no corpo da solicitação. Ele oferece suporte a diferentes tipos de dados, incluindo URL-encoded, JSON e dados multipart. Algumas das funcionalidades e características do módulo `body-parser`:
+
+- **Análise de dados:** o `body-parser` permite analisar automaticamente os dados do corpo da solicitação e torná-los acessíveis nas rotas do seu aplicativo;
+- **Tipos de dados suportados:** ele suporta diferentes tipos de dados, incluindo:
+    - **URL-encoded:** dados de formulário enviados no corpo da solicitação no formato `application/x-www-form-urlencoded`;
+    - **JSON:** dados no formato JSON;
+    - **Dados multipart:** suporte a upload de arquivos.
+- **Configuração flexível:** você pode configurar o `body-parser` para tratar diferentes tipos de solicitações com base no tipo de conteúdo (content-type) ou tamanho do corpo;
+- **Integração com Express:** o `body-parser` é frequentemente usado em conjunto com o Express.js para simplificar o processamento de dados nas solicitações.
+
+```JavaScript
+const express = require("express");
+const bodyParser = require("body-parser");
+
+const app = express();
+const port = 3000;
+
+//Adiciona o middleware body-parser ao aplicativo.
+app.use(bodyParser.json()); // Para parsing de dados JSON.
+app.use(bodyParser.urlencoded({ extended: true })); // Para parsing de dados de formulário.
+
+// Manipula uma solicitação POST
+app.post("/exemplo", (req, res) => {
+    const dados = req.body; // Dados do corpo da solicitação.
+    res.json({ mensagem: "Dados recebidos com sucesso!", dados });
+});
+
+app.listen(port, () => {
+    console.log("Servidor Express está escutando em http://localhost:${port}");
+});
+```
+
+Neste exemplo, o `body-parser` é usado para analisar o corpo da solicitação e tornar os dados acessíveis através de `req.body`. Isso é útil ao lidar com formulários HTML ou solicitações que enviam dados no formato JSON.
+
 # <a id = "joi"></a>`joi`
 
 `joi` é uma biblioteca que precisa ser instalada, ele é utilizada para validação de objetos em JavaScript e é especialmente útil para validar dados de entrada em aplicativos Node.js.\
@@ -211,9 +386,64 @@ if (result.error) {
 Neste exemplo, o esquema define que um objeto válido deve ter uma propriedade `username` que é uma string alfanumérica de pelo menos 3 caracteres e no máximo 30 caracteres, uma propriedade `email` que é uma string válida de e-mail e uma propriedade `age` que é um número inteiro não negativo.\
 `joi` é bastante flexível e pode ser configurada para validar uma variedade de tipos de dados e critérios. Ela é frequentemente usada em conjunto com servidores Node.js para validar dados de solicitações HTTP, por exemplo.
 
+# <a id = "dotenv"></a>`dotenv`
+
+`dotenv` é uma biblioteca para Node.js, ela facilita o carregamento de variáveis de ambiente de arquivos de configuração, especialmente em ambientes de desenvolvimento. Ele permite que você defina variáveis de ambiente em um arquivo chamado **.env** e as carregue automaticamente em seu aplicativo.\
+O principal propósito do `dotenv` é simplificar o gerenciamento de variáveis de ambiente em diferentes ambientes de desenvolvimento. Em vez de definir variáveis de ambiente diretamente no sistema operacional, você pode criar um arquivo **.env** na raiz do seu projeto e definir as variáveis lá.\
+Isso também é especialmente útil para manter informações sensíveis, como credenciais de banco de dados ou chaves de API, fora do seu código-fonte e configuráveis por meio de variáveis de ambiente.\
+Em um arquivo **.env** você pode definir variáveis de ambiente no formato `VARIAVEL=valor`. Por exemplo:
+
+```plaintext
+DB_USER=usuario
+DB_PASSWORD=senha
+API_KEY=minha_chave_secreta
+```
+
+Para acessar as variáveis de ambiente definidas no arquivo **.env**, você pode usar o `process.env`. Por exemplo:
+
+```JavaScript
+// No início do seu arquivo de aplicativo.
+require("dotenv").config();
+
+// Agora você pode acessar as variáveis de ambiente como process.env.DB_USER.
+console.log("Usuário do banco de dados:", process.env.DB_USER);
+```
+
+Isso é útil ao desenvolver aplicativos que têm diferentes configurações em abientes de desenvolvimento, teste e produção. O `dotenv` ajuda a evitar a exposição acidental de informações sensíveis, mantendo as configurações de ambiente fora do controle de versão.\
+Lembre-se de que as variáveis de ambiente carregadas com `dotenv` são específicas para o ambiente de execução do seu aplicativo. Elas não estarão disponíveis fora do escopo do aplicativo e não serão visíveis para outros processos ou usuários do sistema. Isso também é útil na hora de proteger informações confidenciais.
+
+# <a id = "express-graceful-shutdown"></a>`express-graceful-shutdown`
+
+`express-graceful-shutdown` é uma biblioteca que oferece suporte a encerramento gráfico (graceful shutdown) de servidores Express. Ele é projetado para permitir que seu aplicativo Express encerre conexões ativas antes de desligar o servidor, garantindo que as solicitações em andamento sejam concluídas antes que o servidor seja totalmente encerrado.\
+O objetivo principal desta biblioteca é garantir que, ao desligar o servidor Express, as conexões existentes sejam encerradas de maneira segura, permitindo que as solicitações em andamento sejam concluídas antes do encerramento completo do servidor. Isso é especialmente útil em cenários de deploy ou quando você precisa encerrar seu aplicativo de forma controlada.
+
+```JavaScript
+const express = require("express");
+const gracefulShutdown = require("express-graceful-shutdown");
+
+const app = express();
+const port = 3000;
+
+// Definindo rotas e configurações do seu aplicativo Express.
+
+const server = app.listen(port, () => {
+    console.log(`Servidor Express está escutando em http://localhost:${port}`);
+});
+
+// Configurando o encerramento gráfico.
+gracefulShutdown(server, {
+    signals: "SIGINT SIGTERM",
+    timeout: 30000, // Tempo máximo permitido para encerrar conexões pendentes (em milissegundos).
+    forceExit: true // Forãr encerramento se as conexões não encerrarem dentro do tempo limite.
+});
+```
+
+Neste exemplo, `express-graceful-shutdown` é usado para integrar o encerramento gráfico ao servidor Express. Isso é útil para garantir que o servidor seja encerrado de maneira controlada e que as conexões ativas sejam gerenciadas adequadamente.
+
 # `mariadb` x `mysql`
 
-Aparentemente o método `.query()` do `mariadb` não aceita callbacks, enquanto o do `mysql`, aceita.
+Aparentemente o método `.query()` do `mariadb` não aceita callbacks, enquanto o do `mysql`, aceita.\
+Se você passar um valor numérico (como um inteiro) entre aspas simples em uma consulta SQL usando o método `.query()` do módulo `mysql` em Node.js, geralmente não ocorrerá um erro. Os drivers MySQL para Node.js são projetados para lidar com a formatação adequada dos valores na consulta SQL.
 
 # <a name = "requestpromisenative"></a>--- `request-promise-native`
 
@@ -246,46 +476,6 @@ request({
 ```
 
 Neste exemplo, o método `request()` é usado para fazer uma solicitação GET para uma URL específica. A promessa retornada é então manipulada usando `.then()` para lidar com a resposta bem-sucedida e `.catch()` para lidar com erros na solicitação.
-
-# <a name = "bodyparser"></a>`body-parser`
-
-O módulo `body-parser` é uma extensão de middleware para aplicativos Node.js que executam servidores HTTP, como aqueles criados com o Express.js. Sua principal função é analisar o corpo das solicitações HTTP para extrair dados, como parâmetros de formulário ou cargas úteis JSON, tornando-os acessíveis aos controladores de rotas ou manipuladores de solicitações.\
-O `body-parser` é especialmente útil quando você está construindo aplicativos web ou APIs que lidam com solicitações POST, PUT e DELETE, onde os dados são enviados no corpo da solicitação. Ele oferece suporte a diferentes tipos de dados, incluindo URL-encoded, JSON e dados multipart. Algumas das funcionalidades e características do módulo `body-parser`:
-
-- **Análise de dados:** o `body-parser` permite analisar automaticamente os dados do corpo da solicitação e torná-los acessíveis nas rotas do seu aplicativo;
-- **Tipos de dados suportados:** ele suporta diferentes tipos de dados, incluindo:
-    - **URL-encoded:** dados de formulário enviados no corpo da solicitação no formato `application/x-www-form-urlencoded`;
-    - **JSON:** dados no formato JSON;
-    - **Dados multipart:** suporte a upload de arquivos.
-- **Configuração flexível:** você pode configurar o `body-parser` para tratar diferentes tipos de solicitações com base no tipo de conteúdo (content-type) ou tamanho do corpo;
-- **Integração com Express:** o `body-parser` é frequentemente usado em conjunto com o Express.js para simplificar o processamento de dados nas solicitações.
-
-Aqui está um exemplo de como você pode usar o `body-parser` em um <a name = "servidor"></a>aplicativo Express para analisar dados de formulário URL-encoded:
-
-```JavaScript
-const express = require('express');
-const bodyParser = require('body-parser');
-
-const app = express();
-
-//Adiciona o middleware bodyParser para analisar dados URL-encoded.
-app.use(bodyParser.urlencoded({ extended: false }));
-
-app.post("/processar-dados", (req, res) => {
-    //Dados do formulário são acessíveis em req.body.
-    console.log(req.body);
-    res.send("Dados recebidos e processados com sucesso!");
-});
-
-app.listen(3000, () => {
-    console.log("Servidor em execução na porta 3000.");
-});
-```
-
-Neste exemplo, o `body-parser` é usado para analisar os dados do corpo da solicitação e torná-los acessíveis em `req.body` para posterior processamento.\
-O `body-parser` facilita o tratamento de dados nas solicitações HTTP em aplicativos Node.js e Express, economizando tempo e simplificando o código necessário para processar informações vindas do cliente.
-
-Você pode fazer uma requisição ao servidor acima utilizando o seguinte [comando](../Bash.md#comando).
 
 # <a name = "mariadb"></a>`mariadb`
 
@@ -491,29 +681,9 @@ it("String", function() {
 - `String`**:** string que descreve o teste;
 - `function()`**:** função callback que contém a lógica do teste.
 
-# <a name = "dotenv"></a>`dotenv`
+# método `dotenv`
 
-`dotenv` é uma biblioteca usada para carregar **variáveis de ambiente** a partir de um arquivo **.env** em seu projeto. Isso é especialmente útil para manter informações sensíveis, como credenciais de banco de dados ou chaves de API, fora do seu código-fonte e **configuráveis por meio de variáveis de ambiente**.\
-Em um arquivo **.env** você pode definir variáveis de ambiente no formato `VARIAVEL=valor`. Por exemplo:
-
-```plaintext
-DB_USER=usuario
-DB_PASSWORD=senha
-API_KEY=minha_chave_secreta
-```
-
-Para acessar as variáveis de ambiente definidas no arquivo **.env**, você pode usar o `process.env`. Por exemplo:
-
-```JavaScript
-const dbUser = process.env.DB_USER;
-const dbPassword = process.env.DB_PASSWORD;
-const apiKey = process.env.API_KEY;
-```
-
-Isso permite que você acesse valores configuráveis em seu código sem expor informações sensíveis diretamente no código-fonte.\
-Lembre-se de que as variáveis de ambiente carregadas com `dotenv` são específicas para o ambiente de execução do seu aplicativo. Elas não estarão disponíveis fora do escopo do aplicativo e não serão visíveis para outros processos ou usuários do sistema. Isso é útil para proteger informações confidenciais e facilita a configuração de diferentes ambientes (como desenvolvimento, teste e produção) usando diferentes arquivos **.env**.
-
-### <a id = "config"></a>`.config()`
+`.config()`
 
 Configura e carrega variáveis de ambiente a partir de um arquivo **.env**. Retorna um objeto de configuração.
 
@@ -667,21 +837,6 @@ bcc: ["copia_oculta1@example.com", "copia_oculta2@example.com"]
 
 # Node.js.
 
-## <a name = "tls"></a>`tls`
-
-O módulo `tls` é usado para criar conexões seguras em Node.js.
-
-`require('tls').DEFAULT_ECDH_CURVE = 'auto'`
-
-O código acima altera a curva de ECDH padrão (Elliptic Curve Diffie-Hellman) usada pelo módulo `tls` (**Transport Layer Security**) em Node.js. ECDH é um protocolo de troca de chaves usado para estabelecer uma chave de criptografia compartilhada em uma conexão segura.\
-`.DEFAULT_ECDH_CURVE` se refere à curva de ECDH padrão usada nas negociações de chaves ECDH, que recebe, neste caso, o valor `'auto'`.\
-Ao definir a curva ECDH como `'auto'`, você está configurando o Node.js para escolher automaticamente a curva ECDH mais adequada com base nas capacidades do sistema. Isso é útil quando você deseja que o Node.js selecione a melhor curva ECDH disponível em vez de especificar uma curva específica.\
-Em muitos casos, definir a curva ECDH como `'auto'` é uma boa prática, pois permite que o Node.js escolha a melhor opção de acordo com o ambiente de execução. No entanto, em cenários específicos de segurança ou conformidade, você pode optar por definir uma curva ECDH específica em vez de usar `'auto'`.
-
-## <a name = "http"></a>`http`
-
-O módulo `http` é um módulo principal do Node.js que fornece funcionalidades para criar servidores HTTP e interagir com solicitações e respostas HTTP. Com o módulo `http`, você pode criar aplicativos web, APIs, servidores e muito mais. Ele é uma parte essencial da plataforma Node.js para comunicação na web.
-
 ## <a name = "path"></a>`path`
 
 Fornece utilitários para trabalhar com caminhos de arquivos e diretórios em um sistema de arquivos. Ele é amplamente utilizado para criar caminhos, manipular caminhos relativos e absolutos, extrair informações dos caminhos e realizar operações relacionadas a caminhos.\
@@ -721,11 +876,7 @@ console.log(path.resolve("migrations"));       //Saída: /home/orion/APIs/orion-
 console.log(path.resolve("db", "migrations")); //Saída: /home/orion/APIs/orion-data-api/db/migrations
 ```
 
-## <a name = "fs"></a>`fs`
-
-**File System** (**Sistema de Arquivos**). Fornece métodos para interagir com o sistema de arquivos do computador, permitindo que você leia, escreva, manipule e gerencie arquivos e diretórios.\
-O **"Sync"** no nome das funções, indica que essas funções são **síncronas**.\
-`path` **(string):** caminho para o arquivo/diretório.
+## métodos `fs`
 
 ### <a id = "readdirsync"></a>`.readdirSync()`
 
@@ -780,11 +931,9 @@ Remove um arquivo do sistema de arquivos.
 
 Retorna um array contendo informações sobre todas as CPUs disponíveis no sistema (um array de objetos).
 
-## <a name = "childprocess"></a>`child_process`
+## métodos `child_process`
 
-Cria e gerencia processos filhos (subprocessos) a partir de um aplicativo Node.js.
-
-### <a id = "exec"></a>`.exec()`
+`.exec()`
 
 Executa comandos do sistema operacional em um subprocesso. Ele é uma forma de criar processos filhos para executar comandos shell ou outros programas externos.
 

@@ -485,12 +485,6 @@ console.log(destino); //Saída: { a: 1, b: 3, c: 4 }
 Neste exemplo, as propriedades de `origem1` e `origem2` são copiadas para `destino`, e o valor da propriedade `b` do `origem2` substitui o valor da propriedade `b` do `origem1` no objeto de destino.\
 Lembre-se de que o `Object.assign()` funciona apenas para copiar as propriedades enumeráveis e próprias (**não as herdadas**) dos objetos de origem. Além disso, ele retorna o objeto de destino após a cópia das propriedades.
 
-### <a id = "keys"></a>`.keys()`
-
-`.keys(objeto)`
-
-Usada para retornar um array com as chaves (nomes das propriedades) de um `objeto`.
-
 ### <a id = ""></a>`.values()`
 
 Retorna um array contendo os valores das **propriedades enumeráveis** de uma objeto.
@@ -876,28 +870,19 @@ Certifique-se de nunca incluir a pasta **node_modules** no seu repositório Git,
 
 - [`sequelize`](sequelize.md);
 - [`request-promise-native`](bibliotecas.md#requestpromisenative);
-- [`body-parser`](bibliotecas.md#bodyparser);
 - [`mariadb`](bibliotecas.md#mariadb);
-- [`aws-sdk`](bibliotecas.md#awssdk);
 - [`umzug`](bibliotecas.md#umzug);
 - [`chai`](bibliotecas.md#chai);
-- [`dotenv`](bibliotecas.md#dotenv);
 - [`moment`](bibliotecas.md#moment);
 - [`nodemailer`](bibliotecas.md#nodemailer).
 
 ## Node.js.
 
-- [`tls`](bibliotecas.md#tls);
-- [`http`](bibliotecas.md#http);
 - [`path`](bibliotecas.md#path);
-- [`fs`](bibliotecas.md#fs);
 - [`os`](bibliotecas.md#os);
-- [`child_process`](bibliotecas.md#childprocess);
-- [`util`](bibliotecas.md#util).
 
 # <a id = "frameworks"></a>Frameworks.
 
-- [Express.js](frameworks.md#express);
 - [Mocha](frameworks.md#mocha);
 - [Vue.js](frameworks.md#vuejs);
 - [Next.js](frameworks.md#nextjs).

@@ -2,16 +2,16 @@
 
 ### Sumário
 
-24. [Classes em JavaScript (Introduzidas no ES6)](#classes-em-javascript-introduzidas-no-es6)
-25. [Desestruturação](#desestruturacao)
-26. [Proxy e Reflect](#proxy-e-reflect)
-27. [Currying e Composição de Funções](#currying-e-composicao-de-funcoes)
-28. [WebSockets](#websockets)
-29. [Web Workers](#web-workers)
-30. [Métodos Avançados de Arrays (reduce, some, every)](#metodos-avancados-de-arrays-reduce-some-every)
-31. [Manipulação de Strings Avançada](#manipulacao-de-strings-avancada)
-32. [Uso de Modules (CommonJS, ES6 Modules)](#uso-de-modules-commonjs-es6-modules)
-33. [Casos Específicos Interessantes](#casos-especificos-interessantes)
+25. [Classes em JavaScript (Introduzidas no ES6)](#classes-em-javascript-introduzidas-no-es6)
+26. [Desestruturação](#desestruturacao)
+27. [Proxy e Reflect](#proxy-e-reflect)
+28. [Currying e Composição de Funções](#currying-e-composicao-de-funcoes)
+29. [WebSockets](#websockets)
+30. [Web Workers](#web-workers)
+31. [Métodos Avançados de Arrays (reduce, some, every)](#metodos-avancados-de-arrays-reduce-some-every)
+32. [Manipulação de Strings Avançada](#manipulacao-de-strings-avancada)
+33. [Uso de Modules (CommonJS, ES6 Modules)](#uso-de-modules-commonjs-es6-modules)
+34. [Casos Específicos Interessantes](#casos-especificos-interessantes)
 
 # <a name = "classes-em-javascript-introduzidas-no-es6"></a> Classes em JavaScript (Introduzidas no ES6)
 

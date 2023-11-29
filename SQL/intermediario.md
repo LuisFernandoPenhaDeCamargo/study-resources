@@ -19,6 +19,7 @@
 
 8. [Funções de Data e Hora:](#funcoes-de-data-e-hora)\
     - `FROM_UNIXTIME()`
+    - `DATE_SUB()`
 
 9. [ENUM no SQL](#enum-no-sql)
     - O que é ENUM
@@ -40,7 +41,26 @@
 
 # <a name = "funcoes-agregadas"></a>Funções Agregadas
 
+Funções que operam em um conjunto de resultados para fornecer um único valor de resumo.
+
 ### COUNT, SUM, AVG, MIN, MAX
+
+`COUNT()` é uma função em SQL, ela é utilizada para contar o número de linhas em um conjunto de resultados que atendem a uma condição específica.
+
+`COUNT(expression)`
+
+`expression`**:** a expressão que será contada. Pode ser opcional, dependendo da versão do SQL. Se não for fornecida, a função conta todas as linhas na tabela.
+
+Retonar o número de linhas que atendem à condição especificada.
+
+```sql
+SELECT COUNT(*) AS total_rows
+FROM users
+WHERE age > 18;
+```
+
+Este exemplo conta o número de usuários na tabela `users` que tê mais de 18 anos.\
+É importante notar que você pode usar `COUNT()` de várias maneiras, dependendo dos requisitos específicos da consulta. Pode ser usado com `DISTINCT`, em conjunto com outras funções de agregação, ou para contar linhas específicas em uma tabela.
 
 ### GROUP BY, HAVING
 

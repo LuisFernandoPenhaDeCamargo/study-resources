@@ -6,6 +6,7 @@
 - [`.parse()`](#parse);
 - [`.bind()`](#bind);
 - [`.now()`](#now);
+- [`.keys()`](#keys);
 - [`.toString()`](#tostring).
 
 # `Number`
@@ -188,6 +189,25 @@ console.log(timestamp);
 ```
 
 O código acima imprime o número de milissegundos desde o Unix Epocj até o momento em que `Date.now()` foi chamado.
+
+# `Object`
+
+## <A id = "keys"></a>`.keys()`
+
+O método `.keys()` retorna um array contendo os nomes das propriedades de um objeto.
+
+`Object.keys(object);`
+
+`object` **(object):** o objeto do qual você deseja obter as chaves.
+
+Retorna um array contendo os nomes das propriedades enumeráveis do objeto.
+
+```JavaScript
+const myObject = { a: 1, b: 2, c:3 };
+const keys = Object.keys(myObject);
+
+console.log(keys); // Saída: [ 'a', 'b', 'c' ]
+```
 
 # Objeto
 

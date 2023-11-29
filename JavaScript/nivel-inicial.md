@@ -14,7 +14,8 @@
 8. [Callbacks e Funções Anônimas](#callbacks-e-funcoes-anonimas)
 9. [Objeto Literal](#objeto-literal)
 10. [Template Literals](#template-literals)
-11. [Operadores](#operadores)
+11. [Entendendo Módulos no JavaScript](#entendendo-modulos-no-javascript)
+12. [Operadores](#operadores)
 
 # <a name = "variaveis-var-let-const"></a>Variáveis (var, let, const)
 
@@ -226,6 +227,56 @@ const templateLiteral = `Transformando um array em uma string: ${array}.`;
 
 console.log(templateLiteral); // Saída: Transformando um array em uma string: 1,2,3.
 ```
+
+# <a name = ""></a>Entendendo Módulos no JavaScript
+
+### Diferença entre Módulos CommonJS e ES Modules
+
+### Convertendo de CommonJS para ES Modules
+
+A mensagem de erro abaixo geralmente é gerada pelo TypeScript em um ambiente JavaScript quando você está usando a opção `--allowJs` e há uma mistura de módulos CommonJS (Node.js) e módulos ECMAScript (ES6).\
+A mensagem está indicando que o arquivo é atualmente um módulo CommonJS (formato usado pelo Node.js com `require` e `module.exports`), mas pode ser convertido para um módulo ES6 (formato com `import` e `export`).
+Lembrando que se você está programando em JavaScript Puro, e não em TypeScript, não precisa se preocupar com as opções de configuração do TypeScript.\
+O aviso pode aparecer se você estiver usando ferramentas de desenvolvimento que incorporam TypeScript, mesmo que você esteja escrevendo em JavaScript.
+
+"File is a CommonJS module; it may be converted to an ES module. ts(80001)".
+
+Essa mensagem de erro indica que o arquivo em questão é um módulo CommonJS e que pode ser convertido para um módulo ECMAScript (ES) usando a sintaxe de módulo ES6. No TypeScript, o compilador está sugerindo que você considere a conversão para um formato de módulo mais moderno.\
+O CommonJS é um sistema de nódulos usado principalmente no Node.js, enquanto o ES6 (ou ECMAScript 2015) introduziu uma nova sintaxe de módulo. A sintaxe de módulo ES6 é mais morderna e tem algumas vantagens sobre o CommonJS, incluindo uma melhor análise estática, importações dinâmicas e suporte nativo a assíncrono.\
+Se você deseja converter seu arquivo para um módulo ES6, você pode fazer algumas mudanças:
+
+- **Alterar a Extensão do Arquivo:** renomeie o arquivo de `.js` para `.mjs` ou `.cjs` para indicar que é um módulo ES6 ou CommonJS, respectivamente;
+- **Atualizar Sintaxe de Importação e Exportação:** no CommonJS, você usa `require` para importar módulos e `module.exports` para exportar valores. No ES6, você usa `import` e `export`. Portanto, atualize a sintaxe de importação/exportação no arquivo.
+
+```JavaScript
+// Antigo (CommonJS)
+const modulo = require("./meu-modulo");
+
+// Novo (ES6)
+import modulo from "./meu-modulo";
+```
+
+```JavaScript
+// Antigo (CommonJS)
+module.exports = algumaCoisa;
+
+// Novo (ES6)
+export default algumaCoisa;
+```
+
+- **Alterar Configurações no** `tsconfig.json`**:** certifique-se de que o seu arquivo `tsconfig.json` está configurado para usar módulos ES6. Adicione ou atualize a opção "module" para "es6". Exemplo de configuração no `tsconfig.json`:
+
+```json
+{
+    "compilerOptions": {
+        "module": "es6",
+        // ...outras opções
+    },
+    // ...outras opções
+}
+```
+
+Ao fazer essas alterações, você estará seguindo as práticas modernas de desenvolvimento TypeScript e ECMAScript 2015+.
 
 # <a name = "operadores"></a>Operadores
 

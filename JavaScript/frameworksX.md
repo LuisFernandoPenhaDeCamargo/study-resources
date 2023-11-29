@@ -1,4 +1,50 @@
-# Frameworks.
+# Frameworks
+
+# Sumário
+
+[`express`](#express).
+
+# <a id = ""></a>`express`
+
+Express é uma biblioteca para Node.js que é comumente referida como um framework web para Node.js.\
+Express é um framework minimalista para a construção de aplicativos web e APIs em Node.js. Embora seja frequentemente chamado de "framework", ele é mais levemente estruturado do que alguns frameworks tradicionais, e muitas vezes é referido como uma "biblioteca" devido à sua natureza modular. Express fornece uma camada fina de abstração sobre o HTTP e facilita a criação de aplicativos web e APIs de forma rápida e flexível.\
+Express é usada para simplificar o desenvolvimento de aplicativos web e APIs em Node.js. Ele fornece uma série de funcionalidades que facilitam o roteamento, a manipulação de solicitações e respostas HTTP, a definição de middleware, a renderização de visualizações e muito mais. Express é frequentemente usado como a base para o desenvolvimento de aplicativos web completos, mas também pode ser usado para criar APIs RESTful.\
+Alguns dos principais recursos e conceitos do Express:
+
+- **Roteamento:** o Express permite definir rotas para o seu aplicativo, mapeando URLs para funções de manipulação que você cria. Isso facilita a criação de endpoints para a sua API ou páginas web;
+- **Middlewares:** os **middlewares são funções que podem ser usadas para processar solicitações HTTP no Express**. Você pode usar middlewares para executar ações comuns, como autenticação, tratamento de erros, registro de solicitações e respostas, entre outros;
+- **Solicitações e respostas:** o Express simplifica a manipulação de solicitações HTTP e respostas. Você pode acessar informações da solicitação, como parâmetros, cabeçalhos e corpo, e enviar repostas personalizadas para o cliente;
+- **Templates:** o Express pode ser combinado com mecanismos de template, como EJS, Pug (antigo Jade), Handlebars e outros, para criar visualizações dinâmicas para suas páginas da web;
+- **Conexão a banco de dados:** você pode facilmente se conectar a bancos de dados, como MongoDB, MySQL ou PostgreSQL, usando bibliotecas específicas do banco de dados e middlewares de conexão;
+- **MVC (model-view-controller):** o Express não impõe uma estrutura específica de arquitetura, mas é comumente usado com o padrão de design MVC para organizar aplicativos;
+- **Extensibilidade:** o Express é altamente extensível. Você pode adicionar middlewares de terceiros para adicionar funcionalidades adicionais ao seu aplicativo;
+- **Suporte para WebSocket:** enquanto o Express não oferece suporte direto a WebSocket, você pode combinar o Express com bibliotecas como Socket.io para adicionar funcionalidades de tempo real ao seu aplicativo;
+- **Comunidade ativa:** o Express é amplamente adotado e tem uma comunidade ativa que fornece pacotes, plugins e suporte.
+
+Exemplo de uso básico do Express para criar um servidor HTTP:
+
+```JavaScript
+const express = require("express");
+
+const app = express();
+const port = 3000;
+
+app.get("/", (req, res) => {
+    res.send("Hello, World!")
+});
+
+app.listen(port, () => {
+    console.log(`Servidor Express escutando em http://localhost:${port}`);
+});
+```
+
+Neste exemplo, o Express é utilizado para criar um servidor HTTP que responde "`Hello, World!`" quando acessado no caminho raiz ("`/`").
+
+### Objeto Response e seus Métodos
+
+No Express.js, o objeto `response` (às vezes abreviado como `res`) é passado como argumento para a função de callback que é definida para as rotas do seu aplicativo. O objeto `response` fornece métodos que permitem que você envie respostas HTTP para o cliente.
+
+# ---
 
 ### Métodos.
 
@@ -11,21 +57,9 @@
 - [`after()`](#after);
 - [`done()`](#done).
 
-# <a name = "express"></a>Express.js.
+# métodos Express
 
-O Express.js (geralmente conhecido como Express) é um framework de aplicativo web popular para Node.js. Ele fornece uma estrutura flexível para a criação de aplicativos web e APIs de forma eficiente. O Express simplifica o processo de configuração de rotas, manipulação de solicitações e respostas, interação com bancos de dados e muito mais. Alguns dos principais recursos e conceitos do Express:
-
-- **Roteamento:** o Express permite definir rotas para o seu aplicativo, mapeando URLs para funções de manipulação que você cria. Isso facilita a criação de endpoints para a sua API ou páginas web;
-- **Middlewares:** os **middlewares são funções que podem ser usadas para processar solicitações HTTP no Express**. Você pode usar middlewares para executar ações comuns, como autenticação, tratamento de erros, registro de solicitações e respostas, entre outros;
-- **Solicitações e respostas:** o Express simplifica a manipulação de solicitações HTTP e respostas. Você pode acessar informações da solicitação, como parâmetros, cabeçalhos e corpo, e enviar repostas personalizadas para o cliente;
-- **Templates:** o Express pode ser combinado com mecanismos de template, como EJS, Pug (antigo Jade), Handlebars e outros, para criar visualizações dinâmicas para suas páginas da web;
-- **Conexão a banco de dados:** você pode facilmente se conectar a bancos de dados, como MongoDB, MySQL ou PostgreSQL, usando bibliotecas específicas do banco de dados e middlewares de conexão;
-- **MVC (model-view-controller):** o Express não impõe uma estrutura específica de arquitetura, mas é comumente usado com o padrão de design MVC para organizar aplicativos;
-- **Extensibilidade:** o Express é altamente extensível. Você pode adicionar middlewares de terceiros para adicionar funcionalidades adicionais ao seu aplicativo;
-- **Suporte para WebSocket:** enquanto o Express não oferece suporte direto a WebSocket, você pode combinar o Express com bibliotecas como Socket.io para adicionar funcionalidades de tempo real ao seu aplicativo;
-- **Comunidade ativa:** o Express é amplamente adotado e tem uma comunidade ativa que fornece pacotes, plugins e suporte.
-
-## <a id = "router"></a>`.Router()`
+`.Router()`
 
 Cria uma instância de um roteador. Retorna uma instância de um roteador Express que é um objeto do tipo `Router`.
 
@@ -61,10 +95,6 @@ Define uma rota que responde a requisições HTTP POST. Retorna um objeto do tip
     - `req` **(requisição, objeto):** este objeto contém informações sobre a requisição HTTP, como parâmetros de consulta, corpo da requisição, cabeçalhos e muito mais;
     - `res` **(resposta, objeto):** este objeto é usado para construir e enviar uma resposta ao cliente, incluindo status HTTP, cabeçalhos e corpo da resposta.
 - **Funções intermediárias (middleware,** `callback`**, opcional):** você pode fornecer uma ou mais funções intermediárias que são executadas antes do manipulador principal. Isso é útil para adicionar lógica de autenticação, validação, etc. **São chamadas em ordem sequencial, a última função que deve ser chamada é o handler**.
-
-## Objeto Response e seus métodos.
-
-No Express.js, o objeto `response` (às vezes abreviado como `res`) é passado como argumento para a função de callback que é definida para as rotas do seu aplicativo. O objeto `response` fornece métodos que permitem que você envie respostas HTTP para o cliente.
 
 ### <a id = "status"></a>`.status()`
 

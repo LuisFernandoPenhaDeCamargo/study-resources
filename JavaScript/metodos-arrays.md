@@ -3,9 +3,11 @@
 ### Sumário
 
 - [`.includes()`](#includes)
+- [`.indexOf()`](#indexof);
 - [`.isArray()`](#isarray);
 - [`.find()`](#find);
-- [`.filter()`](#filter)
+- [`.filter()`](#filter).
+
 
 # Método de Busca
 
@@ -26,6 +28,24 @@ console.log(array.includes(6)); // Saída: false
 ```
 
 É usada principalmente para **valores simples** (números, strings, booleanos) e **não é adequada para verificar a existência de objetos complexos ou verificar com base em propriedades específicas de objetos**.
+
+## <a id = "indexof"></a>`.indexOf()`
+
+O método `.indexOf()` retorna o índice da primeira ocorrência de um elemento em um array. Se o elemento não estiver presente, retorna -1.
+
+`array.indexOf(searchElement[, fromIndex]);`
+
+- `searchElement`**:** o elemento a ser procurado no array;
+- `fromIndex` **(opcional):** o índice a partir do qual iniciar a busca. Se não for fornecido, a busca começa do início do array.
+
+Retorna o índice da primeira ocorrência do elemento ou -1 se o elemento não for encontrado.
+
+```JavaScript
+const array = [1, 2, 3, 4, 5];
+const indice = array.indexOf(3);
+
+console.log(indice); // Saída: 2 (o índice da primeira ocorrência de 3 no array).
+```
 
 # Métodos de Verificação de Tipo
 
