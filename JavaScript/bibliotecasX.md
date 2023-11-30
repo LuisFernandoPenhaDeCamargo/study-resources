@@ -15,7 +15,8 @@
 - [`body-parser`](#body-parser);
 - [`joi`](#joi);
 - [`dotenv`](#dotenv);
-- [`express-graceful-shutdown`](#express-graceful-shutdown).
+- [`express-graceful-shutdown`](#express-graceful-shutdown);
+- [`log-timestamp`](#log-timestamp).
 
 # <a id = "util"></a>`util`
 
@@ -440,6 +441,21 @@ gracefulShutdown(server, {
 
 Neste exemplo, `express-graceful-shutdown` é usado para integrar o encerramento gráfico ao servidor Express. Isso é útil para garantir que o servidor seja encerrado de maneira controlada e que as conexões ativas sejam gerenciadas adequadamente.
 
+# <a id = "log-timestamp"></a>`log-timestamp`
+
+`log-timestamp` é uma biblioteca que adiciona timestamps (carimbos de data/hora) a mensagens de log, ele é usado para melhorar a saída do console, adicionando informações de data e hora a cada mensagem de log.\
+O propósito principal do `log-timestamp` é melhorar a legibilidade das mensagens de log, fornecendo informações de data e hora junto com o conteúdo da mensagem.
+
+```JavaScript
+const logTimestamp = require("log-timestamp");
+
+// Todas as mensagens de log agora terãp timestamps.
+console.log()"Esta mensagem terá um timestamp.";
+```
+
+Ao usar `log-timestamp`, cada mensagem de log será prefixada com um timestamp indicando a data e a hora em que a mensagem foi registrada.\
+Nota: apesar de `log-timestamp` ser uma opção para adicionar timestamps a mensagens de log, muitos desenvolvedores preferem usar bibliotecas mais avançadas e flexíveis para o controle de logs, como `wiston` ou `pino`. Essas bibliotecas oferecem recursos adicionais, como níveis de log, armazenamento em arquivos, e a capacidade de personalizar o formato das mensagens de log.
+
 # `mariadb` x `mysql`
 
 Aparentemente o método `.query()` do `mariadb` não aceita callbacks, enquanto o do `mysql`, aceita.\
@@ -680,21 +696,6 @@ it("String", function() {
 
 - `String`**:** string que descreve o teste;
 - `function()`**:** função callback que contém a lógica do teste.
-
-# método `dotenv`
-
-`.config()`
-
-Configura e carrega variáveis de ambiente a partir de um arquivo **.env**. Retorna um objeto de configuração.
-
-`require('dotenv').config();`
-
-- **Chamada no início do aplicativo:** é uma boa prática chamar o método `.config()` no início do seu aplicativo, antes de qualquer outra operação que dependa das variáveis de ambiente definidas no arquivo **.env**;
-- **Automatiza o carregamento:** o método `.config()` automatiza o processo de leitura do arquivo **.env** e o carregamento de todas as variáveis de ambiente definidas nele;
-- **Retorna um objeto de configuração:** embora o método `.config()` não retorne explicitamente um valor, ele modifica o objeto `process.env` no ambiente Node.js para incluir todas as variáveis de ambiente definidas no arquivo **.env**;
-- **Gestão de erros:** o método `.config()` também pode gerar exceções se houver problemas ao ler ou analisar o arquivo **.env**, como um formato inválido.
-
-**As variáveis de ambiente são acessíveis em todo o escopo do seu aplicativo Node.js** e são usadas para configurar diferentes aspectos do aplicativo, como credenciais de banco de dados, chaves de API e outras configurações específicas do ambiente.
 
 # <a name = "moment"></a>`moment`
 

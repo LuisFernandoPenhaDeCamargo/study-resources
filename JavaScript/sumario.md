@@ -15,6 +15,9 @@
 9. [Objeto Literal](nivel-inicial.md#objeto-literal)
 10. [Template Literals](nivel-inicial.md#template-literals)
 11. [Entendendo Módulos no JavaScript](nivel-inicial.md#entendendo-modulos-no-javascript)
+    - Diferença entre Módulos CommonJS e ES Modules
+    - Convertendo de CommonJS para ES Modules
+    - Outros Erros ".ts(número)"
 12. [Operadores](nivel-inicial.md#operadores)
 
 ### Nível Intermediário: Programação Assíncrona e Objetos

@@ -15,6 +15,9 @@
 9. [Objeto Literal](#objeto-literal)
 10. [Template Literals](#template-literals)
 11. [Entendendo Módulos no JavaScript](#entendendo-modulos-no-javascript)
+    - Diferença entre Módulos CommonJS e ES Modules
+    - Convertendo de CommonJS para ES Modules
+    - Outros Erros ".ts(número)"
 12. [Operadores](#operadores)
 
 # <a name = "variaveis-var-let-const"></a>Variáveis (var, let, const)
@@ -228,7 +231,7 @@ const templateLiteral = `Transformando um array em uma string: ${array}.`;
 console.log(templateLiteral); // Saída: Transformando um array em uma string: 1,2,3.
 ```
 
-# <a name = ""></a>Entendendo Módulos no JavaScript
+# <a name = "entendendo-modulos-no-javascript"></a>Entendendo Módulos no JavaScript
 
 ### Diferença entre Módulos CommonJS e ES Modules
 
@@ -277,6 +280,73 @@ export default algumaCoisa;
 ```
 
 Ao fazer essas alterações, você estará seguindo as práticas modernas de desenvolvimento TypeScript e ECMAScript 2015+.
+
+### Outros Erros ".ts(número)"
+
+```JavaScript
+Could not find a declaration file for module 'express-graceful-shutdown'. '/home/orion/APIs/orion-data-server/node_modules/express-graceful-shutdown/index.js' implicitly has an 'any' type.
+Try `npm i --save-dev @types/express-graceful-shutdown` if it exists or add a new declaration (.d.ts) file containing `declare module 'express-graceful-shutdown';`ts(7016)
+```
+
+A mensagem de erro que você está vendo indica que o TypeScript não conseguiu encontrar um arquivo de declaração (**.d.ts**) para o módulo `express-graceful-shutdown`. As declarações TypeScript (arquivos **.d.ts**) são usadas para fornecer informações sobre a forma como os módulos JavaScript devem ser tipados.\
+Para resolver esse problema, você tem algumas opções:
+
+- Instalar tipos de pacotes (@types): muitos pacotes JavaScript populares têm pacotes de tipos correspondentes diponíveis no repositório `@types` no npm. No seu caso, vocẽ pode tentar instalar os tipos do `express-graceful-shutdown` com o seguinte comando:
+
+`npm install --save-dev @types/express-graceful-shutdown`
+
+Certifique-se de que você tenha o TypeScript instalado como dependência de desenvolvimento (`--save-dev`);
+
+- Criar um arquivo de declaração manual: se não houver tipos disponíveis, você pode criar um arquivo de declaração manual (**.d.ts**). Crie um arquivo chamada `express-graceful-shutdown.d.ts` e adicione o seguinte conteúdo:
+
+`declare module 'express-graceful-shutdown'`
+
+Coloque esse arquivo na mesma pasta em que você está vendo a mensagem de erro ou em uma pasta de tipos personalizados;
+
+- Desativar verificação de tipos para esse módulo: se você não estiver preocupado com a verificação de tipos rigorosa para esse módulo específico, pode desativar temporariamente a verificação de tipos para esse módulo adicionando o seguinte comentário ao topo do arquivo onde você está usando `express-graceful-shutdown`:
+
+```JavaScript
+// @ts-ignore
+import expressShutdown from "express-graceful-shutdown";
+```
+
+No entanto, esteja ciente de que desativar a verificação de tipos pode resultar em menos segurança em termos de tipos.
+
+```JavaScript
+Could not find a declaration file for module 'request'. '/home/orion/APIs/orion-data-server/node_modules/request/index.js' implicitly has an 'any' type.
+Try `npm i --save-dev @types/request` if it exists or add a new declaration (.d.ts) file containing `declare module 'request';`ts(7016)
+```
+
+Mesmo tipo de erro que o acima, mas com um módulo diferente.
+
+```JavaScript
+'parser' is deprecated.ts(6385)
+```
+
+A mensagem de aviso `'parser' is deprecated. ts(6385)` indica que você está usando uma funcionalidade chamada `parser` que foi marcada como obsoleta (deprecated) no TypeScript. Quando algo é marcado como obsoleto em programação, isso significa que é desencorajado o uso dessa funcionalidade porque ela pode ser removida em versões futuras, e existe uma alternativa recomendada.\
+No contexto específico do TypeScript, a mensagem sugere que o recurso relacionado ao `parser` que está sendo utilizado está obsoleto e que você deve considerar mudar para uma abordagem mais recente ou para uma alternativa sugerida pela equipe do TypeScript.
+A funcionalidade em questão se trata do middleware `body-parser` no Express. O `body-parser` era anteriormente uma parte essencial para analisar os corpos das solicitações em aplicativos Express. No entanto, nas versões mais recentes do Express (a partir da versão 4.16.0), o middleware `body-parser` foi incorporado no próprio Express, eliminando a necessidade de instá-lo como uma dependência separada.\
+Para corrigir o aviso, você ṕde simplesmente remover a importação e o uso do `body-parser`. Por exemplo, você pode modificar o trecho de código a seguir da seguinte maneira para corrigir este aviso:
+
+ - Antes:
+
+ ```JavaScript
+ const parser = require("body-parser").
+
+ app.use(parser.urlencoded({ extended: true }));
+ ```
+
+ - Depois:
+
+ `app.use(express.urlenconded({ extended: true }));`
+
+ Certifique-se de que sua versão do Express seja 4.16.0 ou superior para garantir que a funcionalidade `urlencoded` esteja incorporada no próprio Express.\
+ Está mudança está alinhada com a evolução do Express e simplifica a configuração de middlewares para processamento de dados de solicitação. Lembre-se de ajustar as partes do código necessárias, se houver, para usar a nova sintaxe.
+
+Se você estiver escrevendo código JavaScript puro (sem tipos estáticos do TypeScript) e se deparar com mensagens de erro específicas do TypeScript, isso pode indicar que o TypeScript está sendo utilizado ou configurado no seu projeto. Nesse caso, você pode precisar ajustar a configuração ou, se não estiver planejando usar TypeScript, verificar se há algo no ambiente de desenvolvimento que está introduzindo o TypeScript, como configurações de build ou dependências específicas.\
+Em um ambiente JavaScript puro, o TypeScript não interfere na execução do código, pois o JavaScript não faz uso dos tipos estáticos introduzidos pelo TypeScript. Portanto, se você está confortável com o seu código JavaScript e não planeja migrar para TypeScript, você pode ignorar essas mensagens de erro relacionadas à falta de tipos.\
+No entanto, é sempre uma boa prática garantir que suas dependências estejam atualizadas e que você esteja usando versões estáveis dos pacotes em seu projeto. Se a mensagem de erro estiver relacionada a uma dependência específica, você pode verificar se há uma versão mais recente dessa dependência disponível.\
+Se a sua aplicação está funcionando conforme o esperado no ambiente JavaScript, e você não planeja usar TypeScript no momento, você pode considerar essas mensagens de erro como alertas informativos que não impactarão a execução do seu código.
 
 # <a name = "operadores"></a>Operadores
 

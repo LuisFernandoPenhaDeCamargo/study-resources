@@ -2,10 +2,14 @@
 
 - [`util`](#util);
 - [`crypto`](#crypto);
+- [`http`](#http)
 - [`querystring`](#querystring);
 - [`aws-sdk`](#aws-sdk);
 - [`axios`](#axios);
-- [`joi`](#joi).
+- [`body-parser`](#body-parser);
+- [`joi`](#joi);
+- [`dotenv`](#dotenv);
+- [`express-graceful-shutdown`](#express-graceful-shutdown).
 
 # <a id = "util"></a>`util`
 
@@ -140,6 +144,129 @@ console.log(randomNum);
 ```
 
 Este exemplo gerará um número aleatório entre 1 (inclusivo) e 100 (exclusivo) e o imprimirá no console.
+
+# <a id = "http"></a>`http`
+
+### Sumário
+
+- [`.createServer()`](#createserver);
+- [`.listen()`](#http-listen).
+
+## <a id = "createserver"></a>`.createServer()`
+
+`.createServer()` é um método para criar um servidor HTTP em Node.js, ele cria uma instância do servidor HTTP. Este método é uma parte integrante do módulo `http` em Node.js e é usado para criar servidores web HTTP para manipular solicitações e respostas.
+
+`http.createServer([options][, requestListener]);`
+
+`option` **(opcional):** um objeto de opções que pode ser usado para configurar o comportamento do servidor;
+`requestListener` **(opcional):** uma função que será chamada para cada solicitação ao servidor. Se não fornecida, as solicitações serão tratadas pelo evento "request".
+
+Retorna uma instância do servidor HTTP.
+
+```JavaScript
+const http = require("http");
+
+const server = http.createServer((req, res) => {
+    res.writeHead(200, {"Content-Type": "text/plain"});
+    res.end("Hello, World!\n");
+});
+const port = 3000;
+
+server.listen(port, () => {
+    console.log(`Servidor HTTP está escutando em http://localhost:${port}`);
+});
+```
+
+Neste exemplo, `.createServer()` é usado para criar um servidor HTTP simples. A função de retorno de chamada fornece o tratamento para cada solicitação, neste caso, respondendo com "`Hello, World!`" para qualquer solicitação recebida. O servidor é então configurado para escutar na porta 3000.
+
+## <a id = "http-listen"></a>`.listen()`
+
+`.listen()` é um método utilizado em **instâncias do servidor HTTP** no Node.js, como as criadas por `.createServer()` ou por **frameworks como o Express.js**, ele inicia o servidor, fazendo com que ele comece a escutar em uma porta específica e, opcionalmente, em um host.
+
+`server.listen([port[, host[, backlog]]][, callback]);`
+
+- `port` **(opcional):** o número da porta em que o servidor deve escutar. Se não fornecido, o sistema operacional escolherá uma porta disponível automaticamente;
+- `host` **(opcional):** o nome do host em que o servidor deve escutar. Pode ser um endereço IP ou o nome de host. Se não fornecido, o servidor escutará em todas as interfaces de rede;
+- `backlog` **(opcional):** o número máximo de conexões pendentes permitidas. Se não fornecido, um valor padrão do sistema operacional será usado;
+- `callback` **(opcional):** uma função de retorno de chamada que será executada uma vez que o servidor estiver escutando.
+
+O método `.listen()` não retorna um valor específico.
+
+```JavaScript
+const http = require("http");
+const express = require("express");
+
+const app = express();
+const port = 3000;
+const server = http.createServer(app);
+
+server.listen(port, () => {
+    console.log(`Servidor está escutando em http://localhost:${port}`);
+});
+```
+
+Neste exemplo, `server.liste()` é usado para iniciar o servidor criado com `.createServer()`. O servidor estará escutando na porta 3000, e o callback será acionado assim que o servidor estiver pronto para aceitar conexões.
+
+# `http` x `express`
+
+Considere o bloco de código abaixo:
+
+```JavaScript
+const express = require("express");
+const http = requre("http");
+
+const app = express();
+const server = http.createServer(app);
+const port = 3000;
+
+server.listen(port, () => {
+    console.log(`Listening on port: ${port}`);
+});
+```
+
+Na linha `const server = http.createServer(app);` você está utilizando uma instância do Express como um manipulardor de requisições (request handler) para o servidor HTTP criado por `http.createServer()`.\
+A assinatura do método `.createServer()` aceita um argumento opcional chamado `requestListener`, que é **uma função que será chamada para cada requisição recebida pelo servidor**. Essa função, quando utilizada com o Express, é frequentemente o próprio aplicativo Express, que **age como um middleware para manipular as requisições HTTP**.\
+Então, ao fazer `const server = http.createServer(app);`, você está dizendo ao Node.js para criar um servidor HTTP e utilizar o aplicativo Express (`app`) como o manipulador de requisições para esse servidor. Isso significa que o Express será responsável por lidar com todas as solicitações HTTP recebidas pelo servidor.\
+Essa abordagem permite integrar facilmente o Express com a API de servidor HTTP nativa do Node.js, aproveitando as funcionalidades poderosas do Express para roteamento, middlewares, e manipulação de requisições, enquanto ainda mantém a flexibidade da API HTTP nativa.
+
+Considerando ainda o bloco de código acima e a linha de código abaixo:
+
+`app.listen();`
+
+Em muitos casos, especialmente em aplicações construídas com o Express, você pode usar diretamente `app.listen()` para iniciar o servidor sem a necessidade de criar uma instância separada de `http.createServer()`. O Express encapsula essa funcionalidade para facilitar o uso.\
+Então quando você chama o método `.listen()` diretamente em uma instância do aplicativo Express, internamente, o Express usa `http.createServer()` por trás dos panos. A chamada `app.listen()` basicamente configura o servidor usando `http.createServer()` e, em seguida, chama o método `.listen()` na instância do servidor criado.\
+A escolha entre usar `app.listen()` e `http.createServer()` depende da preferência e do nível de controle que você deseja ter. Usar `app.listen()` é mais conveniente e simplificado, enquanto `http.createServer()` oferece mais flexibilidade se você precisar de manipulação mais granular do servidor HTTP.\
+Portanto, para a maioria dos casos, especialmente em aplicações Express mais simples, usar `app.listen()` é uma prática comum e eficaz.
+
+Considerando o conteúdo abordado acima, podemos perceber que quando você utiliza o Express, ele importa a biblioteca `http` automaticamente por trás dos panos. O Express é construído em cima do módulo `http` do Node.js para lidar com a camada de servidor Web\
+Ao instalar e usar o Express em seu projeto, você não precisa se preocupar em importar explicitamente o módulo `http`. O próprio Express faz isso internamente. Se você examinar o código-fonte do Express, verá que ele inclui o `http` conforme necessário para criar um servidor HTTP.\
+Um exemplo simplificado de como isso pode ser feito internamente no código-fonte do Express seria algo assim:
+
+```JavaScript
+const htttp = require("http");
+
+function createApplication() {
+    const app = function (req, res) {
+        // ...lógica do aplicativo.
+    };
+
+    // Criação do servidor usando http.createServer()
+    const server = http.createServer(app);
+
+    // Adiciona o método .listen() ao aplicativo.
+    app.listen = function (...args) {
+        server.listen(...args);
+    }
+
+    return app;
+}
+
+module.exports = createApplication;
+```
+
+Esta é uma simplificação do código real, mas ilustra como o Express pode usar `http.createServer()` para criar um servidor e, em seguida, expor o método  `.listen()` no próprio aplicativo.\
+Portanto, ao usar o Express, você pode se concentrar em definir rotas, middlewares e manipular solicitações sem se preocupar explicitamente com a criação do servidor, pois o Express cuida disso nos bastidores.\
+<a name = "express-listen"></a>Isso também nos ajuda a perceber que "`server.listen()`" e "[`app.listen()`](#http-listen)", tecnicamente, são o mesmo método.
 
 # <a id = "querystring"></a>`querystring`
 
@@ -654,12 +781,12 @@ Essa funcionalidade pode ser útil quando você precisa interagir com serviços 
 
 ### Sumário
 
-- [`axios()`](#funcaoaxios);
+- [`axios()`](#funcao-axios);
 - [`.post()`](#post);
 - [`.patch()`](#patch);
 - [`.delete()`](#delete).
 
-## <a id = "funcaoaxios"></a>`axios()`
+## <a id = "funcao-axios"></a>`axios()`
 
 `axios()` é uma função, ela cria uma instância do cliente Axios que permite fazer requisições HTTP. Essas instâncias podem ser personalizadas com configurações específicas, como baseURL, headers, interceptadores, entre outros.
 
@@ -788,7 +915,22 @@ axios.delete("https://api.example.com/resource/123")
 
 Neste exemplo, `.delete()` é usado para fazer uma requisição DELETE para a URL "https://api.example.com/resource/123". O método retorna uma Promise que é tratada usando `.then()` para lidar com a resposta bem-sucedida e `.catch()` para lidar com erros.
 
-# <a id = ""></a>`joi`
+# <a id = "body-parser"></a>`body-parser`
+
+### Sumário
+
+- [`.urlencoded()`](#urlencoded)
+- [`.json()`](#json)
+
+## <a id = "urlencoded"></a>`.urlencoded()`
+
+A partir da versão 4.16.0 do Express, o módulo `body-parser` foi incorporado por ele, sendo assim, `parser.urlencoded()` e `express.urlenconded()` são essencialmente o mesmo método. Por isso veremos a definição deste método em [`express`, `.urlencoded()`](metodos-frameworks#urlencoded).
+
+## <a id = "json"></a>`.json()`
+
+A partir da versão 4.16.0 do Express, o módulo `body-parser` foi incorporado por ele, sendo assim, `parser.json()` e `express.json()` são essencialmente o mesmo método. Por isso veremos a definição deste método em [`express`, `.json()`](metodos-frameworks#json).
+
+# <a id = "joi"></a>`joi`
 
 ### Sumário
 
@@ -939,3 +1081,48 @@ const result = schema.validate({ gender: "male", age: 25 });
 ```
 
 Neste caso `.allow("male", "female", "other")` é usado para indicar que o campo `gender` só aceita os valores "male", "female" e "other".
+
+# <a id = "dotenv"></a>`dotenv`
+
+### Sumário
+
+[`.config()`](#config).
+
+## <a id = "config"></a>`.config()`
+
+`.config()` é um método utilizado para carregar variáveis de ambiente de um arquivo **.env** para o objeto `process.env`. Ele é parte integrante da funcionalidade principal do `dotenv`, que é facilitar o carregamento dessas variáveis de ambiente.
+
+`dotenv.config(options);`
+
+`options` **(opcional):** um objeto de opções que pode ser usado para configurar o comportamento do `dotenv`.
+
+O método `.config()` não retorna um valor específico. Ele apenas modifica o objeto `process.env` com base nas variáveis definidas no arquivo **.env**.
+
+```JavaScript
+const dotenv = require("dotenv");
+
+// Carrega variáveis de ambiente no arquivo .env.
+dotenv.config();
+
+// Agora você pode acessar as variáveis de ambiente como process.env.VAR_NAME.
+console.log("Valor da variável de ambiente:", process.env.VAR_NAME);
+```
+
+No exemplo acima, `.config()` é chamado para carregar as variáveis de ambiente do arquivo **.env**. Após a chamada, você pode acessar essas variáveis usando `process.env`. O arquivo `.env` pode conter várias linhas no formato `CHAVE=valor`, onde cada linha representa uma variável de ambiente.
+
+
+- **Chamada no início do aplicativo:** é uma boa prática chamar o método `.config()` no início do seu aplicativo, antes de qualquer outra operação que dependa das variáveis de ambiente definidas no arquivo **.env**;
+- **Automatiza o carregamento:** o método `.config()` automatiza o processo de leitura do arquivo **.env** e o carregamento de todas as variáveis de ambiente definidas nele;
+- **Retorna um objeto de configuração:** embora o método `.config()` não retorne explicitamente um valor, ele modifica o objeto `process.env` no ambiente Node.js para incluir todas as variáveis de ambiente definidas no arquivo **.env**;
+- **Gestão de erros:** o método `.config()` também pode gerar exceções se houver problemas ao ler ou analisar o arquivo **.env**, como um formato inválido.
+
+**As variáveis de ambiente são acessíveis em todo o escopo do seu aplicativo Node.js** e são usadas para configurar diferentes aspectos do aplicativo, como credenciais de banco de dados, chaves de API e outras configurações específicas do ambiente.
+
+# <a id = "express-graceful-shutdown"></a>`express-graceful-shutdown`
+
+### Sumário
+
+[`shutdown()`](#shutdown).
+
+## <a id = "shutdown"></a>`shutdown()`
+
