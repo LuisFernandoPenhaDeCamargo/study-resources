@@ -2,28 +2,28 @@
 
 ### Sumário
 
-13. [Objetos em JavaScript](#objetos-em-javascript)
-14. [Operador `...` (Spread e Rest)](#operador--spread-e-rest)
+14. [Objetos em JavaScript](#objetos-em-javascript)
+15. [Operador `...` (Spread e Rest)](#operador--spread-e-rest)
     - Operador de Espalhamento (Spread Operator)
     - Operador de Coleta (Rest Parameter)
     - Aplicações do Operador `...`
     - Shallow Copy
-15. [Funções de Ordem Superior](#funcoes-de-ordem-superior)
-16. [Promises](#promises)
-17. [Event Loop](#event-loop)
-18. [Async/Await](#asyncawait)
-19. [Manipulação do DOM](#manipulacao-do-dom)
-20. [Trabalhando com Arrays e Objetos (forEach, map, filter)](#trabalhando-com-arrays-e-objetos-foreach-map-filter)
-21. [Herança e Prototypes](#heranca-e-prototypes)
-22. [Closures](#closures)
-23. [Contexto](#contexto)
+16. [Funções de Ordem Superior](#funcoes-de-ordem-superior)
+17. [Promises](#promises)
+18. [Event Loop](#event-loop)
+19. [Async/Await](#asyncawait)
+20. [Manipulação do DOM](#manipulacao-do-dom)
+21. [Trabalhando com Arrays e Objetos (forEach, map, filter)](#trabalhando-com-arrays-e-objetos-foreach-map-filter)
+22. [Herança e Prototypes](#heranca-e-prototypes)
+23. [Closures](#closures)
+24. [Contexto](#contexto)
     - Escopo de Variáveis
     - Closures
     - Contexto de Execução
     - Contexto Lexical
     - `this` em Diferentes Contextos
     - Contexto no Event Loop
-24. [Tratadores de eventos e Event Delegation](#tratadores-de-eventos-e-event-delegation)
+25. [Tratadores de eventos e Event Delegation](#tratadores-de-eventos-e-event-delegation)
 
 # <a name = "objetos-em-javascript"></a>Objetos em JavaScript
 

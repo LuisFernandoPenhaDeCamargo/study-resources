@@ -3,6 +3,7 @@
 - [`.isInteger()`](#isinteger);
 - [`.isNaN()`](#isnan);
 - [`.floor()`](#floor);
+- [`new Set()`](#new-set);
 - [`.parse()`](#parse);
 - [`.bind()`](#bind);
 - [`.now()`](#now);
@@ -74,9 +75,69 @@ console.log(roundedDown); // Saída: 8
 
 Neste exemplo, `Math.floor()` é usado para arredondar para baixo o número decimal 8.75 para o inteiro mais próximo, que é 8.
 
+# `Set`
+
+## <a id = "new-set"></a>`new Set()`
+
+`new Set()` faz a chamada a um construtor que cria uma nova instância de um objeto Set em JavaScript.\
+O objeto `Set` é uma coleção de valores únicos, o que significa que não pode conter duplicatas. Ele é frequentemente usado para eliminar valores duplicados de uma lista ou para manter o controle de elementos únicos de uma coleção.
+
+`new Set([iterable]);`
+
+`iterable` **(opcional):** um objeto iterável (por exemplo, um array) cujo elementos serão adicionados ao `Set`. Se nenhum argumento for fornecido, um novo `Set` vazio é criado.
+
+Retorna uma nova instância do objeto Set contendo elementos únicos do `iterable` fornecido.
+
+```JavaScript
+// Criando um Set
+let mySet = new Set([1, 2, 3, 4, 5,]);
+
+// Adicionando um novo elemento.
+mySet.add(6);
+
+// Verificando se um elemento está no Set.
+console.log(mySet.has(3)); // Saída: true
+console.log(mySet.has(7)); // Saída: false
+
+// Obtendo o tamanho do Set.
+console.log(mySet.size);   // Saída: 6
+
+// Iterando sobre os elementos do Set.
+mySet.forEach((value) => {
+    console.log(value);
+});
+
+// Removendo um elemento do Set.
+mySet.delete(2);
+
+// Convertendo o Set para um Array.
+let arrayFromSet = Array.from(mySet);
+
+console.log(arrayFromSet); // Saída: [1, 3, 4, 5, 6]
+```
+
+Neste exemplo, o `Set` garante que apenas valores únicos sejam armazenados, removendo automaticamente duplicatas. Ele oferece métodos para adicionar, remover, verificar a existência de elementos, entre outras operações úteis.
+\Um exemplo interessante envolvendo um objeto `Set` e Spread properties.
+
+```JavaScript
+const set = new Set();
+
+set.add(`"a"`);
+set.add(`"b"`);
+set.add(`"c"`);
+
+console.log(set);    //Saída: Set(3) { '"a"', '"b"', '"c"' }
+
+const string = [...set].join("SEPARADOR");
+
+console.log(string); //Saída: "a"SEPARADOR"b"SEPARADOR"c"
+```
+
+O objeto `Set` é composto por strings, você utiliza spread properties para criar um array de strings e ai sim poder aplicar a função `.join()` sobre ele.
+
 # `JSON`
 
-### <a id = "parse"></a>`.parse()`
+## <a id = "parse"></a>`.parse()`
 
 `.parse()` é um método em JavaScript, ele converte uma string JSON em um objeto JavaScript.
 

@@ -1126,3 +1126,32 @@ No exemplo acima, `.config()` é chamado para carregar as variáveis de ambiente
 
 ## <a id = "shutdown"></a>`shutdown()`
 
+`express-graceful-shutdown` fornece uma função, e você a utiliza da seguinte maneira:
+
+```JavaScript
+const express = require("express");
+const shutdown = require("express-graceful-shutdown");
+
+const app = express();
+
+// Configuração e definição de rotas.
+
+const server = app.listen(3000, () => {
+    console.log("Servidor iniciado na porta 3000.");
+});
+
+// Uso da função shutdown para encerrar o servidor de maneira graciosa.
+shutdown(server);
+```
+
+`shutdown()` permite encerrar o servidor Express de maneira graciosa, garantindo que todas as conexões existentes sejam concluídas antes do encerramento.
+
+`shutdown(server, [option], [callback]);`
+
+- `server` **:** a instância do servidor Express que você deseja encerrar;
+- `options` **(opcional):** um objeto com opções de configuração;
+- `callback` **(opcional):** uma função de retorno de chamada a ser executada após o encerramento ser concluído.
+
+Não há um valor de retorno específico.
+
+O bloco de código acima utiliza a função `shutdown()` para encerrar o servidor de forma segura quando necessário.

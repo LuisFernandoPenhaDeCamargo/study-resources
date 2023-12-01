@@ -59,31 +59,6 @@ No Express.js, o objeto `response` (às vezes abreviado como `res`) é passado c
 
 # métodos Express
 
-`.Router()`
-
-Cria uma instância de um roteador. Retorna uma instância de um roteador Express que é um objeto do tipo `Router`.
-
-`const router = express.Router();`
-
-Os roteadores são usados para definir grupos de rotas em seu aplicativo. Você pode usar o objeto `router` para definir rotas específicas, middleware e manipuladores de solicitação para esse grupo de rotas.\
-A partir deste ponto, você pode definir rotas e funcionalidades específicas para este roteador. Por exemplo, você pode adicionar manipuladores de solicitação para lidar com solicitações HTTP para URLs específicas usando `router.get()`, `router.post()`, etc. Aqui está um exemplo de como você pode definir uma rota simples usando este roteador:
-
-```JavaScript
-router.get("/", (req, res) => {
-    res.send("Rota inicial do roteador.");
-});
-```
-
-Depois de definir as rotas e middleware para este roteador, você pode montá-lo no seu aplicativo Express usando `app.use()`:
-
-```JavaScript
-const app = express();
-
-app.use("/meu-rota", router);
-```
-
-Isso monta o roteador no caminho `/meu-rota`, para que todas as solicitações que correspondam a esse caminho sejam tratadas pelo roteador. Isso permite que você organize e modularize seu aplicativo Express de forma mais eficiente, mantendo suas rotas separadas em grupos lógicos.
-
 ### <a id = "post"></a>`.post()`
 
 Define uma rota que responde a requisições HTTP POST. Retorna um objeto do tipo `Router`.
@@ -95,25 +70,6 @@ Define uma rota que responde a requisições HTTP POST. Retorna um objeto do tip
     - `req` **(requisição, objeto):** este objeto contém informações sobre a requisição HTTP, como parâmetros de consulta, corpo da requisição, cabeçalhos e muito mais;
     - `res` **(resposta, objeto):** este objeto é usado para construir e enviar uma resposta ao cliente, incluindo status HTTP, cabeçalhos e corpo da resposta.
 - **Funções intermediárias (middleware,** `callback`**, opcional):** você pode fornecer uma ou mais funções intermediárias que são executadas antes do manipulador principal. Isso é útil para adicionar lógica de autenticação, validação, etc. **São chamadas em ordem sequencial, a última função que deve ser chamada é o handler**.
-
-### <a id = "status"></a>`.status()`
-
-Define o código de status HTTP da resposta que será enviada para o cliente. Retorna o próprio objeto `response` para permitir o encadeamento de métodos.
-
-`res.status(statusCode)`
-
-`statusCode` **(number):** o código de status HTTP que você deseja definir na resposta. Isso deve ser um número inteiro representando um código de status HTTP válido, como 200 (OK), 404 (Not Found), 500 (Internal Server Error), etc.
-
-### <a id = "json"></a>`.json()`
-
-Envia uma resposta no formato JSON. Retorna o próprio objeto `response` para permitir o encadeamento de métodos.
-
-`res.json(resposta);`
-
-- `res` **(callback)** ;
-- `resposta`**(objeto):** objeto que você deseja enviar como uma resposta JSON para o cliente que fez a solicitação, pode ser qualquer objeto JavaScript válido. O método `.json()` converte automaticamente este objeto em uma resposta JSON e define o cabeçalho `Content-Type` para `application/json`, indicando que a resposta é JSON. Portanto, o argumento passado para `.json()` é o objeto que será enviado como resposta JSON.
-
-Ao usar o Express.js e criar uma callback de resposta para uma rota que lida com uma solicitação HTTP POST, você pode usar o método `.json()` para enviar uma resposta no formato JSON. Este método é usado para enviar objetos JSON como resposta ao cliente.
 
 # <a name = "mocha"></a>Mocha.
 

@@ -14,8 +14,11 @@
 - [`.use()`](#use);
 - [`.urlencoded()`](#urlencoded);
 - [`express-.json()`](#express-json);
+- [`.Router()`](#router);
 - [`.status`](#status);
-- [`res-.json()`](#res-json)
+- [`res-.json()`](#res-json);
+- [`.send()`](#send);
+- [`.end()`](#end).
 
 ## <a id = "funcaoexpress"></a>`express()`
 
@@ -251,13 +254,48 @@ app.listen(3000, () => {
 
 Neste exemplo, `express.json()` é utilizado como middleware para analisar dados JSON. Assim como o `urlencoded()`, é uma parte essencial do Express para lidar com diferentes formatos de dados nas solicitações.
 
+## <a id = "router"></a>`.Router()`
+
+`.Router()` é um método, ele é usado para criar uma nova instância do objeto Router no Express.js. Essa instância pode ser usada para definir rotas e middlewares.
+
+`express.Router([opções]);`
+
+`opções` **(opcional):** um objeto de opções para configurar o comportamento do Router.
+
+Retorna uma nova instância do objeto Router.
+
+```JavaScript
+const express = require("express");
+
+const app = express();
+
+// Criando uma instância de Router.
+const router = express.Router();
+
+// Definindo uma rota no objeto Router.
+router.get("/", (req, res) => {
+    res.send("Rota no objeto Router.");
+});
+
+// Usando o objeto Router como middleware.
+app.use("/prefixo", router);
+
+// Iniciando o servidor.
+app.listen(3000, () => {
+    console.log("Servidor rodando na porta 3000.")
+});
+```
+
+Neste exemplo, o `Router()` é usado para criar um objeto Router, que por sua vez é usado para definir uma rota. Este objeto Router é então incorporado ao aplicativo Express usando o método `.use()`, permitindo que todas as rotas definidas no objeto Router tenham um prefixo específico (`"/prefixo"` neste caso). Isso é especialmente útil para modularizar e organizar seu código em diferentes arquivos ou componentes.\
+Você pode usar o objeto `Router` para definir rotas específicas, middleware e manipuladores de solicitação para esse grupo de rotas.
+
 ## <a id = "status"></a>`.status`
 
 `.status` é um método do objeto de resposta (`res`) no Express, ele define o código de status HTTP da resposta.
 
 `res.status(code);`
 
-`code`**:** o código de status HTTP desejado. O default do Express é `200`.
+`code` **(Number):** o código de status HTTP desejado, isso deve ser um número inteiro representando um código de status HTTP válido. O default do Express é `200`.
 
 Retorna a própria instância do objeto de resposta (`res`), o que permite encadear outros métodos.
 
@@ -271,7 +309,7 @@ Neste exemplo. `.status()` define o código de status HTTP como 200 (OK), e `.se
 
 `res.json([body]);`
 
-`body` **(opcional):** o corpo da resposta, que será serializado como JSON.
+`body` **(opcional):** o corpo da resposta, que será serializado como JSON, pode ser qualquer objeto JavaScript válido, o método `.json()` converte automaticamente este objeto em uma resposta JSON e define o cabeçalho `Content-Type` para `application/json.
 
 Retorna a própria instância do objeto de resposta (`res`), o que permite encadear outros métodos.
 
@@ -283,6 +321,67 @@ res.json(responseData);
 ```
 
 Se não for especificado um código de status, o Express assumirá implicitamente que é uma resposta bem-sucedida (código de status 200). Assim como com `res.status()`, você pode encadear métodos, permitindo a configuração do código de status e o envio da resposta em uma única linha de código.
+
+## <a id = "send"></a>`.send()`
+
+`.send()` é um método no Express.js, ele é usado para enviar uma resposta ao cliente como parte do ciclo de solicitação-resposta no Express.js.
+
+`res.send([body]);`
+
+`body` **(opcional):** o conteúdo a ser enviado como resposta. Pode ser de vários tipos, como um objeto JavaScript, um buffer, ou até mesmo HTML.
+
+```JavaScript
+const express = require("express");
+
+const app = express();
+
+app.get("/", (req, res) => {
+    // Enviando uma resposta simples (um texto simples) com .send().
+    res.send("Hello, World!");
+});
+
+app.get("/json", (req, res) => {
+    // Enviando uma resposta JSON com .send().
+    const jsonData = { key: "value" };
+    res.send(jsonData);
+});
+
+app.listen(3000, () => {
+    console.log("Servidor rodando na porta 3000.");
+});
+```
+
+Neste exemplo, `.send("Hello, World!")` envia uma string `Hello, World!` como resposta para a rota principal (`"/"`). Além disso, `.send(jsonData)` envia um objeto JSON como resposta para a rota `"/json"`. O método `.send()` é versátil e pode ser usado para enviar diferentes tipos de conteúdo, ele tenta inferir o tipo de contepudo com base no que você passa para ele.\
+Se você passar um objeto JavaScript, ela automaticamente definirá o cabeçalho `Content-type` como `application/json` e converterá o objeto para uma representação JSON.
+
+## <a id = "end"></a>`.end()`
+
+`.end()` é um método do objeto de resposta (response) no Express.js, ele é usado para finalizar o processo de resposta, enviando a resposta ao cliente.
+
+`res.end([data], [, enconding][, callback]);`
+
+- `data` **(opcional)** os dados que serão enviados como parte do corpo da resposta. Pode ser uma string ou um Buffer;
+- `encoding` **(opcional)** a codificação a ser usada ao enviar dados como string;
+- `callback` **(opcional)** uma função de retorno de chamada que será chamada quando a resposta for enviada. Esta função não recebe argumentos.
+
+Este método não retorna nada.
+
+```JavaScript
+const express = require("express");
+
+const app = express();
+
+app.get("/", (req, res) => {
+    // Enviando uma resposta simples com .end().
+    res.end("Hello, World!");
+});
+
+app.listen(3000, () => {
+    console.log("Servidor rodando na porta 3000.");
+});
+```
+
+Neste exemplo, quando a rota raiz (`"/"`) é acessada, a resposta é enviada ao cliente com o texto `"Hello, World!"` usando o método `.end()`. Este método é frequentemente utilizado quando você deseja enviar uma resposta simples e não precisa enviar um corpo de resposta mais complexo.
 
 ## app x router
 
@@ -297,3 +396,89 @@ A diferença fundamental entre tratar uma rota diretamente na instância do apli
     - Mudanças nas configurações da instância do aplicativo afetam todas as rotas definidas nessa instância.
 
 Ambas as abordagens têm seu lugar e são escolhidas com base nos requisitos específicos do projeto. Se você está desenvolvendo uma aplicação menor e a modularidade extrema não é necessária, a instância do aplicativo Express diretamente pode ser mais direta. Se você está construindo uma aplicação maior ou modular, ou se deseja organizar suas configurações de rota de maneira independente, o uso de objetos `Router` pode ser mais apropriado. Essa escolha depende do tamanho e da complexidade do seu projeto, bem como das preferências de organização de código da equipe de desenvolvimento.
+
+## Passando o objeto `Router` para o método `.use()`
+
+Quando você passar um objeto `Router` para o método `.use()` no Express.js, você está incorporando as rotas definidas nesse objeto ao fluxo principal de roteamento da sua aplicação. Isso é útil quando você deseja modularizar suas rotas em diferentes arquivos ou componentes. Aqui está um exemplo de como você pode fazer isso:\
+Suponha que você tenha um arquivo chamado `routes.js` onde você define algumas rotas usando o Router do Express:
+
+```JavaScript
+// routes.js
+const express = require("express");
+
+const router = express.Router();
+
+router.get("/", (req, res) => {
+    res.send("Rota principal.");
+});
+
+router.get("/outro", (req, res) => {
+    res.send("Outra rota.");
+});
+
+module.exports = router;
+```
+
+Agora, em seu arquivo principal, onde você configura a aplicação Express, você pode incorporar essas rotas usando o método `.use()`:
+
+```JavaScript
+const express = require("express");
+
+const app = express();
+
+// Importando o objeto router do arquivo routes.js.
+const routes = require("./routes");
+
+// Usando as rotas definidas no objeto router.
+app.use("/", routes);
+
+// Iniciando o servidor.
+app.listen(3000, () => {
+    console.log("Servidor rodando na porta 3000.");
+});
+```
+
+No exemplo acima, todas as rotas definidas no arquivo **routes.js** serão acessíveis a partir do caminho `"/"` no aplicativo principal. Se você acessar `"/outro"`, a rota definida no arquivo **routes.js** para `"/outro"` também será correspondida.\
+Essa abordagem é útil para organizar e dividir o seu código em módulos, tornado-o mais fácil de entender e manter, especialmente em aplicações maiores.
+
+Tenha em mente que a função `.use()` do Express.js é bastante flexível e aceita tanto middlewares quanto instâncias do objeto `Router`. Essa flexibilidade permite uma modularização eficaz do código.\
+Quando você passa um objeto `Router` para o método `.use()`, você está basicamente montando um conjunto de rotas em um determinado caminho. Esse objeto `Router` pode conter várias rotas e até mesmo outros middlewares. Isso é útil para organizar seu código de maneira modular e manter a estrutura da aplicação.\
+Ao usar um objeto `Router` **como middleware**, você está delegando o controle de um conjunto específico de rotas para esse objeto. Isso é particularmente útil em grandes aplicações onde você pode ter diferentes módulos ou componentes, cada um responsável por suas próprias rotas. Por exemplo, considere o seguinte:
+
+```JavaScript
+// routes.js
+const express = require("express");
+
+const router = express.Router();
+
+router.get("/", (req, res) => {
+    res.send("Rota principal.");
+});
+
+router.get("/outro", (req, res) => {
+    res.send("Outra rota.");
+});
+
+module.exports = router;
+```
+
+e no arquivo principal:
+
+```JavaScript
+const express = require("express");
+
+const app = express();
+
+// Importando o objeto router do arquivo routes.js.
+const routes = require("./routes");
+
+// Usando o objeto router como middleware.
+app.use("/prefixo", routes);
+
+// Iniciando o servidor.
+app.listen(3000, () => {
+    console.log("Servidor rodando na porta 3000.");
+});
+```
+
+Aqui, todas as rotas definidas no arquivo `routes.js` serão montadas sobre o prefixo `"/prefixo"`. Essa abordagem facilita a organização e manutenção de grandes projetos, pois você pode dividir a lógica de roteamento em diferentes módulos ou arquivos.

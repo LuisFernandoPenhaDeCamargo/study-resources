@@ -10,15 +10,17 @@
 4. [Funções (Declaração, Chamada)](#funcoes-declaracao-chamada)
 5. [Arrays e Loops (for, while)](#arrays-e-loops-for-while)
 6. [Escopo de Variáveis](#escopo-de-variaveis)
-7. [Tratamento de Erros (try...catch)](#tratamento-de-erros-trycatch)
-8. [Callbacks e Funções Anônimas](#callbacks-e-funcoes-anonimas)
-9. [Objeto Literal](#objeto-literal)
-10. [Template Literals](#template-literals)
-11. [Entendendo Módulos no JavaScript](#entendendo-modulos-no-javascript)
+7. [Fluxo de Execução no JavaScript](#fluxo-de-execucao-no-javascript)\
+    - Fluxo de Execução Considerando o Node.js e o Express.js
+8. [Tratamento de Erros (try...catch)](#tratamento-de-erros-trycatch)
+9. [Callbacks e Funções Anônimas](#callbacks-e-funcoes-anonimas)
+10. [Objeto Literal](#objeto-literal)
+11. [Template Literals](#template-literals)
+12. [Entendendo Módulos no JavaScript](#entendendo-modulos-no-javascript)
     - Diferença entre Módulos CommonJS e ES Modules
     - Convertendo de CommonJS para ES Modules
     - Outros Erros ".ts(número)"
-12. [Operadores](#operadores)
+13. [Operadores](#operadores)
 
 # <a name = "variaveis-var-let-const"></a>Variáveis (var, let, const)
 
@@ -55,6 +57,62 @@ Em resumo, é uma boa prática defensiva para evitar problemas de interpretaçã
 # <a name = "arrays-e-loops-for-while"></a>Arrays e Loops (for, while)
 
 # <a name = "escopo-de-variaveis"></a>Escopo de Variáveis
+
+O JavaScript possui três tipos principais de escopo: global, de função e de bloco.
+
+- **Escopo Global:**
+    - Variáveis declaradas fora de qualquer função ou bloco têm escopo global;
+    - Acessíveis em todo o código do arquivo, incluindo funções e blocos.
+- **Escopo de Função:**
+    - Variáveis declaradas dentro de uma função têm escopo de função;
+    - Não são acessíveis fora da função.
+- **Escopo de Bloco:**
+    - Variáveis declaradas com `let` e `const` têm escopo de bloco;
+    - São acessíveis apenas dentro do bloco em que foram declaradas.
+- **Comportamento de** `var`**:**
+    - `var` tem escopo de função, não de bloco;
+    - Variáveis declaradas com `var` são içadas (hoisting) ao topo da função ou escopo global.
+
+Observando que o escopo é referente a aonde foi realizada a declaração.
+
+# <a name = "fluxo-de-execucao-no-javascript"></a>Fluxo de Execução no JavaScript
+
+O fluxeo de execução no JavaScript é linear e segue de cima para baixo, quando há importações (`require` no Node.js ou `import` com ES Modules), o código do arquivo importado é executado, e então o controle volta para o arquivo original.\
+Quanto ao escopo, é importante notar que o escopo global é percorrido durante a execução do código. Entretanto, o JavaScript não entra automaticamente nos espocos de funções ou blocos quando o código não estrá dentro dessas estruturas. Se um função ou bloco for invocado, apenas nesse momento o código dentro desses escopos será executado.\
+Isso significa que, se você tem funções ou blocos em seu código, o código dentro deles não é executado até que a função ou bloco seja chamado. O escopo de uma função ou bloco só é ativado quando a execução do código alcança a chamada dessa função ou a entrada nesse bloco.\
+Sobre classes, o código delas só é executado quando a classe é instânciada. Cada método dentro da classe só será executado quando for chamado explicitamente em uma instância dessa classe.
+Ao criar uma instância de uma classe com o operador `new`, o construtor da classe é chamado, executando o código dentro do escopo do construtor. Os métodos da classe, no entanto, não são executados automaticamente; eles precisam ser chamados separadamente na instância da classe. Aqui está um exemplo simples:
+
+```JavaScript
+class Exemplo {
+    constructor() {
+        console.log("Construtor executado ao instânciar a classe.");
+    }
+
+    metodo() {
+        console.log("Método chamado na instância da classe.")
+    }
+}
+
+const instancia = new Exemplo(); // O construtor é executado aqui.
+
+instancia.metodo(); // O método é chamado aqui.
+```
+
+No exemplo acima, o código dentro do construtor é executado quando a classe é instanciada, e o método é chamado explicitamente na instância da classe.
+
+### Fluxo de Execução Considerando o Node.js e o Express.js
+
+Este subtópico só deve ser estudado caso você já tenha visto conceitos sobre o Node.js e sobre o Express.js.
+
+- **Carregamento Inicial:** quando você inicia seu aplicativo Node.js com o comando `node arquivo.js`, o código no arquivo é carregado e executado de cima para baixo. Isso incluir a execução de todas as importações de módulos e qualquer código no escopo glogal;
+- **Estado de Espera:** após a execução inicial, o Express configura um servidor HTTP que fica em um estado de espera por requisições. Durante esse período, o código não está ativamente sendo executado. O Node.js permanece em um loop de eventos, esperando por eventos de entrada/saída;
+- **Requisições HTTP:** quando uma requisição HTTP é recebida, o Express entra em ação, ele percorre a lista de middlewares e rotas definidas no código, aplicando cada um deles na ordem em que foram definidos;
+- **Middlewares e Rotas:** os middlewares são funções que tem acesso ao objeto de requisição (`req`), ao objeto de resposta (`res`), e a próxima função na pilha de middlewares (`next`). Eles podem executar código, modificar objetos de requisição ou resposta, e decidir se a próxima função na pilha de middlewares deve ser chamada;- **Fluxo de Execução por Middlewares e Rota:** o Express gerencia o fluxo de execução de middleware ou rota, ao chamar `next()`, o controle é passado para o próximo middleware ou rota na pilha;
+- **Middleware de Erro:** se ocorrer um erro durante o processamento da requisição, o controle é passado para um middleware especializado em lidar com erros. Esses middlewares têm a assinatura `(err, re, res, next)` (quatro parâmetros), e o Express os identifica como manipuladores de erros;
+- **Resposta ao Cliente:** finalmente, quando o processamento da requisição é concluído (ou se ocorrer um erro irreversível), o Express envia uma resposta ao cliente.
+
+Lembre-se de que este é um esboço geral do fluxo de execução e há nuances adicionais dependendo do código específico que está sendo executado, especialmente em situações assíncronas. O uso de conceitos como Promessas e `async/await` pode adicionar complexidade ao fluxo, mas a estrutura básica permanece a mesma.
 
 # <a name = "tratamento-de-erros-trycatch"></a>Tratamento de Erros (try...catch)
 

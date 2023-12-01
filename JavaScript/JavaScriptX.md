@@ -259,56 +259,6 @@ if (valorNumerico1 < valorNumerico2) {
 }
 ```
 
-### <a id = "set"></a>`Set`
-
-Cria um novo objeto `Set`, que é uma coleção de valores únicos.
-
-```JavaScript
-//Criar um novo Set vazio.
-const mySet = new Set();
-
-//Adicionar valores ao Set.
-mySet.add(1);
-mySet.add(2);
-mySet.add(3);
-
-//Verificar o tamanho do Set.
-console.log(mySet.size);   //Saída: 3
-
-//Verificar se um valor existe no Set.
-console.log(mySet.has(2)); //Saída: true
-console.log(mySet.has(4)); //Saída: false
-
-//Remover um valor do Set.
-mySet.delete(2);
-
-//Iterar spbre os valores do Set usando um loop forEach().
-mySet.forEach(value => {
-  console.log(value);
-})
-```
-
-Um set em JavaScript não permite elementos duplicados, o que significa que ele armazena apenas valores únicos.\
-Os Sets são úteis quando você precisa armazenar um conjunto de valores únicos e deseja garantir que não haja duplicatas. Eles são frequentemente usados para eliminar valores duplicados de uma lista ou para manter o controle de elementos únicos de uma coleção.
-
-Um exemplo interessante envolvendo um objeto `Set` e [Spread properties](#spreadproperties):
-
-```JavaScript
-const set = new Set();
-
-set.add(`"a"`);
-set.add(`"b"`);
-set.add(`"c"`);
-
-console.log(set);    //Saída: Set(3) { '"a"', '"b"', '"c"' }
-
-const string = [...set].join("SEPARADOR");
-
-console.log(string); //Saída: "a"SEPARADOR"b"SEPARADOR"c"
-```
-
-O objeto `Set` é composto por strings, você utiliza spread properties para criar um array de strings e ai sim poder aplicar a função `.join()` sobre ele.
-
 ### <a id = "add"></a>`.add()`
 
 Adiciona um novo valor ao conjunto. Retorna o próprio objeto Set, após a adição do valor especificado, modifica o conjunto original.
