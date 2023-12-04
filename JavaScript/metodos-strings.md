@@ -1,9 +1,10 @@
 # Sumário.
 
-- [`.padStart()`]();
+- [`.padStart()`](#padstart);
+- [`.toLowerCase()`](#tolowercase)
 - [`.substring()`](#substring).
 
-# <a id = ""></a>`.padStart()`
+# <a id = "padstart"></a>`.padStart()`
 
 O método `.padStart()` é usado para preencher o início de uma string com um caractere especificado até que a string alcance um determinado comprimento.
 
@@ -22,6 +23,26 @@ const paddedString = originalString.padStart(5, "0");
 
 console.log(paddedString); // Saída: 00042
 ```
+
+# <a id = "tolowercase"></a>`.toLowerCase()`
+
+O método `.toLowerCase()` é usado para converter todos os caracteres de uma string em minúsculas.
+
+`string.toLowerCase();`
+
+Não há parâmetros para o método. A chamada é feita diretamente em uma string existente.
+
+Retorna uma nova string com todos os caracteres convertidos para minúsculas. A string original não é modificada.
+
+```JavaScript
+const originalString = "Hello, World!";
+const lowerCaseString = originalString.toLowerCase();
+
+console.log(lowerCaseString); // Saída: hello, world!
+console.log(originalString);  // Saída: Hello, World!. A string original não foi modificada.
+```
+
+Neste exemplo, `.toLowerCase()` é chamado na string "`Hello, World!`", resultando em uma nova string "`hello, world!`". A string original não é alterada pelo método. Este método é utíl quando você precisa comparar strings sem diferenciar maiúsculas e minúsculas.
 
 ### Funções de transformação.
 

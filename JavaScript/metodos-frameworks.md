@@ -15,6 +15,7 @@
 - [`.urlencoded()`](#urlencoded);
 - [`express-.json()`](#express-json);
 - [`.Router()`](#router);
+- [`.patch()`](#patch);
 - [`.status`](#status);
 - [`res-.json()`](#res-json);
 - [`.send()`](#send);
@@ -288,6 +289,35 @@ app.listen(3000, () => {
 
 Neste exemplo, o `Router()` é usado para criar um objeto Router, que por sua vez é usado para definir uma rota. Este objeto Router é então incorporado ao aplicativo Express usando o método `.use()`, permitindo que todas as rotas definidas no objeto Router tenham um prefixo específico (`"/prefixo"` neste caso). Isso é especialmente útil para modularizar e organizar seu código em diferentes arquivos ou componentes.\
 Você pode usar o objeto `Router` para definir rotas específicas, middleware e manipuladores de solicitação para esse grupo de rotas.
+
+## <a id = "patch`"></a>`.patch()`
+
+`.patch()` é um método utilizado para associar um manipulador de rota (ou middleware) a requisições HTTP com o método PATCH. Ele é usado para tratar atualizações parciais de recursos.
+
+`app.patch(path, callback [, callback...]);`
+
+- `path`**:** o caminho da URL para qual o middleware será aplicado;
+- `callback`**:** função ou funções de middleware que serão executadas quando a rota for correspondida.
+
+Retorna o objeto `app` para encadeamento de métodos.
+
+```JavaScript
+const express = require("express");
+
+const app = express();
+
+// Middleware para lidar com atualizações parciais.
+app.patch("/atualizar-recurso", (req, res) => {
+    // Lógica para processar a atualização parcial.
+    res.send("Recurso parcialmente atualizado.");
+});
+
+app.listen(3000, () => {
+    console.log("Servidor rodando na porta 3000.");
+});
+```
+
+Neste exemplo, o middleware associado ao caminho `"/atualizar-recurso"` será executando quando houver uma requisição PATCH para esse caminho. Você pode incluir a lógica necessária para processar a atualização parcial dentro desse middleware.
 
 ## <a id = "status"></a>`.status`
 

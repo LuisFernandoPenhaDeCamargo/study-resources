@@ -9,6 +9,7 @@
 - [`body-parser`](#body-parser);
 - [`joi`](#joi);
 - [`dotenv`](#dotenv);
+- [`uuid/v4`](#uuidv4);
 - [`express-graceful-shutdown`](#express-graceful-shutdown).
 
 # <a id = "util"></a>`util`
@@ -323,6 +324,7 @@ Neste exemplo, o objeto é transformado em uma string de consulta. Os valores s�
 - [`.deleteAccessKey()`](#deleteaccesskey);
 - [`.createAccessKey()`](#createaccesskey);
 - [`.S3()`](#s3);
+- [`.getSignedUrl()`](#getsignedurl);
 - [`.Endpoint()`](#endpoint).
 
 ## <a id = "aws-sdk-update"></a>`.update()`
@@ -751,6 +753,36 @@ s3.upload(params, (err, data) => {
 
 No exemplo acima, `new AWS.S3()` cria uma instância do serviço S3, e a instância resultante (`s3`) pode ser usada para realizar operações no Amazon S3, como upload de objetos. Essa construção de instância é um padrão comum ao trabalhar com os serviços da AWS no AWS SDK para Node.js.\
 Você pode usar essa instância para interagir com o Amazon S3 e realizar operações como criar, listar, baixar ou excluir objetos, gerenciar buckets e configurar permissões.
+
+## <a id = "getsignedurl"></a>`.getSignedUrl()`
+
+`.getSignedUrl()` é um método utilizado para gerar uma URL assinada para acesso a um recurso protegido da AWS, como um objeto no Amazon S3. A URL gerada inclui uma assinatura que autoriza temporariamente o acesso ao recurso.
+
+`.getSignedUrl(operation, params, callback)`
+
+- `operation` **(string)** a operação para a qual você deseja gerar a URL assinada, por exemplo "getObject" para acesso a um objeto no S3;
+- `params` **(object)** um objeto contendo os parâmetros necessários para a operação específica, por exemplo, o nome do balde e a chave do objeto;
+- `callback` **(opcional)** uma função de retorno de chamada que será chamada com a URL assinada ou um erro. Se não fornecido, o método retorna a URL assinada diretamente.\
+    `(err: Error, url: string) => void): string | void`
+
+O método retorna a URL assinada se o callback não for fornecido. Se o callback for fornecido, a URL será passada para a função de retorno de chamada.
+
+```JavaScript
+const AWS = require("aws-sdk");
+
+const s3 = new AWS.S3();
+
+const params = {
+    Bucket: "my-bucket",
+    Key: "my-object-key",
+    Expires: 60 // Tempo de validade da URL em segundos.
+};
+const signedUrl = s3.getSignedUrl("getObject", params);
+
+console.log("URL assinada:", signedUrl);
+```
+
+Neste exemplo, `.getSignedUrl()` é usado para gerar uma URL assinada para a operação "getObject" no Amazon S3. O resultado é uma URL que permite temporariamente o acesso ao objeto especificado.
 
 ## <a id = "endpoint"></a>`.Endpoint()`
 

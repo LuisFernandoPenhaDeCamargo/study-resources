@@ -17,16 +17,22 @@
         - `EXISTS`
     - Subconsultas na Cláusula FROM
 
-8. [Funções de Data e Hora:](#funcoes-de-data-e-hora)\
+8. [Filtros Avançados com `%` e `LIKE`:](#filtros-avancados-com--e-like)
+    - O que é `%` e `LIKE`
+    - Como Utilizar `%` e `LIKE`
+    - Exemplo Prático
+    - Considerações e Boas Práticas
+
+9. [Funções de Data e Hora:](#funcoes-de-data-e-hora)\
     - `FROM_UNIXTIME()`
     - `DATE_SUB()`
 
-9. [ENUM no SQL](#enum-no-sql)
+10. [ENUM no SQL:](#enum-no-sql)
     - O que é ENUM
     - Como Definir e Usar ENUM
     - Considerações e Boas práticas
  
-10. [Índices e Otimização:](#indices-e-otimizacao)
+11. [Índices e Otimização:](#indices-e-otimizacao)
     - O que São Índices
     - Como Criar Índices
     - Otimização de Consultas
@@ -91,6 +97,47 @@ WHERE EXISTS (
 ```
 
 ### Subconsultas na Cláusula FROM
+
+# <a name = "filtros-avancados-com--e-like"></a>Filtros Avançados com `%` e `LIKE`
+
+O tópico "Filtros Avançados com `%` e LIKE" aborda o uso do operador `%` em conjunto com a cláusula `LIKE` no SQL para realizar filtragens mais flexíveis em consultas. Aqui estão os principais pontos desse tópico:
+
+### O que é `%` e `LIKE`
+
+- **Operador** `%`**:** o símbolo `%` é um curinga utilizado em conjunto com a cláusula `LIKE` para representar zero, um ou vários caracteres em uma string;
+- **Cláusula** `LIKE` **:** a cláusula `LIKE` é utilizada para comparar um valor em uma coluna com um padrão de caracteres, onde `%` pode ser usado para representar qualquer sequência de caracteres.
+
+### Como Utilizar `%` e `LIKE`
+
+- **Correspondência exata:** se você usar `LIKE` sem o operador `%`, ele realizará uma correspondência exata. Por exemplo:
+
+`SELECT nome FROM clientes WHERE nome LIKE 'João';`
+
+- **Correspondência Parcial:** o uso de `%` permite realizar correspondências parciais. Por exemplo, para encontrar todos os clientes cujo nome começa com "Jo":
+
+`SELECT nome FROM clientes WHERE nome LIKE 'Jo%';`
+
+- **Correspondência em qualquer posição:** `%` pode ser utilizado no ínicio, no final, ou em ambos para representar caracteres antes, depois ou em ambos os lados do padrão. Por exemplo:
+
+`SELECT nome FROM clientes WHERE nome LIKE '%ão%';`
+
+- **Filtragem de dados flexível:** o uso de `%` e `LIKE` torna a filtragem de dados mais flexível, permitindo realizar consultas que se adequam a uma varidade de padrões.
+
+### Exemplo Prático
+
+Suponha que você tenha uma tabela de produtos e deseje encontrar todos os produtos que contenham a palavra "notebook" em seu nome, independentemente do que está antes ou depois. A consulta seria algo assim:
+
+`SELECT nome_produto FROM produtos WHERE nome_produto LIKE '%notebook%';`
+
+Essa consulta retornaria todos os registros onde o nome do produto contém a palavra "notebook" em qualquer posição.
+
+### Considerações e Boas Práticas
+
+- **Desempenho:** o uso indiscriminado de `%` no início de uma string pode impactar o desempenho da consulta, já que pode exigir uma varredura mais extensiva da tabela;
+- **Cuidado com o Overmatching:** o uso excessivo de `%` pode levar a correspondências indesejadas, então é importante ajustar o padrão de acordo com o resultado desejado;
+- **Case-sensitivity:** dependendo do banco de dados, a cláusula `LIKE` pode ser ou não case-sensitive. Certifique-se de entender o comportamento do bancos de dados que está utilizando.
+
+Em resumo, o tópico "Filtros Avançados com `%` e `LIKE`" destaca uma técnica poderosa para realizar filtragens flexíveis e adaptáveis em consultas SQL, proporcionando versatilidade na busca por padrões em dados de texto.
 
 # <a name = "funcoes-de-data-e-hora"></a>Funções de Data e Hora
 

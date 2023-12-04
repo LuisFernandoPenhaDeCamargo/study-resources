@@ -85,6 +85,7 @@ O objeto `Set` é uma coleção de valores únicos, o que significa que não pod
 `new Set([iterable]);`
 
 `iterable` **(opcional):** um objeto iterável (por exemplo, um array) cujo elementos serão adicionados ao `Set`. Se nenhum argumento for fornecido, um novo `Set` vazio é criado.
+**Observe que o argumento passado ao método construtor é um iterável**. Se ele for uma **string**, ela será percorrida caractere a caractere, e o método construtor tentará os inserir no objeto Set.
 
 Retorna uma nova instância do objeto Set contendo elementos únicos do `iterable` fornecido.
 

@@ -39,61 +39,67 @@
         - `EXISTS()`
     - Subconsultas na Cláusula FROM
 
-8. [Funções de Data e Hora:](intermediario.md#funcoes-de-data-e-hora)
+8. [Filtros Avançados com `%` e LIKE:](intermediario.md#filtros-avancados-com--e-like)
+    - O que é `%` e `LIKE`
+    - Como Utilizar `%` e `LIKE`
+    - Exemplo Prático
+    - Considerações e Boas Práticas
+
+9. [Funções de Data e Hora:](intermediario.md#funcoes-de-data-e-hora)
     - `FROM_UNIXTIME()`
     - `DATE_SUB()`
 
-9. [ENUM no SQL:](intermediario.md#enum-no-sql)
+10. [ENUM no SQL:](intermediario.md#enum-no-sql)
     - O que é ENUM
     - Como Definir e Usar ENUM
     - Considerações e Boas práticas
 
-10. [Índices e Otimização:](intermediario.md#indices-e-otimizacao)
+11. [Índices e Otimização:](intermediario.md#indices-e-otimizacao)
     - O que São Índices
     - Como Criar Índices
     - Otimização de Consultas
 
 ### Avançado:
 
-11. [Transações e Controle de Concorrência:](avancado.md#ransacoes-e-controle-de-concorrencia)
+12. [Transações e Controle de Concorrência:](avancado.md#ransacoes-e-controle-de-concorrencia)
     - O que é uma Transação
     - COMMIT, ROLLBACK, SAVEPOINT
     - Controle de Concorrência
 
-12. [Stored Procedures e Funções:](avancado.md#stored-procedures-e-funcoes)
+13. [Stored Procedures e Funções:](avancado.md#stored-procedures-e-funcoes)
     - Criar e Executar Stored Procedures
     - Parâmetros de Entrada e Saída
     - Criar e Executar Funções
 
-13. [Triggers:](avancado.md#triggers)
+14. [Triggers:](avancado.md#triggers)
     - O que são Triggers
     - Quando Usar Triggers
     - Exemplos Práticos
 
-14. [Segurança:](avancado.md#seguranca)
+15. [Segurança:](avancado.md#seguranca)
     - GRANT e REVOKE
     - Níveis de Permissão
     - Melhores Práticas de Segurança em SQL
 
-15. [Backup e Recuperação:](avancado.md#backup-e-recuperacao)
+16. [Backup e Recuperação:](avancado.md#backup-e-recuperacao)
     - Estratégias de Backup
     - RESTORE e RECOVERY
 
-16. [Noções de Modelagem de Dados:](avancado.md#nocoes-de-modelagem-de-dados)
+17. [Noções de Modelagem de Dados:](avancado.md#nocoes-de-modelagem-de-dados)
     - Normalização
     - Relacionamentos entre Tabelas
 
 ### Prática:
 
-17. [Projetos Práticos:](pratica.md#projetos-praticos)
+18. [Projetos Práticos:](pratica.md#projetos-praticos)
     - Criar um Banco de Dados Realista
     - Implementar Consultas Complexas
     - Otimizar Consultas e Índices
 
-18. [Ferramentas e Ambientes:](pratica.md#ferramentas-e-ambientes)
+19. [Ferramentas e Ambientes:](pratica.md#ferramentas-e-ambientes)
     - Uso de Ferramentas como MySQL Workbench, pgAdmin, etc.
     - Ambientes de Desenvolvimento e Produção
 
-19. [Integração com Linguagens de Programação:](pratica.md#integracao-com-linguagens-de-programacao)
+20. [Integração com Linguagens de Programação:](pratica.md#integracao-com-linguagens-de-programacao)
     - Como usar SQL em Conjunto com Linguagens como Python, Java, etc.
     - Acesso a Bancos de Dados por meio de APIs
