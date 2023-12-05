@@ -1,7 +1,9 @@
 # Sumário.
 
 - [`.padStart()`](#padstart);
-- [`.toLowerCase()`](#tolowercase)
+- [`.toLowerCase()`](#tolowercase);
+- [`.toUpperCase()`](#touppercase);
+- [`.slice()`](#slice);
 - [`.substring()`](#substring).
 
 # <a id = "padstart"></a>`.padStart()`
@@ -43,6 +45,55 @@ console.log(originalString);  // Saída: Hello, World!. A string original não f
 ```
 
 Neste exemplo, `.toLowerCase()` é chamado na string "`Hello, World!`", resultando em uma nova string "`hello, world!`". A string original não é alterada pelo método. Este método é utíl quando você precisa comparar strings sem diferenciar maiúsculas e minúsculas.
+
+# <a id = "touppercase"></a>`.toUpperCase()`
+
+`.toUpperCase()` é um método usado para converter uma string em maiúsculas.
+
+`string.toUpperCase();`
+
+Não há parâmetros na assinatura do método, pois ele é aplicado diretamente a uma string.
+
+Retorna uma nova string contendo todos os caracteres da string original convertidos para maiúsculas.
+
+```JavaScript
+const lowercaseString = "hello";
+const uppercaseString = lowercaseString.toUpperCase();
+
+console.log(uppercaseString); // Saída: HELLO
+```
+
+Neste exemplo, o método `.toUpperCase()` é aplicado à string `"hello"`, resultando em uma nova string "`HELLO`". A string original não é modificada; em vez disso, o método retorna uma nova string com os caracteres convertidos para maiúsculas.
+
+# <a name = "slice"></a>`.slice()`
+
+`.slice()` é um método utilizado para extrair uma parte de uma string ou array sem modificar o original.
+
+`array.slice([inicio[, fim]])`
+`string.slice([inicio[, fim]])`
+
+- `inicio` **(opcional):** índice onde a extração deve começar. Se não especificado, a extração começa do ínicio do array ou da string;
+- `fim` **(opcional):** índice onde a extração deve terminar (não inclusivo). Se não especificado, a extração continua até o final do array ou da string.
+
+Retorna um novo array ou uma nova string contendo os elementos ou caracteres extraídos.
+
+```JavaScript
+const originalArray = [1, 2, 3, 4, 5];
+const slicedArray = originalArray.slice(1, 4);
+
+console.log(slicedArray);   // Saída: [2, 3, 4]
+console.log(originalArray); // Saída: [1, 2, 3, 4, 5] (o array original não foi modificado).
+```
+
+```JavaScript
+const originalString = "abcdef";
+const slicedString = originalString.slice(1, 4);
+
+console.log(slicedString);   // Saída: bcd
+console.log(originalString); // Saída: abcdef (o string original não foi modificada).
+```
+
+O método `.slice()` é flexível e pode ser usado tanto em arrays quanto em strings, proporcionando uma maneira de extrair porções específicas sem alterar o objeto original.
 
 ### Funções de transformação.
 

@@ -14,3 +14,7 @@
 
 - `CTRL + SHIFT + PIPE`**:** se estiver na abertura do símbolo, vai para o seu fechamento e vice e versa. Exemplo: estou na abertura de uma chave`{`, vou para o seu fechamento `}`; se estivesse no seu fechamento, iria para a sua abertura.\
     Isso funciona para chaves, parênteses e colchetes.
+
+# DBeaver
+
+Na hora de exportar dados do DBeaver, você deve ficar atento pois há a opção de incluir colunas geradas.

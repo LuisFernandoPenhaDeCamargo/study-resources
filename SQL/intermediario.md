@@ -31,8 +31,13 @@
     - O que é ENUM
     - Como Definir e Usar ENUM
     - Considerações e Boas práticas
+
+11. [Cláusula `DELETE` no SQL: Exclusão de Registros e Tabelas](#clausula-delete-no-sql-exclusao-de-registros-e-tabelas)
+    - Exclusão de Registros
+    - Remoção de Tabelas
+    - Considerações e Boas Práticas
  
-11. [Índices e Otimização:](#indices-e-otimizacao)
+12. [Índices e Otimização:](#indices-e-otimizacao)
     - O que São Índices
     - Como Criar Índices
     - Otimização de Consultas
@@ -69,6 +74,23 @@ Este exemplo conta o número de usuários na tabela `users` que tê mais de 18 a
 É importante notar que você pode usar `COUNT()` de várias maneiras, dependendo dos requisitos específicos da consulta. Pode ser usado com `DISTINCT`, em conjunto com outras funções de agregação, ou para contar linhas específicas em uma tabela.
 
 ### GROUP BY, HAVING
+
+A cláusula `GROUP BY` é usada em consultas SQL para agrupar linhas com base nos valores em uma ou mais colunas. Ela é frequentemente usada em conjunto com funções de agregação, como `COUNT`, `SUM`, `AVG`, `MAX` OU `MIN`, para realizar cálculos sobre cada grupo de linhas.\
+A principal finalidade da cláusula GROUP BY é permitir que você resuma dados agrupando-os com base em certos critérios. Isso é útil quando você deseja analisar dados agregados em vez de linhas individuais. Por exemplo, ao contar o número de vendas por categoria de produto ou calcular a média de pontuações por aluno.\
+Considerando que o `GROUP BY` trata de todas as combinações possíves dos valores das colunas utilizadas por ele.\
+Por exemplo, suponha que você tenha uma tabela chamada "vendas" com as colunas "produto", "quantidade" e "preço". Se você quiser saber a quantidade total vendida de cada produto, você pode usar a cláusula `GROUP BY` da seguinte maneira:
+
+```sql
+SELECT produto, SUM(quantidade) as total_vendido
+FROM vendas
+GROUP BY produto;
+```
+
+Neste exemplo, estamos agrupando as vendas por produto e calculando a soma da quantidade vendida para cada produto.
+
+O erro `ER_WRONG_FIELD_WITH_GROUP` ocorre em bancos de dados MySQL/MariaDB quando há uma inconsistência na utilização da cláusula `GROUP BY`. O MySQL/MariaDB tem uma configuração chamada `ONLY_FULL_GROUP_BY`, que está habilitada por padrão. Quando essa configuração está ativada, o servidor de banco de dados exige que todas as colunas no SELECT que não estão sendo usadas em funções de agregação (`SUM`, `COUNT`, `MAX`, `MIN`, etc.) estejam presentes na cláusula `GROUP BY`.\
+Essa configuração visa garantir que as consultas sejam semanticamente corretas e que os resultados sejam determinísticos. Em outras palavras, se você está agrupando por uma coluna, o sistema espera que todas as outras colunas no SELECT sejam derivadas ou agregadas de alguma forma. Isso ajuda a evitar resultados ambíguos.\
+A solução é ajustar a cláusula `GROUP BY` para incluir todas as colunas no SELECT ou reescrever a consulta de maneira que as colunas não agregadas sejam tratadas de uma maneira que seja aceitável para a configuração `ONLY_FULL_GROUP_BY`.
 
 # <a name = "subconsultas"></a>Subconsultas
 
@@ -207,6 +229,50 @@ Você pode usar a seguinte consulta para inserir dados:
 Isso funcionará e o MySQL interpretará o valor `1` como referente à primeira posição no  `ENUM` ("`ativo`").\
 No entanto, ao fazer isso, é importante garantir que os valores associados aos inteiros estejam alinhados com a ordem do `ENUM`. Se a ordem mudar no futuro, os valores dos inteiros ainda estarão associados às posições antigas.\
 Se você encontrar algum comportamento inesperado, verifique se a definição do `ENUM` está correta e se os valores dos inteiros estão correspondendo à ordem desehada no `ENUM`. Se possível, use os valores literais associados diretamente para maior clareza e menos propensão  a erros.
+
+# <a name = "clausula-delete-no-sql-exclusao-de-registros-e-tabelas"></a>Cláusula `DELETE` no SQL: Exclusão de Registros e Tabelas
+
+### Exclusão de Registros
+
+Para deletar registros de uma tabela em um banco de dados SQL, você pode usar a instrução SQL `DELETE`. Aqui está um exemplo básico de como você pode fazer isso:
+
+```sql
+DELETE FROM nome_da_tabela
+WHERE condicao;
+```
+
+- `nome_da_tabela`**:** substitua isso pelo nome real da tabela da qual você deseja excluir registros;
+- `condição`**:** especifique uma condição que determine quais registros devem ser excluídos. Se você não fornecer uma condição (`WHERE`), todos os registros da tabela serão execluídos.
+
+Exemplo sem condição (excluir todos os registros da tabela):
+
+`DELETE FROM minha_tabela;`
+
+Exemplo com condição (excluir registros com base em uma condição específica):
+
+```sql
+DELETE FROM minha_tabela
+WHERE id = 5;
+```
+
+Neste exemplo, os registros da tabela `minha_tabela` onde o valor da coluna `id` é igual a `5` serão excluídos.
+
+Cuidado:
+
+- Ao usar a instrução `DELETE`, os registros serão removidos permanentemente da tabela;
+- Certifique-se de ter uma condição bem definida ou um backup dos dados antes de realizar operações de exclusão em larga escala.
+
+### Remoção de Tabelas
+
+Para deletar (ou dropar) uma tabela em SQL, você usa a instrução `DROP TABLE`. Aqui está um exemplo:
+
+`DROP TABLE nome_da_tablea;`
+
+Substitua `nome_da_tabela` pelo nome real da tabela que você deseja deletar.\
+Certifique-se de ter permissões adequadas para executar essa operação, pois excluir uma tabela remove permanentemente todos os dados e a estrutura da tabela.\
+Lembre-se de que esta operação é irreversível, então use com cuidado e, se possível, faça backup dos dados antes de deletar uma tabela.
+
+### Considerações e Boas Práticas
 
 # <a name = "indices-e-otimizacao"></a>Índices e Otimização
 

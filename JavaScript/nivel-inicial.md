@@ -497,10 +497,23 @@ Usados para comparar valores.
 Usados para realizar operações lógicas.
 
 - `&&` (e lógico)
-- `||` (ou lógico)\
-    Operador lógico "ou" é usado para criar expressões lógicas condicionais. Ele retorna o primeiro valor verdadeiro encontrado em uma sequência de operandos\
-    Se todos os operandos forem falsos, ele retorna o último valor.
+- `||` (ou lógico)
 - `!` (negação lógica)
+
+O operador lógico `||` é usado para fornecer valores padrão ou valores de fallback.\
+O operador `||` retorna o primeiro operando truthy encontrado em uma sequência de operandos. Se todos forem falsy, retorna o último valor. O operador lógico "ou" é usado para criar expressões lógicas condicionais.
+
+O operador lógico `&&` é usado para curto-circuito em expressões lógicas.\
+O operador `&&` retorna o primeiro operando falsy. Se todos forem truthy, retorna o último valor. Exemplo:
+
+```JavaScript
+const primeiroValor = 1;
+const segundoValor = 2;
+const terceiroValor = 3;
+const variavel = primeiroValor && segundoValor && terceiroValor;
+
+console.log(variavel); // Saída: 3. Se qualquer um dos valores fosse "false", a saída seria "false".
+```
 
 ### Operadores de Concatenação
 

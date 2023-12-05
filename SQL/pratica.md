@@ -2,16 +2,16 @@
 
 ### Sumário
 
-18. [Projetos Práticos:](#projetos-praticos)
+19. [Projetos Práticos:](#projetos-praticos)
     - Criar um Banco de Dados Realista
     - Implementar Consultas Complexas
     - Otimizar Consultas e Índices
 
-19. [Ferramentas e Ambientes:](#ferramentas-e-ambientes)
+20. [Ferramentas e Ambientes:](#ferramentas-e-ambientes)
     - Uso de Ferramentas como MySQL Workbench, pgAdmin, etc.
     - Ambientes de Desenvolvimento e Produção
 
-20. [Integração com Linguagens de Programação:](#integracao-com-linguagens-de-programacao)
+21. [Integração com Linguagens de Programação:](#integracao-com-linguagens-de-programacao)
     - Como usar SQL em Conjunto com Linguagens como Python, Java, etc.
     - Acesso a Bancos de Dados por meio de APIs
 

@@ -54,52 +54,57 @@
     - Como Definir e Usar ENUM
     - Considerações e Boas práticas
 
-11. [Índices e Otimização:](intermediario.md#indices-e-otimizacao)
+11. [Cláusula `DELETE` no SQL: Exclusão de Registros e Tabelas](intermediario.md#clausula-delete-no-sql-exclusao-de-registros-e-tabelas)
+    - Exclusão de Registros
+    - Remoção de Tabelas
+    - Considerações e Boas Práticas
+
+12. [Índices e Otimização:](intermediario.md#indices-e-otimizacao)
     - O que São Índices
     - Como Criar Índices
     - Otimização de Consultas
 
 ### Avançado:
 
-12. [Transações e Controle de Concorrência:](avancado.md#ransacoes-e-controle-de-concorrencia)
+13. [Transações e Controle de Concorrência:](avancado.md#ransacoes-e-controle-de-concorrencia)
     - O que é uma Transação
     - COMMIT, ROLLBACK, SAVEPOINT
     - Controle de Concorrência
 
-13. [Stored Procedures e Funções:](avancado.md#stored-procedures-e-funcoes)
+14. [Stored Procedures e Funções:](avancado.md#stored-procedures-e-funcoes)
     - Criar e Executar Stored Procedures
     - Parâmetros de Entrada e Saída
     - Criar e Executar Funções
 
-14. [Triggers:](avancado.md#triggers)
+15. [Triggers:](avancado.md#triggers)
     - O que são Triggers
     - Quando Usar Triggers
     - Exemplos Práticos
 
-15. [Segurança:](avancado.md#seguranca)
+16. [Segurança:](avancado.md#seguranca)
     - GRANT e REVOKE
     - Níveis de Permissão
     - Melhores Práticas de Segurança em SQL
 
-16. [Backup e Recuperação:](avancado.md#backup-e-recuperacao)
+17. [Backup e Recuperação:](avancado.md#backup-e-recuperacao)
     - Estratégias de Backup
     - RESTORE e RECOVERY
 
-17. [Noções de Modelagem de Dados:](avancado.md#nocoes-de-modelagem-de-dados)
+18. [Noções de Modelagem de Dados:](avancado.md#nocoes-de-modelagem-de-dados)
     - Normalização
     - Relacionamentos entre Tabelas
 
 ### Prática:
 
-18. [Projetos Práticos:](pratica.md#projetos-praticos)
+19. [Projetos Práticos:](pratica.md#projetos-praticos)
     - Criar um Banco de Dados Realista
     - Implementar Consultas Complexas
     - Otimizar Consultas e Índices
 
-19. [Ferramentas e Ambientes:](pratica.md#ferramentas-e-ambientes)
+20. [Ferramentas e Ambientes:](pratica.md#ferramentas-e-ambientes)
     - Uso de Ferramentas como MySQL Workbench, pgAdmin, etc.
     - Ambientes de Desenvolvimento e Produção
 
-20. [Integração com Linguagens de Programação:](pratica.md#integracao-com-linguagens-de-programacao)
+21. [Integração com Linguagens de Programação:](pratica.md#integracao-com-linguagens-de-programacao)
     - Como usar SQL em Conjunto com Linguagens como Python, Java, etc.
     - Acesso a Bancos de Dados por meio de APIs
