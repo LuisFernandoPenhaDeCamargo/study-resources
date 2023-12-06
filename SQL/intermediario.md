@@ -11,33 +11,38 @@
     - COUNT, SUM, AVG, MIN, MAX
     - GROUP BY, HAVING
 
-7. [Subconsultas:](#subconsultas)
+7. [Ordem de Execução da Consulta SQL:](#ordem-de-execucao-da-consulta-sql)
+    - Ordem Típica de Processamento
+    - Impacto das Junções e Condições WHERE
+    - Otimização de Consultas
+
+8. [Subconsultas:](#subconsultas)
     - Subconsultas Escalares
     - Subconsultas Correlacionadas\
         - `EXISTS`
     - Subconsultas na Cláusula FROM
 
-8. [Filtros Avançados com `%` e `LIKE`:](#filtros-avancados-com--e-like)
+9. [Filtros Avançados com `%` e `LIKE`:](#filtros-avancados-com--e-like)
     - O que é `%` e `LIKE`
     - Como Utilizar `%` e `LIKE`
     - Exemplo Prático
     - Considerações e Boas Práticas
 
-9. [Funções de Data e Hora:](#funcoes-de-data-e-hora)\
+10. [Funções de Data e Hora:](#funcoes-de-data-e-hora)\
     - `FROM_UNIXTIME()`
     - `DATE_SUB()`
 
-10. [ENUM no SQL:](#enum-no-sql)
+11. [ENUM no SQL:](#enum-no-sql)
     - O que é ENUM
     - Como Definir e Usar ENUM
     - Considerações e Boas práticas
 
-11. [Cláusula `DELETE` no SQL: Exclusão de Registros e Tabelas](#clausula-delete-no-sql-exclusao-de-registros-e-tabelas)
+12. [Cláusula `DELETE` no SQL: Exclusão de Registros e Tabelas](#clausula-delete-no-sql-exclusao-de-registros-e-tabelas)
     - Exclusão de Registros
     - Remoção de Tabelas
     - Considerações e Boas Práticas
  
-12. [Índices e Otimização:](#indices-e-otimizacao)
+13. [Índices e Otimização:](#indices-e-otimizacao)
     - O que São Índices
     - Como Criar Índices
     - Otimização de Consultas
@@ -46,7 +51,92 @@
 
 ### INNER JOIN, LEFT JOIN, RIGHT JOIN
 
-### JOINs Múltiplos
+A cláusula `LEFT JOIN` (também conhecida como `LEFT OUTER JOIN`) é utilizada em SQL para combinar linhas de duas ou mais tabelas com base em uma condição de junção e retorna todas as linhas da tabela à esquerda, mesmo que não haja correspondência na tabela à direita. Se não houver correspondência, as colunas da tabela à direita serão preenchidas com valores nulos.\
+A sintaxe básica é a seguinte:
+
+```sql
+SELECT *
+FROM tabela_esquerda
+LEFT JOIN tabela_direita ON tabela_esquerda.coluna = tabela_direita.coluna;
+```
+
+Aqui estão algumas características-chave do `LEFT JOIN`:
+
+- `tabela_esquerda`**:** a tabela da qual você deseja obter todas as linhas, independentemente da correspondência;
+- `tabela_direita`**:** a tabela com a qual você deseja combinar as linhas;
+- `coluna`**:** a condição de junção que determina como as linhas devem ser combinadas.
+
+Vamos considerar ainda alguns pontos sobre a palavra **correspondência**, ela trata sobre a condição especificada no `ON`. Considerando o código SQL acima, a saída desta seleção irá incluir todos os valores da coluna `tabela_esquerda.coluna`, por se tratar de um `LEFT JOIN`, mesmo que não tenha um valor **correspondete, igual**, na `tabela_direita`.\
+Quando você trata da junção das tabelas (dos registros que possuem correspondência), está considerando todas as aparições, todos os valores da coluna especificada na condição `ON`.
+Exemplo prático:\
+Suponha que você tenha duas tabelas, `clientes` e `pedidos`, e deseja obter todos os clientes, mesmo aqueles que não fizeram nenhum pedido ainda:
+
+```sql
+SELECT clientes.*, pedidos.*
+FROM clientes
+LEFT JOIN pedidos ON clientes.id = pedidos.cliente_id;
+```
+
+Neste exemplo, a cláusula `LEFT JOIN` retorna todas as linhas da tabela `clientes` e combina com as linhas correspondentes da tabela `pedidos`. Se um cliente não tiver pedido, as colunas relacionadas a `pedidos` serão preenchidas com valores nulos.\
+É importante escolher a condição de junção apropriada, geralmente usando as chaves primárias e estrangeiras, para garantir que as linhas sejam combinadas corretamente\
+Em resumo, o `LEFT JOIN` é uma operação de junção que mantém todos os registros da tabela à esquerda, independente da existência de correspondências na tabela à direita, tornando-o uma ferramenta valiosa em consultas SQL para combinar e analisar dados de várias fontes.
+
+A cláusula `INNER JOIN` em SQL é usada para combinar linhas de duas ou mais tabelas com base em uma condição de junção e retorna apenas as linas que têm correspondência nas tabelas à esquerda e à direita. Se não houver correspondência, essas linhas não serão incluídas no resultado.\
+Quando você especifica apenas `JOIN` sem especificar um tipo específico de `JOIN` (`INNER`, `LEFT`, `RIGHT`, `FULL`, etc.), o tipo de `JOIN` padrão é um `INNER JOIN`.\
+A sintaxe básica é semelhante à do `LEFT JOIN`:
+
+```sql
+SELECT *
+FROM tabela1
+INNER JOIN tabela2 ON tabela1.coluna = tabela2.coluna;
+```
+
+Aqui estão alguns pontos-chave sobre o `INNER JOIN`:
+
+- `tabela1` **e** `tabela2`**:** as tabelas que você deseja combinar;
+- `coluna`**:** a condição de junção que determina como as linhas devem ser combinadas.
+
+Exemplo prático:
+
+Suponha que você tenha duas tabelas, `clientes` e `pedidos`, e deseja obter apenas os clientes que fizeram pedidos:
+
+```sql
+SELECT clientes.*, pedidos.*
+FROM clientes
+INNER JOIN pedidos ON clientes.id = pedidos.cliente_id;
+```
+
+Neste exemplo, apenas os clientes que têm correspondência com os pedidos serão inckuídos no resultado.\
+O `INNER JOIN` é frequentemente usado quando você está interessado apenas nas linhas que têm correspondência em ambas as tabelas. Diferentemente do `LEFT JOIN`, ele não incluirá linhas da tabela à esquerda que não têm correspondência na tabela à direita.
+
+### `JOIN`s Múltiplos
+
+Qunado você realiza múltiplos `JOIN`s em uma consulta SQL, essas junções são aplicadas em sequência e de forma linear. Cada junção é aplicada ao conjunto de resultados obtido pela junção anterior.\
+A ordem em que você especifica as junções é importante, pois ela determina como as tabelas estão relacionadas umas com as outras. A tabela resultante de uma junção é usada como base para a próxima junção.\
+Considere o exemplo abaixo:
+
+```sql
+SELECT clientes.*, pedidos.*, itens_pedido.*
+FROM clientes
+LEFT JOIN pedidos ON clientes.id = pedidos.cliente_id
+LEFT JOIN itens_pedido ON pedidos.id = itens_pedido.pedido_id;
+```
+
+Neste exemplo:
+
+- O primeiro `LEFT JOIN` é entre `clientes` e `pedidos`;
+- O resultado dessa junção (`clientes` + `pedidos`) é então usado como base para o segundo `LEFT JOIN` com `itens_pedido`.
+
+Se você trocar a ordem das junções, a consulta pode fornecer resultados diferentes, pois a relação entre as tabelas mudará:
+
+```sql
+SELECT clientes.*, pedidos.*, itens_pedido.*
+FROM pedidos
+LEFT JOIN clientes ON pedidos.cliente_id = clientes.id
+LEFT JOIN itens_pedido ON pedidos.id = itens_pedido.pedido_id;
+```
+
+A ordem das tabelas nas junções influencia como as relações são estabelecidas, e você deve escolher a ordem que faz sentido para a lógica da sua consulta e a estrutura do seu banco de dados.
 
 ### Self JOIN
 
@@ -88,9 +178,54 @@ GROUP BY produto;
 
 Neste exemplo, estamos agrupando as vendas por produto e calculando a soma da quantidade vendida para cada produto.
 
-O erro `ER_WRONG_FIELD_WITH_GROUP` ocorre em bancos de dados MySQL/MariaDB quando há uma inconsistência na utilização da cláusula `GROUP BY`. O MySQL/MariaDB tem uma configuração chamada `ONLY_FULL_GROUP_BY`, que está habilitada por padrão. Quando essa configuração está ativada, o servidor de banco de dados exige que todas as colunas no SELECT que não estão sendo usadas em funções de agregação (`SUM`, `COUNT`, `MAX`, `MIN`, etc.) estejam presentes na cláusula `GROUP BY`.\
+O erro `ER_WRONG_FIELD_WITH_GROUP` ocorre em bancos de dados MySQL/MariaDB quando há uma inconsistência na utilização da cláusula `GROUP BY`. O MySQL/MariaDB tem uma configuração chamada `ONLY_FULL_GROUP_BY`, que está habilitada por padrão. Quando essa configuração está ativada, o servidor de banco de dados exige que todas as colunas no `SELECT` que não estão sendo usadas em funções de agregação (`SUM`, `COUNT`, `MAX`, `MIN`, etc.) estejam presentes na cláusula `GROUP BY`.\
 Essa configuração visa garantir que as consultas sejam semanticamente corretas e que os resultados sejam determinísticos. Em outras palavras, se você está agrupando por uma coluna, o sistema espera que todas as outras colunas no SELECT sejam derivadas ou agregadas de alguma forma. Isso ajuda a evitar resultados ambíguos.\
-A solução é ajustar a cláusula `GROUP BY` para incluir todas as colunas no SELECT ou reescrever a consulta de maneira que as colunas não agregadas sejam tratadas de uma maneira que seja aceitável para a configuração `ONLY_FULL_GROUP_BY`.
+A solução é ajustar a cláusula `GROUP BY` para incluir todas as colunas no SELECT ou reescrever a consulta de maneira que as colunas não agregadas sejam tratadas de uma maneira que seja aceitável para a configuração `ONLY_FULL_GROUP_BY`.\
+Abaixo, segue um exemplo que mostra como é importante incluir todas as colunas do `SELECT` que não estão sendo usadas em funções de agregação no `GROUP BY`. O porque isso é importante para garantir que os resultados sejam determinísticos.
+
+```sql
+SELECT sg.*, g.shortname, g.type, g.compilation_path, g.make_file, g.graphic_project, gsi.sku 
+FROM stand_games sg
+LEFT JOIN games g ON g.id = sg.id
+LEFT JOIN game_sku_identifier gsi ON gsi.game_id = sg.id
+WHERE enabled = 1
+GROUP BY sg.u_id
+```
+
+A query acima gera um conjunto de resultados como o
+
+| u_id | id | name | data_key | path | created | enabled | board | lang_es | lang_en | lang_pt | lang_global | shortname | type | compilation_path | make_file | graphic_project | sku |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 26 | 439 | Super Lion s000 | 06ad9b32c1b602b2e28b98ebe2f9dad0 | LIOPER-1SQ | 2021-03-30 10:34:04.000 | 1 | 1 | 1 | 0 | 1 | 0 | super-lion | standalone | gaminator | lion-super | orion | ES-STPA/SUPION-1SQ |
+
+e foi percebido que por não respeitar a "regra" do "`ONLY_FULL_GROUP_BY`" (o DBeaver permite que a query acima seja executada), um registro acabou não sendo incluido:
+
+| u_id | id | name | data_key | path | created | enabled | board | lang_es | lang_en | lang_pt | lang_global | shortname | type | compilation_path | make_file | graphic_project | sku |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 26 | 439 | Super Lion s000 | 06ad9b32c1b602b2e28b98ebe2f9dad0 | LIOPER-1SQ | 2021-03-30 10:34:04.000 | 1 | 1 | 1 | 0 | 1 | 0 | super-lion | standalone | gaminator | lion-super | orion | PT-STPA/SUPION-1SQ |
+
+(a única coluna que tem o valor diferente é a `sku`). Tudo isso por conta de como o `GROUP BY` foi estruturado (quando a regra é respeitada, o registro acima é incluído nos resultados). Com isso verificamos o porque da existência da regra, a sua importância e aplicação.
+
+# <a name = "ordem-de-execucao-da-consulta-sql"></a>Ordem de Execução da Consulta SQL
+
+### Ordem Típica de Processamento
+
+A ordem típica de processamento em uma consulta SQL é a seguinte:
+
+- `FROM`**:** as tabelas especificadas no `FROM` são combinadas usando as condições de junção, resultando no conjunto de dados combinado;
+- `JOIN`**:** se existirem cláusulas `JOIN` adicionais, elas são aplicadas ao conjunto de dados combinado;
+- `WHERE`**:** as condições especificadas na cláusula `WHERE` são aplicadas ao conjunto de dados resultante das junções. Isso filtra as linhas com base em condições específicas;
+- `GROUP BY`**:** se houver uma cláusula `GROUP BY`, o conjunto de dados é agrupado de acordo com as colunas especificadas;
+- `HAVING`**:** se houver uma cláusula `HAVING`, ela é aplicada às linhas agrupadas para filtrar o resultado;
+- `SELECT`**:** a seleção das colunas é feita para determinar quais colunas serão incluídas no resultado final;
+- `ORDER BY`**:** se houver uma cláusula `ORDER BY`, o resultado final é ordenado de acordo com as especificações.
+
+Isso representa a ordem lógica geral de processamento de uma consulta SQL. Vale ressaltar que, embora seja a ordem lógica, os otimizadores de banco de dados podem ajustar a ordem física de execução para otimizar o desempenho da consulta.\
+Portanto, ao escrever consultas complexas, é útil ter uma compreensão clara da ordem de processamento para garantir que as condições sejam aplicadas de acordo com as expectativas.
+
+### Impacto das Junções e Condições WHERE
+
+### Otimização de Consultas
 
 # <a name = "subconsultas"></a>Subconsultas
 

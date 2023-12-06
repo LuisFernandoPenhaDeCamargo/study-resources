@@ -8,6 +8,7 @@
 - [`aws-sdk`](#aws-sdk);
 - [`axios`](#axios);
 - [`body-parser`](#body-parser);
+- [`mariadb`](#mariadb);
 - [`joi`](#joi);
 - [`dotenv`](#dotenv);
 - [`uuid/v4`](#uuidv4);
@@ -1068,6 +1069,52 @@ A partir da versão 4.16.0 do Express, o módulo `body-parser` foi incorporado p
 ## <a id = "json"></a>`.json()`
 
 A partir da versão 4.16.0 do Express, o módulo `body-parser` foi incorporado por ele, sendo assim, `parser.json()` e `express.json()` são essencialmente o mesmo método. Por isso veremos a definição deste método em [`express`, `.json()`](metodos-frameworks#json).
+
+# <a id = "mariadb"></a>`mariadb`
+
+### Sumário
+
+[`.query()`](#query).
+
+## <a id = "query"></a>`.query()`
+
+`.query()` é um método usado para executar uma consulta SQL no banco de dados MariaDB.
+
+`connection.query(sql, values);`
+
+- `sql` **(string):** a consulta SQL a ser executada. Pode incluir espaços reservados que serão substituídos pelos valores reais quando a query for executada. Por exemplo, você pode usar placeholders como `?` ou nomeá-los com `:nome` ou `?name` e fornecer os valores correspondetes no array `values`;
+- `values` **(array, opcional):** um array de valores para substituir marcadores de posição na consulta SQL, se houver. Pode ser omitido se a consulta não tiver marcadores de posição. Utilizar um array de valores é útil para evitar ataques de injeção SQL e para passar dados dinâmicos para a query.\
+    Quando há mais valores que espaços reservados isso quer dizer que você vai inserir mais de um registro de uma vez.\
+    É importante observar que dependendo da versão da biblioteca, ela pode ser flexível o suficiente para você poder passar valores únicos fora de um array para este método.\
+    Há uma versão que tratou inclusive a existência de uma vírgula após este parâmetro.
+
+O método `.query()` retorna uma Promise que resolve para os resultados da consulta:
+
+- Se a query for uma query de seleção e for bem-sucedida, **o retorno será um array que possui um objeto com os registros retornados, entre outros objetos**;
+- Se a query for uma query de inserção e for bem-sucedida, o retorno será um objeto `{ affectedRows: valor1, insertedId: valor2, warningStatus: valor3 }`;
+- Se a query for uma query de atualização e for bem-sucedida, o retorno será um objeto `{ affectedRows: valor1, insertedId: valor2, warningStatus: valor3 }` (aparentemente este não é o formato padrão do objeto, deve estar assim por conta de alguma configuração).
+
+```JavaScript
+const mariadb = require("mariadb");
+
+const pool = mariadb.createPool({
+    host: "localhost",
+    user: "root",
+    password: "senha",
+    database: "nome_do_banco"
+});
+
+pool.query("SELECT * FROM tabela")
+    .then(rows => {
+        console.log(rows); // Resultados da consulta.
+    })
+    .catch(err => {
+        console.error(err); // Tratar erro, se houver.
+    })
+    .finally(() => {
+        pool.end(); // Encerrar a pool de conexões quando terminar.
+    });
+```
 
 # <a id = "joi"></a>`joi`
 

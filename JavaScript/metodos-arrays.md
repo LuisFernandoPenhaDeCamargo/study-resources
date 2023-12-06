@@ -125,6 +125,19 @@ console.log(evenNumbers); // Saída: [2,4]
 ```
 
 Este exemplo usa `.filter()` para criar um novo array contendo apenas os números pares do array original.\
+Devemos nos lembrar também que em JavaScript, valores numéricos são considerados `true` quando diferentes de zero (`0`) em contextos booleanos. Portanto, se você usar um valor numérico como retorno em uma função de filtro, ele será considerado `true` se for diferente de zero e `false` se for zero.\
+Por exemplo:
+
+```JavaScript
+const array = [0, 1, 2, 3, 4];
+
+// Retorna um novo array contendo apenas os elementos considerados verdadeiros (diferentes de zero).
+const newArray = array.filter(element => element);
+
+console.log(newArray); // Saída: [1, 2, 3, 4]
+```
+
+Neste exemplo, a função de filtro `element => element` retorna `true` para todos os elementos diferentes de zero e `false` para o elemento zero. Portanto o novo array contém apenas os elementos `[1, 2, 3, 4]`.
 Caso interessante:
 
 ```JavaScript

@@ -72,26 +72,6 @@ Os operadores lógicos são: `AND`, `OR`, `NOT`.
 
 ## <a id = "join"></a>Operações de junção.
 
-### `INNER JOIN`
-
-Quando você especifica apenas `JOIN` sem especificar um tipo específico de `JOIN` (`INNER`, `LEFT`, `RIGHT`, `FULL`, etc.), o tipo de `JOIN` padrão é um `INNER JOIN`.\
-`INNER JOIN` retorna apenas as linhas que têm valores correspondentes em ambas as tabelas sendo unidas.
-
-### `LEFT JOIN`
-
-A expressão `LEFT JOIN`, também conhecida como `LEFT OUTER JOIN`, é uma operação de junção usada em consultas SQL para combinar registros de duas ou mais tabelas com base em uma condição especificada e recuperar todas as linhas da tabela à esquerda (tabela principal), mesmo que não haja correspondência na tabela à direita (tabela secundária). A sintaxe geral de uma consulta SQL com `LEFT JOIN`:
-
-```MySQL
-SELECT colunas
-FROM tabela_esquerda
-LEFT JOIN tabela_direita
-ON condicao_de_juncao;
-```
-
-O resultado de um `LEFT JOIN` incluirá todos os registros da tabela à esquerda, juntamente com os registros correspondentes da tabela à direita. Se não houver correspondência na tabela à direita, as colunas da tabela à direita conterão valores nulos.\
-Essa operação é útil quando você deseja obter todos os registros da tabela principal, mesmo que não haja correspondência na tabela secundária. É comumente usado para reunir dados de diferentes tabelas em consultas complexas, como ao buscar informações relacionadas em uma tabela de pedidos e uma tabela de clientes, onde nem todos os clientes fizeram pedidos.\
-Em resumo, o `LEFT JOIN` é uma operação de junção que mantém todos os registros da tabela à esquerda, independente da existência de correspondências na tabela à direita, tornando-o uma ferramenta valiosa em consultas SQL para combinar e analisar dados de várias fontes.
-
 ### `STRAIGHT_JOIN`
 
 A expressão `STRAIGHT_JOIN` não é uma cláusula SQL padrão, mas pode ser específica de um **sistema de gerenciamento de banco de dados** (**SGBD**) em particular ou uma extensão não padronizada de SQL. Ela não é amplamente suportada em todos os SGBDs.\
