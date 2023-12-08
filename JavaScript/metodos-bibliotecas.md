@@ -858,7 +858,31 @@ s3.headObject(params, (err, data) => {
 });
 ```
 
-Neste exemplo, `.headObject()` é usado para obter metadados (informações sobre o objeto) de um objeto no Amazon S3. Os metadados são retornados na função de retorno de chamada, e nenhum conteúdo real do objeto é recuperado.
+Neste exemplo, `.headObject()` é usado para obter metadados (informações sobre o objeto) de um objeto no Amazon S3. Os metadados são retornados na função de retorno de chamada, e nenhum conteúdo real do objeto é recuperado.\
+Um exemplo interessante:
+
+```JavaScript
+    try {
+        // Check if file exists.
+        await headObject({ // const headObject = util.promisify(s3.headObject.bind(s3));
+            Bucket: "orion-bkps",
+            Key: `${hostname}-full.sql.gz`
+        });
+
+        let dump_url = await getSignedUrl("getObject", { // const getSignedUrl = util.promisify(s3.getSignedUrl.bind(s3));
+            Bucket: "orion-bpks",
+            Key: `${hostname}-full.sql.gz`,
+            Expires: SIXTY_MINUTES
+        });
+
+        res,json({ status: "OK", dump_url });
+    } catch {
+        console.error("Failed to retrieve dump file", err.code);
+        res.status(500).json({ status: "ERROR "});
+    }
+```
+
+O método `.headObject()` é utilizado para verificar se o objeto existe, caso o objeto não exista, você irá entrar no bloco `catch`.
 
 ## <a id = "listobjects"></a>`.listObjects()`
 
@@ -868,7 +892,7 @@ Neste exemplo, `.headObject()` é usado para obter metadados (informações sobr
 
 - `params` **(AWS.S3.ListObjectsV2Request):** um objeto contendo parâmetros como o nome do balde (`Bucket`);
 - `callback` **(opcional):** uma função de retorno de chamada que será chamada com possíveis erros ou detalhes da lista de objetos.\
-    `(err: AWS.AWSError, data: AWS.S3.ListObjectsV2Outpit) => void): AWS.Request`
+    `(err: AWS.AWSError, data: AWS.S3.ListObjectsV2Output) => void)`
 
 Retorna um objeto `AWS.Request` que representa a requisição para o serviço da AWS. Este objeto pode ser usado para monitorar o progresso ou cancelar a operação.
 

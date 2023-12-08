@@ -249,6 +249,8 @@ Você pode adicionar propriedades ao protótipo padrão (`Object.prototype`) e e
 A chamada `console.log(Object.getPrototypeOf(Object.prototype));` não retornará `{}` diretamente porque `Object.Prototype` é o protótipo raiz de todos os objetos em JavaScript, incluindo objetos literais criados com `{}`. No entanto, o protótipo de `Object.prototype` é `null`, e não um objeto vazio `{}`.
 
 # <a name = "template-literals"></a> Template Literals
+    - Template Literal e Arrays
+    - Acentos Agudos (Crases) Aninhados
 
 **Template Literals** (**Literais de Modelo**, também conhecido como Template Strings) é uma funcionalidade do JavaScript que permite criar strings de maneira mais flexível e dinâmica. Eles são delimitados por crases (\`\`) em vez de aspas simples ou aspas duplas e permitem a interpolação de valores ou expressões dentro da string usando `${}` como marcador de posição. Esta funcionalidade foi introduzida no JavaScript com o ECMAScript 6 (ES6).\
 Aqui está um exemplo de como usar Template Literals:
@@ -256,9 +258,9 @@ Aqui está um exemplo de como usar Template Literals:
 ```JavaScript
 const nome = "Alice";
 const idade = 30;
-const mensagem = `Olá, meu nome é ${nome} e tenho ${idade} anos.`; // Saída: Olá, meu nome é Alice e tenho 30 anos.
+const mensagem = `Olá, meu nome é ${nome} e tenho ${idade} anos.`;
 
-console.log(mensagem);
+console.log(mensagem);  // Saída: Olá, meu nome é Alice e tenho 30 anos.
 
 // Strings multilinhas.
 const paragrafo = `
@@ -276,9 +278,10 @@ Saída:
 */
 ```
 
-Neste exemplo, a variável `mensagem` é uma Template Literal que inclui a interpolação de valores entre `${}`. Quando a string é avaliada, os valores das variáveis `nome` e `idade` são inseridos na string, criando uma mensagem personalizada.
-
+Neste exemplo, a variável `mensagem` é uma Template Literal que inclui a interpolação de valores entre `${}`. Quando a string é avaliada, os valores das variáveis `nome` e `idade` são inseridos na string, criando uma mensagem personalizada.\
 As Template Literals oferecem uma forma mais legível e conveniente de criar strings dinâmicas em comparação com a concatenação de strings tradicional, e são amplamente usadas para criar saídas de texto, mensagens de log e até mesmo consultas SQL dinâmicas em JavaScript.
+
+### Template Literal e Arrays
 
 Observe ainda que quando você insere um array entre `${}` em um Template Literal, o JavaScript automaticamente converte o array em uma string concatenando os elementos com uma vírgula como separador.
 
@@ -287,6 +290,36 @@ const array = [1, 2, 3];
 const templateLiteral = `Transformando um array em uma string: ${array}.`;
 
 console.log(templateLiteral); // Saída: Transformando um array em uma string: 1,2,3.
+```
+
+### Acentos Agudos (Crases) Aninhados
+
+Cada vez que você incorpora uma expressão dinâmica (interpolação) dentro de outra, é necessário o uso de crases adicionais. As crases delimitam cada parte do template literal e permitem que você inclua expressões dinâmicas dentro da string.\
+Considere o bloco de código abaixo:
+
+```JavaScript
+const part1 = "Esta é uma";
+const part2 = "string dinâmica";
+const part3 = "com três pares de crases.";
+const ternaryConditionIsTrue1 = true;
+const ternaryConditionIsTrue2 = true;
+const result = `[${part1} ${ternaryConditionIsTrue1 ? `{${ternaryConditionIsTrue2 ? `(${part2})` : ''}}` : ''} ${part3}]`;
+
+console.log(result); // Saída: [Esta é uma {(string dinâmica)} com três pares de crases.]
+```
+
+1. O primeiro par de crases envolve toda a expressão do templete literal (está seguindo por colchetes ("`[]`") para ficar mais fácil de compreender sobre qual par se trata);
+2. O segundo par de crases envolve a expressão ternária mais externa `${ternaryConditionIsTrue2 ? \`(${part2})\` : ''}` (está seguindo por chaves ("`{}`") para ficar mais fácil de compreender sobre qual par se trata);
+3. O terceiro par de crases envolve o valor dinâmico da variável `part2` (está seguido por parênteses ("`()`") para ficar mais fácil de compreender sobre qual par se trata).
+
+Deixando claro que condições ternárias mais simples não necessitam de pares adicionais de crases. Por isso o começo da primeira expressão ternária acima não necessita da abertura da crase.\
+Conforme pode ser visto no exemplo abaixo:
+
+```JavaScript
+const ternaryConditionIsTrue = true;
+const result = `Is ${ternaryConditionIsTrue ? "true" : "false"}?`;
+
+console.log(result); // Saída: Is true?
 ```
 
 # <a name = "entendendo-modulos-no-javascript"></a>Entendendo Módulos no JavaScript

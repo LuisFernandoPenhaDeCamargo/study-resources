@@ -8,6 +8,7 @@
 - [`.bind()`](#bind);
 - [`.now()`](#now);
 - [`.keys()`](#keys);
+- [`.cwd()`](#cwd);
 - [`.toString()`](#tostring).
 
 # `Number`
@@ -270,6 +271,22 @@ const keys = Object.keys(myObject);
 
 console.log(keys); // Saída: [ 'a', 'b', 'c' ]
 ```
+
+# `process`
+
+## <a id = "cwd"></a>`.cwd()`
+
+`.cwd()` é um método utilizado para retornar o diretório de trabalho atual do processo Node.js. "cwd" significa "current working directory" (diretório de trabalho atual).
+
+`process.cwd()`
+
+Não aceita nenhum parâmetro.
+
+Retorna uma string representando o diretório de trabalho atual.
+
+`console.log(process.cwd()); // Retorna o diretório de trabalho atual do processo Node.js.`
+
+O método `.cwd()` é útil quando você precisa saber o diretório no qual o seu script Node.js está sendo executado. Pode ser usado para construir caminhos absolutos para arquivos ou diretórios com base no diretório de trabalho atual.
 
 # Objeto
 

@@ -16,6 +16,8 @@
 9. [Callbacks e funções anônimas](nivel-inicial.md#callbacks-e-funcoes-anonimas)
 10. [Objeto Literal](nivel-inicial.md#objeto-literal)
 11. [Template Literals](nivel-inicial.md#template-literals)
+    - Template Literal e Arrays
+    - Acentos Agudos (Crases) Aninhados
 12. [Entendendo Módulos no JavaScript](nivel-inicial.md#entendendo-modulos-no-javascript)
     - Diferença entre Módulos CommonJS e ES Modules
     - Convertendo de CommonJS para ES Modules
@@ -49,3 +51,4 @@
 33. [Manipulação de strings avançada](nivel-avancado.md#manipulacao-de-strings-avancada)
 34. [Uso de modules (CommonJS, ES6 Modules)](nivel-avancado.md#uso-de-modules-commonjs-es6-modules)
 35. [Casos Específicos Interessantes](nivel-avancado.md#casos-especificos-interessantes)
+36. [Documentação de Métodos e Funções em JavaScript](nivel-avancado.md#documentacao-de-metodos-e-funcoes-em-javascript)

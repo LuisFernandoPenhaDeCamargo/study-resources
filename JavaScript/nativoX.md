@@ -395,12 +395,7 @@ Retorna `true` se pelo menos um elemento do array satisfazer a condição da fun
 
 # <a name = "funcoesdestring"></a>Funções de string.
 
-- [`.trim()`;](#trim)
 - [`.split()`.](#split)
-
-## <a id = "trim"></a>`.trim()`
-
-Remove espaços em branco (espaços, tabulações e quebras de linha) do início e do final da string. **Ele não afeta os espaçoes em branco dentro da string, apenas os espaços em branco externos**.
 
 ## <a id = "split"></a>`.split()`
 

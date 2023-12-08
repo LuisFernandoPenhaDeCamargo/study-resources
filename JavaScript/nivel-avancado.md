@@ -12,6 +12,7 @@
 33. [Manipulação de Strings Avançada](#manipulacao-de-strings-avancada)
 34. [Uso de Modules (CommonJS, ES6 Modules)](#uso-de-modules-commonjs-es6-modules)
 35. [Casos Específicos Interessantes](#casos-especificos-interessantes)
+36. [Documentação de Métodos e Funções em JavaScript](#documentacao-de-metodos-e-funcoes-em-javascript)
 
 # <a name = "classes-em-javascript-introduzidas-no-es6"></a> Classes em JavaScript (Introduzidas no ES6)
 
@@ -83,3 +84,30 @@ const teste = `Teste${string}Teste`; // A impressão utiliza o conceito de Templ
 
 console.log(teste); // Saída: Teste   3espacaosembranco Teste
 ```
+
+# <a name = "documentacao-de-metodos-e-funcoes-em-javascript"></a>Documentação de Métodos e Funções em JavaScript
+
+- `object`**:** o tipo do objeto no qual o método `method` está sendo aplicado;
+- `method`**:** nome do método;
+- `param`**:** nome do parâmetro;
+- `param type`**:** tipo do parâmetro;
+- `return type`**:** tipo do retorno.
+
+`object.method(param1 : param1 type[, param2: param2 type[, param3: param3 type]]): return type`
+
+Os colchetes na assinatura acima, indicam que os parâmetros (`param2` e `param3`) são opcionais. Eles estarem encadeado indica uma relação de interdependência entre eles.
+
+- Caso você passe para `method` um argumento na posição do `param2`, você não precisa passar um argumento para a posição `param3`. Pois o `param2` está sendo fornecido e o `param3` é opcional;
+- Caso você queria passar um argumento para a posição `param3`, você precisa passar um argumento para a posição do `param2`. O `param3` é dependente do `param2`, esta é uma característica dos colchetes em cadeado.
+
+`object.method(param1 : param1 type[, param2: param2 type, param3: param3 type]): return type`
+
+`param2` e `param3` estarem dentro dos mesmos colchetes indica que se você quiser passar um, você deve obrigatoriamente passar o outro também para `method`.
+
+`object.method(param1 : param1 type[, param2: param2 type][, param3: param3 type]): return type`
+
+`param2` e `param3` estarem em colchetes separados (que não estão encadeado), indica que ambos são opcionais e não dependentes, você poder fornecer somente um ou somente outro.
+
+`object.method(param1 : param1 type, (param2: param2 type, param3: param3 type) => return2 type): return1 type`
+
+Nesta forma de documentação, o segundo parâmetro é uma callback que tem como parâmetros `param2` e `param3`, e retorna `return2`. O `method` retorna `return1`.

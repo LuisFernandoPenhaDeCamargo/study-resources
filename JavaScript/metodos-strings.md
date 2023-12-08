@@ -1,10 +1,35 @@
 # Sumário.
 
+- [`.trim()`](#trim);
 - [`.padStart()`](#padstart);
 - [`.toLowerCase()`](#tolowercase);
 - [`.toUpperCase()`](#touppercase);
 - [`.slice()`](#slice);
 - [`.substring()`](#substring).
+
+# Observações
+
+**String original:** o default é ela não ser modificada.
+
+# <a id = "trim"></a>`.trim()`
+
+`.trim()` é um método utilizado para remover espaços em branco no início e no final de uma string. Espaços, tabulações e quebras de linha são considerados espaços em branco.
+
+`string.trim()`
+
+O método `.trim()` não aceita nenhum parâmetro.
+
+Retorna uma nova string com os espaços em branco removidos do início e do final.
+
+```JavaScript
+const originalString = "   Hello, World!   ";
+const trimmedString = originalString.trim();
+
+console.log(trimmedString); // Saída: Hello, World!
+```
+
+No exemplo acima, `.trim()` remove os espaços em branco do início e do final da string, resultando em uma nova string sem espaços desnecessários.\
+O método `.trim()` é frequentemente usado para limpar entradas de usuário, onde espaços extras podem ser inseridos acidentalmente.
 
 # <a id = "padstart"></a>`.padStart()`
 

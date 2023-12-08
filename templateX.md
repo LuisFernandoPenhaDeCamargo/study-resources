@@ -22,6 +22,12 @@ Lista de tópicos para o aprendizado da _____ que considere a curva de aprendiza
 - Para valores de chave, quando eles forem uma string e você quiser indicar um espaçamento, você pode utilizar o underscore;
 - Espaçamento de uma linha entre imports, declaração de variáveis, console logs e classes/funções/métodos.
 
+### Template
+
+"`.metodo()` é um método utilizado"
+
+`Na assinatura do método você não utiliza ponto e vírgula ao final.`
+
 # Bibliotecas/Frameworks
 
 - `modulo` é uma biblioteca ou um framework?
