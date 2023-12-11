@@ -145,14 +145,11 @@ Portanto, o `INTERVAL` é usado para representar uma quantidade específica de t
 
 # <a id = "listadecomandos"></a>Lista de comandos.
 
-- `CREATE USER 'novo_usuario'@'host' IDENTIFIED BY 'senha';`**:** cria um novo usuário, de nome `novo_usuario` para determinado `host`, o usuário é identificado pela `senha`;
 - `SELECT user, host, plugin FROM mysql.user;`**:** verifica os usuários disponíveis no MySQL localmente. [Explicação detalhada](#selectuser);
-- `ALTER USER 'usuario'@'host' IDENTIFIED BY 'nova_senha';`**:** altera a senha do `usuario` para `nova_senha`. [Explicação detalhada](#alteruser);
 - `GRANT USAGE ON *.* TO 'usuario'@'host';`**:** [Explicação detalhada](#grantusage);
 - `GRANT ALL PRIVILEGES ON banco.* TO 'usuario'@'host';`**:** garante todos os privilégios para o banco `banco`;
 - `SHOW GRANTS for 'usuario'@'host';`**:** exibe as permissões concedidas ao usuário `usuario` em um host específico no MySQL;
 - `CREATE DATABASE banco;`**:** cria um novo banco `banco`;
-- `SHOW DATABASES;`**:** lista os bancos de dados. [Explicação detalhada](#showdatabases);
 - `DROP DATABASE banco;`**:** deleta um banco de dados;
 - `DESCRIBE tabela;` ou `DESC tabela;` ou `SHOW COLUMNS FROM tabela;`**:** descreve a tabela `tabela`;
 - `ALTER TABLE tabela ADD coluna tipo_da_coluna;`**:** altera a tabela `tabela` adicionando uma coluna `coluna` a ela, de tipo `tipo_da_coluna`. [Explicação detalhada](#altertable); <-- Uma descrição melhor dos campos do comando.
@@ -162,18 +159,6 @@ Portanto, o `INTERVAL` é usado para representar uma quantidade específica de t
 
 # Comandos.
 
-## <a id = "selectuser"></a>`SELECT user`
-
-Esta query está lidando com a tabela user do banco de dados mysql (mysql.user), ela contém além dos usuários registrados, informações como por qual host este usuário se conecta e o mecanismo de autenticação (plugin) associado a esse usuário.
-
-## <a id = "alteruser"></a>`ALTER USER`
-
-O comando `ALTER USER` também lhe permite alterar o mecanismo de autenticação do usuário:
-
-`ALTER USER 'usuario'@'host' IDENTIFIED WITH 'mysql_native_password' BY 'senha';`
-
-Tendo em vista que é necessário especificar por qual senha ele é identificado (`BY 'senha'`, mas não é necessário utilizar uma nova, você pode alterar o usuário para utilizar a mesma).
-
 ## <a id = "grantusage"></a>`GRANT USAGE`
 
 O comando `GRANT USAGE ON *.* TO 'usuario'@'host'` concede ao usuário apenas o privilégio `USAGE` em todos os objetos do banco de dados (`*.*`), o que basicamente permite que o usuário faça uma conexão com o servido MySQL, mas não fornece acesso a **nenhum banco de dados ou tabela específios**.
@@ -181,15 +166,6 @@ O comando `GRANT USAGE ON *.* TO 'usuario'@'host'` concede ao usuário apenas o 
 ## <a id = "showdatabases"></a>`SHOW DATABASES`
 
 Quando você usa o comando `SHOW DATABASES` no MySQL e o usuário não vê um banco de dados na lista, isso significa que o usuário não tem permissões para ver ou acessar esse banco de dados específico.
-
-## <a id = "altertable"></a>`ALTER TABLE`
-
-`ALTER TABLE tabela ADD coluna tipo_da_coluna;`
-
-- `tipo_da_coluna`**:** `BIGINT` define o tipo de dados da coluna como um tipo numérico que pode armazenar números inteiros grandes;
-- `tipo_da_coluna NOT NULL DEFAULT valor`**:**
-    - `NOT NULL`**:** indica que a coluna não pode conter valores nulos, ou seja, sempre deve ter um valor;
-    - `DEFAULT valor`**:** define o valor padrão da coluna como `valor`. Isso significa que se nenhum valor for especificado durante uma inserção de dados, o valor padrão será `valor`.
 
 # <a id = "funcoes"></a>Funções.
 
