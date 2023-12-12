@@ -77,6 +77,54 @@ A expressão `IDENTIFIED BY` não é uma cláusula SQL padrão, mas sim uma exte
 
 Em relação a alteração de um usuário, é necessário especificar um valor para "`'senha'`".
 
+### `KEY`
+
+`KEY` é uma palavra reservada utilizada para criar (dependendo do contexto):
+
+1. **Chave Primária (**`PRIMARY KEY`**):** no contexto de criação de tabelas, `KEY` pode ser usado para especificar uma chave primária. Por exemplo:
+
+```sql
+CREATE TABLE tabela_exemplo (
+    id INT PRIMARY KEY,
+    nome VARCHAR(255)
+);
+```
+
+Nesse exemplo, `KEY` é usado para indicar que a coluna `id` é chave primária da tabela.
+
+2. **Índice (**`INDEX`**):** `KEY` também pode ser usado para criar índices em colunas específicas para melhorar o desempenho das consultas. Isso é comumente usado para acelerar operações de busca e junção. Exemplo:
+
+```sql
+CREATE INDEX idx_exemple ON tabela_exemplo (nome);
+```
+
+Aqui, `KEY` é usado como sinônimo de `INDEX` para criar um índice na coluna.
+
+3. **Chave Estrangeira (**`PRIMARY KEY`**):** embora não seja uma prática comum, em alguns SGBDs, você pode encontrar o uso de `KEY` para definir uma chave estrangeira. Geralmente, `FOREIGN KEY` é preferido para essa finalidade. Exemplo:
+
+```sql
+CREATE TABLE pedidos (
+    pedido_id INT PRIMARY KEY,
+    cliente_id INT,
+    FOREIGN KEY (cliente_id) REFERENCES clientes(cliente_id)
+);
+```
+
+Aqui, `KEY` não é usado diretamente, mas a definição de chave estrangeira é relacionada ao conceito de chaves.
+
+4. `UNIQUE KEY`**:** em algumas sintaxes, como MySQL, você pode usar `KEY` para criar uma restrição de chave única. Exemplo:
+
+```sql
+CREATE TABLE tabela_exemplo (
+    id INT,
+    nome VARCHAR(255),
+    UNIQUE KEY nome_unico (nome)
+);
+```
+
+Neste caso, `KEY` é usado para indicar uma chave única na coluna `nome`.\
+Em resumo, o significado de `KEY` varia dependendo do contexto em que é usado no SQL. Pode representar uma chave primária, um índice, uma chave estrangeira ou uma chave única, dependendo da sintaxe específica e das convenções do SGBD em questão.
+
 # <a name = "comandos-basicos"></a> Comandos Básicos
 
 ### SELECT, FROM, WHERE

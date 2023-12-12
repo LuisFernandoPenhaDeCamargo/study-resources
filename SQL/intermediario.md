@@ -390,6 +390,26 @@ Se você encontrar algum comportamento inesperado, verifique se a definição do
 
 # <a name = "indices-e-otimizacao"></a>Índices e Otimização
 
+Considerando o código baixo:
+
+```sql
+CREATE TABLE `stand_games_set` (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `game_id` int(11) NOT NULL,
+    `game_set` varchar(50) DEFAULT NULL,
+    `created` datetime NOT NULL DEFAULT current_timestamp(),
+    PRIMARY KEY (`id`),
+    KEY `fk_stand_game_id` (`game_id`),
+    CONSTRAINT `fk_stand_game_id` FOREIGN KEY (`game_id`) REFERENCES `oriongames_testnew`.`stand_games` (`u_id`) ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=110 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+```
+
+Neste contexto, a palavra chave `KEY` é usada para criar um índice chamado "`fk_stand_game_id`" na coluna "`game_id`" da tabela "`stand_games_set`". Ese índice não é uma chave primária, mas sim um índice que melhora o desempenho das consultas que envolvem a coluna "`game_id`". Considere a parte relevante do código:
+
+`KEY \`fk_stand_game_id\` (\`game_id\`),`
+
+Isso cria um índice chamado "`fk_stand_game_id`" na coluna "`game_id`" da tabela "`stand_games_set`". Esse índice pode ser usado para acelerar as operações de busca e junção que envolvem a coluna "`game_id`". No entanto, é importante observar que esse índice não impõe restrições de chave estrangeira, como um índice primário ou exclusivo faria.
+
 ### O que São Índices
 
 ### Como Criar Índices
@@ -530,17 +550,62 @@ O trecho "`ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci`" é u
     - `ENGINE=InnoDB`**:** o `InnoDB` é um dos motores de armazenamento disponíveis no MySQL. Ele oferece suporte a transações ACID (Atomicidade, Consistência, Isolamento e Durabilidade), o que é crucial para integridade e a confiabilidade dos dados em sistemas de banco de dados.
 
 2. `CHARSET` **(Conjunto de Caracteres):**\
-    - `DEFAULT CHARSET=latin1`**:** define o conjunto de caracteres padrão para a tabela. Neste caso, é o conjunto de caracteres "`latin1`". Isso determina como os dados de texto são amarzenados e interpretados.
+    - `DEFAULT CHARSET=latin1`**:** define o conjunto de caracteres padrão para a tabela. Neste caso, é o conjunto de caracteres "`latin1`". Isso determina como os dados de texto são amarzenados e interpretados;
+    - `DEFAULT CHARSET=utf8mb4`**:** o conjunto de caracteres `utf8mb4` é uma extensão do conjunto de caracteres `utf8` que suporta caracteres fora do Plano Multilíngue Básico (BMP), ele é frequentemente recomendado para lidar com uma ampla gama de caracteres.
 
 3. `COLLATE` **(Ordenação e Comparação de Caracteres):**\
-    - `COLLATE-latin1_swedish_ci`**:** o `COLLATE` define a ordenação e comparação de caracteres para operações como ordenação e comparação de strings. Neste exemplo, `latin1_swedish_ci` especifica uma ordenação (collation) que é case-insensitive (ci) e segue as regras de ordenação do alfabeto sueco (swedish). Isso significa que as comparações de strings serão insensíveis a maiúsculas e minúnculas, e a ordenação seguirá as regras do alfabeto sueco.
+    - `COLLATE=latin1_swedish_ci`**:** o `COLLATE` define a ordenação e comparação de caracteres para operações como ordenação e comparação de strings. Neste exemplo, `latin1_swedish_ci` especifica uma ordenação (collation) que é case-insensitive (ci) e segue as regras de ordenação do alfabeto sueco (swedish). Isso significa que as comparações de strings serão insensíveis a maiúsculas e minúnculas, e a ordenação seguirá as regras do alfabeto sueco;
+    - `COLLATE=utf8mb4_general_ci`**:** neste caso, o conjunto de caracteres é `utf8mb4`, que suporta uma ampla variedade de caracteres, incluindo emojis e caracteres especiais; `ci`, indica que a comparação de caracteres é insensível a maiúsculas e minúsculas (case-insensitive).
 
 Essas configurações são importantes porque afetam como os dados são armazenados e manipulados no nível do banco de dados. A escolha do motor de armazenamento pode influenciar o desempenho e as capacidades transacionais, enquanto o conjunto de caracteres e a ordenação afetam diretamente a manipulação de dados de texto.\
-Certifique-se de escolher o conjunto de caracteres e a ordenação apropriados para os requisitos do seu aplicativo e de entender as características do motor de armazenamento escolhido em termos de transações, bloqueios e outros recursos relacionados ao gerenciamento de dados.
+Certifique-se de escolher o conjunto de caracteres e a ordenação apropriados para os requisitos do seu aplicativo e de entender as características do motor de armazenamento escolhido em termos de transações, bloqueios e outros recursos relacionados ao gerenciamento de dados.\
+Outra configuração é a `AUTO_INCREMENT`, especificada também após os parênteses no momento de criação da tabela. Vamos exemplificar esta configuração para facilitar a sua compreensão:
+
+`AUTO_INCREMENT = 110`
+
+Isto indica que a coluna auto incrementada começará a contar a partir do valor 110. Quer dizer então que essa configuração é usada em colunas do tipo `AUTO_INCREMENT` em MySQL e significa que o valor dessa coluna será automaticamente incrementado para cada novo registro inserido na tabela.\
+Isso significa que quando você inserir um novo registro na tabela e não fornecer um valor específico para a coluna auto incrementada, o MySQL irá automaticamente atribuir um valor incremental começando em 110 e, em seguida, aumentando para 111, 112 e assim por diante para cada nova inserção.\
+Essa funcionalidade é frequentemente utilizada para criar chaves primárias únicas e incrementadas automaticamente em tabelas, facilitando a identificação única de cada registro na tabela.
+É importante notar que em um campo auto incremental, caso você não especifique um valor, o maior valor é considerado como o anterior; além de que, considerando o caso acima, você pode especificar um valor menor que 110, mas caso você não o especifique, o MySQL contará a partir dele. Ou seja, não é uma restrição, mas uma especificação que o MySQL deve seguir, você não.
+
+### Propriedades do MySQL
+
+No MySQL, cada tabela pode ter apenas uma coluna auto incremental, normalmente ela é uma chave primária.
 
 # <a name = "notacao-e-referencias-a-objetos-no-sql"></a>Notação e Referências a Objetos no SQL
 
+Para entender melhor o funcionamento deste tópico, considere o código abaixo:
 
+```sql
+CREATE TABLE `stand_games_set` (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `game_id` int(11) NOT NULL,
+    `game_set` varchar(50) DEFAULT NULL,
+    `created` datetime NOT NULL DEFAULT current_timestamp(),
+    PRIMARY KEY (`id`),
+    KEY `fk_stand_game_id` (`game_id`),
+    CONSTRAINT `fk_stand_game_id` FOREIGN KEY (`game_id`) REFERENCES `oriongames_testnew`.`stand_games` (`u_id`) ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=110 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+```
+
+Em `\`CONSTRAINT \`fk_stand_game_id\` FOREIGN KEY (\`game_id\`) REFERENCES \`oriongames_testnew\`.\`stand_games\` (\`u_id\`)`, você consegue identificar que `oriongames_testnew` é outro banco de dados por causa da notação de ponto.\
+No contexto do SQL, a notação com ponto (`.`) é geralmente usada para separar o nome do banco de dados, o nome da tabela e o nome da coluna. Portanto, em uma notação típica:
+
+`banco_de_dados.tabela.coluna`
+
+Ou seja, considerando o recorte de código acima:
+
+- `oriongames_testnew`**:** é o nome do banco de dados;
+- `stand_games`**:** é o nome da tabela dentro desse banco de dados;
+- `u_id`**:** é nome da coluna na tabela `stand_games` (observe que no código em questão esta coluna está entre parênteses, fugindo da notação típica).
+
+Tenha em mente que a capacidade de referenciar objetos (tabelas, colunas) em diferentes bancos de dados pode depender das configurações específicas do SGBD e das permissões concedidas ao usuário que executa as consultas. Certifique-se de que seu SGBD suporta essa funcionalidade e de que você têm as permissões adequadas para criar chaves estrangeiras entre bancos de dados.\
+Um exemplo, no Amazon RDS (Relational Database Service), que é um serviço gerenciado de banco de dados na AWS, o acesso e a intereção entre bancos de dados em instâncias RDS podem ser restritos devido à natureza do serviço e às melhores práticas de segurança.\
+Em um ambiente tradicional do MySQL, você pode ter mais flexibilidade em termos de referenciar objetos (tabelas, colunas) em diferentes bancos de dados. No entanto, ao usar o Amazon RDS, geralmente é recomendado manter bancos de dados separados para diferentes aplicativos ou finalidades, e a comunicação direta entre bancos de dados pode ser limitada por razões de segurança.\
+Portanto, a capacidade de referenciar objetos entre bancos de dados em instâncias RDS pode ser restrita. Se precisar realizar operações que envolvam dados em diferentes bancos de dados, pode ser necessário considerar outras abordagens, como replicação de dados ou a realização das operações em seu aplicativo antes de persistir os dados.\
+
+É interessante pontuar que mesmo que você tenha mais de uma instância de banco de dados que compartilham o mesmo host ou endpoint, cada instância de banco de dados no Amazon RDS é isolada e executada em seu próprio ambiente virtualizado.\
+Dentro do Amazon RDS, as instâncias de banco de dados são projetadas para sempre independentes e isoladas para garantir a integridade e o desempenho de cada instância. Portanto, elas não compartilham recursos ou dados automaticamente, cada instância tem seu próprio espaço de banco de dados, credenciais e configurações.
 
 # <a name = "clausula-alter"></a>Cláusula `ALTER`
 
@@ -778,3 +843,7 @@ Neste caso, `1062` é o código de erro, e `(23000)` é uma indicação adiciona
 5. `are incompatible`**:** indica que há alguma incompatibilidade entre a coluna `place_id` e a coluna `id` no contexto dessa chave estrangeira.
 
 A incompatibilidade pode ser devido a diferentes tipos de dados, tamanhos ou configurações das colunas. Para resolver isso, precisamos garantir que as colunas correspondam exatamente em termos de tipo de dado, tamanho e outras configurações relevantes.
+
+### `ERROR 1824 (HY000): Failed to open the referenced table 'stand_games'`
+
+Indica que houve uma tentativa de criar ou modificar uma tabela com uma restrição de chave estrangeira (`FOREIGN KEY`) que faz referência a uma tabela que não pôde ser aberta.
