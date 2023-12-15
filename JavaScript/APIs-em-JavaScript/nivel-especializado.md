@@ -111,3 +111,33 @@ Os dois pontos são usados para delimitar essas partes e garantir que a interpre
 Considerando ainda que quando você cria um ARN, em muitos contextos, alguns campos como `region` e `account-id` podem ser preenchidos automaticamente com base na configuração da sua conta AWS ou contexto em que o ARN está sendo usado.\
 Por exemplo, se você estiver criando um ARN para um recurso dentro da mesma conta e região que você está trabalhando, muitas vezes a região e o ID da conta serão automaticamente preenchidos com os valores correspondentes à sua configuração atual.\
 No entanto, é sempre bom verificar a documentação específica do serviço da AWS ou da ferramenta que você está usando para garantir que todos os campos estejam corretos, especialmente se você estiver maipulando ARNs em um contexto mais avançado ou específico.
+
+### Políticas Gerenciadas pela AWS x Políticas Personalizadas
+
+Existem dois tipos principais de políticas no serviço IAM da AWS:
+
+1. Políticas gerenciadas pela AWS:
+    - Essas políticas são criadas e gerenciadas pela AWS;
+    - A AWS fornece um conjunto de políticas predefinidas para serviços específicos;
+    - As políticas gerenciadas pela AWS são mantidas e atualizadas pela AWS, e você não tem controle direto sobre sua definição.
+2. Políticas personalizadas:
+    - Essas políticas são criadas por você, oferecendo controle total sobre sua definição;
+    - Você pode criar políticas personalizadas para atender a requisitos específicos da sua aplicação ou organização;
+    - Políticas personalizadas podem ser anexadas a usuários, grupos ou funções no IAM.
+
+Portanto, a diferença principal reside na origem e no controle das políticas. As gerenciadas pela AWS são fornecidas pela AWS, enquanto as políticas personalizadas são criadas e gerenciadas por você, oferecendo mais flexibilidade e personalização.
+
+- sequelize.findOne();
+- new Date();
+- date.getTime();
+- instanceof;
+- Object Literal Module Pattern;
+- Arquivo de indexação;
+- SHOW CREATE TABLE;
+- operações matemáticas envolvendo undefined;
+- Tipos de dados em SQL;
+- ERROR 1067 (42000): Invalid default value for coluna (erro SQL);
+- Modificando mais de uma coluna de uma só vez;
+- Erro: O MySQL considera '0000-00-00' como uma data inválida, pois não corresponde a uma data real no calendário Gregoriano;
+- Removendo uma coluna de uma tabela;
+- Toda vez que uma coluna é criada em uma tabela existente, o valor default dela é aplicado para todos os registro existentes?
