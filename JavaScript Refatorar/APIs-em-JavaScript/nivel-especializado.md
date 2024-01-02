@@ -141,3 +141,27 @@ Portanto, a diferença principal reside na origem e no controle das políticas. 
 - Erro: O MySQL considera '0000-00-00' como uma data inválida, pois não corresponde a uma data real no calendário Gregoriano;
 - Removendo uma coluna de uma tabela;
 - Toda vez que uma coluna é criada em uma tabela existente, o valor default dela é aplicado para todos os registro existentes?
+- Porque o Takeshi não conseguiu acessar a minha máquina através do `ngrok http 8080`?
+- zoe-game-api, `helpers/debug.js`:
+
+```JavaScript
+var util = require('util')
+
+module.exports = function debug() {
+	var d = process.env.DEBUG || process.env.TEST || false
+	var final, messages, result = []
+	if (d) {
+		messages = Array.prototype.slice.call(arguments)
+		messages.forEach(function (m) {
+			if (Array.isArray(m) || typeof m == 'object') {
+				result.push(util.inspect(m, {depth: null}).replace(/\s\s/g, ''))
+			} else {
+				result.push(m)
+			}
+		})
+		console.log(result.join(' ').replace(/\n/g, ''))
+	}
+}
+```
+
+- `settings.accumulated_amount < settings.accumulated_min_amount * 1e6`?
