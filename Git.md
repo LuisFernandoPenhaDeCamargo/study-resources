@@ -7,7 +7,7 @@ Ao tentar clonar um repositório remoto privado me foi pedido o "Username" e o "
 
 - "`remote: Support for password authentication was removed on August 13, 2021.`"
 - "`remote: Please see https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls for information on currently recommended modes of authentication.`" (há a documentação em português)
-- "`fata: Authentication failed for URL_do_repositório_privado`"
+- "`fatal: Authentication failed for URL_do_repositório_privado`"
 
 To do**:** 
 
@@ -22,6 +22,9 @@ Lembre-se de que antes de realizar um `git pull`, é sempre uma boa prática gar
 
 ### Código
 
-Sempre pontuar a **sintaxe básica** do comando. Exemplo:\
+Sempre pontuar a **sintaxe básica** do comando. Exemplo:
+
+```markdown
 `sintaxe básica`**:** descrição básica.\
 Mais informações.
+```
