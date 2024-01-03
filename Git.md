@@ -24,7 +24,7 @@ Lembre-se de que antes de realizar um `git pull`, é sempre uma boa prática gar
 
 Sempre pontuar a **sintaxe básica** do comando. Exemplo:
 
-```
+\```
 `sintaxe básica`**:** descrição básica.\
 Mais informações.
-```
+\```
