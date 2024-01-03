@@ -197,26 +197,6 @@ Em Markdown, você pode formatar citações usando o caractere `>` (sinal de mai
 >>> Nível 3 da citação.
 ```
 
-# <a id = "tabelas"></a>Tabelas.
-
-Pipes (barras verticais, `|`) delimitam colunas e traços (`-`) criam uma linha de cabeçalho separada das linhas de conteúdo. O número mínimo de traços para construir essa estrutura é três, mas você pode utilizar mais traços para ajudar na compreensão em código.\
-Dois pontos (`:`) definem o alinhamento, que por padrão é a esquerda.\
-Exemplo:
-
-```markdown
-| Cabeçalho à esquerda | Cabeçalho centralizado | Cabeçalho à direita |
-|:---|:---:|---:|
-| Alinhado à esquerda | Alinhado ao centro | Alinhado à direita |
-| mais | uma | coluna |
-```
-
-Saída:
-
-| Cabeçalho à esquerda | Cabeçalho centralizado | Cabeçalho à direita |
-|:---|:---:|---:|
-| Alinhado à esquerda | Alinhado ao centro | Alinhado à direita |
-| mais | uma | coluna |
-
 # <a id = "tooglelist"></a>Toogle list.
 
 - `<summary></summary>`**:** título do bloco. No caso do bloco de alternância é ele que aparecerá quando o bloco estiver fechado;
