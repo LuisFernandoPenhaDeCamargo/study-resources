@@ -11,7 +11,17 @@ Ao tentar clonar um repositório remoto privado me foi pedido o "Username" e o "
 
 To do**:** 
 
+---
+
 `git pull origin seu_branch`**:** atualiza o repositório local.\
 Se você estiver no branch principal (geralmente chamdo de "main" ou "master"), pode usar o comando mais simples `git pull origin main`. Isso assume que o repositório remoto é chamado "origin" e o branch principal é chamado "main".\
 O `git pull` realiza duas operações em conjunto: ele faz o `git fetch`, que obtém as alterações do repositório remoto, e em seguinda realiza o `git merge`, que incorpora essas alterações ao seu branch local.\
 Lembre-se de que antes de realizar um `git pull`, é sempre uma boa prática garantir que não há alterações não confirmadas no seu branch local para evitar possíveis conflitos. Se houver alterações não confirmadas, você pode confirmá-las ou descartá-las antes de realizar o `git pull`.
+
+## Template
+
+### Código
+
+Sempre pontuar a **sintaxe básica** do comando. Exemplo:\
+`sintaxe básica`**:** descrição básica.\
+Mais informações.
