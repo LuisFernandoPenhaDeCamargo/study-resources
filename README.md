@@ -1,20 +1,16 @@
 # Notas para Mim Mesmo
 
+Anotação sobre tensão e espirais
+
 - Saiba dosar o quanto você deve imergir em uma tecnologia específica, para não se apronfundar sem necessidade, considerando que o mundo está inundado de informação
 - Como eu vou organizar as minhas anotações? Vou criar um repositório para cada tecnologia?
 
-- Compilado x interpretado
++ Criar um serviço que abre as aplicações que eu uso assim que eu inicio o sistema
++ Criar um script que realiza commits antes de desligar a minha máquina
++ Criar um volume criptografado com o LUKS?
++ Criar uma aplicação e executá-la através do Docker
 
-- Criar um serviço que abre as aplicações que eu uso assim que eu inicio o sistema
-- Criar uma aplicação e executá-la através do Docker
-- Atualizar meu LinkedIn
-- Colocar a Pós em dia
-- Anotação sobre as irritações de pele
-- Anotações sobre correr de tênis e sem meia
-
-- Anotações sobre segurança e a quebra dela nos kits (Mauricio)
 - O que nos disponibilizamos aos nossos clientes? (contexto da Orion)
-- Como ocorre a quebra de segurança para furto do código do jogo ou dos arquivos da gráfica? (contexto da Orion)
 
 # Estudar
 
@@ -57,19 +53,30 @@ Provavelmente deve ter um index UNIQUE na tabela.
 
 # Ordem de Estudo do Conteúdo
 
-Markdown é uma linguagem de marcação, TermosTI é um tipo de glossário e o Template especifica como está formatado os arquivos no aspecto estrutural. Eles podem ser estudados e consultados fora da ordem.
+Markdown é uma linguagem de marcação, TermosTI é um tipo de glossário e o Template especifica como está formatado os arquivos no aspecto estrutural. Eles podem ser estudados e consultados fora da ordem. O Hardware.md também pode ser estudado sem seguir a ordem linear.
 
-- [SistemaOperacional.md](SistemaOperacional.md#sistema-operacional)
+- [SistemaOperacional.md](SistemaOperacional.md#sumario)
+    + Resumo do Conteúdo
+    + Sistema Operacional
     + Kernel
     + Unix-like
-    + Serviços
-    + systemctl
-    + Daemon
-    + LUKS
-    + Diagrama de Inicialização de Um Sistema Computacional
+        - Serviços
+        - systemctl
+        - Daemon
+        - Diretórios Específicos
+    + Linux
+        - GRUB
+        - Diagrama de Inicialização de Um Sistema Computacional
+        - LUKS
+        - Shell
+            + Bash
 - [Terminal.md](Terminal.md#terminal)
+- [LinguagensProgramacao](LinguagensProgramacao.md#linguagens-programacao)
 - [Markdown.md](Markdown.md#markdown)
 - [Git.md](Git.md#git)
 - [Docker.md](Docker.md#docker)
 - [TermosTI.md](TermosTI.md#termor-ti)
+- [Hardware.md](Hardware.md#hardware)
+    + Placa-mãe
+    + FRAM
 - [Template.md](Template.md#template)

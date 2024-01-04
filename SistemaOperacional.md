@@ -1,14 +1,50 @@
-### Sumário
+### <a name = "sumario"></a>Sumário
+- [Resumo do Conteúdo](#resumo-conteudo)
+- [Sistema Operacional](#sistema-operacional)
+- [Kernel](#kernel)
+- [Unix-like](#unix-like)
+    + [Serviços](#servicos)
+    + [systemctl](#systemctl)
+    + [Daemon](#daemon)
+    + [Diretórios Específicos](#diretorios-especificos)
+- Linux
+    + [GRUB](#grub)
+    + [Diagrama de Inicialização de Um Sistema Computacional](#diagrama-inicializacao-sistema-operacional)
+    + [LUKS](#luks)
+    + [Shell](#shell)
 
-- [Kernel]()
-- [Unix-like]()
-- [Serviços]()
-- [systemctl]()
-- [Daemon]()
-- [LUKS]()
-- [Diagrama de Inicialização de Um Sistema Computacional]()
+# <a id = "resumo-conteudo"></a>Resumo do Conteúdo
 
-# <a name = "sistema-operacional"></a> Sistema Operacional
+1. **BIOS/UEFI:**
+    - Inicializa o hardware
+    - Fornece um ambiente básico para a inicialização do SO
+    - Carrega o bootloader
+2. **GRUB:**
+    - Carrega o kernel na memória RAM
+    - Permite ao usuário escolher o SO ou configuração de kernel a ser inicializado
+3. **Kernel:**
+    - Gerencia o hardware
+    - Fornece uma interface entre o software e o hardware
+    - Inicializa o SO
+    - Pode iniciar o systemd (ou outro sistema de inicialização)
+4. **Systemd (ou init):**
+    - Inicializa os componentes do SO
+    - Gerencia os serviços em segundo plano (daemons) e outros processos
+    - Fornece uma variedade de recursos de gerenciamento de sistema
+5. **Durante a execução do sistema:** serviços e daemons estão em execução em segundo plano, fornecendo funcionalidade específicas
+6. **Systemctl:**
+    - Gerenciador de serviços utilizado no systemd
+    - Permite iniciar, parar, reiniciar e gerenciar serviços no sistema
+7. **LUKS:**
+    - Ferramenta para criação de volumes criptográficos
+    - Usado para proteger dados sensíveis por meio de criptografia
+8. **Shell:**
+    - Interface de linha de comando que permite aos usuários interagirem com o SO
+    - Pode ser usado para executar comandos, scripts e interagir diretamente com o sistema
+
+A partição de boot contém o GRUB, o Kernel e outros arquivos essenciais para a inicialização.
+
+# <a id = "sistema-operacional"></a> Sistema Operacional
 
 Um sistema operacional (SO) é um software fundamental que atua como uma interface entre o hardware do computador e os programas da aplicação. Ele desempenha diversar funções essenciais para o funcionamento do sistema computacional como um todo. Aqui estão algumas das principais finalidades de um sistema operacional:
 
@@ -32,7 +68,7 @@ Um sistema operacional (SO) é um software fundamental que atua como uma interfa
 
 Em resumo, um sistema operacional é uma camada essencial de software que permite que os aplicativos sejam executados em um computador, fornecendo abstração de hardware, gerenciamento de recursos, segurança e outras funcionalidades críticas para o funcionamento eficiente de um sistema computacional.
 
-# Kernel
+# <a id = "kernel"></a>Kernel
 
 O kernel é uma parte central e essencial de uma sistema operacional (SO). Ele é responsável por gerenciar recursos de hardware e fornecer serviços básicos para os aplicativos e outros compenentes do SO. Aqui estão algumas das principais funções e finalidades do kernel:
 
@@ -81,7 +117,7 @@ Como podemos ver, as listas de características são muito similares, a diferen�
 
 Em resumo, o SO é uma entidade mais ampla que inclui não apenas o kernel, mas também outros componentes essenciais que fornecem uma experiência completa de computação. O kernel, por outro lado, é uma parte central do sistema operacional que lida diretamente com o gerenciamento de recursos de hardware e fornece uma base para o restante do SO. SO é a soma total de todos os componentes, enquanto o kernel é a parte central que lida com o núcleo das operações do sistema.
 
-# Unix-like
+# <a id = "unix-like"></a>Unix-like
 
 O termo "Unix-like" refere-se a sistemas operacionais (SOs) que compartilham características ou conceitos fundamentais com o SO Unix original. O Unix é um SO desenvolvido na década de 1970 no Bell Labs da AT&T e se tornou uma referência em SOs multiusuários e multitarefa, conhecido por sua eficiência, flexibilidade e robustez.
 
@@ -102,7 +138,7 @@ Exemplos de SOs Unix-like incluem:
 
 Esses SOs Unix-like são conhecidos pela sua estabilidade, segurança e flexibilidade, e são amplamente utilizados em servidores, desktops, dispositivos embarcados e em várias outras áreas.
 
-## Serviços
+## <a id = "servicos"></a>Serviços
 
 Um serviço, no contexto de sistemas operacionais (SOs) Unix-like, é um programa ou aplicativo que é executado em segundo plano e fornece funcionalidades específicas para o sistema ou para os usuários. Esses serviços podem variar desde processos essenciais ao sistema até aplicativos de terceiros. Aqui estão algumas características e exemplos de serviços:
 
@@ -119,7 +155,7 @@ Um serviço, no contexto de sistemas operacionais (SOs) Unix-like, é um program
 
 Em resumo, um serviço em SOs Unix-like é uma entidade que fornece funcionalidades específicas para o sistema ou para os usuários, e é geralmente gerenciado por ferramentas como o systemctl em sistemas que utilizam o systemd.
 
-## systemctl
+## <a id = "systemctl"></a>systemctl
 
 **O systemctl é uma ferramenta de controle e gerenciamento de serviços no sistema operacional Linux. Ela é parte do sistema de inicialização systemd**, que é amplamente adotado por muitras distribuições Linux modernas. O systemctl permite aos usuários e administradores controlar os serviços do sistema, examinar seu status e configurar sua inicialização. Aqui estão algumas das principais funcionalidades do systemctl:
 
@@ -150,7 +186,7 @@ Em resumo, um serviço em SOs Unix-like é uma entidade que fornece funcionalida
 
 O systemctl oferece uma interface poderosa para gerenciar serviços no contexto do sistema systemd. Isso facilita a administração e o monitoramento de serviços no Linux e é amplamente utilizado em distribuições que adotaram o systemd, como o Ubuntu a partir da versão 15.04, Fedora, CentOS 7 e outras.
 
-## Daemon
+## <a id = "daemon"></a>Daemon
 
 Um "daemon" (ou "demon") é um tipo de programar de computador que é executado em segundo plano, muitas vezes como um serviço, sem a necessidade de interação direta com um usuário. Daemons são comumente encontrados em sistemas operacionais Unix-like, incluindo Linux.\
 Principais características de daemons:
@@ -188,9 +224,66 @@ A confusão pode ocorrer porque daemons, sendo programas em segundo plano, muita
 
 Em resumo, um serviço pode envolver a presença de daemons, mas nem todo daemon é necessariamente um serviço isolado. A distinção entre os termos pode variar dependendo do contexto específico do sistema operacional e da implementação.
 
-## LUKS
+## <a id = "diretorios-especificos"></a>Diretórios Específicos
 
-LUKS (Linux Unified Key Setup) é um padrão de especificação para a criptografia de disco em sistemas Linux. Ele é usado para criar volumes criptografados e é amplamente empregado para proteger a privacidade e segurança de dados armazenados em discos rígidos ou partições em sistemas Linux.\
+## /etc
+
+
+
+# Linux
+
+## <a id = "grub"></a>GRUB
+
+O GRUB, ou Grand Unified Bootloader, é um gerenciador de inicialização de código aberto amplamente utilizado em sistemas operacionais baseados (SOs) em Linux. Ele desempenha um papel crítico no processo de inicialização do sistema, permitindo que você escolha qual sistema operacional ou kernel do Linux inicializar quando o computador é ligado.\
+Aqui estão algumas características e funções principais do GRUB:
+
+1. **Menu de inicialização:** o GRUB exibe um menu de inicialização que permite ao usuário selecionar entre diferentes SOs instalados no computador. Ele pode mostrar opções para vários Kernels do Linux, SOs diferentes ou modos de inicialização específicos
+2. **Configuração flexível:** o GRUB é altamente configurável, permitindo que os usuários personalizem as opções de inicialização e os parâmetros do Kernel. Isso é útil, por exemplo, para modificar opções de inicialização do kernel do Linux ou escolher a partição específica do SO a ser inicializada
+3. **Compatibilidade com múltiplos sistemas operacionais:** além de SOs baseados em Linux, o GRUB também é capaz de inicializar outros SOs, como o Windows. Isso torna possível ter um menu de inicialização unificado para escolher entre diferentes SOs durante o processo de inicialização
+4. **Carregamento de imagens do kernel:** o GRUB é responsável por carregar a imagem do kernel do SO escolhido na memória RAM, preparando assim o sistema para a fase final da inicialização
+5. **Interface de linha de comando:** o GRUB oferece uma interface de linha de comando que permite aos usuários executar comandos diretamente a partir do prompt, facilitando a execução de tarefas específicas relacionadas ao gerenciamento de inicialização
+6. **Configuração por arquivo de configuração:** as configurações do GRUB são geralmente definidas em um arquivo de configuração, frequentemente chamado de grub.cfg. Este arquivo contém informações sobre os SOs instalados, opções de inicialização e configurações específicas
+
+O GRUB desempenha um papel fundamental em SOs Linux e é uma parte essencial do processo de inicialização, facilitando a escolha e a execução de SOs diferentes em um computador.
+
+## GRUB x BIOS
+
+O GRUB (Grand Unified Bootloader) e a BIOS (Basic Input/Output System) são componentes distintos que desempenham funções diferentes no processo de inicialização de um computador.
+
+- **GRUB (gerenciador de inicialização):**
+    + O GRUB é um software de código aberto usado em sistemas operacionais Unix-like, principalmente em sistemas baseados em Linux
+    + Sua função principal é carregar o sistema operacional no nomento da inicialização. Ele fornece um menu de inicialização que permite aos usuários escolher entre diferentes sistemas operacionais instalados no computador
+    + O GRUB é instalado no disco rígido e é executado após a BIOS ou UEFI iniciar o processo de inicialização
+- **BIOS (ou UEFI - Interface de Firmware Extensível Unificada):**
+    + A BIOS é um software embutido em um chip na placa-mãe do computador. No caso de sistemas mais modernos, a BIOS foi em grande parte substituída pela UEFI
+    + A BIOS (ou UEFI) tem a responsabilidade de inicializar o hardware do sistema e fornecer um ambiente básico para inicialização do sistema operacional. Isso inclui identificação e inicialização de dispositivos, como o processador, memória, e unidades de armazenamento
+    + A BIOS (ou UEFI) é o primeiro software a ser executado quando um computador é ligado, sua principal função é carregar o bootloader (como o GRUB) para iniciar o sistema operacional
+
+Em resumo, o GRUB é um componente do software que gerencia a escolha e o carregamento do sistema operacional, enquanto a BIOS ou UEFI é um componente de firmware que lida com a inicialização e o hardware básico do sistema. O GRUB é uma parte do processo que ocorre após a inicialização da BIOS ou UEFI.
+
+## <a id = "diagrama-inicializacao-sistema-operacional"></a>Diagrama de Inicialização de Um Sistema Computacional
+
+![inicializacao-unix-like](./Imagens/inicializacao-unix-like.png)
+
+A ordem típica de inicialização em sistemas baseados em Linux é mais ou menos assim:
+
+1. **BIOS ou UEFI:** quando você liga o computador, a BIOS ou UEFI é o primeiro software a ser executado. Sua função principal é inicializar e fornecer um ambiente básico para o hardware do sistema
+2. **GRUB (ou outro bootloader):**
+    - A BIOS ou UEFI, após a inicialização, procura pelo bootloader no dispositivo de inicialização configurado (geralmente o disco rígido). O GRUB é um exemplo comum de bootloader
+    - O GRUB exibe um menu de inicialização, permitindo que o usuário escolha qual sistema operacional (SO) ou configuração de kernel utilizar
+3. **Kernel:**
+    - Uma vez que o usuário seleciona a opção desejada no menu do GRUB, o GRUB carrega o kernel do SO escolhido na memória RAM
+    - O kernel é o núcleo do SO e assume o controle do sistema a partir deste ponto. Ele é responsável por inicializar o SO, gerenciar hardware, e fornecer uma interface entre software e hardware
+4. **Init (ou Systemd em sistemas mais modernos):**
+    - O kernel inicializa o processo init, que é o primeiro processo do sistema e serve como ancestral de todos os outros processos
+    - Em sistemas mais modernos, especialmente aqueles que utilizam o systemd, o init pode ser ser substituído pelo systemd, que é um sistema de inicialização e gerenciamento de sistema mais abrangente
+5. **User space:** após o systemd (ou init) iniciar, o SO entra no espaço do usuário, e os serviços e aplicativos podem ser carregados conforme necessário
+
+O GRUB atua como intermediário entre a BIOS/UEFI e o kernel, enquanto o systemd (ou init) gerencia o espaço do usuário após o kernel assumir o controle.
+
+## <a id = "luks"></a>LUKS
+
+LUKS (Linux Unified Key Setup) é um padrão de especificação para a **criptografia de disco em sistemas Linux**. Ele é usado para criar volumes criptografados e é amplamente empregado para proteger a privacidade e segurança de dados armazenados em discos rígidos ou partições em sistemas Linux.\
 Principais características do LUKS:
 
 1. **Criptografia de disco completo:** o LUKS é comumente usado para aplicar a criptografia de disco completo (FDE), garantindo que todos os dados no disco sejam criptografados
@@ -202,7 +295,7 @@ Principais características do LUKS:
 7. **Suporte ao kernel do Linux:** o suporte ao LUKS está integrado ao Kernel Linux, facilitando a utilização em distribuições Linux
 8. **Ferramentas de gerenciamento:** existem várias ferramentas de linha de comando e interfaces gráficas que facilitam a criação, formatação e gerenciamento de volumes criptografados usando o padrão LUKS
 
-Ao criar um volume LUKS, os dados são criptografados e protegidos por uma chave mestra. Essa chave mestra pode ser protegida por senhas ou outras formas de autenticação. Quando o sistema é iniciado, os usuários precisam fornecer a senha ou autenticação correspondente para desbloquear o volume criptografadi e permitir o acesso aos dados armazenados. Isso é particularmente útil para proteger os dados confidencias em laptops ou dispositivos de armazenamento externo.
+Ao criar um volume LUKS, os dados são criptografados e protegidos por uma chave mestra. Essa chave mestra pode ser protegida por senhas ou outras formas de autenticação. Quando o sistema é iniciado, os usuários precisam fornecer a senha ou autenticação correspondente para desbloquear o volume criptografado e permitir o acesso aos dados armazenados. Isso é particularmente útil para proteger os dados confidencias em laptops ou dispositivos de armazenamento externo.
 
 Quando você utiliza o LUKS para configurar um dispositivo de armazenamento (como um disco rígido ou um arquivo, como no exemplo), ele criptografa todo o conteúdo desse dispositivo.\
 Aqui estão os passos básicos:
@@ -219,11 +312,12 @@ Exemplo de aplicação prática do LUKS:
 
 ![LUKS-pratico](./Imagens/LUKS-pratico.png)
 
-## Diagrama de Inicialização de Um Sistema Computacional
+**Pela minha compreensão**, no caso de você decidir criptografar todo o sistema (com exceção do GRUB, pois ele inicia o sistema computacional, por isso não é possível, ou faz sentido, criptografá-lo), antes do sistema começar a realizar o boot, a chave mestra será requerida. Após isso, você pode utilizar o conteúdo sem se preocupar com nada, qualquer alteração será salva com o seu conteúdo já criptografado.\
+Ele faz isso de forma **transparente**, isso quer dizer que você consegue utilizar todo o conteúdo sem se preocupar em criptografá-lo ou descriptografá-lo, o LUKS cuida de tudo.\
+Basicamente, ele cria um volume seguro e lá você guarda o que você quer proteger. Considerando que você pode precisar "montar" o volume para acessá-lo, neste caso, ele trata este volume como um pen drive, por exemplo, por isso utiliza o diretório /dev/ (devices).
 
-GRUB -> Dos x UEFI
-Placa Mãe
-Bios
-Read only
-FRAM
-O diretório etc é padrão para um SO Unix-like ou para um SO Linux? Sobre o que ele se trata?
+## <a id = "shell"></a><>Shell
+
+Shells são interfaces de linha de comando que permitem o usuário interagir com o sistema operacional atráves de comandos de texto.
+
+Bash (Bourne-Again SHell) é um tipo de Shell presente em distribuições Linux. Considerado um dos shells mais poderosos para Linux, ele fornece uma grande quantidade de ferramentas, como comando de histórico, auto complete com o tab e scripts. Ele é altamente configurável, você pode ajustá-lo de acordo com as suas necessidades individuais.
