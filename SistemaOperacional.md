@@ -207,7 +207,7 @@ Normalmente em ambientes reais, o volume criptografado criado pelo LUKS é aplic
 
 Exemplo de aplicação prática do LUKS:
 
-![LUKS-pratico](./Imagen/LUKS-pratico.png)
+![LUKS-pratico](./Imagens/LUKS-pratico.png)
 
 ##
 
