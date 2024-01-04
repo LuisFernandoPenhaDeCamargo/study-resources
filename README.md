@@ -3,6 +3,8 @@
 - Saiba dosar o quanto você deve imergir em uma tecnologia específica, para não se apronfundar sem necessidade, considerando que o mundo está inundado de informação
 - Como eu vou organizar as minhas anotações? Vou criar um repositório para cada tecnologia?
 
+- Compilado x interpretado
+
 - Criar um serviço que abre as aplicações que eu uso assim que eu inicio o sistema
 - Criar uma aplicação e executá-la através do Docker
 - Atualizar meu LinkedIn

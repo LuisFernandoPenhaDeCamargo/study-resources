@@ -205,6 +205,10 @@ A criptografia de disco completo é uma medida de segurança valiosa, especialme
 
 Normalmente em ambientes reais, o volume criptografado criado pelo LUKS é aplicado a um disco rígido inteiro.
 
+Exemplo de aplicação prática do LUKS:
+
+![LUKS-pratico](Imagen/LUKS-pratico.png)
+
 ##
 
 O diretório etc é padrão para um SO Unix-like ou para um SO Linux? Sobre o que ele se trata?
