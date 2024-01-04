@@ -1,3 +1,13 @@
+### Sumário
+
+- [Kernel]()
+- [Unix-like]()
+- [Serviços]()
+- [systemctl]()
+- [Daemon]()
+- [LUKS]()
+- [Diagrama de Inicialização de Um Sistema Computacional]()
+
 # <a name = "sistema-operacional"></a> Sistema Operacional
 
 Um sistema operacional (SO) é um software fundamental que atua como uma interface entre o hardware do computador e os programas da aplicação. Ele desempenha diversar funções essenciais para o funcionamento do sistema computacional como um todo. Aqui estão algumas das principais finalidades de um sistema operacional:
@@ -209,7 +219,7 @@ Exemplo de aplicação prática do LUKS:
 
 ![LUKS-pratico](./Imagens/LUKS-pratico.png)
 
-##
+## Diagrama de Inicialização de Um Sistema Computacional
 
 GRUB -> Dos x UEFI
 Placa Mãe
