@@ -211,4 +211,9 @@ Exemplo de aplicação prática do LUKS:
 
 ##
 
+GRUB -> Dos x UEFI
+Placa Mãe
+Bios
+Read only
+FRAM
 O diretório etc é padrão para um SO Unix-like ou para um SO Linux? Sobre o que ele se trata?

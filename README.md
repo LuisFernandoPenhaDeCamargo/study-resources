@@ -66,6 +66,7 @@ Markdown é uma linguagem de marcação, TermosTI é um tipo de glossário e o T
     + systemctl
     + Daemon
     + LUKS
+    + Diagrama de Inicialização de Um Sistema Computacional
 - [Terminal.md](Terminal.md#terminal)
 - [Markdown.md](Markdown.md#markdown)
 - [Git.md](Git.md#git)
