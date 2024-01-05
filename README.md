@@ -1,7 +1,5 @@
 # Notas para Mim Mesmo
 
-Anotação sobre tensão e espirais
-
 - Saiba dosar o quanto você deve imergir em uma tecnologia específica, para não se apronfundar sem necessidade, considerando que o mundo está inundado de informação
 - Como eu vou organizar as minhas anotações? Vou criar um repositório para cada tecnologia?
 
@@ -63,6 +61,8 @@ Markdown é uma linguagem de marcação, TermosTI é um tipo de glossário e o T
         - Serviços
         - systemctl
         - Daemon
+        - Execução em Primeiro e Segundo Plano
+        - Permissões de Acesso a Arquivos e Diretórios
         - Diretórios Específicos
     + Linux
         - GRUB
@@ -70,7 +70,8 @@ Markdown é uma linguagem de marcação, TermosTI é um tipo de glossário e o T
         - LUKS
         - Shell
             + Bash
-- [Terminal.md](Terminal.md#terminal)
+            + Scripts
+- [Shell.md](Terminal.md#shell)
 - [LinguagensProgramacao](LinguagensProgramacao.md#linguagens-programacao)
 - [Markdown.md](Markdown.md#markdown)
 - [Git.md](Git.md#git)

@@ -6,12 +6,16 @@
     + [Serviços](#servicos)
     + [systemctl](#systemctl)
     + [Daemon](#daemon)
+    + [Execução em Primeiro e Segundo Plano](#execucao-primeiro-segundo-plano)
+    + [Permissões de Acesso a Arquivos e Diretórios](#permissoes-acesso-arquivos-diretorios)
     + [Diretórios Específicos](#diretorios-especificos)
 - Linux
     + [GRUB](#grub)
     + [Diagrama de Inicialização de Um Sistema Computacional](#diagrama-inicializacao-sistema-operacional)
     + [LUKS](#luks)
     + [Shell](#shell)
+        - Bash
+        - [Scripts](#scripts)
 
 # <a id = "resumo-conteudo"></a>Resumo do Conteúdo
 
@@ -41,6 +45,8 @@
 8. **Shell:**
     - Interface de linha de comando que permite aos usuários interagirem com o SO
     - Pode ser usado para executar comandos, scripts e interagir diretamente com o sistema
+9. **Scripts:** conjunto de instruções escritas em linguagem de script (alto nível)
+10. **Foreground/Background:** programas em Foreground normalmente bloqueiam o uso do terminal e programas em Background não
 
 A partição de boot contém o GRUB, o Kernel e outros arquivos essenciais para a inicialização.
 
@@ -224,11 +230,46 @@ A confusão pode ocorrer porque daemons, sendo programas em segundo plano, muita
 
 Em resumo, um serviço pode envolver a presença de daemons, mas nem todo daemon é necessariamente um serviço isolado. A distinção entre os termos pode variar dependendo do contexto específico do sistema operacional e da implementação.
 
+## <a id = "execucao-primeiro-segundo-plano"></a> Execução em Primeiro e Segundo Plano
+
+A execução em primeiro ou segundo plano em sistemas Unix-like, está relacionada à forma como os processos são gerenciados. Vamos entender a diferença entre esses dois conceitos:
+
+- **Primeiro plano (Foreground):**
+    + Quando um programa é executado em primeiro plano, ele está na frente e tem controle direto do terminal. Isso significa que ele ocupa a tela e interage diretamente com o usuário
+    + O processo em primeiro plano geralmente bloqueia o terminal até que seja concluído ou interrompido (por exemplo, pressionando `CTRL+C` para interromper a execução)
+    + O usuário pode interagir diretamente com um programa em primeiro plano enquanto ele está sendo executado
+- **Segundo plano (Background):**
+    + Quando um programa é executado em segundo plano, ele ainda está em execução, mas não está ocupando o terminal. Isso permite que o usuário continue a usar o terminal para outras tarefas enquanto o programa em segundo plano executa em segundo plano
+    + O processo em segundo plano não bloqueia o terminal e não requer interação direta com o usuário
+    + Para iniciar um programa em segundo plano, você pode usar o caractere ampersand, ou "e comercial" ("`&`"), no final do comando. Isso informa ao shell para executar o comando em segundo plano.
+
+A diferença entre primeiro e segundo plano é relevante quando você executa comandos no terminal. Se você iniciar um programa em primeiro plano sem usar o `&`, o terminal ficará bloqueado até que o programa termine. Se você usar `&` no final do comando, o programa será iniciado em segundo plano, permitindo que você continue usando o terminal para outros comandos.\
+Uma forma interessante de observar isso é executar o comando `discord` com e sem o `&`. Sem o `&` o terminal realmente fica bloqueado e você não pode executar nenhum comando, até você fechar a aplicação do Discord que está aberta (fechar a janela).\
+Observando que o terminal estar ou não bloqueado, não significa que as mensagens de log não serão impressas nele. A saída padão (stdout) e a saída de erro (stderr) do programa ainda estarão associadas ao terminal. Portanto, os logs do programa serão exibidos no terminal, mesmo que você possa continuar interagindo com ele para inserir outros comandos.
+
+## <a id = "permissoes-acesso-arquivos-diretorios"></a> Permissões de Acesso a Arquivos e Diretórios
+
+Ao criar um novo arquivo, as permissões padrões geralmente são definidas para permitir leitura e escrita. `rw-r--r--`, leitura e escrita ("read" e "write") para o proprietário, leitura para o grupo e para os outros (respectivamente).\
+Da esquerda para a direita, proprietário, grupo e outros, três posições, no caso acima, para o proprietário `rw-`.
+
+As permissões padrão para diretórios frequentemente são `rwxrwxr-x`, a execução é permitida para que seja possível para os outros usuários listarem o conteúdo do diretório. Em outras palavras, permitir a permissão de execução, permite que os outros usuários "entrem" no diretório e vejam seus arquivos e subdiretórios.
+
 ## <a id = "diretorios-especificos"></a>Diretórios Específicos
 
-## /etc
+### /etc
 
+O diretório **/etc** contém arquivos de configuração do sistema e de aplicativos. Ele é usado para armazenar configurações globais que afetam o sistema operacional e outros softwares instalados no sistema.
 
+A sigla "**/etc**" representa "etcetera", indicando que o diretório contém "outras" configurações. Algumas das informações de configuração armazenadas no diretório **/etc** podem incluir:
+
+1. **Configurações do sistema:** arquivos que definem configurações globais do sistema, como nomes de host, fuso horário, configurações de rede, e assim por diante
+2. **Configurações de software:** arquivos de configuração de aplicativos instalados no sistema. Por exemplo, o diretório **/etc/apache2** pode conter configurações do servidor web Apache, e o diretório **/etc/mysql** pode conter configurações do servidor de banco de dados MySQL
+3. **Scripts de inicialização:** alguns sistemas Unix-like usam o diretório **/etc** para armazenar scripts de inicialização e parada do sistema ou de serviços específicos
+4. **Perfis de usuário:** algumas configurações específicas do usuários podem ser encontradas no diretório **/etc**, como o arquivo **/etc/passwd** que contém informações sobre usuários do sistema
+5. **Lista de grupos:** o arquivo **/etc/group** armazena informações relacionadas sobre grupos de usuários no sistema
+6. **Configurações de segurança:** certas configurações relacionadas à segurança do sistema podem ser encontradas no diretório **/etc**, como arquivos de configuração do sistema de controle de acesso, etc.
+
+Lembrando que a estrutura exata e os arquivos específicos podem variar entre diferentes distribuições Unix-like, mas o conceito geral de armarzenar configurações no diretório **/etc** é uma convenção amplamente seguida.
 
 # Linux
 
@@ -321,3 +362,18 @@ Basicamente, ele cria um volume seguro e lá você guarda o que você quer prote
 Shells são interfaces de linha de comando que permitem o usuário interagir com o sistema operacional atráves de comandos de texto.
 
 Bash (Bourne-Again SHell) é um tipo de Shell presente em distribuições Linux. Considerado um dos shells mais poderosos para Linux, ele fornece uma grande quantidade de ferramentas, como comando de histórico, auto complete com o tab e scripts. Ele é altamente configurável, você pode ajustá-lo de acordo com as suas necessidades individuais.
+
+### <a id = "scripts"></a>Scripts
+
+Um "script" se refere a um programa ou conjunto de instruções escritas em uma linguagem de script, que é uma linguagem de programação de alto nível projetada para automação de tarefas específicas. Os scripts são frequentemente usados para realizar tarefas simples ou automatizar processos repetitivos.\
+Aqui estão algumas características e aspectos associados a scripts:
+
+1. **Interpretação:** os scripts são geralmente interpretados, o que significa que cada linha de código é executada pelo interpretador da linguagem de script em tempo de execução, sem a necessidade de compilação prévia
+2. **Linguagens de script:** exemplos de linguagens de script incluem Python, Ruby, JavaScript, Perl, Shell Scripting (como o Bash), entre outras. Cada uma dessas linguagens é projetada para facilitar a automação de tarefas específicas
+3. **Automação e tarefas específicas:** os scripts são frequentemente usados para automatizar tarefas, como processamento de arquivos, administração de sistemas, manipulação de dados, geração de relatórios, entre outras atividades
+4. **Legibilidade:** em muitos casos, a ênfase nas linguagens de script é a facilidade de leitura e escrita, tornando scripts acesspiveis a pessoas não necessariamente especializadas em programação
+5. **Portabilidade:** muitos scripts são portáveis entre diferentes sistemas operacionais (SOs), pois são frequentemente interpretados e dependem de ambientes de execução que são amplamente suportados
+6. **Execução interativa:** muitas linguagens de script oferecem a capacidade de serem executadas de forma interativa, permitindo que os desenvolvedores experimentem e testem comandos diretamente
+7. **Exemplos práticos:** scripts podem ser encontrados em vários contextos, desde automação de tarefas em SOs até a implantação de recursos específicos em páginas da web
+
+É importante notar que a definição exata de um script pode variar em diferentes contextos e comunidades de desenvolvimento. Em resumo, um script é um conjunto de instruções escritas em uma linguagem de script para realizar uma tarefa específica ou automação.

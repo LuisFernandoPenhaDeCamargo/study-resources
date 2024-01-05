@@ -17,6 +17,7 @@ Mais informações.
 - Em listas, quando o item em questão é representado por uma palavra ou frase chave, elas devem estar em negrito
 - Dois pontos (":"): ajuda a identificar de forma rápida um ponto específico
 - Ponto final de sentenças que estão totalmente em negrito ("."): exemplo: **Sentença completamente em negrito.**
+- Nome de diretórios e de arquivos devem estar em negrito
 
 ### Siglas e Acrônimos
 
