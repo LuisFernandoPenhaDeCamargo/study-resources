@@ -4,21 +4,22 @@
 google-chrome &
 
 # Aguardar alguns segundos para garantir que o Chrome tenha tempo de iniciar.
-sleep 5
+sleep 1
 
 # Iniciar o Tilix.
-tilix &
+tilix --maximize &
 
-sleep 5
+sleep 1
 
 # Iniciar o VSCode.
-code &
+code /home/orion/study-resources/ &
 
-sleep 5
+sleep 1
 
 # Iniciar o Discord.
 discord &
 
 # Desinstalar o xdotool e o wmctrl
 # Abrir o VSCode de acordo com o diretório
-# Quero que o Discord fique sendo executado somente em segundo plano
+# Abrir o chrome em uma aba especifica
+# Quero que o Discord fique sendo executado somente em segundo plano (fechar a janela)
