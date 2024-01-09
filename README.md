@@ -1,13 +1,3 @@
-# Notas para Mim Mesmo
-
-- Saiba dosar o quanto você deve imergir em uma tecnologia específica, para não se apronfundar sem necessidade, considerando que o mundo está inundado de informação
-- Como eu vou organizar as minhas anotações? Vou criar um repositório para cada tecnologia?
-
-+ Criar um serviço que abre as aplicações que eu uso assim que eu inicio o sistema
-+ Criar um script que realiza commits antes de desligar a minha máquina
-+ Criar um volume criptografado com o LUKS?
-+ Criar uma aplicação e executá-la através do Docker
-
 - O que nos disponibilizamos aos nossos clientes? (contexto da Orion)
 
 # Estudar
@@ -62,6 +52,7 @@ Markdown é uma linguagem de marcação, TermosTI é um tipo de glossário e o T
         - systemctl
         - Daemon
         - Execução em Primeiro e Segundo Plano
+        - Caminho Absoluto e Caminho Relativo
         - Permissões de Acesso a Arquivos e Diretórios
         - Diretórios Específicos
     + Linux
@@ -71,6 +62,11 @@ Markdown é uma linguagem de marcação, TermosTI é um tipo de glossário e o T
         - Shell
             + Bash
             + Scripts
+    + Windows
+        - Comandos do Terminal
+        - Atalhos
+        - Atalhos (Durante a Inicialização)
+    
 - [Shell.md](Terminal.md#shell)
 - [LinguagensProgramacao](LinguagensProgramacao.md#linguagens-programacao)
 - [Markdown.md](Markdown.md#markdown)
@@ -80,4 +76,54 @@ Markdown é uma linguagem de marcação, TermosTI é um tipo de glossário e o T
 - [Hardware.md](Hardware.md#hardware)
     + Placa-mãe
     + FRAM
+    + Partições x Volumes (No Contexto de Discos, Como Discos Rígidos)
+    + HD Externo x Flash Drive (Dispositivo Inicializável)
 - [Template.md](Template.md#template)
+
+---
+
+# Ordem de Estudo do Conteúdo
+
+Sobre o que cada arquivo ou diretório trata, de forma resumida.
+
+### Sistemas Operacionais
+
+Os arquivos deste diretório tratam sobre aspectos de como um sistema computacional funciona e se comporta a partir da sua inicialização. Além de aspectos dos Sistemas Operacionais (SOs), incluindo algumas versões em particular:
+
+- SOs Unix-like
+- Linux
+- Windows
+
+### Redes
+
+Discursa sobre o Endereço IP e sobre o Nome de Host.
+
+### Shell
+
+Este arquivo descreve algumas características do Shell (a interface de linha de comando que permite o usuário interagir com o sistema operacional atráves de comandos de texto), além de alguns comandos aceitos por ele.
+
+# Notas para Mim Mesmo
+
+**Arquivos a Analisar**
+
++ ./Sistemas\ Operacionais/SistemaOperacional.md
++ aplicacoes.md
++ Conceitos.md
++ Docker.md
++ Hardware.md
++ LinguagensProgramacao.md
++ Markdown.md
++ meu_servico.sh
++ Template.md
++ TermosTI.md
+
+- Saiba dosar o quanto você deve imergir em uma tecnologia específica, para não se apronfundar sem necessidade, considerando que o mundo está inundado de informação
+- Como eu vou organizar as minhas anotações? Vou criar um repositório para cada tecnologia?
+
++ Aprender CI/CD e criar um pipeline de deploy
++ No contexto de APIs, teste de estresse (teste de volumetria, "quanto ele aguenta"), testes automatizados
++ Criar um serviço que abre as aplicações que eu uso assim que eu inicio o sistema
++ Criar um script que realiza commits antes de desligar a minha máquina
++ Criar um volume criptografado com o LUKS?
++ Criar uma aplicação e executá-la através do Docker
++ Criar um Banco na RDS em que a autenticação seja feita com um usuário IAM (https://repost.aws/knowledge-center/users-connect-rds-iam)

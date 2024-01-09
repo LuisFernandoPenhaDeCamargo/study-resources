@@ -1,4 +1,5 @@
-<a name = "template"></a>
+<a name = "template"></a> Template
+
 ### Ideias
 
 Se você achar interessante, inclua diagramas, desenhos para ilustrar a explicação.
@@ -12,12 +13,16 @@ Sempre pontuar a **sintaxe básica** do comando. Exemplo:
 `sintaxe básica`**:** descrição básica.\
 Mais informações.
 
-### Negrito
+Dentro do tópico que se refere a uma explicação mais detalhada do comando, se você for pontuar as opções mais comuns, utilize a seguinte estrutura:
+
+"**Opções Comuns**"
+
+### Negrito <--
 
 - Em listas, quando o item em questão é representado por uma palavra ou frase chave, elas devem estar em negrito
 - Dois pontos (":"): ajuda a identificar de forma rápida um ponto específico
 - Ponto final de sentenças que estão totalmente em negrito ("."): exemplo: **Sentença completamente em negrito.**
-- Nome de diretórios e de arquivos devem estar em negrito
+- Nome de diretórios, arquivos e extensões de arquivos devem estar em negrito
 
 ### Siglas e Acrônimos
 
