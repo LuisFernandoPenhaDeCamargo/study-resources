@@ -21,6 +21,7 @@ Sendo que para opções curtas, descritas por uma letra é utilizado somente um 
 - `sudo passwd`**:** utilizado para mudar a senha do usuário em sessão\
     Você pode fornecer o `nome_do_usuário` como argumento, para alterar a senha do usuário especificado.
 - [`ssh usuário@host`](#ssh)**:** estabelece uma conexão segura e criptografada com um servidor remoto
+- [`ls`](#ls)**:**
 - [`chmod -opções permissões arquivo`](#chmod)**:** altera as permissões de acesso de arquivos e diretórios
 - [cat arquivo.txt](#cat)**:** exibe o conteúdo de um arquivo
 - [vim.tiny arquivo](#vim-tiny)**:** abre o editor de texto `vim.tiny` com o conteúdo do `arquivo`
@@ -96,6 +97,10 @@ Você pode especificar a porta, também, no final:
 `scp arquivo.txt joao@192.168.1.100:/caminho/destino/`
 
 Lembrando que o `ssh` é uma ferramenta poderosa e é importante entender suas opções e considerações de segurança ao utilizá-lo. Certifique-se de configurar suas chaves SSH e siga as melhores práticas de segurança ao trabalhar com conexões remotas.
+
+### <a id = "ls"></a>`ls`
+
+
 
 ### <a id = "chmod"></a>`chmod`
 

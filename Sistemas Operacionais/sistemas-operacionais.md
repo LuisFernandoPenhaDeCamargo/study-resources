@@ -1,8 +1,8 @@
 ### <a name = "sumario"></a>Sumário
 
 - [Resumo do Conteúdo](#resumo-conteudo)
-- [Sistema Operacional](#sistema-operacional) <--
-- [Kernel](#kernel)
+- [Sistema Operacional](#sistema-operacional)
+- [Kernel](#kernel) <--
 - [Unix-like](#unix-like)
     + [Serviços](#servicos)
     + [systemctl](#systemctl)
@@ -56,9 +56,9 @@
 
 A partição de boot contém o GRUB, o Kernel e outros arquivos essenciais para a inicialização.
 
-# <a id = "sistema-operacional"></a> Sistema Operacional
+# <a id = "sistema-operacional"></a>Sistema Operacional
 
-Um sistema operacional (SO) é um software fundamental que atua como uma interface entre o hardware do computador e os programas da aplicação. Ele desempenha diversar funções essenciais para o funcionamento do sistema computacional como um todo. Aqui estão algumas das principais finalidades de um sistema operacional:
+Um sistema operacional (SO) é um software fundamental que atua como uma interface entre o hardware do computador e os programas da aplicação. Ele desempenha diversas funções essenciais para o funcionamento do sistema computacional como um todo. Aqui estão algumas das principais finalidades de um sistema operacional:
 
 1. **Gerenciamento de recursos:**
     - **CPU (Unidade Central de Processamento):** o sistema operacional gerencia o uso da CPU, decidindo quais processos e tarefas têm acesso à CPU e por quanto tempo
