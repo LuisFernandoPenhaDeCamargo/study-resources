@@ -17,7 +17,19 @@ Dentro do tópico que se refere a uma explicação mais detalhada do comando, se
 
 "**Opções Comuns**"
 
-### Negrito <--
+Além da estrutura para "exemplos"
+
+"**Exemplos**"
+
+### Linguagens
+
+\# Linguagem
+
+Descrição dos pontos da linguagem
+
+\# Executando Um Código Feito em Linguagem
+
+### Negrito
 
 - Em listas, quando o item em questão é representado por uma palavra ou frase chave, elas devem estar em negrito
 - Dois pontos (":"): ajuda a identificar de forma rápida um ponto específico. Isso quando estão antecedidos de uma palavra ou frase chave

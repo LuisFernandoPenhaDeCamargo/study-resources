@@ -14,29 +14,80 @@ Sendo que para opções curtas, descritas por uma letra é utilizado somente um 
 # Comandos
 
 - [`echo argumento`](#echo)**:** imprime o argumento no terminal
+- `lsb_release`**:** exibe informações detalhadas sobre o sistema operacional, incluindo a distribuição específica e a versão
 - `whoami`**:** imprime o nome do usuário que está atualmente autenticado no sistema
 - `id`**:** imprime informações detalhadas sobre o usuário que está atualmente autenticado no sistema\ 
     Incluindo seu ID de usuário (UID), ID de grupo (GID), entre outras informações
 - `hostname`**:** exibe o nome de host atual
 - `sudo passwd`**:** utilizado para mudar a senha do usuário em sessão\
     Você pode fornecer o `nome_do_usuário` como argumento, para alterar a senha do usuário especificado.
+- [ps aux](#ps)**:** exibe informações sobre os processos em execução no sistema
 - [`ssh usuário@host`](#ssh)**:** estabelece uma conexão segura e criptografada com um servidor remoto
-- [`ls`](#ls)**:**
+- [`ls`](#ls)**:** lista os arquivos e diretórios em um diretório específico
 - [`chmod -opções permissões arquivo`](#chmod)**:** altera as permissões de acesso de arquivos e diretórios
 - [cat arquivo.txt](#cat)**:** exibe o conteúdo de um arquivo
 - [vim.tiny arquivo](#vim-tiny)**:** abre o editor de texto `vim.tiny` com o conteúdo do `arquivo`
 - [tailf arquivo](#tailf)**:** exibe as últimas linhas de um arquivo e continua exibindo novas linhas à medida que são adicionadas no final do arquivo
+- [`grep padrão arquivo`](#grep)**:** pesquisa padrões em arquivos de texto ou na saída de outros comandos
 - [`which comando`](#which)**:** utilizado para encontrar o caminho do executável associado a um comando específico
 - `type comando`**:** semelhante ao `which`, mas fornece informações adicionais, incluindo se o comando é um alias, uma função do shell ou um comando integrado
 - [`sleep intervalo_de_tempo`](#sleep)**:** faz com que um script ou processo espere por um determinado período de tempo antes de continuar a execução
+- [`ifconfig`](#ifconfig)**:** exibe informações relacionadas às interfaces interfaces de rede no sistema, informações como o IP
 - [`ping host`](#ping)**:** verifica a conectividade entre o seu computador e outro host em uma rede
 - [`nmap alvo`](#nmap)**:** realiza uma varredura de pings nos hosts para descobrir quais deles estão online
 - `nslookup endereço_IP`**:** exibe o nome de host associado ao endereço IP
+- [who](#who)**:** exibe quem está atualmente conectado ao sistema
 - [`reboot`](#reboot)**:** reinicia o sistema operacional
 
 # Operadores
 
 [`&`](#ecomercial)**:** indica que o comando deve ser executado em segundo plano
+
+# Condicionais
+
+No terminal, você pode usar condicionais para criar scripts mais avançados ou para executar comandos com base em determinadas condições. Os operadores condicionais mais comuns são `if`, `else` e `elif` (abreviação de "else if").
+
+A estrutura básica de uma instrução condicional no terminal é a seguinte:
+
+```shell
+if [ condição ]; then
+    # Comandos a serem executados se a condição for verdadeira
+else
+    # Comandos a serem executados se a condição for falsa
+fi
+```
+
+**Opções Comuns**
+
+- `-eq`**:** igual a (equal)
+- `-ne`**:** diferente de (not equal)
+- `-lt`**:** menor que (less than)
+- `-le`**:** menor ou igual a (less than  or equal)
+- `-gt`**:** maior que (greater than)
+- `-ge`**:** maior ou igual a (greater than or equal)
+- `-z`**:** string vazia
+- `-n`**:** string não vazia
+- `-f`**:** existe e é um arquivo regular
+- `-d`**:** existe e é um diretório
+- `-e`**:** existe (pode ser um arquivo, diretório ou qualquer outro tipo de entrada)
+
+**Exemplos**
+
+```shell
+nota=75
+
+if [ "$nota" -ge 90 ]; then
+    echo "Aprovado com A."
+elif [ "$nota" -ge 80 ]; then
+    echo "Aprovado com B."
+elif [ "$nota" -ge 70 ]; then
+    echo "Aprovado com C."
+else
+    echo "Reprovado."
+fi
+```
+
+A prática de usar aspas duplas ao redor de variáveis é uma boa prática geral para evitar problemas quando lidando com valores que podem conter espaços ou caracteres especiais. Portanto, adotar a prática de usar aspas duplas ao redor de veriáveis é uma maneira segura de lidar com diferentes tipos de dados.
 
 # Explicação Com Mais Detalhes Sobre os Comandos e Operadores
 
@@ -64,6 +115,26 @@ Linha 3
 - **Saída para um arquivo:** `echo "Salvando esta mensagem em um arquivo." > arquivo.txt`
 
 Lembre-se de que o comando `echo` é simples e eficaz para mensagens básicas. Se você precisar de formatação mais avançada ou se estiver lidando com scripts mais complexos, pode ser útil explorar outras ferramentas ou comandos de impressão, como `printf`.
+
+### <a id = "ps"></a>`ps`
+
+O comando `ps` (process status) é utilizado para exibir informações sobre os processos em execução no sistema. Ele fornece uma visão instantânea dos processos atuais, incluindo indentificadores de processo (PIDs), estado do processo, consumo de recursos e outros detalhes.
+
+A forma mais básica de usar o comando `ps` é simplesmente digitá-lo no terminal, mas somente isso não exibe as informações descritas acima, você deve utilizar ele em conjunto com o `aux` (`ps aux`). Além do que, `ps`, possui várias opções e pode ser usado de diferentes maneiras.
+
+Lembre-se de que as opções e o comportamento exato do `ps` podem variar um pouco entre diferentes sistemas operacionais Unix-like. Consulte a documentação do `ps` específica para o seu sistema se precisar de informações mais detalhadas.
+
+**Opções Comuns**
+
+- `-e`**:** exibe informações sobre todos os processos, não apenas os associados ao terminal atual
+- `-f`**:** exibe informações detalhadas do processo (full format)
+- `-l`**:** exibe informações ainda mais detalhadas (long format)
+
+**Exemplos**
+
+- `ps aux | grep nome_do_processo`**:** este comando exibirá informações detalhadas sobre processos cujo nome contenha `nome_do_processo`.  O `grep` é usado para filtrar os resultados
+- `ps -ef`**:** este comando exibirá informações detalhadas em formato longo sobre todos os processos no sistema
+
 
 ### <a id = "ssh"></a>`ssh`
 
@@ -100,7 +171,16 @@ Lembrando que o `ssh` é uma ferramenta poderosa e é importante entender suas o
 
 ### <a id = "ls"></a>`ls`
 
+**Opções Comuns**
 
+- **Listar com detalhes:** `ls -l`. A opção `-l` exibe uma listagem detalhada, incluindo permissões, número de links, proprietário, grupo, tamanho, data de modificação e nome do arquivo. Você também pode utilizar `ll` ao invés de especificar a opção
+- **Listar todos os arquivos, inclusive os ocultos:** `ls -a`. A opção `-a` exibe todos os arquivos, incluindo aqueles cujos nomes começam com um ponto (arquivos ocultos). Você também pode utilizar `la` ao invés de especificar a opção
+- **Listar com detalhes e todos os arquivos, inclusive ocultos:** `ls -la`. Combinação das opções `-l` e `-a`, exibindo detalhes e todos os arquivos
+- **Listar por ordem de modificação (mais recente primeiro):** `ls -lt`. A opções `-t` ordena os arquivos pela data de modificação, exibindo os mais recentes primeiro
+- **Listar recursivamente (incluindo subdiretórios):** `ls -R`. A opção `-R` lista o conteúdo de diretórios recursivamente
+- **Listar com cores (realçar tipos de arquivo):** `ls --color`. Em alguns sistemas, a opção `--color` realça diferentes tipos de arquivos com cores
+
+Essas são apenas alguns exemplos das muitas opções disponíveis para o comando `ls`. Para obter uma lista completa das opções, consulte a página de manual digitando `man ls` no terminal.
 
 ### <a id = "chmod"></a>`chmod`
 
@@ -164,6 +244,28 @@ Este comando exibirá as últimas linhas do arquivo `/var/log/syslog` e continua
 
 Lembre-se de que a disponibilidade do comando `tailf` pode variar entre diferentes sistemas operacionais. Em alguns sistemas, o `tailf` pode não estar disponível como um comando separado, mas você ainda pode alcançar funcionalidades semelhantes usando o `tail -f`.
 
+### <a id = "grep"></a>`grep`
+
+O comando `grep` é uma ferramenta poderosa em sistemas Unix-like que é usada para pesquisar padrões em arquivos de texto ou na saída de outros comandos. Seu nome significa "Global Regular Expression Print" (Impressão Global de Expressões Regulares).
+
+A sintaxe básica do comando `grep` é a seguinte:
+
+`grep padrão arquivo`
+
+- `padrão`**:** o padrão de texto que você está procurando. Pode ser uma palavra simples ou uma expressão regular mais complexa
+- `arquivo`**:** o arquivo no qual você deseja procurar o padrão. Se não for fornecido, `grep` usará a entrada padrão (por exemplo, a saída de um comando anterior via pipe)
+
+**Exemplos**
+
+- **Exemplo de busca simples em um arquivo:** `grep "palavra" arquivo.txt`. Este comando procurará a palavra "`palavra`" no arquivo "`arquivo.txt`"
+- **Exemplo de busca em múltiplos arquivos:** `grep "padrão" arquivo1.txt arquivo2.txt`. Este comando procurará o "`padrão`" nos arquivos "`arquivo1.txt`" e "`arquivo2.txt`"
+- **Exemplo de busca recursiva em diretórios:** `grep -r "padrão" diretório/`. Este comando procurará recursivamente o "`padrão`" em todos os arquivos no diretório e em seus subdiretórios
+- **Exemplo de busca em saída de comando (pipe):** `comando | grep "padrão"`. Este comando enviará a saída do "`comando`" para o "`grep`", que procurará o padrão na saída
+- **Exemplo de ignorar diferença entre maiúsculas e minúsculas:** `grep -i "padrão" arquivo.txt`. Este comando realizará a busca ignorando a diferença entre maiúsculas e minúsculas
+- **Exemplo de contagem de ocorrências:** `grep -c "padrão" arquivo.txt`. Este comando contará o número de ocorrências do padrão no arquivo
+
+Estes são apenas alguns exemplos básicos. O `grep` é uma ferramenta bastante flexível com muitas opções. Consulte a documentação do `grep` no seu sistema para obter informações mais detalhadas sobre suas funcionalidade.
+
 ### <a id = "which"></a>`which`
 
 Ele ajuda a determinar onde no sistema de arquivos está localizado o programa ou script que será executado quando você digitar um determinado comando no terminal
@@ -178,6 +280,10 @@ Essa abordagem pode ser útil, pois permite dar tempo para que cada aplicativo s
 
 O uso do `sleep` é uma técnica comum em scripts de automação para garantir que as operações ocorram de maneira ordenada e controlada, especialmente quando há dependências temporais entre as tarefas. Se você tiver certeza que a ordem de iniciação ou sincronização não são críticas para o seu caso específico, você pode optar por remover ou ajustar o tempo de espera fornecido pelo `sleep`.
 
+### <a id = "ifconfig"></a>`ifconfig`
+
+O comando `ifconfig` (interface configuration) é usado para exibir e configurar informações relacionadas às interfaces de rede no sistema. No entando, observe que o `ifconfig` está sendo gradualmente substituído pelo `ip`.
+
 ### <a id = "ping"></a>`ping`
 
 O comando `ping` envia pacotes de dados para o `host` de destino e aguarda por respostas, permitindo que você avalie a qualidade da conexão. Onde o `host` pode ser um endereço IP ou um nome de host. Por exemplo: `ping www.exemplo.com` ou `ping 192.168.1.1`.
@@ -191,6 +297,22 @@ A execução do comando `ping` resultará em uma série de mensagens monstrando 
 - **Tempo limite (**`-W`**):** define o tempo limite para esperar por uma resposta. `ping -W 5 www.exemplo.com`
 
 O `ping` é uma ferramenta valiosa para diagnosticar problemas de rede e verificar a disponibilidade de hosts em uma rede. No entanto, alguns sistemas podem ter restrições de segurança que limitam ou bloqueiam o uso do `ping`.
+
+### <a id = ""></a>`who`
+
+Considere o seguinte cenário, você está verificando em uma máquina remota quem está conectado a ela. Vamos utilizar a saída abaixo para ajudar na compreensão:
+
+```shell
+vegas pts/0 2024-01-10 14:08 (notebook-sas.oriongames.intra)
+vegas pts/2 2024-01-10 14:08 (notebook-sas.oriongames.intra)
+```
+
+O código acima indica que dois terminais (`pts/0` e `pts/2`) estão conectados à maquina remota com o usuário `vegas`.
+
+- `vegas pts/0 2024-01-10 14:08 (notebook-sas.oriongames.intra)`**:** indica que o usuário `vegas` está conectado através do terminal virtual `pts/0` desde as `14:08` de janeiro de `2024`. A string `(notebook-sas.oriongames.intra)` pode ser o nome do endereço do host da máquina local de onde a conexão foi estabelecida
+- `vegas pts/2 2024-01-10 14:08 (notebook-sas.oriongames.intra)`**:** indica uma segunda conexão do usuário `vegas` através do terminal virtual `pts/2`, com infomações semelhantes à primeira
+
+O ponto é que o nome do seu usuário da máquina onde você está conectado não aparece, o de usuário que aparece é aquele utilizado na conexão `ssh`.
 
 ### <a id = "reboot"></a>`reboot`
 
