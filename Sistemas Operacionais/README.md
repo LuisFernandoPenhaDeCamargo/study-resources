@@ -1,35 +1,3 @@
-# Tarefas
-
-Analisar a qualidade das seguintes seções:
-
-- Kernel
-- Unix-like
-    + Serviços
-    + systemctl
-    + Daemon
-    + Execução em Primeiro e Segundo Plano
-    + Permissões de Acesso a Arquivos e Diretórios
-    + Diretórios Específicos
-- Linux
-    + GRUB
-    + Diagrama de Inicialização de Um Sistema Computacional
-    + LUKS
-    + Shell
-        - Bash
-        - Scripts
-- Windows
-    + Comandos do Terminal
-    + Atalhos
-    + Atalhos (Durante a Inicialização)
-
----
-
-Os arquivos deste diretório tratam sobre aspectos de como um sistema computacional funciona e se comporta a partir da sua inicialização. Além de aspectos dos Sistemas Operacionais (SOs), incluindo algumas versões em particular:
-
-- SOs Unix-like
-- Linux
-- Windows
-
 ### Sumário
 
 - [Resumo do Conteúdo](sistemas-operacionais.md#resumo-conteudo)
@@ -57,3 +25,29 @@ Os arquivos deste diretório tratam sobre aspectos de como um sistema computacio
     + [Comandos do Terminal](sistemas-operacionais.md#comandos-terminal)
     + [Atalhos](sistemas-operacionais.md#atalhos)
     + [Atalhos (Durante a Inicialização)](sistemas-operacionais.md#atalhos-durante-inicializacao)
+
+---
+
+# Tarefas
+
+Analisar a qualidade das seguintes seções:
+
+- Kernel
+- Unix-like
+    + Serviços
+    + systemctl
+    + Daemon
+    + Execução em Primeiro e Segundo Plano
+    + Permissões de Acesso a Arquivos e Diretórios
+    + Diretórios Específicos
+- Linux
+    + GRUB
+    + Diagrama de Inicialização de Um Sistema Computacional
+    + LUKS
+    + Shell
+        - Bash
+        - Scripts
+- Windows
+    + Comandos do Terminal
+    + Atalhos
+    + Atalhos (Durante a Inicialização)

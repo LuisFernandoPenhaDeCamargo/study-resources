@@ -1,3 +1,5 @@
+# Configurações de Ambiente e de Aplicações
+
 # Ubuntu 22.04.3 LTS
 
 - **Multi-Monitor:** espaços de trabalho em todas as telas

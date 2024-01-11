@@ -1,4 +1,6 @@
-# Ubuntu
+# Aplicações
+
+### Ubuntu
 
 `Ctrl+Alt+Seta_direcional_para_esquerda/direita`**:** muda de ambiente de trabalho (Desktop Environment). Seta para a esquerda, muda para a esquerda. Seta para a direita, muda para a direita, além de criar um novo ambiente de trabalho, mas isso somente se o atual possuir alguma aplicação aberta.
 

@@ -1,6 +1,4 @@
-### <a name = "shell"></a>Shell
-
-Esta seção está destinada a descrever algumas características do Shell (a interface de linha de comando que permite o usuário interagir com o sistema operacional atráves de comandos de texto), além de alguns comandos aceitos por ele.
+# Shell
 
 # Sintaxe Básica
 
@@ -29,6 +27,7 @@ Sendo que para opções curtas, descritas por uma letra é utilizado somente um 
 - [vim.tiny arquivo](#vim-tiny)**:** abre o editor de texto `vim.tiny` com o conteúdo do `arquivo`
 - [tailf arquivo](#tailf)**:** exibe as últimas linhas de um arquivo e continua exibindo novas linhas à medida que são adicionadas no final do arquivo
 - [`grep padrão arquivo`](#grep)**:** pesquisa padrões em arquivos de texto ou na saída de outros comandos
+- [rm arquivo](#rm)**:** remove o arquivo
 - [`which comando`](#which)**:** utilizado para encontrar o caminho do executável associado a um comando específico
 - `type comando`**:** semelhante ao `which`, mas fornece informações adicionais, incluindo se o comando é um alias, uma função do shell ou um comando integrado
 - [`sleep intervalo_de_tempo`](#sleep)**:** faz com que um script ou processo espere por um determinado período de tempo antes de continuar a execução
@@ -265,6 +264,15 @@ A sintaxe básica do comando `grep` é a seguinte:
 - **Exemplo de contagem de ocorrências:** `grep -c "padrão" arquivo.txt`. Este comando contará o número de ocorrências do padrão no arquivo
 
 Estes são apenas alguns exemplos básicos. O `grep` é uma ferramenta bastante flexível com muitas opções. Consulte a documentação do `grep` no seu sistema para obter informações mais detalhadas sobre suas funcionalidade.
+
+### <a id = "rm"></a>`rm`
+
+`rm pwd_absoluto/relativo arquivo`**:** você pode usar o arquivo relativo ou absoluto para remover um arquivo
+
+**Opções Comuns**
+
+- `rm -f arquivo`**:** para excluir o arquivo sem ser solicitado para confirmação, você pode usar a opção `-f` (force)
+- `rm -r diretório`**:** remove um diretório e todo o seu conteúdo de forma recursiva (`-r`, recursivo), incluindo subdiretórios
 
 ### <a id = "which"></a>`which`
 

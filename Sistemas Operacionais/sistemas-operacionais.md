@@ -2,9 +2,9 @@
 
 - [Resumo do Conteúdo](#resumo-conteudo)
 - [Sistema Operacional](#sistema-operacional)
-- [Kernel](#kernel) <--
+- [Kernel](#kernel)
 - [Unix-like](#unix-like)
-    + [Serviços](#servicos)
+    + [Serviços](#servicos) <--
     + [systemctl](#systemctl)
     + [Daemon](#daemon)
     + [Execução em Primeiro e Segundo Plano](#execucao-primeiro-segundo-plano)

@@ -2,6 +2,14 @@
 
 Abaixo temos sobre o que cada arquivo ou diretório trata, de forma resumida.
 
+### linguagens-programacao.md
+
+Este arquivo discursa sobre conceitos utilizados em linguagens de programação.
+
+- Compilada x Interpretada
+- Linguagem de Programação de Sistema
+- Suporte a Concorrência e Paralelismo
+
 ### Sistemas Operacionais
 
 Os arquivos deste diretório tratam sobre aspectos de como um sistema computacional funciona e se comporta a partir da sua inicialização. Além de aspectos dos Sistemas Operacionais (SOs), incluindo algumas versões em particular:
@@ -18,11 +26,17 @@ Este arquivo discursa sobre o Endereço IP e sobre o Nome de Host.
 
 Este arquivo descreve algumas características do Shell (a interface de linha de comando que permite o usuário interagir com o sistema operacional atráves de comandos de texto), além de alguns comandos aceitos por ele.
 
+### termosTI.md
+
+Este arquivo explica o significado de termos encontrados com frequência na área de tecnologia.
+
+CLI
+
 ### template.md
 
 Este arquivo especifica como está formatado os arquivos no aspecto estrutural
 
-### configuracoes.md
+### configuracoes-ambiente-aplicacoes.md
 
 Este arquivo especifica como eu gosto de configurar meu ambiente e suas aplicações, por exemplo, os ambientes de trabalho virtuais (virtual desktops) no Ubuntu.
 
@@ -38,9 +52,9 @@ Este arquivo especifica como eu gosto de configurar meu ambiente e suas aplicaç
 + LinguagensProgramacao.md
 + Markdown.md
 + meu_servico.sh
-+ TermosTI.md
 
 - Saiba dosar o quanto você deve imergir em uma tecnologia específica, para não se apronfundar sem necessidade, considerando que o mundo está inundado de informação
+- Preciso ser mais organizado
 - Como eu vou organizar as minhas anotações? Vou criar um repositório para cada tecnologia?
 
 + Aprender CI/CD e criar um pipeline de deploy
