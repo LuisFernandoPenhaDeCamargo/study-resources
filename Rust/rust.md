@@ -103,6 +103,98 @@ dependencies = ["cross-build-release", "strip", "upx"]
 
 - Instale o Rust (rustup, Cargo e rustc)
 - Instale o Cross
+- Crie um ponto de entrada\
+    O padrão é um arquivo **main.rs** que contém a função `main()`
+- Execute o comando `cargo init` no diretório que contém o arquivo **main.rs**
+    Ele irá criar o arquivo **Cargo.toml**
+- Execute o comando `cargo run`
+    - Ele irá executar o comando `cargo build`
+    - Ele irá criar o arquivo **Cargo.lock**
+    - Ele irá criar a pasta target, a qual contém em seu subdiretório o executável do seu código fonte
+
+# Rust e o Seu Ponto de Entrada
+
+Em Rust, para criar uma aplicação executável, você precisa de um ponto de entrada, e o ponto de entrada padrão é a função `main`. A convenção é ter essa função no arquivo chamado **main.rs** na raiz do projeto. Se você quiser usar um nome diferente para o arquivo ou ter vários arquivos com funções `main`, você precosa indicar ao Cargo como lidar com eles.
+
+- **Convenção padrão:**
+    + Tenha um arquivo **main.rs** na raiz do projeto
+    + A função `main` neste arquivo é o ponto de entrada padrão
+    + Você pode usar `cargo run` para compilar e executar o programa
+- **Outros nomes de arquivo:**
+    + Se você desejar usar um nome diferente para o arquivo (por exemplo, **nome_do_arquivo.rs**), você precisa indicar isso ao Cargo
+    + Use `cargo run --bin nome_do_arquivo` para compilar e executar o programa quando a função `main` está em **nome_do_arquivo.rs**
+- **Múltiplos pontos de entrada:**
+    + Se você tem vários arquivos com funções `main`, você pode usar um diretório **src/bin/** para organizá-los
+    + Cada arquivo em **src/bin** é tratado como um ponto de entrada separado
+    + Use `cargo run --bin nome_do_arquivo` para especificar qual ponto de entrada executar
+
+Em resumo, a função `main` é necessária para criar uma aplicação executável, e a convenção padrão é ter essa função em um arquivo chamado **main.rs**. Você pode personalizar isso, mas precisa informar ao Cargo como lidar com seus pontos de entrada alternativos.
+
+# Macros
+
+Um "macro" se refere a uma funcionalidade poderosa e flexível para a criação de código em tempo de compilação. Macros em Rust são semelhantes a macros em outras linguagens de programação, mas a abordagem de Rust é particulamente robusta e segura.
+
+A principal diferença entre uma função regular e uma macro é que uma macro **opera no nível do código-fonte**, enquanto uma função opera no nível do código executável. As macros em Rust permitem a geração e transformação de código Rust durante a fase de compilação.
+
+**Macros realizam transformações no código durante a compilação, funções são chamadas em tempo de execução.**
+
+Existem dois tipos principais de macros em Rust:
+
+- **Procedurais:** macros procedurais são macros que geram código Rust. Elas são mais poderosas e podem ser usadas para criar novos itens de código, como funções, estruturas e módulos
+    + **Exemplo:**
+
+```rust
+macro_rules! greet {
+    ($name:expr) => {
+        println!("Olá, {}!", $name);
+    };
+}
+
+greet!("Mundo");
+```
+
+- **De identificação:**
+    + Macros de identificação são macros que operam no nível de tokens e são usados para manipulação de um código mais leve
+    + **Exemplo:**
+
+```rust
+macro greeting() {
+    // Cria uam função de cumprimento durante a compilação.
+    fn greet() {
+        println!("Olá, Mundo!");
+    }
+}
+
+// Uso da macro procedural. Este é um exemplo hipotético, pois não há um macro procedural real no exemplo.
+greeting!();
+```
+
+As macros em Rust são poderosa, mas devem ser usadas com responsabilidade. Elas são uma ferramenta poderosa para a metaprogramação, mas o código gerado deve ser claro, legível e seguro.
+
+As macros são declaradas usando a palavra-chave `macro_rules!` para macros de identificação e a palavra-chave `macro` para macros procedurais. O uso de macros em Rust é uma parte fundamental da flexibilidade e expressividade da linguagem.
+
+O uso de macros oferece alguns benefícios específicos devido à natureza de transformação de código (o código que se encontra no escopo da macro é inserido nos locais em que ele é chamado) em tempo de compilação das macros. Aqui estão alguns dos benefícios:
+
+1. **Geração de código dinâmico:** as macros em Rust permitem a geração de código dinâmico com base em padrões específicos definidos pelo usuário. Isso pode ser útil para criar código que segue padrões específicos ou para automatizar tarefas repetitivas
+2. **Reduçaõ de repetição:** macros podem ser usadas para evitar repetição de código. Se você tem blocos de código que se repetem em vários lugares, uma macro pode gerar esses blocos automaticamente, evitando a necessidade de escrever o mesmo código várias vezes
+3. **Expressividade:** macros podem melhorar a expressividade do código, permitindo a criação de construções de linguagem específicas que se encaixam melhor no problema em questão. Isso pode tornar o código mais claro e conciso
+4. **Meta-programação:** as macros em Rust permitem meta-programação, onde você pode escrever código que gera código. Isso é poderoso para criar abstrações complexas, sistemas de tipos ou para implementar padrões de design de maneira mais eficiente
+5. **Capacidade de correspondência de padrões:** macros em Rust usam a correspondência de padrões, o que permite criar padrões complexos para transformar o código de maneira específica. Essa capacidade de correspondência de padrões é mais avançada do que a substituição simples de texto, como ocorre em muitas linguagens de pré-processamento
+6. **Melhor desempenho em casos específicos:** em alguns casos, o uso de macros pode resultar em um desempenho melhor em comparação com funções. Isso ocorre porque o código gerado pela macro é inserido diretamente no local de chamada durante a compilação, evitando a sobrecarga de chamadas de função
+
+Embora esses benefícios sejam valiosos, é importante notar que as macros devem ser usadas com moderação. Macros complexas podem tornar o código difícil de entender, e seu uso excessivo pode levar a código menos manutenível. Em muitos casos, funções regulares são preferíveis devido à sua clareza e capacidade de encapsular lógica reutilizável. As macros são uma ferramenta poderosa, mas devem ser usadas quando realmente oferecem vantagens claras.
+
+# Traits
+
+
+
+# Structs
+
+
+
+# Enums
+
+
 
 # Importação e Módulo x Crate
 
@@ -188,3 +280,7 @@ No exemplo acima, o `env_logger` não precisa ser explicitamente importado porqu
 A biblioteca `env_logger` usa um inicializador implícito que é acionado quando você chama `env_logger::init()`. Isso significa que você não precisa importar explicitamente `env_logger` no código que está usando as macros do `log`. A biblioteca `env_logger` configura automaticamente os manipuladores de log para redirecionar mensagens de log para a saída do console.
 
 Se você utilizar outras bibliotecas de logging em Rust, a importação pode ser necessária, dependendo da API específica que essas bibliotecas oferecem. No entanto, para o exemplo fornecido, a importação expĺícita de `env_logger` não é necessária.
+
+### `simpleslog`
+
+É uma crate que provê uma série de facilidades relacionadas a log, que podem ser facilmente combinada.

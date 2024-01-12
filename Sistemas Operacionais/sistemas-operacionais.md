@@ -4,7 +4,7 @@
 - [Sistema Operacional](#sistema-operacional)
 - [Kernel](#kernel)
 - [Unix-like](#unix-like)
-    + [Serviços](#servicos) <--
+    + [Serviços](#servicos) <-- Parei a revisão neste tópico. Cima para baixo.
     + [systemctl](#systemctl)
     + [Daemon](#daemon)
     + [Execução em Primeiro e Segundo Plano](#execucao-primeiro-segundo-plano)

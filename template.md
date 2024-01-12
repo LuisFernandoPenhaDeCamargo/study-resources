@@ -1,10 +1,10 @@
 # Template
 
-### Ideias
+## Ideias
 
 Se você achar interessante, inclua diagramas, desenhos para ilustrar a explicação.
 
-### Código
+## Código
 
 Quando você for descrever a sintaxe básica de um comando, você pode utilizar acentuação e se o termo conter mais de uma palavra, as una com o underscore ("_". Em português, sublinhado ou underline).
 
@@ -21,7 +21,37 @@ Além da estrutura para "exemplos"
 
 "**Exemplos**"
 
-### Linguagens
+### JavaScript
+
+**Response body.**
+
+Quando o corpo da resposta puder incluir, por exemplo, vários objetos, você pontua a estrutura de um e adiciona três pontos ao final dele. Exemplo:
+
+```json
+{
+    {
+        "chave": "valor"
+    }...
+}
+```
+
+Caso o "`valor`" esteja entre crases, isso significa que o seu conteúdo é variável no sentido de não podermos estabelecer um "tipo". Por exemplo:
+
+```json
+{
+    "chave": "`erro_capturado_pelo_catch`"
+}
+```
+
+Quando se tratar de uma lista de possibilidades enumeráveis. Por exemplo, no caso do valor poder ser somente `valor1`, ou `valor2`, ou `valor3`, e esses valores são do "tipo" `[object String]`
+
+```json
+{
+    "chave": "[object String]: valor1 || valor2 || valor3"
+}
+```
+
+## Linguagens
 
 \# Linguagem
 
@@ -29,18 +59,22 @@ Descrição dos pontos da linguagem
 
 \# Executando Um Código Feito em Linguagem
 
-### Negrito
+## Palavras-chave
+
+**"<--":** esta seta indica uma tarefa que precisa ser realizada, um tópico que precisa ser estudado.
+
+## Negrito
 
 - Em listas, quando o item em questão é representado por uma palavra ou frase chave, elas devem estar em negrito
 - Dois pontos (":"): ajuda a identificar de forma rápida um ponto específico. Isso quando estão antecedidos de uma palavra ou frase chave
 - Ponto final de sentenças que estão totalmente em negrito ("."): exemplo: **Sentença completamente em negrito.**
 - Nome de diretórios, arquivos e extensões de arquivos devem estar em negrito
 
-### Siglas e Acrônimos
+## Siglas e Acrônimos
 
 Você deve pontuar o significado da sigla ou do acrônimo em conjunto deste uma vez por título, após isto, utilize a sigla ou o acrônimo para se acostumar com este.
 
-### Listas
+## Listas
 
 Não irei utilizar ponto e vírgula ou ponto final em itens de lista, mas se os seus subitens não forem uma lista, o que vale é a regra de sintaxe geral.
 
@@ -51,6 +85,6 @@ Caso você tenha uma lista em que um item seja composto por uma palavra ou frase
     **Frase chave:** texto.
 - Item 3
 
-### Arquivos
+## Arquivos
 
 Dependendo do que o arquivo se trata, ele terá sua própria especificação adicional de template.

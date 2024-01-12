@@ -1,3 +1,8 @@
+# Rotina
+
+- Estudar Rust
+- Progredir no diretório **Sistemas Operacionais**
+
 # Conteúdo
 
 Abaixo temos sobre o que cada arquivo ou diretório trata, de forma resumida.
