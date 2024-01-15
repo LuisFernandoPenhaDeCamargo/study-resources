@@ -130,6 +130,14 @@ Em Rust, para criar uma aplicação executável, você precisa de um ponto de en
 
 Em resumo, a função `main` é necessária para criar uma aplicação executável, e a convenção padrão é ter essa função em um arquivo chamado **main.rs**. Você pode personalizar isso, mas precisa informar ao Cargo como lidar com seus pontos de entrada alternativos.
 
+# Cargo
+
+`cargo add dependência`**:** adiciona a dependência `dependência` ao seu arquivo **Cargo.toml** na seção `[dependencies]` com a versão mais recente. Após a adição, você pode usar `cargo build` para baixar e compilar a dependência.
+
+Antes de usar este comando você precisa instalá-lo se ainda não o tiver. Você pode instalá-lo usando o seguinte comando: `cargo install cargo-edit`.
+
+Se quiser uma versão específica da dependência, você pode fornecê-la da seguinte forma: `cargo add dependência@versão`, por exemplo, `cargo add anyhow@1.0`.
+
 # Macros
 
 Um "macro" se refere a uma funcionalidade poderosa e flexível para a criação de código em tempo de compilação. Macros em Rust são semelhantes a macros em outras linguagens de programação, mas a abordagem de Rust é particulamente robusta e segura.
@@ -159,7 +167,7 @@ greet!("Mundo");
 
 ```rust
 macro greeting() {
-    // Cria uam função de cumprimento durante a compilação.
+    // Cria uma função de cumprimento durante a compilação.
     fn greet() {
         println!("Olá, Mundo!");
     }
@@ -186,15 +194,169 @@ Embora esses benefícios sejam valiosos, é importante notar que as macros devem
 
 # Traits
 
+Em Rust, um "trait" é um mecanismo que permite a definição de comportamentos compartilhados entre tipos. É uma maneira de declarar um conjunto de métodos que um tipo pode implementar, permitindo que vários tipos compartilhem funcionalidades comuns.
 
+Os traits em Rust são semelhantes às interfaces em outras linguagens de programação, mas têm algumas características distintas. Um trait define um comportamento que pode ser implementado por tipos específicos.
+
+Aqui está um exemplo básico de como você pode definir um trait e implementá-lo para um tipo:
+
+```rust
+// Definfindo um chamado "Exemplo".
+trait Exemplo {
+    // Método do trait
+    fn mostrar(&self);
+}
+
+// Implementando o trait "Exemplo" para o tipo i32.
+impl Exemplo for i32 {
+    fn mostrar(&self) {
+        println!("Este é um número: {}.", self);
+    }
+}
+
+// Implementando o trait "Exemplo" para o tipo &str.
+impl Exemplo for &str {
+    fn mostrar(&self) {
+        println!("Esta é uma string: {}", self);
+    }
+}
+
+fn main() {
+    let numero: i32 = 42;
+    let texto: &str = "Olá, Mundo!";
+
+    // Chamando o método "mostrar()" para o tipo i32.
+    numero.mostrar();
+
+    // Chamando o método "mostrar()" para o tipo &str.
+    numero.mostrar();
+}
+```
+
+Neste exemplo, o trait `Exemplo` é definido com um método chamado `mostrar()`. Ele é então implementado para os tipos `i32` e `&str`. O método `mostrar()` é chamado para instâncias desses tipos no `main()`, demonstrando como os traits permitem compartilhar comportamentos entre tipos diferentes.
 
 # Structs
 
+Em Rust, uma "struct" (estrutura) é um tipo de dados que permite agrupar diferentes tipos de dados sob um único nome. Ela é semelhante a uma classe ou a uma estrutura de dados em outras linguagens de programação.
 
+As structs em Rust são utilizadas para criar tipos de dados personalizados, onde você pode definir os campos (propriedades) que a estrutura terá. Cada campo pode ter um tipo de dados diferente. Aqui está um exemplo básico de como você pode definir e usar uma struct:
 
-# Enums
+```rust
+// Definindo uma struct chamada "Ponto".
+struct Ponto {
+    x: i32,
+    y: i32
+}
 
+fn main() {
+    // Criando uma instância da struct "Ponto".
+    let ponto1 = Ponto { x: 10, y: 20 };
 
+    // Acessando os campos da struct.
+    println!("Coordenadas do ponto: ({}, {}).", ponto1.x, ponto1.y);
+}
+```
+
+Neste exemplo, a struct `Ponto` tem dois campos `x` e `y`, ambos do tipo `i32`. No `main()`, uma instância da struct é criada com valores específicos para os campos, e esses valores são acessados usando a notação de ponto (`ponto1.x` e `ponto1.y`).
+
+As structs são frequentemente utilizadas para modelar dados mais complexos e estruturados em Rust. Elas podem ser usadas em conjunto com traits para adicionar comportamentos específicos a tipos de dados personalizados.
+
+# Tipos De Dados
+
+### i32
+
+`i32` é um tipo de dados em Rust que representa um número inteiro de 32 bits com sinal (significado que pode ser positivo ou negativo). Aqui está uma breve explicação:
+
+- `i`**:** indica que é um tipo de inteiro com sinal (signado)
+- `32`**:** indica que ocupa 32 bits de armazenamento na memória
+
+Isso significa  que um valor do tipo `i32` pode variar de -2\^31 a 2\^31-1, cobrindo uma faixa de aproximadamente -2 bilhões a 2 bilhões.
+
+**Exemplo de uso:**
+
+```rust
+fn main() {
+    // Declarando uma variável do tipo i32.
+    let numero: i32 = 42;
+
+    // Imprimindo o valor.
+    println!("O valor é: {}.", numero);
+}
+```
+
+### &str
+
+`&str` é um tipo de dado em Rust que representa uma "fatia" (slice) de uma string, também conhecido como uma referência a uma sequência de caracteres. Aqui está uma breve explicação.
+
+- `&`**:** indica que é uma referência, ou seja, uma forma de referenciar dados sem possuí-los diretamente
+- `str`**:** representa uma sequência de caracteresm, ou seja, uam string
+
+Este tipo é uma forma comum de lidar com strings em Rust. Ele não possui propriedades próprias de propriedades de propriedades de string, como `String`, mas pode apontar para uma parte específica de uma string existente.
+
+**Exemplo de uso:**
+
+```rust
+fn main() {
+    // Criando uma string.
+    let minha_string = String::from("Olá, Mundo!");
+
+    // Criando uma referência a parte da string (slice).
+    let parte_da_string: &str = &minha_string[0...5];
+
+    // Imprimindo a parte da string.
+    println!("Parte da string: {}", parte_da_string);
+}
+```
+
+Neste exemplo, `&minha_string[0...5]` cria uma referência a uma fatia da string original que inclui os caracteres nas posições 0 a 4 (5 não é incluído). `&str` é frequentemente usado para passar partes de strings em funções ou métodos sem a necessidade de copiar os dados.
+
+### Enums
+
+Em Rust, "enum" (enumeração) é um tipo de dado que permite a definição de um conjunto finito e nomeado de valores possíveis. Enums são frequentemente utilizados para representar diferentes variantes ou estados em um programa.
+
+Ao contrários de enums em algumas outras linguagens, em Rust, os enums podem ter dados associados a cada variante, tornando-os extremamente versáteis.
+
+Aqui está um exemplo básico de como você pode definir e usar um enum em Rust:
+
+```rust
+// Definindo um enum chamado "Dia".
+enum Dia {
+    Segunda,
+    Terca,
+    Quarta,
+    Quinta,
+    Sexta,
+    Sabado,
+    Domingo
+}
+
+fn main() {
+    // Criando uma instância do enum "Dia".
+    let dia_da_semana = Dia::Quarta;
+
+    // Utilizando um "match" para lidar com diferentes variantes.
+    match dia_da_semana {
+        Dia::Segunda => println!("É segunda-feira!"),
+        Dia::Quarta => println!("É quarta-feira!"),
+        Dia::Sexta => println!("É sexta-feira!"),
+        _=> println!("Outro dia da semana.")
+    }
+}
+```
+
+Neste exemplo, o enum `Dia` tem sete variantes, representando cada dia da semana. Uma instância do enum é criada com um valor específico, e um `match` é usado para lidar com as diferentes variantes.
+
+Os enums em Rust são poderosos, especialmente quando combinados com dados associados. Eles são usados para criar tipos de dados customizados e expressar conceitos que podem ter múltiplos estados os valores distintos.
+
+# Tipos de Variáveis (`static`)
+
+`static INIT:` [`Once`](#once) `= Once::new()`
+
+Aqui, estamos declarando uma variável estática chamada `INIT` do tipo `Once` e está inicializando essa variável com o resultado da chamada do método estático `new()` do módulo `Once`. Em Rust, a criação de variáveis estáticas requer uma inicialização constante, e a função `new()` do tipo `Once` fornece essa inicialização para garantir que a variável esteja pronta para uso.
+
+A função `new()` do tipo `Once` é uma função associada, o que significa que você a chama no tipo (`Once::new()`) em vez de uma instância específica. Nesse caso, ela retorna uma nova instância da struct `Once` configurada para ser usada como uma variável de inicialização única. Isso é frequentemente usado para inicializar uma variável estática apenas uma vez em um programa.
+
+Essa abordagem é comumente usada para garantir que a inicialização de uma variável estática ocorra de maneira thread-safe, especialmente quando a inicialização envolve operações que só devem ser realizadas uma vez (como inicialização de recursos globais). A estrutura `Once` ajuda a garantir que essa inicialização ocorra de maneira segura em um ambiente multithread.
 
 # Importação e Módulo x Crate
 
@@ -214,7 +376,7 @@ use nome_do_crate::nome_do_módulo::nome_da_definição;
 - Os "::" (dois pontos duplos) são usados para acessar definições dentro de módulos. Eles indicam uma hierarquia, semelhante à notação de ponto em algumas outras linguagens
 - Você pode usar um asterisco no lugar do nome da definição para importar todas as definições de um módulo. Isso é conhecido como importação "glob", e pode ser útil para evitar a repetição de nomes no código
 
-Sobre crate externos, para poder importá-los, ele deve ser listado como uma dependência em seu arquivo "Cargo.toml". A seção "[dependencies]" do arquivo "Cargo.toml" especifica os crates externos que seu projeto está utilizando. */
+Sobre crate externos, para poder importá-los, ele deve ser listado como uma dependência em seu arquivo "Cargo.toml". A seção "[dependencies]" do arquivo "Cargo.toml" especifica os crates externos que seu projeto está utilizando.*/
 ```
 
 Em Rust, "módulo" e "crate" são conceitos relacionados, mas têm significados ligeiramente diferentes:
@@ -245,6 +407,53 @@ fn main() {
 Neste exemplo, `modulo_a` e `modulo_b` são módulos dentro do crate principal. Eles podem conter definições de funções, structs, enums, etc., ajudando a organizar o código de maneira modular.
 
 # Módulos
+
+### `std`
+
+A biblioteca `std` em Rust é a biblioteca padrão que faz parte do ambiente de execução padrão da linguagem. Ela fornece as funcionalidades essenciais necessárias para a maioria dos programas em Rust. Aqui estão algumas das principais características da biblioteca `std`:
+
+1. **Tipos básicos:** inteiros, ponto flutuante, booleanos, caracteres, strings, slices, etc
+2. **Coleções:** vetores, slices, strings, hash maps, hash sets, listas duplamente vinculadas, etc
+3. **Operações de E/S (Entrada/Saída):** manipulação de arquivos, leitura e gravação, formatação de strings, etc
+4. **Concorrência e sincronização:** Threads, canais, Mutex, Arc (Atomic Reference Counting), etc
+5. **Gestão de memória:** smart pointers, Box, Rc (Reference Counting), Arc, etc
+6. **Manipulação de tempo:** tipos para representar datas e horas, temporizadores, etc
+7. **Manipulação de erros:** Result, Option, tipos para lidar com erros, etc
+8. **Manipulação de strings:** métodos e funções para manipular strings, conversão, etc
+9. **Padrões de correspondências:** macros e funcionalidades relacionadas a padrões
+10. **Ponto de entrada principal (main):** o ponto de entrada principal para a execução de programas Rust
+
+Ao criar um programa Rust, você não precisa importar explicitamente a biblioteca padrão `std`, pois ela é automaticamente incluída em todos os programas Rust. Portanto, você pode usar os tipos e funções fornecidos pela `std` sem precisar de uma declaração de importação explícita.
+
+```rust
+fn main() {
+    // Exemplo de uso da biblioteca std.
+    let texto = "Olá, Rust!";
+
+    println!("{}", texto);
+}
+```
+
+Neste exemplo, a função `println!()` é uma macro fornecida pela biblioteca `std`, que é usada para imprimir texto no console. A string "`Olá, Rust!`" é uma string literal e é parte dos tipos básicos fornecidos pela `std`.
+
+```rust
+use std::{thread, time, sync::Once};
+
+fn main() {
+    let now = time::Instant::now();
+
+    thread::sleep(time::Duration::from_secs(2));
+
+    let elapsed = now.elapsed();
+    let once = Once::new();
+    // Restante do código...
+}
+```
+
+- `thread` **e** `time`**:** ambos são módulos do prelúdio padrão, o que significa que suas funcionalidades estão disponíveis por padrão sem uma importação explicíta. Então, tecnicamente, você pode usar `std::thread` e `std::time` sem importá-los explicitamente. São módulos que contêm funcionalidades relacionadas a threads e manipulação de tempo, respectivamente
+- `sync::Once`**:** `sync` é um módulo no `std` que contém várias estruturas e tipos relacionados a sincronização. Neste caso, você precisaria importar explicitamente `std::sync::Once` para usá-lo em seu código. <a id = "once"></a>`Once` é uma estrutura de sincronização fornecida no módulo `sync` dentro do crate `std`
+
+Lembre-se de que, enquanto alguns itens podem estar disponíveis sem uma importação explícita, é uma prática comum e boa legibilidade do código importar explicitamente os itens que você está usando. Isso torna mais claro para os leitores do código de onde vêm esses itens e facilita a compreensão do código.
 
 ### `log`
 
@@ -284,3 +493,32 @@ Se você utilizar outras bibliotecas de logging em Rust, a importação pode ser
 ### `simpleslog`
 
 É uma crate que provê uma série de facilidades relacionadas a log, que podem ser facilmente combinada.
+
+### `anyhow`
+
+`anyhow` é uma biblioteca em Rust que simplifica a manipulação e tratamento de erros. Ela visa fornecer uma maneira mais ergonômica e conveniente de lidar com erros em comparação com a biblioteca padrão `Result` e o uso extensivo de `unwrap`, `expect` ou padrões de correspondência de erros.
+
+**Exemplo de uso básico:**
+
+```rust
+use anyhow::{Result, anyhow};
+
+fn dividir(a: i32, b: i32) -> Result<i32> {
+    if b == 0 {
+        return Err(anyhow!("Divisão por zero não é permitida."));
+    }
+
+    Ok(a / b)
+}
+
+fn main() {
+    let resultado = dividir(10, 2);
+
+    match resultado {
+        Ok(valor) => println!("Resultado: {}.", valor),
+        Err(e) => eprintln!("Erro: {}", e)
+    }
+}
+```
+
+Neste exemplo, a função `dividir()` retorna um `Result<i32>` usando `anyhow`. Se ocorrer um erro (divisão por zero), ele retorna um `Err` com uma mensagem de erro específica. No `main()`, o resultado é tratado usando um padrão de correspondência para lidar com o sucesso (`Ok`) ou o erro (`Err`). A biblioteca `anyhow` facilita a construção e manipulação de erros de maneira mais expressiva.
