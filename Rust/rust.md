@@ -1,4 +1,46 @@
-# Dúvidas
+### Sumário
+
+- **Rust**
+- **Cross e a Compilação de Binários Estáticos Compatíveis**
+- **Target**
+- **Arquivo Makefile no Formato TOML**
+- **Executando Um Código Feito em Rust**
+- **Rust e o Seu Ponto de Entrada**
+- **Cargo**
+- **Macros (**`macro`**e** `macro_rules!`**)**\
+    + `vec![]`
+- **Traits (**`trait`**)**
+- **Structs (**`struct`**)**
+- **Tipos de Dados**
+    + `i32`
+    + `&str`
+    + **Enums (**`enum`**)**
+- **Tipos de Variáveis (**`static`**)**
+- **Palavras Reservadas**\
+    + `fn` **e** `return`**. Retorno Implícito**
+- **Importação e Módulo x Crate (**`use`. `mod`**)**\
+    + **Auto Importação**
+- **Parâmetros**\
+    + **Parâmetros de Tipo Genérico** `<T, E> Result<T, E>`
+- **Closures (**`||`**.** `mut`**)**
+- **Pedaços de Código dos Quais Você Pode Absorver Muita Coisa**\
+    + `pub fn init(logger: Vec<Box<dyn SharedLogger>>) -> Result<(), SetLoggerErros>`
+- **Crates**
+    + `std`
+        - `Duration` **(**`struct`**.** `from_secs()`**)**
+        - `Once` (`struct`)\
+            + `new()`
+    + `log`\
+        - `info` **(macro)**
+    + `simplelog`
+        - `CombinedLogger` **(**`struct`**)**\
+            + `init()`
+        - `TermLogger` **(`struct`)**\
+            + `new()`
+    + `anyhow`\
+        - `unwrap()`
+- **Boas Práticas**\
+    + **Variáveis com Todas as Letras em Maiúsculo**
 
 # Rust
 
@@ -138,7 +180,7 @@ Antes de usar este comando você precisa instalá-lo se ainda não o tiver. Voc�
 
 Se quiser uma versão específica da dependência, você pode fornecê-la da seguinte forma: `cargo add dependência@versão`, por exemplo, `cargo add anyhow@1.0`.
 
-# Macros
+# Macros (`macro` e `macro_rules!`)
 
 Um "macro" se refere a uma funcionalidade poderosa e flexível para a criação de código em tempo de compilação. Macros em Rust são semelhantes a macros em outras linguagens de programação, mas a abordagem de Rust é particulamente robusta e segura.
 
@@ -152,20 +194,6 @@ Existem dois tipos principais de macros em Rust:
     + **Exemplo:**
 
 ```rust
-macro_rules! greet {
-    ($name:expr) => {
-        println!("Olá, {}!", $name);
-    };
-}
-
-greet!("Mundo");
-```
-
-- **De identificação:**
-    + Macros de identificação são macros que operam no nível de tokens e são usados para manipulação de um código mais leve
-    + **Exemplo:**
-
-```rust
 macro greeting() {
     // Cria uma função de cumprimento durante a compilação.
     fn greet() {
@@ -175,6 +203,20 @@ macro greeting() {
 
 // Uso da macro procedural. Este é um exemplo hipotético, pois não há um macro procedural real no exemplo.
 greeting!();
+```
+
+- **De identificação:**
+    + Macros de identificação são macros que operam no nível de tokens e são usados para manipulação de um código mais leve
+    + **Exemplo:**
+
+```rust
+macro_rules! greet {
+    ($name:expr) => {
+        println!("Olá, {}!", $name);
+    };
+}
+
+greet!("Mundo");
 ```
 
 As macros em Rust são poderosa, mas devem ser usadas com responsabilidade. Elas são uma ferramenta poderosa para a metaprogramação, mas o código gerado deve ser claro, legível e seguro.
@@ -192,7 +234,13 @@ O uso de macros oferece alguns benefícios específicos devido à natureza de tr
 
 Embora esses benefícios sejam valiosos, é importante notar que as macros devem ser usadas com moderação. Macros complexas podem tornar o código difícil de entender, e seu uso excessivo pode levar a código menos manutenível. Em muitos casos, funções regulares são preferíveis devido à sua clareza e capacidade de encapsular lógica reutilizável. As macros são uma ferramenta poderosa, mas devem ser usadas quando realmente oferecem vantagens claras.
 
-# Traits
+### `vec![]`
+
+A sintaxe `vec![]` em Rust é um atalho conveniente para criar um vetor contendo os elementos fornecidos. O `!` após o `vec` indica que é um macro.
+
+A macro `vec!` é uma maneira concisa de inicializar um vetor, permitindo que você forneça os elementos do vetor dentro dos colchetes (`[]`), sem a necessidade de criar manualmente um vetor usando `Vec::new()` e depois usar o método `push()` para adicionar elementos.
+
+# Traits (`trait`)
 
 Em Rust, um "trait" é um mecanismo que permite a definição de comportamentos compartilhados entre tipos. É uma maneira de declarar um conjunto de métodos que um tipo pode implementar, permitindo que vários tipos compartilhem funcionalidades comuns.
 
@@ -235,8 +283,7 @@ fn main() {
 
 Neste exemplo, o trait `Exemplo` é definido com um método chamado `mostrar()`. Ele é então implementado para os tipos `i32` e `&str`. O método `mostrar()` é chamado para instâncias desses tipos no `main()`, demonstrando como os traits permitem compartilhar comportamentos entre tipos diferentes.
 
-# Structs
-
+# Structs (`struct`)
 Em Rust, uma "struct" (estrutura) é um tipo de dados que permite agrupar diferentes tipos de dados sob um único nome. Ela é semelhante a uma classe ou a uma estrutura de dados em outras linguagens de programação.
 
 As structs em Rust são utilizadas para criar tipos de dados personalizados, onde você pode definir os campos (propriedades) que a estrutura terá. Cada campo pode ter um tipo de dados diferente. Aqui está um exemplo básico de como você pode definir e usar uma struct:
@@ -261,9 +308,9 @@ Neste exemplo, a struct `Ponto` tem dois campos `x` e `y`, ambos do tipo `i32`. 
 
 As structs são frequentemente utilizadas para modelar dados mais complexos e estruturados em Rust. Elas podem ser usadas em conjunto com traits para adicionar comportamentos específicos a tipos de dados personalizados.
 
-# Tipos De Dados
+# Tipos de Dados
 
-### i32
+### `i32`
 
 `i32` é um tipo de dados em Rust que representa um número inteiro de 32 bits com sinal (significado que pode ser positivo ou negativo). Aqui está uma breve explicação:
 
@@ -284,7 +331,7 @@ fn main() {
 }
 ```
 
-### &str
+### `&str`
 
 `&str` é um tipo de dado em Rust que representa uma "fatia" (slice) de uma string, também conhecido como uma referência a uma sequência de caracteres. Aqui está uma breve explicação.
 
@@ -310,7 +357,7 @@ fn main() {
 
 Neste exemplo, `&minha_string[0...5]` cria uma referência a uma fatia da string original que inclui os caracteres nas posições 0 a 4 (5 não é incluído). `&str` é frequentemente usado para passar partes de strings em funções ou métodos sem a necessidade de copiar os dados.
 
-### Enums
+### Enums (`enum`)
 
 Em Rust, "enum" (enumeração) é um tipo de dado que permite a definição de um conjunto finito e nomeado de valores possíveis. Enums são frequentemente utilizados para representar diferentes variantes ou estados em um programa.
 
@@ -358,7 +405,51 @@ A função `new()` do tipo `Once` é uma função associada, o que significa que
 
 Essa abordagem é comumente usada para garantir que a inicialização de uma variável estática ocorra de maneira thread-safe, especialmente quando a inicialização envolve operações que só devem ser realizadas uma vez (como inicialização de recursos globais). A estrutura `Once` ajuda a garantir que essa inicialização ocorra de maneira segura em um ambiente multithread.
 
-# Importação e Módulo x Crate
+# Palavras Reservadas
+
+### `fn` e `return`. Retorno Implícito
+
+Em Rust, a palavra reservada `fn` é usada para declarar uma função. Ela é seguida pelo nome da função, uma lista de parâmetros entre parênteses e o bloco de código que compõe o corpo da função.
+
+A sintaxe básica de uma declaração de função em Rust é a seguinte:
+
+```rust
+fn nome_da_função(parâmetro1: Tipo1, parâmetro2: Tipo2) -> Tipo_do_retorno {
+    // Corpo da função.
+    // ...
+    // Opcionalmente, a função retorna um valor usando a palavra chave `return`.
+}
+```
+
+Aqui estão alguns pontos-chaves sobre a palavra reservada `fn`:
+
+1. **Declaração de função:** `fn` é usada para declarar uma função
+2. **Nome da função:** o nome da função segue a palavra `fn` e é usado para chamar a função posteriormente no código
+3. **Parâmetros:** a lista de parâmetros está entre parênteses e consiste em nomes de parâmetros seguidos por seus tipos
+4. **Tipo de retorno:** a seta (`->`) é seguida pelo tipo de retorno da função. Se a função não retornar nada, o tipo de retorno é especificado como `()`
+5. **Corpo da função:** o corpo da função é delimitado por chave (`{}`) e contém o código executado quando a função é chamada
+
+**Exemplo:**
+
+```rust
+fn soma(a: i32, b: i32) -> i32 {
+    a + b
+}
+
+fn main() {
+    let resultado = soma(3, 5);
+
+    println!("O resultado da soma é: {}.", resultado);
+}
+```
+
+Neste exemplo, `soma()` é uma função que aceita dois parâmetros `a` e `b`, ambos tipo `i32`, e retorna a soma desses valores como um `i32`. A função é chamada na `main()`, e o resultado é impresso no console.
+
+Observe ainda que a palavra-chave `return` não é necessária, em Rust, a última expressão avaliada em uma função é implicitamente retornada. Assim, a função `soma()` pode ser definida de forma mais concisa sem o `return` explícito.
+
+No exemplo acima, `a + b` é a última expressão na função, e seu valor é implicitamente retornado.
+
+# Importação e Módulo x Crate (`use`. `mod`)
 
 A palavra-chave `use` em Rust é usada para importar módulos, crates ou itens específicos em um escopo. Isso facilita a reutilização de código e a organização de namespaces. Por exemplo:
 
@@ -406,9 +497,270 @@ fn main() {
 
 Neste exemplo, `modulo_a` e `modulo_b` são módulos dentro do crate principal. Eles podem conter definições de funções, structs, enums, etc., ajudando a organizar o código de maneira modular.
 
-# Módulos
+Em, Rust, os módulos podem ser organizados em árvores hierárquicas sem a necessidade de especificar a crate a que pertencem. A organização de módulos em Rust ocorre no nível do próprio código-fonte, e a hierarquia é determinada pela estrutura de diretórios e pelos próprios módulos no código.
 
-### `std`
+A hierarquia de módulos é refletida na organização dos arquivos e diretórios no projeto. Por exemplo, se você tem um arquivo **meu_modulo.rs** em um diretório chamado **modulos**, a estrutura pode parecer assim:
+
+```plaintext
+meu_projeto/
+    src/
+        modulos/
+            meu_modulo.rs
+    main.rs
+```
+
+Dentro do arquivo **main.rs**, você pode usar `modulos::meu_modulo` para referenciar o módulo `meu_modulo`. Não é necessário especificar a crate quando você está se referindo a módulos internos ao seu próprio projeto.
+
+se você estiver referenciando módulos de outras crates, você precisará especificar a crate. Isso é feito usando o nome da crate como o primeiro componente do caminho do módulo. Por exemplo:
+
+```rust
+extern crate outra_crate;
+
+use outra_crate::OutroModulo;
+```
+
+Aqui, `outra_crate` é o nome da crate externa, e `OutroModulo` é um módulo dentro dessa crate.
+
+Portanto, para módulos internos ao seu projeto, você não precisa especificar explicitamente a crate, enquanto para módulos de outras crates, você deve indicar a crate no caminho do módulo.
+
+### Auto Importação
+
+Para realizar uma auto-importação (importação dos itens da sua própria crate), o nome do seu pacote no arquivo **Cargo.toml** deve ser usado na declaração `use` dentro dos seus arquivos código. O formato típico seria:
+
+```toml
+# No seu arquivo Cargo.toml.
+[package]
+name = "updater"
+version = "1.0.0" # Por exemplo.
+# ...
+```
+
+```rust
+// No seu código, por exemplo, em main.rs.
+use updater::*; // Importa todos os itens públicos da crate "updater"
+```
+
+Essa declaração permite que você use todos os itens públicos da sua própria crate, tornando-os disponíveis no escopo do arquivo de código onde você fez a importação. Dessa forma, você pode referenciar esses itens sem precisar usar o caminho completo da crate cada vez.
+
+Lembre0se de que isso importa apenas os itens marcados como públicos (aqueles que tê a visibilidade `pub` no código-fonte da sua crate). Itens não marcados como públicos não serão importados dessa maneira.
+
+Essa prática pode tornar o seu código mais conciso e legível, especialmente quando você tem muitos itens públicos em sua crate e deseja usá-los sem repetir o nome completo da crate em cada referência.
+
+# Parâmetros
+
+Em Rust, parâmetros podem aparecer em diferentes contextos, não apenas dentro de parênteses. Aqui estão alguns lugares onde você pode encontrar parâmetros em Rust:
+
+1. **Parênteses de funções e métodos:** os parâmetros de função ou método são declarados dentro de parênteses. Exemplo:
+
+```rust
+fn exemplo(parâmetro: i32) {
+    // Corpo da função.
+}
+```
+
+2. **Sintaxe de traits e structs:** em definições de traits e structs, você pode usar parâmetros de tipo genérico para tornar o código mais flexível e reutilizável. Exemplo:
+
+```rust
+struct MinhaStruct<T> {
+    campo: T
+}
+
+trait MinhaTrait<T> {
+    fn minha_função(&self, parametro: T);
+}
+```
+
+3. **Assinatura de enums:** enums também podem ter parâmetros, especialmente enums genéricas. Exemplo:
+
+```rust
+enum MinhaEnum<T> {
+    Variante1(T),
+    Variante2
+}
+```
+
+4. **Parâmetros de macros:** macros podem ter parâmetros, e eles têm uma sintaxe específica. Exemplo:
+
+```rust
+macro_rules! minha_macro {
+    ($parâmetro: expr) => {
+        // Corpo da macro.
+    };
+}
+```
+
+5. **Parâmetros de closures:** closures podem receber parâmetros entre barras verticais. Exemplo:
+
+```rust
+let minha_closure = |parâmetro| {
+    // Corpo da closure.
+};
+```
+
+6. **Parâmetros de estruturas de controle:** em estruturas de controle como `if`, `match`, `for`, etc., você pode usar padrões e variáveis como parâmetros. Exemplo:
+
+```rust
+if let Some(parâmetro) = alguma_opção {
+    // Corpo do bloco `if`.
+}
+```
+
+Em Rust, os parâmetros podem ser encontrados em várias partes do código, dependendo do contexto em que são utilizados.
+
+### Parâmetros de Tipo Genérico `<T, E> Result<T, E>`
+
+As letras dentro dos sinais `<` e `>` em `<T, E>` são parâmetros do tipo genérico. Em Rust, esse parâmetros de tipo genérico são usados para tornar estruturas, enums, funções e métodos mais flexíveis e reutilizáveis, permitindo que trabalhem com diferentes tipos de dados.
+
+Vamos analisar o significa específico de `<T, E> Result<T, E>`:
+
+- `<T, E>`**:** aqui, `T` e `E` são parâmetros do tipo genérico
+    + `T`**:** geralmente representa o tipo do valor de sucesso (`Ok`) em um `Result`
+    + `E`**:** geralmente representa o tipo do erro (`Err`) em um `Result`
+- `Result<T, E>`**:** é uma enumeração (enum) do Rust que representa um resultado que pode ser bem-sucedido (`Ok(T)`) ou conter um erro `(Err(E))`. Os parâmetros de tipo `T` e `E` permitem que `Result` seja parametrizado com tipos específicos para o valor de sucesso e o tipo de erro
+
+Quando você vê `<T, E>` como parte de uma declaração, isso geralmente significa que a estrutura, função ou método é genérico em relação a esses tipos. Por exemplo, uma função que retona um `Result` pode ser definida para trabalhar com diferentes tipos de valores de sucesso e erros, tornado-a mais flexível e reutilizável em vários contextos.
+
+Exemplo de função genérica com `Result` em Rust:
+
+```rust
+fn dividir(a: i32, b: i32) -> Result<i32, &'static str> {
+    if b == 0 {
+        // Se `b` for zero, retorna um erro.
+        Err("Divisão por zero não é permitida.")
+    } else {
+        // Se `b` não for zero, retorna o resultado da divisão.
+        Ok(a / b)
+    }
+}
+
+fn main() {
+    match dividir(10, 2) {
+        Ok(resultado) => println!("Resultado: {}.", resultado),
+        Err(erro) => println!("Erro: {}", erro)
+    }
+}
+```
+
+Neste exemplo, a função `dividir()` é genérica em relação aos tipos `i32` (valor de sucesso) e `&'static str` (tipo de erro), permitindo que ela seja usada com diferentes tipos de dados.
+
+Vamos considerar mais casos com parâmetros genéricos:
+
+- `-> Result <()>`
+- `: Result<i32>`
+
+Dentro dos sinais de menor (`<`) e maior (`>`) em Rust, você encontra parâmetros de tipo genérico. Esses parâmetros são espaços reservados para tipos específicos que podem ser fornecidos em tempo de compilação.
+
+Vamos considerar os exemplos acima:
+
+- `Result<()>`**:** neste contexto, `<>` indica um parâmetro de tipo genérico. No caso `Result<()>`, `()` é um tipo vazio em Rust. `Result<()>` significa que você tem um `Result` que pode conter um valor de sucesso de tipo vazio (`Ok(())`) ou um erro (`Err(E)`), onde `E` é um tipo específico que será inferido ou fornecido
+- `Result<i32>`**:** `i32` indica que `Result` é parametrizado com um tipo de valor de sucesso `i32`. Assim, `Result<i32>` representa um `Result` que pode conter um valor de sucesso de tipo `i32` (`Ok(um_valor_i32)`) ou um erro (`Err(E)`), onde `E` seria um tipo específico
+
+Em ambos os casos, a sintaxe `<T>` indica genericidade em relação ao tipo `T`. Quando você vê algo como `<T>` ou `<E>`, isso significa que o código é genérico e pode ser usado com diferentes tipos.
+
+Exemplo de outra função genérica usando `Result` com parâmetros de tipo genérico:
+
+```rust
+fn exemplo_generico<T>(valor: T) -> Result<T, &'static str> {
+    if algum_criterio(&valor) {
+        Ok(valor)
+    } else {
+        Err("Algum critério não foi atendido.")
+    }
+}
+
+fn algum_criterio<T>(valor: &T) -> bool {
+    // Lógica para verificar algum critério no valor.
+    true
+}
+
+fn main() {
+    match exemplo_generico(42) {
+        Ok(resultado) => println!("Resultado: {}", resultado),
+        Err(erro) => println!("Erro: {}", erro)
+    }
+}
+```
+
+Neste exemplo, `exemplo_generico()` é uma função genérica que retorna um `Result` parametrizado com o tipo genérico `T`. A função pode ser usada com diferentes tipos, e a lógica de critério é aplicada ao valor do tipo `T`.
+
+# Closures (`||`. `mut`)
+
+Os dois pipes (`||`) após os parênteses em Rust representam a sintaxe para a criação de uma expressão de fechamento (closure). Em Rust, uma closure é uma função anônima que pode capturar variáveis do ambiente circundante.
+
+A sintaxe geral de uma closure em Rust é a seguinte:
+
+```rust
+|| {
+    // Código da closure.
+}
+```
+
+- `||`**:** indica o início e o fim do bloco de código da closure
+- `{}`**:** delimita o corpo da closure, onde você pode colocar o código que deseja executar
+
+Em resumo, os dois pipes são usados para criar uma closure em Rust, e o código dentro da closure será executado quando o método que recebe a closure for chamado.
+
+O escopo do ambiente circundante de uma closure em Rust inclui as variáveis que estão no mesmo escopo onde a closure é definida e que são capturadas por essa closure. Em Rust, existem três formas de capturar variáveis em closures, cada uma alterando como as variáveis são capturadas:
+
+- `FnOnce`**:** a closure pode capturar variáveis por valor. Isso significa que ela possui a propriedade das variáveis capturadas e, portanto, pode consumi-las, impedindo o acesso a essas variáveis fora da closure. Isso geralmente acontece quando a closure possui a propriedade das variáveis capturadas e as move para dentro dela
+- `FnMut`**:** a closure pode capturar variáveis por referência mutável. Isso permite que a closure modifique as variáveis capturadas, mas não as possua completamente. O acesso fora da closure ainda é possível, mas com restrições
+- `Fn`**:** a closure pode capturar variáveis por referência imutável. Isso permite apenas leitura das variáveis capturadas
+
+O escopo do ambiente circundante de uma closure é o escopo onde a closure é definida, não onde ela é chamada. Isso significa que as variáveis que são capturadas pela closure estão no mesmo escopo ou em escopos externos, mas não em escopos internos onde a closure é chamada.
+
+Aqui está um exemplo para ilustrar:
+
+```rust
+fn main() {
+    let x = 42;
+
+    // Definindo uma closure que captura `x` por valor.
+    let closure_fn_once = || {
+        println!("Capturando por valor: {}.", x);
+    };
+
+    // Definindo uma closure que captura `y` por referência mutável.
+    let mut y = 100;
+    let mut closure_fn_mut = || {
+        y += 1;
+        println!("Capturando por referência mutável: {}.", y);
+    };
+
+    // Definindo uma closure que captura `x` por referência imutável.
+    let closure_fn = || {
+        println!("Capturando por referência imutável: {}.", x);
+    };
+
+    // Chamando as closures.
+    closure_fn_once();
+    closure_fn_mut();
+    closure_fn();
+}
+```
+
+Neste exemplo, `x` é capturado por valor pela primeira closure (`FnOnce`), y, por referência mutável pela segunda closure (`FnMut`), e x, por referência imutável pela terceira closure (`Fn`). O acesso fora das closures ainda é possível, mas a forma de captura determina o que é permitido fazer com essas variáveis dentro das closures.
+
+Observe que as closures podem ser chamadas mesmo que você as declare como variáveis. Você as chama simplesmente invocando-as como se fossem funções.
+
+Quanto à forma como as closures capturam as variáveis, isso é influenciado pelos "traits" associados a cada tipo de closure (`FnOnce`, `FnMut` e `Fn`). A inferência de trait é feita automaticamente pelo compilador com base no seu contexto de uso. Se o compilador identificar que a closure é chamada apenas uma vez (`FnOnce`), ele usará essa trait. Se a closure for chamada várias vezes, mas não modificar as variáveis capturadas, ele usará `Fn`. Se a closure for chamada várias vezes e modificar as variáveis capturadas, ele usará `FnMut`.
+
+# Pedaços de Código dos Quais Você Pode Absorver Muita Coisa
+
+### <a id = "combinedlogger-init"></a>`pub fn init(logger: Vec<Box<dyn SharedLogger>>) -> Result<(), SetLoggerError>`
+
+1. **Método** `init`**:** este método é público (`pub`), o que significa que pode ser acessado de fora do módulo que define a struct `CombinedLogger`
+2. **Parâmetros:** `logger` é um parâmetro do tipo `Vec<Box<dyn SharedLogger>>`. Aqui está o que cada parte significa:
+    - `Vec<Box<dyn ShareLogger>>`**:** é um vetor que contém as caixas (`Box`) de tipos que implementam o trait `SharedLogger`. O `dyn` indica que os objetos dentro do vetor podem ser de qualquer tipo que implemente o trait `SharedLogger`
+    - Isso sugere que você pode fornecer uma lista de loggers para serem combinados pelo `CombinedLogger`. Cada logger dentro do vetor deve implementar o trait `SharedLogger`
+3. **Retorno:** `Result<(), SetLoggerError>`. O método retorna um `Result`, indicando sucesso ou falha na inicialização do logger combinado:
+    - Se a inicialização for bem-sucedida, retorna `Ok(())`
+    - Se ocorrer um erro, retorna `Err(SetLoggerError)`
+4. **Exceções (Erro):** o método pode falhar ao inicializar o logger combinado, e a falha é representada pelo tipo `SetLoggerError`. Este tipo é parte da crate `simplelog` e é usado para representar erros relacionados à configuração de loggers
+5. **Finalidade do método:** o propósito desse método é inicializar o `CombinedLogger` com uma lista de loggers fornecidos. Isso sugere que o `CombinedLogger` age como um proxy que roteia logs para vários loggers internos
+
+# Crates
+
+## `std`
 
 A biblioteca `std` em Rust é a biblioteca padrão que faz parte do ambiente de execução padrão da linguagem. Ela fornece as funcionalidades essenciais necessárias para a maioria dos programas em Rust. Aqui estão algumas das principais características da biblioteca `std`:
 
@@ -455,7 +807,53 @@ fn main() {
 
 Lembre-se de que, enquanto alguns itens podem estar disponíveis sem uma importação explícita, é uma prática comum e boa legibilidade do código importar explicitamente os itens que você está usando. Isso torna mais claro para os leitores do código de onde vêm esses itens e facilita a compreensão do código.
 
-### `log`
+### `Duration` (`struct`. `from_secs()`)
+
+`Duration` é um tipo em Rust que representa uma duração de tempo. Ele faz parte do módulo `std::time` e é usado para representar um intervalo específico de tempo. A unidade básica de medida para `Duration` me Rust são os segundos, mas você pode criar durações em outras unidades de tempo usando métodos ou operações aritméticas.
+
+A expressão `time::Duration::from_secs(valor)` cria uma instância de `Duration` representando `valor` segundos. Aqui está uma explicação mais detalhada:
+
+- `time:Duration`**:** este é o tipo `Duration` fornecido pelo módulo `std::time`
+- `from_secs(valor)`**:** este é um método associado à struct `Duration` que cria uma `Duration` a partir de uma quantidade de segundos. Neste caso, `from_secs()` está sendo usado para criar uma `Duration` representando `valor` segundos
+
+**Exemplo de uso em código:**
+
+```rust
+
+```
+
+### `Once` (`struct`)
+
+#### `new()`
+
+Vamos analisar o método `new()` do módulo `Once` em Rust:
+
+- Método (associado ao tipo `Once`)
+- **O que ele faz:** cria uma nova instância do tipo `Once`, que é usado para garantir que uma determinada inicialização ocorra apenas uma vez, independente de quantas vezes é chamada
+- **Assinatura do método:** `pub const fn new() -> Once`
+- **Parâmetros:** não possui parâmetros. É um método associado que cria uma nova instância de `Once`
+- **Exemplos de uso:**
+
+```rust
+use std::sync::Once;
+
+static INIT: Once = Once::new();
+
+fn main() {
+    INIT.call_once(|| {
+        // Código a ser executado apenas uma vez.
+        println!("Esta inicialização ocorre apenas uma vez!");
+    });
+
+    // Resto do código.
+}
+```
+
+Neste exemplo, `Once::new()` é usado para criar uma instância de `Once`. A função `call_once()` garante que o bloco fornecido seja executado apenas uma vez, mesmo que `call_once()` seja chamado de forma concorrente por várias threads.
+
+Em resumo, o método `new()` do módulo `Once` é um método associado usado para criar uma instância de `Once`, e é frequentemente utilizado para garantir a execução única de uma inicialização em ambientes concorrentes.
+
+## `log`
 
 O módulo `log` faz parte da biblioteca padrão e é usado para facilitar a geração de logs em programas. Ele fornece uma interface comum para a criação e manipulação de mensagens de log, permitindo que os desenvolvedores personalizem a forma como as mensagens de log são tratadas.
 
@@ -490,11 +888,68 @@ A biblioteca `env_logger` usa um inicializador implícito que é acionado quando
 
 Se você utilizar outras bibliotecas de logging em Rust, a importação pode ser necessária, dependendo da API específica que essas bibliotecas oferecem. No entanto, para o exemplo fornecido, a importação expĺícita de `env_logger` não é necessária.
 
-### `simpleslog`
+### `info!` (macro)
+
+`info!` é um macro fornecido pela biblioteca de logging chamada `log` em Rust. A macro `info!` é usada para gerar mensagens de log no nível de informação (info). Essa biblioteca é amplamente usada em ecossistemas Rust para facilitar o registro de mensagens de log em vários níveis, como debug, info, warn e error.
+
+Quando você vê algo como `info!("Mensagem.");`, isso está usando a macro `info!` para criar uma mensagem de log no nível de informação. O texto "`"Mensagem."`" é a mensagem que será registrada.
+
+Para usar a macro `info!`, você precisa adicionar a dependência da crate `log` no seu arquivo **Cargo.toml** e configurar um logger específico, como `env_logger`, para controlar o destino das mensagens de log.
+
+**Exemplo básico do uso da crate** `log` **e** `env_logger`**:**
+
+```rust
+/* Adicione a dependência no seu Cargo.toml
+[dependencies]
+log = "0.4"
+env_logger = "0.11"*/
+
+use log::{info, LevelFilter};
+use env_logger::Env;
+
+fn main() {
+    // Configuração do logger `env_logger`.
+    env_logger::Builder::from_env(Env::default().default_filter_or("info")).init();
+
+    // Uso da macro `info!`.
+    info!("Iniciando o programa...");
+
+    // Restante do código...
+}
+```
+
+Este exemplo inicializa o logger `env_logger` com um filtro de nível de informação (`"info"`). A partir desse ponto, você pode usar `info!` e outras macros fornecidas pela biblioteca `log` para gerar mensanges de log. Certifique-se de adicionar as versões corretas no seu arquivo **Cargo.toml** conforme necessário.
+
+## `simplelog`
 
 É uma crate que provê uma série de facilidades relacionadas a log, que podem ser facilmente combinada.
 
-### `anyhow`
+### `CombinedLogger` (`struct`)
+
+Provê uma implementação de logger que faz proxies de vários loggers como um só.
+
+#### `init()`
+
+Método de inicialização. Inicializa globalmente o `CombinedLogger` como o único recurso de log usado.
+
+[`pub fn init(logger: Vec<Box<dyn SharedLogger>>) -> Result<(), SetLoggerError>`](#combinedlogger-init)
+
+### `TermLogger` (`struct`)
+
+#### `new()`
+
+Provê uma stderr/out baseada na implementação de um logger. Suporta saída colorida.
+
+```rust
+pub fn new(
+    log_level: LeverFilter,
+    config: Config,
+    mode: TerminalMode,
+    color_choice: ColorChoice
+) -> Box<TermoLogger>
+```
+
+## `anyhow`
 
 `anyhow` é uma biblioteca em Rust que simplifica a manipulação e tratamento de erros. Ela visa fornecer uma maneira mais ergonômica e conveniente de lidar com erros em comparação com a biblioteca padrão `Result` e o uso extensivo de `unwrap`, `expect` ou padrões de correspondência de erros.
 
@@ -522,3 +977,54 @@ fn main() {
 ```
 
 Neste exemplo, a função `dividir()` retorna um `Result<i32>` usando `anyhow`. Se ocorrer um erro (divisão por zero), ele retorna um `Err` com uma mensagem de erro específica. No `main()`, o resultado é tratado usando um padrão de correspondência para lidar com o sucesso (`Ok`) ou o erro (`Err`). A biblioteca `anyhow` facilita a construção e manipulação de erros de maneira mais expressiva.
+
+### `unwrap()`
+
+1. Este é um metódo associado ao trait `Result`, comum em Rust e frequentemente utilizado com a crate `anyhow`
+2. **O que ele faz:** o método `unwrap()` é usado para obter o valor armazenado dentro de `Ok` se o `Result` for `Ok`. Se o `Result` for `Err`, ele irá paniciar, encerrando o programa com uma mensagem de erro
+3. `Assinatura do método`**:** a assinatura é geral e se aplica a qualquer `Result`
+
+```rust
+impl<T, E> Result<T, E> {
+    fn unwrap(self) -> T {
+        // Corpo do método.
+    }
+}
+```
+
+4. **Parâmetros:** `self`. Isso consome o `Result`, transferindo a propriedade do valor contido dentro de `Ok`. Se o `Result` for `Err`, causará um panic
+5. **Retorno:** retorna o valor armazenado dentro de `Ok` se o `Result` for `Ok`. Caso contrário, gera um panic com a mensagem de erro do `Err`
+7. **Exemplo de uso (**`anyhow`**):**
+
+```rust
+use anyhow::Result;
+
+fn exemplo() -> Result<()> {
+    let resultado: Result<i32> = Ok(42);
+    let valor_desembrulhado = resultado.unwrap();
+
+    println!("Valor desembrulhado: {}.", valor_desembrulhado);
+
+    let resultado_erro: Result<i32> = Err(anyhow::anyhow!("Algo deu errado!"));
+    // O `unwrap()` a seguir causaria um panic, encerrando o programa.
+    // let valor_erro = resultado_erro.unwrap();
+
+    Ok(())
+}
+
+fn main() {
+    exemplo().unwrap();
+}
+```
+
+Esse exemplo utiliza `anyhow` para criar um `Result` e, em seguida, usa `unwrap()` para desembrulhar o valor contido em `Ok`. Se o `Result` for `Err`, o programa encerrará com um panic.
+
+# Boas Práticas
+
+### Variáveis com Todas as Letras em Maiúsculo
+
+A decisão de nomear constantes e variáveis estáticas em maiúsculas é uma convenção para tornar essas variáveis facilmente distinguíveis de variáveis locais e para destacar que são valores que não devem ser alterados durante a execução do programa. Isso é particularmente comum em muitas linguagens de progamação.
+
+Essa convenção pode ser encontrada em várias linguagens, incluindo Rust. Ela ajuda a melhorar a legibilidade do código e a indicar a intenção do programador de que a variável é constante ou estática.
+
+Em resumo, a escolha de usar todas as letras em maiúsculo para o nome da variável é uma prática comum para variáveis estáticas e constantes e ajuda a comunicar a natureza especial dessas variáveis no código-fonte.
