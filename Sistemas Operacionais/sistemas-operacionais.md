@@ -1,11 +1,11 @@
 ### <a name = "sumario"></a>Sumário
 
-- [Resumo do Conteúdo](#resumo-conteudo)
-- [Sistema Operacional](#sistema-operacional)
-- [Kernel](#kernel)
-- [Unix-like](#unix-like)
-    + [Serviços](#servicos) <-- Parei a revisão neste tópico. Cima para baixo.
-    + [systemctl](#systemctl)
+- [**Resumo do Conteúdo**](#resumo-conteudo)
+- [**Sistema Operacional**](#sistema-operacional)
+- [**Kernel**](#kernel)
+- [**Unix-like**](#unix-like)
+    + [**Serviços**](#servicos)
+    + [systemctl](#systemctl) <-- Parei a revisão neste tópico. Cima para baixo.
     + [Daemon](#daemon)
     + [Execução em Primeiro e Segundo Plano](#execucao-primeiro-segundo-plano)
     + [Caminho Absoluto e Caminho Relativo](#caminho-absoluto-caminho-relativo) (Y)

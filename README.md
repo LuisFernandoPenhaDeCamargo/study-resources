@@ -41,6 +41,10 @@ CLI
 
 Este arquivo especifica como está formatado os arquivos no aspecto estrutural
 
+### aplicacoes.md
+
+Este arquivo contém comandos e observações sobre várias aplicações.
+
 ### configuracoes-ambiente-aplicacoes.md
 
 Este arquivo especifica como eu gosto de configurar meu ambiente e suas aplicações, por exemplo, os ambientes de trabalho virtuais (virtual desktops) no Ubuntu.
@@ -50,7 +54,6 @@ Este arquivo especifica como eu gosto de configurar meu ambiente e suas aplicaç
 **Arquivos a Analisar**
 
 + ./Sistemas\ Operacionais/SistemaOperacional.md
-+ aplicacoes.md
 + Conceitos.md
 + Docker.md
 + Hardware.md
@@ -112,44 +115,3 @@ Este arquivo especifica como eu gosto de configurar meu ambiente e suas aplicaç
 ```
 
 Provavelmente deve ter um index UNIQUE na tabela.
-
-# Ordem de Estudo do Conteúdo
-
-Markdown é uma linguagem de marcação, TermosTI é um tipo de glossário e o Template especifica como está formatado os arquivos no aspecto estrutural. Eles podem ser estudados e consultados fora da ordem. O Hardware.md também pode ser estudado sem seguir a ordem linear.
-
-- [SistemaOperacional.md](SistemaOperacional.md#sumario)
-    + Resumo do Conteúdo
-    + Sistema Operacional
-    + Kernel
-    + Unix-like
-        - Serviços
-        - systemctl
-        - Daemon
-        - Execução em Primeiro e Segundo Plano
-        - Caminho Absoluto e Caminho Relativo
-        - Permissões de Acesso a Arquivos e Diretórios
-        - Diretórios Específicos
-    + Linux
-        - GRUB
-        - Diagrama de Inicialização de Um Sistema Computacional
-        - LUKS
-        - Shell
-            + Bash
-            + Scripts
-    + Windows
-        - Comandos do Terminal
-        - Atalhos
-        - Atalhos (Durante a Inicialização)
-    
-- [Shell.md](Terminal.md#shell)
-- [LinguagensProgramacao](LinguagensProgramacao.md#linguagens-programacao)
-- [Markdown.md](Markdown.md#markdown)
-- [Git.md](Git.md#git)
-- [Docker.md](Docker.md#docker)
-- [TermosTI.md](TermosTI.md#termor-ti)
-- [Hardware.md](Hardware.md#hardware)
-    + Placa-mãe
-    + FRAM
-    + Partições x Volumes (No Contexto de Discos, Como Discos Rígidos)
-    + HD Externo x Flash Drive (Dispositivo Inicializável)
-- [Template.md](Template.md#template)
