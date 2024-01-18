@@ -526,34 +526,7 @@ Quando você usa o operador `?`, ele realiza automaticamente a verificação de 
 
 Quando usado dentro de uma função que retorna um `Result` ou `Option`, ele verifica automaticamente se o resultado é `Ok` ou `Some`. Se for `Err` ou `None`, ele retorna imediatamente, propagando o erro ou interrompendo a execução da função atual.
 
-Funções que retornam `Result` ou `Option` são funções que podem falhar, indicando erros ou condições excepcionais.
-
-**Exemplo simplificado do uso de** `?`**:**
-
-```rust
-use std::error::Error;
-
-fn funcao() -> Result<(), Box<dyn Error>> {
-    // Simulando um erro aqui.
-    Err("Erro simulado".into())
-}
-
-fn main() -> Result<(), Box<dyn Error>> {
-    match funcao() {
-        Ok(()) => println!("Operação bem-sucedida."),
-        Err(e) => {
-            println!("Erro: {}", e);
-            main()?
-        }
-    }
-
-    Ok(())
-}
-```
-
-**Neste exemplo:**
-
-- `funcao()` retorna um `Result`, e se ocorrer um erro, 
+Abaixo, iremos comparar o que o operador de propagação representa em comparação com um código...
 
 # Importação e Módulo x Crate (`use`)
 
@@ -895,7 +868,6 @@ Neste exemplo, todo o código é executado na thread principal. Se você precisa
 ### `Main()` Sendo Chamada de Forma Recursiva
 
 ```rust
-
 use std::{time, thread, error::Error};
 
 fn main_loop() -> Result<(), Box<dyn Error>> {
@@ -903,18 +875,21 @@ fn main_loop() -> Result<(), Box<dyn Error>> {
 }
 
 fn main() -> Result<(), Box<dyn Error>> {
+    
+    //logger();
+    
+    //info!("Starting program...");
 
-    println!("Main.");
-
-    let sleep_time = time::Duration::from_secs(5);
-
+    let sleep_time = time::Duration::from_secs(10);
+    let sleep_error_time = time::Duration::from_secs(60);
     loop {
+        //thread::sleep(sleep_time);
         match main_loop() {
-            Ok(()) => println!("Ok."),
+            Ok(()) => println!("Program is running..."),
             Err(e) => {
-                println!("Erro: {}", e);
-                println!("Suspendendo a execução por 5 segundos.");
-                thread::sleep(sleep_time);
+                println!("Program has failed, reason: {}", e);
+                println!("Sleeping 60 seconds to avoid excessive log and processing...");
+                //thread::sleep(sleep_error_time);
                 main()?;
             }
         }
@@ -922,7 +897,12 @@ fn main() -> Result<(), Box<dyn Error>> {
 }
 ```
 
-Considerando o contexto do código acima, qual é o sentido da chamada recursiva da `main()?` com a propagação de erro? Se a ideia é executar o `main_loop()` de forma indefinida e tratando possíveis erros, ele já está sendo invocado por um `match` e está dentro de um `loop` infinito.
+Considerando o contexto do código acima (levemente adaptado de um cenário real), a `main()` está sendo chamada de forma recursiva em certos cenários:
+
+![`Main()` Sendo Chamada de Forma Recursiva.](../Imagens/main-recursiva.png)
+
+
+inicialização da `main()` -> invocação da `main_loop()` -> chamada recursiva da `main()` (caso `main_loop()` retorne um erro)
 
 Outro caso interessante é
 
@@ -935,23 +915,23 @@ fn funcao() -> Result<(), Box<dyn Error>> {
 
 fn main() -> Result<(), Box<dyn Error>> {
 
-    println!("Main().");
-
-    let sleep_time = time::Duration::from_secs(5);
+    println!("`main()`");
 
     loop {
         funcao()?
     }
 
-    println!("Final da Main().");
+    println!("Final da `main()`.");
 }
 ```
 
 O operador de propagação `?` propaga o erro retornando-o, então o erro que ocorre em `funcao()` é propagado para a `main()` através de um `return`, o que encerrá o `loop`.
 
-Quando você usa o operador de propagação (`?`) em uma expressão de erro (`Result`), ele irá automaticamente retornar o erro para a função que a chamou. No caso do loop acima, na função `main()`, isso significa que se a função `funcao()` retorna um erro, ele será automaticamente propagado para a função `main()`, e o loop não será executado 
+Quando você usa o operador de propagação (`?`) em uma expressão de erro (`Result`), ele irá automaticamente retornar o erro para a função que a chamou. No caso do loop acima, na função `main()`, isso significa que se a função `funcao()` retorna um erro, ele será automaticamente propagado para a função `main()`, e o loop não será executado novamente.
 
-Observe que `Result<()>` é equivalente a `Result<(), ()>`. Isso significa
+Observe ainda que como é um `return`, a última mensagem nem é impressa.
+
+Tenha em vista também que `Result<()>` é equivalente a `Result<(), ()>`. Isso significa
 
 # Crates
 

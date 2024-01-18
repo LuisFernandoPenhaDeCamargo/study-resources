@@ -337,7 +337,7 @@ Em resumo, o GRUB é um componente do software que gerencia a escolha e o carreg
 
 ## <a id = "diagrama-inicializacao-sistema-operacional"></a>Diagrama de Inicialização de Um Sistema Computacional
 
-![inicializacao-unix-like](./Imagens/inicializacao-unix-like.png)
+![inicializacao-unix-like](../Imagens/inicializacao-unix-like.png)
 
 A ordem típica de inicialização em sistemas baseados em Linux é mais ou menos assim:
 
