@@ -1,3 +1,29 @@
+- Declaração de uma variável
+- `date`
+- `echo`
+- `mkdir`
+- `mysqldump`
+- `md5sum`
+- `tar`
+- `chown`
+- `>`. Operador de redirecionamento
+- `|`. Pipe
+- `$`
+- `crontab`
+- Sintaxe de definição de um cron
+- /home/orion/Downloads/wiki-backup.sh
+- `find`
+- `wc`
+- `-gt`
+- `-lt`
+- `-mindepth`
+- `-maxdepth`
+- `data_formatada=$(date -d @$data_mais_antiga "+%Y-%m-%d %H:%M:%S")`
+- if
+- for
+
+---
+
 # Shell
 
 # Sintaxe Básica

@@ -13,6 +13,9 @@
     + `vec![]`
 - **Traits (**`trait`**)**
 - **Structs (**`struct`**)**
+- `;`
+    + `return`
+    + **Retorno Implícito**
 - **Tipos de Dados**
     + `i32`
     + `&str`
@@ -22,8 +25,10 @@
     + `fn`
         - `return`
         - **Retorno Implícito**
+        - **Retorno Implícito x Retorno explícito**
     + `loop`
     + `match`
+    + `self`
 - **Operadores**\
     + `?`
 - **Importação e Módulo x Crate (**`use`**)**\
@@ -34,7 +39,8 @@
 - **Threads**
 - **Pedaços de Código dos Quais Você Pode Absorver Muita Coisa**\
     + `pub fn init(logger: Vec<Box<dyn SharedLogger>>) -> Result<(), SetLoggerErros>`
-    + `Main()` **Sendo Chamada de Forma Recursiva**
+    + `Main()` **Sendo Chamada de Forma Recursiva**\
+        - `Result<(), ()>`
 - **Crates**
     + `std`
         - `println` **(macro)**
@@ -324,6 +330,41 @@ Neste exemplo, a struct `Ponto` tem dois campos `x` e `y`, ambos do tipo `i32`. 
 
 As structs são frequentemente utilizadas para modelar dados mais complexos e estruturados em Rust. Elas podem ser usadas em conjunto com traits para adicionar comportamentos específicos a tipos de dados personalizados.
 
+# `;`
+
+O ponto e vírgula (`;`) em Rust é usado como um separador de instruções. Em Rust, o ponto e vírgula indica o final de uma instrução. Cada instrução em Rust deve terminar com um ponto e vírgula.
+
+A presença do ponto e vírgula em Rust é obrigatória para indicar o fim de uma instrução. Sem o ponto e vírgula, o compilador pode interpretar o código de maneira diferente ou gerar mensagens de erro, dependendo do contexto.
+
+**Por exemplo:**
+
+```rust
+fn main() {
+    println!("Olá, Mundo!"); // Ponto e vírgula indica o fim da instrução.
+
+    let x = 5; // Ponto e vírgula indica o fim da instrução.
+    let y = x + 1;  // Ponto e vírgula indica o fim da instrução.
+
+    if y > 5 {
+        println!("y é maior que 5."); // Ponto e vírgula indica o fim da instrução.
+    } else {
+        println!("y não é maior que 5.") // Ponto e vírgula indica o fim da instrução.
+    }
+}
+```
+
+No exemplo acima, cada linha termina com um ponto e vírgula, indicando o final da instrução. Essa é uma característica fundamental da sintaxe Rust e ajuda a tornar o código mais preciso e previsível.
+
+Em resumo, o ponto e vírgula em Rust é um indicador de fim de instrução e é usado para separar diferentes instruções no código fonte.
+
+Observe ainda que o ponto e vírgula em Rust não é um operador, é uma parte fundamental da sintaxe da linguagem e serve como um marcador de fim de instrução. Sua função principal é indicar ao compilador onde termina uma instrução.
+
+O ponto e vírgula, por outro lado, é uma construção de controle de fluxo, indicando onde termina uma expressão ou instrução e onde começa a próxima.
+
+```rust
+
+```
+
 # Tipos de Dados
 
 ### `i32`
@@ -516,17 +557,64 @@ Neste exemplo, o loop `loop` imprime uma mensagem e incrementa um contador indef
 
 
 
+### `self`
+
+
+
 # Operadores
 
 ### `?`
 
-A interrogação (`?`) em Rust é um operador de propagação de erro que simplifica o tratamento de erros em funções que retornam `Result` ou `Option`. Ele é usado dentro de funções que retornam um tipo que implementa o trait `std::ops::Try`, como `Result` e `Option`.
+O operador de propagação de erro `?` em Rust é uma forma concisa de lidar com erros em funções que retornam `Result<T, E>` ou `Option`. Ele é usado dentro de funções que retornam um tipo que implementa o trait `std::ops::Try`, como os mencionados acima. Ele simplifica a verificação e propagação de erros, tornando o código mais legível e evitando a necessidade de repetir manualmente a verificação de erro.
 
-Quando você usa o operador `?`, ele realiza automaticamente a verificação de erro e, se houver um erro, retorna o erro da função que foi chamada para a função que a chamou. Isso ajuda a simplificar o tratamento de erros e evita que você escreva muito código boilerplate para verificar e propagar erros manualmente.
+Quando você usa o operador `?`, você está essencialmente dizendo ao Rust para extrair o valor dentro do `Result` em caso de sucesso (`Ok`) ou retornar o erro (`Err`) imediatamente, se houver um erro. Ele é frequentemente usado em funções que retornam `Result` para facilitar o encadeamento de operações que podem falhar. Quando usado dentro de uma função que retorna um `Result` ou `Option`, ele verifica automaticamente se o resultado é `Ok` ou `Some`. Se for `Err` ou `None`, ele retorna imediatamente, propagando o erro ou interrompendo a execução da função atual.
 
-Quando usado dentro de uma função que retorna um `Result` ou `Option`, ele verifica automaticamente se o resultado é `Ok` ou `Some`. Se for `Err` ou `None`, ele retorna imediatamente, propagando o erro ou interrompendo a execução da função atual.
+Aqui está um exemplo simples de como o operador `?` é usado:
 
-Abaixo, iremos comparar o que o operador de propagação representa em comparação com um código...
+```rust
+use std::fs::File;
+use std::io::{self, Read};
+
+fn ler_conteudo_do_arquivo(caminho_do_arquivo: &str) -> io::Result<String> {
+    let mut arquivo = File::open(caminho_do_arquivo)?;
+    let mut conteudo = String::new();
+
+    arquivo.read_to_string(&mut conteudo)?;
+    Ok(conteudo)
+}
+
+fn main() {
+    match ler_conteudo_do_arquivo("exemplo.txt") {
+        Ok(conteudo) => println!("Conteúdo do arquivo: {}", conteudo),
+        Err(err) => println!("Erro lendo o arquivo: {}", err)
+    }
+}
+```
+
+Neste exemplo, `File::open(caminho_do_arquivo)?` tenta abrir um arquivo, e se isso falhar, o erro é imediatamente retornado. Da mesma forma, `arquivo.read_to_string(&mut conteudo)?` tenta ler o conteúdo do arquivo, e um erro será retornado se a leitura falhar. Isso simplifica a lógica de tratamento de erros em comparação com a verificação manual em cada etapa.
+
+Abaixo, iremos verificar que o operador de propagação de erro `?` é funcionalmente equivalente ao uso do `match` com `Ok(())` e `Err(err) => return Err(err)`. Ambas as abordagens lidam com a propagação de erros de maneira semelhante, mas a versão com `?` é geralmente mais concisa.
+
+```rust
+use std::error::Error;
+
+fn funcao() -> Result<(), Box<dyn Error>> {
+    Err("Erro simulado".into())
+}
+
+fn main() -> Result<(), Box<dyn Error>> {
+
+    println!("`main()`");
+
+    loop {
+        // O `match` abaixo é equivalente a `funcao()?`
+        match funcao() {
+            Ok(()) => (),
+            Err(err) => return Err(err)
+        }
+    }
+}
+```
 
 # Importação e Módulo x Crate (`use`)
 
@@ -901,10 +989,9 @@ Considerando o contexto do código acima (levemente adaptado de um cenário real
 
 ![`Main()` Sendo Chamada de Forma Recursiva.](../Imagens/main-recursiva.png)
 
+Como podemos ver na imagem acima, toda vez que `main_loop()` retorna um `Err`, uma nova chamada a `main()?` é realizada e isso pode ocorrer de forma indefinida até que ocorra um stack overflow. Observe que isso ocorre quando `main_loop()` retorna um erro, caso, em algum momento, ocorra um erro fora do escopo da `main_loop()` (dentro de alguma invocação da `main()`), o operador de propagação de erro `?` garante que a invocação atual retorne o erro para quem a chamou, propagando o erro de invocação da `main()` para a invocação anterior, até a `main()` original, onde este retorno encerra a execução do programa.
 
-inicialização da `main()` -> invocação da `main_loop()` -> chamada recursiva da `main()` (caso `main_loop()` retorne um erro)
-
-Outro caso interessante é
+Podemos observar o ponto mencionado acima no código abaixo:
 
 ```rust
 use std::{time, thread, error::Error};
@@ -921,17 +1008,24 @@ fn main() -> Result<(), Box<dyn Error>> {
         funcao()?
     }
 
+    // Impressão nunca alcançada.
     println!("Final da `main()`.");
 }
 ```
 
-O operador de propagação `?` propaga o erro retornando-o, então o erro que ocorre em `funcao()` é propagado para a `main()` através de um `return`, o que encerrá o `loop`.
+O operador de propagação de erro `?` propaga o erro, retornando-o, então o erro que ocorre em `funcao()` é propagado para a `main()` através de um `return`, o que encerrá o `loop`. A impressão "`Final da main().`" nunca é alcançada.
 
-Quando você usa o operador de propagação (`?`) em uma expressão de erro (`Result`), ele irá automaticamente retornar o erro para a função que a chamou. No caso do loop acima, na função `main()`, isso significa que se a função `funcao()` retorna um erro, ele será automaticamente propagado para a função `main()`, e o loop não será executado novamente.
+Quando você usa o operador de propagação de erro (`?`) em uma expressão de erro (`Result`), ele irá automaticamente retornar o erro para a função que o chamou, no caso do loop acima, a função `main()`. Isso significa que se a função `funcao()` retorna um erro, ele será automaticamente propagado para a função `main()` e o loop não será executado novamente.
 
-Observe ainda que como é um `return`, a última mensagem nem é impressa.
+O problema do código adaptado é que ele usa recursão sem nenhuma condição de parada (o operador de propagação de erro "funciona" como uma condição de parada).
 
-Tenha em vista também que `Result<()>` é equivalente a `Result<(), ()>`. Isso significa
+Tenha em vista também que `Result<()>` é equivalente a `Result<(), ()>`. Em Rust, `()` é o tipo que representa unidade, e uma tupla vazia é denotada por `()`.
+
+Em Rust, o tipo `Result<T, E>` é usado para representar o resultado de uma computação que pode falhar. `Result` é parametrizado por dois tipos: `T`, que é o tipo de valor de sucesso, e `E`, que é o tipo do erro. No caso de `Result<(), ()>`, tanto o tipo de sucesso quanto o tipo de erro são representado por `()`.
+
+`()` é o único valor possível para o tipo de unidade em Rust. Ele é usado quando não há informação útil a ser transmitida ou quando o resultado é apenas para indicar sucesso ou falha.
+
+Portanto, `Result<(), ()>` é usado quando a computação representa uma operação que pode falhar, mas não retorna nenhum valor útil no caso de sucesso ou erro. É uma maneira de indicar sucesso ou falha sem transmitir nenhum dado adicional. Isso é comumente usado quando o resultado da computação é usado apenas para indicar se a operação foi bem-sucedida ou não.
 
 # Crates
 

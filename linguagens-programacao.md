@@ -1,4 +1,16 @@
-Linguages de Programação
+# Linguages de Programação
+
+# Recursão
+
+Em contextos de algoritmos recursivos, a "condição de parada" refere-se à condição que, quando satisfeita, interrompe a chamada recursiva e inicia o retorno da pilha de chamadas.
+
+A condição de parada é essencial em funções recursivas para evitar que a recursão ocorra indefinidamente, o que poderia levar a um estouro de pilha ou um ciclo infinito. Quando a condição de parada é atingida, a função recursiva começa a desempilhar suas chamadas e retorna valores até chegar à chamada original.
+
+Por exemplo, em um algoritmo de busca recursiva, a condição de parada geralmente seria encontrar o item desejado na busca. Quando o item é encontrado, a recursão para e começa a desempilhar suas chamadas.
+
+Então, a "condição de parada" é o termo que descreve a condição que encerra a recursão em algoritmos recursivos.
+
+---
 
 # Compilada x Interpretada
 

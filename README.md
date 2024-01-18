@@ -9,7 +9,9 @@ Abaixo temos sobre o que cada arquivo ou diretório trata, de forma resumida.
 
 ### linguagens-programacao.md
 
-Este arquivo discursa sobre conceitos utilizados em linguagens de programação.
+Este arquivo discursa sobre conceitos utilizados em programação.
+
+- Recursão
 
 - Compilada x Interpretada
 - Linguagem de Programação de Sistema
@@ -30,6 +32,10 @@ Este arquivo discursa sobre o Endereço IP e sobre o Nome de Host.
 ### shell.md
 
 Este arquivo descreve algumas características do Shell (a interface de linha de comando que permite o usuário interagir com o sistema operacional atráves de comandos de texto), além de alguns comandos aceitos por ele.
+
+### arquivos.md
+
+Este arquivo explica sobre o que se trata certa extensões de arquivos.
 
 ### termosTI.md
 
@@ -53,11 +59,12 @@ Este arquivo especifica como eu gosto de configurar meu ambiente e suas aplicaç
 
 **Arquivos a Analisar**
 
++ linguagens-programacao.md
 + ./Sistemas\ Operacionais/SistemaOperacional.md
 + Conceitos.md
 + Docker.md
++ Git.md
 + Hardware.md
-+ LinguagensProgramacao.md
 + Markdown.md
 + meu_servico.sh
 

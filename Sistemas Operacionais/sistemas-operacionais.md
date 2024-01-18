@@ -384,7 +384,7 @@ Normalmente em ambientes reais, o volume criptografado criado pelo LUKS é aplic
 
 Exemplo de aplicação prática do LUKS:
 
-![LUKS-pratico](./Imagens/LUKS-pratico.png)
+![LUKS-pratico](../Imagens/LUKS-pratico.png)
 
 **Pela minha compreensão**, no caso de você decidir criptografar todo o sistema (com exceção do GRUB, pois ele inicia o sistema computacional, por isso não é possível, ou faz sentido, criptografá-lo), antes do sistema começar a realizar o boot, a chave mestra será requerida. Após isso, você pode utilizar o conteúdo sem se preocupar com nada, qualquer alteração será salva com o seu conteúdo já criptografado.\
 Ele faz isso de forma **transparente**, isso quer dizer que você consegue utilizar todo o conteúdo sem se preocupar em criptografá-lo ou descriptografá-lo, o LUKS cuida de tudo.\
