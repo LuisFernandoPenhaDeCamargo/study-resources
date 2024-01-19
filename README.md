@@ -1,7 +1,8 @@
-# Rotina
+# Notas para Mim Mesmo
 
-- Estudar Rust
-- Progredir no diretório **Sistemas Operacionais**
+- Saiba dosar o quanto você deve imergir em uma tecnologia específica, para não se apronfundar sem necessidade, considerando que o mundo está inundado de informação
+- Preciso ser mais organizado
+- Como eu vou organizar as minhas anotações? Vou criar um repositório para cada tecnologia?
 
 # Conteúdo
 
@@ -12,8 +13,8 @@ Abaixo temos sobre o que cada arquivo ou diretório trata, de forma resumida.
 Este arquivo discursa sobre conceitos utilizados em programação.
 
 - Recursão
-
 - Compilada x Interpretada
+
 - Linguagem de Programação de Sistema
 - Suporte a Concorrência e Paralelismo
 
@@ -55,22 +56,18 @@ Este arquivo contém comandos e observações sobre várias aplicações.
 
 Este arquivo especifica como eu gosto de configurar meu ambiente e suas aplicações, por exemplo, os ambientes de trabalho virtuais (virtual desktops) no Ubuntu.
 
-# Notas para Mim Mesmo
+#
 
 **Arquivos a Analisar**
 
-+ linguagens-programacao.md
-+ ./Sistemas\ Operacionais/SistemaOperacional.md
-+ Conceitos.md
-+ Docker.md
-+ Git.md
-+ Hardware.md
-+ Markdown.md
-+ meu_servico.sh
-
-- Saiba dosar o quanto você deve imergir em uma tecnologia específica, para não se apronfundar sem necessidade, considerando que o mundo está inundado de informação
-- Preciso ser mais organizado
-- Como eu vou organizar as minhas anotações? Vou criar um repositório para cada tecnologia?
+- linguagens-programacao.md
+- ./Sistemas\ Operacionais/SistemaOperacional.md
+- Conceitos.md
+- Docker.md
+- Git.md
+- Hardware.md
+- Markdown.md
+- meu_servico.sh
 
 + Aprender CI/CD e criar um pipeline de deploy
 + No contexto de APIs, teste de estresse (teste de volumetria, "quanto ele aguenta"), testes automatizados
@@ -79,8 +76,6 @@ Este arquivo especifica como eu gosto de configurar meu ambiente e suas aplicaç
 + Criar um volume criptografado com o LUKS?
 + Criar uma aplicação e executá-la através do Docker
 + Criar um Banco na RDS em que a autenticação seja feita com um usuário IAM (https://repost.aws/knowledge-center/users-connect-rds-iam)
-
----
 
 - O que nos disponibilizamos aos nossos clientes? (contexto da Orion)
 

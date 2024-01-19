@@ -1,30 +1,29 @@
-- Declaração de uma variável
-- `date`
-- `echo`
+# Shell
+
+# Lista de Itens a se Estudar
+
 - `mkdir`
-- `mysqldump`
-- `md5sum`
-- `tar`
-- `chown`
-- `>`. Operador de redirecionamento
-- `|`. Pipe
-- `$`
-- `crontab`
-- Sintaxe de definição de um cron
-- /home/orion/Downloads/wiki-backup.sh
 - `find`
 - `wc`
+- `chown`
+- `date`
+- `data_formatada=$(date -d @$data_mais_antiga "+%Y-%m-%d %H:%M:%S")`
+- `tar`
+- `md5sum`
+- `>`. Operador de redirecionamento
+- `|`. Pipe
 - `-gt`
 - `-lt`
 - `-mindepth`
 - `-maxdepth`
-- `data_formatada=$(date -d @$data_mais_antiga "+%Y-%m-%d %H:%M:%S")`
+- Declaração de uma variável
+- `$`
 - if
 - for
-
----
-
-# Shell
+- `crontab`
+- Sintaxe de definição de um cron
+- /home/orion/Downloads/wiki-backup.sh
+- `mysqldump`
 
 # Sintaxe Básica
 
