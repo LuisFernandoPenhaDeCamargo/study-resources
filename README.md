@@ -1,3 +1,11 @@
+### Projeto de Reestruturação
+
+### Sumário
+
+
+
+---
+
 # Notas para Mim Mesmo
 
 - Saiba dosar o quanto você deve imergir em uma tecnologia específica, para não se apronfundar sem necessidade, considerando que o mundo está inundado de informação
