@@ -2,7 +2,6 @@
 
 # Dúvidas
 
-- `std::time::Duration::from_secs()`
 - `std::thread::sleep()`
 - Operador `*`
 - `INIT.call_once(|| { CombinedLogger::init(vec![TermLogger::new(LevelFilter::Info, Config::default(), TerminalMode::Mixed, ColorChoice::Auto)]).unwrap(); });`
@@ -17,7 +16,8 @@ Quero criar um projeto para praticar paralelimo e assim aprender a utilizar o m�
 - [Traits](#traits)
 - [Propriedades de Rust x Classes](#propriedades-rust-x-classes)
 - [Composição](#composicao)
-- [`let` x `const`](#let-x-const)
+- [`let` x `const` (Variáveis)](#let-x-const-variaveis)
+- [`const` e `static` (Métodos)](#const-static-metodos)
 - [Inferência de Tipos das Variáveis](#inferencia-tipos-variaveis)
 - [Lifetime das Variáveis e Referências](#lifetime-variaveis-referencias)
 - [Marcadores de Posição](#marcadores-posicao)
@@ -163,7 +163,7 @@ fn quadruplo(x: i32) -> i32 {
 
 A composição é uma prática importante no design de software, pois promove a modularidade, a reutilização de código e facilita a compreensão e manutenção do sistema. Ao quebrar um sistema em partes menores e independentes, é mais fácil entender, testar e modificar cada componente individualmente. Além disso, a composição frequentemente leva a sistemas mais flexíveis e adaptáveis a mudanças.
 
-# <a id = "let-x-const"></a>`let` x `const`
+# <a id = "let-x-const-variaveis"></a>`let` x `const` (Variáveis)
 
 Em Rust, `let` e `const` são usados para criar variáveis e constantes, respectivamente. Aqui estão as principais diferenças entre `let` e `const`:
 
@@ -234,6 +234,23 @@ const CONSTANTE: i32 = 42; // Inicialização estática em tempo de compilação
 
 Em resumo, `let` é usado para criar variáveis mutáveis ou imutáveis com escopo dinâmico, enquanto `const` é usado para criar variáveis constantes imutáveis com escopo global e inicialização estática em tempo de compilação.
 
+# <a id = "const-static-metodos"></a>`const` e `static` (Métodos)
+
+Métodos associados possuem as palavras-chave `const` ou `static` em sua declaração.
+
+Em Rust, métodos associados são métodos que são chamados no tipo em si, em vez de em uma instância específica desse tipo.
+
+1. `const`**:**
+    - Métodos associados declarados com `const` são constantes em tempo de compilação
+    - Podem ser chamados sem uma instância específica
+    - São avaliados durante a compilação
+2. `static`**:**
+    - Métodos associados declarados com `static` também são constantes, mas podem depender de constantes de tempo de execução
+    - Podem ser chamados sem uma instância específica
+    - Também são avaliados durante a compilação, mas podem depender de valores de tempo de execução
+3. **Sem** `const` **ou** `static`**:**
+    - 
+
 # <a id = "inferencia-tipos-variaveis"></a>Inferência de Tipos das Variáveis
 
 **Anotação:** este tópico trata de uma capacidade do compilador.
@@ -260,7 +277,7 @@ Em muitas linguagens de programação, o coletor de lixo é usado para rastrear 
 **Lifetimes em Rust:**
 
 1. **Analisando referências:** Rust usa lifetimes para analisar referências e garantir que referências e empréstimos de dados não ultrapassem a vida útil dos dados quais se referem
-2. **Sintaxe de lifetimes:** as lifetimes são frequentemente representadas por uma única letra, como `'a` ou `'b`. A escolha da letra é arbitrária, mas a convenção é usar letras curtas e descritivas quando possível
+2. **Sintaxe de lifetimes:** as lifetimes são frequentemente representadas por uma única letra, como `'a` ou `'b`. A escolha da letra é arbitrária, mas a convenção é usar letras curtas e descritivas quando possível, antecedidas de uma aspas simples
 3. **Restrições e vínculos:** em funções, structs ou traits que utilizam referências, as lifetimes são usadas para estabelecer vínculos entre os tempos de vida dos parâmetros e referências, garantindo que a referência seja válida durante toda a execução
 4. **Tempo de vida estático (static lifetime):** `static` é uma lifetime especial que representa a duração da execução do programa inteiro. Variáveis com tempo de vida estático são acessíveis durante toda a execução do programa
 
@@ -289,17 +306,17 @@ Neste exemplo, a função `encontra_maior()` tem uma lifetime genérica `'a` que
 
 Em Rust, o sistema de propriedade e o conceito de lifetimes garantem a segurança de memória sem a necessidade de um coletor de lixo. A memória é gerenciada por meio de um conjunto de regras estáticas que o compilador verifica durante o tempo de compilação. As lifetimes desempenham um papel fundamental nesse processo.
 
-No exemplo fornecido as referências `&x` e `&y` têm uma lifetime associada a eles, indicando até quando elas são válidas. No caso, a lifetime `a'` pe usada para indicar que a referência retornada (`maior`) terá a mesma duração que as referências de entrada.
+No exemplo fornecido as referências `&x` e `&y` têm uma lifetime associada a eles, indicando até quando elas são válidas. No caso, a lifetime `'a` é usada para indicar que a referência retornada (`maior`) terá a mesma duração que as referências de entrada.
 
 Quando a função `main()` é concluída, as variáveis `x` e `y` saem do escopo e são automaticamente desalocadas, porque não são propriedades da heap e, portanto, seguem as regras de escopo do Rust. No entanto, as referências (`&x` e `&y`) e a referência retornada (`maior`) não estão alocadas na heap, e sim no stack, porque sua vida útil está vinculada ao escopo mais amplo da função `main()`.
 
 O compilador Rust garante que não há referências inválidas ou dangling references. As lifetimes ajudam a garantir que as referências não sobrevivam mais do que as variáveis às quais se referem. Isso significa que, enquanto a referência `maior` for usada dentro do escopo em que é definida, ela é válida. Quando o escopo se encerra, todas as referências saem de escopo e não há preocupação com a liberação de memória, pois não há alocação dinâmica envolvida.
 
-Explicando de outra maneira, as variáveis `x` e `y` são definidas no escopo da função `main()`, e as referências `&x` e `&y` são passadas como argumentos para `encontra_maior()`. A função `encontra_maior()` retorna uma referência que está vinculada À lifetime dos argumentos passados (`a'`). Portanto, enquanto o escopo da função `main()` estiver ativo, as referências e os valores associados (`x` e `y`) serão válidos.
+Explicando de outra maneira, as variáveis `x` e `y` são definidas no escopo da função `main()`, e as referências `&x` e `&y` são passadas como argumentos para `encontra_maior()`. A função `encontra_maior()` retorna uma referência que está vinculada À lifetime dos argumentos passados (`'a`). Portanto, enquanto o escopo da função `main()` estiver ativo, as referências e os valores associados (`x` e `y`) serão válidos.
 
-Quando o escopo da função `main()` é concluído (indicado pelo comentário `// \`x\` e \`y\` saem do escopo aqui.`), as variáveis `x` e `y` saem do escopo e são desalocadas automaticamente. No entanto, as referências (`&x`, `&y` e `maior`) também saem do escopo nesse ponto, e o Rust garante que não haja referências penduradas ou inválidas, evitando assim problemas de segurança de memória.
+Quando o escopo da função `main()` é concluído (indicado pelo comentário `// x e y saem do escopo aqui.`. Não foi possível escapar as crases que envolvem `x` e `y` no comentário), as variáveis `x` e `y` saem do escopo e são desalocadas automaticamente. No entanto, as referências (`&x`, `&y` e `maior`) também saem do escopo nesse ponto, e o Rust garante que não haja referências penduradas ou inválidas, evitando assim problemas de segurança de memória.
 
-Observe ainda que quando você não explicitamente define lifetimes em Rust, o compilador ainda aplica regras de lifetimes para garantir a segurança de memória, mas essas lifetimes podem ser implicitamente inferidas. O compilador tenta inferir automaticamente as lifetimes com base nas regras de escopo e referência, mas há casos em que você precisa especificar explicitamente as lifetimes para informar ao compilador sobre a relação desejada entre os tempos de vida dos argumentos e o tempo de vida do resultado.
+Observe ainda que quando você não define explicitamente lifetimes em Rust, o compilador ainda aplica regras de lifetimes para garantir a segurança de memória, essas lifetimes podem ser implicitamente inferidas. O compilador tenta inferir automaticamente as lifetimes com base nas regras de escopo e referência, mas há casos em que você precisa especificar explicitamente as lifetimes para informar ao compilador sobre a relação desejada entre os tempos de vida dos argumentos e o tempo de vida do resultado.
 
 Se você não especificar explicitamente lifetimes, Rust fará inferências com base nas regras de escopo. Em muitos casos simples, o compilador pode deduzir corretamente as lifetimes sem intervenção explícita do programador. No entanto, em situações mais complexas ou ambíguas, você pode precisar adicionar anotações de lifetimes para ajudar o compilador a entender suas intenções.
 
@@ -599,6 +616,12 @@ Contexto: Rust
 `crate::conteudo`
 ```
 
+Todo método ou função devem ter catalogado a sua assinatura. Template para documentação de funções da Rust:
+
+- "**Definição resumida:**" (a formatação deste item está diferente do padrão para facilitar a sua compreensão)
+- "**Assinatura da função:**" (a formatação deste item está diferente do padrão para facilitar a sua compreensão)
+- Anotações adicionais
+
 Em Rust, uma "crate" é a unidade de compilação do código. Ela pode ser comparada a bibliotecas ou pacotes em outras linguagens de programação. Uma crate pode conter módulos, tipos, funções e outros itens relacionados, e ela é a unidade básica de compartilhamento de código em Rust.
 
 Existem dois tipos principais de crates em Rust:
@@ -655,6 +678,7 @@ Em resumo, a `std` é essencial para o desenvolvimento em Rust e oferece uma amp
     + `std::print!`
 - [`std::time` (Módulo)](#std-time)
 - [`std::time::Duration (`struct`)`](#std-time-duration)
+- [`std::time::Duration::from_secs()`](#std-time-Duration-from_secs)
 - [`std::fs` (Módulo)](#std-fs)
 - [`std::thread` (Módulo)](#std-thread)
 - [`std::sync` (Módulo)](#std-sync)
@@ -811,6 +835,30 @@ fn main() {
 ```
 
 Essa é uma introdução básica à utilização da estrutura `std::time::Duration` em Rust. Essa estrutura é muito útil para representar e manipular intervalos de tempo no contexto de programação.
+
+## <a id = "std-time-Duration-from_secs"></a>`std::time::Duration::from_secs()`
+
+**Definição resumida:** cria uma nova `Duration` a partir do número especificado em segundos inteiros.
+
+**Assinatura da função:**
+
+```rust
+pub const fn from_secs(secs: u64) -> Duration
+```
+
+**Exemplo de uso:**
+
+```rust
+use std::time::Duration;
+
+fn main() {
+    // Criando uma Duration de 5 segundos.
+    let cinco_segundos = Duration::from_secs(5);
+
+    // Imprimindo a representação textual da Duration.
+    println!("Cinco segundos: {:?}", cinco_segundos);
+}
+```
 
 ## <a id = "std-fs"></a>`std::fs` (Módulo)
 
@@ -1164,6 +1212,8 @@ A ideia principal é garantir que uma determinada inicialização seja realizada
 
 **Definição resumida:** método utilizado para criar uma nova instância de `Once`.
 
+**Assinatura da função:**
+
 ```rust
 pub const fn new() -> Once
 ```
@@ -1343,7 +1393,13 @@ Observe que, na prática, você pode muitas vezes usar a derivação automática
 
 # <a id = "convencoes-rust"></a>Convenções em Rust
 
+A escolha de nomear o tipo genérico como `F` é uma convenção comum em Rust e frequentemente associado a "Function". O nome `F` é frequentemente utilizado para representar um tipo que é esperado ser uma função ou algo relacionado a funções.
 
+Essa convenção ajuda a tornar o código mais legível e expressivo. Ela é um exemplo do uso de nomes de variáveis que fornecem uma dica ou informação sobre o propósito ou função do tipo. Quando alguém lê o código e vê um tipo genérico chamado `F`, é razoável inferir que esse tipo se refere a uma função.
+
+Vale ressaltar que, embora `F` seja uma escolha comum, você poderia usar qualquer identificador de tipo válido em Rust. A escolha de `F` é mais uma questão de convenção e clareza do código do que uma exigência da linguagem.
+
+Para **lifetimes** a convenção são caracteres minúsculos antecedidos de um apóstrofo simples (`'`).
 
 # ---
 
