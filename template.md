@@ -3,6 +3,7 @@
 # Palavras chave (keywords)
 
 - "**Anotação:**": deve estar em negrito e seguida de dois pontos. Ela faz observações sobre o tópico em questão, que será utilizada para a estruturação do conteúdo (a formatação deste item está diferente do padrão para facilitar a sua compreensão)
+- "**Definição resumida:**": deve estar em negrito e seguida de dois pontos. Ela faz um resumo do tópico em questão (a formatação deste item está diferente do padrão para facilitar a sua compreensão)
 
 ---
 

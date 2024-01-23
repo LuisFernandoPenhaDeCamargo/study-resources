@@ -2,10 +2,18 @@
 
 # Dúvidas
 
+- `std::time::Duration::from_secs()`
+- `std::thread::sleep()`
+- Operador `*`
+- `INIT.call_once(|| { CombinedLogger::init(vec![TermLogger::new(LevelFilter::Info, Config::default(), TerminalMode::Mixed, ColorChoice::Auto)]).unwrap(); });`
 
+# Projetos
+
+Quero criar um projeto para praticar paralelimo e assim aprender a utilizar o módulo `std::thread`.
 
 ### Sumário
 
+- [Rust](#rust)
 - [Traits](#traits)
 - [Propriedades de Rust x Classes](#propriedades-rust-x-classes)
 - [Composição](#composicao)
@@ -14,7 +22,33 @@
 - [Lifetime das Variáveis e Referências](#lifetime-variaveis-referencias)
 - [Marcadores de Posição](#marcadores-posicao)
 - [Operadores](#operadores)
+- [Pedaços de Código dos Quais Você Pode Absorver Muita Coisa](#pedacos-codigo-quais-voce-pode-absorver-muita-coisa)
 - [Crates](#crates)
+- [Convenções em Rust](#convencoes-rust)
+
+# <a id = "rust"></a>Rust
+
+Rust é uma linguagem de programação de sistema que se concentra em fornecer segurança de memória sem a necessidade de coletor de lixo. Desenvolvida pela Mozilla, Rust visa fornecer alto desempenho, controle próximo do hardware e prevenção de certas classes de erros, como os relacionados a acesso inválido à memória e condições de corrida.
+
+- Seu gerenciador de pacotes (package manager) é o Cargo
+- Seu gerenciador de versões é o rustup
+- Seu compilador é o rustc
+
+**Aqui estão alguns dos principais recursos e características de Rust:**
+
+1. **Segurança de memória:** Rust utiliza um sistema de empréstimo de propriedade para garantir que as referências a dados sejam seguras, evitando problemas comuns como referências nulas, vazamentos de memória e acesso inválido
+2. **Sem coletor de lixo:** Rust não possui um coletor de lixo. Em vez disso, utiliza um sistema de propriedades que permite rastrear o ciclo de vida dos dados em tempo de compilação, eliminando a necessidade de coletor de lixo durante a execução
+3. **Sistema de tipos estáticos:** Rust é uma linguagem de tipagem estática, o que significa que tipos de variáveis são verificados em tempo de compilação, proporcionando segurança e desempenho. Isso também ajuda a evitar muitos erros, que, de outra forma, poderiam ocorrer em tempo de execução
+4. **Concorrência sem condições de corrida:** Rust possui um modelo de concorrência que evita condições de corrida por meio de propriedades de empréstimo exclusivo e imutabilidade. Alem de ter suporte para paralelismo
+5. **Abstração de alto nível:** apesar de ser uma linguagem de baixo nível, Rust oferece abstrações de alto nível que permitem o desenvolvimento eficiente de software. Possui ferramentas integradas para gerenciamento de pacotes, construção e teste
+6. **Sintaxe expressiva:** a sintaxe de Rust é moderna e expressiva, tornando-a agradável de se trabalhar. Ela adota ideias de outras linguagens, mas também traz suas próprias inovações
+7. **Comunidade ativa:** Rust tem uma comunidade ativa e crescente. A linguagem é usada em projetos de código aberto e por várias empresas para desenvolvimento de sistemas. Possui tutoriais e documentação disponíveis, ela é conhecida por sua ênfase na inclusão e distribuições de projetos
+8. **Ecossistema e ferramentas:** Rust possui um ecossistema crescente de bibliotecas e ferramentas. O gerenciador de pacotes padrão é o Cargo, que facilita a criação, compilação e distribuições de projetos Rust
+9. **Uso versátil:** embora Rust seja frequentemente usada para desenvolvimento de sistemas e programação de baixo nível, ela também é adequada para uma variedade de aplicativos, incluindo servidores, ferramentas de linha de comando e até mesmo desenvolvimento web
+10. **Integração com outras linguagens:** Rust pode ser facilmente integrada com código escrito em outras linguagens, proporcionando interoperabilidade com C, C++ e outras linguagens
+11. **Ferramentas poderosas:** Rust vem com um conjunto robusto de ferramentas, incluindo um gerenciador de pacotes (Cargo) e um sistema de compilação que facilita o desenvolvimento e a distribuição de software
+
+Rust é frequentemente escolhida para desenvolvimento de sistemas operacionais, software de baixo nível, sistemas embarcados, servidores, entre outros. Sua ênfase na segurança e desempenho a torna uma escolha atraente para desenvolvedores que buscam ambas as qualidades em seus projetos.
 
 # <a id = "traits"></a>Traits
 
@@ -382,7 +416,7 @@ Esses são apenas alguns exemplos e as linguagens de programação podem ter dif
     + Desreferenciando Uma Referência
     + Transferência de Propriedade ou Movimentação
 
-# <a id = "ecomercial"></a>`&`
+## <a id = "ecomercial"></a>`&`
 
 Em Rust, o símbolo `&` é chamado de operador de referência e é usado para criar referências a valores. Ele não é considerado uma palavra reservada, mas sim um operador que tem um significado específico na linguagem.
 
@@ -476,6 +510,79 @@ Por outro lado, se `original` fosse de um tipo que não implementa `Copy`, como 
 
 Em resumo, o código funcionaria para `i32` porque ele implementa `Copy`, permitindo que o valor seja copiado diretamente ao invés de ser movido. Esse comportamento é específico para tipos que implementam `Copy`.
 
+# <a id = "pedacos-codigo-quais-voce-pode-absorver-muita-coisa"></a>Pedaços de Código dos Quais Você Pode Absorver Muita Coisa
+
+Esta seção trata de códigos dos quais você pode absorver muitos conceitos ou são exemplos extremamente inteligentes (ou possuem uma lógica duvidosa).
+
+### Sumário
+
+- [`pub fn call_once<F>(&self, f: F) where F: FnOnce();`](#pub-fn-parametro-funcao-metodo-instancia-objeto-funcao-trait)
+
+## <a id = "pub-fn-parametro-funcao-metodo-instancia-objeto-funcao-trait"></a>`pub fn call_once<F>(&self, f: F) where F: FnOnce();`
+
+Analise a assinatura da função abaixo:
+
+```rust
+pub fn call_once<F>(&self, f : F) where F: FnOnce();
+```
+
+Aqui está o que cada parte significa:
+
+- `pub`**:** indica que a função é pública e pode ser acessada de fora do módulo em que está definida
+- `fn`**:** indica a declaração de uma função, cujo nome, neste caso, é `call_once()`
+- `(&self, f : F)`**:** parâmetros formais da função `call_once()`
+
++ `&self`**:** uma **referência imutável** (`&`) para a instância da estrutura à qual função pertence. Em Rust, `self` é um padrão para representar a instância atual. Quando você tem um método com `&self` como seu primeiro parâmetro, isso indica que é um método de instância e deve ser chamado em uma instância específica do tipo a qual pertence. Em Rust, a convenção é chamar esse tipo de método com a notação `objeto.metodo()`
+
+No contexto do método `call_once()`, você precisaria criar uma instância da estrutura `Once` e, em seguida, chamar o método `call_once()` nessa instância usando a notação de ponto (`objeto.metodo()`). A função `call_once()` é então chamada na instância específica da `Once`.
+
++ `f: F`**:** é o segundo parâmetro do tipo genérico `F`
+
+- `where F: FnOnce()`**:** uma cláusula de restrição (`where`) que específica uma restrição sobre o tipo genérico `F`. Diz que `F` deve implementar o trait `FnOnce`, que é um trait associado a funções que podem ser chamadas apenas uma vez (o `Once` é projetado para executar algo uma vez, portanto, espera-se que a cláusula `FnOnce` seja satisfeita)
+- `call_once<F>()`**:** aqui, `F` é um tipo genérico. O uso do tipo genérico permite que a função `call_once()` aceite diferentes tipos de argumentos para o parâmetro `f`. O tipo genérico `F` é um tipo de espaço reservado para um tipo que será determinado no momento em que a função for chamada. Exemplo:
+
+```rust
+minha_chamada_unica.call_once(|| {
+    // Bloco de código a ser executado apenas uma vez.
+    println!("Executando uma vez!");
+});
+```
+
+Aqui, `|| { ... }` é uma cláusula de fechamento (closure) que é do tipo `F`. O compilador Rust infere o tipo de `F` com base no tipo de cláusula de fechamento fornecida.
+
+Então, o tipo genérico `F` é uma forma de tornar a função `call_once()` flexível, permitindo que ela seja usada com diferentes tipos de cláusulas de fechamento ou funções que atendam ao requisito `FnOnce`. Isso é útil porque `FnOnce` é um trait que representa coisas que podem ser chamadas uma vez (uma cláusula de fechamento é um exemplo).
+
+Portanto, o tipo genérico `F` permite que a função `call_once()` seja parametrizada com diferentes tipos de cláusulas de fechamento ou funções, tornado-a mais genérica e reutilizável.
+
+Sobre a trait `FnOnce`, ela é **uma trait para funções e não para structs**. Em Rust, as funções também têm tipos e podem implementar traits.
+
+A trait `FnOnce` é uma das três traits relacionadas a funções em Rust. As outras duas são `FnMut` e `Fn`. Aqui está uma breve explicação sobre cada uma:
+
+1. `FnOnce`**:**
+    - Representa funções que podem ser chamadas uma vez
+    - Essas funções consomem a propriedade (ownership) de seus argumentos
+    - Geralmente é usada quando a função precisa possuir o que ela recebe
+2. `FnMut`**:**
+    - Representa funções que podem ser chamadas mutavelmente
+    - Essas funções podem modificar o estado do ambiente onde são chamadas
+    - Geralmente usada quando a função precisa mutar, mas não necessariamente possuir, seus argumentos
+3. `Fn`**:**
+    - Representa funções que podem ser chamadas de forma imutável
+    - Essas funções não modificam o estado do ambiente onde são chamadas
+    - Geralmente usada quando a função não precisa nem mutar, nem possuir seus argumentos
+
+A escolha entre `FnOnce`, `FnMut`, e `Fn` depende de como você deseja que a função interaja com seus argumentos e com o ambiente onde é chamada.
+
+Quando você passa uma cláusula de fechamento como `|| { ... }` para a função `call_once()`, está efetivamente fornecendo algo que implementa `FnOnce`. A trait `FnOnce` é um mecanismo poderoso que permite que o Rust lide de maneira segura com funções que consomem a propriedade de seus argumentos.
+
+Ainda sobre `call_once<F>()`, o tipo genérico `F` na assinatura da função `call_once()` representa o **tipo da função** que você passará como argumento quando chamar a função `call_once()`.
+
+Ao usar o tipo genérico `F`, a função `call_once()` se torna flexível e pode aceitar diferentes tipos de funções ou cláusulas de fechamento, desde que essas funções ou cláusulas de fechamento implementem a trait `FnOnce`.
+
+Quando você chama a função `call_once()` e fornece uma cláusula de fechamento como argumento, o tipo `F` é inferido automaticamente pelo compilador com base na assinatura da cláusula de fechamento, isso é possível porque as cláusulas de fechamento em Rust implementam automaticamente as traits `FnOnce`, `FnMut`, ou `Fn`m dependendo de como elas acessam as variáveis do ambiente em que são definidas.
+
+A flexibilidade oferecida pelo tipo genérico `F` permite que `call_once` seja usada com diferentes tipos de funções ou cláusulas de fechamento, tornando o código mais genérico e reutilizável.
+
 # <a id = "crates"></a>Crates
 
 **Anotação:** para pesquisar sobre uma crate:
@@ -510,15 +617,583 @@ A estrutura básica de um projeto Rust gerenciado pelo Cargo geralmente inclui u
 
 # <a id = "std"></a>`std`
 
+Em Rust, `std` refere-se a biblioteca padrão (standard library) da linguagem. A biblioteca padrão é uma parte integrante do ecossistema Rust e fornece funcionalidades essenciais que são usadas comumente em programas Rust.
 
+A `std` inclui módulos que oferecem suporte a operações básicas, manipulação de strings, coleções, entrada/saída, concorrência, e muito mais. Ela é parte integrante do ambiente de execução Rust e geralmente é automaticamente incluída em qualquer programa Rust.
+
+Ao escrever código Rust, você frequentemente verá imports que começam com `std::`, por exemplo:
+
+```rust
+use std::collections::HashMap;
+use std::io::{self, Read};
+```
+
+Neste exemplo, estamos usando parte da `std` para importar `HashMap` do módulo `collections` e `io` e `Read` do módulo `io`. Isso permite que usemos essas funcionalidades diretamente em nosso código.
+
+Observando que você não precisa importar explicitamente a biblioteca padrão `std`, pois ela é automaticamente incluída em todos os programas Rust. Portanto, você pode usar a maioria dos tipos e funções fornecidos pela `std` sem precisar de uma declaração de importação explícita (há partes da crate que precisam ser importadas explicitamente pois não estão inclusas na importação implícita).
+
+Lembre-se de que, enquanto alguns itens podem estar disponíveis sem uma importação explícita, é uma prática comum e boa legibilidade do código importar explicitamente os itens que você está usando. Isso torna mais claro para os leitores do código de onde vêm esses itens e facilita a compreensão do código.
+
+O sistema de gerenciamento de pacotes Rust, chamado Cargo, também faz parte do ecossistema Rust e é frequentemente usado para baixar, compilar e gerenciar dependênciasm incluindo a `std`.
+
+```rust
+fn main() {
+    // Exemplo de uso da biblioteca std.
+    let texto = "Olá, Rust!";
+
+    println!("{}", texto);
+}
+```
+
+Neste exemplo, a função `println!()` é uma macro fornecida pela biblioteca `std`, que é usada para imprimir texto no console. A string `Olá, Rust!` é uma string literal e é parte dos tipos básicos fornecidos pela `std`.
+
+Em resumo, a `std` é essencial para o desenvolvimento em Rust e oferece uma ampla variedade de ferramentas e funcionalidades para desenvolvedores.
 
 ### Sumário
 
-- [`std::fs` (módulo)](#std-fs)
+- [`std::println!`](#std-println)\
+    + `std::print!`
+- [`std::time` (Módulo)](#std-time)
+- [`std::time::Duration (`struct`)`](#std-time-duration)
+- [`std::fs` (Módulo)](#std-fs)
+- [`std::thread` (Módulo)](#std-thread)
+- [`std::sync` (Módulo)](#std-sync)
+- [`std::sync::Once` (`struct`)](#std-sync-once)
+- [`std::sync::Once::new()`](#std-sync-once-new)
+- [`std::sync::Once::call_once()`](#std-sync-once-call_once)
 
-## <a id = "std-fs"></a>`std::fs` (módulo)
+## <a id = "std-println"></a>`std::println!`
 
-`std::fs` é um módulo na biblioteca padrão de Rust que fornece funcionalidades para operações de sistema de arquivos (file system). Ele
+`println!` é uma macro em Rust que é usada para imprimir texto na saída padrão (normalmente, a tela do console). Essa macro é uma forma conveniente de formatar e exibir mensagens no console, sendo especialmente útil para depuração e exibição de informações durante a execução do programa.
+
+A sintaxe básica da macro `println!` é semelhante à da função `println` em linguagens como C e Java, mas o `!` no final indica que é uma macro, não uma função. Aqui está um exemplo simples de uso:
+
+```rust
+fn main() {
+    let nome = "Mundo";
+
+    println!("Olá, {}!", nome);
+}
+```
+
+Neste exemplo, "`Olá, {}!`" é uma string de formato, e `{}` é um marcador de posição que será substituído pelo valor da variável `nome` quando a string for impressa. O resultado seria "Olá, Mundo!".
+
+Você também pode usar a formatação mais avançada, semelhante à macro `format!`, dentro da macro `println!`:
+
+```rust
+fn main() {
+    let nome = "Mundo";
+    let idade = 30;
+
+    println!("Olá, {}! Você tem {} anos.", nome, idade);
+}
+```
+
+A macro `println!` automaticamente adiciona uma quebra de linha no final da saída, enquanto `print!` (sem o "ln") não adiciona.
+
+```rust
+fn main() {
+    let nome = "Mundo";
+
+    print!("Olá, {}!", nome); // Sem quebra de linha no final.
+    println!("Esta linha terá início ao lado da linha acima (sem espaço em branco a esquerda)."); // Com quebra de linha no final.
+}
+```
+
+Essa macro é muito útil para depuração e feedback interativo durante o desenvolvimento em programas em Rust.
+
+## <a id = "std-time"></a>`std::time` (Módulo)
+
+`std::time` é um módulo em Rust que fornece tipos e funções relacionados ao tempo. ele inclui tipos como `Duration` (duração) e `SystemTime` (tempo de sistema), bem como várias funções para operações relacionadas ao tempo. Sua funcionalidade está disponível por padrão sem a necessidade de uma importação explicíta.
+
+**Aqui estão alguns elementos principais do módulo** `std::time`**:**
+
+1. `Duration`**:** representa uma duração de tempo entre dois pontos. Pode ser usado para medir intervalos de tempo
+
+**Exemplo:**
+
+```rust
+use std::time::Duration;
+
+let cinco_segundos = Duration::from_secs(5);
+```
+
+2. `SystemTime`**:** representa um ponto específico no tempo, geralmente relacionado ao relógio do sistema. Pode ser usado para comparar diferentes momentos no tempo
+
+**Exemplo:**
+
+```rust
+use std::time::{SystemTime, Duration};
+
+let agora = SystemTime::now();
+let alguns_segundos_depois = agora + Duration::from_secs(10);
+```
+
+3. **Funções relacionadas ao tempo:** o módulo também inclui várias funções úteis relacionadas ao tempo, como `System::now()` para obter o tempo atual do sistema
+
+**Exemplo:**
+
+```rust
+use std::time::SystemTime;
+
+let agora = SystemTime::now();
+```
+
+Essas são apenas alguns exemplos, e o módulo `std::time` fornece mais funcionalidades relacionadas ao tempo. Esses tipos são frequentemente utilizados em programação para lidar com medições de tempo, aguardar por intervalos específicos e outras operações relacionadas ao tempo.
+
+## <a id = "std-time-duration">`std::time::Duration` (`struct`)
+
+`std::time::Duration` é uma estrutura em Rust que representa uma duração de tempo, ou seja, um intervalo entre dois pontos no tempo. Essa estrutura é parte da biblioteca padrão de Rust (`std`) e é comumente usada para expressar períodos de tempo em operações como espera (sleep), temporização e outras manipulações de tempo.
+
+**A assinatura da estrutura** `Duration` **é a seguinte:**
+
+```rust
+use std::time::Duration;
+
+let duration = Duration::new(seconds: u64, nanoseconds: u32);
+```
+
+- `seconds`**:** número de segundos na duração
+- `nanoseconds`**:** número de nanossegundos adicionados à duração
+
+Você pode criar uma instância de `Duration` usando o método `new()` ou outros métodos fornecidos, como `from_secs()` e `from_nanos()`. Aqui estão alguns exemplos:
+
+```rust
+use std::time::Duration;
+
+// Criar uma Duration de 5 segundos.
+let cinco_segundos = Duration::new(5, 0);
+
+// Criar uma Duration de 2.5 segundos usando `from_secs_f64()`.
+let dois_segundos_e_meio = Duration::from_secs_f64(2.5);
+
+// Criar uma Duration de 1 segundo usando `from_secs()`.
+let um_segundo = Duration::from_secs(1);
+
+// Criar uma Duration de 500 milissegundos usando `from_millis()`.
+let meio_segundo = Duration::from_millis(500);
+```
+
+Você pode realizar várias operações com `Duration`, como adição, subtração e comparação. Aqui estão alguns exemplos:
+
+```rust
+use std::time::Duration;
+
+let duration1 = Duration::new(5, 0);
+let duration2 = Duration::from_secs(3);
+
+// Adição de durações.
+let soma_duration = duration1 + duration2;
+
+// Subtração de durações.
+let diferenca_duration = duration1 - duration2;
+
+// Comparação de durações.
+if duration1 > duration2 {
+    println!("duration1 é maior que duration2.");
+}
+```
+
+`Duration` é frequentemente usada em conjunto com funções relacionadas ao tempo, como `std::thread::sleep()` para pausar a execução de um programa por um determinado período:
+
+```rust
+use std::time::Duration;
+use std::thread;
+
+fn main() {
+    println!("Início do programa.");
+
+    // Pausa a execução por 2 segundos.
+    thread::sleep(Duration::from_secs(2));
+
+    println!("Fim do programa após pausa de 2 segundos.");
+}
+```
+
+Essa é uma introdução básica à utilização da estrutura `std::time::Duration` em Rust. Essa estrutura é muito útil para representar e manipular intervalos de tempo no contexto de programação.
+
+## <a id = "std-fs"></a>`std::fs` (Módulo)
+
+`std::fs` é um módulo na biblioteca padrão de Rust que fornece funcionalidades para operações de sistema de arquivos (file system). Ele faz parte do conjunto de bibliotecas padrão que oferecem suporte a operações de entrada/saída, manipulação de arquivos e diretórios, entre outras tarefas relacionadas a sistema de arquivos.
+
+Dentro do módulo `std::fs`, você encontrará funções e tipos relacionados a operações de arquivos e diretórios, como:
+
+1. **Leitura e escrita de arquivos:**
+    - `std::fs::read()`**:** lê o conteúdo de um arquivo para um vetor de bytes
+    - `std::fs::write()`**:** escreve bytes em um arquivo
+
+**Exemplo:**
+
+```rust
+use std::fs;
+
+fn main() -> std::io::Result<()> {
+    let conteudo = fs::read("arquivo.txt")?;
+
+    fs::write("novo_arquivo.txt", conteudo)?;
+
+    Ok(())
+}
+```
+
+2. **Manipulação de diretórios:**
+    - `std::fs::create_dir()`**:** cria um novo diretório
+    - `std::fs::remove_dir()`**:** remove um diretório vazio
+    - `std::fs::read_dir()`**:** lista entradas em um diretório
+
+**Exemplo:**
+
+```rust
+use std::fs;
+
+fn main() -> std::io::Result<()> {
+    fs::create_dir("novo_diretorio")?;
+    for entrada in fs::read_dir(".")? {
+        println!("{}", entrada?.file_name().to_string_lossy());
+    }
+
+    Ok(())
+}
+```
+
+3. **Metadata e informações de arquivo:**
+    - `std::fs::metadata()`**:** obtém informações sobre um arquivo ou diretório
+    - `std::fs::symlink_metadata()`**:** obtém informações sobre um arquivo ou diretório, seguindo links simbólicos
+
+```rust
+use std::fs;
+
+fn main() -> std::io::Result<()> {
+    let metadata = fs::metadata("arquivo.txt")?;
+
+    println!("Tamanho do arquivo: {} bytes", metadata.len());
+
+    Ok(())
+}
+```
+
+4. **Remoção e renomeação de arquivos:**
+    - `std::fs::remove_file()`**:** remove um arquivo
+    - `std::fs::rename()`**:** renomeia um arquivo ou move entre diretórios
+
+**Exemplo:**
+
+```rust
+use std::fs;
+
+fn main() -> std::io::Result<()> {
+    fs::remove_file("arquivo_antigo.txt")?;
+    fs::rename("arquivo.txt", "arquivo_novo_txt")?;
+
+    Ok(())
+}
+```
+
+Essas são apenas algumas funcionalidades fornecidas pelo módulo `std::fs em Rust. Ele oferece um conjunto abrangente de ferramentas para interagir com o sistema de arquivos de forma segura e eficiente.
+
+Um ponto importante a se observar sobre este módulo é que muitas operações de arquivos em Rust consideram o diretório de trabalho atual, que geralmente é o diretório a partir do qual o programa foi executado. Se você não especificar caminhos de forma absoluta, as operações de arquivo e diretório padrão serão relativas ao diretório de trabalho atual.
+
+Por exemplo, quando você usa `fs::read_dir(".")`, está listando o conteúdo do diretório atual. Se você usar caminhos relativos para criar ou acessar arquivos (`fs::read()`, `fs::write()`, `fs::create_dir()`, etc.), esses caminhos serão relativos ao diretório de trabalho atual
+
+Se você quiser operar em um diretório específico, você pode usar caminhos absolutos ou modificar o diretório de trabalho atual usando a função `std::env::set_current_dir`. Aqui está um exemplo:
+
+```rust
+use std::fs;
+use std::env;
+
+fn main() -> std::io::Result<()> {
+    // Obter o diretório do executável.
+    let diretorio_executavel = env::current_exe()?.parent().unwrap().to_path_buf();
+
+    // Configurar o diretório de trabalho atual para o diretório do executável.
+    env::set_current_dir(&diretorio_executavel)?;
+
+    // Agora, as operações de sistema de arquivos serão relativas ao diretório do executável.
+    let conteudo = fs::read("arquivo_txt")?;
+
+    fs::write("novo_arquivo.txt", conteudo)?;
+
+    Ok(())
+}
+```
+
+Este exemplo assume que o diretório do executável é obtido corretamente, mas você pode precisar ajustar isso dependendo da estrutura do seu projeto e como você está gerenciando seus caminhos.
+
+## <a id = "std-thread"></a>`std::thread` (Módulo)
+
+Em Rust, o módulo `std::thread` faz parte da biblioteca padrão (standard library) e fornece funcionalidades para criar e gerenciar threads. As threads são uma forma de concorrência em que diferentes partes do código podem ser executadas simultaneamente. Sua funcionalidade está disponível por padrão sem a necessidade de uma importação explicíta.
+
+**Aqui estão algumas das principais funcionalidades fornecidas pelo módulo** `std::thread`**:**
+
+1. **Criar uma nova thread:**
+
+```rust
+use std:thread;
+
+thread::spawn(|| {
+    // Código a ser executado na nova thread.
+});
+```
+
+O método `spawn()` é usado para criar uma nova thread que executa o código fornecido no bloco.
+
+2. **Esperar pelo término de uma thread:**
+
+```rust
+use std::thread;
+
+let handle = thread::spawn(|| {
+    // Código a ser executado na nova thread.
+});
+
+// Espera pelo término da thread antes de continuar.
+handle.join().unwrap();
+```
+
+O método `join()` é usado para esperar pelo término de uma thread antes de continuar a execução.
+
+3. **Compartilhamento de dados entre threads:**
+
+```rust
+use std::thread;
+use std::sync::{Arc, Mutex};
+
+fn main() {
+    let contador = Arc::new(Mutex::new(0));
+
+    for _ in 0..10 {
+        let contador = Arc::clone(&contador);
+        thread::spawn(move || {
+            let mut valor = contador.lock().unwrap();
+            *valor += 1;
+        });
+    }
+
+    // Aguarda a conclusão de todas as threads antes de encerrar.
+    thread::sleep(std::time::Duration::from_secs(2));
+
+    println!("Contador final: {}", *contador.lock().unwrap());
+}
+```
+
+O módulo `std::sync` fornece mecanismos de sincronização, como `Mutex`, para compartilhar dados entre threads de forma segura.
+
+A instrução `let mut valor = contador.lock().unwrap();` está realizando uma operação de blocagem (block) sobre o mutex associado ao contador. Essa operação bloqueia o acesso simultâneo de várias threads à seção crítica protegida pelo mutex.
+
+Ao realizar `contador.lock()`, você obtém um guardião (locker) que garante o acesso execlusivo à seção crítica até que seja liberado. A função `unwrap()` é usada aqui para tratar qualquer erro que possa ocorrer ao tentar bloquear o mutex.
+
+Portanto é uma operação de aquisição do mutex para garantir que a atualização da variável `valor` seja feita de forma segura e exclusiva, evitando condições de corrida em ambientes multithread.
+
+O asterisco (`*`) é utilizado para desreferenciar um ponteiro. No contexto de Rust, quando você tem um ponteiro e deseja acessar o valor apontado por esse ponteiro, você usa o operador `*`.
+
+No código em questão:
+
+```rust
+* valor += 1;
+```
+
+`valor` é um tipo `MutexGuard`, que é essencialmente um tipo que permite acesso exclusivo à seção crítica protegida pelo Mutex. O `*` é usado para desreferenciar o `MutexGuard` e acessar o valor contido dentro dele. Nesse caso, é um inteiro, e `+= 1` está incrementando esse valor.
+
+Em resumo, `*valor` está sendo usado para acessar e modificar o valor protegido pelo mutex.
+
+4. **Configuração de número máximo de threads:**
+
+```rust
+use std::thread;
+
+// Configura o número máximo de threads simultâneas.
+thread::Builder::new().spawn(|| {
+    // Código a ser executado na nova thread.
+});
+```
+
+O método `Builder::new()` permite configurar opções específicas ao criar uma nova thread.
+
+5. **Esperar por todas as threads em um grupo:**
+
+```rust
+use std::thread;
+
+let handles: Vec<_> = (0..10).map(|_| {
+    thread::spawn(|| {
+        // Código a ser executado em cada thread.
+    })
+}).collect();
+
+for handle in handles {
+    handle.join().unwrap();
+}
+```
+
+O exemplo mostra como criar um vetor de handles para threads e esperar por todas elas.
+
+Essas são apenas alguns exemplos das funcionalidades oferecidas pelo módulo `std::thread` em Rust. O Rust fornece um modelo de concorrência seguro, onde o sistema de tipos ajuda a evitar condições de corrida e outras situações problemáticas relacionadas à concorrência.
+
+## <a id = "std-sync"></a>`std::sync` (Módulo)
+
+O módulo `std::sync` em Rust fornece tipos e primitivas de sincronização para facilitar a comunicação e coordenação entre threads e concorrentes. Aqui estão alguns dos principais elementos deste mmódulo:
+
+1. **Mutex (MutexGuard e MutexGuardMut):** um mecanismo de exclusão mútua que permite a sincronização do acesso a dados compartilhados entre threads. O `Mutex` só permite que uma thread por vez acesse a seção crítica protegida
+
+**Exemplo:**
+
+```rust
+use std::sync::{Mutex, Arc};
+
+let contador = Arc::new(Mutex::new(0));
+
+// ...
+
+let contador_clone = Arc::clone(&contador);
+
+thread::spawn(move || {
+    let mut valor = contador_clone.lock().unwrap();
+    *valor += 1;
+});
+```
+
+2. **Arc (Atomic Reference Counting):** um tipo de ponteiro inteligente para compartilhar referências entre threads. É frequentemente usado em conjunto com `Mutex` para compartilhar dados entre threads de maneira segura
+
+**Exemplo:**
+
+```rust
+use std::sync::{Mutex, Arc};
+
+let contador = Arc::new(Mutex::new(0));
+
+// ...
+
+let contador_clone = Arc::clone(&contador);
+thread::spawn(move || {
+    let mut valor = contador_clone.lock().unwrap();
+    *valor += 1;
+});
+```
+
+3. **RwLock (Read-Write Lock):** um mecanismo que permite múltiplas leituras simultâneas ou uma única gravação exclusiva. Pode ser útil quando você tem dados que podem ser lidos por várias threads ao mesmo tempo, mas exigem exclusividade durante a escrita
+
+**Exemplo:**
+
+```rust
+use std::sync::{RwLock, Arc};
+
+let dados = Arc::new(RwLock::new(Vec::new()));
+
+// ...
+
+// Leitura simultânea.
+let leitura = dados.read().unwrap();
+
+// Escrita exclusiva.
+let mut escrita = dados.write().unwrap();
+escrita.push(42);
+```
+
+4. **Condvar (condição de variável):** uma variável de condição quer permite que as threads esperem por um condição específica antes de continuar a execução. Pode ser útil para coordenar o comportamento entre threads
+
+**Exemplo:**
+
+```rust
+use std::sync::{Mutex, Condvar, Arc};
+
+let dados = Arc::new((Mutex::new(false), Condvar::new()));
+
+// Thread 1.
+let (lock, condvar) = &*dados;
+let mut guard = lock.lock().unwrap();
+
+*guard = true;
+condvar.notify_one();
+
+// Thread 2.
+let (lock, condvar) = &*dados;
+let mut guard = lock.lock().unwrap();
+
+while !*guard {
+    guard = condvar.wait(guard).unwrap();
+}
+```
+
+Essas são algumas das primitivas de sincronização fornecidas pelo módulo `std::sync`. Cada uma delas tem seu uso adequado dependendo dos requisitos específicos de sincronização em um programa concorrente.
+
+## <a id = "exemplo-std-sync-once"></a>Exemplo `Once`, `new()` e `call_once()`
+
+```rust
+use std::sync::Once;
+
+static INIT_1: Once = Once::new();
+static INIT_2: Once = Once::new();
+
+fn inicializar_alguma_coisa() {
+    // Alguma inicialização cara ou crítica.
+    println!("Inicialização realizada!");
+}
+
+fn main () {
+    // Vamos assumir que queremos inicializar alguma coisa apenas na primeira vez que esta função é chamada.
+    INIT_1.call_once(|| {
+        inicializar_alguma_coisa();
+        println!("Uma instância de `Once`.");
+    });
+
+    // As chamadas subsequentes à função não realizarão a inicialização novamente.
+    INIT_1.call_once(|| {
+        println!("Esta linha não será impressa.");
+    });
+
+    // As instâncias de `Once` são independentes das outras em relação à execução única. Cada instância de `Once` possui o seu próprio estado interno.
+    INIT_2.call_once(|| {
+        println!("Outra instância de `Once`.");
+    });
+}
+```
+
+No exemplo acima, a função `inicializar_alguma_coisa()` será chamada apenas na primeira vez que `INIT.call_once()` for executado. As chamadas subsequentes à função não causarão a execução de inicialização novamente, mesmo que ocorram em diferentes threads.
+
+## <a id = "std-sync-once">`std::sync::Once` (`struct`)
+
+**Definição resumida:** `std::sync::Once` é uma estrutura em Rust que permite a execução de uma determinada função de forma única, garantindo que ela seja executada apenas uma vez, independente de quantas threads tentem executá-la simultaneamente.
+
+A ideia principal é garantir que uma determinada inicialização seja realizada de forma preguiçosa (lazy) e apenas na primeira vez que é requisitada. Isso é especialmente útil em cenários onde a inicialização é custosa ou deve ser realizada de maneira segura em um ambiente multithread.
+
+`Once` é uma ferramenta útil para garantir a inicialização única de recursos compartilhados ou configurações em programas multithread.
+
+[**Exemplo.**](#exemplo-std-sync-once)
+
+## <a id = "std-sync-once-new"></a>`std::sync::Once::new()`
+
+**Definição resumida:** método utilizado para criar uma nova instância de `Once`.
+
+```rust
+pub const fn new() -> Once
+```
+
+[**Exemplo.**](#exemplo-std-sync-once)
+
+## <a id = "std-sync-once-call_once></a>`std::sync::Once::call_once()`
+
+`std::sync::Once::call_once()` é um método fornecido pela biblioteca padrão de Rust (std) que faz parte do módulo `std::sync`. Essa função é utilizada para garantir que um determinado bloco de código seja executado exatamente uma vez, independente do número de threads que o chamam.
+
+**A assinatura da função é a seguinte:**
+
+```rust
+pub fn call_once<F>(&self, f: F) where F: FnOnce();
+```
+
+- `&self`**:** uma referência imutável à instância da estrutura `Once`
+- `f: F`**:** uma clausura ou função que será executada uma vez
+
+A função `call_once()` garante que a clausura `f` será chamada apenas na primeira vez que `call_once()` é invocada em uma instância particular de `Once`. Se várias threads chamarem `call_once()` simultaneamente, apenas uma delas executará a clausura, e as outras esperarão até que a clausura seja concluída.
+
+Essa função é comumente usada para inicializações únicas, onde você deseja garantir que um bloco de código seja executado apenas uma vez, mesmo em um ambiente com várias threads.
+
+Observe também que a função `call_once()` só garante que o bloco de código passado como argumento será executado uma vez para a instância específica da estrutura `Once` na qual foi chamada. Cada instância de `Once` mantém seu próprio estado interno para rastrear se a cláusula já foi executada.
+
+Se você criar outra instância de `Once` e chamar `call_once()` nessa nova instância, o bloco de código associado a essa instância específica será executado uma vez. No entanto, isso não afeta outras instâncias de `Once`, e seus blocos de código associados permanecerão não executados até que `call_once()` seja chamado nelas.
+
+A ideia principal do `Once` é garantir a execução única de um bloco de código para uma instância específica, isolando o estado entre diferentes instâncias. Cada instância de `Once` é independente das outras em relação à execução única.
+
+[**Exemplo.**](#exemplo-std-sync-once)
 
 # <a id = "serde"></a>`serde`
 
@@ -666,11 +1341,14 @@ fn main() {
 
 Observe que, na prática, você pode muitas vezes usar a derivação automática fornecida pelo `serde_derive`, evitando a necessidade de escrever manualmente a implementação do `Deserialize` para muitos casos comuns.
 
+# <a id = "convencoes-rust"></a>Convenções em Rust
+
+
+
 # ---
 
 ### Sumário
 
-- **Rust**
 - **Cross e a Compilação de Binários Estáticos Compatíveis**
 - **Target**
 - **Arquivo Makefile no Formato TOML**
@@ -716,15 +1394,11 @@ Observe que, na prática, você pode muitas vezes usar a derivação automática
         - `Result<(), ()>`
 - **Crates**
     + `std`
-        - `println` **(macro)**
         - `std::time`
         - `std::thread`
         - `std::time::Duration` **(**`struct`**)**\
             + `std::time::Duration::from_secs()` **(método)**
         - `std::thread::sleep()` **(função)**
-        - `std::sync::Once::new()` **(método)**\
-            + `std::sync::Once` **(**`struct`**)**
-            + `std::sync::Once::call_once()` **(função)**
     + `log`\
         - `info` **(macro)**
     + `simplelog`
@@ -740,26 +1414,6 @@ Observe que, na prática, você pode muitas vezes usar a derivação automática
 - **Boas Práticas**
     + `,`
     + **Variáveis com Todas as Letras em Maiúsculo**
-
-# Rust
-
-Rust é uma linguagem de programação de sistema que se concentra em oferecer segurança de memória sem a necessidade de coletor de lixo. Ela foi desenvolvida pela Mozilla e é projetada para ser rápida, concisa e eficiente em termos de recursos, enquanto fornece garantias de segurança de alto nível.
-
-- Seu gerenciador de pacotes (package manager) é o Cargo
-- Seu gerenciador de versões é o rustup
-- Seu compilador é o rustc
-
-Aqui estão alguns pontos-chaves sobre Rust:
-
-1. **Segurança de memória:** Rust utiliza um sistema de propriedade que permite que o compilador detecte e previna erros de acesso inválido à memória, como referências nulas, ponteiros inválidos e vazamentos de memória
-2. **Concorrência:** a linguagem tem suporte embutido para concorrência e paralelismo
-3. **Sistema de tipos estáticos:** Rust é uma linguagem de tipagem estática, o que significa que o tipo de uma variável é verificado em tempo de compilação. Isso ajuda a evitar muitos erros que, de outra forma, poderiam ocorrer em tempo de execução
-4. **Sintaxe expressiva:** a sintaxe de Rust é moderna e expressiva, tornando-a agradável de se trabalhar. Ela adota ideias de outras linguagens, mas também traz suas próprias inovações
-5. **Ecossistema e ferramentas:** Rust possui um ecossistema crescente de bibliotecas e ferramentas. O gerenciador de pacotes padrão é o Cargo, que facilita a criação, compilação e distribuições de projetos Rust
-6. **Comunidade ativa:** Rust tem uma comunidade ativa e engajada, com muitos recursos, tutoriais e documentação disponíveis. Aleḿ disso, ela é conhecida por sua ênfase na inclusão e na promoção de um ambiente amigável
-7. **Uso versátil:** embora Rust seja frequentemente usada para desenvolvimento de sistemas e programação de baixo nível, ela também é adequada para uma variedade de aplicativos, incluindo servidores, ferramentas de linha de comando e até mesmo desenvolvimento web
-
-Para começar a programar em Rust, você pode instalar o compilador Rust e o Cargo. A documentação oficial em rust-lang.org é um excelente ponto de partida, fornecendo tutoriais, guias e exemplos.
 
 # Cross e a Compilação de Binários Estáticos Compatíveis
 
@@ -1985,54 +2639,6 @@ Portanto, `Result<(), ()>` é usado quando a computação representa uma operaç
 
 # Crates
 
-## `std`
-
-A biblioteca `std` em Rust é a biblioteca padrão que faz parte do ambiente de execução padrão da linguagem. Ela fornece as funcionalidades essenciais necessárias para a maioria dos programas em Rust. Aqui estão algumas das principais características da biblioteca `std`:
-
-1. **Tipos básicos:** inteiros, ponto flutuante, booleanos, caracteres, strings, slices, etc
-2. **Coleções:** vetores, slices, strings, hash maps, hash sets, listas duplamente vinculadas, etc
-3. **Operações de E/S (Entrada/Saída):** manipulação de arquivos, leitura e gravação, formatação de strings, etc
-4. **Concorrência e sincronização:** Threads, canais, Mutex, Arc (Atomic Reference Counting), etc
-5. **Gestão de memória:** smart pointers, Box, Rc (Reference Counting), Arc, etc
-6. **Manipulação de tempo:** tipos para representar datas e horas, temporizadores, etc
-7. **Manipulação de erros:** Result, Option, tipos para lidar com erros, etc
-8. **Manipulação de strings:** métodos e funções para manipular strings, conversão, etc
-9. **Padrões de correspondências:** macros e funcionalidades relacionadas a padrões
-10. **Ponto de entrada principal (main):** o ponto de entrada principal para a execução de programas Rust
-
-Ao criar um programa Rust, você não precisa importar explicitamente a biblioteca padrão `std`, pois ela é automaticamente incluída em todos os programas Rust. Portanto, você pode usar os tipos e funções fornecidos pela `std` sem precisar de uma declaração de importação explícita.
-
-```rust
-fn main() {
-    // Exemplo de uso da biblioteca std.
-    let texto = "Olá, Rust!";
-
-    println!("{}", texto);
-}
-```
-
-Neste exemplo, a função `println!()` é uma macro fornecida pela biblioteca `std`, que é usada para imprimir texto no console. A string "`Olá, Rust!`" é uma string literal e é parte dos tipos básicos fornecidos pela `std`.
-
-```rust
-use std::{thread, time, sync::Once};
-
-fn main() {
-    let now = time::Instant::now();
-
-    thread::sleep(time::Duration::from_secs(2));
-
-    let elapsed = now.elapsed();
-    let once = Once::new();
-
-    // Restante do código...
-}
-```
-
-- `thread` **e** `time`**:** ambos são módulos do prelúdio padrão, o que significa que suas funcionalidades estão disponíveis por padrão sem uma importação explicíta. Então, tecnicamente, você pode usar `std::thread` e `std::time` sem importá-los explicitamente. São módulos que contêm funcionalidades relacionadas a threads e manipulação de tempo, respectivamente
-- `sync::Once`**:** `sync` é um módulo no `std` que contém várias estruturas e tipos relacionados a sincronização. Neste caso, você precisaria importar explicitamente `std::sync::Once` para usá-lo em seu código. <a id = "once"></a>`Once` é uma estrutura de sincronização fornecida no módulo `sync` dentro do crate `std`
-
-Lembre-se de que, enquanto alguns itens podem estar disponíveis sem uma importação explícita, é uma prática comum e boa legibilidade do código importar explicitamente os itens que você está usando. Isso torna mais claro para os leitores do código de onde vêm esses itens e facilita a compreensão do código.
-
 ### `std::time::Duration` (`struct`)
 
 `Duration` é um tipo em Rust que representa uma duração de tempo. Ele faz parte do módulo `std::time` e é usado para representar um intervalo específico de tempo. A unidade básica de medida para `Duration` em Rust são os segundos, mas você pode criar durações em outras unidades de tempo usando métodos ou operações aritméticas.
@@ -2089,35 +2695,6 @@ fn main() {
 Neste exemplo, a função `sleep()` é usada para pausar a execução da thread principal por dois segundos antes de continuar com o restante do código.
 
 Essa função é útil em situações em que você precisa introduzir atrasos ou pausas em um programa, como em simulações, temporizações e testes.
-
-### `std::sync::Once::new()` (método)
-
-Vamos analisar o método `new()` do módulo `Once` em Rust:
-
-- Método (associado ao tipo `Once`)
-- **O que ele faz:** cria uma nova instância do tipo `Once`, que é usado para garantir que uma determinada inicialização ocorra apenas uma vez, independente de quantas vezes é chamada
-- **Assinatura do método:** `pub const fn new() -> Once`
-- **Parâmetros:** não possui parâmetros. É um método associado que cria uma nova instância de `Once`
-- **Exemplos de uso:**
-
-```rust
-use std::sync::Once;
-
-static INIT: Once = Once::new();
-
-fn main() {
-    INIT.call_once(|| {
-        // Código a ser executado apenas uma vez.
-        println!("Esta inicialização ocorre apenas uma vez!");
-    });
-
-    // Resto do código...
-}
-```
-
-Neste exemplo, `Once::new()` é usado para criar uma instância de `Once`. A função `call_once()` garante que o bloco fornecido seja executado apenas uma vez, mesmo que `call_once()` seja chamado de forma concorrente por várias threads.
-
-Em resumo, o método `new()` do módulo `Once` é um método associado usado para criar uma instância de `Once`, e é frequentemente utilizado para garantir a execução única de uma inicialização em ambientes concorrentes.
 
 ## `log`
 
