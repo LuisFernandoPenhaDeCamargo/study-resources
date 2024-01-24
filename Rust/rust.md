@@ -2,8 +2,7 @@
 
 # Dúvidas
 
-- `std::thread::sleep()`
-- Operador `*`
+- Escolha um tópico para reestruturá-lo
 - `INIT.call_once(|| { CombinedLogger::init(vec![TermLogger::new(LevelFilter::Info, Config::default(), TerminalMode::Mixed, ColorChoice::Auto)]).unwrap(); });`
 
 # Projetos
@@ -16,12 +15,14 @@ Quero criar um projeto para praticar paralelimo e assim aprender a utilizar o m�
 - [Traits](#traits)
 - [Propriedades de Rust x Classes](#propriedades-rust-x-classes)
 - [Composição](#composicao)
-- [`let` x `const` (Variáveis)](#let-x-const-variaveis)
-- [`const` e `static` (Métodos)](#const-static-metodos)
+- [`let` e `const` (Variáveis)](#let-const-variaveis)
 - [Inferência de Tipos das Variáveis](#inferencia-tipos-variaveis)
 - [Lifetime das Variáveis e Referências](#lifetime-variaveis-referencias)
-- [Marcadores de Posição](#marcadores-posicao)
+- [`const` (Funções)](#const-funcoes)
+- [Métodos de Instância e Métodos Associados](#metodos-instancia-metodos-associados)
 - [Operadores](#operadores)
+- [Marcadores de Posição](#marcadores-posicao)
+- [Empréstimo (Borrow)](#emprestimo-borrow)
 - [Pedaços de Código dos Quais Você Pode Absorver Muita Coisa](#pedacos-codigo-quais-voce-pode-absorver-muita-coisa)
 - [Crates](#crates)
 - [Convenções em Rust](#convencoes-rust)
@@ -163,7 +164,7 @@ fn quadruplo(x: i32) -> i32 {
 
 A composição é uma prática importante no design de software, pois promove a modularidade, a reutilização de código e facilita a compreensão e manutenção do sistema. Ao quebrar um sistema em partes menores e independentes, é mais fácil entender, testar e modificar cada componente individualmente. Além disso, a composição frequentemente leva a sistemas mais flexíveis e adaptáveis a mudanças.
 
-# <a id = "let-x-const-variaveis"></a>`let` x `const` (Variáveis)
+# <a id = "let-const-variaveis"></a>`let` e `const` (Variáveis)
 
 Em Rust, `let` e `const` são usados para criar variáveis e constantes, respectivamente. Aqui estão as principais diferenças entre `let` e `const`:
 
@@ -221,7 +222,7 @@ const CONSTANTE: i32 = 42; // Tipo explicitamente especificado e constante.
 
 5. **Inicialização dinâmica vs. inicialização estática:**
     - `let`**:** a inicialização de variáveis com `let` pode ocorrer dinamicamente durante a execução do programa
-    - `const`**:** as constantes devem ser inicializadas com um valor constante conhecido em tempo de execução
+    - `const`**:** as constantes devem ser inicializadas com um valor constante conhecido em tempo de compilação
 
 **Exemplo:**
 
@@ -233,23 +234,6 @@ const CONSTANTE: i32 = 42; // Inicialização estática em tempo de compilação
 ```
 
 Em resumo, `let` é usado para criar variáveis mutáveis ou imutáveis com escopo dinâmico, enquanto `const` é usado para criar variáveis constantes imutáveis com escopo global e inicialização estática em tempo de compilação.
-
-# <a id = "const-static-metodos"></a>`const` e `static` (Métodos)
-
-Métodos associados possuem as palavras-chave `const` ou `static` em sua declaração.
-
-Em Rust, métodos associados são métodos que são chamados no tipo em si, em vez de em uma instância específica desse tipo.
-
-1. `const`**:**
-    - Métodos associados declarados com `const` são constantes em tempo de compilação
-    - Podem ser chamados sem uma instância específica
-    - São avaliados durante a compilação
-2. `static`**:**
-    - Métodos associados declarados com `static` também são constantes, mas podem depender de constantes de tempo de execução
-    - Podem ser chamados sem uma instância específica
-    - Também são avaliados durante a compilação, mas podem depender de valores de tempo de execução
-3. **Sem** `const` **ou** `static`**:**
-    - 
 
 # <a id = "inferencia-tipos-variaveis"></a>Inferência de Tipos das Variáveis
 
@@ -345,35 +329,65 @@ Neste exemplo, as referências `referencia_x` e `referencia_y` têm o mesmo temp
 
 Portanto, mesmo que você não veja explicitamente anotações do lifetimes, o Rust está trabalhando nos bastidores para gerenciar e garantir a correta utilização de lifetimes para manter a segurança de memória.
 
-# <a id = "marcadores-posicao"></a>Marcadores de Posição
+# <a id = "const-funcoes"></a>`const` (Funções)
 
-**Anotação:** seria interessante este conteúdo ser posicionado após os conceitos de **macros**, **traços** e **tipos**.
+Uma função constante é uma função que pode ser avaliada em tempo de compilação.
 
-No contexto de Rust, `{}` e `{:?}` são marcadores de posição usados em strings de formato para especificar onde os argumentos devem ser inseridos ao utilizar macros de formatação como `println!` ou `format!`. Ambos são usados para diferentes propósitos.
+Ao declarar uma função como `const fn`, você está **indicando que deseja que essa função seja avaliada em tempo de compilação sempre que possível. No entanto, quando chamada em contextos normais, ela se comportará da mesma forma que uma função regular**, e as restrições associadas a funções constantes se aplicarão apenas quando chamadas em um contexto constante.
 
-1. `{}` **(formato padrão):** é utilizado para imprimir valores de tipos que implementam o traço `std::fmt::Display`. Este marcador de posição tenta formatar o valor da melhor maneira possível para ser legível por humanos.
+Contextos constantes são aqueles que podem ser tratados em tempo de compilação, computações que podem ser resolvidas em tempo de compilação. Isso implica, por exemplo, em restrições no tipo dos argumentos e no tipo do retorno. Um exemplo mais palpável sobre violação de um contexto constante é que nele, não é aceitável escrever um gerador de números randômicos.
 
-**Exemplo:**
+# <a id = "metodos-instancia-metodos-associados"></a>Métodos de Instância e Métodos Associados
 
-```rust
-let numero = 42;
-println!("O número é: {}", numero);
-```
+Uma maneira comum de identificar se um método é associado à instância (também conhecido como método de instância) ou associado ao tipo (método estático ou associado) em Rust é verificar a presença de `self` como parâmetro do método. Métodos que têm `&self`, `&mut self` ou `self` como primeiro parâmetro são métodos de instância, enquanto métodos associados não têm um parâmetro que representa a instância e geralmente são declarados com `Self`.
 
-Neste exemplo, `{}` será substituído pelo valor da variável `numero` formatado de acordo com a implementação de `Display` para o tipo `i32`.
-
-2. `{:?}` **(Debug):** é utilizado para imprimir valores de tipos que implementam o traço `std::fmt::Debug`. Este marcador de posição produz uma representação mais detalhada e geralmente destinada a fins de depuração.
-
-**Exemplo:**
+**Aqui está um exemplo que ilustra a diferença:**
 
 ```rust
-let vetor = vec![1, 2, 3];
-println!("O vetor é: {:?}", vetor);
+#[derive(Debug)]
+struct Exemplo {
+    data: i32,
+}
+
+impl Exemplo {
+    // Método de instância com &self como parâmetro.
+    fn metodo_de_instancia(&self) {
+        println!("Método de instância invocado. Data: {}", self.data);
+    }
+
+    fn metodo_associado() {
+        println!("Método associado invocado.");
+    }
+
+    fn metodo_associado_com_parametros(valor: i32) -> Self {
+        println!("Método associado invocado com parâmetros: {}", valor);
+
+        Exemplo { data: valor}
+    }
+}
+
+fn main() {
+    let instancia = Exemplo { data: 42 };
+
+    // Chama o método da instância.
+    instancia.metodo_de_instancia();
+
+    // Chama o método associado (estático).
+    // Notação: `<Tipo>::<método>()`
+    Exemplo::metodo_associado();
+
+    // Chama o método associado (estático) com parâmetro.
+    let nova_instancia = Exemplo::metodo_associado_com_parametros(100);
+
+    println!("Nova instância: {:?}", nova_instancia);
+}
 ```
 
-Neste exemplo, `{:?}` será substituído pela representação de depuração do vetor, que pode incluir informações adicionais úteis para entender a estrutura iterna do valor.
+Neste exemplo, `metodo_de_instancia()` é um método de instância porque recebe `&self` como parâmetro, e `metodo_associado()` é um método associado porque **não recebe nenhum parâmetro representando a instância**. O método `metodo_associado_com_parametros()` é um método associado que tem um parâmetro e retorna uma nova instância de `Exemplo`. Note que ele usa `Self` para **referenciar o tipo ao qual pertence, mas não recebe uma instância específica como parâmetro**.
 
-Em Resumo, `{}` é mais apropriado para a saída formatada para usuários finais, enquanto `{:?}` é frequentemente usado para fins de depuração, exibindo informações mais detalhadas sobre os valores. Esses marcadores de posição são comumente usados em macros de formatação como `prinln!`, `format!`, `panic!` e outros.
+Em métodos associados, não há um parâmetro que represente uma instância específica da struct ou enum. Em vez disso, eles podem ter outros tipos de parâmetros, como parâmetros regulares ou parâmetros relacionados ao tipo em si. O tipo ao qual o método associado pertence é geralmente referenciado usando `Self` na declaração do método.
+
+Então, ao analisar a declaração de um método, você pode observar a presença de `&self`, `&mut self` ou `self` como indicativo de que é um método de instância, enquanto métodos associados não tem esse parâmetro (parâmetros que representam uma instância específica do tipo).
 
 # <a id = "operadores"></a>Operadores
 
@@ -432,6 +446,9 @@ Esses são apenas alguns exemplos e as linguagens de programação podem ter dif
     + Referência Mutável
     + Desreferenciando Uma Referência
     + Transferência de Propriedade ou Movimentação
+- [`*`](#asterisco)
+    + Desreferenciamento
+    + Multiplicação
 
 ## <a id = "ecomercial"></a>`&`
 
@@ -465,13 +482,12 @@ fn main() {
     let referencia_mutavel = &mut numero; // Criando uma referência mutável.
     *referencia_mutavel += 1; // Modificando o valor referenciado.
 
-    // println!("Valor modificado: {}", numero); // Você pode emprestar ou `numero` ou `referencia_mutavel` a `println!()`. Se você tentar passar `&numero` como argumento, você estará tentando emprestar uma variável mutável como imutável.
-    estará tentando*/
+    // println!("Valor modificado: {}", numero); // Você não pode imprimir `numero` antes de `referencia_mutavel`, pois o acesso a `numero` está bloqueado por conta do empréstimo.
     println!("Valor modificado: {}", referencia_mutavel);
 }
 ```
 
-Além disso, o operador `&` também é usado para desreferenciar uma referência. Isso significa acessar o valor real ao qual a referência aponta. Isso é feito usando `*`:
+Além disso, você pode também desreferenciar uma referência. Isso significa acessar o valor real ao qual a referência aponta. Isso é feito usando `*`:
 
 ```rust
 fn main() {
@@ -517,7 +533,7 @@ fn main() {
 
 A movimentação é uma parte fundamental do sistema de propriedade (ownership) em Rust, e ela garante que cada valor tenha tenha um único proprietário em um determinado momento. Isso ajuda a prevenir erros de acesso concorrente e elimina a necessidade de um coletor de lixo, pois o tempo de vida dos valores pe determinado em tempo de compilação.
 
-Ainda sobre a movimentação de propriedades, considere que no exemplo fornecido em "Movimentação de propriedade" utilizasse o tipo `i32` ao invés de uma `String`. O código funcionaria porque os valores em Rust têm o tipo de cópia (copy) quando são tipos primitivos como `i32`. Em Rust, tipos que implementam o trait `Copy` têm um comportamento especial em relação à movimentação de propriedade (ownership).
+Ainda sobre a movimentação de propriedades, considere que no exemplo fornecido em "Movimentação de propriedade", fosse utilizado o tipo `i32` ao invés de uma `String`. O código funcionaria porque os valores em Rust têm o tipo de cópia (copy) quando são tipos primitivos como `i32`. Em Rust, tipos que implementam o trait `Copy` têm um comportamento especial em relação à movimentação de propriedade (ownership).
 
 Quando você atribui `original` a `outra_variavel`, em vez de mover a propriedade de `original` para `outra_variavel`, ocorre uma cópia direta do valor. Isso ocorre porque tipos que implementam `Copy` são automaticamente copiados quando atribuídos a uma nova variável.
 
@@ -526,6 +542,118 @@ O `i32` é um exemplo de tipo que implementa `Copy`, o que significa que cada at
 Por outro lado, se `original` fosse de um tipo que não implementa `Copy`, como é o caso de `String` ou uma estrutura definida pelo usuário, a movimentação de propriedade (ownership) ocorre, e você não pode imprimir `original` após a atribuição.
 
 Em resumo, o código funcionaria para `i32` porque ele implementa `Copy`, permitindo que o valor seja copiado diretamente ao invés de ser movido. Esse comportamento é específico para tipos que implementam `Copy`.
+
+## <a id = "asterisco"></a>`*`
+
+O operador `*` em Rust é usado para duas finalidades principais, dependendo do contexto em que é aplicado:
+
+1. **Desreferenciamento:** quando usado antes de um ponteiro, o operador `*` é utilizado para desreferenciar o ponteiro, ou seja, obter o valor ao qual o ponteiro aponta. Isso é semelhante ao conceito de desreferenciamento em outras linguagens de programação
+
+**Exemplo:**
+
+```rust
+let numero = 42;
+let ponteiro_para_numero = &numero;
+
+// Desreferenciamento usando o operador `*``.
+let valor = *ponteiro_para_numero;
+
+println!("Valor desreferenciado: {}", valor);
+```
+
+2. **Multiplicação:** quando usado como um operador de multiplicação, o `*` realiza a multiplicação entre dois valores
+
+**Exemplo:**
+
+```rust
+let multiplicando = 5;
+let multiplicador = 3;
+
+// Multiplicação usando o operador `*`.
+let resultado = multiplicando * multiplicador;
+
+println!("Resultado da multiplicação: {}", resultado);
+```
+
+Em resumo, o operador `*` em Rust tem duas funções principais: desreferenciamento quando aplicado a ponteiros e multiplicação quando usado como um operador aritmético. O comportamento exato depende do contexto em que o operador é utilizado.
+
+# <a id = "emprestimo-borrow"></a>Empréstimo (Borrow)
+
+A condição de empréstimo é específica de referências mutáveis (`&mut`). O Rust impõe regras rigorosas para garantir a segurança e previnir erros relacionados à mutabilidade concorrente e ao acesso simultâneo a dados mutáveis.
+
+A principais regras que se aplicam a referências mutáveis é que você não pode ter mais de uma referência mutável no mesmo escopo, e que você não pode ter, simultaneamente, uma referência mutável e uma referência imutável à mesma variável, no mesmo escopo. Esta última regra é conhecida como **regra de empréstimo** no Rust.
+
+Portanto, se você tem uma referência mutável, ela é considerada como tendo a "propriedade exclusiva" da variável referenciada durante o tempo de vida da referência. Isso impede que outras referências (sejam mutáveis ou imutáveis) sejam criadas simultaneamente.
+
+Quando você tem uma referência mutável para uma variável, ela efetivamente "bloqueia" o acesso direto à variável, permitindo apenas que a referência mutável acesse e modifique o valor enquanto a referência mutável está em andamento (enquanto o empréstimo está em andamento). Isso é uma parte essencial da garantia de segurança de Rust em relação a mutabilidade concorrente.
+
+Em Rust, o término de um empréstimo ocorre em um dos seguintes cenários:
+
+1. **Fim do escopo:** o empréstimo termina automaticamente quando o escopo no qual a variável que recebe a atribuição existe, chega ao fim. Isso é controlado pelo tempo de vida (lifetimes) e pela saída de um bloco ou função
+
+**Exemplo:**
+
+```rust
+fn main() {
+    let mut numero = 42;
+
+    {
+        let referencia_mutavel = &mut numero; // Empréstimo mutável começa.
+        *referencia_mutavel += 1;
+    } // Empréstimo mutável termina ao sair do bloco.
+
+    // Agora você pode acessar `numero` novamente.
+    println!("Valor modificado: {}", numero);
+    // Observe que por `referencia_mutavel` estar em outro escopo, ela não pode ser impressa aqui.
+}
+```
+
+2. **Fim de uma função ou método:** se uma referência mutável é passada como argumento para uma função ou método, o empréstimo mutável termina quando a função ou método retorna
+
+**Exemplo:**
+
+```rust
+fn main() {
+    let mut numero = 42;
+    let referencia_mutavel = &mut numero; // Criando uma referência mutável.
+    *referencia_mutavel += 1; // Modificando o valor referenciado.
+
+    println!("Valor de `referencia_mutavel`: {}", referencia_mutavel); // Empréstimo mutável termina aqui.
+    println!("Valor de `numero`: {}", numero);
+}
+```
+
+Nessas situações, o compilador Rust garante que o empréstimo seja respeitado, evitando o acesso simultâneo mutável e imutável à mesma variável, o que poderia levar a problemas de segurança. Essas regras são parte da ênfase de Rust na segurança de memória e prevenção de data races.
+
+# <a id = "marcadores-posicao"></a>Marcadores de Posição
+
+**Anotação:** seria interessante este conteúdo ser posicionado após os conceitos de **macros**, **traços** e **tipos**.
+
+No contexto de Rust, `{}` e `{:?}` são marcadores de posição usados em strings de formato para especificar onde os argumentos devem ser inseridos ao utilizar macros de formatação como `println!` ou `format!`. Ambos são usados para diferentes propósitos.
+
+1. `{}` **(formato padrão):** é utilizado para imprimir valores de tipos que implementam o traço `std::fmt::Display`. Este marcador de posição tenta formatar o valor da melhor maneira possível para ser legível por humanos.
+
+**Exemplo:**
+
+```rust
+let numero = 42;
+println!("O número é: {}", numero);
+```
+
+Neste exemplo, `{}` será substituído pelo valor da variável `numero` formatado de acordo com a implementação de `Display` para o tipo `i32`.
+
+2. `{:?}` **(Debug):** é utilizado para imprimir valores de tipos que implementam o traço `std::fmt::Debug`. Este marcador de posição produz uma representação mais detalhada e geralmente destinada a fins de depuração.
+
+**Exemplo:**
+
+```rust
+let vetor = vec![1, 2, 3];
+println!("O vetor é: {:?}", vetor);
+```
+
+Neste exemplo, `{:?}` será substituído pela representação de depuração do vetor, que pode incluir informações adicionais úteis para entender a estrutura iterna do valor.
+
+Em Resumo, `{}` é mais apropriado para a saída formatada para usuários finais, enquanto `{:?}` é frequentemente usado para fins de depuração, exibindo informações mais detalhadas sobre os valores. Esses marcadores de posição são comumente usados em macros de formatação como `prinln!`, `format!`, `panic!` e outros.
 
 # <a id = "pedacos-codigo-quais-voce-pode-absorver-muita-coisa"></a>Pedaços de Código dos Quais Você Pode Absorver Muita Coisa
 
@@ -681,6 +809,7 @@ Em resumo, a `std` é essencial para o desenvolvimento em Rust e oferece uma amp
 - [`std::time::Duration::from_secs()`](#std-time-Duration-from_secs)
 - [`std::fs` (Módulo)](#std-fs)
 - [`std::thread` (Módulo)](#std-thread)
+- [`std::thread::sleep()`](#std-thread-sleep)
 - [`std::sync` (Módulo)](#std-sync)
 - [`std::sync::Once` (`struct`)](#std-sync-once)
 - [`std::sync::Once::new()`](#std-sync-once-new)
@@ -1077,6 +1206,32 @@ O exemplo mostra como criar um vetor de handles para threads e esperar por todas
 
 Essas são apenas alguns exemplos das funcionalidades oferecidas pelo módulo `std::thread` em Rust. O Rust fornece um modelo de concorrência seguro, onde o sistema de tipos ajuda a evitar condições de corrida e outras situações problemáticas relacionadas à concorrência.
 
+## <a id = "std-thread-sleep"></a>`std::thread::sleep()`
+
+**Assinatura da função:**
+
+```rust
+pub fn sleep(dur: Duration)
+```
+
+A função `std::thread::sleep()` é parte da biblioteca padrão de Rust e é usada para suspender a execução do programa por um determinado período de tempo. Essa função é comumente utilizada em situações em que você deseja introduzir um atraso ou pausa na sua aplicação.
+
+**Exemplo:**
+
+```rust
+use std::thread;
+use std::time::Duration;
+
+fn main() {
+    // Supende a execução por 2 segundos.
+    thread::sleep(Duration::from_secs(2));
+
+    println!("Faça algo após suspender a execução por 2 segundos.");
+}
+```
+
+Neste exemplo, `tread::sleep(Duration::from_secs(2))` suspende a execução do programa por 2 segundos. A duração do sono é especifícada usando `Duration::from_secs(2)`, onde `from_secs()` é um método associado da estrutra `Duration` usado para criar uma duração a partir de uma quantidade específica de segundos.
+
 ## <a id = "std-sync"></a>`std::sync` (Módulo)
 
 O módulo `std::sync` em Rust fornece tipos e primitivas de sincronização para facilitar a comunicação e coordenação entre threads e concorrentes. Aqui estão alguns dos principais elementos deste mmódulo:
@@ -1449,12 +1604,6 @@ Para **lifetimes** a convenção são caracteres minúsculos antecedidos de um a
     + `Main()` **Sendo Chamada de Forma Recursiva**\
         - `Result<(), ()>`
 - **Crates**
-    + `std`
-        - `std::time`
-        - `std::thread`
-        - `std::time::Duration` **(**`struct`**)**\
-            + `std::time::Duration::from_secs()` **(método)**
-        - `std::thread::sleep()` **(função)**
     + `log`\
         - `info` **(macro)**
     + `simplelog`
@@ -2694,63 +2843,6 @@ Em Rust, o tipo `Result<T, E>` é usado para representar o resultado de uma comp
 Portanto, `Result<(), ()>` é usado quando a computação representa uma operação que pode falhar, mas não retorna nenhum valor útil no caso de sucesso ou erro. É uma maneira de indicar sucesso ou falha sem transmitir nenhum dado adicional. Isso é comumente usado quando o resultado da computação é usado apenas para indicar se a operação foi bem-sucedida ou não.
 
 # Crates
-
-### `std::time::Duration` (`struct`)
-
-`Duration` é um tipo em Rust que representa uma duração de tempo. Ele faz parte do módulo `std::time` e é usado para representar um intervalo específico de tempo. A unidade básica de medida para `Duration` em Rust são os segundos, mas você pode criar durações em outras unidades de tempo usando métodos ou operações aritméticas.
-
-A expressão `time::Duration::from_secs(valor)` cria uma instância de `Duration` representando `valor` segundos. Aqui está uma explicação mais detalhada:
-
-- `time:Duration`**:** este é o tipo `Duration` fornecido pelo módulo `std::time`
-- `from_secs(valor)`**:** este é um método associado à struct `Duration` que cria uma `Duration` a partir de uma quantidade de segundos. Neste caso, `from_secs()` está sendo usado para criar uma `Duration` representando `valor` segundos
-
-**Exemplo de uso em código:**
-
-```rust
-use std::time::Duration;
-
-fn main() {
-    // Criando uma `Duration` de 10 segundos.
-    let duration = Duration::from_secs(10);
-
-    // Use a `Duration` como necessário, por exemplo, em uma pausa (sleep)
-    std::thread::sleep(duration);
-
-    println!("Passaram-se 10 segundos.");
-}
-```
-
-Neste exemplo, `Duration::from_secs(10)` cria uma `Duration` de 10 segundos, que é usada para fazer o programa esperar por 10 segundos usando `std::thread::sleep(duration)`. Isso é comumente usado em situações em que você precisa introduzir pausas em seu programa por um determinado período de tempo.
-
-### `std::thread::sleep()` (função)
-
-`sleep()` é uma função do módulo `std::thread` em Rust. Vamos abordar suas características:
-
-1. **Tipo:** `sleep()` é uma função do módulo `std::thread`. Ela não está associada a uma instância específica de um tipo, então não é um método
-2. **O que ele faz:** `sleep()` é usado para suspender a execução da thread atual por um determinado período de tempo
-3. **Assinatura da função:** a assinatura da função `sleep()` é a seguinte `pub fn sleep(tempo: Duration)`. Isso significa que ela aceita um argumento do tipo `Duration` que especifica a quantidade de tempo que a thread deve ficar suspensa
-4. **Parâmetros:** `tempo`. Um parâmetro do tipo `Duration`, que indica por quanto tempo a thread deve ser suspensa. Esse parâmetro é obrigatório
-5. **Retorno:** a função `sleep()` não retorna um valor útil. Ela apenas suspende a execução da thread
-6. **Exemplo de uso:**
-
-```rust
-use std::{hread, time::Duration};
-
-fn main() {
-    println!("Início do programa.");
-
-    // Suspender a execução da thread por dois segundos.
-    thread::sleep(Duration::from_secs(2));
-
-    println!("Após a pausa de dois segundos.");
-
-    // Restante do código...
-}
-```
-
-Neste exemplo, a função `sleep()` é usada para pausar a execução da thread principal por dois segundos antes de continuar com o restante do código.
-
-Essa função é útil em situações em que você precisa introduzir atrasos ou pausas em um programa, como em simulações, temporizações e testes.
 
 ## `log`
 
