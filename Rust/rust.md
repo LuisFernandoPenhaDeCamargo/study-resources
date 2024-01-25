@@ -1,5 +1,118 @@
 ### Projeto de Reestruturação
 
+Este arquivo é um resumo que ressalta pontos que eu considerei importantes do livro "The Rust Programming Language".
+
+# Estudar
+
+- Concorrência (conceito)
+
+### Bash
+
+- `mkdir`
+- `cd`
+- `du`
+
+# Obtenção do Livro em Português
+
+Para ler o livro no modo offline, você precisa do utilitário `mdbook` instalado. Você pode obtê-lo com o comando `cargo install mdbook`.
+
+Após a instalação do utilitário, você utiliza o comando `mdbook build` para "construir o livro". Isso basicamente significa que ele vai pegar os arquivos **.md** e transformá-los em um formato que possa ser utilizado pelo seu navegador (**.html**).
+
+Os arquivos **.md** se encontram em um repositório, então você deve cloná-lo e **utilizar o comando de construção no clone do repositório** (no diretório criado pelo comando de clone).
+
+Para abrir o livro no google-chrome você pode executar o comando `google-chrome book/index.html`.
+
+# Utilitários
+
+- `rustup`**:** ferramenta de gerenciamento de versão do Rust e de utilitários associados
+- `rustc`**:** ferramenta de compilação
+- `rustfmt`**:** ferramenta de formatação de código para a linguagem de programação Rust. Ela é usada para garantir que o código escrito em Rust siga as convenções de estilo recomendadas pela comunidade
+
+A principal finalidade do `rustfmt` é automatizar o processo de formatação do código-fonte, tornando-o consistente e legível.
+
+Ambos `rustc` e `rustfmt` estão inclusos na instalação do `rustup`.
+
+# Livro: A Linguagem de Programação Rust
+
+# Introduction
+
+Se você precisa de um resumo do que será visto nos próximos capítulos, no final da "Introduction", em "How to Use This Book", temos o que você precisa.
+
+# 1. Getting Started
+
+## 1.1 Installation
+
+```bash
+$ curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
+```
+
+Acho interessante pontuar que o que o comando faz é baixar um script e começar a instalação do utilitário `rustup`, o qual instá-la a última versão estável do Rust.
+
+Rust também precisa de um linker, que é um programa que o Rust usa para juntar a saída das suas compilações em um arquivo. É algo que você provavelmente já tem, mas caso um erro de link seja gerado, você deve instalar um compilador de C, pois ele provavelmente irá incluir um linker. Um compilador de C também é útil por conta que vários pacotes comuns do Rust dependem de codigo C e vão precisar de um compilador de C.
+
+Usuários Linux provavelmente vão precisar instalar o GCC ou o Clang.
+
+## 1.2 Hello, World!
+
+```rust
+// main.rs
+fn main() {
+    println!("Hello, World!");
+}
+```
+
+Você utiliza o comando: 
+
+```bash
+rustc nome_do_arquivo.rs
+```
+
+para compilar o arquivo e depois
+
+```bash
+./nome_do_arquivo
+```
+
+para executá-lo.
+
+### Anatomia de Um Programa em Rust
+
+```rust
+fn main() {
+
+}
+```
+
+As linhas de código acima definem uma função chamada `main()`. A função `main()` é especial, é sempre o primeiro código a ser executado em todo executável em um programa Rust. A função `main()` não tem parâmetros, se ela tivesse, eles deveriam estar dentro de `()`.
+
+O corpo da função está envolto por `{}`. Rust requer as chaves em volta de todos os corpos das funções. A abertura das chaves define onde o corpo da função começa e o fechamento das chaves define onde o corpo da função termina.
+
+No arquivo **main.rs**, a linha `println!("Hello, World!");` invoca um macro, não uma função. Usar `!` significa que você está invocando um macro e não uma função, macros nem sempre seguem as mesmas regras que uma função.
+
+A string `"Hello, World!"` é passada como um argumento para `println!()`. A string é impressa em tela.
+
+A linha termina com um ponto e vírgula `;`, o ponto e vírgula indica que uma expressão terminou e a próxima está pronta pra começar. A maioria das linhas em 
+Rust terminam em ponto e vírgula.
+
+### Compilar e Executar são Etapas Separadas
+
+Antes de executar um programa Rust, você deve compila-lo. Após a compilação, um binário executável será gerado.
+
+# Executando Código em Rust
+
+- Instale o Rust
+- Tenha um [Ponto de Entrada](#ponto-entrada)
+- Compile o arquivo
+- Execute o executável gerado pela compilação
+
+# Boas Práticas
+
+- Para nome de arquivos, se você for utilizar mais de uma palavra, as separe por um underscore
+- A abertura de chaves deve estar na minha linha da declaração da função e estar separada dela por um espaço em branco
+- Rust utiliza quatro espaços ao invés do TAB
+
+---
+
 # Dúvidas
 
 - Escolha um tópico para reestruturá-lo
