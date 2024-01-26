@@ -98,6 +98,96 @@ Rust terminam em ponto e vírgula.
 
 Antes de executar um programa Rust, você deve compila-lo. Após a compilação, um binário executável será gerado.
 
+## 1.3 Hello, Cargo!
+
+Cargo é o sistema de construção e o gerenciador de pacotes do Rust. Ele é muito utilizado pela comunidade Rust porque lida com várias tarefas para você, como construir o seu código, fazer o download de bibliotecas que o seu código utiliza, além de construir as bibliotecas mencionadas anteriormente (nos referimos as bibliotecas que o nosso código utiliza, depende de, de dependências).
+
+O Cargo já vem instalado com o Rust, se você o instalou Rust através do processo citado na seção 1.1.
+
+### Criando Um Projeto com o Cargo
+
+```bash
+cargo new hello_cargo
+```
+O comando acima, cria um novo diretório chamado `hello_cargo`. Dentro dele, o cargo cria um arquivo **Cargo.toml** e um diretório chamado **src**, dentro de **src** é criado um arquivo chamado **main.rs**.
+
+O diretório criado pelo Cargo (**hello_cargo**) ja é inicializado como um novo repositório Git e, também já possui, o arquivo **.gitignore**. Arquivos Git não serão gerados se você executar o `cargo new` dentro de um repositório Git já existente.
+
+O conteúdo do arquivo **Cargo.toml** deve ser similar a:
+
+```toml
+[package]
+name = "hello_cargo"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+```
+
+**Cargo.toml** está na formato TOML (Tom's Obvious, Minimal Language), que é o formato de configuração do Cargo.
+
+A primeira linha, `[package]`, é o título da seção que indica que as próximas declarações são configurações de pacote.
+
+As próximas três linhas definem as informações de configuração que o Cargo precisa para compilar o programa, o nome, a versão, e a edição do Rust que será usada.
+
+A última linha, `[dependencies]`, é o começo da seção para você listar qualquer uma das dependências do seu projeto. Em Rust, pacotes de código são denominados como **crates**.
+
+O arquivo **main.rs** possuirá um "Hello, world!" gerado automaticamente.
+
+O Cargo espera que seus arquivos "source" (fonte) estejam dentro da pasta **src**. O nível superior do diretório do projeto é usado somente para arquivos README, informação de licença, arquivos de configuração, e qualquer coisa que não seja relacionado ao código. Usar o Cargo ajuda a organizar os projetos. "Há um lugar para tudo e tudo está no lugar".
+
+Se você começou um projeto sem o Cargo, que não o usa, você pode converte-lo em um que usa. Mova seu código fonte para o diretório **src** e crie um arquivo **Cargo.toml** apropriado.
+
+### Construindo e Executando um Projeto Cargo
+
+No seu diretório **cargo_hello**, construa o seu projeto usando o comando:
+
+```bash
+cargo build
+```
+
+Esse comando cria um executável em **target/debug/hello_cargo**, porque a construção padrão é a construção de "debug" (depuração). O Cargo coloca o executável no diretório chamado **debug**. Você pode executar o executável com o comando:
+
+```bash
+./target/debug/hello_cargo
+```
+
+Executando `cargo build` pela primeira vez também faz o Cargo criar um novo arquivo no nível superior do diretório do projeto: **Cargo.lock**. Este arquivo acompanha as exatas versões das dependências no seu projeto. Você nunca precisará mudar este arquivo manualmente, o Cargo gerencia o conteúdo para você.
+
+Nós construímos o projeto com `cargo build` e o executamos com `./target/debug/hello_cargo`, mas nos também podemos usar `cargo run` para compilar o código e executar o executável resultante.
+
+```bash
+cargo run
+```
+
+Usar `cargo run` é mais conveniente do que usar `cargo build` e depois usar o caminho até o binário.
+
+Observe que, se seu código não possuir modificações, `cargo run` irá descobrir isso, então ele só executará o binário. Caso você modifique o seu código fonte, Cargo reconstruirá o seu projeto antes de executá-lo.
+
+Cargo também provê o comando `cargo check`, este comando analisa rapidamente o seu código para verificar se é possível compila-lo, mas não produz um executável.
+
+```bash
+cargo check
+```
+
+Este comando é muito útil se você estiver querendo verificar se o seu trabalho ainda é compilável, pois não gerar um executável acelera bastante este processo.
+
+# 3. Common Programming Concepts
+
+## 3.1 Variables and Mutability
+
+
+
+# 21. Appendix
+
+
+
+## 21.1 A - Keywords
+
+Tópico que lista as palavras-chave, com poucas explicações, mas muito útil.
+
 # Executando Código em Rust
 
 - Instale o Rust
@@ -111,7 +201,7 @@ Antes de executar um programa Rust, você deve compila-lo. Após a compilação,
 - A abertura de chaves deve estar na minha linha da declaração da função e estar separada dela por um espaço em branco
 - Rust utiliza quatro espaços ao invés do TAB
 
----
+# ---
 
 # Dúvidas
 
@@ -1820,10 +1910,6 @@ dependencies = ["cross-build-release", "strip", "upx"]
     O padrão é um arquivo **main.rs** que contém a função `main()`
 - Execute o comando `cargo init` no diretório que contém o arquivo **main.rs**
     Ele irá criar o arquivo **Cargo.toml**
-- Execute o comando `cargo run`
-    - Ele irá executar o comando `cargo build`
-    - Ele irá criar o arquivo **Cargo.lock**
-    - Ele irá criar a pasta target, a qual contém em seu subdiretório o executável do seu código fonte
 
 # Rust e o Seu Ponto de Entrada
 
