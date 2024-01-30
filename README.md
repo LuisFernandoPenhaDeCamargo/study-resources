@@ -1,16 +1,20 @@
-### Projeto de Reestruturação
-
-### Sumário
-
-
-
----
-
 # Notas para Mim Mesmo
 
 - Saiba dosar o quanto você deve imergir em uma tecnologia específica, para não se apronfundar sem necessidade, considerando que o mundo está inundado de informação
 - Preciso ser mais organizado
 - Como eu vou organizar as minhas anotações? Vou criar um repositório para cada tecnologia?
+
+# Sumário
+
+### Rust
+
+Este diretório contém um resumo com os pontos importantes e exemplos práticos do livro "The Rust Programming Language", além de anotações próprias que eu achei interessante ressaltar.
+
+### NPM (npm.md)
+
+Este arquivo descreve como publicar um pacote e as dificuldades encontradas para fazer isso.
+
+---
 
 # Conteúdo
 
