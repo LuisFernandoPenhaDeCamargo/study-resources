@@ -311,6 +311,55 @@ fn main() {
 
 ## 3.2 Data Types
 
+Todo valor em Rust é de um certo tipo de dado, essa especificação é o que diz a ele como trabalhar com aquele dado. Iremos observar dois subconjuntos de dados, escalar e composto.
+
+Tenha em mente que o Rust é uma linguagem de tipagem estática, o que significa que o Rust de sabe os tipos de todas as variáveis em tempo de compilação. O compilador consegue, normalmente, **inferir** o tipo que nos desejamos baseado no valor da variável e como nós a utilizamos. Nos casos em que vários tipos são possíveis, por exemplo, quando convertemos uma `String` para um tipo númerico utilizando `parse()`, nós devemos denotar o tipo:
+
+```rust
+let variavel: u32 = "42".parse().expect("Não é um número.");
+```
+
+Se nós, não adicionarmos a anotação de tipo, `: u32`, o Rust irá exibir um erro relacionado ao fato que o compilador precisa de mais informação sobre qual o tipo do valor que nós queremos usar.
+
+### Scalar Types
+
+Um tipo escalar representa um valor único. Rust possui quatro tipos escalares primários: integers (inteiros), floating-point numbers (números de ponto flutuante), booleans (booleanos) e characters (caracteres).
+
+**Integers Types**
+
+Um inteiro é um número sem o componente fracionário. A tabela abaixo ilustra a variação dos tipos inteiros.
+
+|Comprimento|Signed|Unsigned|
+|---|---|---|
+|8-bit|i8|u8|
+|16-bit|i16|u16|
+|32-bit|i32|u32|
+|64-bit|i64|u64|
+|128-bit|i128|u128|
+|arch|isize|usize|
+
+Cada variação pode ser "signed" ou "unsigned" e tem um tamanho explícito. "Signed" e "unsigned" se refere a ser possível para o valor ser negativo ou não, se um número é "unsigned", ele só será positivo.
+
+Cada variante que depende do sinal ("signed", "i". Pode ser positiva ou negativa) pode armazenar números de -(2^(n-1)) até 2^(n-1)-1, onde n é o número de bits que a variação usa. Então um i8 pode armazenar números de -(2^7) a até (2^7)-1, que é igual a -128 a até 127. Variações "unsigned" podem armazenar números que vão de 0 até (2^n)-1, então, um u8, pode armazenar de 0 a até (2^8)-1, que é igual a 0 a até 255.
+
+Adicionalmente, os tipos `isize` e `usize` dependem da arquitetura do computador no qual o seu programa está sendo executado, o que é denotado na tabela como "arch": 64 bits se você está em uma arquitetura 64-bits e 32 bits se você está em uma arquitetura 32-bits.
+
+Você pode escrever inteiros literais em qualquer uma das formas da tabela acima. Observe que literais numéricos que podem ser vários tipos numéricos permitem um tipo de sufixo, como `57u8`, para designar o tipo (com exceção dos bytes). Literais numéricos também podem usar "_" como separador visual para facilitar a leitura do número, como 1_000, que terá o mesmo valor que 1000 (se tivesse sido especificado desta forma),
+
+Literais inteiros.
+
+|Números literais|Exemplo|
+|---|---|
+|Decimal|98_222|
+|Hexadecimal|0xff|
+|Octal|0o77|
+|Binário|0b1111_0000|
+|Byte (u8 apenas)|b'A'|
+
+Caso você não esteja seguro sobre qual tipo de integer usar, os valores padrões do Rust geralmente são um bom lugar para começar. O padrão para tipos inteiros é `i32`. A primeira situação na qual você terá que usar `isize` e `unsize` é quando estiver indexando algum tipo de coleção.
+
+**Integer Overflow (Estouro de Número Inteiro)**
+
 
 
 # 21. Appendix
@@ -339,7 +388,6 @@ Tópico que lista as palavras-chave, com poucas explicações, mas muito útil.
 
 # Dúvidas
 
-- Escolha um tópico para reestruturá-lo
 - `INIT.call_once(|| { CombinedLogger::init(vec![TermLogger::new(LevelFilter::Info, Config::default(), TerminalMode::Mixed, ColorChoice::Auto)]).unwrap(); });`
 
 # Projetos
@@ -503,47 +551,6 @@ A composição é uma prática importante no design de software, pois promove a 
 
 # <a id = "let-const-variaveis"></a>`let` e `const` (Variáveis)
 
-Em Rust, `let` e `const` são usados para criar variáveis e constantes, respectivamente. Aqui estão as principais diferenças entre `let` e `const`:
-
-1. **Mutabilidade:**
-    - `let`**:** variáveis criadas com `let` podem, ou não, serem mutáveis. Você pode reatribuir valores a elas
-    - `const`**:** constantes criadas com `const` são sempre imutáveis. Uma vez que um valor é atribuído a uma constante, ele não pode ser alterado
-
-**Exemplo:**
-
-```rust
-let mut variavel = 42; // Mutável.
-variavel = 10; // Permitido.
-
-const CONSTANTE: i32 = 42; // Imutável.
-// CONSTANTE = 10; // Erro! Não é permitido reatribuir um valor a uma constante.
-```
-
-2. **Tempo de execução vs. tempo de compilação:**
-    - `let`**:** as variáveis criadas com `let` são atribuídas em tempo de execução. Seu valor pode ser calculado durante a execução do programa
-    - `const`**:** as constantes criadas com `const` são atribuídas em tempo de compilação. Seu valor deve ser uma expressão constante que pode ser calculada pelo compilador
-
-**Exemplo:**
-
-```rust
-let tempo_de_execucao = 42; // Atribuição em tempo de execução.
-const TEMPO_DE_COMPILACAO: i32 = 42; // Atribuição em tempo de compilação.
-```
-
-3. **Escopo:**
-    - `let`**:** as variáveis criadas com `let` podem ser restritas a um escopo específico usando bloco `{}`
-    - `const`**:** as constantes criadas com `const` têm um escopo global e podem ser acessadas de qualquer lugar no mesmo módulo
-
-**Exemplo:**
-
-```rust
-{
-    let variavel_no_bloco = 42; // Escopo restrito a este bloco.
-}
-
-const CONSTANTE_GLOBAL: i32 = 42; // Escopo global.
-```
-
 4. **Tipos de dados:**
     - `let`**:** o tipo da variável pode ser inferido ou explicitamente especificado, e a variável pode ser mutável ou imutável
     - `const`**:** o tipo da constante deve ser especificado explicitamente, e a constante é sempre imutável
@@ -556,38 +563,6 @@ let mut variavel_mutavel = 42; // Tipo inferido.
 
 const CONSTANTE: i32 = 42; // Tipo explicitamente especificado e constante.
 ```
-
-5. **Inicialização dinâmica vs. inicialização estática:**
-    - `let`**:** a inicialização de variáveis com `let` pode ocorrer dinamicamente durante a execução do programa
-    - `const`**:** as constantes devem ser inicializadas com um valor constante conhecido em tempo de compilação
-
-**Exemplo:**
-
-```rust
-let mut variavel = 42; // Inicialização dinâmica.
-variavel = 10 // Reatribuição.
-
-const CONSTANTE: i32 = 42; // Inicialização estática em tempo de compilação.
-```
-
-Em resumo, `let` é usado para criar variáveis mutáveis ou imutáveis com escopo dinâmico, enquanto `const` é usado para criar variáveis constantes imutáveis com escopo global e inicialização estática em tempo de compilação.
-
-# <a id = "inferencia-tipos-variaveis"></a>Inferência de Tipos das Variáveis
-
-**Anotação:** este tópico trata de uma capacidade do compilador.
-
-Em Rust, na maioria das situações, o compilador é capaz de inferir o tipo da variável com base no contexto, eliminando a necessidade de especificar o tipo explicitamente. Considere o exemplo abaixo:
-
-```rust
-let numero = 42;
-println!("O número é: {}", numero);
-```
-
-O tipo da variável `numero` será inferido como `i32`, pois o valor `42` é um número inteiro de 32 bits por padrão. O compilador é inteligente o suficiente para entender que você está atribuindo um valor específico e inferir o tipo apropriado com base nesse valor.
-
-A capacidade de inferência de tipo em Rust é uma das características que torna o código conciso e legível, ao mesmo tempo em que mantém a segurança e a previsibilidade do tipo de dados. No entanto, em algumas situações, especialmente quando o tipo não pode ser inferido de forma unívoca, pode ser necessário especificar o tipo explicitamente.
-
-Em resumo, na maioria dos casos, você não precisa especificar explicitamente o tipo de variáveis em Rust, pois o compilador faz isso por você através da inferência de tipos.
 
 # <a id = "lifetime-variaveis-referencias"></a>Lifetime das Variáveis e Referências
 
@@ -3470,11 +3445,3 @@ Incluir a vírgula após o último item em listas, structs, enums e outras estru
 3. **Facilita a comparação e revisão do código:** ao visualizar alterações em sistemas de controle de versão ou ao revisar o código, é mais fácil identificar as alterações quando a vírgula está presente. Isso pode ser particularmente útil em ambientes colaborativos
 
 Ambas as formas, utilizar a vírgula após o último item ou não, são aceitas pelo compilador, e a escolha pode depender das preferências da equipe de desenvolvimento. No entanto, a prática mais comum em comunidades Rust é incluir a vírgula após o último item para manter a consistência e facilitar a manutenção do código.
-
-### Variáveis com Todas as Letras em Maiúsculo
-
-A decisão de nomear constantes e variáveis estáticas em maiúsculas é uma convenção para tornar essas variáveis facilmente distinguíveis de variáveis locais e para destacar que são valores que não devem ser alterados durante a execução do programa. Isso é particularmente comum em muitas linguagens de progamação.
-
-Essa convenção pode ser encontrada em várias linguagens, incluindo Rust. Ela ajuda a melhorar a legibilidade do código e a indicar a intenção do programador de que a variável é constante ou estática.
-
-Em resumo, a escolha de usar todas as letras em maiúsculo para o nome da variável é uma prática comum para variáveis estáticas e constantes e ajuda a comunicar a natureza especial dessas variáveis no código-fonte.
