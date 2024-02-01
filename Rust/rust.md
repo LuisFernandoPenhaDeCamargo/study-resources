@@ -21,6 +21,7 @@ Este arquivo é um resumo que ressalta pontos que eu considerei importantes do l
 - `vim.tiny` (utilitário)
 - `tailf`
 - `ifconfig`
+- `md5sum`
 
 # Obtenção do Livro em Português
 
@@ -360,7 +361,16 @@ Caso você não esteja seguro sobre qual tipo de integer usar, os valores padrõ
 
 **Integer Overflow (Estouro de Número Inteiro)**
 
+Vamos considerar o cenário no qual você tem uma variável do tipo `u8` (em que o valor associado a ela é do tipo `u8`), então você aceita valores no intervalo de 0 a até 255. Se você tentar mudar o valor dela para algo fora desse intervalo, como 256, por exemplo, um estouro de número inteiro irá ocorrer, o que pode resultar em dois tipos de comportamento. Quando você está compilando no modo depuração ("debug"), Rust inclui verificações de estouro de número inteiro que fazem com que o seu programa entre em pânico ("panicking") em tempo de execução se esse comportamento ocorrer. Rust usa o termo entrar em pânico quando um programa é encerrado com um erro.
 
+Quando você está compilando em modo de liberação ("release"), com a opção `--release`, Rust não inclui uma checagem para estouro de número inteiro que causará pânico. Ao invês disso, caso o estouro de memória de número inteiro ocorrá, Rust irá realizar dois embrulhos ("wrapping") complementares. Em resumo, valores maiores que o máximo que o tipo aceita envolvem em torno ("wrap around") do valor mínimo que o tipo aceita. Neste caso (`u8`), o valor 256 se torna 0, o valor 257 se torna 1, e assim por diante. O programa não irá ser encerrado ("entrar em pânico"), mas a variável irá estar vinculado a um valor que provavelmente não é o que você está esperando que ela possua. Confiar no comportamento pontuado acima, no qual os valores acima do máximo envolvem em torno dos valores mínimos, é considerado um erro.
+
+Para tornar explícito o fato que o código lida com a possibilidade de estouro, você pode utilizar os seguintes método disponibilizados pela biblioteca padrão do Rust ("standard libray", `std`) para tipos númerico primitivos:
+
+- Envolva todos os modos com o método `wrapping_`*, por exemplo, `wrapping_add`
+- Retorne o valor `None` caso ocorra um estouro nos métodos que utilizam `checked_*`
+- Retorne o valor e um booleano indicando se houve ou não um estouro nos método que utilizam `overflowing_*`
+- Saturar no valor mínimo ou máximo com os métodos que utilizam `saturating_*`
 
 # 21. Appendix
 
