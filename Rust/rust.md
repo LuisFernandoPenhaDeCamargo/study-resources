@@ -372,6 +372,12 @@ Para tornar explícito o fato que o código lida com a possibilidade de estouro,
 - Retorne o valor e um booleano indicando se houve ou não um estouro nos método que utilizam `overflowing_*`
 - Saturar no valor mínimo ou máximo com os métodos que utilizam `saturating_*`
 
+// <--
+
+https://doc.rust-lang.org/stable/book/ch03-02-data-types.html
+https://rust-book.cs.brown.edu/ch03-01-variables-and-mutability.html
+file:///home/orion/livros/rust-book-pt-br/book/ch03-02-data-types.html
+
 # 21. Appendix
 
 
