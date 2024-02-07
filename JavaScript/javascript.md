@@ -1,4 +1,8 @@
-### ETag (Amazon S3) e md5sum (Ubuntu)
+# JavaScript
+
+
+
+# ETag (Amazon S3) e md5sum (Ubuntu)
 
 A ETag no Amazon S3 e o md5sum no Ubuntu são conceitos diferentes, embora ambos estejam relacionados a verificar a integridade dos dados.
 
@@ -12,7 +16,7 @@ Ambos são usados para verificar a integridade dos dados, mas eles operam de man
 
 Se você deseja comparar um ETag específico no S3 com um valor MD5 calculado localmente usando o `md5sum`, é importante garantir que ambos estejam usando o mesmo método de geração de hash (por exemplo, ambos baseados em MD5) para que sejam comparáveis.
 
-### `replace()` e Expressões Regulares
+# `replace()` e Expressões Regulares
 
 `.replace(/['"]+/g, ``)`
 
@@ -29,7 +33,7 @@ Então, se você tiver uma string como `"Olá, mundo!"` ou `'Outro exemplo'`, a 
 
 Observe que a ordem dentro dos colchetes não importa, você está removendo os dois caracteres, eles estando juntos ou não.
 
-### `.json()`
+# `.json()`
 
 Considere o seguinte cenário:
 
@@ -39,7 +43,7 @@ Considere o seguinte cenário:
 - O método `.query()` inclui em seu retorno metadados, que não são enumeráveis e também **não são incluídos no corpo da resposta**
 - Você pode imprimir a saída de `JSON.stringfy(retorno_da_query)` para verificar isso
 
-## `cluster`
+# `cluster`
 
 O módulo cluster no Node.js é uma maneira de criar aplicativos escaláveis, aproveitando melhor os recursos de hardware disponíveis. Ele permite que você crie múltiplos processos do Node.js, conhecidos como "workers", que compartilham o mesmo servidor. Cada worker tem sua própria instância do interpretador do Node.js, permitindo a execução concorrente de código.
 
@@ -52,11 +56,11 @@ Aqui estão alguns conceitos chaves associados ao módulo cluster:
 3. **Balanceamento de carga:** o módulo cluster facilita a distribuição de solicitações entre os workers. Ele pode ser configurado para usar várias estratégias de balanceamento de carga para garantir que cada worker tenha uma carga de trabalho semelhante
 4. **Comunicação entre processos:** os workers podem se comunicar entre si e com o processo mestre usando o mecanismo de mensagens integrado no módulo cluster. Isso é útil para coordenar atividades entre os diferentes processos
 
-### `cluster.isMaster`
+## `cluster.isMaster`
 
 `cluster.isMaster` é uma propriedade no módulo cluster do Node.js que é utilizada para verificar se o código está sendo executado no processo mestre ou em um worker. Essa propriedade retorna `true` se o processo atual for o processo mestre e `false` se for um worker.
 
-### `cluster.fork()`
+## `cluster.fork()`
 
 `cluster.fork()` é um método no módulo cluster do Node.js que é usado para criar um novo worker. Quando você chama `cluster.fork()`, ele cria uma cópia do processo atual (que será um worker) e executa o mesmo código do aplicativo.
 
@@ -66,7 +70,7 @@ Aqui estão alguns conceitos chaves associados ao módulo cluster:
 cluster.fork();
 ```
 
-### `cluster.on()`
+## `cluster.on()`
 
 O método `cluster.on()` é usado para registrar manipuladores de eventos no objeto `cluster`. Ele permite que você ouça eventos específicos relacionados à execução do cluster, como a criação de novos workers ou a finalização de workers.
 
@@ -79,7 +83,7 @@ cluster.on(event, listener);
 - `event`**:** uma string que especifica o nome do evento que você deseja ouvir
 - `listener`**:** uma função que será chamada sempre que o evento ocorrer
 
-### Exemplo
+## Exemplo
 
 ```JavaScript
 const cluster = require("cluster");

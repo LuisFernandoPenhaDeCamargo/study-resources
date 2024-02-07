@@ -1,5 +1,27 @@
 # Shell
 
+
+
+# Sumário
+
+- Alterando o Hostname no Ubuntu
+
+# Alterando o Hostname no Ubuntu
+
+```bash
+vim.tiny /etc/hostname
+```
+
+No arquivo **hostname**, você verá o nome atual do seu sistema. Substitua-o pelo novo nome de host que deseja usar. Após fazer a alteração, salve o arquivo e feche o editor de texto.
+
+```bash
+vim.tiny /etc/hosts
+```
+
+Encontre a linha que contém o endereço IP 127.0.1.1 e o nome do antigo host. Substitua o nome antigo pelo novo nome de host que você configurou no arquivo **/etc/hostname**. Reinicie o seu sistema Ubuntu para aplicar as alterações de hostname.
+
+# ---
+
 # Lista de Itens a se Estudar
 
 - `mkdir`

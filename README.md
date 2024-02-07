@@ -4,15 +4,53 @@
 - Preciso ser mais organizado
 - Como eu vou organizar as minhas anotações? Vou criar um repositório para cada tecnologia?
 
+# Estudar
+
+- Procurando uma procedure no banco pelo CLI do SGBD
+
+```sql
+SHOW CREATE PROCEDURE nome_da_procedure;
+```
+
+- Procurando uma função no banco pelo CLI do SGBD
+
+```sql
+SELECT
+    ROUTINE_NAME
+FROM
+    information_schema.ROUTINES
+WHERE
+    ROUTINE_SCHEMA = 'nome_do_banco_de_dados'
+    AND ROUTINE_TYPE = 'FUNCTION'
+    AND ROUTINE_NAME = 'nome_da_função';
+```
+
 # Sumário
 
-### Rust
+## Rust
 
 Este diretório contém um resumo com os pontos importantes e exemplos práticos do livro "The Rust Programming Language", além de anotações próprias que eu achei interessante ressaltar.
 
-### NPM (npm.md)
+## JavaScript
 
-Este arquivo descreve como publicar um pacote e as dificuldades encontradas para fazer isso.
+Este diretório contém anotações teóricas e práticas referente a esta linguagem de programação, como conceitos, funções e bibliotecas.
+
+## NPM (npm.md)
+
+Este arquivo descreve como publicar um pacote e as dificuldades que eu encontrei para fazer isso.
+
+## MySQL (mysql.md)
+
+- Operadores\
+    + % (Operador de Módulo)
+- Funções
+    + `rand()`
+    + `UNIX_TIMESTAMP()`
+- Criação de Funções
+
+## Shell (shell.md)
+
+- Alterando o Hostname no Ubuntu
 
 ---
 

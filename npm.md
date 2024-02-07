@@ -1,5 +1,7 @@
 # NPM
 
+
+
 # Publicando um Pacote
 
 Primeiramente vamos observar que a primeira vez que você publica um pacote, utilizando um usuário npm, ele será automaticamente privado, a não ser que você especifique o contrário. Você pode verificar a privacidade de um pacote, logando na sua conta e ao selecionar o seu pacote, em packages, você pode verificar a privacidade do pacote como um todo e até verificar a privacidade das versões.
