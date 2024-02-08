@@ -6,12 +6,22 @@
 
 # Estudar
 
+## MySQL
+
+- `DECLARE CURSOR FOR`, `OPEN`, `FETCH` e `CLOSE`
 - Procurando uma procedure no banco pelo CLI do SGBD
 
 ```sql
 SHOW CREATE PROCEDURE nome_da_procedure;
 ```
 
+- Excluindo uma procedure
+
+```sql
+DROP PROCEDURE IF EXISTS nome_da_procedure;
+```
+
+- Funções não permitem que você realize a operação SELECT nas suas variáveis, então para ver o comportamento de uma, você pode torna-la uma procedure
 - Procurando uma função no banco pelo CLI do SGBD
 
 ```sql
@@ -24,6 +34,45 @@ WHERE
     AND ROUTINE_TYPE = 'FUNCTION'
     AND ROUTINE_NAME = 'nome_da_função';
 ```
+
+- Procurando uma função no banco pelo CLI do SGBD
+
+```sql
+SHOW CREATE FUNCTION nome_da_função;
+```
+
+- Executando uma função pelo CLI do SGBD
+
+```sql
+SELECT nome_da_função();
+```
+
+- `DECLARE EXIT HANDLER FOR 1329 SELECT '0';`
+
+## Bash
+
+- Verificando o status de um serviço
+
+```bash
+systemctl status mysql.service
+```
+
+- Interrompendo a execução de um serviço
+
+```bash
+sudo systemctl stop mysql
+```
+
+- Reiniciando um serviço
+
+```bash
+sudo systemctl restart mysql
+```
+
+## Git
+
+- `git checkout -b dev/lfernando-rc master`
+- `git checkout dev/lfernando`
 
 # Sumário
 
