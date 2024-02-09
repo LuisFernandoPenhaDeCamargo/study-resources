@@ -6,6 +6,13 @@
 
 # Estudar
 
+## JavaScript
+
+- `typeof model.name`
+- `console.log("typeof:", Object.prototype.toString.call(machine));`
+- `console.log(Object.getOwnPropertyNames(machine));`
+- Diferença entre aspas simples e aspas duplas
+
 ## MySQL
 
 - `DECLARE CURSOR FOR`, `OPEN`, `FETCH` e `CLOSE`
