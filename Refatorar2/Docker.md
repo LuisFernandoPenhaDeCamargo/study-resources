@@ -1,0 +1,12 @@
+<a name = "docker"></a>O Docker é uma plataforma de código aberto projetada para facilitar a criação, distribuição e execução de aplicativos em contêineres. Os contêineres são unidades leves e executáveis que incluem tudo o que é necessário para executar um software, incluindo o código, as bibliotecas, as dependências e as configurações de ambiente. O Docker fornece uma abstração de nível de sistema operacional, permitindo que os contêineres sejam executados de maneira consistente em qualquer ambiente que suporte o Docker.
+
+Aqui estão algumas das principais funcionalidades e usos do Docker:
+
+1. **Portabilidade:** os contêineres Docker encapsulam o aplicativo e suas dependências, tornando-os portáteis entre diferentes ambientes. Um contêiner Docker pode ser executado de forma consistente em qualquer máquina que tenha o Docker instalado, independente das diferenças no sistema operacional ou configuração
+2. **Isolamento:** os contêineres oferecem isolamento leve entre aplicativos, garantindo que cada aplicativo execute em seu próprio ambiente isolado. Isso ajuda a evitar conflitos entre dependências e facilita a implantação de aplicativos em ambientes compartilhados
+3. **Eficiência de recursos:** os contêineres compartilham o kernel do sistema operacional subjacente e são mais leves que máquinas virtuais tradicionais. Isso resulta em um uso mais eficiente de recursos e permite a execução de vários contêineres em uma única máquina
+4. **Rápido provisionamento e escabilidade:** os contêineres podem ser iniciados e interrompidos rapidamente, permitindo um provisionamento ágil de recursos. Isso facilita a escala horizontal de aplicativos, respondendo rapidamente às demandas de carga e trabalho
+5. **Distribuição e versionamento:** os contêineres podem ser distribuídos por meio de repositórios, permitindo compartilhamento fácil de aplicativos e ambientes. O Docker Hub é um exemplo de um repositório público onde os desenvolvedores podem compartilhar e baixar contêineres
+6. **Orquestração de contêineres:** o Docker oferece ferramentas de orquestração, como o Docker Compose e o Docker Swarm, que facilitam o gerenciamento e a orquestrção de vários contêineres em ambientes de produção.
+
+O Docker é amplamente utilizado em desenvolvimento de software, integração contínua, implantação de aplicativos em nuvem, microsserviços e outras áreas onde a portabilidade e a eficiência de recursos são importantes.

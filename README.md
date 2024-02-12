@@ -1,3 +1,21 @@
+# HTML (html.md)
+
+# CSS (css.md)
+
+# Guia de Formatação do Sistema Operacional (formatacao-dual-boot.md)
+
+- [Acessando a BIOs](#acessando-bios)
+- [Acessando o "qual é o nome deste modo"](#)
+- [Problema para Desativar o Modo de Segurança](#problema-desativar-modo-segurança)
+- [Problema para Realizar o Boot de Um HD Externo](#problema-realizar-boot-hd-externo)
+- [Problema ao Mudar o Modo Sata](#problema-mudar-modo-sata)
+- [Ubuntu](#ubuntu)
+    - [Configuração do Teclado](#configuração-teclado)
+    - [Configuração do Idioma do Google Chrome](#configuração-idioma-google-chrome)
+    - [Programas Instalados](#programas-instalados)
+
+# ---
+
 # Notas para Mim Mesmo
 
 - Saiba dosar o quanto você deve imergir em uma tecnologia específica, para não se apronfundar sem necessidade, considerando que o mundo está inundado de informação
