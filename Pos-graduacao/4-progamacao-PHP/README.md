@@ -13,3 +13,4 @@ Ordem de estudo do conteúdo:
 - leitura-complementar.pdf
 - desafio-profissional.pdf
 - proposta-de-resolucao.pdf
+- progamacao-PHP.html

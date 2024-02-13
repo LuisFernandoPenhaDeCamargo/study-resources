@@ -7,3 +7,4 @@ Ordem de estudo do conteúdo:
 - slides-3.pdf
 - slides-4.pdf
 - leitura-digital.pdf
+- design-UX.html

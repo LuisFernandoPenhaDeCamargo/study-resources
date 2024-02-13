@@ -1,3 +1,11 @@
+# Fazer
+
+Como fazer para o git parar de pedir para eu me autenticar? Quero que a autenticaçaõ seja feita de forma automática.
+
+# Git (git.md)
+
+- [Primeiro `commit`](#primeiro-commit)
+
 # HTML (html.md)
 
 # CSS (css.md)
