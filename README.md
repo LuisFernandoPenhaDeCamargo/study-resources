@@ -5,6 +5,9 @@
 # Fazer
 
 - Como as minhas credenciais do Git estão configuradas para serem autenticadas na minha máquina na Orion?
+- Configurando os backticks
+- O display da bateria não está correto (Ubuntu)
+- Corrigir o problema relacionado ao modo sata, Windows e Ubuntu (**formatacao-dual-boot.md**)
 
 # Git (git.md)
 
