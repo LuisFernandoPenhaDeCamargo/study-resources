@@ -39,10 +39,12 @@ No lugar da sua senha (`Password`), insira seu token de acesso pessoal. GitHub s
 
 ### <a id="armazenando-suas-credenciais"></a>Armazenando Suas Credenciais
 
-No Ubuntu, você pode usar o Gerenciador de Credenciais do Sistema para armazenar em cache suas credenciais do Git. O Ubuntu geralmente utiliza o GNOME Keyring como seu gerenciador de credenciais.
+Você pode usar o armazenamento de credenciais fornecido pelo próprio Git, chamado de "cache de credenciais". Essa opção armazena suas credenciais em cache de memória, eliminando a necessidade de digitar suas credenciais repetidamente durante um período de tempo especificado.
 
 ```bash
-git config --global credential.helper gnome-keyring
+git config --global credential.helper 'cache --timeout=tempo_em_segundos'
 ```
 
-Se você utilizar o GNOME Keyring como helper de credenciais, suas credenciais do Git devem persistir através de reinicializações de máquina. As credenciais serão armazenadas no GNOME Keyring indefinidamente até que sejam removidas manualmente.
+Esta abordagem é útil para evitar a autenticação repetitiva e ainda oferece uma camada de segurança, já que as credenciais são armazenadas apenas temporariamente em memória. Diferente do `git config --global credential.helper store`, que armazena suas credenciais de forma não temporária em texto simples em um arquivo em disco.
+
+Outra técnica que não é recomendada é a utilização dos URLs dos repositórios, isso porque os URLs dos repositórios, assim como credenciais, podem ser facilmente expostos em logs ou outros lugares, o que é uma prática  de segurança ruim.

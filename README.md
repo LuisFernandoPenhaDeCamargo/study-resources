@@ -1,3 +1,7 @@
+# Prático
+
+`git config --global credential.helper 'cache --timeout=28800'`
+
 # Fazer
 
 - Como as minhas credenciais do Git estão configuradas para serem autenticadas na minha máquina na Orion?
