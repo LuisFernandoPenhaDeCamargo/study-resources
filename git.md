@@ -3,6 +3,7 @@
 ### Sumário
 
 - [Primeiro `commit`](#primeiro-commit)
+- [Armazenando Suas Credenciais](#armazenando-suas-credenciais)
 
 ### <a id="primeiro-commit"></a>Primeiro `commit`
 
@@ -34,4 +35,14 @@ remote: Please see https://docs.github.com/en/get-started/getting-started-with-g
 fatal: Authentication failed for 'https://github.com/username/nome_do_repositório/'
 ```
 
-No lugar da sua senha (`Password`), insira seu token de acesso pessoal. GitHub settings -> < > Developer settings -> Personal access tokens -> Tokens (classic) -> Tokens you have generate that can be used to access the **GitHub API** (para gerar um novo)
+No lugar da sua senha (`Password`), insira seu token de acesso pessoal. GitHub settings -> < > Developer settings -> Personal access tokens -> Tokens (classic) -> Tokens you have generate that can be used to access the **GitHub API** (para gerar um novo).
+
+### <a id="armazenando-suas-credenciais"></a>Armazenando Suas Credenciais
+
+No Ubuntu, você pode usar o Gerenciador de Credenciais do Sistema para armazenar em cache suas credenciais do Git. O Ubuntu geralmente utiliza o GNOME Keyring como seu gerenciador de credenciais.
+
+```bash
+git config --global credential.helper gnome-keyring
+```
+
+Se você utilizar o GNOME Keyring como helper de credenciais, suas credenciais do Git devem persistir através de reinicializações de máquina. As credenciais serão armazenadas no GNOME Keyring indefinidamente até que sejam removidas manualmente.

@@ -1,10 +1,11 @@
 # Fazer
 
-Como fazer para o git parar de pedir para eu me autenticar? Quero que a autenticaçaõ seja feita de forma automática.
+- Como as minhas credenciais do Git estão configuradas para serem autenticadas na minha máquina na Orion?
 
 # Git (git.md)
 
 - [Primeiro `commit`](#primeiro-commit)
+- [Armazenando Suas Credenciais](#armazenando-suas-credenciais)
 
 # HTML (html.md)
 
