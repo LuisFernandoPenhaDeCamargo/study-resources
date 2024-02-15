@@ -10,6 +10,10 @@
 - O display da bateria não está correto (Ubuntu)
 - Corrigir o problema relacionado ao modo sata, Windows e Ubuntu (**formatacao-dual-boot.md**)
 
+# Estudar
+
+- `git config pull.rebase false`**:** o cenário era o seguinte, o conteúdo do meu repositório diferia do que se encontrava no repositório remoto
+
 # Git (git.md)
 
 - [Primeiro `commit`](#primeiro-commit)
