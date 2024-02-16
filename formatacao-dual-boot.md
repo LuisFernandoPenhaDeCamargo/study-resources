@@ -77,6 +77,7 @@ Observe que você provavelmente precisará de permissões de super usuário para
 
 Aqui eu estou mantendo uma lista dos programas que eu utilizo e a ordem na qual eu os instalei, do primeio ao último. Antes de mais nada eu atualizei o `apt` (`sudo apt update`).
 
+- **Google Chrome:** foi um processo um pouco mais extenso, o pesquise no GPT
 - **VS Code:** foi um processo um pouco mais extenso, o pesquise no GPT
 - **Git:** `sudo apt install git`
 - **Discord:** `sudo snap install discord`

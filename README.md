@@ -14,6 +14,20 @@
 
 - `git config pull.rebase false`**:** o cenário era o seguinte, o conteúdo do meu repositório diferia do que se encontrava no repositório remoto
 
++ `scp`
++ `cp`
++ `pgrep`
++ `kill`
++ `mv`
++ `ps aux`
++ `fdisk -l`
+
+- `aws s3 sync "s3://game.set-homologated" "conteudo/zoe-client-src/game.set"`
+- `aws s3 cp "s3://game.set-homologated/CUBANA-1SQ.set.es" "conteudo/zoe-client-src/game.set"`
+- `aws configure list`
+
++ `cargo add crate1 crate2`
+
 # Git (git.md)
 
 - [Primeiro `commit`](#primeiro-commit)
