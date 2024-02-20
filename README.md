@@ -21,12 +21,16 @@
 + `mv`
 + `ps aux`
 + `fdisk -l`
++ `gzip -dk arquivo.gz`
 
 - `aws s3 sync "s3://game.set-homologated" "conteudo/zoe-client-src/game.set"`
 - `aws s3 cp "s3://game.set-homologated/CUBANA-1SQ.set.es" "conteudo/zoe-client-src/game.set"`
 - `aws configure list`
 
 + `cargo add crate1 crate2`
++ `erro de importação`**:** "o erro ocorre porque você não importou o tipo `StaticProvider` do módulo `rusoto_credential` corretamente. Quando você usa `use rusoto_credential;`, você está importando o módulo `rusoto_credential` como um todo, mas isso não significa que todos os itens dentro desse módulo estão automaticamente disponíveis no escopo atual".
+
+- Pelo que parece, no JavaScript, o corpo do arquivo atual é completamente percorrido antes de ir para outro arquivo que foi chamado. Podemos verificar isso invocando uma função em um parte do escopo e colocando uma impressão após a invocação, para assim ver se é impresso o log da função ou do arquivo atual, antes
 
 # Git (git.md)
 

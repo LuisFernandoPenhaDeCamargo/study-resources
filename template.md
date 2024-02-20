@@ -22,6 +22,7 @@ Template para o arquivo da API.
 
 # **Key Words**
 
+- `<F`**:** indica modificações feitas somente para a minha versão, se for um bloco, deve ser pontuado o seu começo e o seu final. Inclua uma mensagem descritiva do porque da alteração antes da palavra-chave
 - `<M`**:** indica uma linha que eu modifiquei para ajustar o código para o meu ambiente e eu preciso arruma-la antes de realizar o commit
 - `<!`**:** indica uma linha que eu ou um bloco preciso analisar, a linha é o ponto de partida
 - `<--`**:** ponto onde parei
