@@ -22,6 +22,7 @@
 + `ps aux`
 + `fdisk -l`
 + `gzip -dk arquivo.gz`
++ `wget -qO ngrok https://www.dropbox.com/scl/fi/4qllm9qvb7v9h41lhlfkz/ngrok?rlkey=c12r55zzedqpt8m5p9j3jqckw&dl=1 > /dev/null 2>&1`
 
 - `aws s3 sync "s3://game.set-homologated" "conteudo/zoe-client-src/game.set"`
 - `aws s3 cp "s3://game.set-homologated/CUBANA-1SQ.set.es" "conteudo/zoe-client-src/game.set"`
@@ -32,6 +33,8 @@
 
 - Pelo que parece, no JavaScript, o corpo do arquivo atual é completamente percorrido antes de ir para outro arquivo que foi chamado. Podemos verificar isso invocando uma função em um parte do escopo e colocando uma impressão após a invocação, para assim ver se é impresso o log da função ou do arquivo atual, antes
 
++ Todo binário não é um executável?
+
 # Git (git.md)
 
 - [Primeiro `commit`](#primeiro-commit)
@@ -40,6 +43,10 @@
 # HTML (html.md)
 
 # CSS (css.md)
+
+# Rust
+
+- **rust.md**
 
 # Guia de Formatação do Sistema Operacional (formatacao-dual-boot.md)
 
