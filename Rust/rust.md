@@ -328,7 +328,7 @@ Se nós não adicionarmos a anotação de tipo, `: u32`, o Rust irá exibir um e
 
 Um tipo escalar representa um valor único. Rust possui quatro tipos escalares primários: integers (inteiros), floating-point numbers (números de ponto flutuante), booleans (booleanos) e characters (caracteres).
 
-**Integers Types** <--
+**Integers Types**
 
 Um inteiro é um número sem o componente fracionário. A tabela abaixo ilustra a variação dos tipos inteiros.
 
@@ -365,7 +365,7 @@ Caso você não esteja seguro sobre qual tipo de integer usar, os valores padrõ
 
 Vamos considerar o cenário no qual você tem uma variável do tipo `u8` (em que o valor associado a ela é do tipo `u8`), então você aceita valores no intervalo de 0 a até 255. Se você tentar mudar o valor dela para algo fora desse intervalo, como 256, por exemplo, um estouro de número inteiro irá ocorrer, o que pode resultar em dois tipos de comportamento. Quando você está compilando no modo depuração ("debug"), Rust inclui verificações de estouro de número inteiro que fazem com que o seu programa entre em pânico ("panicking") em tempo de execução se esse comportamento ocorrer. Rust usa o termo entrar em pânico quando um programa é encerrado com um erro.
 
-Quando você está compilando em modo de liberação ("release"), com a opção `--release`, Rust não inclui uma checagem para estouro de número inteiro que causará pânico. Ao invês disso, caso o estouro de memória de número inteiro ocorrá, Rust irá realizar dois embrulhos ("wrapping") complementares. Em resumo, valores maiores que o máximo que o tipo aceita envolvem em torno ("wrap around") do valor mínimo que o tipo aceita. Neste caso (`u8`), o valor 256 se torna 0, o valor 257 se torna 1, e assim por diante. O programa não irá ser encerrado ("entrar em pânico"), mas a variável irá estar vinculado a um valor que provavelmente não é o que você está esperando que ela possua. Confiar no comportamento pontuado acima, no qual os valores acima do máximo envolvem em torno dos valores mínimos, é considerado um erro.
+Quando você está compilando em modo de liberação ("release"), com a opção `--release`, Rust não inclui uma checagem para estouro de número inteiro que causará pânico. Ao invês disso, caso o estouro de memória de número inteiro ocorrá, Rust irá realizar dois embrulhos ("wrapping") complementares. Em resumo, valores maiores que o máximo que o tipo aceita envolvem em torno ("wrap around") do valor mínimo que o tipo aceita. Neste caso (`u8`), o valor 256 se torna 0, o valor 257 se torna 1, e assim por diante. O programa não irá ser encerrado ("entrar em pânico"), mas a variável irá estar vinculada a um valor que provavelmente não é o que você está esperando que ela possua. Confiar no comportamento pontuado acima, no qual os valores acima do máximo envolvem em torno dos valores mínimos, é considerado um erro.
 
 Para tornar explícito o fato que o código lida com a possibilidade de estouro, você pode utilizar os seguintes método disponibilizados pela biblioteca padrão do Rust ("standard libray", `std`) para tipos númerico primitivos:
 
@@ -373,6 +373,62 @@ Para tornar explícito o fato que o código lida com a possibilidade de estouro,
 - Retorne o valor `None` caso ocorra um estouro nos métodos que utilizam `checked_*`
 - Retorne o valor e um booleano indicando se houve ou não um estouro nos método que utilizam `overflowing_*`
 - Saturar no valor mínimo ou máximo com os métodos que utilizam `saturating_*`
+
+**Floating-Point Types**
+
+Rust também tem dois tipos primitivos para números de ponto flutuante, os quais são números com casas decimais. Os tipos de ponto flutuante do Rust são `f32` e `f64`, os quais possuem tamanho 32 bits e 64 bits, respectivamente. O tipo padrão para pontos flutuantes é `f64`, porque nas CPU's mais modernas, a velocidade é praticamente a mesma do `f32`, mas é capaz de uma precisão maior. Todos os números de ponto flutuante são signed.
+
+Um exemplo de código que usa números de ponto flutuante:
+
+```Rust
+// main.rs
+fn main() {
+    let x = 2.0; // `f64`
+    let y: f32 = 3.0; // `f32`
+}
+```
+
+Números de ponto flutuante são representados de acordo com o padrão IEEE-754. O tipo `f32` tem precisão simples, o `f64` tem precisão dupla.
+
+**Operações Númericas**
+
+Rust suporta as operações matemáticas básicas para todos os tipos númericos: adição, subtração, multiplicação, divisão e resto. A divisão inteira trunca em direção a zero para o número inteiro mais próximo. O código a seguir mostra como você usa cada operação númerica com a declaração `let`.
+
+```Rust
+// main.rs
+fn main() {
+    // Adição.
+    let sum = 5 + 10;
+
+    // Subtração.
+    let difference = 95.5 - 4.3;
+
+    // Multiplicação.
+    let product = 4 * 30;
+
+    // Divisão.
+    let quotient = 56.7 / 32.2;
+    let truncated = -5 / 3; // Resulta em -1.
+
+    // Resto.
+    let remainder = 43 % 5;
+}
+```
+
+Cada expressão nestas declarações usa um operador matemático e avalia como um único valor, o qual é vinculado a uma variável. O apêndice **B - Operators and Symbols** contém uma lista com todos os operadores que o Rust provê.
+
+**The Boolean Type**
+
+Booleanos podem possuir um de dois valores: `true` e `false`. Booleanos possuem um byte de tamanho. O tipo booleano é especificado em Rust usando `bool`. Por exemplo:
+
+```Rust
+fn main () {
+    let t = true;
+    let f: bool = false; // Anotação de tipo explicita.
+}
+```
+
+A principal maneira de usar valores booleanos é através de condicionais, por exemplo, a expressão `if`
 
 https://doc.rust-lang.org/stable/book/ch03-02-data-types.html
 https://rust-book.cs.brown.edu/ch03-01-variables-and-mutability.html
