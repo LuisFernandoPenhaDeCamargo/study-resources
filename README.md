@@ -14,7 +14,6 @@
 
 - `git config pull.rebase false`**:** o cenário era o seguinte, o conteúdo do meu repositório diferia do que se encontrava no repositório remoto
 
-+ `scp`
 + `cp`
 + `pgrep`
 + `kill`
@@ -40,6 +39,10 @@
 - [Primeiro `commit`](#primeiro-commit)
 - [Armazenando Suas Credenciais](#armazenando-suas-credenciais)
 
+# Bash (bash.md)
+
+- [Comandos](#comandos)
+
 # HTML (html.md)
 
 # CSS (css.md)
@@ -47,6 +50,29 @@
 # Rust
 
 - **rust.md**
+    + [Utilitários](#utilitarios)
+    + [Livro: A Linguagem de Programação Rust](#livro-linguagem-programacao-rust)
+        - [Obtenção do Livro em Português](#obtencao-livro-portugues)
+    + [Introduction](#introduction)
+    + [1. Getting Started](#1-getting-started)
+        - [1.1 Installation](#11-installation)
+        - [1.2 Hello, World!](#12-hello-world)
+            + [Anatomia de Um Programa em Rust](#anatomia-programa-rust)
+            + [Compilar e Executar são Etapas Separadas](#compilar-executar-etapas-separadas)
+        - [1.3 Hello, Cargo!](#13-hello-cargo)
+            + [Criando Um Projeto com o Cargo](#criando-projeto-cargo)
+            + [Construindo e Executando um Projeto Cargo](#construindo-executando-projeto-cargo)
+    + [3. Common Programming Concepts](#3-common-programming-concepts)
+        - [3.1 Variables and Mutability](#31-variables-and-mutability)
+            + [Constants](#constants)
+            + [Shadowing](#shadowing)
+        - [3.2 Data Types](#32-data-types)
+            + [Scalar Types](#scalar-types)
+            + [Compound Types](#compound-types)
+    + [21. Appendix](#21-appendix)\
+        - [21.1 A - Keywords](#211-a-keywords)
+    + [Executando Código em Rust](#executando-codigo-rust)
+    + [Boas Práticas](#boas-praticas)
 
 # Guia de Formatação do Sistema Operacional (formatacao-dual-boot.md)
 

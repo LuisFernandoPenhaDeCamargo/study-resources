@@ -3,7 +3,7 @@
 ### Sumário
 
 - [Utilitários](#utilitarios)
-- [Livro: A Linguagem de Programação Rust](#livro-linguagem-programacao-rust)\
+- [Livro: A Linguagem de Programação Rust](#livro-linguagem-programacao-rust)
     + [Obtenção do Livro em Português](#obtencao-livro-portugues)
 - [Introduction](#introduction)
 - [1. Getting Started](#1-getting-started)
@@ -20,6 +20,7 @@
         - [Shadowing](#shadowing)
     + [3.2 Data Types](#32-data-types)
         - [Scalar Types](#scalar-types)
+        - [Compound Types](#compound-types)
 - [21. Appendix](#21-appendix)\
     + [21.1 A - Keywords](#211-a-keywords)
 - [Executando Código em Rust](#executando-codigo-rust)
@@ -428,7 +429,55 @@ fn main () {
 }
 ```
 
-A principal maneira de usar valores booleanos é através de condicionais, por exemplo, a expressão `if`
+A principal maneira de usar valores booleanos é através de condicionais, por exemplo, a expressão `if`.
+
+**The Character Type**
+
+O tipo `char` do Rust é o tipo alfabético mais primitivo da linguagem. A seguir temos alguns exemplos da declaração de valores `char`:
+
+```Rust
+// main.rs
+fn main() {
+    let c = 'z';
+    let z: char = 'Z'; // Anotação de tipo explicita.
+    let heart_eyed_cat = '😻';
+}
+```
+
+Observe que especificamos literais `char` com aspas simples, para literais string, nos usamos aspas duplas. O tipo `char` do Rust tem quatro bytes de tamanho e representa um valor escalar Unicode, o que significa que ele pode representar muito mais do que apenas ASCII. Letras acentuadas, caracteres japoneses, chineses, e coreanos, emojis, e espaços de largura zero são todos valores `char` válidos em Rust. Valores escalares Unicode vão de `u+0000` a até `u+D7FF`, e de `U+E000` a até `U+10FFFF`, inclusive. Entretanto, um "caracter" não é realmente um conceito em Unicode, então a intuição humana sobre o que é um "caracter" pode não corresponder ao que é um caracter em Rust. Veremos isto de forma detalhada no Capítulo 8.
+
+### <a id="compound-types"></a>Compound Types
+
+Tipos compostos podem agrupar múltiplos valores em um tipo. Rust possui dois tipos compostos primitivos: tuplas e arrays.
+
+**The Tuple Type**
+
+Uma tupla é uma maneira genérica de agrupar um número de valores com uma variedade de tipos em um tipo composto. Tuplas tem um comprimento fixo, uma vez declarada, ela não pode crescer ou diminuir em tamanho.
+
+A forma de criar uma tupla é escrevendo uma lista de valores, separados por vírgula, dentro de um parênteses. Cada posição da tupla possui um tipo, e os tipos dos diferentes valores dentro da tupla não precisam ser iguais. No exemplo abaixo, nós adicionamos a notação de tipo opcional:
+
+```Rust
+// main.rs
+fn main() {
+    let tup: (i32, f64, u8) = (500, 6.4, 1);
+}
+```
+
+A variável `tup` é vinculada a toda a tupla, porque uma tupla é considerada um único elemento composto. Para obter valores individuais da tupla, nos podemos usar correspondência de padrões para desestruturar o valor da tupla, desta forma:
+
+```Rust
+// main.rs
+fn main() {
+    let tup = (500, 6.4, 1);
+    let (x, y, z) = tup;
+
+    println!("The value of y is: {y}");
+}
+```
+
+O programa acima, primeiro cria uma tupla e víncula a ela a variável `tup`. Então ele usa o padrão com `let` para pegar `tup` e tornar isto em três variáveis separadas, `x`, `y` e `z` (a variável `tup` ainda existe e mantém os seus valores). Isto é chamado de desestruturação, porque isso quebra uma única tupla em três partes. Finalmente, o programa imprime o valor de `y`, que é `6.4`.
+
+Observe que não podemos desestruturar a tupla em uma quantidade de elementos menor que o seu comprimento.
 
 https://doc.rust-lang.org/stable/book/ch03-02-data-types.html
 https://rust-book.cs.brown.edu/ch03-01-variables-and-mutability.html
