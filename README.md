@@ -1,3 +1,7 @@
+SELECT ROUTINE_NAME
+FROM information_schema.ROUTINES
+WHERE ROUTINE_TYPE = 'FUNCTION' AND ROUTINE_NAME = 'raffle_jackpot_prize';
+
 # Prático
 
 `git config --global credential.helper 'cache --timeout=28800'`
@@ -69,7 +73,7 @@
         - [3.2 Data Types](#32-data-types)
             + [Scalar Types](#scalar-types)
             + [Compound Types](#compound-types)
-    + [21. Appendix](#21-appendix)\
+    + [21. Appendix](#21-appendix)
         - [21.1 A - Keywords](#211-a-keywords)
     + [Executando Código em Rust](#executando-codigo-rust)
     + [Boas Práticas](#boas-praticas)
