@@ -4,13 +4,50 @@
 
 - [Comandos](#comandos)
 
-# Comandos
+# <a id="comandos"></a>Comandos
 
 ### Sumário
 
+- [`cp`](#cp)
 - [`scp`](#scp)
 
-## `scp`
+## <a id="cp"></a>`cp`
+
+O comando `cp` é usado para copiar arquivos e diretórios no Linux.
+
+**Sintaxe Básica**
+
+```bash
+cp [opções] origem destino
+```
+
+- `origem`**:** o caminho para o arquivo ou diretório que você deseja copiar
+- `destino`**:** o caminho para onde você deseja copiar o arquivo ou diretório
+
+Por exemplo, para copiar um arquivo chamado **arquivo.txt** do diretório atual para o diretório **/tmp**, você usaria:
+
+```bash
+cp arquivo.txt /tmp
+```
+
+Para copiar um diretório chamado **meu_diretorio** e todo o seu conteúdo para outro diretório chamado **backup**, você usaria:
+
+```bash
+cp -r meu_diretorio backup
+```
+
+A opção `-r` é usada para copiar recursivamente todo o conteúdo do diretório.
+
+Aqui estão algumas opções comuns que você pode usar com o comando `cp`:
+
+- `-r`**:** copia diretórios de forma recursiva, ou seja, copia todo o conteúdo do diretório e seus subdiretórios
+- `-v`**:** modo verbose, exibe informações detalhadas sobre o processo de cópia
+- `-i`**:** pede confirmação antes de sobreescrever arquivos existentes
+- `-a`**:** preserva permissões de arquivo, timestamps e outros atributos ao copiar
+
+Certifique-se de ter permissões adequadas para acessar os arquivos de origem e gravar no diretório de destino, e tome cuidado ao usar a opções `-r` para copiar diretórios grandes ou profundos, pois pode levar tempo e recursos consideráveis.
+
+## <a id="scp"></a>`scp`
 
 O comando `scp` é usado para transferir arquivos entre computadores em uma rede. Ele é muito semelhante ao comando `cp`, mas funciona sobre uma conexão segura SSH (Secure Shell), o que significa que os arquivos são transferidos de forma segura, criptografada.
 

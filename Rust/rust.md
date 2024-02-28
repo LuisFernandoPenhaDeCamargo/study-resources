@@ -479,9 +479,107 @@ O programa acima, primeiro cria uma tupla e víncula a ela a variável `tup`. En
 
 Observe que não podemos desestruturar a tupla em uma quantidade de elementos menor que o seu comprimento.
 
-https://doc.rust-lang.org/stable/book/ch03-02-data-types.html
-https://rust-book.cs.brown.edu/ch03-01-variables-and-mutability.html
-file:///home/orion/livros/rust-book-pt-br/book/ch03-02-data-types.html
+Nós também podemos acessar um elemento da tupla diretamente utilizando a notação de ponto (`.`), seguido pelo índice do valor que nós queremos acessar. Por exemplo:
+
+```Rust
+// main.rs
+fn main() {
+    let x: (i32, f64, u8) = (500, 6.4, 1);
+    let five_hundred = x.0;
+    let six_point_four = x.1;
+    let one = x.2;
+}
+```
+
+O programa acima cria uma tupla `x` e acessa cada elemento da tupla utilizando seu respectivo índice. Como na maioria das linguagens de programação, o primeiro índice de uma tupla é 0.
+
+Uma tupla sem qualquer valor tem um nome especial, **unit**. Este valor e o seu tipo correspondente são escritos utilizando parênteses vazios (`()`) e representam um valor vazio ou um tipo de retorno vazio. Expressões retornam implicitamente o valor unit se elas não retornam nenhum outro valor.
+
+**The Array Type**
+
+Outra forma de ter uma coleção de múltiplos valores é com um array. Diferentemente da tupla, cada elemento de um array deve possuir o mesmo tipo. Arrays em Rust, diferentemente de outras linguagens, possuem um comprimento fixo.
+
+Para escrever valores em um array, nós os colocamos dentro de colchetes, separados por vírgulas.
+
+```Rust
+// main.rs
+fn main() {
+    let a = [1, 2, 3, 4, 5];
+}
+```
+
+Arrays são úteis quando nós queremos alocar os dados na stack ao invés de aloca-los na heap, ou quando você quer garantir que você possui uma quantidade fixa de elementos. Arrays não são flexíveis como vetores, um vetor é similar a um tipo de coleção. Eles são disponibilizados pela biblioteca padrão (standard library) e podem crescer ou encolher de tamanho.
+
+Arrays são muito úteis quando você sabe que a quantidade de elementos não irá mudar. Por exemplo, se vpcê está usando os nomes dos meses em seu programa, você provavelmente deve usar um array, porque você sabe que ele irá conter 12 elementos.
+
+```Rust
+let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+```
+
+Para especificar o tipo do array, você utiliza colchetes, dentro dele, você pontua o tipo dos valores, ponto e vírgula, e a quantidade de elementos do array.
+
+```Rust
+let a: [i32; 5] = [1, 2, 3, 4, 5];
+```
+
+Acima, cada valor possui o tipo `i32`. O número 5, após o ponto e vírgula, indica que o array contém 5 elementos.
+
+Você também pode inicializar um array que contém o mesmo valor para cada elemento, especificando o valor inicial, seguido por ponto e vírgula, e o tamanho do array. Como é mostrado abaixo:
+
+```Rust
+let a = [3; 5];
+```
+
+O array acima irá conter `5` elementos, todos eles irão possuir o valor inicial `3`. Esta é uma forma mais concisa de escrever `let a = [3, 3, 3, 3, 3];`.
+
+Um array é um pedaço de memória conhecido, de tamanho fixo, que pode ser alocado na stack. Você pode acessar seus elementos utilizando índices.
+
+```Rust
+// main.rs
+fn main() {
+    let a = [1, 2, 3, 4, 5];
+    let first = a[0];
+    let second = a[1];
+}
+```
+
+No exemplo acima, a variável chamada `first` irá obter o valor `1` e a variável chamada `second` irá obter o valor `2`. Índices em arrays também começam em 0.
+
+**Invalid Array Element Acess**
+
+Considere o código abaixo:
+
+```Rust
+// main.rs
+use std::io;
+
+fn main() {
+    let a = [1, 2, 3, 4, 5];
+
+    println!("Please enter an array index.");
+
+    let mut index = String::new();
+
+    io::stdin()
+        .read_line(&mut index)
+        .expect("Failed to read line");
+    
+    let index: usize = index
+        .trim()
+        .parse()
+        .expect("Index entered was not a number");
+
+    let element = a[index];
+
+    println!("The value of the element at index {index} is: {element}");
+}
+```
+
+O código acima compila com sucesso. Se você fornecer um valor de 0 a 4 para o programa, o valor deste índice no array será impresso, mas caso você forneça um valor igual ao comprimento do array ou maior, o programa irá panicar.
+
+O programa irá resultar em um erro em tempo de execução. Ele será encerrado com uma mensagem de erro e a impressão final não será realizada. Quando você tenta acessar um elemento usando indexação, Rust irá verificar se o índice é menor que o comprimento do array, caso ele seja igual ou maior, Rust irá panicar. Esta checagem ocorre em tempo de execução, especialmente no caso acima, porque não é possível para o compilador saber o valor que o usuário irá fornecer ao código.
+
+
 
 # <a id="21-appendix"></a>21. Appendix
 
