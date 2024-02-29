@@ -21,6 +21,7 @@
     + [3.2 Data Types](#32-data-types)
         - [Scalar Types](#scalar-types)
         - [Compound Types](#compound-types)
+    + [3.3 Functions](#33-functions)
 - [21. Appendix](#21-appendix)
     + [21.1 A - Keywords](#211-a-keywords)
 - [Executando Código em Rust](#executando-codigo-rust)
@@ -545,6 +546,19 @@ fn main() {
 
 No exemplo acima, a variável chamada `first` irá obter o valor `1` e a variável chamada `second` irá obter o valor `2`. Índices em arrays também começam em 0.
 
+**Exemplo interessante:**
+
+```Rust
+// main.rs
+fn main() {
+    let tuple = ([1; 2], [3; 4]); // `tuple` é, basicamente, `([1, 1], [3, 3, 3, 3])`.
+    let (position_zero, _position_one) = tuple;
+
+    // `tuple.1[0]`, é a segunda posição da tupla (o índice 1, o vetor `[3, 3, 3, 3]`), pegando depois o índice 0 do vetor.
+    println!("Sum of position_zero[0] + tuple.1[0]: {}", position_zero[0] + tuple.1[0]);
+}
+```
+
 **Invalid Array Element Acess**
 
 Considere o código abaixo:
@@ -578,6 +592,31 @@ fn main() {
 O código acima compila com sucesso. Se você fornecer um valor de 0 a 4 para o programa, o valor deste índice no array será impresso, mas caso você forneça um valor igual ao comprimento do array ou maior, o programa irá panicar.
 
 O programa irá resultar em um erro em tempo de execução. Ele será encerrado com uma mensagem de erro e a impressão final não será realizada. Quando você tenta acessar um elemento usando indexação, Rust irá verificar se o índice é menor que o comprimento do array, caso ele seja igual ou maior, Rust irá panicar. Esta checagem ocorre em tempo de execução, especialmente no caso acima, porque não é possível para o compilador saber o valor que o usuário irá fornecer ao código.
+
+Este é um exemplo dos princípios de segurança de memória do Rust em ação. Em muitas linguagens de baixo nível, este tipo de checagem não é feita e quando você fornece um índice inválido, uma posição de memória inválida pode ser acessada. Rust te protege contra este tipo de erro, encerrando a execução imediatamente, ao invés de permitir o acesso de memória.
+
+## <a id="33-functions"></a>3.3 Functions
+
+Funções são predominantes em Rust. E nós já vimos as funções mais importantes na linguagem: `main()`, que é o ponto de entrada para os programas escritos em Rust. Com isso, nós também acabamos por ver a palavra-chave `fn`, a qual permite a declaração de funções.
+
+Rust usa a convenção de estilo "snake case" para funções e nome de variáveis, esta convenção dita que todas as letras devem ser minúsculas e "palavras separadas", devem ser separadas por um underscore. Abaixo temos um programa que contém um exemplo de definição de funções:
+
+```Rust
+// main.rs
+fn main() {
+    println!("Hello, world!");
+
+    another_function();
+}
+
+fn another_function() {
+    println!("Another function.");
+}
+```
+
+Nós definimos uma função em Rust utilizando a palavra-chave `fn` seguida pelo nome da função e um conjunto de parênteses. As chaves dizem ao compilador onde o corpo da função começa e onde ele termina.
+
+Nós podemos invocar qualquer função já definida utilizando o seu nome seguido por um conjunto de parênteses. Observe que no exemplo acima `another_function()` é definida após a `main()`, nós também poderíamos ter definido ela antes da `main()`. Rust não se importa onde você define suas funções, desde que elas estejam definidas em algum lugar no escopo que é visível pelo seu invocador.
 
 
 

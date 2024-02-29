@@ -8,8 +8,41 @@
 
 ### Sumário
 
+- [`pgrep`](#pgrep)
 - [`cp`](#cp)
 - [`scp`](#scp)
+
+## <a id="pgrep"></a> `pgrep`
+
+O comando `pgrep` é usado para pesquisar e listar processos com base em critérios de pesquisa, geralmente por nome de processo ou outros atributos. Ele retorna os IDs dos processos que correspondem aos critérios especificados.
+
+Por exemplo, você pode usar `pgrep` para encontrar o ID de processo de um programa específico e, em seguida, usar esse ID para interagir com o processo de várias maneiras, como enviando sinais a ele.
+
+**Sintaxe Básica**
+
+```bash
+pgrep [opções] nome_do_processo
+```
+
+Alguns exemplos de uso incluem:
+
+- Para listar os IDs de processo de todos os processos com um determinado nome:
+
+```bash
+pgrep firefox
+```
+
+isso retornaria uma lista de IDs de processo de todos os processos chamados "firefox"
+
+- Para listar os IDs de processo de um processo específico, caso haja vários processos com o mesmo nome, você pode usar opções para restringir a pesquisa:
+
+```bash
+pgrep -x firefox
+```
+
+A opção `-x` busca apenas processos com um nome exato correspondente a "firefox"
+
+Existem várias outras opções disponíveis para refinar a pesquisa, como limitar a pesquisa a um usuário específico, exibir os nomes dos comandos completos, entre outras.
 
 ## <a id="cp"></a>`cp`
 
@@ -81,3 +114,7 @@ scp usuario@192.168.1.100:/caminho/remoto/arquivo.txt /caminho/local/arquivo.txt
 ```
 
 Lembre-se de que você pode precisar fornecer a senha do usuário remoto ou usar autenticação baseada em chaves SSH, dependendo da configuração do sistema. Além disso, você pode adicionar opções extras ao comando `scp` para controle mais avançado sobre a transferência, como definir portas, limitar a velocidade de transferência, etc.
+
+# Template
+
+Template dos comandos: um resumo do comando, a "**Sintaxe Básica**" e exemplos.

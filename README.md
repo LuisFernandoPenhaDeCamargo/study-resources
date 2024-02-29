@@ -6,7 +6,7 @@
 
 - Como as minhas credenciais do Git estão configuradas para serem autenticadas na minha máquina na Orion?
 - A captação e a saída do áudio não está funcionando no Discord
-- Configurando os backticks
+- Configurando os backticks no VSCode
 - O display da bateria não está correto (Ubuntu)
 - Corrigir o problema relacionado ao modo sata, Windows e Ubuntu (**formatacao-dual-boot.md**)
 
@@ -14,13 +14,13 @@
 
 - `git config pull.rebase false`**:** o cenário era o seguinte, o conteúdo do meu repositório diferia do que se encontrava no repositório remoto
 
-+ `pgrep`
 + `kill`
 + `mv`
 + `ps aux`
 + `fdisk -l`
 + `gzip -dk arquivo.gz`
 + `wget -qO ngrok https://www.dropbox.com/scl/fi/4qllm9qvb7v9h41lhlfkz/ngrok?rlkey=c12r55zzedqpt8m5p9j3jqckw&dl=1 > /dev/null 2>&1`
++ `grep`
 
 - `aws s3 sync "s3://game.set-homologated" "conteudo/zoe-client-src/game.set"`
 - `aws s3 cp "s3://game.set-homologated/CUBANA-1SQ.set.es" "conteudo/zoe-client-src/game.set"`
@@ -68,6 +68,7 @@
         - [3.2 Data Types](#32-data-types)
             + [Scalar Types](#scalar-types)
             + [Compound Types](#compound-types)
+        - [3.3 Functions](#33-functions)
     + [21. Appendix](#21-appendix)
         - [21.1 A - Keywords](#211-a-keywords)
     + [Executando Código em Rust](#executando-codigo-rust)
