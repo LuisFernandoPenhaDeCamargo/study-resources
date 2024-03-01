@@ -64,7 +64,7 @@ Se você precisa de um resumo do que será visto nos próximos capítulos, no fi
 $ curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
 ```
 
-Acho interessante pontuar que o que o comando faz é baixar um script e começar a instalação do utilitário `rustup`, o qual instá-la a última versão estável do Rust.
+Acho interessante pontuar que o que o comando faz é baixar um script e começar a instalação do utilitário `rustup`, o qual insta-la a última versão estável do Rust.
 
 Rust também precisa de um linker, que é um programa que o Rust usa para juntar a saída das suas compilações em um arquivo. É algo que você provavelmente já tem, mas caso um erro de link seja gerado, você deve instalar um compilador de C, pois ele provavelmente irá incluir um linker. Um compilador de C também é útil por conta que vários pacotes comuns do Rust dependem de codigo C e vão precisar de um compilador de C.
 

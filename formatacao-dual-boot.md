@@ -77,7 +77,10 @@ Observe que você provavelmente precisará de permissões de super usuário para
 
 Aqui eu estou mantendo uma lista dos programas que eu utilizo e a ordem na qual eu os instalei, do primeio ao último. Antes de mais nada eu atualizei o `apt` (`sudo apt update`).
 
-- **Google Chrome:** foi um processo um pouco mais extenso, o pesquise no GPT
-- **VS Code:** foi um processo um pouco mais extenso, o pesquise no GPT
+- `wget`
+- **Google Chrome:** utilize o `wget` para obter o **.deb** e o instale com `dpkg`
 - **Git:** `sudo apt install git`
+- **VS Code:** foi um processo um pouco mais extenso, o pesquise no GPT
 - **Discord:** `sudo snap install discord`
+- **Rust:** ocorreu um erro ao tentar instala-lo no Ubuntu 22.04 (jammy). Tivemos que instalar o `curl` pelo `apt` para conseguir instala-lo (também foi necessário especificar o pwd do curl "`/usr/bin/curl comando`")
+    + `gcc`**:** instale o compilador C, se necessário
