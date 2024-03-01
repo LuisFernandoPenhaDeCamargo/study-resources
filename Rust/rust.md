@@ -22,6 +22,9 @@
         - [Scalar Types](#scalar-types)
         - [Compound Types](#compound-types)
     + [3.3 Functions](#33-functions)
+        - [Parameters](#parameters)
+        - [Statements and Expressions](#statements-expressions)
+        - [Functions with Return Values](#functions-with-return-values)
 - [21. Appendix](#21-appendix)
     + [21.1 A - Keywords](#211-a-keywords)
 - [Executando Código em Rust](#executando-codigo-rust)
@@ -618,7 +621,95 @@ Nós definimos uma função em Rust utilizando a palavra-chave `fn` seguida pelo
 
 Nós podemos invocar qualquer função já definida utilizando o seu nome seguido por um conjunto de parênteses. Observe que no exemplo acima `another_function()` é definida após a `main()`, nós também poderíamos ter definido ela antes da `main()`. Rust não se importa onde você define suas funções, desde que elas estejam definidas em algum lugar no escopo que é visível pelo seu invocador.
 
+Vamos iniciar um novo projeto chamado **functions**, para assim, explorar funções mais a fundo.
 
+### <a id="parameters"></a>Parameters
+
+Nós podemos definir funções que possuem parâmetros, que são variáveis especiais que fazem parte da assinatura da função. Quando uma função tem parâmetros, você pode prover valores concretos para eles, tecnicamente falando, o nome dos valores concretos fornecidos para uma função são argumentos.
+
+```Rust
+// main.rs
+fn main() {
+    another_function(5);
+}
+
+fn another_function(x: i32) {
+    println!("The value of x is: {x}");
+}
+```
+
+A declaração de `another_function()` possui um parâmetro, chamado `x`, o tipo de `x` é `i32`. Quando nós passamos `5` para `another_function()`, o macro `println!` coloca ele no lugar de `{x}`.
+
+Na assinatura de funções, você deve declarar o tipo de cada parâmetro. Isto é uma decisão de design do Rust: requerer a anotação explicita de tipo significa que o compilador, provavelmente, não vai precisar que você utilize a função em algum lugar para descobrir o tipo do parâmetro. Isso também significa que o compilador vai ser capaz de fornecer mensagens de erro mais úteis, pois ele sabe que tipos a função espera.
+
+Quando você vai definir uma função que possui múltiplos parâmetros, separe cada parâmetro com uma vírgula:
+
+```Rust
+// main.rs
+fn main() {
+    print_labeled_measurement(5, 'h');
+}
+
+fn print_labeled_measurement(value: i32, unit_label: char) {
+    println!("The measurement is: {value}{unit_label}");
+}
+```
+
+O exemplo acima cria uma função chamada `print_labeled_measurement()` com dois parâmetros, o primeiro, é chamado `value` e seu tipo é `i32`, o segundo, é chamado `unit_label` e seu tipo é `char`. A função imprime o texto contendo os valores de `value` e `unit_label`.
+
+Por conta de termos invocado a função com os seguintes valores como argumentos `5` e `h`, a saída do programa irá as conter.
+
+### <a id="statements-expressions"></a>Statements and Expressions
+
+Os corpos da função são feitos de uma série de declarações, terminando, opcionalmente, em uma expressão. Até então, as funções que nós abordamos não incluem uma expressão final, mas nós vimos expressões como parte de uma declaração. Por conta de Rust ser uma linguagem baseada em expressões, está é uma distinção importante de se entender. Outras linguagens não fazem essa distinção, então vamos analisar as diferenças entre declarações e expressões e como elas afetam o corpo das funções:
+
+- **Statements** (declarações) são instruções que realizão algum tipo de ação e não retornam um valor
+- **Expressions** (expressões) são avaliadas em um valor resultante
+
+```Rust
+// main.rs
+fn main() {
+    let y = 6;
+}
+```
+
+A definição de funções é uma declaração, o exemplo anterior como um todo, é uma declaração em si.
+
+Declarações não retornam valoes, então, você não pode atribuir uma declaração `let` a declaração de outra variável, como o código abaixo exemplifica, isso irá gerar um erro.
+
+```Rust
+fn main() {
+    let x = (let y = 6);
+}
+```
+
+A declaração `let y = 6` não retorna um valor, então não há nada para vincular a `x`. Isso funciona de forma diferente para outras linguagens, como C e Ruby, onde as atribuições retornam o valor da atribuição. Nessas linguagens você pode fazer `x = y = 6`, fazendo com que ambos `x` e `y`, possuam o valor `6`; não é assim que Rust funciona.
+
+Expressões são avaliadas em um valor e compõem boa parte do código que você escreverá em Rust. Considere a seguinte operação matemática, 5 mais 6, é uma expressão que é avaliada no valor 11. Expressões podem fazer parte de declarações, na declaração acima, `let y = 6`, é uma expressão que resulta no valor 6; invocar uma função é uma expressão, chamar um macro é uma expressão. Um novo escopo criado com chaves é uma expressão, por exemplo:
+
+```Rust
+fn main() {
+    let y = {
+        let x = 3;
+        x + 1
+    };
+
+    println!("The value of y os: {y}");
+}
+```
+
+a expressão
+
+```Rust
+{
+    let x = 3;
+    x + 1
+}
+```
+
+é um bloco, que neste caso, é avaliado em `4`, O valor é vinculado a `y` como parte da declaração `let`. Observe que a linha `x + 1` não possue um ponto e vírgula ao final, diferentemente da maioria das linhas que vimos até então. Expressões não terminam com ponto e vírgula, se você adicionar um ponto e vírgula ao final de uma expressão, você torna ela em uma declaração, e ela não orá retornar um valor.
+
+### <a id="functions-with-return-values"></a>Functions with Return Values
 
 # <a id="21-appendix"></a>21. Appendix
 

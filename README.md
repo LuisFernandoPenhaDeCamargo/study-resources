@@ -4,7 +4,6 @@
 
 # Fazer
 
-- Como as minhas credenciais do Git estão configuradas para serem autenticadas na minha máquina na Orion?
 - A captação e a saída do áudio não está funcionando no Discord
 - Configurando os backticks no VSCode
 - O display da bateria não está correto (Ubuntu)
@@ -14,8 +13,6 @@
 
 - `git config pull.rebase false`**:** o cenário era o seguinte, o conteúdo do meu repositório diferia do que se encontrava no repositório remoto
 
-+ `kill`
-+ `mv`
 + `ps aux`
 + `fdisk -l`
 + `gzip -dk arquivo.gz`
@@ -33,10 +30,13 @@
 
 + Todo binário não é um executável?
 
+- `INSERT INTO oriongames_testnew.games SELECT * FROM oriongames.games AS prod WHERE NOT EXISTS ( SELECT * FROM oriongames_testnew.games AS test WHERE prod.id = test.id )`
+
 # Git (git.md)
 
 - [Primeiro `commit`](#primeiro-commit)
 - [Armazenando Suas Credenciais](#armazenando-suas-credenciais)
+    + [`gh` (GitHub CLI)](#gh-github-cli)
 
 # Bash (bash.md)
 
@@ -69,6 +69,9 @@
             + [Scalar Types](#scalar-types)
             + [Compound Types](#compound-types)
         - [3.3 Functions](#33-functions)
+            + [Parameters](#parameters)
+            + [Statements and Expressions](#statements-expressions)
+            + [Functions with Return Values](#functions-with-return-values)
     + [21. Appendix](#21-appendix)
         - [21.1 A - Keywords](#211-a-keywords)
     + [Executando Código em Rust](#executando-codigo-rust)
