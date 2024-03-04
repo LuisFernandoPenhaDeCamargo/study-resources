@@ -13,7 +13,7 @@
 
 - `git config pull.rebase false`**:** o cenário era o seguinte, o conteúdo do meu repositório diferia do que se encontrava no repositório remoto
 
-+ `ps aux`
++ `find`
 + `fdisk -l`
 + `gzip -dk arquivo.gz`
 + `wget -qO ngrok https://www.dropbox.com/scl/fi/4qllm9qvb7v9h41lhlfkz/ngrok?rlkey=c12r55zzedqpt8m5p9j3jqckw&dl=1 > /dev/null 2>&1`
@@ -72,6 +72,7 @@
             + [Parameters](#parameters)
             + [Statements and Expressions](#statements-expressions)
             + [Functions with Return Values](#functions-with-return-values)
+        - [3.4 Comments](#34-comments)
     + [21. Appendix](#21-appendix)
         - [21.1 A - Keywords](#211-a-keywords)
     + [Executando Código em Rust](#executando-codigo-rust)

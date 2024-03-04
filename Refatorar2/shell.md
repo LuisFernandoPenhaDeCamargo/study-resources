@@ -66,7 +66,6 @@ Sendo que para opções curtas, descritas por uma letra é utilizado somente um 
 - `hostname`**:** exibe o nome de host atual
 - `sudo passwd`**:** utilizado para mudar a senha do usuário em sessão\
     Você pode fornecer o `nome_do_usuário` como argumento, para alterar a senha do usuário especificado.
-- [ps aux](#ps)**:** exibe informações sobre os processos em execução no sistema
 - [`ssh usuário@host`](#ssh)**:** estabelece uma conexão segura e criptografada com um servidor remoto
 - [`ls`](#ls)**:** lista os arquivos e diretórios em um diretório específico
 - [`chmod -opções permissões arquivo`](#chmod)**:** altera as permissões de acesso de arquivos e diretórios
@@ -162,26 +161,6 @@ Linha 3
 
 Lembre-se de que o comando `echo` é simples e eficaz para mensagens básicas. Se você precisar de formatação mais avançada ou se estiver lidando com scripts mais complexos, pode ser útil explorar outras ferramentas ou comandos de impressão, como `printf`.
 
-### <a id = "ps"></a>`ps`
-
-O comando `ps` (process status) é utilizado para exibir informações sobre os processos em execução no sistema. Ele fornece uma visão instantânea dos processos atuais, incluindo indentificadores de processo (PIDs), estado do processo, consumo de recursos e outros detalhes.
-
-A forma mais básica de usar o comando `ps` é simplesmente digitá-lo no terminal, mas somente isso não exibe as informações descritas acima, você deve utilizar ele em conjunto com o `aux` (`ps aux`). Além do que, `ps`, possui várias opções e pode ser usado de diferentes maneiras.
-
-Lembre-se de que as opções e o comportamento exato do `ps` podem variar um pouco entre diferentes sistemas operacionais Unix-like. Consulte a documentação do `ps` específica para o seu sistema se precisar de informações mais detalhadas.
-
-**Opções Comuns**
-
-- `-e`**:** exibe informações sobre todos os processos, não apenas os associados ao terminal atual
-- `-f`**:** exibe informações detalhadas do processo (full format)
-- `-l`**:** exibe informações ainda mais detalhadas (long format)
-
-**Exemplos**
-
-- `ps aux | grep nome_do_processo`**:** este comando exibirá informações detalhadas sobre processos cujo nome contenha `nome_do_processo`.  O `grep` é usado para filtrar os resultados
-- `ps -ef`**:** este comando exibirá informações detalhadas em formato longo sobre todos os processos no sistema
-
-
 ### <a id = "ssh"></a>`ssh`
 
 O SSH (Secure Shell) é comumente utilizado para acessar servidores remotos, transferir arquivos de forma segura, e executar comandos em máquinas remotas.
@@ -208,10 +187,6 @@ Você pode especificar a porta, também, no final:
 - **Executar comandos remotamente:** você pode executar comandos remotamente sem abrir uma sessão interativa, adicionando o comando no final
 
 `ssh joao@192.168.1.100 ls`
-
-- **Transferência de arquivos (scp):** o SSH também oferece um comando chamado `scp` (Secure Copy) para transferência segura de arquivos entre máquinas. Exemplo:
-
-`scp arquivo.txt joao@192.168.1.100:/caminho/destino/`
 
 Lembrando que o `ssh` é uma ferramenta poderosa e é importante entender suas opções e considerações de segurança ao utilizá-lo. Certifique-se de configurar suas chaves SSH e siga as melhores práticas de segurança ao trabalhar com conexões remotas.
 

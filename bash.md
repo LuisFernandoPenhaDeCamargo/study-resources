@@ -8,11 +8,24 @@
 
 ### Sumário
 
+- [`ps aux`](#ps-aux)
 - [`pgrep`](#pgrep)
 - [`kill`](#kill)
 - [`cp`](#cp)
 - [`scp`](#scp)
 - [`mv`](#mv)
+
+## <a id="ps-aux"></a>`ps aux`
+
+O comando `ps aux` (ou `ps -aux`) é usado para listar todos os procesos em execução no sistema. Aqui está o significado de cada parte do comando:
+
+- `ps`**:** é o comando usado para listar processos
+- `aux`**:** são as opções que você passa para o comando `ps`. Elas têm os seguintes significados:
+    + `a`**:** mostra os processos de todos os usuários
+    + `u`**:** mostra detalhes estendidos sobre os processos
+    + `x`**:** inclui processos sem terminais associados
+
+Quando você executa `ps aux`, ele mostra uma lista detalhada de todos os processos em execução no sistema, incluindo o PID (identificador de processos), o usuário que iniciou o processo, o uso de CPU e memória, o tempo de execução, o comando que iniciou o processo, entre outras informações.
 
 ## <a id="pgrep"></a> `pgrep`
 
@@ -144,7 +157,7 @@ scp [opções] usuário@host:arquivo_origem arquivo_destino
 Por exemplo, se você deseja copiar um arquivo chamado **example.txt** do seu computador local para o diretório **/home/usuario** em um computador remoto com IP `192.168.1.100` e o nome de usuário `usuario`, você usaria o seguinte comando:
 
 ```Bash
-scp example.txt usuairo@192.168.1.100:/home/usuario
+scp example.txt usuario@192.168.1.100:/home/usuario
 ```
 
 Se você deseja copiar um arquivo do host remoto para o seu computador local, basta trocar a ordem dos argumentos:

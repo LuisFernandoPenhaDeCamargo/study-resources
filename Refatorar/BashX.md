@@ -58,22 +58,6 @@ Além disso, o `cat` pode ser usado em combinação com redirecionamento de saí
 
 Lembre-se de que o `cat` é mais útil para exibir o conteúdo de arquivos de textos simples. Se você precisar visualizar ou manipular arquivos de texto mais complexos ou realizar operações mais avançadas, outras ferramentas e editores de txto podem ser mais apropriados.
 
-## <a id = "mv"></a>`mv`
-
-O comando `mv` é usado para renomear arquivos e diretórios, mas também pode ser usado para mover arquivos entre diretórios.
-
-`mv origem destino`
-
-- `origem`**:** especifique o caminho completo do arquivo que você deseja mover;
-- `destino`**:** especifique o caminho completo do diretório de destino para onde você deseja mover o arquivo.
-
-Exemplo:
-
-`mv /caminho/para/origem/arquivo.txt caminho/para/destino/`
-
-Você pode usar caminhos absolutos ou relativos para especificar a origem e o destino.\
-Lembre-se  de que o comando `mv` também pode ser usado para renomear arquivos, caso você deseje alterar o nome do arquivo ao movê-lo. **Se o arquivo de destino já existir no diretório de destino, o** `mv` **substituirá o arquivo de destino pelo arquivo de origem**.
-
 ## <a id = "rm"></a>`rm`
 
 Para remover um diretório você pode usar o comando `rm` com a opção `-r` para excluir o diretório e seu conteúdo de forma recursiva.

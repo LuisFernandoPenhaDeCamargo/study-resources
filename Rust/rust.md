@@ -25,6 +25,7 @@
         - [Parameters](#parameters)
         - [Statements and Expressions](#statements-expressions)
         - [Functions with Return Values](#functions-with-return-values)
+    + [3.4 Comments](#34-comments)
 - [21. Appendix](#21-appendix)
     + [21.1 A - Keywords](#211-a-keywords)
 - [Executando Código em Rust](#executando-codigo-rust)
@@ -707,9 +708,56 @@ a expressão
 }
 ```
 
-é um bloco, que neste caso, é avaliado em `4`, O valor é vinculado a `y` como parte da declaração `let`. Observe que a linha `x + 1` não possue um ponto e vírgula ao final, diferentemente da maioria das linhas que vimos até então. Expressões não terminam com ponto e vírgula, se você adicionar um ponto e vírgula ao final de uma expressão, você torna ela em uma declaração, e ela não orá retornar um valor.
+é um bloco, que neste caso, é avaliado em `4`, O valor é vinculado a `y` como parte da declaração `let`. Observe que a linha `x + 1` não possue um ponto e vírgula ao final, diferentemente da maioria das linhas que vimos até então. Expressões não terminam com ponto e vírgula, se você adicionar um ponto e vírgula ao final de uma expressão, você torna ela em uma declaração, e ela não irá retornar um valor.
 
 ### <a id="functions-with-return-values"></a>Functions with Return Values
+
+Funções podem retornar valores para o código que a invoca. Nós não nomeamos valores de retorno, mas nós devemos declarar o seu tipo após a flecha ("`->`"). Em Rust, o valor de retorno de uma função é um sinônimo do valor da expressão final do bloco do corpo da função. Você pode antecipar o retorno de uma função utilizando a palavra-chave `return` e especificando um valor, mas a maioria das funções retornam a última expressão implicitamente. Abaixo temos uma função com valor de retorno:
+
+```Rust
+// main.rs
+fn five() -> i32 {
+    5
+}
+
+fn main() {
+    let x = five();
+
+    println!("The value of x is: {x}");
+}
+```
+
+Não há chamadas de função, macros e nem mesmo declarações `let` na função `five()`, somente o número `5`. Esta é uma função perfeitamente válida em Rust. Observe que o tipo do retorno é especificado, `-> i32`.
+
+O `5` em `five()` é o valor de retorno da função, e é por isso que o seu tipo é `i32`. A linha `let x = five();` mostra que nós estamos usando o valor de retorno da função para inicializar a variável. Por conta do fato da função `five()` retornar `5`, a linha citada acima é similiar a linha a seguir:
+
+```Rust
+let x = 5;
+```
+
+A função `five()` não possui parâmetros e define o tipo do valor de retorno, o corpo da função é somente o número `5`, sem o ponto e vírgula, porque é uma expressão e nós queremos que o seu valor seja o valor de retorno.
+
+Considere o código abaixo:
+
+```Rust
+// main.rs
+fn main() {
+    let x = plus_one(5);
+
+    println!("The value of x is: {x}");
+}
+
+fn plus_one(x: i32) -> i32 {
+    x + 1
+}
+```
+
+Executando o código acima, ele imprimirá "`The value of x is: 6`", mas se nós adicionarmos um ponto e vírgula ao final da linha que contém `x + 1`, transformando a expressão em uma declaração, um erro ocorrerá.
+
+A mensagem de erro principal será `mismatched types`. O que ocorre é que a função `plus_one()` diz que irá retornar um `i32`, mas declarações não são avaliadas em um valor (o ponto e vírgula transformou a expressão em uma declaração), o que é expresso pelo `()` (o tipo unit), portanto, nada é retornado. Essa situação contradiz a definição da função, resultando em um erro. Na saída para o código com ponto e vírgula, a mensagem de erro que será provida pelo Rust, sugere a remoção do ponto e vírgula para resolução do problema.
+
+## <a id="#34-comments"></a>3.4 Comments
+
 
 # <a id="21-appendix"></a>21. Appendix
 
