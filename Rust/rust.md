@@ -26,6 +26,7 @@
         - [Statements and Expressions](#statements-expressions)
         - [Functions with Return Values](#functions-with-return-values)
     + [3.4 Comments](#34-comments)
+    + [3.5 Control Flow](#35-control-flow)
 - [21. Appendix](#21-appendix)
     + [21.1 A - Keywords](#211-a-keywords)
 - [Executando Código em Rust](#executando-codigo-rust)
@@ -662,7 +663,7 @@ Por conta de termos invocado a função com os seguintes valores como argumentos
 
 ### <a id="statements-expressions"></a>Statements and Expressions
 
-Os corpos da função são feitos de uma série de declarações, terminando, opcionalmente, em uma expressão. Até então, as funções que nós abordamos não incluem uma expressão final, mas nós vimos expressões como parte de uma declaração. Por conta de Rust ser uma linguagem baseada em expressões, está é uma distinção importante de se entender. Outras linguagens não fazem essa distinção, então vamos analisar as diferenças entre declarações e expressões e como elas afetam o corpo das funções:
+Os corpos da função são feitos de uma série de declarações, terminando, opcionalmente, em uma expressão. Até então, as funções que nós abordamos não incluem uma expressão final, mas nós vimos expressões como parte de uma declaração. Rust é uma linguagem baseada em expressões, esta é uma distinção importante de se entender, outras linguagens não fazem essa distinção, então vamos analisar as diferenças entre declarações e expressões e como elas afetam o corpo das funções:
 
 - **Statements** (declarações) são instruções que realizão algum tipo de ação e não retornam um valor
 - **Expressions** (expressões) são avaliadas em um valor resultante
@@ -708,7 +709,7 @@ a expressão
 }
 ```
 
-é um bloco, que neste caso, é avaliado em `4`, O valor é vinculado a `y` como parte da declaração `let`. Observe que a linha `x + 1` não possue um ponto e vírgula ao final, diferentemente da maioria das linhas que vimos até então. Expressões não terminam com ponto e vírgula, se você adicionar um ponto e vírgula ao final de uma expressão, você torna ela em uma declaração, e ela não irá retornar um valor.
+é um bloco, que neste caso, é avaliado em `4`, o valor é vinculado a `y` como parte da declaração `let`. Observe que a linha `x + 1` não possue um ponto e vírgula ao final, diferentemente da maioria das linhas que vimos até então. Expressões não terminam com ponto e vírgula, se você adicionar um ponto e vírgula ao final de uma expressão, você torna ela em uma declaração e ela não irá retornar um valor.
 
 ### <a id="functions-with-return-values"></a>Functions with Return Values
 
@@ -756,7 +757,28 @@ Executando o código acima, ele imprimirá "`The value of x is: 6`", mas se nós
 
 A mensagem de erro principal será `mismatched types`. O que ocorre é que a função `plus_one()` diz que irá retornar um `i32`, mas declarações não são avaliadas em um valor (o ponto e vírgula transformou a expressão em uma declaração), o que é expresso pelo `()` (o tipo unit), portanto, nada é retornado. Essa situação contradiz a definição da função, resultando em um erro. Na saída para o código com ponto e vírgula, a mensagem de erro que será provida pelo Rust, sugere a remoção do ponto e vírgula para resolução do problema.
 
+Sobre o bloco formado por chaves `{ /* ... */ }`, além do bloco ser uma expressão que pode conter declarações, ele também define um escopo sintático (syntactic scope) para vinculações `let` dentro dele.
+
 ## <a id="#34-comments"></a>3.4 Comments
+
+Em Rust, o estilo de comentário idiomático começa com duas barras, o comentário continuara até o final da linha. Para comentários que se extendem por mais de uma linha, você incluirá `//` em cada linha.
+
+Comentários pode ser colocados ao final de linhas que contém código. O mais frequente é que o comentário esteja em uma linha separada, acima do código que ele pontua sobre.
+
+```Rust
+fn main() {
+    // Comentário.
+
+    // Múltiplas linhas
+    // de comentário.
+
+    // Isso é mais frequente.
+    let lucky_number = 7; // Isso é permitido.
+}
+```
+
+## <a id="35-control-flow"></a>3.5 Control Flow
+
 
 
 # <a id="21-appendix"></a>21. Appendix

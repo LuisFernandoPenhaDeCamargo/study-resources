@@ -1,3 +1,8 @@
+
+fn f(x) { 
+  println!("{x}");
+}
+
 fn main() {
-    let teste = 1
+  f(0);
 }

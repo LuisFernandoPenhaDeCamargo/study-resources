@@ -14,6 +14,8 @@
 - [`cp`](#cp)
 - [`scp`](#scp)
 - [`mv`](#mv)
+- [`find`](#find)
+- [`fdisk`](#fdisk)
 
 ## <a id="ps-aux"></a>`ps aux`
 
@@ -209,6 +211,81 @@ mv -iv arquivo.txt /caminho/do/novo/diretorio/
 ```
 
 Lembre-se de que o comando `mv` altera a localização dos arquivos no sistema de arquivos e, portanto, pode ter implicações importantes. Tenha cuidado ao usá-lo, especialmente com arquivos importanter ou sensíveis.
+
+## <a id="find"></a>`find`
+
+O comando `find` é uma ferramenta poderosa para buscar arquivos e diretórios em um sistema de arquivos Linux. Ele permite que você especifique critérios complexos para encontrar exatamente o que você está procurando.
+
+**Sintaxe Básica**
+
+```bash
+find diretório -opções critérios_aqui
+```
+
+Aqui estão algumas opções e critérios comuns que você pode usar com o comando `find`:
+
+**Opções**
+
+- `-name padrão`**:** procura por arquivos ou diretórios com um nome específico
+- `-type tipo`**:** procura por arquivos de um tipo específico, como `-type f` para arquivos regulares e `-type d` para diretórios
+- `-iname padrão`**:** igual ai `-name`, mas não faz distinção entre maiúsculas e minúsculas
+- `-maxdepth nível`**:** define o nível  máximo de profundidade para a busca em subdiretórios
+- `-mindepth nível`**:** define o nível mínimo de profundidade para a busca em subdiretórios
+
+**Critérios**
+
+- `.`**:** representa o diretório atual
+- `..`**:** representa o diretório pai
+- `*`**:** corresponde a zero ou mais caracteres em um nome de arquivo
+- `?`**:** corresponde a exatamente um caractere em um nome de arquivo
+
+**Exemplos**
+
+- Para encontrar todos os arquivos com a extensão **.txt** no diretório atual e em todos os subdiretórios
+
+```bash
+find . -type f -name "*.txt"
+```
+
+- Para encontrar todos os diretórios vazios no diretório atual e em todos os subdiretórios
+
+```bash
+find . -type d -empty
+```
+
+- Para encontrar todos os arquivos modificados nos últimos 7 dias
+
+```bash
+find . -type f -mtime -7
+```
+
+## <a id="fdisk"></a>`fdisk`
+
+O comando `fdisk` é uma ferramenta de linha de comando usada para manipular a tabela de partições em sistemas Linux. Com ele, você pode criar, modificar, excluir, exibir e verificar partições em discos rígidos.
+
+**Sintaxe Básica**
+
+```bash
+fdisk opções dispositivo
+```
+
+**Opções**
+
+- `-l`**:** lista as partições em todos os dispositivos
+- `-u`**:** exibe os tamanhos em setores (por padrão, os tamanhos são exibidos em cilindros)
+- `-p`**:** usado com `-l` para exibir as partições em um formato mais legível para máquina
+- `-s`**:** exibe o tamanho da partição especificada em setores
+- `-t tipo`**:** especifica o tipo de tabela de partições a ser usada
+
+Aqui está um exemplo básico do comando `fdisk`:
+
+```bash
+fdisk -l /dev/sda
+```
+
+Este comando listará todas as partições no dispositivo `dev/sda`.
+
+Tenha muito cuidado ao usar o `fdisk`, pois ele pode alterar a estrutura da tabela de partições, o que pode resultar na perda de dados se não for usado corretamente. Certifique-se sempre de entender o que está fazendo antes de fazer qualquer alteração. Se não tiver certeza, é melhor buscar orientação adicional ou usar ferramentas mais amigáveis, como o `gparted`, que possui uma interface gráfica.
 
 # Template
 
