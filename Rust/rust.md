@@ -27,6 +27,8 @@
         - [Functions with Return Values](#functions-with-return-values)
     + [3.4 Comments](#34-comments)
     + [3.5 Control Flow](#35-control-flow)
+        - [if Expressions](#if-expressions)
+        - [Repetition with Loops](#repetition-with-loops)
 - [21. Appendix](#21-appendix)
     + [21.1 A - Keywords](#211-a-keywords)
 - [Executando Código em Rust](#executando-codigo-rust)
@@ -778,6 +780,252 @@ fn main() {
 ```
 
 ## <a id="35-control-flow"></a>3.5 Control Flow
+
+A capacidade de executar um código, caso uma condição seja `true`, e a capacidade de executar um código repetidamente, caso a condição de um laço de repetição seja `true`, são blocos básicos de construção na maioria das linguagens de programação. As construções mais comuns que permitem que você controle o fluxo de execução do Rust são as expressões `if` e loops.
+
+### <a id="if-expressions"></a>if Expressions
+
+Uma expressão `if` permite você ramificar o seu código dependendo de condições. Você provê uma condição e então pontua, "se a condição for satisfeita", execute este bloco de código, se a condição não for satisfeita, não execute este bloco de código.
+
+```Rust
+// main.rs
+fn main() {
+    let number = 3;
+
+    if number < 5 {
+        println!("condition was true");
+    } else {
+        println!("condition was false");
+    }
+}
+```
+
+Todas as expressões `if` começam com a palavra-chave `if`, seguida de um condição. Neste caso, a condição verifica se a variável `number` possue um valor menor que 5. Nós colocamos o bloco de código oara ser executado, caso a condição seja verdadeira, imediatamente após a condição, dentro das chaves. Blocos de código associados com condições `if` são chamados, algumas vezes, de braços ("arms"), igual aos braços em expressões `match`.
+
+Opcionalmente, nós podemos incluir uma expressão `else`, para dar ao programa um bloco de código alternativo para ser executado caso a condição seja avaliada como `false`. Se você não prover uma expressão `else` e a condição for `false`, o programa irá, simplesmente, pular o bloco `if` e seguir para o próximo pedaço de código.
+
+É importante pontuar que a condição neste código, deve ser um `bool`. Se a condição não for um `bool`, um erro será gerado. Por exemplo, no código abaixo:
+
+```Rust
+// main.rs
+fn main() {
+    let number = 3;
+
+    if number {
+        println!("number was three");
+    }
+}
+```
+
+A condição `if` é avaliada no valor `3` e o Rust lançará o seguinte erro `error[E0308]: mismatched types`, `expected bool, found integer`. O erro indica que o Rust esperava um `bool`, mas obteve um inteiro. Diferente de outras linguagens como Ruby e JavaScript, Rust não tenta converter tipos não booleanos para booleanos. Você deve ser explícito e sempre prover um `if` com um booleano como condição.
+
+**Handling Multiple Conditions with else if**
+
+Você pode utilizar múltiplas condições combinando `if` e `else` em uma expressão `else if`. Por xemplo:
+
+```Rust
+fn main() {
+    let number = 6;
+
+    if number % 4 == 0 {
+        println!("number is divisible by 4");
+    } else if % 3 == 0 {
+        println!("number is divisible by 3");
+    } else if % 2 == 0 {
+        println!("number is divisible by 2");
+    } else {
+        println!("number is not divisible by 4, 3 or 2");
+    }
+}
+```
+
+O programa tem quatro possíveis caminhos a tomar, após a execução dele a saída deve ser `number is divisible by 3`.
+
+Quando o programa é executado, ele verifica as expressões `if` por turno e executa o corpo da primeira que é avaliada como `true`. Observe que mesmo que 6 seja divisível por 2, a mensagem `number is divisible by 2`, ou a mensagem, `number is not divisible by 4, 3, 2`, não é impressa. Isto ocorre, porque Rust só executa o bloco da primeira condição avaliada como `true`, e uma vez que ele encontra uma, ele nem verifica as condições restantes.
+
+Usar muitas expressões `else if`, pode deixar seu código confuso, então, se você possue mais de uma, você pode querer refatorar o seu código. O capítulo 6 vai falar sobre uma estrutura de construção ramificada poderosa, chamada `match`, para os casos citado anteriormente.
+
+**Using if in a let Statement**
+
+Por conta do fato do `if` ser uma expressão, nós podemos usá-lo do lado direito de uma declaração `let` para vincular o resultado a variável.
+
+```Rust
+// main.rs
+fn main() {
+    let condition = true;
+    let number = if condition { 5 } else { 6 };
+
+    println!("The value of number is: {number}");
+}
+```
+
+A variável `number` terá vinculado a ela um valor baseado na saída da expressão `if`. A impressão do código acima, será `The value of number is: 5`.
+
+Relembrando que blocos de código são avaliados na última expressão contida neles e, números, são expressões por si só. No código acima, o valor para o qual a expressão `if` será avaliada, depende de qual bloco será executado. Isto significa que o potencial valor da expressão `if` resultante de cada ramificação deve possuir o mesmo tipo. Observe que no exemplo acima, ambos os resultados da expressão `if` e `else` são inteiros `i32`, se fossem de tipos diferentes (mismatched), um erro seria acusado.
+
+```Rust
+// main.rs
+fn main() {
+    let condition = true;
+    let number = if condition { 5 } else { "six" };
+
+    println!("The value of number is: {number}");
+}
+```
+
+O código acima irá gerar o erro citado, pois os braços `if` e `else` possuem valores de tipos incompatíveis (`error[E0308]: if and else have incompatible types`).
+
+A expressão no bloco `if` é avaliada em um inteiro e a expressão no bloco `else` é avaliada em uma string (`&str`). Isto não irá funcionar pois variáveis devem possuir um tipo único e o Rust precisa saber em tempo de compilação qual é o tipo definitivo da variável `number`. Rust não conseguirá saber o tipo de variável, se ele só será determinado em tempo de execução. Para conseguir fazer isso, o compilador precisaria ser mais complexo e prover uma quantidade menor de garantias sobre o código, se ele precisasse acompanhar vários tipos hipotéticos para qualquer variável.
+
+### <a id="repetition-with-loops"></a>Repetition with Loops
+
+Muitas vezes é útil executar um bloco de código mais de uma vez, para esta tarefa, Rust provê uma grande quantidade de loops, os quais irão executar o código dentro do corpo do loop até o seu final e então, começar a executar a partir do ínicio, novamente.
+
+Rust possui três tipos de loops, `loop`, `while` e `for`.
+
+**Repeating Code with loop**
+
+A palavra-chave `loop` diz ao Rust para executar o bloco de código de forma continua até que você diga a ele, explicitamente, para parar.
+
+```Rust
+// main.rs
+fn main() {
+    loop {
+        println!("again!");
+    }
+}
+```
+
+Quando nós executamos o programa acima, `again!` será impresso de forma contínua, até que nós encerremos a execução do programa de forma manual. A maioria dos terminais suporta o atalho `Ctrl + C` para interromper um programa que está preso em execução contínua dentro de um loop.
+
+O símbolo que será impresso, `^C`, representa que você pressionou `Ctrl + C`. Você pode ou não ver a impressão `again!` impressa após `^C`, dependendo de onde seu código se encontrava no loop quando recebeu o sinal de interrupção.
+
+Rust provê uma forma de encerrar o loop usando código, você pode utilizar a palavra-chave `break`, dentro do loop, para dizer ao programa quando parar de executar o loop.
+
+Também há a palavra-chave `continue` que diz ao programa para pular o restante do código da iteração atual e começar uma nova.
+
+**Returning Values from Loops**
+
+Um dos usos para um `loop` é tentar novamente uma operação que você sabe que pode falhar, como verificar se uma thread completou o seu trabalho. Você também pode precisar retornar o resultado da operação para o código fora do loop, para fazer isso, você pode adicionar o valor que você deseja retornar após a expressão `break` uqe você usa para parar o loop.
+
+```Rust
+// main.rs
+fn main() {
+    let mut counter = 0;
+    let result = loop {
+        counter += 1;
+
+        if counter == 10 {
+            break counter * 2;
+        }
+    };
+
+    println!("The result is {result}");
+}
+```
+
+Antes do loop, nós declaramos uma variável chamada `counter` e a inicializamos com `0`. Depois, nós declaramos uma variável chamada `result` que irá conter o valor retornado pelo loop. A cada iteração do loop, nós adicionas `1` a variável `counter` e então, verificamos se o seu valor é igual a `10`. Quando o valor de `counter` for igual a `10`, nós utilizamos a palavra-chave `break` com o valor `counter * 2`. Após o loop, nós usamos o ponto e vírgula no final da declaração que víncula o valor a `result`. Finalmente, imprimimos o valor de `result`, que neste caso, é `20`.
+
+**Loop Labels to Disambiguate Between Multiple Loops**
+
+Se você possui loops dentro de loops, `break` e `continue` se aplicam para o mais profundo naquele ponto. Opcionalmente, você pode especificar um rótulo para o loop para especificar a qual loop você quer aplicar as palavras-chave citadas anteriormente, ao invés de aplica-las para o loop mais profundo. Rótulos de loops devem começar com uma aspas simples. Abaixo temos um exemplo de dois loops aninhados.
+
+```Rust
+fn main() {
+    let mut count = 0;
+
+    'counting_up: loop {
+        println!("count = {count}");
+
+        let mut remaining = 10;
+
+        loop {
+            println!("remaining = {remaining}");
+
+            if remaining == 9 {
+                break;
+            }
+
+            if count == 2 {
+                break 'counting_up;
+            }
+
+            remaining -= 1;
+        }
+
+        count += 1;
+    }
+
+    println!("End count = {count}");
+}
+```
+
+O loop mais externo possui o rótulo `'counting_up` e, irá contar de 0 a 2. O loop interno, que não possui um rótulo, contará de 10 a 9. O primeiro `break`, que não específica um rótulo, irá encerrar, somente, o loop mais interno. A declaração `break 'counting_up` irá encerrar o loop mais externo, abaixo, temos a saída do programa:
+
+```bash
+count = 0
+remaining = 10
+remaining = 9
+count = 1
+remaining = 10
+remaining = 9
+count = 2
+remaining = 10
+End count = 2
+```
+
+**Exemplo Interessante**
+
+Vamos alterar o código acima:
+
+```Rust
+fn main() {
+    let mut count = 0;
+
+    let result = 'counting_up: loop {
+        println!("count = {count}");
+
+        let mut remaining = 10;
+
+        loop {
+            println!("remaining = {remaining}");
+
+            if remaining == 9 {
+                break;
+            }
+
+            if count == 2 {
+                break 'counting_up "Valor de Retorno";
+            }
+
+            remaining -= 1;
+        }
+
+        count += 1;
+    };
+
+    println!("End count = {count}");
+
+    println!("Mesmo utilizando o rótulo, você pode possuir um valor de retorno: {result}");
+}
+```
+
+Mesmo utilizando o rótulo, nós ainda podemos retornar um valor de retorno. A saída será:
+
+```bash
+count = 0
+remaining = 10
+remaining = 9
+count = 1
+remaining = 10
+remaining = 9
+count = 2
+remaining = 10
+End count = 2
+Mesmo utilizando o rótulo, você pode possuir um valor de retorno: Valor de Retorno
+```
+
+**Conditional Loops with while**
 
 
 

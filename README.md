@@ -21,9 +21,7 @@
 - `git checkout -b dev/lfernando-rc master`
 - `git checkout dev/lfernando`
 
-+ `gzip -dk arquivo.gz`
 + `wget -qO ngrok https://www.dropbox.com/scl/fi/4qllm9qvb7v9h41lhlfkz/ngrok?rlkey=c12r55zzedqpt8m5p9j3jqckw&dl=1 > /dev/null 2>&1`
-+ `grep`
 
 - `systemctl status mysql.service`
 - `systemctl restart mysql`

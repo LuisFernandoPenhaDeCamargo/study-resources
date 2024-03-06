@@ -1,7 +1,3 @@
-# Shell
-
-
-
 # Sumário
 
 - Alterando o Hostname no Ubuntu
@@ -25,7 +21,6 @@ Encontre a linha que contém o endereço IP 127.0.1.1 e o nome do antigo host. S
 # Lista de Itens a se Estudar
 
 - `mkdir`
-- `find`
 - `wc`
 - `chown`
 - `date`
@@ -72,7 +67,6 @@ Sendo que para opções curtas, descritas por uma letra é utilizado somente um 
 - [cat arquivo.txt](#cat)**:** exibe o conteúdo de um arquivo
 - [vim.tiny arquivo](#vim-tiny)**:** abre o editor de texto `vim.tiny` com o conteúdo do `arquivo`
 - [tailf arquivo](#tailf)**:** exibe as últimas linhas de um arquivo e continua exibindo novas linhas à medida que são adicionadas no final do arquivo
-- [`grep padrão arquivo`](#grep)**:** pesquisa padrões em arquivos de texto ou na saída de outros comandos
 - [rm arquivo](#rm)**:** remove o arquivo
 - [`which comando`](#which)**:** utilizado para encontrar o caminho do executável associado a um comando específico
 - `type comando`**:** semelhante ao `which`, mas fornece informações adicionais, incluindo se o comando é um alias, uma função do shell ou um comando integrado
@@ -264,28 +258,6 @@ A principal diferença entre `tailf` e `tail -f` é que o `tailf` é mais eficie
 Este comando exibirá as últimas linhas do arquivo `/var/log/syslog` e continuará a mostrar novas linhas à medida que são adicionadas ao final do arquivo.
 
 Lembre-se de que a disponibilidade do comando `tailf` pode variar entre diferentes sistemas operacionais. Em alguns sistemas, o `tailf` pode não estar disponível como um comando separado, mas você ainda pode alcançar funcionalidades semelhantes usando o `tail -f`.
-
-### <a id = "grep"></a>`grep`
-
-O comando `grep` é uma ferramenta poderosa em sistemas Unix-like que é usada para pesquisar padrões em arquivos de texto ou na saída de outros comandos. Seu nome significa "Global Regular Expression Print" (Impressão Global de Expressões Regulares).
-
-A sintaxe básica do comando `grep` é a seguinte:
-
-`grep padrão arquivo`
-
-- `padrão`**:** o padrão de texto que você está procurando. Pode ser uma palavra simples ou uma expressão regular mais complexa
-- `arquivo`**:** o arquivo no qual você deseja procurar o padrão. Se não for fornecido, `grep` usará a entrada padrão (por exemplo, a saída de um comando anterior via pipe)
-
-**Exemplos**
-
-- **Exemplo de busca simples em um arquivo:** `grep "palavra" arquivo.txt`. Este comando procurará a palavra "`palavra`" no arquivo "`arquivo.txt`"
-- **Exemplo de busca em múltiplos arquivos:** `grep "padrão" arquivo1.txt arquivo2.txt`. Este comando procurará o "`padrão`" nos arquivos "`arquivo1.txt`" e "`arquivo2.txt`"
-- **Exemplo de busca recursiva em diretórios:** `grep -r "padrão" diretório/`. Este comando procurará recursivamente o "`padrão`" em todos os arquivos no diretório e em seus subdiretórios
-- **Exemplo de busca em saída de comando (pipe):** `comando | grep "padrão"`. Este comando enviará a saída do "`comando`" para o "`grep`", que procurará o padrão na saída
-- **Exemplo de ignorar diferença entre maiúsculas e minúsculas:** `grep -i "padrão" arquivo.txt`. Este comando realizará a busca ignorando a diferença entre maiúsculas e minúsculas
-- **Exemplo de contagem de ocorrências:** `grep -c "padrão" arquivo.txt`. Este comando contará o número de ocorrências do padrão no arquivo
-
-Estes são apenas alguns exemplos básicos. O `grep` é uma ferramenta bastante flexível com muitas opções. Consulte a documentação do `grep` no seu sistema para obter informações mais detalhadas sobre suas funcionalidade.
 
 ### <a id = "rm"></a>`rm`
 

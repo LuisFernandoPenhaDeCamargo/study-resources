@@ -39,7 +39,6 @@ Quero criar um projeto para praticar paralelimo e assim aprender a utilizar o m�
 - [Traits](#traits)
 - [Propriedades de Rust x Classes](#propriedades-rust-x-classes)
 - [Composição](#composicao)
-- [Inferência de Tipos das Variáveis](#inferencia-tipos-variaveis)
 - [Lifetime das Variáveis e Referências](#lifetime-variaveis-referencias)
 - [`const` (Funções)](#const-funcoes)
 - [Métodos de Instância e Métodos Associados](#metodos-instancia-metodos-associados)

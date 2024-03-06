@@ -14,7 +14,9 @@
 - [`cp`](#cp)
 - [`scp`](#scp)
 - [`mv`](#mv)
+- [`gzip`](#gzip)
 - [`find`](#find)
+- [`grep`](#grep)
 - [`fdisk`](#fdisk)
 
 ## <a id="ps-aux"></a>`ps aux`
@@ -126,7 +128,7 @@ cp -r meu_diretorio backup
 
 A opção `-r` é usada para copiar recursivamente todo o conteúdo do diretório.
 
-Aqui estão algumas opções comuns que você pode usar com o comando `cp`:
+**Opções Comuns**
 
 - `-r`**:** copia diretórios de forma recursiva, ou seja, copia todo o conteúdo do diretório e seus subdiretórios
 - `-v`**:** modo verbose, exibe informações detalhadas sobre o processo de cópia
@@ -212,6 +214,51 @@ mv -iv arquivo.txt /caminho/do/novo/diretorio/
 
 Lembre-se de que o comando `mv` altera a localização dos arquivos no sistema de arquivos e, portanto, pode ter implicações importantes. Tenha cuidado ao usá-lo, especialmente com arquivos importanter ou sensíveis.
 
+## <a id=""></a>`gzip`
+
+O comando `gzip` é usado para compactar arquivos no formato GNU zip (gzip). Ele é frequentemente usado para comprimir arquivos para economizar espaço em disco ou para transferência mais rápida pela rede.
+
+**Sintaxe Básica**
+
+```bash
+gzip [opções] arquivo
+```
+
+**Opções Comuns**
+
+- `-d` **ou** `--decompress`**:** descompacta o arquivo compactado
+- `-f` **ou** `--force`**:** força a compressão/descompressão, mesmo se o arquivo resultante já existir (sobrescreve)
+- `-r` **ou** `--recursive`**:** comprime/descomprime recursivamente todos os arquivos em diretórios
+- `-t` **ou** `--test`**:** testa a integridade do arquivo compactado
+- `-v` **ou** `--verbose`**:** exibe mensagens detalhadas durante a operação
+- `-k` **ou** `--keep`**:** mantém o arquivo original após compactá-lo. Normalmente, quando você comprime um arquivo usando `gzip`, o arquivo original é substituído pelo arquivo compactado
+
+**Exemplos**
+
+- Para compactar um arquivo chamado **arquivo.txt**
+
+```bash
+gzip arquivo.txt
+```
+
+Isso criará um arquivo compactado chamado **arquivo.txt.gz** e removerá o arquivo original
+
+- Para compactar vários arquivos em um diretório
+
+```bash
+gzip -r diretorio
+```
+
+Isso compactará todos os arquivos no diretório `diretorio` e em seus subdiretórios recursivamente
+
+- Para testar a integridade de um arquivo compactado
+
+```bash
+gzip -t arquivo.txt.gz
+```
+
+Isso verificará se o arquivo compactado `arquivo.txt.gz` está intacto e sem erros.
+
 ## <a id="find"></a>`find`
 
 O comando `find` é uma ferramenta poderosa para buscar arquivos e diretórios em um sistema de arquivos Linux. Ele permite que você especifique critérios complexos para encontrar exatamente o que você está procurando.
@@ -259,6 +306,76 @@ find . -type d -empty
 find . -type f -mtime -7
 ```
 
+## <a id="grep"></a>`grep`
+
+O comando `grep` ("Global Regular Expression Print", Impressão Global de Expressões Regulares) é uma ferramenta poderosa de busca de texto em sistemas Unix e Unix-like, como Linux. Ele é usado para pesquisar texto em arquivos ou em saídas de outros comandos.
+
+**Sintaxe Básica**
+
+```bash
+grep [opções] padrão arquivo(s)
+```
+
+**Opções Comuns**
+
+- `-i`**:** ignora diferenças entre maiúsculas e minúsculas ao fazer a correspondência
+- `-r` **ou** `-R`**:** realiza uma pesquisa recursiva em diretórios
+- `-n`**:** exibe números de linha juntamente com as correspondências
+- `-v`**:** inverte a correspondência, exibindo linhas que não contêm o padrão
+- `-l`**:** exibe apenas os nomes dos arquivos que contêm o padrão, não as linhas de correspondentes
+- `-E`**:** usa expressões regulares estendidas (regex) para a correspondência
+- `-w`**:** faz a correspondência apenas com palavras inteiras
+
+**Exemplos**
+
+- Para pesquisar por uma palavra em um arquivo
+
+```bash
+grep palavra arquivo.txt
+```
+
+Isso irá buscar todas as ocorrências da palavra `palavra` no arquivo `arquivo.txt`
+
+- Para pesquisar por uma palavra em todos os arquivos de um diretório
+
+```bash
+grep -r palavra diretorio/
+```
+
+Isso irá buscar recursivamente todas as ocorrências da palavra `palavra` em todos os arquivos dentro do diretório `diretorio/`
+
+- Para pesquisar por uma palavra ignorando diferenças entre maiúsculas e minúsculas
+
+```bash
+grep -i palavra arquivo.txt
+```
+
+Isso irá buscar todas as ocorrências da palavra `palavra`, ignorando se ela está em maiúsculas ou minúsculas, no arquivo `arquivo.txt`
+
+- Para pesquisar por um padrão em múltiplos arquivos
+
+```bash
+grep "padrão" arquivo1.txt arquivo2.txt
+``` 
+
+Este comando procurará `padrão` nos arquivos `arquivo1.txt` e "`arquivo2.txt`
+
+- Para pesquisar na saída de um comando (pipe)
+
+```bash
+comando | grep "padrão"
+```
+
+Este comando enviará a saída do `comando` para o `grep`, que procurará o `padrão` na saída
+
+- Para contagem de ocorrências
+
+```bash
+grep -c "padrão" arquivo.txt
+```
+
+Este comando contará o número de ocorrências do `padrão` no arquivo
+
 ## <a id="fdisk"></a>`fdisk`
 
 O comando `fdisk` é uma ferramenta de linha de comando usada para manipular a tabela de partições em sistemas Linux. Com ele, você pode criar, modificar, excluir, exibir e verificar partições em discos rígidos.
@@ -289,4 +406,4 @@ Tenha muito cuidado ao usar o `fdisk`, pois ele pode alterar a estrutura da tabe
 
 # Template
 
-Template dos comandos: um resumo do comando, a "**Sintaxe Básica**", "**Opções Comuns**" e exemplos.
+Template dos comandos: um resumo do comando, a "**Sintaxe Básica**", "**Opções Comuns**" e **Exemplos**.
