@@ -17,11 +17,8 @@
 
 # Estudar
 
-- `git config pull.rebase false`**:** o cenário era o seguinte, o conteúdo do meu repositório diferia do que se encontrava no repositório remoto
 - `git checkout -b dev/lfernando-rc master`
 - `git checkout dev/lfernando`
-
-+ `wget -qO ngrok https://www.dropbox.com/scl/fi/4qllm9qvb7v9h41lhlfkz/ngrok?rlkey=c12r55zzedqpt8m5p9j3jqckw&dl=1 > /dev/null 2>&1`
 
 - `systemctl status mysql.service`
 - `systemctl restart mysql`
@@ -80,6 +77,7 @@
 # Bash (bash.md)
 
 - [Comandos](#comandos)
+- [Ferramentas de Linha de Comando](#ferramentas-linha-comando)
 
 # HTML (html.md)
 
@@ -88,6 +86,7 @@
 # Rust
 
 - **rust.md**
+    + [Projetos](#projetos)
     + [Utilitários](#utilitarios)
     + [Livro: A Linguagem de Programação Rust](#livro-linguagem-programacao-rust)
         - [Obtenção do Livro em Português](#obtencao-livro-portugues)
@@ -113,6 +112,7 @@
             + [Functions with Return Values](#functions-with-return-values)
         - [3.4 Comments](#34-comments)
         - [3.5 Control Flow](#35-control-flow)
+    + [4. Understanding Ownership](#4-understanding-ownership)
     + [21. Appendix](#21-appendix)
         - [21.1 A - Keywords](#211-a-keywords)
     + [Executando Código em Rust](#executando-codigo-rust)

@@ -1,8 +1,9 @@
-
-fn f(x) { 
-  println!("{x}");
-}
-
 fn main() {
-  f(0);
+  let x;
+
+  if cond {
+    x = 1;
+  } else {
+    x = 2;
+  }
 }

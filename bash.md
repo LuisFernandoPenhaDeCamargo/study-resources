@@ -3,6 +3,7 @@
 ### Sumário
 
 - [Comandos](#comandos)
+- [Ferramentas de Linha de Comando](#ferramentas-linha-comando-cli)
 
 # <a id="comandos"></a>Comandos
 
@@ -214,7 +215,7 @@ mv -iv arquivo.txt /caminho/do/novo/diretorio/
 
 Lembre-se de que o comando `mv` altera a localização dos arquivos no sistema de arquivos e, portanto, pode ter implicações importantes. Tenha cuidado ao usá-lo, especialmente com arquivos importanter ou sensíveis.
 
-## <a id=""></a>`gzip`
+## <a id="gzip"></a>`gzip`
 
 O comando `gzip` é usado para compactar arquivos no formato GNU zip (gzip). Ele é frequentemente usado para comprimir arquivos para economizar espaço em disco ou para transferência mais rápida pela rede.
 
@@ -403,6 +404,78 @@ fdisk -l /dev/sda
 Este comando listará todas as partições no dispositivo `dev/sda`.
 
 Tenha muito cuidado ao usar o `fdisk`, pois ele pode alterar a estrutura da tabela de partições, o que pode resultar na perda de dados se não for usado corretamente. Certifique-se sempre de entender o que está fazendo antes de fazer qualquer alteração. Se não tiver certeza, é melhor buscar orientação adicional ou usar ferramentas mais amigáveis, como o `gparted`, que possui uma interface gráfica.
+
+# <a id="ferramentas-linha-comando-cli"></a>Ferramentas de Linha de Comando (CLI)
+
+Um CLI, uma ferramenta de linha de comando, são termos utilizados para se referir a programas ou utilitários que são executados a partir de um terminal ou prompt de comando e aceitam entrada do usuário na forma de comandos de texto.
+
+### Sumário
+
+- [`git`](#git)
+- [`wget`](#wget)
+
+# <a id="git"></a>`git`
+
+### Sumário
+
+- [`git config pull.rebase false`]()
+
+## <a id=""></a>`git config pull.rebase false`
+
+O comando `git config pull.rebase false` é usado para configurar o Git para não realizar o rebase automático ao executar o comando `git pull`.
+
+Quando você executa `git pull`, o Git geralmente tenta mesclar as alterações remotas com o seu branch local. No entanto, se você configurar `pull.rebase` como `false`, o Git optará por fazer um merge em vez de um rebase automático ao executar o `git pull`.
+
+Essa configuração é útil se você preferir fazer merge em vez de rebase ao atualizar seu branch local com as alterações do repositório remoto. Por exemplo, algumas equipes de desenvolvimento preferem evitar rebase automático para manter um histórico de commits mais explícito e linear.
+
+Você pode definir essa configuração globalmente para todos os seus repositórios Git ou especificamente para um repositório usando a opção `--global` ou a omitindo, respectivamente.
+
+# <a id="wget"></a>`wget`
+
+O comando `wget` é uma ferramenta de linha de comando usada para baixar arquivos da web. Ela suporta o download de arquivos através de diversos protocolos, como HTTP. HTTPS e FTP. O `wget` é muito útil para automatizar o processo de download de arquivos ou recuperar recursos da web de forma rápida e fácil.
+
+**Sintaxe Básica**
+
+```bash
+wget [opções] URL
+```
+
+**Opções Comuns**
+
+- `-O arquivo`**:** especifica o nome do arquivo de destino
+- `-P diretório`**:** especifica o diretório onde o arquivo será salvo
+- `-q` **ou** `--quiet`**:** modo silencioso, não exibe saída no terminal
+- `-c` **ou** `--continue`**:** continua um download parcial, caso ele tenha sido interrompido
+- `-r` **ou** `-R`**:** baixa recursivamente, seguindo links para baixar todos os arquivos vinculados
+- `-np` **ou** `--no-parent`**:** não segue links para diretórios acima do diretório inicial
+- `-nc` **ou** `--no-clobber`**:** não sobrescreve arquivos existentes
+- `-nv` **ou** `--no-verbose`**:** modo silencioso, exibindo apenas informações essenciais
+
+**Exemplos**
+
+- Para baixar um arquivo
+
+```bash
+wget https://exemplo.com/arquivo.txt
+```
+
+Isso baixará o arquivo `arquivo.txt` do servidor `https://exemplo.com` para o diretório atual
+
+- Para baixar um arquivo e salvá-lo com um nome diferente
+
+```bash
+wget -O novo_nome.txt https://exemplo.com/arquivo.txt
+```
+
+Isso baixará o arquivo `arquivo.txt` do serivdor `https://exemplo.com` e o salvará como `novo_nome.txt` no diretório atual
+
+- Para baixar um arquivo e salvá-lo em um diretório específico
+
+```bash
+wget -P /caminho/do/diretorio http://exemplo.com/arquivo.txt
+```
+
+Isso baixará o `arquivo.txt` do servidor `https://exemplo.com` e o salvará no diretório `/caminho/do/diretorio`
 
 # Template
 

@@ -2,6 +2,7 @@
 
 ### Sumário
 
+- [Projetos](#projetos)
 - [Utilitários](#utilitarios)
 - [Livro: A Linguagem de Programação Rust](#livro-linguagem-programacao-rust)
     + [Obtenção do Livro em Português](#obtencao-livro-portugues)
@@ -29,10 +30,19 @@
     + [3.5 Control Flow](#35-control-flow)
         - [if Expressions](#if-expressions)
         - [Repetition with Loops](#repetition-with-loops)
+- [4. Understanding Ownership](#4-understanding-ownership)
+    + [4.1 What is Ownership?](#41-what-is-ownership)
+        - [The Stack and the Heap](#stack-heap)
 - [21. Appendix](#21-appendix)
     + [21.1 A - Keywords](#211-a-keywords)
 - [Executando Código em Rust](#executando-codigo-rust)
 - [Boas Práticas](#boas-praticas)
+
+# <a id="projetos"></a>Projetos
+
+- Convert temperatures between Fahrenheit and Celsius
+- Generate the *n*th Fibonacci number
+- Print the lyrics to the Christmas carol "The Twelve Days of Christmas", taking advantage of the repetition in the song
 
 # <a id="utilitarios"></a>Utilitários
 
@@ -1027,7 +1037,116 @@ Mesmo utilizando o rótulo, você pode possuir um valor de retorno: Valor de Ret
 
 **Conditional Loops with while**
 
+Geralmente, um programa precisará avaliar uma condição dentro de um loop, enquanto a condição for `true`, o loop será executado. Quando a condição deixa de ser `true`, o programa faz a chamada do `break`, encerrando o loop. É possível implementar este comportamento usando uma combinação de `loop`, `if`, `else` e `break`, mas este é um padrão tão comum em Rust que ele possui uma construção própria chamada `while`.
 
+```Rust
+// main.rs
+fn main() {
+    let mut number = 3;
+
+    while number != 0 {
+        println!("{number}!");
+
+        number -= 1;
+    }
+
+    println!("LIFTOFF!!!");
+}
+```
+
+O programa acima usa o `while` para percorrer o loop três vezes, contando de forma regressiva e, após o loop, imprimindo uma mensagem e encerrando a sua execução.
+
+A construção `while` elimina uma grande quantidade de aninhamentos que seria necessário se você usasse `loop`, `if`, `else` e `break`, e é mais claro. Enquanto a condição for avaliada em `true`, o código será executado, caso contrário, você sairá do loop.
+
+**Looping Through a Collection with for**
+
+Você pode usar a construção `while` para iterar sobre os elementos de uma coleção, tal como, um array.
+
+```Rust
+// main.rs
+fn main() {
+    let a = [10, 20, 30, 40, 50];
+    let mut index = 0;
+
+    while index < 5 {
+        println!("the value is: {}", a[index]);
+
+        index += 1;
+    }
+}
+```
+
+O loop no código acima, imprime cada elemento no array `a`.
+
+O código conta através dos elementos no array, o `index` começa em `0`, e então, o loop é executado até chegar no índice final do array (isto é, quando o `index < 5` deixa de ser `true`). O código acima imprimirá
+
+```bash
+the value is: 10
+the value is: 20
+the value is: 30
+the value is: 40
+the value is: 50
+```
+
+Todos os cinco valores aparecem no terminal, como esperado, e mesmo que o índice acabe por possuir o valor `5`, o loop é encerrado antes da tentativa de obter um sexto elemento do array.
+
+No entando, a abordagem acima é propensa a erros, nós podemos fazer com que o programa entre em pânico se o valor do índice ou a condição de teste esteja incorreta. Por exemplo, se você mudar a definição do array `a` para possuir quatro elementos e esquecer de ajustar a condição para `while index < 4`, o código entraria em pânico. O código também é mais lento, pois o compilador adiciona código de tempo de execução para executar a verificação de condicional se o índice está dentro dos limites do array em cada iteração do loop.
+
+Uma alternativa mais concisa é utilizar o loop `for` e executar código para cada item na coleção.
+
+```Rust
+// main.rs
+fn main() {
+    let a = [10, 20, 30, 40, 50];
+
+    for element in a {
+        println!("the value is: {element}");
+    }
+}
+```
+
+Quando nós executamos o código acima, a saída será a mesma do programa anterior, mas, o mais importante, agora nós aumentamos a segurança do código e eliminamos as chances de bugs que podem ocorrer se formos além do limite do fim do array ou, não indo longe o suficiente e deixando de imprimir alguns itens.
+
+Ao usar o loop `for`, você não irá precisar lembrar de mudar mais nenhum pedaço de código se você mudar o número de valores no array, diferentemente do cenário no qual usamos o `while`.
+
+Por conta da segurança e de como eles são concisos, os loops `for` são a construção de loop mais comum em Rust. Mesmo em situações nas quais você quer executar o código um certo número de vezes, como no código que usa o `while` para percorrer um array, a maioria dos Rustceans ainda usaria o `for`. A forma de fazer isso é usar `range`, fornecida pela biblioteca padrão, ela gera todos os números em uma sequência, começando a partir de um número e terminando antes de outro número.
+
+Abaixo, usaremos um loop `for` com o `range` e um outro método, o `rev()`, para que o intervalo seja percorrido de forma reversa.
+
+```Rust
+// main.rs
+fn main() {
+    for number in (1..4).rev() {
+        println!("{number}!");
+    }
+
+    println!("LIFTOFF!!!");
+}
+```
+
+O código acima é mais conciso e seguro em comparação ao que foi utilizado o `while` para realizar a mesma ideia.
+
+# <a id="4-understanding-ownership"></a>4. Understanding Ownership
+
+Ownership (propriedade) em Rust é um dos recursos mais únicos e que possui as mais profundas implicações para o restante da linguagem. Este recurso permite que o Rust faça garantias de segurança de memória sem a necessidade de um coletor de lixo, por isso é importante entender como ownership funciona. Neste capítulo, estudaremos ownership e vários recursos relacionados: borrowing (empréstimo), slices e, como o Rust organiza os dados na memória.
+
+## <a id="41-what-is-ownership"></a>4.1 What is Ownership?
+
+Ownership é um conjunto de regras que governam como um programa Rust gerência memória. Todos os programas tem que gerenciar a maneira que eles usam a memória do computador enquanto estão em execução. Algumas linguagens possuem um coletor de lixo que regularmente procura por memória que não está mais sendo utilizada enquanto o programa é executado; em outras linguagens, o programador deve alocar e liberar a memória explicitamente. Rust usa outra abordagem, a memória é gerenciada através de um sistema de ownership que possue um conjunto de regras que o compilador verifica. Se qualquer uma das regras é violada, o programa não irá compilar, nenhum dos recursos do ownership irão deixar o seu programa mais lento, em relação a velocidade em tempo de execução.
+
+Por conta do fato que ownership é um conceito novo para muitos programadores, demora um tempo para se acostumar, a boa notícia é que quanto mais experiente você fica em Rust e no sistema de regras de ownership, mais fácil e natural será desenvolver código de forma segura e eficiente.
+
+Quando você compreender ownership, você terá uma fundação sólida para entender o que torna o Rust único. Neste capítulo você aprenderá ownership através de exemplos que focam em uma estrutura de dados muito comum, strings.
+
+### <a id="stack-heap"></a>The Stack and the Heap
+
+Muitas linguagens de programação não fazem com que você tenha que pensar na stack e na heap de forma frequente, mas em linguagens de programação de sistemas, como Rust, se um valor está na stack ou na heap, isso afeta como a linguagem se comporta. Parte da ownership será descrita em relação a stack e a heap mais tarde, neste capítulo, mas a seguir, veremos uma breve explicação em preparação.
+
+Ambas stack e a heap são partes da memória disponíveis para o código usar em tempo de execução, mas elas são estruturadas de forma diferente. A stack armazena os valores na ordem em que ela os obtém e então, remove os valores na ordem oposta, nos referimos a esse comportamento como "last in, first out (LIFO)". Pense na stack como uma pilha de pratos (uma pilha), quando você adiciona mais pratos, você os pôe no topo, e quando você precisa de um, você pega um do topo. Adicionar ou remover pratos do meio ou do fundo da pilha não funcionaria muito bem. O ato de adicionar dados a stack é referenciado como empilhar ("pushing"), e remover dados da stack é referenciado como desempilhar ("popping"). Todo o dado armazenado na stack deve possuir um tamanho conhecido e fixo, dados com tamanho desconhecido em tempo de compilação, ou que podem mudar de tamanho, devem ser armazenados na heap.
+
+A heap é menos organizada, quando você adiciona dados a heap, você solicita uma certa quantidade de espaço, o alocador de memória encontra um espaço vazio na heap que é suficientemente grande, marca que ele está em uso e retorna um ponteiro para ele, que é um endereço da localização. Este processo é referenciado como alocação. Por conta do fato que o ponteiro para a heap é de tamanho conhecido, você pode armazena-lo na stack, mas caso você queria os reais valores dos dados, você deve seguir o ponteiro até o endereço. Imagine que você queria uma mesa com um grupo de amigos em um restaurante, quando você chega, você solicita uma mesa e o anfitrião irá disponibilizar uma para você que caiba todo o seu grupo, caso outra pessoa chegue depois, ela pode perguntar aonde você está sentado para lhe achar.
+
+Empilhar na stack é mais rápido que alocar na heap porque o alocador nunca precisa procurar por um lugar para armazenar novos dados, a localização é sempre no topo da stack. Em comparação, alocar espaço na heap é mais trabalhoso porque o alocador precisa encontrar um lugar grande o suficiente para guardar o dado e então, realizar a contabilidade para se preparar para a próxima alocação.
 
 # <a id="21-appendix"></a>21. Appendix
 
