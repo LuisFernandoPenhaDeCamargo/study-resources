@@ -1270,13 +1270,13 @@ Isto parece muito similar, então nós podemos assumir que a forma que isso func
 
 Observe a imagem abaixo para ver o que acontece com a `String` por debaixo dos panos. Uma `String` é composta por três partes, como pode ser visto a esquerda, um ponteiro para a memória que contém o conteúdo da String, um comprimento e uma capacidade. Este grupo de dados é armazenado na stack e a direita é a memória na heap que contém o conteúdo.
 
-![41-1](./images/41-1-image.png)
+![41-1](../images/41-1-image.png)
 
 O comprimento é o quanto de memória, em bytes, o conteúdo da `String` está atualmente usando, a capacidade é a quantidade total de memória, em bytes, que a `String` recebeu do alocador. A diferença de comprimento e capacidade importa, mas não neste contexto, então, por enquanto, iremos ignorar a capacidade.
 
 Quando nós atribuímos `s1` para `s2`, o dado `String` é copiado, o que significa que nós copiamos o ponteiro, o comprimento e a capacidade que se encontram na stack. Nós não copiamos o conteúdo da heap para o qual o ponteiro se refere, em outras palavras, a representação da memória se pareceria com a imagem abaixo:
 
-![41-2](./images/41-2-image.png)
+![41-2](../images/41-2-image.png)
 
 # <a id="21-appendix"></a>21. Appendix
 
