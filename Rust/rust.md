@@ -1278,6 +1278,61 @@ Quando nós atribuímos `s1` para `s2`, o dado `String` é copiado, o que signif
 
 ![41-2](../images/41-2-image.png)
 
+A representação abaixo abaixo, a qual mostra o que a memória se pareceria se Rust copiasse os dados da heap também. Se o Rust fizesse o mostrado abaixo, a operação `s1 = s2`, poderia ser muito cara em termos de performance em tempo de execução, se os dados na heap fossem muito grandes.
+
+![41-3](41-3-image.png)
+
+Mais cedo, nós vimos que quando uma variável sai do escopo, Rust chama automaticamente a função `drop` e limpa a memória heap para essa variável, mas e a imagem que mostra ambos os ponteiros referenciando a mesma posição? Isto é um problema: quando `s2` e `s1` saem do escopo, ambos irão tentar liberar a mesma memória, isto é conhecido como o "double free error" e é um dos bugs de segurança de memória que nós mencionamos anteriormente. Liberar memória duas vezes, pode levar a corrupção de memória, o que pode potencialmente levar a vunerabilidades de segurança.
+
+Para garantir segurança de memória, após a linha `let s2 = s1;`, Rust considera que `s1` não é mais válida, então, Rust não precisa liberar nada quando `s1` sai do escopo. Observe o que ocorre quando você tenta usar `s1` depois de ter criado `s2`, um erro será gerado "`borrow of moved value`".
+
+```Rust
+let s1 = String::from("hello");
+let s2 = s1;
+
+println!("{}, world!", s1);
+```
+
+Se você já ouviu os termos "shallow copy" e "deep copy", enquanto trabalhava com outras linguagens de programação, o conceito de copiar o ponteiro, o comprimento e a capacidade sem compiar os dados da heap, soa como uma cópia rasa ("shallow copy"). Entretanto, por conta que Rust inválida a primeira variável (`s1`), ao invés de ser chamada de shallow copy, é conhecida como um "move". No código acima, nós dizemos que `s1` foi movida para `s2`.
+
+Como agora, só `s2` é válida, quando ela sai do escopo, somente ela irá liberar a memória, então o problema citado anteriormente foi resolvido.
+
+Em adição, isto implica em uma escolha de design, o Rust nunca irá criar automaticamente uma "deep copy" dos seus dados, portanto, qualquer cópia automática pode ser assumida como barata em termos de performance em tempo de execução.
+
+**Variables and Data Interacting with Clone**
+
+Se nós quisermos realizar uma deep copy, se nós quisermos copiar os dados na heap da `String`, não apenas os dados na stack, nós podemos usar um método comum chamado `clone`. Abaixo temos um exemplo do método `clone` em ação.
+
+```Rust
+let s1 = String::from("hello");
+let s2 = s1.clone();
+
+println!("s1 = {}, s2 = {}", s1, s2);
+```
+
+O código acima funciona exatamente como a figura em que temos ponteiros apontando para posições diferentes da heap, onde os dados da heap são copiados.
+
+Quando você vê a invocação do `clone`, você sabe que algum código arbitrário está sendo executado e que aquele código pode ser custoso. É um indicador visual que alguma coisa diferente está acontecendo.
+
+**Stack-Only Data: Copy**
+
+Precisamos falar também sobre o código que usa inteiros, que funciona e é válido:
+
+```Rust
+let x = 5;
+let y = x;
+
+println!("x = {}, y = {}", x, y);
+```
+
+O código acima parece meio contraditório do que acabamos de aprender, pois não precisamos vamos a chamada ao `clone`, mas `x` ainda é válido e não foi movido para `y`.
+
+A razão é que tipos como os inteiros, os quais possuem um tamanho conhecido em tempo de compilação, são armazenados completamente na stack, então cópias do atual valor são mais rápidas de fazer, o que significa que não há razão para nós fazermos com que `x` deixe de ser válido após criar a variável `y`. Em outras palavras, não há diferença entre a deep copy e a shallow copy, então fazer a chamada ao `clone` não faria nada de diferente do que a shallow copy já faz.
+
+Rust possui uma anotação especial chamada `Copy`, que é uma trait que nós podemos colocar em tipos que são armazenados na stack, como inteiros são (conversaremos mais sobre traits no capitulo 10). Se um tipo implementa a trait `Copy`, variáveis que a utilizam, não são movidas, mas sim completamente copiadas, fazendo com que elas continuem válidas mesmo depois de serem atribuídas a outra variável.
+
+
+
 # <a id="21-appendix"></a>21. Appendix
 
 

@@ -1,5 +1,6 @@
 fn main() {
-  // let _s1 : str = String::from("Teste");
-  let _s2 : str = "Teste";
-  // let _s3 = if true { "string literal "} else { &String::from("String") };
+  let s1 = String::from("hello");
+  let s2 = s1.clone();
+  
+  println!("s1 = {}, s2 = {}", s1, s2);
 }
