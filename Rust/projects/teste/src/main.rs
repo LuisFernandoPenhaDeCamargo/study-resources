@@ -1,9 +1,5 @@
 fn main() {
-  let x;
-
-  if cond {
-    x = 1;
-  } else {
-    x = 2;
-  }
+  // let _s1 : str = String::from("Teste");
+  let _s2 : str = "Teste";
+  // let _s3 = if true { "string literal "} else { &String::from("String") };
 }

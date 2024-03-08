@@ -33,6 +33,10 @@
 - [4. Understanding Ownership](#4-understanding-ownership)
     + [4.1 What is Ownership?](#41-what-is-ownership)
         - [The Stack and the Heap](#stack-heap)
+        - [Ownership Rules](#ownership-rules)
+        - [Variable Scope](#variable-scope)
+        - [The String Type](#the-string-type)
+        - [Memory and Allocation](#memory-and-allocation)
 - [21. Appendix](#21-appendix)
     + [21.1 A - Keywords](#211-a-keywords)
 - [Executando Código em Rust](#executando-codigo-rust)
@@ -1126,6 +1130,8 @@ fn main() {
 
 O código acima é mais conciso e seguro em comparação ao que foi utilizado o `while` para realizar a mesma ideia.
 
+Observe também que o tempo de compilação do código acima, foi menor do que a versão com o `while`.
+
 # <a id="4-understanding-ownership"></a>4. Understanding Ownership
 
 Ownership (propriedade) em Rust é um dos recursos mais únicos e que possui as mais profundas implicações para o restante da linguagem. Este recurso permite que o Rust faça garantias de segurança de memória sem a necessidade de um coletor de lixo, por isso é importante entender como ownership funciona. Neste capítulo, estudaremos ownership e vários recursos relacionados: borrowing (empréstimo), slices e, como o Rust organiza os dados na memória.
@@ -1147,6 +1153,130 @@ Ambas stack e a heap são partes da memória disponíveis para o código usar em
 A heap é menos organizada, quando você adiciona dados a heap, você solicita uma certa quantidade de espaço, o alocador de memória encontra um espaço vazio na heap que é suficientemente grande, marca que ele está em uso e retorna um ponteiro para ele, que é um endereço da localização. Este processo é referenciado como alocação. Por conta do fato que o ponteiro para a heap é de tamanho conhecido, você pode armazena-lo na stack, mas caso você queria os reais valores dos dados, você deve seguir o ponteiro até o endereço. Imagine que você queria uma mesa com um grupo de amigos em um restaurante, quando você chega, você solicita uma mesa e o anfitrião irá disponibilizar uma para você que caiba todo o seu grupo, caso outra pessoa chegue depois, ela pode perguntar aonde você está sentado para lhe achar.
 
 Empilhar na stack é mais rápido que alocar na heap porque o alocador nunca precisa procurar por um lugar para armazenar novos dados, a localização é sempre no topo da stack. Em comparação, alocar espaço na heap é mais trabalhoso porque o alocador precisa encontrar um lugar grande o suficiente para guardar o dado e então, realizar a contabilidade para se preparar para a próxima alocação.
+
+Acessar dados na heap é mais lento que acessar dados na stack porque você tem que seguir um ponteiro até lá, os processadores contemporâneos são mais rápidos se movimentarem menos memória. Continuando a analogia acima, imagine um garçom pegando pedidos de várias mesas, é mais eficiente pegar todos os pedidos de uma mesa antes de ir para a próxima. Tirar os pedidos da mesa A, e então os da mesa B, depois da A, novamente, e voltar para a B, tornaria o processo muito mais lento. Considere também que um processador irá realizar seu trabalho de forma mais eficiente se ele trabalhar em um dado que está mais próximo de outros dados (como no caso da stack), do que em dados que estão distantes (o que pode acontecer na heap).
+
+Quando o seu código invoca uma função, os valores que serão passados para ela (incluindo possíveis ponteiros para dados na heap) e variáveis locais, são empilhados na stack. Quando a função é encerrada, os valores são desempilhados da stack.
+
+Ficar acompanhando quais partes do código usam dados da heap, minimizar a quantidade de dados duplicados na heap, e remover da heap dados não utilizados para que você não fique sem espaço, são todos problemas que ownership aborda. Uma vez que você entenda ownership, você não irá precisar ficar pensando sobre a stack e a heap de forma frequente, mas enentender que o principal propósito do ownership é gerenciar dados da heap pode ajudar a entender o porque ele trabalha da forma que ele trabalha.
+
+### <a id="ownership-rules"></a>Ownership Rules
+
+- Todo valor em Rust possui um dono ("owner")
+- Só pode haver um owner por vez
+- Quando o owner sai do escopo, o valor será descartado
+
+### <a id="variable-scope"></a>Variable Scope
+
+Agora que já passamos do básico, não iremos mais incluir `fn main() { }` nos exemplos, então lembre-se de fazer isso de forma manual, pois a ideia é exemplos mais concisos no que a gente pretende destacar.
+
+O primeiro exemplo de ownership será sobre o escopo de algumas variáveis. Um escopo é o intervalo dentro de um programa para o qual um item é válido.
+
+```Rust
+let s = "hello";
+```
+
+A variável `s` se refere a uma string literal, onde o valor da string é codificado no texto do nosso programa. A variável é válida do momento no qual ela é declarada até o fim do escopo atual. Abaixo, vemos um exemplo onde os comentários denonatam onde a váriavel `s` é válida.
+
+```Rust
+{                    // s não é válida aqui por ainda não tem sido declarada.
+    let s = "hello"; // s é válida partir deste ponto em diante.
+
+    // Você pode utilizar a variável s.
+}                    // O escopo acabou e s não é mais válida.
+```
+
+Em outras palavras, hpa dois momentos importantes no exemplo acima:
+
+- Quando `s` entra no escopo e é válida
+- Ela permanece válida até o momento no qual ela sai do escopo
+
+Até então, a relação entre escopos e quando as variáveis são válidas é similar as outras linguagens de programação. Agora nós iremos construir em cima deste entendimento, introduzindo  o tipo `String`.
+
+### <a id="the-string-type"></a>The String Type
+
+Para ilustrar as regras de ownership, nós precisamos de um tipo de dado mais complexo do que os vistos anteriormente, os tipos vistos anteriormente possuem um tamanho conhecido e podem ser armazenados na stack, e removidos desta, quando o escopo no qual se encontram é encerrado. Além do que, pode ser bem rápido e trivial copia-los para fazer um novo, uma instância independente, se outra parte do código precisa usar o mesmo valor em um escopo diferente. Nós queremos dados que são armazenados na heap e explorar como o Rust sabe quando limpar este dado, e o tipo `String` é um bom exemplo.
+
+Nós iremos nós concentrar nas partes da `String` que são relacionadas a ownership. Estes aspectos também são aplicados a tipos de dados mais complexo, seja eles disponibilizados pela biblioteca padrão ou por uma criada por você. Falaremos mais sobre `String`s no capítulo 8.
+
+Nós já vimos string literais, onde uma string é codificada em nosso programa. String literais são convenientes, mas não são adequadas para todas as situações nas quais nós podemos querer usar texto. Uma razão é que elas são imutáveis, outra razão é que nem todo valor de uma string pode ser conhecido quando escrevemos o nosso código, por exemplo, se nós queremos pegar a entrada de um usuário e a armazenar. Para essas situações, Rust possui um segundo tipo de string, `String`, este tipo gerencia o dado alocado na heap e é capaz de armazenar uma quantidade de texto que é desconhecido em tempo de compilação. Você pode criar uma `String` a partir de uma string literal usando a função `from()`.
+
+```Rust
+let s = String::from("hello");
+```
+
+O operador dois pontos duplos (`::`) nos permite nomear esta função `from()` específica sob o tipo `String`, ao invés de ter que usar algum tipo de nome como `string_from`. Nós iremos debater mais sobre este sintaxe em "Method Sintax", no capitulo 5, e falaremos sobre espaçamento de nomes com módulos no capítulo 7, "Paths for Referring to an Item in Module Tree".
+
+Este tipo de string pode ser alterada:
+
+```Rust
+let mut s = String::from("hello");
+
+s.push_str(", world!"); // push_str() acrescenta uma literal a uma String.
+
+println!("{}", s); // Saída: hello, world!
+```
+
+Então, qual a diferença? Porque `String` pode ser modificada, mas literais não? A diferença está em como esses dois tipos lidam com a memória.
+
+### <a id="memory-and-allocation"></a>Memory and Allocation
+
+No caso de uma string literal, nós sabemos o seu conteúdo em tempo de compilação, então o texto é codificado diretamente no executável final, é por este motivo que string literais são tão rápidas e eficientes. Mas estas propriedades são por conta da imutabilidade da string, infelizmentem nós não podemos por um pedacinho da memória no binário para cada pedaço de texto cujo tamanho é desconhecido em tempo de compilação e que ainda pode mudar de tamanho durante a execução do programa.
+
+Com o tipo `String`, em ordem de suportar um pedaço de text que é mutável e pode crescer, nós precisamos alocar uma quantidade da memória na heap, desconhecido em tempo de compilação, para guardar o conteúdo, isto significa:
+
+- A memória deve ser solicitada ao alocador em tempo de execução
+- Nós precisamos de uma maneira de retornar a memória para o alocador quando pararmos de usar a nossa `String`
+
+A primeira parte é feita por nós, quando nós invocamos `String::from()`, a sua implementação solicita a memória necessária para isso. Isto é praticamente universal em linguagens de programação.
+
+Entretanto, a segunda parte é diferente, em linguagens com coletor de lixo ("garbage collector", GC), o GC acompanha e libera a memória que não está mais sendo utilizada e nós não precisamos pensar nisso. Na maioria das linguagens sem GC, é nossa responsabilidade identificar quando a memória não está mais sento utilizada e pedir explicitamente ao código para libera-la. Fazer isso de forma correta tem sido, historicamente, um problema difícil de programação, se esquecermos, desperdiçamos memória, se fazermos isso muito cedo, teremos uma variável inválida. Se fizermos isso duas vezes, é um bug também, nós precisamos de um pair exato, uma alocação (`allocate`) com uma liberação (`free`).
+
+Rust toma um caminho diferente, a memória é automaticamente retornada uma vez que a variável que é dona dela sai de escopo. Abaixo vamos ter um exemplo com uma `String` ao invés de uma string literal.
+
+```Rust
+{
+    let s = String::from("hello"); // s é válida deste ponto em diante.
+
+    // Você pode utilizar a variável s.
+}                                  // O escopo acabou e s não é mais válida.
+```
+
+Há um momento natural no qual nós podemos retornar a memória que a nossa `String` precisa para o alocador: quando `s` sai do escopo. Quando uma variável sai do escopo Rust invoca uma função especial para nós, a função `drop`, e é onde o autor da `String` pode por o código de retorno de memória. Rust chama `drop` automaticamente no fechamento das chaves.
+
+Nota: em C++. este padrão de desalocação de recursos ao final do tempo de vida de um item é chamado as vezes de "Resource Acquisition Is Initialization" (RAII). A função `drop` em Rust será familiar se você já usou o padrão RAII.
+
+O padrão citado acima tem um grande impacto na forma em que código Rust é escrito, pode parecer simples agora, mas o comportamento do código pode ser inesperado em situações mais complicadas quando nós queremos ter múltiplas variáveis que usam o dado que nós alocamos na heap. Vamos explorar algumas dessas situações.
+
+**Variables and Data Interacting with Move**
+
+Múltiplas variáveis podem interagir com o mesmo dado de formas diferentes em Rust, observe o exemplo abaixo:
+
+```Rust
+let x = 5;
+let y = x;
+```
+
+Nós provavelmente podemos tentar adivinhar o que isto está fazendo: "víncula o valor `5` a `x` e então, faz uma cópia do valor em `x` e o víncula a `y`". Agora nós temos duas variáveis, `x` e `y`, ambas igual a `5`. Isto é realmente o que está acontecendo, porque inteiros são valores simples, com um tamanho conhecido e fixo, e estes dois valores `5` são empilhados na stack.
+
+Vamos observar a versão com `String`:
+
+```Rust
+let s1 = String::from("hello");
+let s2 = s1;
+```
+
+Isto parece muito similar, então nós podemos assumir que a forma que isso funciona pode ser a mesma, que a segunda linha faria uma cópia do valor em `s1` e o vincularia a `s2`, mas não é bem o que acontece.
+
+Observe a imagem abaixo para ver o que acontece com a `String` por debaixo dos panos. Uma `String` é composta por três partes, como pode ser visto a esquerda, um ponteiro para a memória que contém o conteúdo da String, um comprimento e uma capacidade. Este grupo de dados é armazenado na stack e a direita é a memória na heap que contém o conteúdo.
+
+![41-1](./images/41-1-image.png)
+
+O comprimento é o quanto de memória, em bytes, o conteúdo da `String` está atualmente usando, a capacidade é a quantidade total de memória, em bytes, que a `String` recebeu do alocador. A diferença de comprimento e capacidade importa, mas não neste contexto, então, por enquanto, iremos ignorar a capacidade.
+
+Quando nós atribuímos `s1` para `s2`, o dado `String` é copiado, o que significa que nós copiamos o ponteiro, o comprimento e a capacidade que se encontram na stack. Nós não copiamos o conteúdo da heap para o qual o ponteiro se refere, em outras palavras, a representação da memória se pareceria com a imagem abaixo:
+
+![41-2](./images/41-2-image.png)
 
 # <a id="21-appendix"></a>21. Appendix
 
