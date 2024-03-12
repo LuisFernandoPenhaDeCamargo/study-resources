@@ -17,9 +17,6 @@
 
 # Estudar
 
-- `git checkout -b dev/lfernando-rc master`
-- `git checkout dev/lfernando`
-
 - `systemctl status mysql.service`
 - `systemctl restart mysql`
 - `systemctl stop mysql`
@@ -78,6 +75,8 @@
 
 - [Comandos](#comandos)
 - [Ferramentas de Linha de Comando](#ferramentas-linha-comando)
+    + [`git`](#git)
+    + [`wget`](#wget)
 
 # HTML (html.md)
 
@@ -113,6 +112,14 @@
         - [3.4 Comments](#34-comments)
         - [3.5 Control Flow](#35-control-flow)
     + [4. Understanding Ownership](#4-understanding-ownership)
+        - [4.1 What is Ownership?](#41-what-is-ownership)
+            + [The Stack and the Heap](#stack-heap)
+            + [Ownership Rules](#ownership-rules)
+            + [Variable Scope](#variable-scope)
+            + [The String Type](#the-string-type)
+            + [Memory and Allocation](#memory-and-allocation)
+            + [Pontos Adicionais](#pontos-adicionais)
+        - [4.2 References and Borrowing](#42-references-and-borrowing)
     + [21. Appendix](#21-appendix)
         - [21.1 A - Keywords](#211-a-keywords)
     + [Executando Código em Rust](#executando-codigo-rust)

@@ -37,6 +37,8 @@
         - [Variable Scope](#variable-scope)
         - [The String Type](#the-string-type)
         - [Memory and Allocation](#memory-and-allocation)
+        - [Pontos Adicionais](#pontos-adicionais)
+    + [4.2 References and Borrowing](#42-references-and-borrowing)
 - [21. Appendix](#21-appendix)
     + [21.1 A - Keywords](#211-a-keywords)
 - [Executando Código em Rust](#executando-codigo-rust)
@@ -52,29 +54,28 @@
 
 - `rustup`**:** ferramenta de gerenciamento de versão do Rust e de utilitários associados
 - `rustc`**:** ferramenta de compilação
-- `rustfmt`**:** ferramenta de formatação de código para a linguagem de programação Rust. Ela é usada para garantir que o código escrito em Rust siga as convenções de estilo recomendadas pela comunidade
+- `rustfmt`**:** ferramenta de formatação de código
 
-A principal finalidade do `rustfmt` é automatizar o processo de formatação do código-fonte, tornando-o consistente e legível.
-
-Ambos `rustc` e `rustfmt` estão inclusos na instalação do `rustup`.
++ A principal finalidade do `rustfmt` é automatizar o processo de formatação do código-fonte, tornando-o consistente e legível. Ela é usada para garantir que o código escrito em Rust siga as convenções de estilo recomendadas pela comunidade
++ Ambos `rustc` e `rustfmt` estão inclusos na instalação do `rustup`
 
 # <a id="livro-linguagem-programacao-rust"></a>Livro: A Linguagem de Programação Rust
 
 ### <a id="obtencao-livro-portugues"></a>Obtenção do Livro em Português
 
-Para ler o livro no modo offline, você precisa do utilitário `mdbook` instalado. Você pode obtê-lo com o comando `cargo install mdbook`.
+Para ler o livro no modo offline, você precisa do utilitário `mdbook` instalado, você pode obtê-lo com o comando `cargo install mdbook`.
 
-Após a instalação do utilitário, você utiliza o comando `mdbook build` para "construir o livro". Isso basicamente significa que ele vai pegar os arquivos **.md** e transformá-los em um formato que possa ser utilizado pelo seu navegador (**.html**).
+Após a instalação do utilitário, você utiliza o comando `mdbook build` para construir o livro, basicamente, isso significa que ele vai pegar os arquivos **.md** e transformá-los em um formato que possa ser utilizado pelo seu navegador (**.html**).
 
 Os arquivos **.md** se encontram em um repositório, então você deve cloná-lo e **utilizar o comando de construção no clone do repositório** (no diretório criado pelo comando de clone).
 
-Para abrir o livro no google-chrome você pode executar o comando `google-chrome book/index.html`.
+Para abrir o livro no google-chrome você pode executar o comando `google-chrome book/index.html` (você deve se encontrar dentro do repositório local).
 
 # <a id="introduction"></a>Introduction
 
-Se você precisa de um resumo do que será visto nos próximos capítulos, no final da "Introduction", em "How to Use This Book", temos o que você precisa.
+Se você precisa de um resumo do que será visto neste livro, no final da "Introduction", em "How to Use This Book", temos o que você precisa.
 
-# <a id="1-getting-started">1. Getting Started
+# <a id="1-getting-started">1. Getting Started <! Estou re-resumindo o arquivo como um todo, por conta do aumento no meu conhecimento sobre Rust. As linhas acima já foram refatoradas.
 
 ## <a id="11-installation"></a>1.1 Installation
 
@@ -1223,7 +1224,7 @@ Então, qual a diferença? Porque `String` pode ser modificada, mas literais nã
 
 No caso de uma string literal, nós sabemos o seu conteúdo em tempo de compilação, então o texto é codificado diretamente no executável final, é por este motivo que string literais são tão rápidas e eficientes. Mas estas propriedades são por conta da imutabilidade da string, infelizmentem nós não podemos por um pedacinho da memória no binário para cada pedaço de texto cujo tamanho é desconhecido em tempo de compilação e que ainda pode mudar de tamanho durante a execução do programa.
 
-Com o tipo `String`, em ordem de suportar um pedaço de text que é mutável e pode crescer, nós precisamos alocar uma quantidade da memória na heap, desconhecido em tempo de compilação, para guardar o conteúdo, isto significa:
+Para o tipo `String`, em ordem de suportar um pedaço de texto que é mutável e pode crescer, nós precisamos alocar uma quantidade da memória na heap, desconhecido em tempo de compilação, para guardar o seu conteúdo, isto significa:
 
 - A memória deve ser solicitada ao alocador em tempo de execução
 - Nós precisamos de uma maneira de retornar a memória para o alocador quando pararmos de usar a nossa `String`
@@ -1331,7 +1332,303 @@ A razão é que tipos como os inteiros, os quais possuem um tamanho conhecido em
 
 Rust possui uma anotação especial chamada `Copy`, que é uma trait que nós podemos colocar em tipos que são armazenados na stack, como inteiros são (conversaremos mais sobre traits no capitulo 10). Se um tipo implementa a trait `Copy`, variáveis que a utilizam, não são movidas, mas sim completamente copiadas, fazendo com que elas continuem válidas mesmo depois de serem atribuídas a outra variável.
 
+Rust permite que um tipo tenha implementando, ou a trait `Copy`, ou a trait `Drop`. Se o tipo necessita que algo especial ocorra quando o valor sai do escopo e nós adicionamos a trait `Copy` para este tipo, um erro de compilação ocorrerá. Para saber como adicionar a trait Copy para o seu tipo, para implementar esta característica, consulte "Derivable Traits" no apêndice C.
 
+Você pode checar a documentação do tipo para verificar se ele implementa a trait `Copy` ou não, mas a regra geral é que qualquer grupo de valores escalares simples podem implementar `Copy`, e nada que exija alocação ou seja alguma forma de recurso pode implemtar esta trait. Abaixo, está listado algums tipos que implementam `Copy`:
+
+- Todo os inteiros, como o `u32`
+- O tipo booleano, `bool`, com valores `true` e `false`
+- Todos os tipos de ponto-flutuante, como o `f64`
+- O tipo caracter, `char`
+- Tuplas, mas só se os tipos contidos nela, também implementarem `Copy`. Por exemplo, `(i32, i32)` implementa `Copy`, mas `(i32, String)` não implementa
+
+**Ownership and Functions**
+
+As mecânicas de passar um valor para uma função são similares a aquelas de vincular um valor a uma variável, passar a variável para uma função, ou irá move-la, ou irá criar uma cópia, assim como a atribuição faz.
+
+```Rust
+// main.rs
+fn main() {
+    let s = String::from("hello"); // s entra no escopo.
+
+    takes_ownership(s);            // O valor de s é movida para a função...
+                                   // ... então ele não é mais válido aqui.
+
+    let x = 5;                     // x entra no escopo.
+
+    makes_copy(x);                 // x seria movido para a função
+                                   // mas i32 implementa a trait `Copy`, então você ainda pode usar x depois da linha anterior.
+} // Aqui, x sai do escopo, s também. Mas por conta do fato que s foi movida, nada de especial acontece.
+
+fn takes_ownership(some_string: String) { // some_string entra no escopo.
+    println!("{}", some_string);
+} // Aqui, some_string sai do escopo e `drop` é chamada. A memória é liberada.
+
+fn makes_copy(some_integer: i32) { // some_integer entra no escopo.
+    println!("{}", some_integer);
+} // Aqui, some_integer sai do escopo. Nada de especial acontece.
+```
+
+Se nós tentassemos usar `s` após a invocação de `takes_ownership`, Rust lançaria um erro em tempo de compilação, estas checagens estáticas nós protegem.
+
+**Return Values and Scope**
+
+Retorno de valores também podem transferir a ownership.
+
+```Rust
+// main.rs
+fn main() {
+    let s1 = gives_ownership();        // gives_ownership move o seu retorno.
+    let s2 = String::from("hello");    // s2 entra no escopo
+    let s3 = takes_and_gives_back(s2); // s2 é movido para takes_and_gives_back, o qual move o seu valor de retorno para s3.
+}                                      // Aqui, s3 sai do escopo e é dropado. s2 foi movido, então nada acontece. s1 sai de escopo e é dropado.
+
+fn gives_ownership() -> String {
+    let some_string = String::from("yours"); // gives_ownership irá mover seu valor de retorno para quem o chama.
+
+    some_string                              // some_string é retornada e é movida para a função que invocou a sua.
+}
+
+// Está função pega uma String e retorna uma.
+fn takes_and_gives_back(a_string: String) -> String { // a_string entra no escopo.
+    a_string                                          // a_string é retornada e é movida para a função que invocou a sua.
+}
+```
+
+A ownership de uma variável segue o mesmo padrão toda vez, atribuir o seu valor para outra variável, move a ownership. Quando uma variável que possui dados na heap sai de escopo, o valor será limpo pela `drop`, a não ser que a dado tenha sido movido para outra variável.
+
+Enquanto isso funciona, ficar pegando a ownership e depois retornando-a a cada função é um pouco cansativo. E se nós quisermos permitir que uma função use o valor mas não possua a sua ownership? É um pouco importuno que qualquer coisa que nós passemos, também precisa ser devolvida, caso nós quisermos utilizar novamente, em adição a qualquer dado resultante do corpo da função que nós podemos querer retornar também.
+
+Rust nós permite retornar múltiplos valores utilizando uma tupla.
+
+```Rust
+fn main() {
+    let s1 = String::from("hello");
+    let (s2, len) = calculate_length(s1);
+
+    println!("The length of '{}' is {}." s2, len);
+}
+
+fn calculate_length(s: String) -> (String, usize) {
+    let length = s.len(); // len() retorna o comprimento de uma String.
+
+    (s, length)
+}
+```
+
+Mas isto é muita cerimônia e muito trabalho para um conceito que deveria ser comum, tanto que Rust tem um recurso para passar um valor sem transferir a sua ownership, chamado "referência".
+
+### <a id="pontos-adicionais"></a>Pontos Adicionais
+
+Alguns pontos interessantes que se encontram na versão do livro que possui quiz:
+
+Segurança é a ausência do comportamento indefinido.
+
+Um dos objetivos de fundação do Rust é garantir que os seus programas nunca se comportem de forma indefinida.
+
+Outro objetivo é previnir o comportamento citado acima em tempo de compilação ao invés de previni-lo em tempo de execução. As motivações deste objetivo são:
+
+- Capturar bugs em tempo de compilação significa evitar esses bugs em produção, aumentando o quão confiável o seu software é
+- Capturar bugs em tempo de compilação significa menos checkagens em tempo de execução, aumentando a performance do seu software
+
+Um fator curioso é que permitir comportamentos inesperados pode resultar em corrupção de memória, que compõe 70% das vulnerabilidades de segurança em sistemas de baixo nível.
+
+Agora sobre memória, memória é o espaço onde o dado é armazenado durante a execução do programa. Vamos analisar as linhas de racíocinio abaixo, sobre memória:
+
+- Se você não é familiar com programação de sistemas, você pode pensar em memória em um alto nível como "memória é a RAM no meu computador" ou "memória é o que se esgota se nós carregarmos muitos dados"
+- Se você é familiar com programação de sistemas, você pode pensar em memória em um baixo nível como "memória é um array de bytes" ou "memória é o ponteiro que eu adquiro através do `malloc`"
+
+Ambos os modelos de memória são válidos, mas não definem bem como Rust funciona. O modelo de alto nível é muito abstrato, pois você precisa entender o conceito de ponteiro para entender Rust, por exemplo. O modelo de baixo nível nível é muito concreto, Rust não permite que você interprete a memória como um array de bytes, por exemplo.
+
+Rust provê uma maneira bem particular de como interpretar a memória. Ownership é uma disciplina para usar memória de maneira segura com uma maneira particular de analisa-la.
+
+**Variables Live in the Stack**
+
+O programa abaixo define um número `n` e chama a função `plus_one()` com `n`. O diagrama abaixo do programa tenta ilustrar o conteúdo da memória durante a execução do programa em três pontos específicos.
+
+![41-4](../images/41-4-image.png)
+
+Variáveis vivem em **frames**. Um frame (quadro) é um mapeamento das variáveis para valores dentro de um único escopo, como uma função:
+
+- O frame para `main` na localização L1 contém `n` = `5`
+- O frame para `plus_one` em L2 contém `x` = `5`
+- O frame para `main` em L3 contém `n` = `5` e `y` = `6`
+
+Frames são organizados na **stack** das funções atualmente chamadas, por exemplo, em L2 o frame para `main` está acima do frame da função `plus_one`. Após o retorno, Rust desaloca o frame da função (desalocar também é referido como **liberar** ou **dropar**). A sequência de frames é chamada stack porque o frame mais recente é sempre o próximo a ser liberado.
+
+Observe que este modelo de memória não descreve completamente como o Rust trabalha, o compilador do Rust pode por `n` ou `x` em um registro ao invés de coloca-los em um frame na stack. Mas a distinção é um detalhe de implementação, ela não deve mudar como você entende segurança em Rust, para que assim, nós possamos focar somente no caso das variáveis em frame.
+
+Quando uma expressão lê uma variável, o valor da variável é copiado de seu slot em seu frame na stack, por exemplo, se nós executarmos o código abaixo
+
+![41-5](../images/41-5-image.png)
+
+o valor de `a` é copiado para `b`, `a` não é modificada, mesmo após a alteração no valor de `b`.
+
+**Boxes Live in the Heap**
+
+Entretanto, copiar dados pode ocupar muita memória, por exemplo, o programa abaixo cópia um array com um milhão de elementos.
+
+![41-6](../images/41-6-image.png)
+
+Observe que copiar o valor de `a` para `b` faria com que o frame da `main` contivesse dois milhões de elementos
+
+Para tranferir o acesso ao dado sem copia-lo, Rust usa ponteiros, ponteiro é um valor que descreve uma localização na memória. O valor para onde o ponteiro aponta é chamado de ponta ("pointee", ou posição de memória). Uma forma comum de criar um ponteiro é alocar memória na **heap**, a heap é uma região separada da memória onde dados podem viver indefinidamente, os dados na heap não são amarrados a um frame específico na stack. Rust provê um construtor chamado `Box` para colocar dados na heap, por exemplo, nós podemos enrolar o array de um milhão de elementos em `Box::new` da seguinte forma:
+
+![41-7](../images/41-7-image.png)
+
+Observe que agora, só haverá um array por vez, Em L1, o valor de `a` é um ponteiro (representado pelo ponto e seta) para o array dentro da heap. A declaração `let b = a` copia o ponteiro de `a` para `b`, mas o dado que é apontado não é copiado. Note que `a` está mais cinza por conta de seu valor ter sido movido.
+
+**Rust Does Not Permit Manual Memory Management**
+
+Gerenciar memória é o processo de alocar e desalocar a memória, em outras palavras, é o processo de encontrar memória que não está sendo utilizada e depois retornar ela quando você não está mais a utilizando. Frames na stack são automaticamente gerenciados pelo Rust, quando uma função é chamada, Rust aloca um frame na stack para a função invocada, quando a chamada termina, Rust desaloca o frame na stack.
+
+Como nós vimos no código acima, nós podemos alocar a memória e colocar dados nela com `Box::new(...)`, mas quando os dados na heap são desalocados? Imagine que o Rust tivesse uma função `free()` que desalocasse dados da heap, imagine que o Rust permitisse o programador a chamar a `free()`, este tipo de gerenciamento de memória pode, facilmente, levar a bugs, por exemplo, nós podemos acabar por ler um ponteiro que aponta para uma memória que foi liberada:
+
+![41-8](../images/41-8-image.png)
+
+Nota: há uma forma de executar programas Rust que não compilam, através de uma [ferramenta especial](https://github.com/cognitive-engineering-lab/aquascope?tab=readme-ov-file) que simula, por exemplo, se a propriedade de checagem de empréstimo estivesse desabilitada, para propósitos educacionais. Desta forma nós podemos verificar cenários do tipo, e se "o Rust nós permitisse compilar este programa não seguro".
+
+Nó código acima, nós alocamos um array na heap, depois nós chamamos `free(b)`, que desaloca a memória na heap de `b`. Portanto, o valor de `b` é um ponteiro para uma memória inválida, o que poderia fazer com que o programa quebrasse, ou pior ainda, ele não quebraria e retornaria dados arbitrários. Este programa não é seguro.
+
+Rust não permite que a memória seja desalocada manualmente, este tipo de política evita os comportamentos indefinidos, como o que pode ocorrer no cenário acima.
+
+**A Box's Owner Manages Deallocation**
+
+O Rust automaticamente libera a memória na heap (a memória na heap da caixa, "box"). Abaixo nós temos uma descrição quase correta da polítca do Rust para liberar boxes.
+
+Se a variável é vinculada a uma box, quando o Rust desaloca o frame da variável, ele também desaloca a memória heap da box (está descrição está quase correta). Por exemplo, abaixo temos um diagrama que aloca e libera uma box.
+
+![41-9](../images/41-9-image.png)
+
+Em L1, antes de chamar `make_and_drop()`, o estado da memória é apenas um frame na stack para `main()`. Em L2, enquanto invocamos `make_and_drop()`, `a_box` aponta para o `5` na heap, uma vez que `make_and_drop()` termina a sua execução, Rust desaloca o seu frame na stack. `make_and_drop()` continha a variável `a_box`, então Rust também desaloca o dado na heap em `a_box`. Portanto a heap está vazia em L3.
+
+O gerenciamento da memória heap pertencente a box foi feito com sucesso. Mas e se nós tentarmos abusar deste sistema? O que acontece quando nós vinculamos duas variáveis a uma box.
+
+```Rust
+let a = Box::new([0; 1_000_000]);
+let b = a;
+```
+
+O array da box foi vinculado para `a` e `b`, no código acima, considerando a nossa definição "quase correta", Rust iria tentar liberar a memória heap da box duas vezes, por conta dela estar vinculada a duas variáveis. Isto também é um comportamento indefinido.
+
+Para evitar esta situação, finalmente iremos falar sobre ownership. Quando `a` é vinculada a `Box::new([0; 1_000_000])`, nós dizemos que `a` é **dona** da box. A declaração `let b = a` **move** a ownership da box de `a` para `b`. Considerando estes conceitos, a política do Rust para liberação das boxes é mais precisamente descrita como:
+
+**Se uma variável é dona de uma box, se a variável tem a ela uma box vinculada, quando o Rust desaloca o frame ao qual a variável pertence, ele desaloca também a memória heap utilizada pela box.**
+
+No exemplo acima, `b` é dono da box que contém o array como valor, então quando o seu escopo termina, o Rust desaloca a box somente uma vez, em nome de `b` e não `a`.
+
+**Collections Use Boxes**
+
+Boxes são usadas por estruturas de dados Rust, como vetores, strings e hashmap, para guardar o número de elementos de uma variável. Abaixo temos um exemplo que cria, move e modifica uma string.
+
+![41-10-código](../images/41-10-codigo-image.png)
+
+![41-10-diagrama](../images/41-10-diagrama-image.png)
+
+- Em L1, a string "Ferris" foi alocada na heap, seu dono é `first`
+- Em L2, a função `add_suffix()` foi chamada, isto move a ownership da string de `first` para `name`. O dado da string não é copiado, mas o ponteiro para o dado é
+- Em L3, a função `push_str()` altera a string na heap. Ela faz três coisas:
+    + Aloca outra posição de memória, maior
+    + Escreve "Ferris Jr." na nova posição alocada
+    + Libera o espaço de memória original na heap
+- Em L4, o frame para `add_suffix()` não existe mais e a função retornou `name`, transferindo a ownership da string para `full`
+
+**Variables Cannot Be Used After Being Moved**
+
+O programa acima ajuda a ilustrar o princípio chave de segurança da ownership. Vamos imaginar o seguinte cenário, `first` sendo usada na `main()` após a chamada a `add_suffix()`, abaixo temos a simulação deste cenário:
+
+![41-11](../images/41-11-image.png)
+
+`first` aponta para uma posição de memória que foi desalocada (isto após a chamada a `add_suffix()`), então fazer a leitura de `first` em `println!` seria uma violação as regras de segurança de memória (pois poderia produzir um comportamento indefinido). Fique atento que não é um problema `first` apontar para uma posição de memória que foi desalocada, **o problema é que nós tentamos utilizar** `first` **após ele não possuir mais um valor válido**.
+
+Se nós tentarmos compilar o código acima, o Rust irá gerar um erro (`error[E0382]: borrow of moved value: first`), falando que nós tentamos utilizar `first`, sendo que a ownership de seu valor foi movida. O erro também fala que o tipo `String` não implementa o trait `Copy` e pontua a tentativa de empréstimo ("`borrowed`").
+
+O princípio da movimentação de um dado da heap diz que, se uma variável x move a ownership do seu dado na heap para outra variável y, você não pode mais usar x, após a movimentação.
+
+Isso mostra a relação entre ownership, movimentação e segurança, pois mover a ownership de um dado na heap, previne comportamento indefinido que pode ser causado pela leitura de memória desalocada.
+
+**Cloning Avoids Moves**
+
+Uma forma de evitar a movimentação de um dado é clonar ele usando o método `clone()`, utilizando ele, nós iremos previnir o problema de segurança que ocorreu no programa anterior.
+
+![41-12-código](../images/41-12-codigo-image.png)
+
+![41-12-diagrama](../images/41-12-diagrama-image.png)
+
+Observe que em L1, `first_clone` não é uma shallow copy, mas sim uma deep copy. Shallow copy é quando você tem uma variável na stack que tem vinculado a ela um ponteiro e ele aponta para a mesma posição de memória na heap que outro ponteiro, vinculado a outra variável. Uma Deep Copy não copia somente o ponteiro, ela também copia os dados na heap (aloca uma nova posição de memória na heap que vai conter os dados copiados).
+
+Assim, `first_clone` que é movida e acaba invalidada por `add_suffix()`, a variável original `first` não é alterada e é seguro continuar o seu uso.
+
+Considere o seguinte cenário: dentro de uma declaração if, você move uma variável, mas você nunca entra dentro do if. Você pode usar usar essa variável após o if?
+
+O Rust não tenta determinar se uma declaração if vai, ou não, ser executada, ele assume que ela pode ser executada. Então você não pode usar a variável após o if.
+
+Até então, podemos ver a ownership, primeiramente, como a disciplina do gerenciamento da heap:
+
+- Todo dado na heap deve ter como dona uma, e somente uma, variável
+- O Rust desaloca dados na heap uma vez que seu dono sai de escopo
+- A ownership pode ser transferida através da movimentação, a movimentação ocorre em atribuições e chamadas de função
+- Dados na heap só podem ser acessados através do seu dono atual, por um dono anterior, não
+
+## <a id="42-references-and-borrowing"></a>4.2 References and Borrowing
+
+```Rust
+fn main() {
+    let s1 = String::from("hello");
+    let (s2, len) = calculate_length(s1);
+
+    println!("The length of '{}' is {}.", s2, len);
+}
+
+fn calculate_length(s: String) -> (String, usize) {
+    let length = s.len(); // len() retorna o comprimento de uma String.
+
+    (s, length)
+}
+
+// Listing 4-5: Returning ownership of parameters
+```
+
+O problema com o código acima é que temos que retornar a `String` para a `main()` para poder usá-la após a chamada a função `calculate_length()`, porque a `String` foi movida para a função. Ao invés disto, nós podemos prover uma referência para o valor da `String`.
+
+- Uma referência é como um ponteiro, ela é um endereço que nós podemos seguir para acessar os dados armazenados neste endereço
+- Os dados pertencem a outra variável
+- Diferentemente de um ponteiro, uma referência garante apontar para um valor válido de um tipo específico pelo resto de sua vida
+
+Vamos refazer o código Listing 4-5 usando uma referência para um objeto como parâmetro ao invés de mover a ownership daquele valor.
+
+```Rust
+fn main() {
+    let s1 = String::from("hello");
+    let len = calculate_length(&s1);
+
+    println!("The length of '{}' is {}.", s1, len);
+}
+
+fn calculate_length(s: &String) -> usize {
+    s.len()
+}
+```
+
+Primeiramente, observe que o código na declaração da variável e no retorno da função não é mais o mesmo. Em segundo lugar, observe que agora o argumento passado para `calculate_length()` é `&s1`, e o tipo do seu parâmetro é `&String` e não mais `String`. Os e-comerciais representam referências, e elas permitem que você se refira a um valor sem tomar a ownership da variável que é dona dele.
+
+![42-1](../images/42-1-image.png)
+
+Mais a frente iremos falar sobre o oposto de referenciar, que seria desreferenciar.
+
+A sintaxe `&s1` nos permite criar uma referência que se refere ao valor de `s1`, mas não é dona dele. Por conta do fato que ela não é dona dele, o valor para o qual ela aponta não vai ser dropado quando a referência para de ser usada.
+
+A assinatura da função também irá usar o `&` para indicar que o tipo do parâmetro é uma referência.
+
+```Rust
+fn calculate_length(s: &String) -> usize { // s é uma referência para uma String.
+    s.len()
+} // Aqui, s sai do escopo, mas como ela não possui a ownership do valor na heap que ela se refere, ele não é dropado.
+```
+
+O escopo no qual a variável `s` é válida ainda é o mesmo que qualquer parâmetro de qualquer função, mas o valor apontado pela referência não é dropado quando `s` para de ser usado, porque `s` não possui a ownership do valor. Quando funções possuem referências como parâmetros ao invés de valores reais, nós não precisamos retornar os valores em ordem de devolver a ownership, porque nós nunca a possuímos.
+
+Nós chamamos o até de criar uma referência de borrowing ("empréstimo"). Como na vida real, se uma pessoa possui algo, você pode pegar isso emprestado e quando você terminar de usar, você o devolve. Você não é dono do que pega emprestado.
 
 # <a id="21-appendix"></a>21. Appendix
 

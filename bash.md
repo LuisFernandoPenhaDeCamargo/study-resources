@@ -418,9 +418,59 @@ Um CLI, uma ferramenta de linha de comando, são termos utilizados para se refer
 
 ### Sumário
 
-- [`git config pull.rebase false`]()
+- [`git checkout`](#git-checkout)
+    + [Alternar Entre Branches](#alternar-entre-branches)
+    + [Restaurar Arquivos](#restaurar-arquivos)
+- [`git config pull.rebase false`](#git-config-pullrebase-false)
 
-## <a id=""></a>`git config pull.rebase false`
+## <a id="git-checkout"></a>`git checkout`
+
+O comando `git checkout` é usado principalmente para alternar entre branches ou para restaurar arquivos em um repositório Git. Dependendo do contexto em que é usado, ele pode ter diferentes funcionalidades.
+
+Alguns pontos importantes:
+
+- Tenha cuidado ao usar o `git checkout` para alternar entre branches ou restaurar arquivos, pois ele pode substituir alterações não confirmadas. Certifique-se de ter confirmado ou armazenado essas alterações antes de usar este comando
+- A partir do Git 2.23, foi introduzido um novo comando chamado `git switch`, que é preferível ao `git checkout` para alternar entre os branches. O `git switch` é mais seguro e intuitivo para alternar entre os branches, enquanto o `git checkout` ainda é usado para outros propósitos, como restaurar arquivos
+
+Aqui estão as principais formas de uso do `git checkout`:
+
+### <a id="alternar-entre-branches"></a>Alternar Entre Branches
+
+- Para alternar para um branch existente
+
+```bash
+git checkout nome_da_branch
+```
+
+- Para criar e alternar para um novo branch
+
+```bash
+git checkout -b novo_branch
+```
+
+- Para criar e alternar para um novo branch, especificando o branch do qual você quer obter os recursos
+
+```bash
+git checkout -b novo_branch branch
+```
+
+Todos os commits e o estado dos arquivos neste branch (`branch`) serão copiados para `novo_branch`.
+
+### <a id="restaurar-arquivos"></a>Restaurar Arquivos
+
+- Para restaurar um arquivo específico para sua versão no último commit
+
+```bash
+git checkout -- nome_do_arquivo
+```
+
+- Para restaurar todos os arquivos para suas versões no último commit (útil para desfazer alterações não confirmadas)
+
+```bash
+git checkout .
+```
+
+## <a id="git-config-pullrebase-false"></a>`git config pull.rebase false`
 
 O comando `git config pull.rebase false` é usado para configurar o Git para não realizar o rebase automático ao executar o comando `git pull`.
 
