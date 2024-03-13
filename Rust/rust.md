@@ -10,11 +10,11 @@
 - [1. Getting Started](#1-getting-started)
     + [1.1 Installation](#11-installation)
     + [1.2 Hello, World!](#12-hello-world)
-        - [Anatomia de Um Programa em Rust](#anatomia-programa-rust)
-        - [Compilar e Executar são Etapas Separadas](#compilar-executar-etapas-separadas)
+        - [Anatomy of a Rust Program](#anatomy-rust-program)
     + [1.3 Hello, Cargo!](#13-hello-cargo)
-        - [Criando Um Projeto com o Cargo](#criando-projeto-cargo)
-        - [Construindo e Executando um Projeto Cargo](#construindo-executando-projeto-cargo)
+        - [Creating a Project with Cargo](#creating-project-cargo)
+        - [Building and Running a Cargo Project](#building-and-running-cargo-project)
+        - [Rust e o Seu Ponto de Entrada](#ponto-de-entrada)
 - [3. Common Programming Concepts](#3-common-programming-concepts)
     + [3.1 Variables and Mutability](#31-variables-and-mutability)
         - [Constants](#constants)
@@ -75,7 +75,7 @@ Para abrir o livro no google-chrome você pode executar o comando `google-chrome
 
 Se você precisa de um resumo do que será visto neste livro, no final da "Introduction", em "How to Use This Book", temos o que você precisa.
 
-# <a id="1-getting-started">1. Getting Started <! Estou re-resumindo o arquivo como um todo, por conta do aumento no meu conhecimento sobre Rust. As linhas acima já foram refatoradas.
+# <a id="1-getting-started">1. Getting Started
 
 ## <a id="11-installation"></a>1.1 Installation
 
@@ -83,36 +83,38 @@ Se você precisa de um resumo do que será visto neste livro, no final da "Intro
 $ curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
 ```
 
-Acho interessante pontuar que o que o comando faz é baixar um script e começar a instalação do utilitário `rustup`, o qual insta-la a última versão estável do Rust.
+O comando acima baixa um script e ele faz a instalação da última versão estável do utilitário `rustup`.
 
-Rust também precisa de um linker, que é um programa que o Rust usa para juntar a saída das suas compilações em um arquivo. É algo que você provavelmente já tem, mas caso um erro de link seja gerado, você deve instalar um compilador de C, pois ele provavelmente irá incluir um linker. Um compilador de C também é útil por conta que vários pacotes comuns do Rust dependem de codigo C e vão precisar de um compilador de C.
+O Rust também precisa de um linker, um programa que ele usa para juntar a saída das suas compilações em um arquivo. É algo que você provavelmente já tem, mas caso um erro de link seja gerado, você deve instalar um compilador de C, pois ele provavelmente irá incluir um linker. Um compilador de C também é útil porque vários pacotes comuns do Rust dependem de codigo C, então irão precisar de um compilador de C.
 
-Usuários Linux provavelmente vão precisar instalar o GCC ou o Clang.
+Usuários Linux podem utilizar o GCC ou o Clang.
 
 ## <a id="12-hello-world"></a>1.2 Hello, World!
 
-```rust
+```Rust
 // main.rs
 fn main() {
     println!("Hello, World!");
 }
 ```
 
-Você utiliza o comando: 
+Você utiliza o comando
 
 ```bash
-rustc nome_do_arquivo.rs
+$ rustc nome_do_arquivo.rs
 ```
 
-para compilar o arquivo e depois
+para compilar o arquivo acima e depois
 
 ```bash
-./nome_do_arquivo
+$ ./nome_do_arquivo
 ```
 
 para executá-lo.
 
-### <a id="anatomia-programa-rust"></a>Anatomia de Um Programa em Rust
+Observe que antes de executar um programa escrito em Rust, você deve compilá-lo e após a compilação, um binário executável será gerado.
+
+### <a id="anatomy-rust-program"></a>Anatomy of a Rust Program
 
 ```rust
 fn main() {
@@ -120,37 +122,36 @@ fn main() {
 }
 ```
 
-As linhas de código acima definem uma função chamada `main()`. A função `main()` é especial, é sempre o primeiro código a ser executado em todo executável em um programa Rust. A função `main()` não tem parâmetros, se ela tivesse, eles deveriam estar dentro de `()`.
+As linhas de código acima definem uma função chamada `main()`, ela é especial, **é sempre o primeiro código a ser executado em todo executável**, em um programa Rust.
 
-O corpo da função está envolto por `{}`. Rust requer as chaves em volta de todos os corpos das funções. A abertura das chaves define onde o corpo da função começa e o fechamento das chaves define onde o corpo da função termina.
+A `main()` não tem parâmetros, se ela tivesse, eles deveriam estar dentro de `()`.
+
+O corpo da função está envolto por `{}`, Rust requer as chaves em volta de todos os corpos das funções, a abertura das chaves define onde o corpo da função começa e o fechamento das chaves define onde o corpo da função termina.
 
 No arquivo **main.rs**, a linha `println!("Hello, World!");` invoca um macro, não uma função. Usar `!` significa que você está invocando um macro e não uma função, macros nem sempre seguem as mesmas regras que uma função.
 
-A string `"Hello, World!"` é passada como um argumento para `println!()`. A string é impressa em tela.
+A string `"Hello, World!"` é passada como um argumento para `println!()` e então é impressa em tela.
 
-A linha termina com um ponto e vírgula `;`, o ponto e vírgula indica que uma expressão terminou e a próxima está pronta pra começar. A maioria das linhas em 
+A linha termina com um ponto e vírgula (`;`), o ponto e vírgula indica que uma expressão terminou e a próxima está pronta pra começar, a maioria das linhas em 
 Rust terminam em ponto e vírgula.
-
-### <a id="compilar-executar-etapas-separadas"></a>Compilar e Executar são Etapas Separadas
-
-Antes de executar um programa Rust, você deve compila-lo. Após a compilação, um binário executável será gerado.
 
 ## <a id="13-hello-cargo"></a>1.3 Hello, Cargo!
 
-Cargo é o sistema de construção e o gerenciador de pacotes do Rust. Ele é muito utilizado pela comunidade Rust porque lida com várias tarefas para você, como construir o seu código, fazer o download de bibliotecas que o seu código utiliza, além de construir as bibliotecas mencionadas anteriormente (nos referimos as bibliotecas que o nosso código utiliza, depende de, de dependências).
+Cargo é o sistema de construção e o gerenciador de pacotes do Rust, ele é muito utilizado pela comunidade Rust porque lida com várias tarefas para você, como construir o seu código, fazer o download de bibliotecas que ele utiliza, além de construi-las (nos referimos as bibliotecas que o nosso código utiliza, depende de, de dependências).
 
-O Cargo já vem instalado com o Rust, se você o instalou Rust através do processo citado na seção 1.1.
+O Cargo já vem instalado com o Rust, se você o instalou o Rust através do processo citado na seção 1.1.
 
-### <a id="criando-projeto-cargo"></a>Criando Um Projeto com o Cargo
+### <a id="creating-project-cargo"></a>Creating a Project with Cargo
 
 ```bash
-cargo new hello_cargo
+$ cargo new hello_cargo
 ```
-O comando acima, cria um novo diretório chamado `hello_cargo`. Dentro dele, o cargo cria um arquivo **Cargo.toml** e um diretório chamado **src**, dentro de **src** é criado um arquivo chamado **main.rs**.
 
-O diretório criado pelo Cargo (**hello_cargo**) ja é inicializado como um novo repositório Git e, também já possui, o arquivo **.gitignore**. Arquivos Git não serão gerados se você executar o `cargo new` dentro de um repositório Git já existente.
+O comando acima cria um novo diretório chamado `hello_cargo`, dentro dele o cargo cria um arquivo **Cargo.toml** e um diretório chamado **src**. Dentro de **src** é criado um arquivo chamado **main.rs**.
 
-O conteúdo do arquivo **Cargo.toml** deve ser similar a:
+O diretório criado pelo Cargo (**hello_cargo**) já é inicializado como um novo repositório Git e já possui o arquivo **.gitignore**. Arquivos Git não serão gerados se você executar o `cargo new` dentro de um repositório Git já existente.
+
+O conteúdo do arquivo **Cargo.toml** deve ser similar a
 
 ```toml
 [package]
@@ -163,7 +164,7 @@ edition = "2021"
 [dependencies]
 ```
 
-**Cargo.toml** está na formato TOML (Tom's Obvious, Minimal Language), que é o formato de configuração do Cargo.
+**Cargo.toml** está na formato TOML (Tom's Obvious, Minimal Language) que é o formato de configuração do Cargo.
 
 A primeira linha, `[package]`, é o título da seção que indica que as próximas declarações são configurações de pacote.
 
@@ -173,45 +174,61 @@ A última linha, `[dependencies]`, é o começo da seção para você listar qua
 
 O arquivo **main.rs** possuirá um "Hello, world!" gerado automaticamente.
 
-O Cargo espera que seus arquivos "source" (fonte) estejam dentro da pasta **src**. O nível superior do diretório do projeto é usado somente para arquivos README, informação de licença, arquivos de configuração, e qualquer coisa que não seja relacionado ao código. Usar o Cargo ajuda a organizar os projetos. "Há um lugar para tudo e tudo está no lugar".
+O Cargo espera que seus arquivos de código fonte estejam dentro da pasta **src**, o nível superior do diretório do projeto é usado somente para arquivos README, informações de licença, arquivos de configuração e qualquer coisa que não seja relacionado ao código. Usar o Cargo ajuda a organizar os projetos, "Há um lugar para tudo e tudo está no lugar".
 
-Se você começou um projeto sem o Cargo, que não o usa, você pode converte-lo em um que usa. Mova seu código fonte para o diretório **src** e crie um arquivo **Cargo.toml** apropriado.
+Se você começou um projeto sem o Cargo, que não o usa, você pode convertê-lo em um que usa, basta mover o seu código para **src** e criar um arquivo **Cargo.toml** apropriado.
 
-### <a id="construindo-executando-projeto-cargo"><>Construindo e Executando um Projeto Cargo
+### <a id="building-and-running-cargo-project"></a>Building and Running a Cargo Project
 
-No seu diretório **cargo_hello**, construa o seu projeto usando o comando:
+Em **cargo_hello**, construa o seu projeto usando o comando
 
 ```bash
-cargo build
+$ cargo build
 ```
 
-Esse comando cria um executável em **target/debug/hello_cargo**, porque a construção padrão é a construção de "debug" (depuração). O Cargo coloca o executável no diretório chamado **debug**. Você pode executar o executável com o comando:
+esse comando cria um executável em **target/debug/hello_cargo**, porque a construção padrão é a construção de "debug" (depuração). O Cargo coloca o executável no diretório chamado **debug**, você pode executar o executável com o comando
 
 ```bash
-./target/debug/hello_cargo
+$ ./target/debug/hello_cargo
 ```
 
-Executando `cargo build` pela primeira vez também faz o Cargo criar um novo arquivo no nível superior do diretório do projeto: **Cargo.lock**. Este arquivo acompanha as exatas versões das dependências no seu projeto. Você nunca precisará mudar este arquivo manualmente, o Cargo gerencia o conteúdo para você.
+Executar `cargo build` pela primeira vez também faz com que o Cargo crie um novo arquivo no nível superior do diretório do projeto, **Cargo.lock**, este arquivo acompanha as exatas versões das dependências no seu projeto. Você nunca precisará mudar este arquivo manualmente, o Cargo gerencia o conteúdo para você.
 
-Nós construímos o projeto com `cargo build` e o executamos com `./target/debug/hello_cargo`, mas nos também podemos usar `cargo run` para compilar o código e executar o executável resultante.
+Nós construímos o projeto com `cargo build` e o executamos com `./target/debug/hello_cargo`, mas nós também podemos usar `cargo run` para compilar o código e executar o executável resultante.
 
 ```bash
-cargo run
+$ cargo run
 ```
 
 Usar `cargo run` é mais conveniente do que usar `cargo build` e depois usar o caminho até o binário.
 
-Observe que, se seu código não possuir modificações, `cargo run` irá descobrir isso, então ele só executará o binário. Caso você modifique o seu código fonte, Cargo reconstruirá o seu projeto antes de executá-lo.
+Observe que se seu código não possuir modificações, `cargo run` irá descobrir isso, então ele só executará o binário, caso você modifique o seu código fonte, Cargo reconstruirá o seu projeto antes de executá-lo.
 
-Cargo também provê o comando `cargo check`, este comando analisa rapidamente o seu código para verificar se é possível compila-lo, mas não produz um executável.
+Cargo também provê o comando `cargo check`, este comando analisa rapidamente o seu código para verificar se é possível compilá-lo, mas não produz um executável.
 
 ```bash
-cargo check
+$ cargo check
 ```
 
 Este comando é muito útil se você estiver querendo verificar se o seu trabalho ainda é compilável, pois não gerar um executável acelera bastante este processo.
 
-# <a id="3-common-programming-concepts"></a>3. Common Programming Concepts
+### <a id="ponto-de-entrada"></a>Rust e o Seu Ponto de Entrada
+
+Em Rust, para criar uma aplicação executável, você precisa de um **ponto de entrada** e o ponto de entrada padrão é a `main()`. A convenção é ter essa função em um arquivo chamado **main.rs** na raiz do projeto, se você quiser usar um nome diferente para o arquivo ou ter vários arquivos com funções `main()`, você precisa indicar ao Cargo como lidar com eles.
+
+- **Convenção padrão:**
+    + Tenha um arquivo **main.rs** na raiz do projeto
+    + A função `main()` neste arquivo é o ponto de entrada padrão
+    + Você pode usar `cargo run` para compilar e executar o programa
+- **Outros nomes de arquivo:**
+    + Se você desejar usar um nome diferente para o arquivo (por exemplo, **nome_do_arquivo.rs**), você precisa indicar isso ao Cargo
+    + Use `cargo run --bin nome_do_arquivo` para compilar e executar o programa quando a função `main()` está em **nome_do_arquivo.rs**
+- **Múltiplos pontos de entrada:**
+    + Se você tem vários arquivos com funções `main()`, você pode usar um diretório **src/bin/** para organizá-los
+    + Cada arquivo em **src/bin** é tratado como um ponto de entrada separado
+    + Use `cargo run --bin nome_do_arquivo` para especificar qual ponto de entrada executar
+
+# <a id="3-common-programming-concepts"></a>3. Common Programming Concepts <! Estou re-resumindo o arquivo como um todo, por conta do aumento no meu conhecimento sobre Rust. As linhas acima já foram refatoradas.
 
 ## <a id="31-variables-and-mutability"></a>3.1 Variables and Mutability
 
@@ -1629,6 +1646,74 @@ fn calculate_length(s: &String) -> usize { // s é uma referência para uma Stri
 O escopo no qual a variável `s` é válida ainda é o mesmo que qualquer parâmetro de qualquer função, mas o valor apontado pela referência não é dropado quando `s` para de ser usado, porque `s` não possui a ownership do valor. Quando funções possuem referências como parâmetros ao invés de valores reais, nós não precisamos retornar os valores em ordem de devolver a ownership, porque nós nunca a possuímos.
 
 Nós chamamos o até de criar uma referência de borrowing ("empréstimo"). Como na vida real, se uma pessoa possui algo, você pode pegar isso emprestado e quando você terminar de usar, você o devolve. Você não é dono do que pega emprestado.
+
+Se nós tentarmos modificar algo que nós estamos pegando emprestado, um erro será gerado. Observe o código abaixo:
+
+```Rust
+fn main() {
+    let s = String::from("hello");
+
+    change(&s);
+}
+
+fn change(some_string: &String) {
+    some_string.push_str(", world");
+}
+```
+
+O seguinte erro será gerado `error[E0596]: cannot borrow *some_string as mutable, as it is behind a & reference`. Assim como variáveis são imutáveis por padrão, as referências também são. Nós não temos a permissão de modificar algo para o qual nós nos referimos.
+
+**Mutable References**
+
+Para corrigir o código acima, você pode permitir que o valor emprestado seja modificado utilizando ao invés de uma referência, uma referência mutável.
+
+```Rust
+fn main() {
+    let mut s = String::from("hello");
+
+    change(&mut s);
+}
+
+fn change(some_string: &mut String) {
+    some_string.push_str(", world");
+}
+```
+
+Primeiramente nós tornamos `s` mutável e então criamos uma referência mutável com `&mut s` que é passada como argumento para `change()`. A assinatura da função `change()` foi atualizada para aceitar uma referência mutável como argumento. Tudo isto torna muito claro que `change()` irá alterar o valor que é emprestado a ela.
+
+Referências mutáveis tem uma grande restrição: se você possue uma referência mutável a um valor, você não pode possuir outras referências a aquele valor.
+
+```Rust
+    let mut s = String::from("hello");
+    let r1 = &mut s;
+    let r2 = &mut s;
+
+    println!("{}, {}", r1, r2);
+```
+
+O código acima gera o seguinte erro, `error[E0499]: cannot borrow s as mutable more than once at a time`. O primeiro empréstimo mutável ocorre na declaração de `r1` e deve durar até o seu uso em `println!`, mas neste meio tempo, nós tentamos criar outra referência mutável em `r2` que tenta pegar emprestado o mesmo dado que `r1`.
+
+A restrição previnindo múltiplas referências mutáveis para o mesmo dado, ao mesmo tempo, permite mutações, mas de uma forma bastante controlada. Isto é algo que novos Rustaceans tem dificuldade de aceitar, porque a maioria das linguagens permite mutações quando você quiser, mas a existência desta restrição possue um motivo, previnir "data race". Uma data race ocorre quando:
+
+- Dois ou mais ponteiros acessam o mesmo dado, ao mesmo tempo
+- Pelo menos um dos ponteiros está sendo usado para gravar nos dados
+- Não há nenhum mecanismo sendo usado para sincronizar o acesso aos dados
+
+Data races causam undefined behavior e pode ser difícil encontra-las e corrigi-las em tempo de execução, Rust as previne se recusando a compilar códigos com data races.
+
+Lembre-se que nós podemos usar chaves para criar novos escopos, permitindo assim, múltiplas referências mutáveis, considerando que elas não são simultâneas.
+
+```Rust
+    let mut s = String::from("hello");
+
+    {
+        let r1 = &mut s;
+    } // `r1` sai do escopo aqui, sendo assim, podemos criar novas referências sem problemas.
+
+    let r2 = &mut s;
+```
+
+
 
 # <a id="21-appendix"></a>21. Appendix
 

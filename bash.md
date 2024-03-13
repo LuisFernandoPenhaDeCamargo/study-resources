@@ -413,6 +413,7 @@ Um CLI, uma ferramenta de linha de comando, são termos utilizados para se refer
 
 - [`git`](#git)
 - [`wget`](#wget)
+- [`systemctl`](#systemctl)
 
 # <a id="git"></a>`git`
 
@@ -526,6 +527,20 @@ wget -P /caminho/do/diretorio http://exemplo.com/arquivo.txt
 ```
 
 Isso baixará o `arquivo.txt` do servidor `https://exemplo.com` e o salvará no diretório `/caminho/do/diretorio`
+
+# <a id="systemctl"></a>`systemctl`
+
+O `systemctl` é uma ferramenta de linha de comando que é parte do sistema de inicialização do systemd, um sistema de inicialização moderno, amplamente adotado por várias distribuições Linux. Ele é usado para controlar o sistema de inicialização e o gerenciamento de serviços.
+
+Aqui estão algumas das principais funções que o `systemctl` pode realizar:
+
+1. **Iniciar, parar e reiniciar serviços:** você pode iniciar um serviço usando `systemctl start nome_do_serviço`, pará-lo usando `systemctl stop nome_do_serviço` e reiniciá-lo usando `systemctl restart nome_do_serviço`
+2. **Habilitar e desabilitar serviços durante a inicialização:** para habilitar um serviço para iniciar durante a inicialização, use `systemctl enable nome_do_serviço`. Para desabilitar um serviço para iniciar durante a inicialização, use `systemctl disable nome_do_serviço`
+3. **Verificar o status de serviços:** use `systemctl status nome_do_serviço` para verificar o status de um serviço, incluindo se está em execução ou parado, e se ocorreram erros
+4. **Listar serviços:** você pode listar todos os serviços disponíveis com `systemctl list-units --type=service`. Você também pode usar `systemctl list-units --type=service --all` para listar todos os serviços, incluindo aqueles que não estão em execução no momento
+5. **Verificar os logs do sistema:** use `journalctl` em conjunto com o `systemctl` para verificar os logs do sistema relacionados aos serviços. Por exemplo, `journalctl -u nome_do_serviço` mostrará apenas os logs para o serviço especificado
+
+Essas são apenas algumas das funcionalidades do `systemctl`. Ele é uma ferramenta poderosa para gerenciar serviços e o sistema de inicialização em sistemas Linux que usam o systemd como seu sistema de inicialização.
 
 # Template
 

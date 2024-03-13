@@ -17,10 +17,6 @@
 
 # Estudar
 
-- `systemctl status mysql.service`
-- `systemctl restart mysql`
-- `systemctl stop mysql`
-
 + `aws s3 sync "s3://game.set-homologated" "conteudo/zoe-client-src/game.set"`
 + `aws s3 cp "s3://game.set-homologated/CUBANA-1SQ.set.es" "conteudo/zoe-client-src/game.set"`
 + `aws configure list`
@@ -93,11 +89,11 @@
     + [1. Getting Started](#1-getting-started)
         - [1.1 Installation](#11-installation)
         - [1.2 Hello, World!](#12-hello-world)
-            + [Anatomia de Um Programa em Rust](#anatomia-programa-rust)
-            + [Compilar e Executar são Etapas Separadas](#compilar-executar-etapas-separadas)
+            + [Anatomy of a Rust Program](#anatomy-rust-program)
         - [1.3 Hello, Cargo!](#13-hello-cargo)
-            + [Criando Um Projeto com o Cargo](#criando-projeto-cargo)
-            + [Construindo e Executando um Projeto Cargo](#construindo-executando-projeto-cargo)
+            + [Creating a Project with Cargo](#creating-project-cargo)
+            + [Building and Running a Cargo Project](#building-and-running-cargo-project)
+            + [Rust e o Seu Ponto de Entrada](#ponto-de-entrada)
     + [3. Common Programming Concepts](#3-common-programming-concepts)
         - [3.1 Variables and Mutability](#31-variables-and-mutability)
             + [Constants](#constants)

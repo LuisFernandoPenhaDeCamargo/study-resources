@@ -1513,7 +1513,6 @@ Para **lifetimes** a convenção são caracteres minúsculos antecedidos de um a
 - **Target**
 - **Arquivo Makefile no Formato TOML**
 - **Executando Um Código Feito em Rust**
-- **Rust e o Seu Ponto de Entrada**
 - **Cargo**
 - **Macros**
     + `macro`
@@ -1656,24 +1655,6 @@ dependencies = ["cross-build-release", "strip", "upx"]
     O padrão é um arquivo **main.rs** que contém a função `main()`
 - Execute o comando `cargo init` no diretório que contém o arquivo **main.rs**
     Ele irá criar o arquivo **Cargo.toml**
-
-# Rust e o Seu Ponto de Entrada
-
-Em Rust, para criar uma aplicação executável, você precisa de um ponto de entrada, e o ponto de entrada padrão é a função `main`. A convenção é ter essa função no arquivo chamado **main.rs** na raiz do projeto. Se você quiser usar um nome diferente para o arquivo ou ter vários arquivos com funções `main`, você precosa indicar ao Cargo como lidar com eles.
-
-- **Convenção padrão:**
-    + Tenha um arquivo **main.rs** na raiz do projeto
-    + A função `main` neste arquivo é o ponto de entrada padrão
-    + Você pode usar `cargo run` para compilar e executar o programa
-- **Outros nomes de arquivo:**
-    + Se você desejar usar um nome diferente para o arquivo (por exemplo, **nome_do_arquivo.rs**), você precisa indicar isso ao Cargo
-    + Use `cargo run --bin nome_do_arquivo` para compilar e executar o programa quando a função `main` está em **nome_do_arquivo.rs**
-- **Múltiplos pontos de entrada:**
-    + Se você tem vários arquivos com funções `main`, você pode usar um diretório **src/bin/** para organizá-los
-    + Cada arquivo em **src/bin** é tratado como um ponto de entrada separado
-    + Use `cargo run --bin nome_do_arquivo` para especificar qual ponto de entrada executar
-
-Em resumo, a função `main` é necessária para criar uma aplicação executável, e a convenção padrão é ter essa função em um arquivo chamado **main.rs**. Você pode personalizar isso, mas precisa informar ao Cargo como lidar com seus pontos de entrada alternativos.
 
 # Cargo
 
