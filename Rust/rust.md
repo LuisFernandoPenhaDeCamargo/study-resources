@@ -37,8 +37,12 @@
         - [Variable Scope](#variable-scope)
         - [The String Type](#the-string-type)
         - [Memory and Allocation](#memory-and-allocation)
-        - [Pontos Adicionais](#pontos-adicionais)
+        - [Pontos Adicionais](#pontos-adicionais-ownership)
     + [4.2 References and Borrowing](#42-references-and-borrowing)
+        - [Mutable References](#mutable-references)
+        - [Dangling References](#dangling-references)
+        - [The Rules of References](#rules-of-references)
+        - [Pontos Adicionais](#pontos-adicionais-references)
 - [21. Appendix](#21-appendix)
     + [21.1 A - Keywords](#211-a-keywords)
 - [Executando Código em Rust](#executando-codigo-rust)
@@ -228,13 +232,13 @@ Em Rust, para criar uma aplicação executável, você precisa de um **ponto de 
     + Cada arquivo em **src/bin** é tratado como um ponto de entrada separado
     + Use `cargo run --bin nome_do_arquivo` para especificar qual ponto de entrada executar
 
-# <a id="3-common-programming-concepts"></a>3. Common Programming Concepts <! Estou re-resumindo o arquivo como um todo, por conta do aumento no meu conhecimento sobre Rust. As linhas acima já foram refatoradas.
+# <a id="3-common-programming-concepts"></a>3. Common Programming Concepts
 
 ## <a id="31-variables-and-mutability"></a>3.1 Variables and Mutability
 
-Variáveis, **por padrão, são imutáveis**. Esta é uma forma que o Rust te incentiva a escrever código que aproveita a segurança e a concorrência que ele oferece. Ainda assim, você pode tornar elas mutáveis, vamos observar o porque o Rust te encoraja a ser a favor da imutabilidade e porque, as vezes, você pode querer optar variáveis mutáveis.
+Variáveis, **por padrão, são imutáveis**, esta é uma das formas que o Rust te incentiva a escrever código que aproveita a segurança e a concorrência que ele oferece, ainda assim, você pode tornar elas mutáveis. Vamos observar o porque o Rust te encoraja a ser a favor da imutabilidade e porque, às vezes, você pode querer optar variáveis mutáveis.
 
-Quando a variável é imutável, uma vez que o valor é vinculado ao nome, você não pode mudar o valor. Para ilustrar isso, vamos gerar um projeto chamado **variables**, no nosso arquivo **main.rs**, estará o código abaixo:
+Quando a variável é imutável, uma vez que o valor é vinculado ao nome, você não pode mudar o valor. Para ilustrar isso, vamos gerar um projeto chamado **variables** e, no nosso arquivo **main.rs**, inserir o código abaixo:
 
 ```rust
 fn main() {
@@ -250,13 +254,13 @@ fn main() {
 
 A compilação do código acima gera um erro relacionado a imutabilidade. Erros de compilação podem ser frustrantes, mas eles simplesmente significam que o seu programa não está fazendo de forma segura o que você quer que ele faça, ainda.
 
-Você recebeu a mensagem de erro `cannot assign twice to immutable variable 'x'`, porque você tentou atribuir um segundo valor a variável imutável `x`.
+Você recebeu a mensagem de erro `cannot assign twice to immutable variable x`, porque você tentou atribuir um novo valor a variável imutável `x`.
 
-Se um erro de compilação não fosse gerado quando tentamos mudar o valor de uma variável imutável, esta situação poderia levar a vários bugs. Se uma parte do nosso código parte do pressuposto que um valor nunca vai mudar e a outra parte do código muda este valor, é possível que a primeira parte não fará o que foi designada para fazer. A causa deste tipo de problema pode ser difícil de rastrear, especialmente quando a segunda parte do código muda o valor, somente, as vezes. O compilador do Rust garante que quando você pontua que um valor não vai mudar, ele realmente não muda, assim, você não precisa ficar de olho, você mesmo. Seu código é, portanto, mais fácil de raciocinar.
+Se um erro de compilação não fosse gerado quando tentamos mudar o valor de uma variável imutável, esta situação poderia levar a vários bugs. Se uma parte do nosso código parte do pressuposto que um valor nunca vai mudar e a outra parte do código muda este valor, é possível que a primeira parte não fará o que foi designada para fazer. A causa deste tipo de problema pode ser difícil de rastrear, especialmente quando a segunda parte do código muda o valor, somente, às vezes. O compilador do Rust garante que quando você pontua que um valor não vai mudar, ele realmente não muda, assim você não precisa ficar de olho, você mesmo. Seu código é, portanto, mais fácil de raciocinar.
 
-Entretanto, mutabilidade pode ser muito útil, fazendo até com que o código seja mais conveniente de escrever. Apesar das variáveis serem imutáveis por padrão, você pode torna-las mutáveis as declarando como `mut`. Declarar uma variável como `mut` indica aos leitores do código que outras partes do código iram alterar o valor da variável.
+Entretanto, mutabilidade pode ser muito útil, fazendo até com que o código seja mais conveniente de escrever. Apesar das variáveis serem imutáveis por padrão, você pode torná-las mutáveis as declarando como `mut`. Declarar uma variável como `mut` indica aos leitores do código que outras partes do código iram alterar o valor da variável.
 
-Vamos arrumar o código acima, a versão do código que ficará salva no projeto é a versão funcional.
+Vamos arrumar o código acima:
 
 ```rust
 fn main() {
@@ -274,9 +278,9 @@ Nos é permitido alterar o valor vinculado a `x` de `5` para `6` porque `mut` é
 
 ### <a id="constants"></a>Constants
 
-Assim como variáveis imutáveis, **constantes** são valores que são vinculados a um nome e não é permitido alterar ele, mas há algumas diferenças entre `const` e variáveis.
+Assim como variáveis imutáveis, **constantes** são valores que são vinculados a um nome e não é permitido alterar eles, mas há algumas diferenças entre `const` e variáveis.
 
-Primeiramente, você não pode utilizar `mut` com constantes, constantes não são simplesmente imutáveis por padrão, elas são **sempre imutáveis**. Você declara constantes utilizando a palavra-chave `const` ao invés de `let`, e o tipo do valor **deve** ser especificado. Variáveis declaradas como `let` podem ter o seu tipo inferido, como dito antes, variáveis declaradas como `const`, devem ter o seu tipo especificado.
+Primeiramente, você não pode utilizar `mut` com constantes, constantes não são simplesmente imutáveis por padrão, elas são **sempre imutáveis**. Você declara constantes utilizando a palavra-chave `const` ao invés de `let` e o tipo do valor **deve** ser especificado, enquanto Variáveis declaradas como `let` podem ter o seu tipo inferido.
 
 Constantes podem ser declaradas em qualquer escopo, inclusive o escopo global, o que faz delas úteis para valores que serão utilizadas em vaŕias partes do código.
 
@@ -284,11 +288,11 @@ A última diferença entre constantes e outras variáveis é que o seu valor dev
 
 Abaixo, temos um exemplo de uma declaração constante:
 
-```rust
+```Rust
 const TRES_HORAS_EM_SEGUNDOS: u32 = 60 * 60 * 3;
 ```
 
-O nome da constante é `TRES_HORAS_EM_SEGUNDOS` e o seu valor é uma combinação do resultado da multiplicação `60 * 60 * 3`. A convenção de nomeação de constantes em Rust é que ela deve estar completamente em maiúsculo com undescore entre as palavras. O compilador consegue calcular um limitado conjunto de operações em tempo de compilação, o que nos permite escolher entre escrever o valor de uma maneira que é fácil de ler e entender o seu significado, ao invés de escrever o valor resultante da expressão, que pode ser difícil de compreender. Em um capítulo a frente, veremos quais operações podem ser usadas quando declarando constantes.
+O nome da constante é `TRES_HORAS_EM_SEGUNDOS` e o seu valor é uma combinação do resultado da multiplicação `60 * 60 * 3`. A convenção de nomeação de constantes em Rust é que ela deve estar completamente em maiúsculo. O compilador consegue calcular um limitado conjunto de operações em tempo de compilação, o que nos permite escolher entre escrever o valor de uma maneira que é fácil de ler e entender o seu significado, ao invés de escrever o valor resultante da expressão, que pode ser difícil de compreender. Em um capítulo a frente, veremos quais operações podem ser usadas quando declarando constantes.
 
 Constantes são válidas por toda a execução do programa, considerando o escopo no qual foram declaradas. Esta propriedade faz de constantes úteis para valores que serão utilizados em várias partes do domínio da sua aplicação.
 
@@ -296,7 +300,7 @@ Nomear valores que ficarão codificados permanentemente em seu programa como con
 
 ### <a id="shadowing"></a>Shadowing
 
-Você pode declarar uma nova variável com o mesmo nome de uma variável já existente. Rustaceans falam que a primeira variável foi "shadowed" (sombreada) pela segunda, o que significa que a segunda variável é a que o compilador vai enxergar quando você usar o nome da variável. O que acontece é que a segunda variável ofusca a primeira, assumindo o controle do uso do nome da variável, até ela ser ofuscada, ou o seu escopo terminar. Nos podemos sombrear uma variável usando o nome dela em outra declaração.
+Você pode declarar uma nova variável com o mesmo nome de uma variável já existente. Rustaceans falam que a primeira variável foi sombreada ("shadowed") pela segunda, o que significa que a segunda variável é a que o compilador vai enxergar quando você usar o nome da variável. O que acontece é que a segunda variável ofusca a primeira, assumindo o controle do uso do nome da variável, até ela ser ofuscada, ou o seu escopo terminar. Nos podemos sombrear uma variável usando o nome dela em outra declaração.
 
 ```rust
 fn main() {
@@ -313,23 +317,18 @@ fn main() {
 }
 ```
 
-O código acima vincula `x` ao valor `5`. Então, cria uma nova variável `x`, ao repetir `let x =`, utilizando o valor original de `x` e adicionando `1` a ele. Depois, dentro do escopo interno criado com as chaves, uma terceira declaração de `x` é realizada e cria uma nova variável, ofuscando a variável anterior. O seu valor é o valor anterior multiplicado por `2`. Quando o escopo acaba, o sombreamento interno termina e o valor de `x` volta a ser `6`.
+O código acima vincula `x` ao valor `5`, cria uma nova variável `x`, ao repetir `let x =`, utilizando o valor original de `x` e adicionando `1` a ele. Depois, dentro do escopo interno criado com as chaves, uma terceira declaração de `x` é realizada e cria uma nova variável, ofuscando a variável anterior. O seu valor é o valor anterior multiplicado por `2`. Quando o escopo acaba, o sombreamento interno termina e o valor de `x` volta a ser `6`.
 
-Sombrear é diferente de marcar uma variável como `mut`, porque nós iremos receber um erro em tempo de compilação, caso a gente, acidentalmente, tente reatribuir a variável sem utilizar a palavra-chave `let`. Ao utilizar `let`, nos conseguimos realizar algumas transformações no valor, mas possuir uma variável imutável após as transformações terem sido completadas.
+Sombrear é diferente de marcar uma variável como `mut`, porque nós iremos receber um erro em tempo de compilação, caso a gente tente reatribuir a variável sem utilizar a palavra-chave `let`. Ao utilizar `let`, nós conseguimos realizar algumas transformações no valor, mas possuir uma variável imutável após as transformações terem sido completadas.
 
-Outra diferença entre `mut` e sombrear é que, quando sombreamos, estamos efetivamente criando uma nova variável ao utilizar a palavra-chave `let`. Com isso, podemos mudar o tipo do valor da variável, mas reutilizar o nome.
-
-```rust
-let espaco = "     "; // Uma quantidade de espaços em branco (5).
-let espaco = espaco.len(); // O tipo foi alterado.
-```
-
-O primeiro `espaco` é uma variável do tipo string e a segunda é uma variável do tipo number. Sombrear nos poupa de ter que escolher diferentes nomes, como, `espaco_str` e `espaco_num`, ao invés disso, podemos simplesmente reutilizar `espaco`. Contudo, se tentarmos fazer isso utilizando a palavra-chave `mut`, um erro será gerado, nos informando que não podemos mudar o tipo de uma variável mutável.
+Outra diferença entre `mut` e sombrear é que, **quando sombreamos, estamos efetivamente criando uma nova variável ao utilizar a palavra-chave** `let`. Com isso, podemos mudar o tipo do valor da variável, mas reutilizar o nome.
 
 ```rust
-let mut espaco = "     ";
-espaco = espaco.len();
+    let espaco = "     ";      // Uma quantidade de espaços em branco (5).
+    let espaco = espaco.len(); // O tipo foi alterado.
 ```
+
+O primeiro `espaco` é uma variável do tipo string e a segunda é uma variável do tipo number. Sombrear nos poupa de ter que escolher diferentes nomes, como `espaco_str` e `espaco_num`, ao invés disso, podemos simplesmente reutilizar `espaco`. Contudo, se tentarmos fazer isso utilizando a palavra-chave `mut`, um erro será gerado, nos informando que não podemos mudar o tipo de uma variável mutável.
 
 **Exemplo interessante:**
 
@@ -353,7 +352,7 @@ fn main() {
 }
 ```
 
-## <a id="32-data-types"></a>3.2 Data Types
+## <a id="32-data-types"></a>3.2 Data Types <! Estou re-resumindo o arquivo como um todo, por conta do aumento no meu conhecimento sobre Rust. As linhas acima já foram refatoradas.
 
 Todo valor em Rust é de um certo tipo de dado, essa especificação é o que diz a ele como trabalhar com aquele dado. Iremos observar dois subconjuntos de dados, escalar e composto.
 
@@ -1435,7 +1434,7 @@ fn calculate_length(s: String) -> (String, usize) {
 
 Mas isto é muita cerimônia e muito trabalho para um conceito que deveria ser comum, tanto que Rust tem um recurso para passar um valor sem transferir a sua ownership, chamado "referência".
 
-### <a id="pontos-adicionais"></a>Pontos Adicionais
+### <a id="pontos-adicionais-ownership"></a>Pontos Adicionais
 
 Alguns pontos interessantes que se encontram na versão do livro que possui quiz:
 
@@ -1663,7 +1662,7 @@ fn change(some_string: &String) {
 
 O seguinte erro será gerado `error[E0596]: cannot borrow *some_string as mutable, as it is behind a & reference`. Assim como variáveis são imutáveis por padrão, as referências também são. Nós não temos a permissão de modificar algo para o qual nós nos referimos.
 
-**Mutable References**
+### <a id="mutable-references"></a>Mutable References
 
 Para corrigir o código acima, você pode permitir que o valor emprestado seja modificado utilizando ao invés de uma referência, uma referência mutável.
 
@@ -1712,6 +1711,88 @@ Lembre-se que nós podemos usar chaves para criar novos escopos, permitindo assi
 
     let r2 = &mut s;
 ```
+
+Lembrando que o Rust também não permite uma combinação de referências mutáveis e imutáveis:
+
+```Rust
+    let mut s = String::from("hello");
+    let r1 = &s; // "no problem"
+    let r2 = &s; // "no problem"
+    let r3 = &mut s; // "BIG PROBLEM"
+
+    println!("{}, {}, and {}", r1, r2, r3);
+```
+
+O código acima irá gerar o seguinte erro `error[E0502]: cannot borrow s as mutable because it is also borrowed as imutable`.
+
+Usuários de uma referência imutável não esperam que o valor mude subtamente, entretanto, múltiplas referências imutáveis são permitidas, porque ninguém que está lendo o dado tem a habilidade de alterá-lo e afetar os outros que também estão o lendo.
+
+Observe que o escopo de uma referência começa onde ela é introduzida e continua até o último momento no qual ela é usada. Isso é ilustrado pelo código abaixo, onde o último uso das referências imutáveis é em `println!`:
+
+```Rust
+    let mut s = String::from("hello");
+    let r1 = &s; // "no problem"
+    let r2 = &s; // "no problem"
+
+    println!("{} and {}", r1, r2);
+    // "variables r1 and r2 will note be used after this point"
+
+    let r3 = &mut s; // "no problem"
+
+    println!("{}", r3);
+```
+
+O escopo das referências imutáveis `r1` e `r2` termina após o `println!`, onde elas são usadas pela última vez, que é antes da criação da referência mutável `r3`. Os escopos não se sobrepõem, então está tudo certo com o código, o compilador consegue dizer que a referência não está mais sendo usada em um ponto antes do final do escopo.
+
+Lembre-se que é muito melhor você obter um erro em tempo de compilação do que obter um dado que não é o que você espera em tempo de execução, o que poderia ser causado por empréstimos realizados de forma incorreta.
+
+### <a id="dangling-references"></a>Dangling References
+
+Em linguagens que utilizam ponteiros é fácil criar um dangling pointer que é um ponteiro que se refere a um endereço de memória que pode ter sido dado a outra pessoa, isso pode ocorrer ao desalocar o espaço de memória enquanto você preserva o ponteiro para ela. O compilador de Rust não permite que isso aconteça, ele garante que um dado não vai sair de escopo antes que a referência para este dado saia.
+
+```Rust
+fn main() {
+    let reference_to_nothing = dangle();
+}
+
+fn dangle() -> &String {
+    let s = String::from("hello");
+
+    &s
+}
+```
+
+O código acima, que tenta de forma proposital criar uma dangling reference, gera o seguinte erro `error[E0106] missing lifetime specifier`. O erro fala de um conceito que veremos mais a frente, **lifetime**s, mas o que é importante para nós no momento é mensagem de auxílio `this function's return type contains a borrowed value, but there is no value for it to be borrowed from` que descreve uma dangling reference.
+
+```Rust
+fn dangle() -> &String {           // `dangle()` retorna uma referência para uma String.
+    let s = String::from("hello"); // `s` é uma nova String.
+
+    &s                             // Uma referência para a String `s` é retornada.
+}                                  // Aqui `s` sai do escopo e é dropado. A memória na hash é liberada.
+                                   // "Danger!"
+```
+
+`s` é criada dentro de `dangle()`, quando `dangle()` encerrá a sua execução, `s` será desalocada, mas o código acima tenta passar uma referência para ele. A referência para ela seria um ponteiro para uma String inválida, o Rust não permite isto.
+
+Caso nós retornássemos a String diretamente, o código funcionaria, porque a ownership seria movida e o dado na hash não seria desalocado.
+
+### <a id="rules-of-references"></a>The Rules of References
+
+Recapitulando:
+
+- Em um dado momento, você pode ter uma referência mutável ou qualquer número de referências imutáveis
+- Referências devem sempre ser válidas
+
+### <a id="pontos-adicionais-references"></a>Pontos Adicionais
+
+**References and Borrowing**
+
+Ownership, boxes e moves proveem uma fundação para programar de forma segura com a heap. Entretanto, APIs que só utilizam de movimentação podem ser inconvenientes de usar. Observe o exemplo abaixo, onde nós tentamos ler strings duas vezes:
+
+![42-1](../images/42-2-image.png)
+
+No exemplo acima, chamar `greet()` move os dados de `m1` e `m2` para os parâmetros de `greet()`, ambas strings são dropadas após o final da execução da função, então não podem ser usadas na `main()`. Se nós tentarmos ler as variáveis na operação `format!`, isso iria geriar um undefined behavior.
 
 
 

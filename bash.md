@@ -4,6 +4,7 @@
 
 - [Comandos](#comandos)
 - [Ferramentas de Linha de Comando](#ferramentas-linha-comando-cli)
+- [Gerenciadores de Pacote](#gerenciadores-pacote)
 
 # <a id="comandos"></a>Comandos
 
@@ -115,13 +116,15 @@ cp [opções] origem destino
 - `origem`**:** o caminho para o arquivo ou diretório que você deseja copiar
 - `destino`**:** o caminho para onde você deseja copiar o arquivo ou diretório
 
-Por exemplo, para copiar um arquivo chamado **arquivo.txt** do diretório atual para o diretório **/tmp**, você usaria:
+**Exemplos**
+
+- Para copiar um arquivo chamado **arquivo.txt** do diretório atual para o diretório **/tmp**
 
 ```bash
 cp arquivo.txt /tmp
 ```
 
-Para copiar um diretório chamado **meu_diretorio** e todo o seu conteúdo para outro diretório chamado **backup**, você usaria:
+- Para copiar um diretório chamado **meu_diretorio** e todo o seu conteúdo para outro diretório chamado **backup**, você usaria:
 
 ```bash
 cp -r meu_diretorio backup
@@ -183,19 +186,21 @@ O comando `mv` é usado para mover arquivos e diretórios de um local para outro
 mv [opções] origem destino
 ```
 
-Por exemplo, para mover um arquivo chamado **arquivo.txt** de um diretório para outro, você pode fazer:
+**Exemplos**
+
+- Para mover um arquivo chamado **arquivo.txt** de um diretório para outro
 
 ```bash
 mv arquivo.txt /caminho/do/novo/diretorio/
 ```
 
-Se você deseja renomear o arquivo ao movê-lo, você pode especificar o novo nome no destino:
+- Para renomear o arquivo ao movê-lo, você pode especificar o novo nome no destino:
 
 ```bash
 mv arquivo.txt /caminho/do/novo/diretorio/novo_nome.txt
 ```
 
-Além disso, o comando `mv` pode ser usado para mover múltiplos arquivos para um diretório de destino:
+- Além disso, o comando `mv` pode ser usado para mover múltiplos arquivos para um diretório de destino:
 
 ```bash
 mv arquivo1.txt arquivo2.txt /caminho/do/novo/diretorio/
@@ -414,6 +419,7 @@ Um CLI, uma ferramenta de linha de comando, são termos utilizados para se refer
 - [`git`](#git)
 - [`wget`](#wget)
 - [`systemctl`](#systemctl)
+- [`aws`](#aws)
 
 # <a id="git"></a>`git`
 
@@ -541,6 +547,142 @@ Aqui estão algumas das principais funções que o `systemctl` pode realizar:
 5. **Verificar os logs do sistema:** use `journalctl` em conjunto com o `systemctl` para verificar os logs do sistema relacionados aos serviços. Por exemplo, `journalctl -u nome_do_serviço` mostrará apenas os logs para o serviço especificado
 
 Essas são apenas algumas das funcionalidades do `systemctl`. Ele é uma ferramenta poderosa para gerenciar serviços e o sistema de inicialização em sistemas Linux que usam o systemd como seu sistema de inicialização.
+
+# <a id="aws"></a>`aws`
+
+A AWS CLI (Interface de Linha de Comando da Amazon Web Services) é uma ferramenta de linha de comando que permite interagir com os serviços da AWS diretamente a partir do terminal. Com a AWS CLI, você pode realizar uma variedade de tarefas, como criar e gerenciar instâncias EC2, criar e gerenciar buckets no Amazon S3, configurar e gerenciar serviços de rede como o Amazon VPC, entre muitas outras.
+
+A AWS CLI é uma ferramenta poderosa para automação, scripting e administração de recursos na AWS. Ela oferece uma interface unificada para acessar os serviços da AWS e é suportada em várias plataformas, incluindo Linux, macOS e Windows.
+
+Aqui estão alguns dos principais recursos e funcionalidades da AWS CLI:
+
+1. **Autenticação e configuração:** você pode configurar as credenciais de acesso à AWS e outras opções de configuração, como região padrão e formato de saída
+2. **Chamadas de API:** a AWS CLI permite fazer chamadas diretas às APIs da AWS para realizar ações em seus recursos
+3. **Listagem e descrição de recursos:** você pode listar e descrever recursos existentes em sua conta da AWS, como instâncias EC2, buckets S3, grupos de segurança, etc
+4. **Criação e gerenciamento de recursos:** você pode criar e gerenciar recursos diretamente da linha de comando, como criar instâncias EC2, criar buckets, lançar stacks do CloudFormation, etc
+5. **Filtragem e formação de saída:** a saída da AWS CLI pode ser formatada de várias maneiras para atender às suas necessidades, incluindo JSON, texto simples e tabelas
+
+Para começar a usar a AWS CLI, você precisa instalá-la em seu sistema e configurar suas credenciais de acesso à AWS. Uma vez configurada, você pode começar a usar os comandos da AWS CLI para interagir com os serviços da AWS.
+
+### Sumário
+
+- [`aws configure list`](#aws-configure-list)
+- [`aws s3 cp`](#aws-s3-cp)
+- [`aws s3 sync`](#aws-s3-sync)
+
+## <a id="aws-configure-list"></a>`aws configure list`
+
+O comando `aws configure list` é usado para listar as configurações atuais do AWS CLI, incluindo o ID da chave de acesso, a chave de acesso secreta, a região e o formato de saída.
+
+## <a id="aws-s3-cp"></a>`aws s3 cp`
+
+O comando `aws s3 cp` é usado para copiar arquivos e diretórios entre o sistema de arquivos local e um bucket do Amazon S3, ou entre buckets do Amazon S3.
+
+**Sintaxe Básica**
+
+```bash
+aws s3 cp "origem" "destino"
+```
+
+- `origem`**:** é o caminho para o arquivo ou diretório de origem
+- `destino`**:** é o caminho para o arquivo ou diretório de destino
+
+**Opções Comuns**
+
+- `--recursive`**:** copia recursivamente todos os arquivos e subdiretórios
+- `--acl`**:** define as permissões de acesso aos objetos copiados
+- `--sse`**:** específica o tipo de criptografia de servidor usada durante a cópia
+- `--exclude` **e** `--include`**:** específica padrões para excluir ou incluir determinados arquivos durante a cópia
+
+**Exemplos**
+
+- Para copiar um arquivo chamado `arquivo` do sistema de arquivos local para um bucket do Amazon S3
+
+```bash
+aws s3 cp "arquivo" "s3://bucket"
+```
+
+- Para copiar um arquivo da S3 para o sistema de arquivos local
+
+```bash
+aws s3 cp "s3://bucket/arquivo" .
+```
+
+## <a id ="aws-s3-sync"></a>`aws s3 sync`
+
+O comando `aws s3 sync` é usado para sincronizar o conteúdo entre um diretório local e um bucket do Amazon S3 ou entre dois buckets do Amazon S3. Ele é uma maneira eficiente de garantir que os dados estejam consistentes entre um sistema de arquivos local e o armazenamento na nuvem do S3.
+
+Se houver arquivos no diretório local que não existam no bucket S3, esses arquivos serão copiados para o bucket durante a sincronização, da mesma forma, se houver arquivos no bucket S3 que não existam no diretório local, esses arquivos serão copiados para o diretório local durante a sincronização. Ou seja, após a sincronização, o conteúdo do diretório local será o mesmo que o conteúdo do bucket S3, garantindo que ambos estejam em sincronia.
+
+**Sintaxe Básica**
+
+```bash
+aws s3 sync "caminho_local" "s3://nome_do_bucket/caminho_no_bucket"
+```
+
+- `caminho_local`**:** é o diretório local que você deseja sincronizar com o S3
+- `nome_do_bucket`**:** é o nome do bucket do Amazon S3
+- `caminho_no_bucket`**:** é o caminho dentro do bucket onde você deseja sincronizar os arquivos
+
+**Opções Comuns**
+
+A opção `--delete` remove os arquivos no destino que não existem no ponto de origem durante a sincronização.
+
+**Exemplos**
+
+- Para sincronizar o conteúdo do diretório local `/caminho/local` com o bucket `meu-bucket` e o diretório `pasta-no-bucket`
+
+```bash
+aws s3 sync "/caminho/local" "s3://meu-bucket/pasta-no-bucket"
+```
+
+- Para remover os arquivo no destino (`s3://meu-bucket/pasta-no-bucket`) que não existem no ponto de origem (`/caminho/local`)
+
+```bash
+aws s3 sync "/caminho/local" "s3://meu-bucket/pasta-no-bucket" --delete
+```
+
+# <a id="gerenciadores-pacote"></a>Gerenciadores de Pacote
+
+### Sumário
+
+- [`cargo`](#cargo)
+
+# <a id="cargo"></a>`cargo`
+
+`cargo` é a ferramenta de gerenciamento de pacotes e construção para o ecossistema de desenvolvimento em Rust. É uma ferramenta poderosa que simplifica o processo de construção, testes e distribuição de aplicativos e bibliotecas escritos em Rust.
+
+Aqui estão alguns dos principais recursos e funcionalidade do `cargo`:
+
+1. **Gerenciamento de dependências:** o `cargo` facilita a gestão das dependências do seu projeto Rust. Você pode especificar as dependências do seu projeto no arquivo **Cargo.toml**, e o `cargo` cuidará de baixar e gerenciar essas dependências
+2. **Construção de projetos:** o `cargo` é usado para compilar projetos em Rust. Ele detecta automaticamente os arquivos de origem no diretório do projeto e compila-os em binários executáveis ou bibliotecas compartilhadas, dependendo do tipo de projeto
+3. **Testes automatizados:** o `cargo` inclui suporte embutido para testes automatizados. Você pode escrever tester unitários e de integração para o seu código em Rust e executá-los facilmente com o comando `cargo test`
+4. **Geração de documentação:** o `cargo` pode ser usado para gerar documentação para o seu código em Rust. O comando `cargo doc` gera documentação HTML para todos os itens públicos no seu projeto, incluindo módulos, estruturas, enumerações e funções
+5. **Publicação de pacotes:** se você estiver criando uma biblioteca em Rust que deseja compartilhar com outros desenvolvedores, o `cargo` facilita a publicação dessas bilbiotecas no repositório de pacotes crate.io. Você pode usar o comando `cargo publish` para publicar novas versões da sua biblioteca
+6. **Ferramentas adicionais:** o `cargo` também inclui várias ferramentas adicionais, como `cargo fmt` para formatar automaticamente o código, `cargo clippy` para realizar análises estáticas de código e `cargo run` para executar o binário compilado
+
+No geral, o `cargo` é uma ferramenta essencial para o desenvolvimento em Rust, simplificando o processo de construção, testes e distribuição de projetos. Ele é amplamente utilizado pela comunidade de desenvolvedores Rust e é recomendado para qualquer pessoa que esteja desenvolvendo em Rust.
+
+### Sumário
+
+- [`cargo add`](#cargo-add)
+- [Erros de Importação](#erros-importação)
+
+## <a id="cargo-add"></a>`cargo add`
+
+Adiciona uma nova dependência ao seu projeto, adiciona a depêndencia ao  **Cargo.toml**.
+
+**Sintaxe Básica**
+
+```bash
+cargo add crate1 crate2 ...
+```
+
+## <a id="erros-importação"></a>Erros de Importação
+
+Vamos analisar o cenário real, "o erro ocorre porque você não importou o tipo `StaticProvider` do módulo `rusoto_credential` corretamente. Quando você usa `use rusoto_credential;`, você está importando o módulo `rusoto_credential` como um todo, **mas isso não significa que todos os itens dentro desse módulo estão automaticamente disponíveis no escopo atual**".
+
+Então haverá casos em que mesmo que você importe a crate como um todo, você precise importar um recurso de forma explicíta para que eles estejam disponíveis no escopo em questão.
 
 # Template
 

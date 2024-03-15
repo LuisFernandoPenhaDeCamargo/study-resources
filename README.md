@@ -17,13 +17,6 @@
 
 # Estudar
 
-+ `aws s3 sync "s3://game.set-homologated" "conteudo/zoe-client-src/game.set"`
-+ `aws s3 cp "s3://game.set-homologated/CUBANA-1SQ.set.es" "conteudo/zoe-client-src/game.set"`
-+ `aws configure list`
-
-- `cargo add crate1 crate2`
-- `erro de importação`**:** "o erro ocorre porque você não importou o tipo `StaticProvider` do módulo `rusoto_credential` corretamente. Quando você usa `use rusoto_credential;`, você está importando o módulo `rusoto_credential` como um todo, mas isso não significa que todos os itens dentro desse módulo estão automaticamente disponíveis no escopo atual".
-
 + `typeof model.name`
 + `console.log("typeof:", Object.prototype.toString.call(machine));`
 + `console.log(Object.getOwnPropertyNames(machine));`
@@ -73,6 +66,10 @@
 - [Ferramentas de Linha de Comando](#ferramentas-linha-comando)
     + [`git`](#git)
     + [`wget`](#wget)
+    + [`systemctl`](#systemctl)
+    + [`aws`](#aws)
+- [Gerenciadores de Pacote](#gerenciadores-pacote)
+    + [`cargo`](#cargo)
 
 # HTML (html.md)
 
@@ -114,8 +111,12 @@
             + [Variable Scope](#variable-scope)
             + [The String Type](#the-string-type)
             + [Memory and Allocation](#memory-and-allocation)
-            + [Pontos Adicionais](#pontos-adicionais)
+            + [Pontos Adicionais](#pontos-adicionais-ownership)
         - [4.2 References and Borrowing](#42-references-and-borrowing)
+            + [Mutable References](#mutable-references)
+            + [Dangling References](#dangling-references)
+            + [The Rules of References](#rules-of-references)
+            + [Pontos Adicionais](#pontos-adicionais-references)
     + [21. Appendix](#21-appendix)
         - [21.1 A - Keywords](#211-a-keywords)
     + [Executando Código em Rust](#executando-codigo-rust)
