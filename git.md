@@ -5,6 +5,7 @@
 - [Primeiro `commit`](#primeiro-commit)
 - [Armazenando Suas Credenciais](#armazenando-suas-credenciais)
   + [`gh` (GitHub CLI)](#gh-github-cli)
+- [Comandos](#comandos)
 
 # <a id="primeiro-commit"></a>Primeiro `commit`
 
@@ -85,3 +86,88 @@ github.com:
 ```
 
 **O problema deste método de autenticação, é que seu token está salvo em um arquivo em máquina.**
+
+# <a id=""></a>Comandos
+
+### Sumário
+
+- [`git branch`](#git-branch)
+- [`git checkout`](#git-checkout)
+    + [Alternar Entre Branches](#alternar-entre-branches)
+    + [Restaurar Arquivos](#restaurar-arquivos)
+- [`git config pull.rebase false`](#git-config-pullrebase-false)
+
+## <a id ="git-branch"></a>`git branch`
+
+O comando `git branch` é utilizado para listar todas as branches presentes no seu repositório Git. Quando executado sem argumentos adicionais, ele lista as branches locais. Se você adicionar a opção `-a`, ele lista tanto as branches locais quanto as branches remotas.
+
+- Para listar todas as branches locais
+
+```bash
+git branch
+```
+
+- Para listar todas as branches (locais e remotas)
+
+```bash
+git branch -a
+```
+
+Isso mostrará todas as branches presentes no seu repositório Git, tanto localmente quanto no repositório remoto. As branches remotas serão listadas no formato `remotes/nome_do_repositório/branch`.
+
+## <a id="git-checkout"></a>`git checkout`
+
+O comando `git checkout` é usado principalmente para alternar entre branches ou para restaurar arquivos em um repositório Git. Dependendo do contexto em que é usado, ele pode ter diferentes funcionalidades.
+
+Alguns pontos importantes:
+
+- Tenha cuidado ao usar o `git checkout` para alternar entre branches ou restaurar arquivos, pois ele pode substituir alterações não confirmadas. Certifique-se de ter confirmado ou armazenado essas alterações antes de usar este comando
+- A partir do Git 2.23, foi introduzido um novo comando chamado `git switch`, que é preferível ao `git checkout` para alternar entre os branches. O `git switch` é mais seguro e intuitivo para alternar entre os branches, enquanto o `git checkout` ainda é usado para outros propósitos, como restaurar arquivos
+
+Aqui estão as principais formas de uso do `git checkout`:
+
+### <a id="alternar-entre-branches"></a>Alternar Entre Branches
+
+- Para alternar para um branch existente
+
+```bash
+git checkout nome_da_branch
+```
+
+- Para criar e alternar para um novo branch
+
+```bash
+git checkout -b novo_branch
+```
+
+- Para criar e alternar para um novo branch, especificando o branch do qual você quer obter os recursos
+
+```bash
+git checkout -b novo_branch branch
+```
+
+Todos os commits e o estado dos arquivos neste branch (`branch`) serão copiados para `novo_branch`.
+
+### <a id="restaurar-arquivos"></a>Restaurar Arquivos
+
+- Para restaurar um arquivo específico para sua versão no último commit
+
+```bash
+git checkout -- nome_do_arquivo
+```
+
+- Para restaurar todos os arquivos para suas versões no último commit (útil para desfazer alterações não confirmadas)
+
+```bash
+git checkout .
+```
+
+## <a id="git-config-pullrebase-false"></a>`git config pull.rebase false`
+
+O comando `git config pull.rebase false` é usado para configurar o Git para não realizar o rebase automático ao executar o comando `git pull`.
+
+Quando você executa `git pull`, o Git geralmente tenta mesclar as alterações remotas com o seu branch local. No entanto, se você configurar `pull.rebase` como `false`, o Git optará por fazer um merge em vez de um rebase automático ao executar o `git pull`.
+
+Essa configuração é útil se você preferir fazer merge em vez de rebase ao atualizar seu branch local com as alterações do repositório remoto. Por exemplo, algumas equipes de desenvolvimento preferem evitar rebase automático para manter um histórico de commits mais explícito e linear.
+
+Você pode definir essa configuração globalmente para todos os seus repositórios Git ou especificamente para um repositório usando a opção `--global` ou a omitindo, respectivamente.

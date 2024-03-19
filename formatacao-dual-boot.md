@@ -25,21 +25,21 @@ Atualmente, se quisermos utilizar o Ubuntu, temos que configurar o modo sata com
     - ["Static Noise When Not Playing Sounds"](#static-noise-when-not-playing-sounds)
     - [Programas Instalados](#programas-instalados)
 
-### <a id="acessando-bios"></a>Acessando a BIOs
+## <a id="acessando-bios"></a>Acessando a BIOs
 
 Aperte `F2` antes da inicialização do Sistema Operacional.
 
-### <a id=""></a>Acessando o "qual é o nome deste modo"
+## <a id=""></a>Acessando o "qual é o nome deste modo"
 
-### <a id="problema-desativar-modo-segurança"></a>Problema para Desativar o Modo de Segurança
+## <a id="problema-desativar-modo-segurança"></a>Problema para Desativar o Modo de Segurança
 
-### <a id="problema-realizar-boot-hd-externo"></a>Problema para Realizar o Boot de Um HD Externo
+## <a id="problema-realizar-boot-hd-externo"></a>Problema para Realizar o Boot de Um HD Externo
 
-### <a id="problema-mudar-modo-sata"></a>Problema ao Mudar o Modo Sata
+## <a id="problema-mudar-modo-sata"></a>Problema ao Mudar o Modo Sata
 
 Na Bios, aperte as teclas `Ctrl + S` para que a opção de configuração do modo sata apareça.
 
-# <a id = "ubuntu"></a>Ubuntu
+## <a id = "ubuntu"></a>Ubuntu
 
 ### <a id="configuração-teclado"></a>Configuração do Teclado
 

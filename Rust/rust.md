@@ -21,6 +21,7 @@
         - [Shadowing](#shadowing)
     + [3.2 Data Types](#32-data-types)
         - [Scalar Types](#scalar-types)
+            + [Integers Types](#integers-types)
         - [Compound Types](#compound-types)
     + [3.3 Functions](#33-functions)
         - [Parameters](#parameters)
@@ -352,11 +353,11 @@ fn main() {
 }
 ```
 
-## <a id="32-data-types"></a>3.2 Data Types <! Estou re-resumindo o arquivo como um todo, por conta do aumento no meu conhecimento sobre Rust. As linhas acima já foram refatoradas.
+## <a id="32-data-types"></a>3.2 Data Types
 
-Todo valor em Rust é de um certo tipo de dado, essa especificação é o que diz a ele como trabalhar com aquele dado. Iremos observar dois subconjuntos de dados, escalar e composto.
+**Todo valor em Rust é de um certo tipo de dado**, essa especificação é o que diz a ele como trabalhar com aquele dado. Iremos observar dois subconjuntos de dados, escalar e composto.
 
-Tenha em mente que o Rust é uma linguagem de tipagem estática, o que significa que o Rust sabe os tipos de todas as variáveis em tempo de compilação. O compilador consegue, normalmente, **inferir** o tipo que nos desejamos baseado no valor da variável e como nós a utilizamos. Nos casos em que vários tipos são possíveis, por exemplo, quando convertemos uma `String` para um tipo númerico utilizando `parse()`, nós devemos denotar o tipo:
+Tenha em mente que o Rust é uma linguagem de tipagem estática, o que significa que o Rust sabe os tipos de todas as variáveis em tempo de compilação. O compilador consegue, normalmente, **inferir** o tipo que nós desejamos baseado no valor da variável e como nós a utilizamos. Nos casos em que vários tipos são possíveis, por exemplo, quando convertemos uma `String` para um tipo númerico utilizando `parse()`, nós devemos denotar o tipo:
 
 ```rust
 let variavel: u32 = "42".parse().expect("Não é um número.");
@@ -368,7 +369,7 @@ Se nós não adicionarmos a anotação de tipo, `: u32`, o Rust irá exibir um e
 
 Um tipo escalar representa um valor único. Rust possui quatro tipos escalares primários: integers (inteiros), floating-point numbers (números de ponto flutuante), booleans (booleanos) e characters (caracteres).
 
-**Integers Types**
+### <a id="integers-types"></a>**Integers Types** <! Estou re-resumindo o arquivo como um todo, por conta do aumento no meu conhecimento sobre Rust. As linhas acima já foram refatoradas.
 
 Um inteiro é um número sem o componente fracionário. A tabela abaixo ilustra a variação dos tipos inteiros.
 
@@ -1792,9 +1793,64 @@ Ownership, boxes e moves proveem uma fundação para programar de forma segura c
 
 ![42-1](../images/42-2-image.png)
 
-No exemplo acima, chamar `greet()` move os dados de `m1` e `m2` para os parâmetros de `greet()`, ambas strings são dropadas após o final da execução da função, então não podem ser usadas na `main()`. Se nós tentarmos ler as variáveis na operação `format!`, isso iria geriar um undefined behavior.
+No exemplo acima, chamar `greet()` move os dados de `m1` e `m2` para os parâmetros de `greet()`, ambas strings são dropadas após o final da execução da função, então não podem ser usadas na `main()`. Se nós tentarmos ler as variáveis na operação `format!`, isso iria gerar um undefined behavior, o compilador iria rejeitar o programa e acusar o error `error[E0382] borrow of moved value : m1`.
 
+Quandos nós precisamos usar a string mais que uma vez, o comportamento relacionado a movimentação pode ser extremamente inconveniente, fazendo com que nós tenhamos que retornar a ownership da string, como mostrado no código abaixo.
 
+![42-3](../images/42-3-image.png)
+
+No entanto, este estilo de programa é bastante detalhado. Rust provê um estilo mais conciso de ler e escrever sem a necesidade de mover a ownership.
+
+**References Are Non-Owning Pointers**
+
+Uma **referência** é uma espécie de ponteiro. Abaixo, reescrevemos o programa acima de uma maneira mais conveniente.
+
+![42-4-código](../images/42-4-codigo-image.png)
+
+![42-4-diagrama](../images/42-4-diagrama-image.png)
+
+A expressão `&m1` usa o operador e-comercial para criar uma referência (um empréstimo) para `m1`. O tipo do parâmetro `g1` de `greet()` é alterado para `&String`, o que significa "referenciar uma `String`".
+
+Observe em L2 que existem duas etapas de `g1` até a string "`Hello`". `g1` é uma referência que aponta para `m1` na stack, e `m1` é uma String que contém uma box que aponta para "`Hello`" na heap.
+
+Enquanto `m1` é dona do dado na heap ("`Hello`"), `g1` não é dona nem de `m1`, nem de "`Hello`". Então, quando `greet()` é encerrada e o programa alcança a etapa L3, nenhum dado na heap foi desalocado. Somente o frame do stack para `greet()` desaparece. Este fato é consistente com o nosso princípio de desalocação da Box, porque `g1` não é dona de "`Hello`", então Rust não desaloca "`Hello`" em nome de `g1`.
+
+**Referências são ponteiros não proprietários**, pois eles não são donos dos dados para o qual apontam.
+
+**Dereferencing a Pointer Accesses Its Data**
+
+Os exemplos anteriores que usam boxes e strings não mostram como o Rust "segue" os ponteiros para os seus dados. Por exemplo, o macro `println!` tem funcionado misteriosamente, tanto para o tipo de string no qual você move a ownership, quanto para o tipo de string no qual você usa referências. O mecanismo por debaixo dos panos é o operador de desreferência, escrito com um asterisco (*). Por exemplo, abaixo temos um programa que usa a desreferência de diferentes maneiras.
+
+![42-5](../images/42-5-image.png)
+
+Observe a diferença entre `r1` apontar para `x` na stack e `r2` apontar para o valor `2` na heap.
+
+Você provavelmente não vai ver o operador de desreferência com frequência quando você ler códigos feitos em Rust. Rust insere de forma implícita desreferência e referências em certos casos, como no caso da chamada ao método com o operador ponto. Por exemplo, o programa abaixo mostra dois modos equivalentes de chamar as funções `i32::abs` (valor absoluto) e `str::len` (comprimento da string).
+
+```Rust
+let x: Box<i32> = Box::new(-1);
+let x_abs1 = i32::abs(*x); // Desreferência explícita.
+let x_abs2 = x.abs();      // Desreferência implícita.
+assert_eq!(x_abs1, x_abs2);
+
+let r: &Box<i32> = &x;
+let r_abs1 = i32::abs(**r); // Desreferência explícita (duas vezes).
+let r_abs2 = r.abs();       // Desreferência implícita (duas vezes).
+assert_eq!(r_abs1, r_abs2);
+
+let s = String::from("Hello");
+let s_len1 = str::len(&s); // Referência explícita.
+let s_len2 = s.len();      // Referência implícita.
+assert_eq!(s_len1, s_len2);
+```
+
+O exemplo mostra conversões implícitas de três maneiras:
+
+1. A função `i32::abs()` espera a entrada de um tipo `i32`. Para fazer a chamada de `abs()` com uma `Box<i32>` você pode desreferenciar de forma explícita a box, como em `i32::abs(*x)`. Você também pode desreferenciar de forma implícita a box usando a sintaxe de chamada de método, como em `x.abs()`. A sintaxe de ponto é utilizada na sintaxe de chamada da função
+2. A conversão implícita funciona para múltiplas camadas de ponteiros, por exemplo, chamando `abs()` para uma referência para a box `r: &Box<i32>` irá inserir duas desreferências
+3. Esta conversão também funciona na direção oposta. A função `str::len()` espera uma referência `&str`, se você chamar `len()` em uma `String` que move a ownership, Rust irá inserir o operador de empréstimo (na verdade, há uma conversão adicional de `String` para `str!`)
+
+Veremos mais sobre chamadas de métodos e conversões implícitas mais tarde. O importante agora é entender que as conversões estão acontecendo com chamadas de métodos e alguns macros, como `println!`.
 
 # <a id="21-appendix"></a>21. Appendix
 

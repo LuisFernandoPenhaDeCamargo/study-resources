@@ -17,7 +17,6 @@
 
 # Estudar
 
-+ `typeof model.name`
 + `console.log("typeof:", Object.prototype.toString.call(machine));`
 + `console.log(Object.getOwnPropertyNames(machine));`
 + Diferença entre aspas simples e aspas duplas
@@ -59,12 +58,12 @@
 - [Primeiro `commit`](#primeiro-commit)
 - [Armazenando Suas Credenciais](#armazenando-suas-credenciais)
     + [`gh` (GitHub CLI)](#gh-github-cli)
+- [Comandos](#comandos)
 
 # Bash (bash.md)
 
 - [Comandos](#comandos)
 - [Ferramentas de Linha de Comando](#ferramentas-linha-comando)
-    + [`git`](#git)
     + [`wget`](#wget)
     + [`systemctl`](#systemctl)
     + [`aws`](#aws)

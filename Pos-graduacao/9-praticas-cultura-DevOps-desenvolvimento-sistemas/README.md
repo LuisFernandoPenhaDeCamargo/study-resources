@@ -15,4 +15,4 @@ Ordem de estudo do conteúdo:
 - slides-desafio-profissional.pdf
 - desafio-profissional.pdf
 - proposta-de-resolucao.pdf
-- material-extra-codigos-demonstracao-videoaulas.zip
+- praticas-cultura-DevOps-desenvolvimento-sistemas.html
