@@ -585,7 +585,7 @@ fn main() {
 
 No exemplo acima, a variável chamada `first` irá obter o valor `1` e a variável chamada `second` irá obter o valor `2`. Índices em arrays também começam em 0.
 
-**Exemplo interessante:**
+**Exemplo Interessante**
 
 ```Rust
 // main.rs
@@ -1852,9 +1852,11 @@ O exemplo mostra conversões implícitas de três maneiras:
 
 Veremos mais sobre chamadas de métodos e conversões implícitas mais tarde. O importante agora é entender que as conversões estão acontecendo com chamadas de métodos e alguns macros, como `println!`.
 
+**Exemplo Interessante**
+
+Considerando o seguinte programa, que está mostrando o estado da memória após a última linha
+
 # <a id="21-appendix"></a>21. Appendix
-
-
 
 ## <a id="211-a-keywords"></a>21.1 A - Keywords
 

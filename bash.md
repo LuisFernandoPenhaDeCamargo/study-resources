@@ -16,6 +16,7 @@
 - [`cp`](#cp)
 - [`scp`](#scp)
 - [`mv`](#mv)
+- [`rm`](#rm)
 - [`gzip`](#gzip)
 - [`find`](#find)
 - [`grep`](#grep)
@@ -219,6 +220,50 @@ mv -iv arquivo.txt /caminho/do/novo/diretorio/
 ```
 
 Lembre-se de que o comando `mv` altera a localização dos arquivos no sistema de arquivos e, portanto, pode ter implicações importantes. Tenha cuidado ao usá-lo, especialmente com arquivos importanter ou sensíveis.
+
+## <a id="rm"></a>`rm`
+
+O comando `rm` é usado para remover arquivos ou diretórios no sistema Linux.
+
+**Exemplos**
+
+- Para remover um arquivo
+
+```bash
+rm arquivo
+```
+
+- Para remover vários arquivos
+
+```bash
+rm arquivo1 arquivo2 arquivo3
+```
+
+- Para remover um diretório vazio
+
+```bash
+rm -r diretório_vazio/
+```
+
+- Para remover um diretório e seu conteúdo recursivamente
+
+```bash
+rm -r diretório/
+```
+
+- Para remover arquivos sem confirmação (modo silencioso. Remove o arquivo mesmo se ele for protegido contra gravação)
+
+```bash
+rm -f arquivo
+```
+
+- Para remover um diretório e seu conteúdo sem confirmação (modo silencioso)
+
+```bash
+rm -rf diretório/
+```
+
+Tenha cuidado ao usar
 
 ## <a id="gzip"></a>`gzip`
 
