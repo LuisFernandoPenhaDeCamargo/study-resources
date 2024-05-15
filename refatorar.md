@@ -339,10 +339,6 @@ su -l piranha -c 'pm2 start /usr/lib/node_modules/@zoeslots/zoe-terminal/ecosyst
 
 #
 
-online = 0 -> o website envia o jogo e como no banco o status está com 0 ele é deletado? O QUE MUDO O STATUS DO BANCO CARALHO?
-
-#
-
 sudo apt update
 
 sudo snap install dbeaver-ce

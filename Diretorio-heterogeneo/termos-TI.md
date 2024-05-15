@@ -4,10 +4,12 @@
 
 - [blob e glob](#blob-glob)
 - [CLI](#cli)
-- [cwd](#cwd)
+- [CWD](#cwd)
 - [foo](#foo)
-- [linter](#linter)
+- [Linter](#linter)
+- [LTS](#lts)
 - [Snapshot](#snapshot)
+- [SO](#so)
 
 # <a id="blob-glob"></a>blob e glob
 
@@ -21,15 +23,15 @@ This works well in environments where you don't need to sign the executable, as 
 
 To create a signable binary you have to use nexe as a build tool for adding additional native modules to node, or using the embedding api. In addition to likely providing more robust application bundling."
 
-No contexto mencionado, "blob" se refere a um conjunto de dados binários que é tratado como uma única unidade. É uma abstração comum em progração para representar dados não estruturados ou binários. No caso específico do Nexe, a "blob" é uma maneira de agrupar todas as dependências e o ponto de entrado do aplicativo em um único pacote, que é então anexado ao binário principal gerado pelo Nexe. Essa "blob" é essencialmente um sistema de arquivos virtual que contém todos os arquivos necessários para o aplicativo funcionar.
+No contexto mencionado, "blob" se refere a um conjunto de dados binários que é tratado como uma única unidade. É uma abstração comum em progração para representar dados não estruturados ou binários. No caso específico do Nexe, a "blob" é uma maneira de agrupar todas as dependências e o ponto de entrada do aplicativo em um único pacote, que é então anexado ao binário principal gerado pelo Nexe. Essa "blob" é essencialmente um sistema de arquivos virtual que contém todos os arquivos necessários para o aplicativo funcionar.
 
 Já um "glob" é um padrão de pesquisa de arquivos que pode incluir caracteres curinga, como asteriscos e pontos de interrogação, para corresponder vários arquivos ou diretórios em um sistema de arquivos. Por exemplo, ".js" é um glob que corresponde a todos os arquivos com extensão **.js**. No contexto do Nexe, a opção `--resources "./**/*"` indica que todos os arquivos e diretórios presentes no diretório atual e em todos os seus subdiretórios serão incluídos como recursos no "blob" mencionado acima.
 
-"Blob" é um abreviação para "Binary Large Object" e é comumente usado para se referir a um conjunto de dados binários não estruturados ou grandes. "Glob" é uma abreviação de "Global", que nesse contexto significa uma expressão de pesquisa de arquivos que pode ser aplicada globalmente  em um sistema de arquivos.
+"Blob" é um abreviação para "Binary Large Object" e é comumente usado para se referir a um conjunto de dados binários não estruturados ou grandes. "Glob" é uma abreviação de "Global", que nesse contexto significa uma expressão de pesquisa de arquivos que pode ser aplicada globalmente em um sistema de arquivos.
 
 Sobre "blob" e o GitHub. O termo "blob" faz parte da URL do GitHub por causa da estruturação padrão de URLs para exibir arquivos em repositórios do GitHub.
 
-Bo GitHub, os arquivos em um repositório são acessados através de URLs que seguem a seguinte estrutura:
+No GitHub, os arquivos em um repositório são acessados através de URLs que seguem a seguinte estrutura:
 
 ```
 https://github.com/$< nome do usuário ou organização >/$< nome do repositório >/blob/$< nome do branch ou commit >/$< caminho para o arquivo >
@@ -43,17 +45,17 @@ O termo "CLI" refere-se a "Command Line Interface" ou "Interface de Linha de Com
 
 Uma CLI oferece uma maneira eficiente e flexível de interagir com sistemas operacionais, aplicativos e serviços. Ela é especialmente valorizada por usuários avançados, administradores de sistemas e desenvolvedores que preferem trabalhar na linha de comando devido à sua velocidade, automação e capacidade de integração com scripts e ferramentas.
 
-# <a id="cwd"></a>cwd
+# <a id="cwd"></a>CWD
 
-"cwd" é uma abreviação para "current working directory", que em português significa "diretório de trabalho atual". É o diretório no sistema de arquivos onde um processo está atualmente trabalhando ou onde um comando está sendo executado.
+"CWD" é uma abreviação para "Current Working Directory", que em português significa "diretório de trabalho atual". É o diretório no sistema de arquivos onde um processo está atualmente trabalhando ou onde um comando está sendo executado.
 
-Por exemplo, se você estiver no diretório **/home/usuario** e executar um comando, o cwd para esse comando será **/home/usuario**, a menos que o comando mude o diretório de trabalho. É uma parte importante do contexto de execução de um processo ou comando no sistema operacional.
+Por exemplo, se você estiver no diretório **/home/usuario** e executar um comando, o CWD para esse comando será **/home/usuario**, a menos que o comando mude o diretório de trabalho. É uma parte importante do contexto de execução de um processo ou comando no sistema operacional.
 
 # <a id="foo"></a>foo
 
 A palavra "foo" é um termo genérico usado em muitos exemplos de código, tutoriais e documentações como um nome fictício ou placeholder para representar algo semelhante a uma variável ou valor qualquer. É uma convenção comum em ciência da computação e programação.
 
-"Foo" é frequentemente combinado com "bar" e "baz" para formar uma sequência de nomes de variáveis fictícias. Esses termos são usados porque são curtos, fáceis de lembrar e não têm significado real, o que os torna úteis para exemplos e ilustrações sem distrair com detalhes específicos.
+"foo" é frequentemente combinado com "bar" e "baz" para formar uma sequência de nomes de variáveis fictícias. Esses termos são usados porque são curtos, fáceis de lembrar e não têm significado real, o que os torna úteis para exemplos e ilustrações sem distrair com detalhes específicos.
 
 Por exemplo:
 
@@ -63,13 +65,17 @@ Por exemplo:
 
 Em resumo, "foo" é apenas um marcador de posição sem significado real, usado para ilustrar conceitos em exemplos de código.
 
-# <a id="linter"></a>linter
+# <a id="linter"></a>Linter
 
 Um "linter" é uma ferramenta de análise de código estático usada principalmente em programação para encontrar problemas potenciais em um código-fonte. O termo "linter" vem de "lint", que originalmente era um programa que verificava o texto de arquivos de código-fonte em linguagens de programação como C, destacando erros de sintaxe, problemas de estilo e possíveis bugs.
 
 Os linters modernos estão disponíveis para uma variedade de linguagens de programação e são capazes de fazer muito mais do que apenas verificar a sintaxe. Eles podem identificar problemas de estilo, conformidade com padrões de codificação, práticas de programação inseguras e até mesmo possíveis bugs ou problemas de desempenho.
 
 Alguns linters também podem fornecer sugestões de correção ou formatação automática do código-fonte para melhorar a legibilidade e a qualidade do código. Eles são amplamente utilizados em desenvolvimento de software para ajudar os desenvolvedores a manter um alto padrão de qualidade no código-fonte e evitar erros comuns.
+
+# <a id="lts"></a>LTS
+
+"LTS" é uma abreviação para "Long-Term Support".
 
 # <a id="snapshot"></a>Snapshot
 
@@ -80,3 +86,7 @@ Ao criar um snapshot, o Node.js registra o estado inicial da aplicação, inclui
 Quando a aplicação é iniciada novamente, o Node.js pode carregar o snapshot em vez de iniciar a aplicação do zero. Isso economiza tempo e recursos, pois o estado inicial da aplicação já está pré-carregado, evitando a necessidade de recriar esse estado a partir do zero.
 
 Em resumo, um snapshot no Node.js, é uma técnica de otimização que captura e reutiliza o estado inicial da aplicação para melhorar o tempo de inicialização e o desempenho geral da aplicação.
+
+# <a id="so"></a>SO
+
+"SO" é uma abreviação para "Sistema Operacional"/"Sistemas Operacionais".

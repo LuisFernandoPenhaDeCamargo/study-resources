@@ -661,7 +661,3 @@ cargo add crate1 crate2 ...
 Vamos analisar o cenário real, "o erro ocorre porque você não importou o tipo `StaticProvider` do módulo `rusoto_credential` corretamente. Quando você usa `use rusoto_credential;`, você está importando o módulo `rusoto_credential` como um todo, **mas isso não significa que todos os itens dentro desse módulo estão automaticamente disponíveis no escopo atual**".
 
 Então haverá casos em que mesmo que você importe a crate como um todo, você precise importar um recurso de forma explicíta para que eles estejam disponíveis no escopo em questão.
-
-# Template
-
-Template dos comandos: um resumo do comando, a "**Sintaxe Básica**", "**Opções Comuns**" e **Exemplos**.

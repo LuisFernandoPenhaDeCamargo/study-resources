@@ -1,17 +1,6 @@
-# Segurança
+# <a id="javascript-obfuscator"></a>JavaScript obfuscator
 
-### Sumário
-
-- [Bibliotecas Utilizadas na Ofuscação de Código](#bibliotecas-utilizadas-ofuscacao-codigo)
-    + [javascript-obfuscator](#bibliotecas-utilizadas-ofuscacao-codigo-javascript-obfuscator)
-
-# <a id="bibliotecas-utilizadas-ofuscacao-codigo"></a>Bibliotecas Utilizadas na Ofuscação de Código
-
-- [javascript-obfuscator](#bibliotecas-utilizadas-ofuscacao-codigo-javascript-obfuscator)
-
-## <a id="bibliotecas-utilizadas-ofuscacao-codigo-javascript-obfuscator"></a>`javascript-obfuscator`
-
-JavaScript Obfuscator é um ofuscador gratuito para JavaScript, o qual possui várias features que proteção para o seu código fonte. Para utilizá-lo através do CLI, você pode instalá-lo globalmente pelo npm.
+JavaScript obfuscator é um ofuscador gratuito para JavaScript, o qual possui várias features para proteger o seu código fonte. Para utilizá-lo através do CLI, você pode instalá-lo globalmente pelo npm.
 
 **Opções Comuns**
 
@@ -25,10 +14,10 @@ JavaScript Obfuscator é um ofuscador gratuito para JavaScript, o qual possui v�
 8. `--rotateStringArray`**:** habilita a rotação do array de strings, embaralhando os elementos do array para tornar mais difícil a leitura do código
 9. `--splitStrings`**:** habilita a divisão de literais de string longos em partes menores para dificultar a compreensão do código
 
-**Exemplos**
+**Exemplos Interessantes**
 
 ```bash
-$ javascript-obfuscator /home/luis/APIs/zoe-game-api/ --output /home/luis/APIs/obfuscated --exclude /home/luis/APIs/zoe-game-api/node_modules/
+$ javascript-obfuscator /home/$< usuário >/APIs/zoe-game-api/ --output /home/$< usuário >/APIs/obfuscated --exclude /home/$< usuário >/APIs/zoe-game-api/node_modules/
 ```
 
-Isso irá ofuscar todo o conteúdo do diretório **zoe-game-api**, os arquivos ofuscados gerados serão colocados em **obfuscated**. A opção `--exclude` específica que o conteúdo do diretório **node_modules** é o único que não deve ofuscado (erros ocorreram quando eu tentei obscurecer ele).
+Isso irá ofuscar todo o conteúdo do diretório **zoe-game-api**, os arquivos ofuscados gerados serão colocados em **obfuscated**. A opção `--exclude` específica que o conteúdo do diretório **node_modules** é o único que não deve ser ofuscado **(erros ocorreram quando eu tentei obscurecer ele)**.

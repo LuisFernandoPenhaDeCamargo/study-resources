@@ -77,7 +77,7 @@ $ echo 'console.log(`Hello, ${process.argv[2]}!`);' > hello.js
 Este comando cria um arquivo JavaScript chamado **hello.js** que imprime uma mensagem personalizada no console. Aqui está oo que ele faz:
 
 - `echo`**:** é um comando de terminal que simplesmente imprime o texto fornecido como argumento no terminal
-- `'console.log(`````Hello, ${process.argv[2]}!`````);'`**:** é a mensagem que queremos imprimir. Estamos usando uma template string com interpolação de variáveis para inserir o primeiro argumento passado para o script como parte da mensagem. `process.argv[2]` é uma forma de acessar o primeiro argumento passado para o script quando é executado na linha de comando
+- `'console.log(Hello, ${process.argv[2]}!);'`**:** é a mensagem que queremos imprimir. Estamos usando uma template string com interpolação de variáveis para inserir o primeiro argumento passado para o script como parte da mensagem. `process.argv[2]` é uma forma de acessar o primeiro argumento passado para o script quando é executado na linha de comando
 - `> hello.js`**:** redireciona a saída do comando `echo` para um arquivo chamado `hello.js`. Isso cria ou sobrescreve o arquivo **hello.js** com a mensagem fornecida
 
 Portanto, depois de executar este comando, o arquivo **hello.js** conterá um script JavaScript que imprime "`Olá, $< argumento >!`" no console, onde `argumento` é o primeiro argumento passado para o script quando é executado. Por exemplo, se você executar `node hello.js Mundo`, ele imprimirá "`Olá. Mundo!`" no console.

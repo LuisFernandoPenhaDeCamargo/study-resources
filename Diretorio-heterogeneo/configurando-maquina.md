@@ -2,11 +2,11 @@
 
 ### Sumário
 
-- [Observações Sobre o Sistema Operacional](#observacoes-sistema-operacional)
+- [Contexto: SO Utilizado](#contexto-so-utilizado)
 - [Ferramentas Instaladas](#ferramentas-instaladas)
 - [Projeto de Script de Configuração de Ambiente](#projeto-script-configuracao-ambiente)
 
-# <a id="observacoes-sistema-operacional"></a>Observações Sobre o Sistema Operacional
+# <a id="contexto-so-utilizado"></a>Contexto: SO Utilizado
 
 Sistema Operacional:
 

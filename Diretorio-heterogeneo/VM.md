@@ -2,10 +2,10 @@
 
 ### Sumário
 
-- [Observações Sobre o Sistema Operacional](#observacoes-sistema-operacional)
+- [Contexto: SO Utilizado](#contexto-so-utilizado)
 - [Criando uma VM](#criando-vm)
 
-# <a id="observacoes-sistema-operacional"></a>Observações Sobre o Sistema Operacional
+# <a id="contexto-so-utilizado"></a>Contexto: SO Utilizado
 
 Sistema Operacional:
 

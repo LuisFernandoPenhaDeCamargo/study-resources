@@ -28,8 +28,6 @@
         - [`Model.create()`](#bibliotecas-sequelize-model-create)
         - [`Model.findOne()`](#bibliotecas-sequelize-model-findOne)
     + [`umzug`](#bibliotecas-umzug)
-- [`pm2`](#pm2)
-    + [`pm2 list`](#pm2-pm2-list)
 - [Época Unix](#epoca-unix)
 
 # <a id="operadores"></a>Operadores
@@ -634,46 +632,6 @@ O `.findOne()` é útil quando você precisa encontrar apenas um registro com ba
 # <a id="bibliotecas-umzug"></a>`umzug`
 
 Quando você utiliza a `umzug` com a `sequelize`, a `umzug` cria uma tabela no seu banco de dados chamada `SequelizeMeta` que irá conter o nome de todas as migrações aplicadas ao seu banco.
-
-# <a id="pm2"></a>`pm2`
-
-Os arquivos relacionados ao pm2 geralmente se encontram em **/home/$< usuário >/.pm2**, a não ser o do root, que se encontra em **/root/.pm2**. Neste diretório você encontra arquivos como o **dump.pm2**.
-
-### Sumário
-
-- [`pm2 list`](#pm2-pm2-list)
-
-## <a id="pm2-pm2-list"></a>`pm2 list`
-
-O comando `pm2 list` é usado para listar todos os processos que estão sendo gerenciados pelo PM2, juntamente com informações sobre cada processo. Ele fornece uma visão geral dos aplicativos em execução, seus IDs, versões, modo de execução, PIDs (indentificadores de processo), status, número de reinicilizações, tempo de atividade, uso de CPU, usuário proprietário, e se o aplicativo está sendo observado.
-
-Por exemplo, uma saída típica do comando `pm2 list` pode ser algo assim:
-
-```bash
-┌─────────┬────┬───────────┬─────────┬───────┬────────┬─────────┬──────────┬─────┬─────┬──────────┬──────────┐
-│ App name│ id │ version   │ mode    │ pid   │ status │ restart │ uptime   │ cpu │ mem │ user     │ watching │
-├─────────┼────┼───────────┼─────────┼───────┼────────┼─────────┼──────────┼─────┼─────┼──────────┼──────────┤
-│ app1    │ 0  │ 1.0.0     │ cluster │ 12345 │ online │ 0       │ 12h      │ 0%  │ 0%  │ user1    │ enabled  │
-│ app2    │ 1  │ 2.1.0     │ fork    │ 54321 │ online │ 3       │ 7d       │ 10% │ 2%  │ user2    │ enabled  │
-└─────────┴────┴───────────┴─────────┴───────┴────────┴─────────┴──────────┴─────┴─────┴──────────┴──────────┘
-```
-
-Nesta saída:
-
-- `App name`**:** nome do aplicativo
-- `id`**:** ID do processo gerenciado pelo PM2
-- `version`**:** versão do aplicativo
-- `mode`**:** modo de execução do aplicativo (por exemplo, `cluster`, `fork`, `fork_mode`)
-- `pid`**:** PID (identificador de processo) do aplicativo
-- `status`**:** status do aplicativo (por exemplo, `online`, `stopped`, `errored`)
-- `restart`**:** número de vezes que o aplicativo foi reiniciado
-- `uptime`**:** tempo decorrido desde que o aplicativo foi iniciado
-- `cpu`**:** uso atual da CPU pelo aplicativo
-- `mem`**:** uso atual da memória pelo aplicativo
-- `user`**:** usuário do aplicativo
-- `watching`**:** se o aplicativo está sendo observado pelo PM2
-
-Este comando é útil para monitorar o estado dos aplicativos gerenciados pelo PM2 e diagnosticar eventuais problemas.
 
 # <a id="epoca-unix"></a>Época Unix
 

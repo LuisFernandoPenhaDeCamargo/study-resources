@@ -2,21 +2,14 @@
 
 ### Sumário
 
-- [Comandos](#comandos)
-    + [`nvm ls-remote`](#comandos-nvm-ls-remote)
-- [Observações Sobre o Sistema Operacional](#observacoes-sistema-operacional)
+- [Contexto: SO Utilizado](#contexto-so-utilizado)
 - [Instalando o NVM](#instalando-nvm)
+  + [Observações Interessantes](#instalando-nvm-observacoes-interessantes)
 - [Desinstalando o NVM](#desinstalando-nvm)
+- [Comandos Utilizados Através do CLI](#comandos-utilizados-cli)
+  + [`nvm ls-remote`](#comandos-nvm-ls-remote)
 
-# <a id="comandos"></a>Comandos
-
-- [nvm ls-remote](#comandos-nvm-ls-remote)
-
-## <a id="comandos-nvm-ls-remote"></a>`nvm ls-remote`
-
-Este comando lista todas as versões disponíveis do Node.js que podem ser instaladas através do NVM. O termo LTS significa "Long-Term Support".
-
-# <a id="observacoes-sistema-operacional"></a>Observações Sobre o Sistema Operacional
+# <a id="contexto-so-utilizado"></a>Contexto: SO Utilizado
 
 Sistema Operacional:
 
@@ -29,10 +22,10 @@ Codename:	jammy
 
 # <a id="instalando-nvm"></a>Instalando o NVM
 
-Você pode utilizar o `curl` para baixar o script de instalação, por exemplo,
+Você pode utilizar o `curl` para baixar o script de instalação, por exemplo:
 
 ```bash
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+$ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 ```
 
 Isso baixará o script de instalação do NVM diretamento do repositório oficial e executará o script com o bash.
@@ -40,9 +33,14 @@ Isso baixará o script de instalação do NVM diretamento do repositório oficia
 Depois que o script de instalação for concluído, você precisará reiniciar o terminal ou recarregar o arquivo de perfil para aplicar as alterações. Você pode recarregar o arquivo de perfil executando o seguinte comando no terminal:
 
 ```bash
-source ~/.bashrc
+$ source ~/.bashrc
 ```
+
+## <a id="instalando-nvm-observacoes-interessantes"></a>Observações Interessantes
+
 Alguns pontos interessantes a se mencionar é que se você tinha uma versão do Node.js instalada no seu sistema antes da instalação do NVM, ela será indentificada como `system`, você pode observar isso utilizando o comando `nvm ls`.
+
+---
 
 Se você tinha pacotes instalados globalmente antes da instalação do NVM, o seguinte log será incluindo durante a instalação:
 
@@ -98,7 +96,7 @@ O mesmo pacote, instalado por versões diferentes do npm, estaram no diretório 
 
 # <a id="desinstalando-nvm"></a>Desinstalando o NVM
 
-Para desinstalar o NVM, você pode excluir o diretório onde ele está instalado. Por padrão, o NVM é instalado no diretório **~/.nvm** (já peguei o caso no qual ele estava instalado no **/home/$< usuário >/.nvm**).
+Para desinstalar o NVM, você pode excluir o diretório onde ele está instalado. Por padrão, o NVM é instalado no diretório **/home/$< usuário >/.nvm**.
 
 Além disso, você deve remover as entradas do NVM do seu arquivo de perfil. O NVM adiciona algumas linhas ao seu arquivo de perfil (como **.bashrc**, **.bash_profile**, ou **.profile**). Você pode editar manualmente esses arquivos e remover quaisquer linhas relacionadas ao NVM.
 
@@ -113,3 +111,11 @@ export NVM_DIR="$HOME/.nvm"
 que devem ser apagadas.
 
 Após ter realizado as ações acima, reinicie o terminal e verifique se a versão do NVM é exibida.
+
+# <a id="comandos-utilizados-cli"></a>Comandos Utilizados Através do CLI
+
+- [ls-remote](#comandos-ls-remote)
+
+## <a id="comandos-utilizados-cli-ls-remote"></a>`nvm ls-remote`
+
+É utilizado para listar todas as versões disponíveis do Node.js que podem ser instaladas através do NVM.

@@ -38,7 +38,7 @@ No entanto, é importante observar que a compilação para binário pode não se
 
 Observe que tanto o `pkg` quanto o `nexe` são módulos distribuídos pelo próprio npm e podem ser instalados globalmente para uso em qualquer projeto Node.js.
 
-# Sumário
+### Sumário
 
 - [`pkg` x `nexe`](#pkg-x-nexe)
 - [Segurança](#seguranca)
@@ -413,3 +413,12 @@ WantedBy=multi-user.target
   ]
 }
 ```
+
+- Entender "dependências externas"? No contexto do binário gerado por mim e a execução dele no servidor
+- ~/. Contexto: pwd no terminal
+- Engine, runtime, ambiente de execução. Contexto: Node.js
+- `systemctl daemon-reload`
+
+- deu problema com a versão estática de novo, como eu fiz esse caralho? Faça o processo do zero pra testar
+
+root     21169  8.2  1.4 679972 56592 pts/2    Sl+  10:45   0:05 ./my_server_static_upx
