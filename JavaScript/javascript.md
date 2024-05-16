@@ -14,20 +14,6 @@
         - [array.every()](#metodos-array-every)
 - [Função de Flecha](#funcao-flecha)
 - [Closures](#closures)
-- [Imports/Exports](#importsexports)
-- [Bibliotecas](#bibliotecas)
-    + [`cluster`](#bibliotecas-cluster)
-    + [`moment`](#bibliotecas-moment)
-    + [`express`](#bibliotecas-express)
-        - [app.listen()](#bibliotecas-express-app-listen)
-    + [`sequelize`](#bibliotecas-sequelize)
-        - [Tipos de Coluna](#bibliotecas-sequelize-tipos-coluna)
-            + [`TINYINT(1)`](#bibliotecas-sequelize-tipos-coluna-tinyint)
-        - [`queryInterface.addColumn()`](#bibliotecas-sequelize-queryInterface-addcolumn)
-        - [`queryInterface.removeColumn()`](#bibliotecas-sequelize-queryInterface-removecolumn)
-        - [`Model.create()`](#bibliotecas-sequelize-model-create)
-        - [`Model.findOne()`](#bibliotecas-sequelize-model-findOne)
-    + [`umzug`](#bibliotecas-umzug)
 - [Época Unix](#epoca-unix)
 
 # <a id="operadores"></a>Operadores
@@ -41,7 +27,7 @@ Os operadores em JavaScript são símbolos ou palavras-chave que realizam opera�
 
 ## <a id="operadores-new"></a>`new`
 
-Em JavaScript, `new` é um operador usado para criar instâncias de objetos. Ele é usado com funções construtoras para criar novos objetos com base no protótipo da função construtora.
+`new` é um operador usado para criar instâncias de objetos. Ele é usado com funções construtoras para criar novos objetos com base no protótipo da função construtora.
 
 Quando você usa `new` com uma função, isso cria um novo objeto vazio e, em seguida, chama a função como um construtor, com o `this` definido como o novo objeto criado. Isso permite que a função construtora inicialize o objeto com propriedades e métodos específicos.
 
@@ -76,11 +62,11 @@ Vamos modificar o exemplo acima:
 
 ```JavaScript
 function Pessoa(nome, idade) {
-    console.log("this:", this);                   // Output: Pessoa {}. Objeto vazio.
+    console.log("this:", this);                   // Output: this: Pessoa {}. Objeto vazio.
     console.log("nome:", nome);                   // Output: nome: João.
     console.log("this.nome:", this.nome);         // Output: this.nome: undefined. A propriedade `nome`, do objeto `this`, não foi definida.
     nomeDaPessoa = nome;
-    console.log("nomeDaPessoa:", nomeDaPessoa);  // Output: nomeDaPessoa: João.
+    console.log("nomeDaPessoa:", nomeDaPessoa);   // Output: nomeDaPessoa: João.
     idade = idade;
 }
 
@@ -91,23 +77,23 @@ console.log(pessoa1);              // Output: Pessoa {}.
 console.log(pessoa1.nomeDaPessoa); // Output: undefined.
 ```
 
-Sem o uso do `this`, os argumentos são visíveis no escopo da função `Pessoa()`, como você pode ver pelas impressões, mas as propriedades do objeto `this`, não são definidas. É atribuído a `pessoa1`, o valor de `this`, um objeto vazio, sem propriedades.
+Sem o uso do `this`, os argumentos são visíveis no escopo da função `Pessoa()`, como você pode ver pelas impressões, mas as propriedades do objeto `this`, não são definidas. **É atribuído a** `pessoa1`**, o valor de** `this`**, um objeto vazio, sem propriedades**.
 
 ## <a id="operadores-typeof"></a>`typeof`
 
-`typeof` é um operador em JavaScript, ele é usado para determinar o tipo de dado de um valor, variável ou expressão. O operador `typeof` é uma palavra-chave da linguagem JavaScript e retorna uma string representando o tipo do operando.
+`typeof` é usado para determinar o tipo de dado de um valor, variável ou expressão. O operador `typeof` é uma palavra-chave da linguagem JavaScript e retorna uma string representando o tipo do operando.
 
 **Exemplos**
 
 ```JavaScript
-console.log(typeof 42);              // "number"
-console.log(typeof "hello");         // "string"
-console.log(typeof true);            // "boolean"
-console.log(typeof { name: "John"}); // "object"
-console.log(typeof [1, 2, 3]);       // "object"
-console.log(typeof function() {});   // "function"
-console.log(typeof undefined);       // "undefined"
-console.log(typeof null);            // "object" (um erro conhecido em JavaScript, o tipo real de null é "object").
+console.log(typeof 42);              // Output: number
+console.log(typeof "hello");         // Output: string
+console.log(typeof true);            // Output: boolean
+console.log(typeof { name: "John"}); // Output: object
+console.log(typeof [1, 2, 3]);       // Output: object
+console.log(typeof function() {});   // Output: function
+console.log(typeof undefined);       // Output: undefined
+console.log(typeof null);            // Output: object. (um erro conhecido em JavaScript, o tipo real de null é "object").
 ```
 
 # <a id="objetos"></a>Objetos
@@ -125,7 +111,7 @@ console.log(typeof null);            // "object" (um erro conhecido em JavaScrip
 
 ### <a id="objetos-object-tostring"></a>`.toString()`
 
-O método `.toString()` em JavaScript é usado para converter um objeto em uma string representando o objeto. Ele é herdado do protótipo `Object` e está disponível em todos os objetos JavaScript.
+É usado para **converter um objeto em uma string representando o objeto**. Ele é herdado do protótipo `Object` e está disponível em todos os objetos JavaScript.
 
 Quando você chama `.toString()` em um objeto, ele retorna uma representação de string do objeto. O comportamento específico de `.toString()` depende do tipo de objeto:
 
@@ -133,19 +119,19 @@ Quando você chama `.toString()` em um objeto, ele retorna uma representação d
 
 ```JavaScript
 const str = "Olá mundo";
-console.log(str.toString());        // Output: "Olá mundo".
+console.log(str.toString());        // Output: Olá mundo.
 
 const num = 42;
-console.log(num.toString());        // Output: "42".
+console.log(num.toString());        // Output: 42.
 
 const bool = true;
-console.log(bool.toString());       // Output: "true".
+console.log(bool.toString());       // Output: true.
 
 const nulo = null;
-console.log(nulo.toString());       // Output: "null".
+console.log(nulo.toString());       // Output: null.
 
 let indefinido;
-console.log(indefinido.toString()); // Output: "undefined".
+console.log(indefinido.toString()); // Output: undefined.
 ```
 
 2. **Para objetos personalizados:** por padrão, o método `.toString()` retorna `[object Object]` para objetos personalizados, que é uma representação genérica de um objeto JavaScript. No entanto, você pode substituir o método `.toString()` em objetos personalizados para fornecer uma representação personalizada. Exemplo
@@ -161,7 +147,8 @@ Pessoa.prototype.toString = function() {
 };
 
 const pessoa = new Pessoa("João", 30);
-console.log(pessoa.toString()); // Output: "João, 30 anos".
+
+console.log(pessoa.toString()); // Output: João, 30 anos
 ```
 
 Neste exemplo, substituímos o método `.toString()` no protótipo da função `Pessoa` para fornecer uma representação personalizada da instância `Pessoa`.
@@ -170,7 +157,7 @@ Em resumo, o método `.toString()` é uma maneira conveniente de obter uma repre
 
 ## <a id="objetos-date"></a>`Date`
 
-Em JavaScript, o objeto `Date` é usado para trabalhar com datas e horas. Ele fornece métodos para criar objetos de data, acessar e manipular componentes de data e hora, e formatar datas para exibição.
+É **usado para trabalhar com datas e horas**. Ele fornece métodos para criar objetos de data, acessar e manipular componentes de data e hora, e formatar datas para exibição.
 
 Aqui estão algumas maneiras comuns de usar o objeto `Date` em JavaScript:
 
@@ -234,7 +221,7 @@ O objeto `Date` em JavaScript pode ser bastatente flexível e poderoso para lida
 
 ## <a id="metodos-array-every"></a>`array.every()`
 
-O método `.every()` é um método de array em JavaScript que testa se todos os elementos em um array passam por um teste especificado por um função.
+**Testa se todos os elementos em um array passam por um teste especificado por um função**.
 
 **Sintaxe Básica**
 
@@ -248,12 +235,12 @@ array.every(function(element, index, array) {
     + `function(element, index, array)`**:** uma função de teste que é chamada para cada elemento do array. Ela recebe três argumentos
         - `element`**:** o elemento atual sendo processado no array
         - `index` **(opcional):** o índice do elemento atual sendo processado no array
-        - `array` **(opcional):** o array que `.every()` foi chamado
+        - `array` **(opcional):** o array no qual `.every()` foi chamado
     + `thisArg` **(opcional):** um valor a ser usado como `this` quando a função de teste é executada
-- **Valor de Retorno:** retorna `true` se a função de teste retornar um valor truthy para cada elementos do array; caso contrário, retorna `false`
+- **Valor de Retorno:** retorna `true` se a função de teste retornar um valor truthy para cada elemento do array; caso contrário, retorna `false`
 - **Como Funciona:**
     + `.every()` executa a função fornecida uma vez para cada elemento do array, até que encontre um onde a função retorna um valor falsy (como `false`, `null`, `0`, `""`, `undefined` ou `NaN`)
-    + Se a função retorna `true` para todos os elementos do array, `.every()` também retorna `true`
+        - Se a função retorna `true` para todos os elementos do array, `.every()` também retorna `true`
     + Se a função retorna `false` para pelo menos um dos elementos, `.every()` retorna `false` e o restante dos elementos no array não será mais testado
     + O método não modifica o array original
 
@@ -268,7 +255,7 @@ function checkAdult(age) {
 
 const allAdults = ages.every(checkAdult);
 
-console.log(allAdults); // Saída: false, porque 16 não é maior ou igual a 18.
+console.log(allAdults); // Output: false. Porque 16 não é maior ou igual a 18.
 ```
 
 Neste exemplo, `ages.every(checkAdult)` verifica se todos os elementos no array `ages` são maiores ou iguais a 18. A função `checkAdult` é chamada para cada elemento do array. Uma vez que um dos elementos, 16, não passa no teste (não é maior ou igual a 18), `.every()` retorna `false`.
@@ -277,7 +264,7 @@ Neste exemplo, `ages.every(checkAdult)` verifica se todos os elementos no array 
 
 # <a id="funcao-flecha"></a>Função de Flecha
 
-- **Funções de flecha de uma linha retornam implicitamente o resultado da expressão após a seta. Funções de seta de mais de uma linha (quando o seu corpo está envolvido por chaves, quando seu escopo está especificado) retornam** `undefined` **implicitamente, quando você não define o retorno explicitamente**
+**Funções de flecha de uma linha retornam implicitamente o resultado da expressão após a seta. Funções de seta de mais de uma linha (quando o seu corpo está envolvido por chaves, quando seu escopo está especificado) retornam** `undefined` **implicitamente, quando você não define o retorno explicitamente**.
 
 **Exemplos Interessantes**
 
@@ -289,7 +276,7 @@ if (!requiredFields.every((key) => request.body[key] !== undefined)) {
 }
 ```
 
-Neste trecho, você está usando uma função de flecha de uma linha. A função de flecha de uma linha retorna implicitamente o resultado da expressão após a seta (`=>`). Portanto, esta função de flecha verifica se cada `key` em `requireFields` não é `undefined` no objeto `request.body`. Se todos os campos obrigatórios estiverem presentes e não forem `undefined`, o método `.every()` retornará `true`. A negação (`!`) antes disso inverte o resultado, então o `if` será verdadeiro se houver pelo menos um campo obritatório faltando ou sendo `undefined`
+Neste trecho, você está usando uma função de flecha de uma linha. A função de flecha de uma linha retorna implicitamente o resultado da expressão após a seta (`=>`), portanto, esta função de flecha verifica se cada `key` em `requireFields` não é `undefined` no objeto `request.body` e se as chaves não forem `undefined`, o método `.every()` retornará `true`. A negação (`!`) antes disso inverte o resultado, então você entrará no `if` se pelo menos uma chave for `undefined`.
 
 - **Segundo trecho de código**
 
@@ -299,7 +286,7 @@ if (!requiredFields.every((key) => {request.body[key] !== undefined})) {
 }
 ```
 
-Neste trecho, você está usando uma função de flecha de várias linhas, que está envolvida por chave `{}`. Essa forma de função de flecha permite que você execute múltiplas instruções dentro dela. No entanto, como você não está explicitamente retornando um valor nesta função, ela retorna `undefined` implicitamente. Isso faz com que o método `.every()` sempre retorne `false`, independente dos valores dos campos em `requiredFields`. Portanto, o `if` será sempre verdadeiro, o que provavelmente não é a lógica desejada
+Neste trecho, você está usando uma função de flecha de várias linhas, que está envolvida por chaves `{}`. Essa forma de função de flecha permite que você execute múltiplas instruções dentro dela, no entanto, como você não está explicitamente retornando um valor nesta função, ela retorná `undefined` implicitamente. Isso faz com que o método `.every()` sempre retorne `false` (`undefined` é um valor falsy), independente dos valores dos campos em `requiredFields`, portanto, você sempre entrará no `if`.
 
 # <a id="closures"></a>Closures
 
@@ -316,50 +303,25 @@ function contador() {
 }
 
 /* Quando você atribui a `increment` o valor retornado pela chamada a `contador()`, increment agora é: 
-`
+
 function() {
     count++;
     return count;
 }
-`
+
 pois `contador()` retorna uma função. Como podemos ver, essa função continua conseguindo acessar a variável `count`.*/
 const increment = contador();
 
-console.log(increment()); // Saída: 1
-console.log(increment()); // Saída: 2
-console.log(increment()); // Saída: 3
+console.log(increment()); // Output: 1
+console.log(increment()); // Output: 2
+console.log(increment()); // Output: 3
 ```
 
-# <a id="importsexports"></a>Imports/Exports
+# <a id="epoca-unix"></a>Época Unix
 
-<!--
-TODO
+É um padrão comum para muitas linguagens de programação que as suas bibliotecas representem o tempo como um número em milissegundos decorridos desde um ponto de referência específico, como a Época Unix, para a biblioteca `moment` do JavaScript.
 
-Criar um exemplo de exportação/importação com o código abaixo:
-
-```JavaScript
-const nome1 = "Maria";
-export default nome1;
-
-export const nome2 = "João";
-```
--->
-
-# <a id="bibliotecas"></a>Bibliotecas
-
-### Sumário
-
-- [`cluster`](#bibliotecas-cluster)
-- [`moment`](#bibliotecas-moment)
-- [`express`](#bibliotecas-express)
-- [`sequelize`](#bibliotecas-sequelize)
-- [`umzug`](#bibliotecas-umzug)
-
-# <a id="bibliotecas-cluster"></a>`cluster`
-
-Ao usar o módulo `cluster` do Node.js você cria processos filhos (workers) que compartilham a mesma porta para lidar com a carga de trabalho de forma eficiente.
-
-Caso você encerre um processo filho, apenas esse processo específico será encerrado, os outros processos continuarão em execução normalmente. No entanto, observe que, quando um dos processos filhos morre (por qualquer motivo), o evento `'exit'` é acionado no processo mestre (master).
+A Época Unix é o marco zero do sistema de tempo Unix, também é conhecida como "marco zero do calendário Unix", e é definida como primeiro de janeiro de 1970, 00:00:00 UTC. O `moment` realiza a conversão da data para milissegundos a partir da Época Unix.
 
 # <a id="bibliotecas-moment"></a>`moment`
 
@@ -632,9 +594,3 @@ O `.findOne()` é útil quando você precisa encontrar apenas um registro com ba
 # <a id="bibliotecas-umzug"></a>`umzug`
 
 Quando você utiliza a `umzug` com a `sequelize`, a `umzug` cria uma tabela no seu banco de dados chamada `SequelizeMeta` que irá conter o nome de todas as migrações aplicadas ao seu banco.
-
-# <a id="epoca-unix"></a>Época Unix
-
-É um padrão comum para muitas linguagens de programação que as suas bibliotecas representem o tempo como um número em milissegundos decorridos desde um ponto de referência específico, como a Época Unix, para a biblioteca `moment` do JavaScript.
-
-A Época Unix é o marco zero do sistema de tempo Unix, também é conhecida como "marco zero do calendário Unix", e é definida como primeiro de janeiro de 1970, 00:00:00 UTC. O `moment` realiza a conversão da data para milissegundos a partir da Época Unix.

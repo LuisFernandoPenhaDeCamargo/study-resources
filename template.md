@@ -70,11 +70,14 @@ Codename:	jammy
 ## <a id="formatacao-documento-codigo"></a>Código
 
 - Primeiro eu importo os módulos externos, deixo um espaço em branco, ai importo os módulos internos
-- Normalmente eu mantenho um espaço em branco acima e abaixo de mensagens de log e de `response`s
+- **Normalmente** eu mantenho um espaço em branco acima e abaixo de mensagens de log e de "`response`s"
 - As mensagens de erro seguem o seguinte formato, `[ $< arquivo ou função/método > ERROR ]` seguido pelo erro em si
+- Para especificar que o comentário se trata de uma saída, uma impressão, pontue antes dele "Output:"
+    + **Exemplo:** `// Output: number` (JavaScript)
+Output:
 - Links de referência não devem possuir em seu corpo o argumento
-    + **Exemplo:** `## <a id="comandos-utilizados-cli-describe"></a>´pm2 describe $< ID >´`
-- No primeiro paragráfo, primeira sentença, devemos fornecer uma descrição resumida do comando (comece com "É utilizado para ..."). Destaque a parte mais importante
+    + **Exemplo:** `## <a id="comandos-utilizados-cli-describe"></a>´pm2 describe $< ID >´` (Markdown)
+- No primeiro paragráfo, primeira sentença, devemos fornecer uma descrição resumida do comando (comece com **"É utilizado para ..."**). Destaque a parte mais importante, se possível
     + Após isso, podemos fornecer mais informações sobre ele
 
 ## <a id="formatacao-documento-subtopicos"></a>Subtópicos
@@ -125,4 +128,5 @@ TODO
 - termos-TI.md, adicionar SO
 -->
 ```
-- **Markdown:** entre crases, na hora de especificar um bloco de código simples, quando for necessário o uso de crases dentro deste bloco, como não está sendo possível escapar o caractere, utilize o acento agudo no lugar da crase. Exemplo: `## <a id="comandos-utilizados-cli-describe"></a>´pm2 describe $< ID >´`
+- **Markdown:** entre crases, na hora de especificar um bloco de código simples, quando for necessário o uso de crases dentro deste bloco, como não está sendo possível escapar o caractere, utilize o acento agudo no lugar da crase. Exemplo: "`## <a id="comandos-utilizados-cli-describe"></a>´pm2 describe $< ID >´`"
+- **Markdown:** entre asteriscos, na hora de especificar uma frase em negrito, quando for necessário o uso do "$" dentro deste bloco, como não está sendo possível escapar o caractere, utilize o "A" no lugar do cifrão. Exemplo: "**/home/A< usuário >/.nvm/versions/node/A< versões >/lib/node_modules**"

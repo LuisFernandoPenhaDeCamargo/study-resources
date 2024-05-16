@@ -52,14 +52,68 @@ Conceitos e observações sobre esta linguagem de marcação.
 
 ## JavaScript/
 
-- **package.json (packagejson.md):** arquivo
+- **JavaScript (JavaScript.md):** linguagem de programação
+    + [Operadores](#operadores)
+        - [`new`](#operadores-new)
+        - [`typeof`](#operadores-typeof)
+    + [Objetos](#objetos)
+        - [`Object`](#objetos-object)
+            + [`.toString()`](#objetos-object-tostring)
+        - [`Date`](#objetos-date)
+    + [Métodos](#metodos)
+        - [Array](#metodos-array)
+            + [array.every()](#metodos-array-every)
+    + [Função de Flecha](#funcao-flecha)
+    + [Closures](#closures)
+    + [Época Unix](#epoca-unix)
+- **Node.js (Nodejs.md):** engine, runtime, ambiente de execução JavaScript
+    + [Compatibilidade Entre o Node.js e o npm](#compatibilidade-nodejs-npm)
+    + [Ato de Publicação](#ato-publicacao)
+    + [`npx`](#npx)
+    + [Node 22.1.0 e a Criação de Executáveis Únicos](#node-22-criacao-executaveis-unicos)
+        - [Assets](#node-22-criacao-executaveis-unicos-assets)
+        - [Suporte Para o Snapshot de Inicialização](#node-22-criacao-executaveis-unicos-suporte-snapshot-inicializacao)
+        - [Suporte Para o Cache de Código V8](#node-22-criacao-executaveis-unicos-suporte-cache-codigo-v8)
+        - [No Script Principal Injetado](#node-22-criacao-executaveis-unicos-script-principal-injetado)
+            + [`sea.isSea()`](#node-22-criacao-executaveis-unicos-script-principal-injetado-sea-issea)
+            + [`sea.getAsset(key[,encoding])`](#node-22-criacao-executaveis-unicos-script-principal-injetado-sea-getasset)
+            + [`sea.getAssetAsBlob(key[, options])`](#node-22-criacao-executaveis-unicos-script-principal-injetado-sea-getassetasblob)
+            + [`sea.getRawAsset(key)`](#node-22-criacao-executaveis-unicos-script-principal-injetado-sea-getrawasset)
+            + [`require(id)` No Script Principal Injetado Não é Baseado em Arquivo](#node-22-criacao-executaveis-unicos-script-principal-injetado-requireid-script-principal-injetado-nao-eh-baseado-arquivo)
+            + [`__filename` e `module.filename` No Script Principal Injetado](#node-22-criacao-executaveis-unicos-script-principal-injetado-filename-module-filename-script-principal-injetado)
+            + [`__dirname` no Script Principal Injetado](#node-22-criacao-executaveis-unicos-script-principal-injetado-dirname-script-principal-injetado)
+    + [Notas](#node-22-criacao-de-executaveis-unicos-script-principal-injetado-notas)
+    + [Testando esta Feature](#node-22-criacao-executaveis-unicos-script-principal-injetado-testando-feature)
+    + [Conclusão](#node-22-criacao-executaveis-unicos-script-principal-injetado-conclusao)
+- **package.json (packagejson.md):** arquivo de metadados
+    + [Chaves](#chaves)
+        - [`scripts`](#chaves-scripts)
+            + [Chaves da chave `scripts`](#chaves-scripts-chaves-chave-scripts)
+    + [Dependências Utilizadas por Um Pacote](#dependencias-utilizadas-pacote)
+        - [Operadores de Versão](#dependencias-utilizadas-pacote-operadores-versao)
+        - [Patch](#dependencias-utilizadas-pacote-patch)
+    + [package.json x package-lock.json](#packagejson-x-package-lockjson)
+- **npm (npm.md):** gerenciador de pacotes
+    + [Compatibilidade Entre o Node.js e o npm](#compatibilidade-nodejs-npm)
+    + [Ato de Publicação](#ato-publicacao)
+    + [Comandos Utilizados Através do CLI](#comandos-utilizados-cli)
+        - [`npm login` x `npm adduser`](#comandos-utilizados-cli-npm-login-x-npm-adduser)
+        - [`npm install`](#comandos-utilizados-cli-npm-install)
+        - [`npm show $< nome do pacote > dependencies`](#comandos-utilizados-cli-npm-show-nome-pacote-dependencies)
 - **NVM (nvm.md):** gerenciador de versões para Node.js
     + [Contexto: SO Utilizado](#contexto-so-utilizado)
+    + [Sistema Hierárquico de Arquivos](#sistema-hierarquico-arquivos)
     + [Instalando o NVM](#instalando-nvm)
         - [Observações Interessantes](#instalando-nvm-observacoes-interessantes)
     + [Desinstalando o NVM](#desinstalando-nvm)
     + [Comandos Utilizados Através do CLI](#comandos-utilizados-cli)
-        - [`nvm ls-remote`](#comandos-nvm-ls-remote)
+        - [`ls-remote`](#comandos-utilizados-cli-ls-remote)
+- **Bibliotecas/**
+    + `cluster` **(cluster.md):** utilizado para criar processos filhos
+    + `moment` **(.md):**
+    + `express` **(.md):**
+    + `sequelize` **(.md):**
+    + `umzug` **(.md):**
 - **Pacotes/**
     + **PM2 (PM2.md):** gerenciador de processos
         - [Contexto: SO Utilizado](#contexto-so-utilizado)
@@ -71,24 +125,17 @@ Conceitos e observações sobre esta linguagem de marcação.
             + [`describe $< ID >`](#comandos-utilizados-cli-describe)
             + [`env $< ID >`](#comandos-utilizados-cli-env)
     + **JavaScript obfuscator (JavaScript-obfuscator.md):** utilizado na ofuscação de código JavaScript
+    + `node-gyp` **(node-gyp.md):** ferramenta de compilação para módulos nativos do Node.js
+    + **NPX (NPX.md):** executor de pacotes do NPM
+- **ateste.js:** arquivo utilizado para testes
 
 ## JavaScript (JavaScript/javascript.md)
 
 Conceitos e observações sobre esta linguagem de programação.
 
-## Node.js (JavaScript/nodejs.md)
-
-Conceitos e observações importantes sobre este ambiente de execução.
-
-## npm (JavaScript/npm.md)
-
-Gerenciador de pacotes para JavaScript.
-
 ## Compilação
 
 Arquivo que trata de pacotes utilizados na compilação de código-fonte Node.js.
-
-### Sumário
 
 # ---
 
@@ -230,7 +277,7 @@ Configurando o ambiente para que agrade o meu gosto pessoal, além de uma lista 
 
 - `~/` referência qual diretório do sistema hierárquico de arquivos?
 
-## JavaScript
+## JavaScript/Node.js/npm/nvm/PM2
 
 - `pm2 kill`
 - `pm2 resurrect`
@@ -238,6 +285,14 @@ Configurando o ambiente para que agrade o meu gosto pessoal, além de uma lista 
 - `pm2 delete`
 - **dump.pm2**
 - Cada processo do pm2 pode ser vinculado a um usuário?
+- Criar um exemplo de exportação/importação com o código abaixo:
+
+```JavaScript
+const nome1 = "Maria";
+export default nome1;
+
+export const nome2 = "João";
+```
 
 ## MariaDB
 

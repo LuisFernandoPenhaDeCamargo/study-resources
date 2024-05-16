@@ -36,7 +36,7 @@ Abaixo segue uma lista de ferramentas que eu geralmente preciso ter instaladas n
 - `sudo apt upgrade`
 - `sudo apt install curl`
 - `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash`
-    Login no NPM.
+    Login no npm.
 - `pyenv`
 - `sudo apt install mariadb-server`
     + Adquira um dump

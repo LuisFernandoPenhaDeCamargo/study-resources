@@ -3,11 +3,12 @@
 ### Sumário
 
 - [Contexto: SO Utilizado](#contexto-so-utilizado)
+- [Sistema Hierárquico de Arquivos](#sistema-hierarquico-arquivos)
 - [Instalando o NVM](#instalando-nvm)
   + [Observações Interessantes](#instalando-nvm-observacoes-interessantes)
 - [Desinstalando o NVM](#desinstalando-nvm)
 - [Comandos Utilizados Através do CLI](#comandos-utilizados-cli)
-  + [`nvm ls-remote`](#comandos-nvm-ls-remote)
+  + [`ls-remote`](#comandos-utilizados-cli-ls-remote)
 
 # <a id="contexto-so-utilizado"></a>Contexto: SO Utilizado
 
@@ -19,6 +20,12 @@ Description:	Ubuntu 22.04.4 LTS
 Release:	22.04
 Codename:	jammy
 ```
+
+# <a id="sistema-hierarquico-arquivos"></a>Sistema Hierárquico de Arquivos
+
+Os pacotes instalados pelo npm serão utilizados no ambiente de execução Node.js específico, por isso faz sentido cada versão do Node.js possuir a própria pasta **node_modules** (**/home/A< usuário >/.nvm/versions/node/A< versões >/lib/node_modules**)
+
+os pacotes instalados pelo npm serão utilizados pelo seu projeto no ambiente de execução node.js específico, por isso faz sentido o nvm armazenar os pacotes na pasta node_modules relacionada a versão do node.js
 
 # <a id="instalando-nvm"></a>Instalando o NVM
 

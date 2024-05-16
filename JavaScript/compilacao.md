@@ -422,3 +422,80 @@ WantedBy=multi-user.target
 - deu problema com a versão estática de novo, como eu fiz esse caralho? Faça o processo do zero pra testar
 
 root     21169  8.2  1.4 679972 56592 pts/2    Sl+  10:45   0:05 ./my_server_static_upx
+
+{
+  "name": "@zoeslots/zoe-game-api",
+  "version": "2.5.3-homolog-node.16.1",
+  "description": "Game API manages game operations including money in/out, accumulated/jackpot raffle",
+  "main": "server.js",
+  "author": "Zoe Slots, LLC",
+  "bin": {
+    "orion-game-server": "server.js"
+  },
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha -R spec tests/api/*",
+    "benchmark": "node tests/benchmark/benchmark.js"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "body-parser": "~1.0.1",
+    "express": "~4.0.0",
+    "log-timestamp": "^0.1.2",
+    "moment": "^2.11.1",
+    "mysql": "^2.5.4",
+    "mysql2": "1.0.0-rc.1",
+    "redis": "~2.4.2",
+    "request": "^2.81.0",
+    "sequelize": "^3.24.3"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5",
+    "request": "^2.81.0",
+    "supertest": "^1.2.0"
+  },
+  "pkg": {
+    "scripts": [
+      "./models/*.js"
+    ]
+  }
+}
+
+chave main sempre é inserida?
+
+{
+  "name": "@zoeslots/zoe-game-api",
+  "version": "2.5.3-homolog-node.16.2",
+  "description": "Game API manages game operations including money in/out, accumulated/jackpot raffle",
+  "author": "Zoe Slots, LLC",
+  "bin": {
+    "orion-game-server": "zoe-game-api"
+  },
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha -R spec tests/api/*",
+    "benchmark": "node tests/benchmark/benchmark.js"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "body-parser": "~1.0.1",
+    "express": "~4.0.0",
+    "log-timestamp": "^0.1.2",
+    "moment": "^2.11.1",
+    "mysql": "^2.5.4",
+    "mysql2": "1.0.0-rc.1",
+    "redis": "~2.4.2",
+    "request": "^2.81.0",
+    "sequelize": "^3.24.3"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5",
+    "request": "^2.81.0",
+    "supertest": "^1.2.0"
+  },
+  "files": [
+    "./zoe-game-api"
+  ]
+}
+
+pkg server.js -o batata -t node16-linux-x64 --config package.json

@@ -5,24 +5,25 @@
 - [Compatibilidade Entre o Node.js e o npm](#compatibilidade-nodejs-npm)
 - [Ato de Publicação](#ato-publicacao)
 - [`npx`](#npx)
-- [Node 22.1.0 e a Criação de Executáveis Únicos](#node-22-criacao-de-executaveis-unicos)
-  + [Assets](#node-22-criacao-de-executaveis-unicos-assets)
-  + [Suporte Para o Snapshot de Inicialização](#node-22-criacao-de-executaveis-unicos-suporte-snapshot-inicializacao)
-  + [Suporte Para o Cache de Código V8](#node-22-criacao-de-executaveis-unicos-suporte-cache-codigo-v8)
-  + [No Script Principal Injetado](#node-22-criacao-de-executaveis-unicos-script-principal-injetado)
-    - [`sea.isSea()`](#node-22-criacao-de-executaveis-unicos-script-principal-injetado-sea-issea)
-    - [`sea.getAsset(key[,encoding])`](#node-22-criacao-de-executaveis-unicos-script-principal-injetado-sea-getasset)
-    - [`sea.getAssetAsBlob(key[, options])`](#node-22-criacao-de-executaveis-unicos-script-principal-injetado-sea-getassetasblob)
-    - [`sea.getRawAsset(key)`](#node-22-criacao-de-executaveis-unicos-script-principal-injetado-sea-getrawasset)
-    - [`require(id)` No Script Principal Injetado Não é Baseado em Arquivo](#node-22-criacao-de-executaveis-unicos-script-principal-injetado-requireid-script-principal-injetado-nao-eh-baseado-arquivo)
-    - [`__filename` e `module.filename` No Script Principal Injetado](#node-22-criacao-de-executaveis-unicos-script-principal-injetado-filename-module-filename-script-principal-injetado)
-    - [`__dirname` no Script Principal Injetado](#node-22-criacao-de-executaveis-unicos-script-principal-injetado-dirname-script-principal-injetado)
-  + [Testando esta Feature](#node-22-criacao-de-executaveis-unicos-script-principal-injetado-testando-feature)
-  + [Conclusão](#node-22-criacao-de-executaveis-unicos-script-principal-injetado-conclusao)
+- [Node 22.1.0 e a Criação de Executáveis Únicos](#node-22-criacao-executaveis-unicos)
+  + [Assets](#node-22-criacao-executaveis-unicos-assets)
+  + [Suporte Para o Snapshot de Inicialização](#node-22-criacao-executaveis-unicos-suporte-snapshot-inicializacao)
+  + [Suporte Para o Cache de Código V8](#node-22-criacao-executaveis-unicos-suporte-cache-codigo-v8)
+  + [No Script Principal Injetado](#node-22-criacao-executaveis-unicos-script-principal-injetado)
+    - [`sea.isSea()`](#node-22-criacao-executaveis-unicos-script-principal-injetado-sea-issea)
+    - [`sea.getAsset(key[,encoding])`](#node-22-criacao-executaveis-unicos-script-principal-injetado-sea-getasset)
+    - [`sea.getAssetAsBlob(key[, options])`](#node-22-criacao-executaveis-unicos-script-principal-injetado-sea-getassetasblob)
+    - [`sea.getRawAsset(key)`](#node-22-criacao-executaveis-unicos-script-principal-injetado-sea-getrawasset)
+    - [`require(id)` No Script Principal Injetado Não é Baseado em Arquivo](#node-22-criacao-executaveis-unicos-script-principal-injetado-requireid-script-principal-injetado-nao-eh-baseado-arquivo)
+    - [`__filename` e `module.filename` No Script Principal Injetado](#node-22-criacao-executaveis-unicos-script-principal-injetado-filename-module-filename-script-principal-injetado)
+    - [`__dirname` no Script Principal Injetado](#node-22-criacao-executaveis-unicos-script-principal-injetado-dirname-script-principal-injetado)
+  + [Notas](#node-22-criacao-de-executaveis-unicos-script-principal-injetado-notas)
+  + [Testando esta Feature](#node-22-criacao-executaveis-unicos-script-principal-injetado-testando-feature)
+  + [Conclusão](#node-22-criacao-executaveis-unicos-script-principal-injetado-conclusao)
 
 # <a id="compatibilidade-nodejs-npm"></a>Compatibilidade Entre o Node.js e o npm
 
-O Node.js (geralmente referido como Node) e o npm (Node Package Manager) estão relacionados, mas são dois componentes separados. O Node.js é um ambiente de tempo de execução JavaScript que permite executar código JavaScript no servidor, enquanto o npm é um gerenciador de pacotes para JavaScript.
+O Node.js e o npm estão relacionados, mas são dois componentes separados. O Node.js é um ambiente de tempo de execução JavaScript que permite executar código JavaScript no servidor, enquanto o npm é um gerenciador de pacotes para JavaScript.
 
 O Node.js é instalado independentemente do npm e vice-versa. No entando, o npm é geralmente instalado automaticamente junto com o Node.js. Isso ocorre porque o npm faz faz parte da instalação padrão do Node.js desde a versão 0.6.3.
 
@@ -32,31 +33,15 @@ Você pode atualizar o npm para a versão mais recente usando o comando `npm ins
 
 # <a id="ato-publicacao"></a>Ato de Publicação
 
-O ato de publicar um pacote, enquanto se utiliza uma versão do Node.js em uma máquina e, em seguida, executar esse pacote pacote em uma máquina com uma versão diferente do Node.js, não deve ser um problema.
+O ato de publicar um pacote, enquanto se utiliza uma versão do Node.js em uma máquina e, em seguida, executar esse pacote em uma máquina com uma versão diferente do Node.js, não deve ser um problema.
 
 O npm é apenas usado para empacotar e distribuir o código-fonte do pacote. Uma vez publicado, o pacote é independente da versão do Node.js usada para publicá-lo (se atentando que quem o publica é o npm). O que importa é a compatibilidade do pacote com a versão do Node.js na máquina onde ele será executado.
 
 Em resumo, desde que o pacote seja compatível com a versão do Node.js na máquina de destino, não deve haver problemas em publicar o pacote em uma versão diferente do Node.js. No entanto, é sempre uma prática recomendada testar o pacote em diferentes versões do Node.js para garantir a compatibilidade e o funcionamento adequado em diferentes ambientes de execução.
 
-# <a id="npx"></a>`npx`
+# <a id="node-22-criacao-executaveis-unicos"></a>Node 22.1.0 e a Criação de Executáveis Únicos
 
-`npx` é uma ferramenta fornecida pelo Node.js que é usada para executar pacotes do Node.js que estão instalados localmente ou mesmo pacotes que não estão instalados globalmente. Ele permite executar comandos de pacotes sem a necessidade de instalar esses pacotes globalmente no seu sistema.
-
-A principal vantagem do `npx` é que ele procura por pacotes instalados localmente em seu projeto antes de procurar nos pacotes globais. Isso significa que você pode usar facilmente pacotes que estão listados como dependências em seu arquivo **package.json** sem ter que instalá-los globalmente.
-
-Além disso, o `npx` também pode ser usado para executar comandos de pacotes que ainda não estão instalados em sua máquina. Ele fará o donwload temporário do pacote, e executará e, em seguida, removerá o pacote baixado.
-
-Por exemplo, se você quiser executar um script contido no pacote `foo`, você pode simplesmente usar:
-
-```bash
-$ npx foo
-```
-
-Se o pacote `foo` estiver instalado localmente em seu projeto, o `npx` usará a versão local. Se não estiver instalado, ele será temporariamente baixado e depois removido. Isso permite que você execute facilmente scripts de pacotes sem a necessidade de instalar esses pacotes globalmente.
-
-# <a id="node-22-criacao-de-executaveis-unicos"></a>Node 22.1.0 e a Criação de Executáveis Únicos
-
-Código-fonte: src/node_sea.cc
+Código-fonte: **src/node_sea.cc**
 
 Esse recurso permite a distribuição conveniente de uma aplicação Node.js para um sistema que não possui o Node.js instalado.
 
@@ -74,15 +59,15 @@ Aqui estão os passos para criar um aplicativo executável único usando uma des
 $ echo 'console.log(`Hello, ${process.argv[2]}!`);' > hello.js
 ```
 
-Este comando cria um arquivo JavaScript chamado **hello.js** que imprime uma mensagem personalizada no console. Aqui está oo que ele faz:
+Este comando cria um arquivo JavaScript chamado **hello.js** que imprime uma mensagem personalizada no console. Aqui está o que ele faz:
 
 - `echo`**:** é um comando de terminal que simplesmente imprime o texto fornecido como argumento no terminal
-- `'console.log(Hello, ${process.argv[2]}!);'`**:** é a mensagem que queremos imprimir. Estamos usando uma template string com interpolação de variáveis para inserir o primeiro argumento passado para o script como parte da mensagem. `process.argv[2]` é uma forma de acessar o primeiro argumento passado para o script quando é executado na linha de comando
+- `'console.log(´Hello, ${process.argv[2]}!´);'`**:** é a mensagem que queremos imprimir. Estamos usando uma template string com interpolação de variáveis para inserir o primeiro argumento passado para o script como parte da mensagem. `process.argv[2]` é uma forma de acessar o primeiro argumento passado para o script quando é executado na linha de comando
 - `> hello.js`**:** redireciona a saída do comando `echo` para um arquivo chamado `hello.js`. Isso cria ou sobrescreve o arquivo **hello.js** com a mensagem fornecida
 
-Portanto, depois de executar este comando, o arquivo **hello.js** conterá um script JavaScript que imprime "`Olá, $< argumento >!`" no console, onde `argumento` é o primeiro argumento passado para o script quando é executado. Por exemplo, se você executar `node hello.js Mundo`, ele imprimirá "`Olá. Mundo!`" no console.
+Portanto, depois de executar este comando, o arquivo **hello.js** conterá um script JavaScript que imprime "`Olá, $< argumento >!`" no console, onde `argumento` é o primeiro argumento passado para o script quando é executado. Por exemplo, se você executar `node hello.js world`, ele imprimirá "`Hello, world`" no console.
 
-2. **Crie um arquivo de configuração construindo um blob que pode ser injetado em um único aplicativo executável:**
+2. **Crie um arquivo de configuração que será utilizado na construção do blob que será gerado para ser injetado em um aplicativo executável único:**
 
 ```bash
 $ echo '{ "main": "hello.js", "output": "sea-prep.blob" }' > sea-config.json
@@ -92,13 +77,13 @@ Este comando cria um arquivo de configuração JSON chamado **sea-config.json** 
 
 - `echo`**:** assim como no comando anterior, este comando imprime o texto fornecido como argumento no terminal
 - `'{ "main": "hello.js", "output": "sea-prep.blob" }'`**:** este é o conteúdo do arquivo JSON que estamos criando. Ele específica dois campos
-    + `main`**:** o nome do arquivo JavaScript principal que será incluído de preparação. Neste caso, é **hello.js**, o mesmo arquivo JavaScript que criamos anteriormente
+    + `main`**:** o nome do arquivo JavaScript principal que será incluído no blob de preparação. Neste caso, é **hello.js**, o mesmo arquivo JavaScript que criamos anteriormente
     + `output`**:** o nome do arquivo de saída que conterá o blob de preparação. Neste caso, é **sea-prep.blob**
 - `> sea-config.json`**:** redireciona a saída do comando `echo` para um arquivo chamado **sea-config.json**, criando ou sobrescrevendo o arquivo com o conteúdo fornecido
 
 Portanto, depois de executar este comando, o arquivo **sea-config.json** conterá as configurações necessárias para gerar o blob de preparação que pode ser injetado em um aplicativo executável único.
 
-3. **Gere a blob que será injetada:**
+3. **Gere o blob que será injetado:**
 
 ```bash
 $ node --experimental-sea-config sea-config.json
@@ -126,7 +111,7 @@ Portanto, depois de executar este comando, será criada uma cópia do executáve
 5. **Injete a blob no binário copiado através da execução do postject com as seguintes opções:**
 
 ```bash
-npx postject hello NODE_SEA_BLOB sea-prep.blob \
+$ npx postject hello NODE_SEA_BLOB sea-prep.blob \
     --sentinel-fuse NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2
 ```
 
@@ -142,7 +127,7 @@ Portanto, após executar este comando, o blob será injetado no binário `hello`
 
 **Sobre** `fuse` **(Electron Fuses)**
 
-Para um subconjunto de funcionalidade do Electron, faz sentido desabilitar determinados recursos para um aplicativo inteiro. Por exemplo, 99% dos aplicativos não fazem uso de ELECTRON_RUN_AS_NODE, esses aplicativos querem pode enviar um binário que é incapaz de usar esse recurso. Também não queremos que os consumidores do Electron construam o Electron a partir da fonte, pois isso representa um enorme desafio técnico e tem um alto custo de tempo e dinheiro.
+Para um subconjunto de funcionalidade do Electron, faz sentido desabilitar determinados recursos para um aplicativo inteiro. Por exemplo, 99% dos aplicativos não fazem uso de ELECTRON_RUN_AS_NODE, esses aplicativos querem poder enviar um binário que é incapaz de usar esse recurso. Também não queremos que os consumidores do Electron construam o Electron a partir da fonte, pois isso representa um enorme desafio técnico e tem um alto custo de tempo e dinheiro.
 
 Os **fusíveis** são a solução para este problema, em alto nível eles são "bits mágicos" no binário Electron que podem ser invertidos ao empacotar seu aplicativo Electron para ativar/desativar certos recursos/restrições. Como eles são invertidos no momento do pacote antes de você assinar o código do seu aplicativo, o sistema operacional se torna responsável por garantir que esses bits não sejam revertidos por meio da validação de assinatura de código no nível do sistema operacional (Gatekeeper/App Locker).
 
@@ -150,12 +135,12 @@ Os **fusíveis** são a solução para este problema, em alto nível eles são "
 
 ```bash
 $ ./hello world
-Hello, world!
+Hello, world
 ```
 
-**Gerando blobs de Preparação de Executáveis Únicos**
+**Gerando blobs de Preparação Que Serão Inseridos em Aplicativos Executáveis Únicos**
 
-Blobs de preparação de executável único que são injetados no aplicativo podem ser gerados usando a flag `--experimental-sea-config` do binário Node.js que será usado para construir o executável único. É necessário um caminho para um arquivo de configuração no formato JSON. Se o caminho passado não for absoluto, o Node.js usará o caminho relativo ao diretório de trabalho atual.
+Blobs de preparação que serão inseridos em aplicativos executáveis únicos que são injetados no aplicativo podem ser gerados usando a flag `--experimental-sea-config` do binário Node.js que será usado para construir o executável único. É necessário um caminho para um arquivo de configuração no formato JSON. Se o caminho passado não for absoluto, o Node.js usará o caminho relativo ao diretório de trabalho atual.
 
 A configuração lê, atualmente, os seguintes campos de nível superior:
 
@@ -173,22 +158,26 @@ A configuração lê, atualmente, os seguintes campos de nível superior:
 }
 ```
 
-Se os caminhos não forem absolutos, o Node.js usará o caminho relativo ao diretório de trabalho atual. A versão do binário Node.js usado para produzir a blob deve ser a mesma na qual o blob será injetado.
+Se os caminhos não forem absolutos, o Node.js usará o caminho relativo ao diretório de trabalho atual. **A versão do binário Node.js usado para produzir o blob deve ser a mesma na qual o blob será injetado**.
 
 ## <a id="node-22-criacao-de-executaveis-unicos-assets"></a>Assets
 
-Os usuários podem incluir ativos adicionando um dicionário de chave-caminho à configuração como o campo de assets (ativos). No momento da construção, o Node.js leria os ativos dos caminhos especificados e os agruparia no blob de preparação. No executável gerado, os usuários podem recuperar os ativos usando as APIs `sea.getAsset()` e `sea.getAssetAsBlob()`.
+Os usuários podem incluir assets (ativos) adicionando um dicionário de chave-caminho à configuração ao campo de `assets`. No momento da construção, o Node.js leria os ativos dos caminhos especificados e os agruparia no blob de preparação. No executável gerado, os usuários podem recuperar os ativos usando as APIs `sea.getAsset()` e `sea.getAssetAsBlob()`.
 
 O aplicativo executável único pode acessar os ativos da seguinte maneira:
 
 ```JavaScript
 const { getAsset } = require('node:sea');
+
 // Returns a copy of the data in an ArrayBuffer.
 const image = getAsset('a.jpg');
+
 // Returns a string decoded from the asset as UTF8.
 const text = getAsset('b.txt', 'utf8');
+
 // Returns a Blob containing the asset.
 const blob = getAssetAsBlob('a.jpg');
+
 // Returns an ArrayBuffer containing the raw asset without copying.
 const raw = getRawAsset('a.jpg');
 ```
@@ -197,14 +186,14 @@ Você pode consultar a documentação das APIs para mais informação.
 
 ## <a id="node-22-criacao-de-executaveis-unicos-suporte-snapshot-inicializacao"></a>Suporte Para o Snapshot de Inicialização
 
-O campo `useSnapshot` pode ser usado para ativar o suporte a snapshots. Neste caso, o script principal não estaria presente quando o executável final fosse iniciado. Em vez disso, ele seria executado quando o blob de preparação do executável único fosse buildado. O blob de preparação gerado incluiria então um snapshot, capturando os estados inicializados pelo sript principal. O executável final, o qual possui o blob de preparação injetado, iria desserializar o snapshot em tempo de execução.
+O campo `useSnapshot` pode ser usado para ativar o suporte a snapshots. Neste caso, o script principal não estaria presente quando o executável final fosse iniciado. Em vez disso, ele seria executado quando o blob de preparação do executável único fosse buildado. O blob de preparação gerado incluiria então um snapshot, capturando os estados inicializados pelo script principal. O executável final, o qual possui o blob de preparação injetado, iria desserializar o snapshot em tempo de execução.
 
-O padrão típico para um aplicativo usar snapshot em um único aplicativo executável é:
+O padrão típico para um aplicativo usar snapshot em um aplicativo executável único é:
 
 1. No momento da construção, na máquina no qual ele está sendo buildado, o script principal é executado para inicializar o heap em um estado pronto para receber a entrada do usuário. O script também deve configurar uma função principal com `v8.startupSnapshots.setDeserializeMainFunction()`. Esta função será compilada e serializada no snapshot, mas não invocada no momento da construção
-2. Em tempo de execução, a função principal será executada na heap desserializada na máquina do usuário para processar a entrada do usupario e gerar a saída
+2. Em tempo de execução, a função principal será executada na heap desserializada na máquina do usuário para processar a entrada do usuário e gerar a saída
 
-As restrições gerais dos scripts de snapshot também se aplicam ao script principal quando ele é usado para criar o snapshot para o aplicativo executável único, e o script pode usar a API `v8.startupSnapshot` para se adaptar a essas restrições. Você pode consultar a documentação sobre o suporte para snapshots de inicialização em Node.js.
+As restrições gerais dos scripts principais também se aplicam ao script do snapshot, quando ele é usado para criar o snapshot para o aplicativo executável único, o script pode usar a API `v8.startupSnapshot` para se adaptar a essas restrições. Você pode consultar a documentação sobre o suporte para snapshots de inicialização em Node.js.
 
 ## <a id="node-22-criacao-de-executaveis-unicos-suporte-cache-codigo-v8"></a>Suporte Para o Cache de Código V8
 
@@ -220,7 +209,7 @@ O node:sea integrado permite a interação com o aplicativo executável único a
 
 Adicionado em v21.7.0, v20.12.0.
 
-- **Valor de Retorno:** `boolean`. Se este script está sendo executado dentro de um aplicativo de executável único
+- **Valor de Retorno:** `boolean`. Verifica se este script está sendo executado dentro de um aplicativo executável único
 
 ### <a id="node-22-criacao-de-executaveis-unicos-script-principal-injetado-sea-getasset"></a>`sea.getAsset(key[,encoding])`
 
@@ -229,7 +218,7 @@ Adicionado em v21.7.0, v20.12.0.
 Este método pode ser usado para recuperar os assets configurados para serem agrupados no aplicativo executável único no momento da construção. Um erro é gerado quando nenhum asset correspondente pode ser encontrado.
 
 - **Parâmetros:**
-  + `key`**:** `string`. A chave para o asset, especificado no dicionário de assets no arquivo de configuração do aplicativo executável único
+  + `key`**:** `string`. A chave para o asset, especificada no dicionário de assets no arquivo de configuração do blob
   + `encoding`**:** `string`. Se especificado, o asset será decodificado como uma string. Qualquer codificação suportada pelo TextDecoder é aceita. Se não for especificado, um ArrayBuffer contendo uma cópia do asset será retornada
 - **Valor de Retorno:** `string` | `ArrayBuffer`
 
@@ -240,7 +229,7 @@ Adicionado em v21.7.0, v20.12.0.
 Similar a `sea.getAsset()`, mas retorna o resultado em um blob. Um erro é gerado quando nenhum asset correspondente pode ser encontrado.
 
 - **Parâmetros:**
-  + `key`**:** `string`. A chave para o asset, especificado no dicionário de assets no arquivo de configuração do aplicativo executável único
+  + `key`**:** `string`. A chave para o asset, especificado no dicionário de assets no arquivo de configuração do blob
   + `options`**:** `Object`
     - `type`**:** `string`. Um tipo MIME opcional para o blob
 - **Valor de Retorno:** `Blob`
@@ -256,7 +245,7 @@ Ao contrário de `sea.getAsset()` ou `sea.getAssetAsBlob()`, este método não r
 Por enquanto, os usuários devem evitar gravar no buffer do array retornado. Se a seção injetada não estiver marcada como gravável ou não estiver alinhada corretamente, as gravações no buffer do array retornado provavelmente resultarão em uma falha.
 
 - **Parâmetros:**
-  + `key`**:** `string`. A chave para o asset, especificado no dicionário de assets no arquivo de configuração do aplicativo executável único
+  + `key`**:** `string`. A chave para o asset, especificado no dicionário de assets no arquivo de configuração do blob
 - **Valor de Retorno:** `string` | `ArrayBuffer`
 
 ### <a id="node-22-criacao-de-executaveis-unicos-script-principal-injetado-requireid-script-principal-injetado-nao-eh-baseado-arquivo"></a>`require(id)` no Script Principal Injetado Não é Baseado em Arquivo
@@ -290,7 +279,7 @@ Pesquise no binário a string de fusível `NODE_SEA_FUSE_fce680ab2cc467b6e072b8b
 
 ## <a id="node-22-criacao-de-executaveis-unicos-script-principal-injetado-testando-feature"></a>Testando esta Feature
 
-O diretório **./node22** possui os arquivos utilizados no teste desta feature. A ideia do teste era conseguir utilizar dependências (arquivos **.js**) no nosso script principal injetado, mas como você pode ver pelo log abaixo
+O diretório **./node22** possui os arquivos utilizados no teste desta feature. A ideia do teste era conseguir utilizar dependências (arquivos **.js**) no nosso script principal injetado, mas como você pode ver pelo log abaixo:
 
 ```bash
 $ node --experimental-sea-config sea-config.json && cp "$(command -v node)" hello && npx postject hello NODE_SEA_BLOB sea-prep.blob --sentinel-fuse NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2
@@ -352,6 +341,5 @@ parece que o arquivo **asset.js** está dentro do aplicativo executável único,
 - Você tem que utilizar de meios alternativos para adicionar as dependências do seu projeto na aplicação
 - Ficou maior que o binário gerado utilizando o Nexe
 - Ainda é extremamente fácil realizar a leitura do código-fonte, mesmo com ele dentro do aplicativo executável único
-  + Mesmo em um binário criado a partir de Rust, ainda foi possível obter algumas informações do código-fonte (mesmo que mais difícil do que no cenário acima)
+  + Mesmo em um binário criado utilizando Rust, ainda foi possível obter algumas informações do código-fonte (mesmo que mais difícil do que no cenário acima)
 - Os recursos para utilizar esta feature se encontram disponíveis na versão do Node.js > v20.13.1, por causa disso, a engine utilizada no binário deve possuir a versão citada anteriormente (não é possível utilizar este recurso com uma versão mais antiga do Node.js)
-- Instalar o "pacote Rust" e utilizar o comando strings nele

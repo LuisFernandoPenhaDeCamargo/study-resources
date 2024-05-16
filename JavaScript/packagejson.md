@@ -91,13 +91,13 @@ As dependências e suas versões podem ser especificadas no arquivo **package.js
 
 Para garantir que as versões das dependências sejam consistentes em diferentes ambientes de desenvolvimento e implantação, é uma prática recomendada travar as versões das dependências no **package.json** sempre que possível, usando operadores de versão específicos (por exemplo, `^1.0.0`, `~1.0.0`, ou `1.0.0`). Isso ajuda a minimizar surpresas e problemas de compatibilidade entre as diferentes versões de uma dependência.
 
-## <a id="dependencias-utilizadas-pacote-operadores-versao"></a>Operadores de Versão <--
+## <a id="dependencias-utilizadas-pacote-operadores-versao"></a>Operadores de Versão
 
 Os operadores de versão são usados no arquivo **package.json** para especificar as versões das dependências de um projeto. Eles permitem definir intervalos de versões que determinam quais versões específicas de uma dependência podem ser instaladas.
 
 Aqui estão alguns dos operadores de versão mais comuns:
 
-1. **Exato(**`version`**):** especifica uma versão exata que deve ser usada. Por exemplo, `lodash: "4.17.21"` irá instalar exatamente a versão `4.17.21` do pacote Lodash
+1. **Exato(**`$< versão >`**):** específica uma versão exata que deve ser usada. Por exemplo, `lodash: "4.17.21"` irá instalar exatamente a versão `4.17.21` do pacote Lodash
 2. **Caret(**`^$< versão >`**):** permite atualizações compatíveis com a versão especificada, incluindo patches e versões menores, mas não versões maiores. Por exemplo, `lodash: "^4.17.21"` permitirá qualquer versão que seja >=`4.17.21` <5.0.0
 3. **Tilde(**`~$< versão >`**):** permite apenas atualizações de patch, mantendo a versão menor e maior fixa. Por exemplo, `lodash: "~4.17.21"` permitirá qualquer versão que seja >=`4.17.21` <4.18.0
 4. **Intervalo(**`$< versão 1 > - $< versão 2 >`**):** especifica um intervalo de versões que podem ser usadas. Por exemplo, `lodash: "4.17.0 - 4.17.21"` permitirá qualquer versão entre `4.17.0` e `4.17.21`, inclusive
@@ -120,6 +120,6 @@ Em resumo, um patch é uma atualização incremental que visa resolver problemas
 **package.json** e **package-lock.json** são dois arquivos importantes em projetos Node.js que desempenham papéis diferentes, mas estão relacionados entre si.
 
 - **package.json:** este arquivo é essencial em qualquer projeto Node.js. Ele contém metadados sobre o projeto, como nome, versão, descrição e scripts de execução. Além disso, uma das partes mais importantes do **package.json** é a lista de dependências do projeto. Esta lista inclui todas as dependências necessárias para que o projeto seja executado corretamente, bem como as dependências de desenvolvimento (geralmente usadas durante o desenvolvimento, mas não necessárias para o ambiente de produção). Você também pode encontrar informações sobre os scripts de execução, como iniciar, testar ou construir o projeto
-- **package-lock.json:** introduzido no npm versão 5, p **package-lock.json** é um arquivo que contém informações sobre a árvore de dependências exata e detalhes sobre cada pacote instalado em um projeto. Ele garante que, ao instalar as dependências em um novo ambiente, as mesmas versões exatas dos pacotes serão instaladas, evitando assim problemas de inconsistência de versões. Isso é especialmente útil para garantir a reprodutibilidade das builds em diferentes máquinas ou ambientes. O **package-lock.json** é gerado automaticamente sempre que as dependências do projeto são instaladas ou atualizadas, e deve ser commitado junto com o **package.json** no controle de versão do projeto
+- **package-lock.json:** introduzido no npm versão 5, o **package-lock.json** é um arquivo que contém informações sobre a árvore de dependências exata e detalhes sobre cada pacote instalado em um projeto. Ele garante que, ao instalar as dependências em um novo ambiente, as mesmas versões exatas dos pacotes serão instaladas, evitando assim problemas de inconsistência de versões. Isso é especialmente útil para garantir a reprodutibilidade das builds em diferentes máquinas ou ambientes. O **package-lock.json** é gerado automaticamente sempre que as dependências do projeto são instaladas ou atualizadas, e deve ser commitado junto com o **package.json** no controle de versão do projeto
 
 Em resumo, o **package.json** é onde você gerencia as informações do seu projeto e suas dependências, enquanto o **package-lock.json** é uma representação detalhada das dependências exatas do projeto, garantindo a consistência das versões instaladas. Ambos são essenciais para garantir um ambiente de desenvolvimento e produção estável e consistente em projeto Node.js.

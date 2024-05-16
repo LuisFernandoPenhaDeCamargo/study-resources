@@ -1,54 +1,17 @@
-Sistema hierárquico de arquivos npm x nvm
-
 # npm
 
 ### Sumário
 
-- [Comandos](#comandos)
-    + [`npm login` x `npm adduser`](#comandos-npm-login-x-npm-adduser)
-    + [`npm install`](#comandos-npm-install)
-    + [`npm show $< nome do pacote > dependencies`](#comandos-npm-show-nome-pacote-dependencies)
 - [Compatibilidade Entre o Node.js e o npm](#compatibilidade-nodejs-npm)
 - [Ato de Publicação](#ato-publicacao)
-- [`node-gyp`](#node-gyp)
-
-# <a id="comandos"></a>Comandos
-
-### Sumário
-
-- [`npm login` x `npm adduser`](#comandos-npm-login-x-npm-adduser)
-- [`npm install`](#comandos-npm-install)
-- [`npm show $< nome do pacote > dependencies`](#comandos-npm-show-nome-pacote-dependencies)
-
-## <a id="comandos-npm-login-x-npm-adduser"></a>`npm login` x `npm adduser`
-
-`npm login` e `npm adduser` são comandos do npm usados para autenticar-se em um registro npm. Ambos os comandos realizam a mesma função de autenticação, permitindo que você faã login em sua conta npm para publicar pacotes ou acessar pacotes privados. A escolha entre os dois depende da preferência pessoal, pois ambos executam a mesma ação.
-
-## <a id="comandos-npm-install"></a>`npm install`
-
-Quando você executa o comando `npm install` no diretório do seu projeto Node.js, o npm instala todas as dependências listadas no arquivo **package.json** localmente, ou seja, dentro do diretório do seu projeto. Essas dependências são instaladas no diretório **node_modules**.
-
-O npm também cria (ou atualiza) o arquivo **package-lock.json**, que registra as versões exatas de todas as dependências instaladas, incluindo as dependências das dependências (e assim por diante). Isso garante que, mesmo que você execute o `npm install` em outro ambiente ou em outra máquina, as mesmas versões exatadas das depedências seja instaladas, garantindo consistência e reprodutibilidade.
-
-Aleḿ disso, se você especificar a flag `--save` ou `--save-dev` junto com o comando `npm install`, o npm adicionarpa a dependência ao seu arquivo package.json como uma depedência de produção ou uma dependência de desenvolvimento, respectivamente. Por exemplo:
-
-```bash
-$ npm install lodash --save
-```
-
-Isso instalará o pacote lodash localmente no seu projeto e adicionará uma entrada no seu arquivo **package.json** sob a seção de dependências de produção.
-
-Em resumo, o comando `npm install` é usado para instalar todas as dependências listadas no pakage.json localmente no diretório do seu projeto, garantindo que seu projeto tenha todas as bibliotecas necessárias para funcionar corretamente.
-
-## <a id="comandos-npm-show-nome-pacote-dependencies"></a>`npm show $< nome do pacote > dependencies`
-
-O comando `npm show $< nome do pacote > dependencies` exibe as dependências do pacote `nome do pacote`. Isso pode ser útil para visualizar as dependências de um pacote npm antes de instalá-lo.
-
-O comando `npm view $< nome do pacote > dependencies` possui a mesma finalidade que o comando `show`. Ambos os comandos são usados para visualizar as dependências de um pacote npm específico.
+- [Comandos Utilizados Através do CLI](#comandos-utilizados-cli)
+    + [`npm login` x `npm adduser`](#comandos-utilizados-cli-npm-login-x-npm-adduser)
+    + [`npm install`](#comandos-utilizados-cli-npm-install)
+    + [`npm show $< nome do pacote > dependencies`](#comandos-utilizados-cli-npm-show-nome-pacote-dependencies)
 
 # <a id="compatibilidade-nodejs-npm"></a>Compatibilidade Entre o Node.js e o npm
 
-O Node.js (geralmente referido como Node) e o npm (Node Package Manager) estão relacionados, mas são dois componentes separados. O Node.js é um ambiente de tempo de execução JavaScript que permite executar código JavaScript no servidor, enquanto o npm é um gerenciador de pacotes para JavaScript.
+O Node.js e o npm estão relacionados, mas são dois componentes separados. O Node.js é um ambiente de tempo de execução JavaScript que permite executar código JavaScript no servidor, enquanto o npm é um gerenciador de pacotes para JavaScript.
 
 O Node.js é instalado independentemente do npm e vice-versa. No entando, o npm é geralmente instalado automaticamente junto com o Node.js. Isso ocorre porque o npm faz faz parte da instalação padrão do Node.js desde a versão 0.6.3.
 
@@ -58,21 +21,42 @@ Você pode atualizar o npm para a versão mais recente usando o comando `npm ins
 
 # <a id="ato-publicacao"></a>Ato de Publicação
 
-O ato de publicar um pacote, enquanto se utiliza uma versão do Node.js em uma máquina e, em seguida, executar esse pacote pacote em uma máquina com uma versão diferente do Node.js, não deve ser um problema.
+O ato de publicar um pacote, enquanto se utiliza uma versão do Node.js em uma máquina e, em seguida, executar esse pacote em uma máquina com uma versão diferente do Node.js, não deve ser um problema.
 
 O npm é apenas usado para empacotar e distribuir o código-fonte do pacote. Uma vez publicado, o pacote é independente da versão do Node.js usada para publicá-lo (se atentando que quem o publica é o npm). O que importa é a compatibilidade do pacote com a versão do Node.js na máquina onde ele será executado.
 
 Em resumo, desde que o pacote seja compatível com a versão do Node.js na máquina de destino, não deve haver problemas em publicar o pacote em uma versão diferente do Node.js. No entanto, é sempre uma prática recomendada testar o pacote em diferentes versões do Node.js para garantir a compatibilidade e o funcionamento adequado em diferentes ambientes de execução.
 
-# <a id="node-gyp"></a>`node-gyp`
+# <a id="comandos-utilizados-cli"></a>Comandos Utilizados Através do CLI
 
-O `node-gyp` é uma ferramenta de compilação que simplifica a compilação de módulos nativos escritos em C++ para serem executados em Node.js. Ele permite que você compile códigos C++ que são necessários para alguns pacotes npm que dependem de módulos nativos.
+### Sumário
 
-Aqui estão algumas das principais funções do `node-gpy`:
+- [`npm login` x `npm adduser`](#comandos-utilizados-cli-npm-login-x-npm-adduser)
+- [`npm install`](#comandos-npm-install)
+- [`npm show $< nome do pacote > dependencies`](#comandos-npm-show-nome-pacote-dependencies)
 
-1. **Compilação de módulos nativos:** ele permite a compilação de códigos C++ para criar binários que podem ser carregados pelo Node.js
-2. **Gestão de dependências:** o `node-gyp` lida automaticamente com muitos detalhes relacionados ao sistema operacional e ao ambiente de compilação, tornando mais fácil compilar módulos nativos em diferentes plataformas
-3. **Integração com o npm:** o `node-gyp` é frequentemente usado em conjunto com o npm para instalar pacotes npm que incluem módulos nativos. Quando você instala um pacote npm que requer compilação, o `node-gyp` é chamado automaticamente para compilar os módulos necessários
-4. **Suporte a plataformas diversas:** o `node-gyp` é compatível com uma variedade de plataformas, incluindo Linux, macOS e Windows
+## <a id="comandos-utilizados-cli-npm-login-x-npm-adduser"></a>`npm login` x `npm adduser`
 
-Se você estiver trabalhando com pacotes npm que incluem módulos nativos ou se precisar compilar módulos nativos para o Node.js, é provável que você precide do `node-gyp` instalado em sua máquina.
+`npm login` e `npm adduser` são comandos do npm usados para autenticar-se em um registro npm. **Ambos os comandos realizam a mesma função de autenticação**, permitindo que você faça login em sua conta npm para publicar pacotes ou acessar pacotes privados. A escolha entre os dois depende da preferência pessoal, pois ambos executam a mesma ação.
+
+## <a id="comandos-utilizados-cli-npm-install"></a>`npm install`
+
+Quando você executa o comando `npm install` no diretório do seu projeto Node.js, o npm instala todas as dependências listadas no arquivo **package.json** localmente, ou seja, dentro do diretório do seu projeto. Essas dependências são instaladas no diretório **node_modules**.
+
+O npm também cria (ou atualiza) o arquivo **package-lock.json**, que registra as versões exatas de todas as dependências instaladas, incluindo as dependências das dependências (e assim por diante). Isso garante que, mesmo que você execute o `npm install` em outro ambiente ou em outra máquina, as mesmas versões exatas das depedências sejam instaladas, garantindo consistência e reprodutibilidade.
+
+Aleḿ disso, se você especificar a flag `--save` ou `--save-dev` junto com o comando `npm install`, o npm adicionará a dependência ao seu arquivo package.json como uma depedência de produção ou uma dependência de desenvolvimento, respectivamente. Por exemplo:
+
+```bash
+$ npm install lodash --save
+```
+
+Isso instalará o pacote lodash localmente no seu projeto e adicionará uma entrada no seu arquivo **package.json** sob a seção de dependências de produção.
+
+Em resumo, o comando `npm install` é usado para instalar todas as dependências listadas no **package.json** localmente no diretório do seu projeto, garantindo que seu projeto tenha todas as bibliotecas necessárias para funcionar corretamente.
+
+## <a id="comandos-utilizados-cli-npm-show-nome-pacote-dependencies"></a>`npm show $< nome do pacote > dependencies`
+
+É utilizado para exibir as dependências do pacote `nome do pacote`. Isso pode ser útil para visualizar as dependências de um pacote npm antes de instalá-lo.
+
+O comando `npm view $< nome do pacote > dependencies` possui a mesma finalidade que o comando `show`. Ambos os comandos são usados para visualizar as dependências de um pacote npm específico.
