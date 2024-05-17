@@ -17,7 +17,31 @@ JavaScript obfuscator é um ofuscador gratuito para JavaScript, o qual possui v�
 **Exemplos Interessantes**
 
 ```bash
-$ javascript-obfuscator /home/$< usuário >/APIs/zoe-game-api/ --output /home/$< usuário >/APIs/obfuscated --exclude /home/$< usuário >/APIs/zoe-game-api/node_modules/
+$ javascript-obfuscator /home/$< usuário >/$< pwd do diretório de entrada >/ --output /home/$< usuário >/$< pwd para o diretório de saída >/ --exclude /home/$< usuário >/$< pwd para o diretório ou arquivo que não sera obfuscado >/node_modules
 ```
 
-Isso irá ofuscar todo o conteúdo do diretório **zoe-game-api**, os arquivos ofuscados gerados serão colocados em **obfuscated**. A opção `--exclude` específica que o conteúdo do diretório **node_modules** é o único que não deve ser ofuscado **(erros ocorreram quando eu tentei obscurecer ele)**.
+Isso irá ofuscar todo o conteúdo do diretório "**pwd do diretório de entrada**", os arquivos ofuscados gerados serão colocados em "**pwd para o diretório de saída**". A opção `--exclude` específica que o conteúdo do diretório **node_modules** é o único que não deve ser ofuscado **(erros ocorreram quando eu tentei obscurecer ele)**.
+
+**Observações Interessantes**
+
+O JavaScript obfuscator é projetado para obfuscar apenas arquivos JavaScript (**.js**) e não lida com arquivos JSON (**.json**). O obfuscador processa o código JavaScript para torná-lo mais difícil de ler e entender, mas os arquivos JSON são dados e não contêm lógica executável, portanto, não são apropriados para obfuscação.
+
+Acho importante pontuar que na saída do processo, os arquivos **.json não estarão incluídos, assim como os arquivos pontuados na opção** `--exclude`.
+
+---
+
+O log do JavaScript obfuscator é muito bom, ele pontua o arquivo que está sendo obfuscado, além de indicar, em caso de erro, o arquivo no qual o erro foi gerado.
+
+```bash
+$ javascript-obfuscator /home/$< usuário >/$< pwd do diretório de entrada >/ --output /home/$< usuário >/$< pwd para o diretório de saída > --exclude /home/$< usuário >/$< pwd para o diretório ou arquivo que não sera obfuscado >/node_modules/
+
+[javascript-obfuscator-cli] Obfuscating file: /home/$< usuário >/$< pwd do diretório de entrada >/$< diretório >/$< arquivo 1 >.js... 
+
+[javascript-obfuscator-cli] Obfuscating file: /home/$< usuário >/$< pwd do diretório de entrada >/$< diretório >/$< arquivo 2 >.js... 
+
+[javascript-obfuscator-cli] Error in file: /home/$< usuário >/$< pwd do diretório de entrada >/$< outro diretório >/$< arquivo 2 >.js... 
+
+# Log do erro.
+```
+
+O caso descrito acima ocorreu comigo, o arquivo em questão ("`arquivo 2`"), possuia um erro de programação no qual uma vírgula indevida existia no final de uma linha de expressão.

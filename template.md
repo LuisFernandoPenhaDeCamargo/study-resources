@@ -95,7 +95,7 @@ Existem alguns subtópicos comuns, abaixo segue a lista deles, observado que a l
 - **Opções Comuns**
 - **Exemplos**
 - **Exemplos Interessantes**
-- **Observações Interessantes**
+- **Observações Interessantes**/**Observações Importantes**
 
 ## <a id="formatacao-documento-nomenclatura"></a>Nomenclatura
 
@@ -109,7 +109,8 @@ Os nomes dos arquivos devem estar em negrito.
 
 Existem alguns subtítulos comuns, abaixo segue a lista deles, observando que a lista segue a ordem na qual eles devem aparecer dentro de um título.
 
-- ## <a id="-observacoes-interessantes"></a>Observações Interessantes
+- ## <a id="-observacoes-interessantes"></a>Observações Interessantes/## <a id="-observacoes-importantes"></a>Observações Importantes
+- ## <a id="metodos-"></a>Métodos
 
 # <a id="key-words"></a>Key Words
 

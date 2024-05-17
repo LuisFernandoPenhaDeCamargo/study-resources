@@ -109,11 +109,19 @@ Conceitos e observações sobre esta linguagem de marcação.
     + [Comandos Utilizados Através do CLI](#comandos-utilizados-cli)
         - [`ls-remote`](#comandos-utilizados-cli-ls-remote)
 - **Bibliotecas/**
-    + `cluster` **(cluster.md):** utilizado para criar processos filhos
-    + `moment` **(.md):**
-    + `express` **(.md):**
-    + `sequelize` **(.md):**
-    + `umzug` **(.md):**
+    + `cluster` **(cluster.md):** utilizada para criar processos filhos
+    + `moment` **(moment.md):** utilizada na manipulação de datas
+    + Express **(Express.md):** utilizada na criação de servidores HTTP
+        + [Métodos](#metodos)
+            - [app.listen()](#metodos-app-listen)
+    + **Sequelize (sequelize.md):** utilizada na manipulação de banco de dados SQL
+        + [Tipos de Coluna](#tipos-coluna)
+        + [Métodos](#metodos)
+            - [`queryInterface.addColumn()`](#queryInterface-addcolumn)
+            - [`queryInterface.removeColumn()`](#queryInterface-removecolumn)
+            - [`Model.create()`](#model-create)
+            - [`Model.findOne()`](#model-findOne)
+    + `umzug` **(umzug.md):** utilizada no controle de migrações
 - **Pacotes/**
     + **PM2 (PM2.md):** gerenciador de processos
         - [Contexto: SO Utilizado](#contexto-so-utilizado)
@@ -125,6 +133,27 @@ Conceitos e observações sobre esta linguagem de marcação.
             + [`describe $< ID >`](#comandos-utilizados-cli-describe)
             + [`env $< ID >`](#comandos-utilizados-cli-env)
     + **JavaScript obfuscator (JavaScript-obfuscator.md):** utilizado na ofuscação de código JavaScript
+    + `pkg` **(pkg.md):** utilizado para compilar o código-fonte Node.js em um binário executável
+        - [`pkg` x Nexe](#"pkg-x-nexe")
+        - [Segurança](#seguranca)
+        - [Arquivo de Serviço e PM2](#arquivo-serviço-e-pm2)
+        - [Compilando o seu Código-fonte com o `pkg`](#compilando-codigo-fonte-pkg)
+            + [Especificação de Target](#compilando-codigo-fonte-pkg-especificacao-target)
+            + [Observações Importantes](#compilando-codigo-fonte-pkg-observacoes-importantes)
+                - [Recursos Não Sendo Incluídos no Compilado](#compilando-codigo-fonte-pkg-observacoes-importantes-recursos-nao-incluidos-compilado)
+                - [`pkg` e o JavaScript obfuscator](#compilando-codigo-fonte-pkg-observacoes-importantes-pkg-javascript-obfuscator)
+    + **Nexe (nexe.md):** utilizado para compilar o código-fonte Node.js em um binário executável
+        - [`pkg` x Nexe](#"pkg-x-nexe")
+        - [Segurança](#seguranca)
+        - [Compilando o seu Código-fonte com o Nexe](#compilando-codigo-fonte-nexe)
+            + [Especificação de Target](#compilando-codigo-fonte-nexe-especificacao-target)
+            + [Observações Importantes](#compilando-codigo-fonte-nexe-observacoes-importantes)
+                - [Configurações de Compilação Ideais](#compilando-codigo-fonte-nexe-observacoes-importantes-configuracoes-compilacao-ideais)
+                - [Recursos Não Sendo Incluídos no Compilado](#compilando-codigo-fonte-nexe-observacoes-importantes-recursos-nao-incluidos-compilado)
+                - [Problemas ao Tentar Comprimir o Compilado](#compilando-codigo-fonte-nexe-observacoes-importantes-problemas-tentar-comprimir-compilado)
+                - [Problemas de Segurança](#compilando-codigo-fonte-nexe-observacoes-importantes-problemas-seguranca)
+                - [Problemas de Depêndencias Externas](#compilando-codigo-fonte-nexe-observacoes-importantes-problemas-dependencias-externas)
+                - [Problemas com o PM2](#compilando-codigo-fonte-nexe-observacoes-importantes-problemas-pm2)
     + `node-gyp` **(node-gyp.md):** ferramenta de compilação para módulos nativos do Node.js
     + **NPX (NPX.md):** executor de pacotes do NPM
 - **ateste.js:** arquivo utilizado para testes
@@ -276,12 +305,17 @@ Configurando o ambiente para que agrade o meu gosto pessoal, além de uma lista 
 ## Bash
 
 - `~/` referência qual diretório do sistema hierárquico de arquivos?
+- O que são "dependências externas"? No contexto de ferramentas de geração de binários
+- `systemctl daemon-reload`
 
 ## JavaScript/Node.js/npm/nvm/PM2
 
-- `pm2 kill`
+- A chave "`main`" do **package.json** faz com que o arquivo específicado sempre esteja presente no seu pacote publicado no npm?
+- A chave "`bin`" do **package.json** faz com que o arquivo específicado sempre esteja presente no seu pacote publicado no npm?
+- Engine, runtime, ambiente de execução. Contexto: Node.js
 - `pm2 resurrect`
-- `pm2 reload all`
+- `pm2 reload`
+- `pm2 kill`
 - `pm2 delete`
 - **dump.pm2**
 - Cada processo do pm2 pode ser vinculado a um usuário?
