@@ -3,8 +3,11 @@
 ### Sumário
 
 - [Chaves](#chaves)
+    + [`main`](#chaves-main)
+    + [`bin`](#chaves-bin)
     + [`scripts`](#chaves-scripts)
         - [Chaves da chave `scripts`](#chaves-scripts-chaves-chave-scripts)
+    + [`files`](#chaves-files)
 - [Dependências Utilizadas por Um Pacote](#dependencias-utilizadas-pacote)
     + [Operadores de Versão](#dependencias-utilizadas-pacote-operadores-versao)
     + [Patch](#dependencias-utilizadas-pacote-patch)
@@ -12,19 +15,70 @@
 
 # <a id="chaves"></a>Chaves
 
-1. `main`**:** a chave "`main`" especifica o ponto de entrada principal do seu pacote. Isso significa que quando alguém importa seu pacote em seu código usando `require()`, o arquivo especificado como `main` será o primeiro a ser carregado e executado  
-    Portanto, se você está desenvolvendo uma biblioteca ou um módulo, você especifica o arquivo principal que outros desenvolvedores vão importar quando usarem seu pacote. Isso não cria um processo no momento da instalação, em vez disso, o arquivo especificado como `main` será carregado sempre que alguém importar seu pacote em seu código.
-2. `bin`**:**
-    - A chave "`bin`" é usada para definir os executáveis que serão instalados quando o pacote npm for instalado globalmente. Ele mapeia nomes de comandos que podem ser chamados a partir da linha de comando para arquivos JavaScript específicos no seu pacote. O valor de cada entrada nesta chave deve ser o caminho relativo para o arquivo JavaScript que contém a lógica do comando
-    - Por exemplo, se você tem um arquivo chamado `server.js` que deseja que seja executado como um comando `my-server`, você definiria a chave `"bin"` assim: `"bin": { "my-server": "./server.js" }`  
-        Na verdade, para arquivos que se encontram diretamente no diretório raiz, não é necessário pontuar o caminho com "**./**" (o npm até emite um warning). Quando você específica o caminho para o binário, o npm o interpreta como um caminho relativo a partir do diretório raiz do projeto.
-    - Durante a instalação global do pacote npm, um link simbólico será criado para cada comando especificado nesta chave, apontando para o arquivo JavaScript correspondente
-3. `files`**:**
-    - A chave `"files"` é usada para especificar quais arquivos e diretórios devem ser incluídos no pacote npm quando ele for publicado no registro npm. Você pode listar arquivos e diretórios individuais ou usar padrões de correspondência de globo (glob patterns) para incluir várias entradas
-    - Por exemplo, se você deseja incluir apenas o arquivo `server.js` e o diretório **public**, você definiria a chave `"files"` assim: `"files": ["server.js", "public/**/*"]`
-    - Todos os arquivos e diretórios especificados nesta chave serão incluídos no pacote npm quando você executar o comando `npm publish`
+### Sumário
 
-Essas são algumas das chaves fundamentais para configurar o comportamento do seu pacote npm.
+- [`main`](#chaves-main)
+- [`bin`](#chaves-bin)
+- [`scripts`](#chaves-scripts)
+- [`files`](#chaves-files)
+
+## <a id="chaves-main"></a>`main`
+
+O campo `main` é o ID do módulo que é o ponto de entrada do seu programa. Ou seja, se seu pacote se chama `foo` e um usuário o instalar e então utilizar `require("foo")`, o objeto de exportação do seu módulo principal será retornado.
+
+Este deve ser um módulo relativo ao diretório raiz do seu projeto.
+
+Para a maioria dos módulos, faz mais sentido ter um script principal e muitas vezes não muito mais.
+
+Se o `main` não estiver definido, o padrão como ponto de entrada é o arquivo **index.js** no diretório raiz do seu projeto.
+
+Devemos também pontuar que o arquivo especificado como valor da chave `main` **sempre será incluído no pacote publicado no npm, afinal ele é o ponto de entrada da sua aplicação**.
+
+## <a id="chaves-bin"></a>`bin`
+
+Muitos pacotes possuem um ou mais arquivos executáveis que gostariam de instalar no PATH. O npm torna isso muito fácil (na verdade, ele usa esse recurso para instalar o executável "npm").
+
+Para usar este recurso, forneça um campo "`bin`" em seu **package.json** que é um mapa do nome do comando para o arquivo local. Quando este pacote for instalado globalmente, esse arquivo será vinculado ao local onde onde se encontram os executáveis globais, para que fique disponível para execução por nome. Quando este pacote é instalado como uma dependência em outro pacote, o arquivo será vinculado onde estará disponível para esse pacote diretamente pelo "`npm exec`" ou pelo nome em outros scripts ao invocá-los via "`npm run-script`".
+
+Por exemplo, "`myapp`" poderia possuir o seguinte valor:
+
+```json
+{
+    "bin": {
+        "myapp": "./cli.js"
+    }
+}
+```
+
+quando você instalar o pacote que possui a chave `bin` acima, ele criará um link simbólico do script `cli.js` para **/usr/local/bin/myapp**.
+
+Se você tiver um único executável e seu nome for o nome do pacote, basta fornecê-lo como uma string. Por exemplo:
+
+```json
+{
+    "name": "my-program",
+    "version": "1.2.5",
+    "bin": "./path/to/program"
+}
+```
+
+seria igual a isto:
+
+```json
+{
+    "name": "my-program",
+    "version": "1.2.5",
+    "bin": {
+        "my-program": "./path/to/program"
+    }
+}
+```
+
+**Certifique-se de que seus arquivos referenciados em** `bin` **comecem com** "`!/usr/bin/env node`", caso contrário, os scripts serão iniciados sem o executável node.
+
+Observe que você também pode definir os arquivos executáveis usando "directory.bin".
+
+Atente-se também que os arquivos especificados na chave `bin` estarão sempre presentes no pacote publicado no npm.
 
 ## <a id="chaves-scripts"></a>`scripts`
 
@@ -35,10 +89,10 @@ A estrutura básica de um objeto `scripts` no **package.json** é um conjunto de
 Aqui está um exemplo simples de um `scripts` no **package.json**:
 
 ```json
-"scripts": {
-    "start": "node server.js",
-    "test": "mocha"
-}
+    "scripts": {
+        "start": "node server.js",
+        "test": "mocha"
+    }
 ```
 
 Neste exemplo:
@@ -77,6 +131,12 @@ Se você precisar executar várias tarefas após a instalação de um pacote, vo
 ```
 
 Dessa forma, você pode definir uma sequência de tarefas a serem executadas após a instalação do pacote.
+
+## <a id="chaves-files"></a>`files`
+
+- A chave `"files"` é usada para especificar quais arquivos e diretórios devem ser incluídos no pacote npm quando ele for publicado no registro npm. Você pode listar arquivos e diretórios individuais ou usar padrões de correspondência de globo (glob patterns) para incluir várias entradas
+- Por exemplo, se você deseja incluir apenas o arquivo `server.js` e o diretório **public**, você definiria a chave `"files"` assim: `"files": ["server.js", "public/**/*"]`
+- Todos os arquivos e diretórios especificados nesta chave serão incluídos no pacote npm quando você executar o comando `npm publish`
 
 # <a id="dependencias-utilizadas-pacote"></a>Dependências Utilizadas por Um Pacote
 

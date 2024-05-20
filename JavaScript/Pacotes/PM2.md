@@ -23,6 +23,10 @@ Em resumo, o PM2 é uma ferramenta poderosa e versátil para gerenciar aplicativ
     + [`list`](#comandos-utilizados-cli-list)
     + [`describe $< ID >`](#comandos-utilizados-cli-describe)
     + [`env $< ID >`](#comandos-utilizados-cli-env)
+    + [`reload`](#comandos-utilizados-cli-reload)
+    + [`kill`](#comandos-utilizados-cli-kill)
+    + [`save`](#comandos-utilizados-cli-save)
+    + [`resurrect`](#comandos-utilizados-cli-ressurect)
 
 # <a id="contexto-so-utilizado"></a>Contexto: SO Utilizado
 
@@ -52,6 +56,10 @@ Codename:	jammy
 - [`list`](#comandos-utilizados-cli-list)
 - [`describe $< ID >`](#comandos-utilizados-cli-describe)
 - [`env $< ID >`](#comandos-utilizados-cli-env)
+- [`reload`](#comandos-utilizados-cli-reload)
+- [`kill`](#comandos-utilizados-cli-kill)
+- [`save`](#comandos-utilizados-cli-save)
+- [`ressurect`](#comandos-utilizados-cli-ressurect)
 
 ## <a id="comandos-utilizados-cli-list"></a>`pm2 list`
 
@@ -101,3 +109,170 @@ Este comando é uma maneira útil de obter insights sobre os processos gerenciad
 - `ID`**:** ID do processo que você deseja descrever. O ID é um identificador exclusivo atribuído a cada processo pelo PM2 quando ele é iniciado. Você deve substituir `ID` pelo ID real do processo que você deseja descrever
 
 Este comando pode ser útil para entender como o ambiente está configurado para um processo específico e diagnosticar problemas relacionados às variáveis de ambiente.
+
+## <a id="comandos-utilizados-cli-reload"></a>`pm2 reload`
+
+É utilizado para recarregar processos gerenciados pelo PM2 de forma suave, sem downtime. Esse comando é especialmente útil quando você deseja aplicar mudanças no código ou na configuração de um aplicativo em execuçãom garantindo que as atualizações sejam aplicadas sem interrupções perceptíveis para os usuários.
+
+**Como Funciona**
+
+1. **Recarregamento sem downtime:** o `pm2 reload` reinicia os processos gerenciados um a um, garantindo que, enquanto um processo está sendo reiniciado, os outros continuem funcionando. Isso permite que o aplicativo continue a atender solicitações sem interrupções
+2. **Aplicação de mudanças:** quando você modifica o código do seu aplicativo ou suas configurações e deseja aplicar essas mudanças, o `pm2 reload` aplica essas atualizações sem a necessidade de parar completamente os processos
+
+**Quando Usar**
+
+- **Atualização de código:** após realizar mudanças no código-fonte do seu aplicativo, use `pm2 reload` para aplicar essas mudanças sem interromper o serviço
+- **Mudanças na configuração:** quando você altera configurações que não requerem a parada completa dos processos, o `pm2 reload` pode aplicar essas mudanças de forma eficiente
+- **Manutenção programada:** para executar manutenção ou atualizações planejadas sem causar downtime para os usuários
+
+**Benefícios**
+
+- **Sem downtime:** o recarregamento suave garante que não haja tempo de inatividade perceptível, pois os processos são reiniciados um a um
+- **Atualizações contínuas:** você pode aplicar mudanças no código ou configurações sem interromper o serviço, mantendo a continuidade das operações
+- **Melhoria na disponibilidade:** a abordagem de recarregamento suave melhora a disponibilidade do aplicativo, já que sempre há processos disponíveis para atender solicitações
+
+**Exemplos**
+
+- **Para recarregar todos os processos gerenciados pelo PM2:** `pm2 reload all`
+- **Para recarregar um processo específico pelo seu nome ou ID:** `pm2 reload $< nome do processo ou ID >`
+
+## <a id="comandos-utilizados-cli-kill"></a>`pm2 kill`
+
+É utilizado para parar todos os processos gerenciados pelo PM2 e também encerrar o próprio daemon do PM2. Esse comando é útil quando você precisa interromper completamente todos os serviçoes gerenciados pelo PM2 e liberar todos os recursos utilizados.
+
+**Como Funciona**
+
+1. **Parar todos os processos:** o `pm2 kill` vai parar todos os processos que estão sendo gerenciados pelo PM2. Isso inclui todos os aplicativos Node.js ou outros scripts que foram iniciados usando o PM2
+2. **Encerrar o daemon do PM2:** além de parar os processos, o `pm2 kill` também encerra o daemon do PM2. O daemon é o processo de fundo que gerencia e monitora todos os processos iniciados com o PM2
+
+**Considerações Importantes**
+
+- **Perda de estado:** ao usar `pm2 kill`, você vai perder o estado atual dos processos gerenciados. Se você quiser restaurar os processos posteriormente, certifique-se de salvar o estado com `pm2 save` antes de matar os processos
+- **Não recomendado para interrupções temporárias:** se você só precisa parar temporariamente alguns processos, pode ser mais adequado usar `pm2 stop $< nome do processo ou ID >` ou `pm2 delete $< nome do processo ou ID >` para processos específicos, em vez de matar todos os processos e o daemon
+
+## <a id="comandos-utilizados-cli-save"></a>`pm2 save`
+
+É utilizado para salvar o estado atual de todos os processos gerenciados. Esse comando cria um snapshot da configuração atual dos processos em uma arquivo chamado **dump.pm2** localizado no diretório de configuração do PM2 (geralmente em **~/.pm2**).
+
+A configuração atual inclui informações como os scripts que estão sendo executados, seus parâmetros, variáveis de ambiente, etc.
+
+## <a id="comandos-utilizados-cli-resurrect"></a>`pm2 resurrect`
+
+É utilizado para restaurar processos que foram salvos anteriormente pelo PM2.
+
+**Como Funciona**
+
+1. **Salvar o estado atual dos processos:** antes de usar o `pm2 resurrect`, você precisa salvar o estado atual dos processos com o comando `pm2 save`. Isso cria um arquivo **dump.pm2** no diretório de configuração do PM2 (geralmente em **~/.pm2**), que contém a lista de processos e suas configurações
+2. **Restaurar os processos:** quando você usa o comando `pm2 resurrect`, o PM2 lê o arquivo **dump.pm2** e reinicia todos os processos listados nesse arquivo. Isso é útil, por exemplo, após um reinício do servidor para restaurar automaticamente os processos que estavam rodando antes
+
+**Passo a Passo para Usar**  `pm2 resurrect`
+
+1. **Inicie e configure seus processos:** primeiro, inicie e configure todos os processos que você deseja gerenciar com PM2
+
+```bash
+$ pm2 start app.js
+$ pm2 start other-app.js --name "other-app"
+```
+
+2. **Salve o estado atual:** depois de iniciar e configurar os processos, salve o estado atual (`pm2 save`)
+3. **Restaurar os processos após um reinício:** se o servidor reiniciar ou você precisar restaurar os processos por qualquer motivo, use o comando `pm2 resurrect`
+
+**Automatizando a Restauração com o SO**
+
+Para garantir que os processos gerenciados pelo PM2 sejam restaurados automaticamente após um reinício do sistema, você pode configurar o PM2 para iniciar automaticamente na inicialização do sistema ("`pm2 startup`").
+
+Esse comando exibirá uma linha de comando que você precisa executar com permissões de superusuário (root) para configurar o PM2 para iniciar na inicialização do sistema.
+
+**Exemplos**
+
+1. **Inicie e salve os processos:**
+
+```bash
+$ pm2 start app.js --name "app"
+$ pm2 start app.js --name "api"
+$ pm2 save
+```
+
+2. **Configure o PM2 para iniciar na inicialização do sistema:** `pm2 startup`
+3. **Restaurar os processos após um reinício:** `pm2 resurrect`
+
+Usando esses comandos, você pode garantir que seus processos Node.js gerenciados pelo PM2 sejam salvos e restaurados automaticamente, proporcionando alta disponibilidade e recuperação automática após reinicializações do sistema.
+
+#
+
+- O link simbólico parece estar sendo criado de forma adequada, mas o log não está sendo inserido aonde se espera
+- Ajustar o arquivo de serviço para funcionar com o binário
+- Refatorar para o novo formato o **Diretorio-heterogeneo**
+- Utilizar o `pm2 reload` para ver se a zoe-game-api cai de forma perceptível para as slots ou não (insirá um log para mostrar que o processo foi gerado pelo novo código)
+- Antigo arquivo de serviço da zoe-game-api:
+
+```bash
+$ cat /etc/systemd/system/pm2-zoe.service [Unit]
+Description=PM2 process manager
+Documentation=https://pm2.keymetrics.io/
+After=network.target
+
+[Service]
+Type=forking
+User=zoe
+LimitNOFILE=infinity
+LimitNPROC=infinity
+LimitCORE=infinity
+Environment=PATH=/usr/bin:/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
+Environment=PM2_HOME=/home/zoe/.pm2
+PIDFile=/home/zoe/.pm2/pm2.pid
+
+ExecStart=/usr/lib/node_modules/pm2/bin/pm2 resurrect
+ExecReload=/usr/lib/node_modules/pm2/bin/pm2 reload all
+ExecStop=/usr/lib/node_modules/pm2/bin/pm2 kill
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+```
+
+- Template **package.json:**
+
+```json
+{
+  "name": "@zoeslots/zoe-game-api",
+  "version": "2.5.0",
+  "description": "Game API manages game operations including money in/out, accumulated/jackpot raffle",
+  "main": "server.js",
+  "author": "Zoe Slots, LLC",
+  "bin": {
+    "orion-game-server": "server.js"
+  },
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha -R spec tests/api/*",
+    "no-test-example": "echo \"Error: no test specified\" && exit 1",
+    "benchmark": "node tests/benchmark/benchmark.js"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "body-parser": "~1.0.1",
+    "express": "~4.0.0",
+    "log-timestamp": "^0.1.2",
+    "moment": "^2.11.1",
+    "mysql": "^2.5.4",
+    "mysql2": "1.0.0-rc.1",
+    "redis": "~2.4.2",
+    "request": "^2.81.0",
+    "sequelize": "^3.24.3"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5",
+    "request": "^2.81.0",
+    "supertest": "^1.2.0"
+  },
+  "files": [
+    "./pwd/file"
+  ],
+  "pkg": {
+    "scripts": [
+      "./models/*.js"
+    ]
+  }
+}
+```

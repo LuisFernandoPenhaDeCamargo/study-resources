@@ -53,9 +53,9 @@ Release:	22.04
 Codename:	jammy
 ```
 
+- # <a id="instalacao"></a>Instalação
 - # <a id="sistema-hierarquico-arquivos"></a>Sistema Hierárquico de Arquivos
 - # <a id="anotacoes"></a>Anotações
-- # <a id="instalacao"></a>Instalação
 - # <a id="comandos-utilizados-cli"></a>Comandos Utilizados Através do CLI
 
 # <a id="formatacao-documento"></a>Formatação do Documento
@@ -74,7 +74,6 @@ Codename:	jammy
 - As mensagens de erro seguem o seguinte formato, `[ $< arquivo ou função/método > ERROR ]` seguido pelo erro em si
 - Para especificar que o comentário se trata de uma saída, uma impressão, pontue antes dele "Output:"
     + **Exemplo:** `// Output: number` (JavaScript)
-Output:
 - Links de referência não devem possuir em seu corpo o argumento
     + **Exemplo:** `## <a id="comandos-utilizados-cli-describe"></a>´pm2 describe $< ID >´` (Markdown)
 - No primeiro paragráfo, primeira sentença, devemos fornecer uma descrição resumida do comando (comece com **"É utilizado para ..."**). Destaque a parte mais importante, se possível
@@ -90,12 +89,14 @@ Existem alguns subtópicos comuns, abaixo segue a lista deles, observado que a l
         - Pontuar se podem ser opcionais ou não
     + **Valor de Retorno:**
     + **Como Funciona:**
+    + **Quando Usar:**
+    + **Benefícios:**
 - **Saída Típica**
 - Após o subtópico "**Saída Típica**", você pode fazer anotações sobre a utilizade do comando
 - **Opções Comuns**
 - **Exemplos**
 - **Exemplos Interessantes**
-- **Observações Interessantes**/**Observações Importantes**
+- **Observações Interessantes**/**Observações Importantes**/**Considerações Importantes**
 
 ## <a id="formatacao-documento-nomenclatura"></a>Nomenclatura
 

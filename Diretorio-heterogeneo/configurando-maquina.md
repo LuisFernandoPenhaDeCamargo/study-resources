@@ -22,7 +22,7 @@ Codename:	jammy
 Abaixo segue uma lista de ferramentas que eu geralmente preciso ter instaladas na minha máquina, da mais utilizada para a menos.
 
 - `curl`**:** `sudo apt install curl`
-- `nvm`**:** `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash`
+- **NVM:** `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash`
 - `pyenv`
 - **Redis:** ``
 - **MariaDB:** `sudo apt install mariadb-server`

@@ -48,7 +48,12 @@ Conceitos e observações sobre esta linguagem de marcação.
 
 - [Quebra de Linha](#quebra-linha)
 
-# ---
+## Diretorio-heterogeneo/
+
+- **.service (ponto-service.md):**
+    + [Contexto: SO Utilizado](#contexto-so-utilizado)
+    + [Arquivo de Serviço](#arquivo-servico)
+    + [Arquivo de Ambiente](#arquivo-ambiente)
 
 ## JavaScript/
 
@@ -87,8 +92,11 @@ Conceitos e observações sobre esta linguagem de marcação.
     + [Conclusão](#node-22-criacao-executaveis-unicos-script-principal-injetado-conclusao)
 - **package.json (packagejson.md):** arquivo de metadados
     + [Chaves](#chaves)
+        - [`main`](#chaves-main)
+        - [`bin`](#chaves-bin)
         - [`scripts`](#chaves-scripts)
             + [Chaves da chave `scripts`](#chaves-scripts-chaves-chave-scripts)
+        - [`files`](#chaves-files)
     + [Dependências Utilizadas por Um Pacote](#dependencias-utilizadas-pacote)
         - [Operadores de Versão](#dependencias-utilizadas-pacote-operadores-versao)
         - [Patch](#dependencias-utilizadas-pacote-patch)
@@ -100,12 +108,13 @@ Conceitos e observações sobre esta linguagem de marcação.
         - [`npm login` x `npm adduser`](#comandos-utilizados-cli-npm-login-x-npm-adduser)
         - [`npm install`](#comandos-utilizados-cli-npm-install)
         - [`npm show $< nome do pacote > dependencies`](#comandos-utilizados-cli-npm-show-nome-pacote-dependencies)
-- **NVM (nvm.md):** gerenciador de versões para Node.js
+- **NVM (NVM.md):** gerenciador de versões para Node.js
     + [Contexto: SO Utilizado](#contexto-so-utilizado)
+    + [Instalação](#instalacao)
+        - [Observações Interessantes](#instalacao-observacoes-interessantes)
     + [Sistema Hierárquico de Arquivos](#sistema-hierarquico-arquivos)
-    + [Instalando o NVM](#instalando-nvm)
-        - [Observações Interessantes](#instalando-nvm-observacoes-interessantes)
     + [Desinstalando o NVM](#desinstalando-nvm)
+    + [Desinstalação de Pacotes](#desinstalacao-pacotes)
     + [Comandos Utilizados Através do CLI](#comandos-utilizados-cli)
         - [`ls-remote`](#comandos-utilizados-cli-ls-remote)
 - **Bibliotecas/**
@@ -132,6 +141,10 @@ Conceitos e observações sobre esta linguagem de marcação.
             + [`list`](#comandos-utilizados-cli-list)
             + [`describe $< ID >`](#comandos-utilizados-cli-describe)
             + [`env $< ID >`](#comandos-utilizados-cli-env)
+            + [`reload`](#comandos-utilizados-cli-reload)
+            + [`kill`](#comandos-utilizados-cli-kill)
+            + [`save`](#comandos-utilizados-cli-save)
+            + [`resurrect`](#comandos-utilizados-cli-ressurect)
     + **JavaScript obfuscator (JavaScript-obfuscator.md):** utilizado na ofuscação de código JavaScript
     + `pkg` **(pkg.md):** utilizado para compilar o código-fonte Node.js em um binário executável
         - [`pkg` x Nexe](#"pkg-x-nexe")
@@ -142,6 +155,7 @@ Conceitos e observações sobre esta linguagem de marcação.
             + [Observações Importantes](#compilando-codigo-fonte-pkg-observacoes-importantes)
                 - [Recursos Não Sendo Incluídos no Compilado](#compilando-codigo-fonte-pkg-observacoes-importantes-recursos-nao-incluidos-compilado)
                 - [`pkg` e o JavaScript obfuscator](#compilando-codigo-fonte-pkg-observacoes-importantes-pkg-javascript-obfuscator)
+                - [`devDependencies`](#compilando-codigo-fonte-pkg-observacoes-importantes-devdependencies)
     + **Nexe (nexe.md):** utilizado para compilar o código-fonte Node.js em um binário executável
         - [`pkg` x Nexe](#"pkg-x-nexe")
         - [Segurança](#seguranca)
@@ -158,38 +172,19 @@ Conceitos e observações sobre esta linguagem de marcação.
     + **NPX (NPX.md):** executor de pacotes do NPM
 - **ateste.js:** arquivo utilizado para testes
 
-## JavaScript (JavaScript/javascript.md)
+## Python/
 
-Conceitos e observações sobre esta linguagem de programação.
-
-## Compilação
-
-Arquivo que trata de pacotes utilizados na compilação de código-fonte Node.js.
-
-# ---
-
-## Python (Python/python.md)
-
-Conceitos e observações sobre esta linguagem de programação.
-
-### Sumário
-
-- [Anotações Não Alocadas](#anotacoes-nao-alocadas)
-
-## `pyenv` (Python/pyenv.md)
-
-Gerenciador de versões para Python.
-
-### Sumário
-
-- [Comandos](#comandos)
-    + [`pyenv versions`](#comandos-pyenv-versions)
-    + [`pyenv install --list`](#comandos-pyenv-install-list)
-    + [`pyenv local`](#comandos-pyenv-local)
-    + [`pyenv shell $< versão >`](#comandos-pyenv-shell-versao)
-- [Observações Sobre o Sistema Operacional](#observacoes-sistema-operacional)
-- [Instalação](#instalacao)
-- [Sistema Hierárquico de Arquivos](#sistema-hierarquico-arquivos)
+- **Python (Python.md):** linguagem de programação
+    + [Anotações](#anotacoes)
+- `pyenv` **(pyenv.md):** gerenciador de versões para Python
+    + [Contexto: SO Utilizado](#contexto-so-utilizado)
+    + [Instalação](#instalacao)
+    + [Sistema Hierárquico de Arquivos](#sistema-hierarquico-arquivos)
+    + [Comandos Utilizados Através do CLI](#comandos-utilizados-cli)
+        - [`install --list`](#comandos-utilizados-cli-install-list)
+        - [`versions`](#comandos-utilizados-cli-versions)
+        - [`local`](#comandos-utilizados-cli-local)
+        - [`shell $< versão >`](#comandos-utilizados-cli-shell)
 
 ## AWS (Diretorio-heterogeneo/aws.md)
 
@@ -211,16 +206,6 @@ Como configurar uma VPN e alguns pontos sobre ela.
 
 - [Observações Sobre o Sistema Operacional](#observacoes-sistema-operacional)
 - [Configurando a VPN](#configurando-vpn)
-
-## .service (Diretorio-heterogeneo/ponto-service.md)
-
-Arquivo que trata pontos interessantes dos **.service** (systemd).
-
-### Sumário
-
-- [Observações Sobre o Sistema Operacional](#observacoes-sistema-operacional)
-- [Arquivo de Serviço](#arquivo-servico)
-- [Arquivo de Ambiente](#arquivo-ambiente)
 
 ## Redes (Diretorio-heterogeneo/redes.md)
 
@@ -310,15 +295,10 @@ Configurando o ambiente para que agrade o meu gosto pessoal, além de uma lista 
 
 ## JavaScript/Node.js/npm/nvm/PM2
 
-- A chave "`main`" do **package.json** faz com que o arquivo específicado sempre esteja presente no seu pacote publicado no npm?
-- A chave "`bin`" do **package.json** faz com que o arquivo específicado sempre esteja presente no seu pacote publicado no npm?
-- Engine, runtime, ambiente de execução. Contexto: Node.js
-- `pm2 resurrect`
-- `pm2 reload`
-- `pm2 kill`
 - `pm2 delete`
 - **dump.pm2**
 - Cada processo do pm2 pode ser vinculado a um usuário?
+- Engine, runtime, ambiente de execução. Contexto: Node.js
 - Criar um exemplo de exportação/importação com o código abaixo:
 
 ```JavaScript

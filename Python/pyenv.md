@@ -22,41 +22,16 @@ Em resumo, o `pyenv` é uma ferramenta poderosa para desenvolvedores Python que 
 
 ### Sumário
 
-- [Comandos](#comandos)
-    + [`pyenv versions`](#comandos-pyenv-versions)
-    + [`pyenv install --list`](#comandos-pyenv-install-list)
-    + [`pyenv local`](#comandos-pyenv-local)
-    + [`pyenv shell $< versão >`](#comandos-pyenv-shell-versao)
-- [Observações Sobre o Sistema Operacional](#observacoes-sistema-operacional)
+- [Contexto: SO Utilizado](#contexto-so-utilizado)
 - [Instalação](#instalacao)
 - [Sistema Hierárquico de Arquivos](#sistema-hierarquico-arquivos)
+- [Comandos Utilizados Através do CLI](#comandos-utilizados-cli)
+    + [`install --list`](#comandos-utilizados-cli-install-list)
+    + [`versions`](#comandos-utilizados-cli-versions)
+    + [`local`](#comandos-utilizados-cli-local)
+    + [`shell $< versão >`](#comandos-utilizados-cli-shell)
 
-# <a id="comandos"></a>Comandos
-
-### Sumário
-
-- [`pyenv versions`](#comandos-pyenv-versions)
-- [`pyenv install --list`](#comandos-pyenv-install-list)
-- [`pyenv local`](#comandos-pyenv-local)
-- [`pyenv shell $< versão >`](#comandos-pyenv-shell-versao)
-
-## <a id="comandos-pyenv-versions"></a>`pyenv versions`
-
-Isso mostrará todas as versões do Python que foram instaladas pelo Pyenv e também aquela que está atualmente em uso (marcada com um asterisco).
-
-## <a id="comandos-pyenv-install-list"></a>`pyenv install --list`
-
-Lista todas as versões Python disponíveis para instalação.
-
-## <a id="comandos-pyenv-local"></a>`pyenv local`
-
-Exibe a versão do Python configurada para um diretório específico.
-
-## <a id="comandos-pyenv-shell-versao"></a>`pyenv shell $< versão >`
-
-Muda para a versão desejada somente na sessão atual.
-
-# <a id="observacoes-sistema-operacional"></a>Observações Sobre o Sistema Operacional
+# <a id="contexto-so-utilizado"></a>Contexto: SO Utilizado
 
 Sistema Operacional:
 
@@ -70,7 +45,6 @@ Codename:	jammy
 # <a id="instalacao"></a>Instalação
 
 - **Repositório:** https://github.com/pyenv/pyenv
-
 - **Automatic installer** (https://github.com/pyenv/pyenv?tab=readme-ov-file#automatic-installer)
 
 ```bash
@@ -115,8 +89,6 @@ $ pyenv install -l
 # Instalando a versão desejada.
 $ pyenv install $< versão >
 
-# A versão utilizada para conseguir instalar o pacote do zoe-terminal foi a pypy2.7-7.3.15, que é a versão 7.3.15 do PyPy para Python 2.7.
-
 # Para mudar para a versão desejada somente na sessão atual.
 $ pyenv shell $< versão >
 
@@ -129,4 +101,29 @@ $ pyenv global $< versão >
 
 # <a id="sistema-hierarquico-arquivos"></a>Sistema Hierárquico de Arquivos
 
-O diretório do `pyenv` se encontra em **/home/luis/.pyenv/**.
+O diretório do Pyenv se encontra em **/home/$< usuário >/.pyenv/**.
+
+# <a id="comandos-utilizados-cli"></a>Comandos Utilizados Através do CLI
+
+### Sumário
+
+- [`install --list`](#comandos-utilizados-cli-install-list)
+- [`versions`](#comandos-utilizados-cli-versions)
+- [`local`](#comandos-utilizados-cli-local)
+- [`shell $< versão >`](#comandos-utilizados-cli-shell)
+
+## <a id="comandos-utilizados-cli-install-list"></a>`pyenv install --list`
+
+É utilizado para listar todas as versões do Python disponíveis para instalação.
+
+## <a id="comandos-utilizados-cli-versions"></a>`pyenv versions`
+
+É utilizado para mostrar todas as versões do Python que foram instaladas pelo Pyenv e também aquela que está atualmente em uso (marcada com um asterisco).
+
+## <a id="comandos-utilizados-cli-local"></a>`pyenv local`
+
+É utilizado para exibir a versão do Python configurada para um diretório específico.
+
+## <a id="comandos-utilizados-cli-shell"></a>`pyenv shell $< versão >`
+
+É utilizado para mudar para a versão desejada somente na sessão atual.

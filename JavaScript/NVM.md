@@ -3,10 +3,11 @@
 ### Sumário
 
 - [Contexto: SO Utilizado](#contexto-so-utilizado)
+- [Instalação](#instalacao)
+  + [Observações Interessantes](#instalacao-observacoes-interessantes)
 - [Sistema Hierárquico de Arquivos](#sistema-hierarquico-arquivos)
-- [Instalando o NVM](#instalando-nvm)
-  + [Observações Interessantes](#instalando-nvm-observacoes-interessantes)
 - [Desinstalando o NVM](#desinstalando-nvm)
+- [Desinstalação de Pacotes](#desinstalacao-pacotes)
 - [Comandos Utilizados Através do CLI](#comandos-utilizados-cli)
   + [`ls-remote`](#comandos-utilizados-cli-ls-remote)
 
@@ -21,13 +22,7 @@ Release:	22.04
 Codename:	jammy
 ```
 
-# <a id="sistema-hierarquico-arquivos"></a>Sistema Hierárquico de Arquivos
-
-Os pacotes instalados pelo npm serão utilizados no ambiente de execução Node.js específico, por isso faz sentido cada versão do Node.js possuir a própria pasta **node_modules** (**/home/A< usuário >/.nvm/versions/node/A< versões >/lib/node_modules**)
-
-os pacotes instalados pelo npm serão utilizados pelo seu projeto no ambiente de execução node.js específico, por isso faz sentido o nvm armazenar os pacotes na pasta node_modules relacionada a versão do node.js
-
-# <a id="instalando-nvm"></a>Instalando o NVM
+# <a id="instalacao"></a>Instalação
 
 Você pode utilizar o `curl` para baixar o script de instalação, por exemplo:
 
@@ -43,7 +38,11 @@ Depois que o script de instalação for concluído, você precisará reiniciar o
 $ source ~/.bashrc
 ```
 
-## <a id="instalando-nvm-observacoes-interessantes"></a>Observações Interessantes
+Observe que o NVM é instalado a nível de usuário, isso significa que ele é instalado e gerenciado para um usuário específico no SO. Quando você instala o NVM, ele cria um diretório no seu diretório pessoal (geralmente em **~/.nvm**) e gerencia todas as instalações do Node.js dentro desse diretório.
+
+Além disso, como o NVM é específico para cada usuário, diferentes usuários em um mesmo sistema podem ter suas próprias versões do Node.js instaladas e gerenciadas separadamente, de acordo com suas necessidades e preferências. Isso oferece uma grande flexibilidade no desenvolvimento e na execução de aplicativos Node.js em ambientes compartilhados.
+
+## <a id="instalacao-observacoes-interessantes"></a>Observações Interessantes
 
 Alguns pontos interessantes a se mencionar é que se você tinha uma versão do Node.js instalada no seu sistema antes da instalação do NVM, ela será indentificada como `system`, você pode observar isso utilizando o comando `nvm ls`.
 
@@ -93,13 +92,17 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 ```
 
-O que o log "adicional" pontua é bem interessante, ele fala que a os módulos instalados globalmente com o npm não estaram linkados a versão ativa do Node quando você instala uma nova versão do Node, e esses módulos existentes ainda podem sobreescrever os binários dos módulos instalados com o nvm.
+O que o log "adicional" pontua é bem interessante, ele fala que a os módulos instalados globalmente com o npm não estaram linkados a versão ativa do Node quando você instala uma nova versão do Node, e esses módulos existentes ainda podem sobreescrever os binários dos módulos instalados com o NVM.
 
 Para desistalar esses pacotes você deve utilizar a versão `system` do Node.js. A versão do Node.js e do npm estão ligadas, afinal, elas precisam ser compatíveis.
 
-O nvm específica uma versão do Node.js, por consequência uma versão do npm. Um pacote instalado por uma versão do npm, vai ser identificado como diferente do mesmo pacote instalado por outra versão do npm, você pode observar isso pela hierarquia de arquivos `/home/$< usuário >/.nvm/versions/node/$< versão do Node.js >/lib/node_modules/`.
+O NVM específica uma versão do Node.js, por consequência uma versão do npm. Um pacote instalado por uma versão do npm, vai ser identificado como diferente do mesmo pacote instalado por outra versão do npm, você pode observar isso pela hierarquia de arquivos `/home/$< usuário >/.nvm/versions/node/$< versão do Node.js >/lib/node_modules/`.
 
-O mesmo pacote, instalado por versões diferentes do npm, estaram no diretório **node_modules** da respectiva versão do Node.js (a compatível com a versão do npm).
+O mesmo pacote, instalado por versões diferentes do npm, estará no diretório **node_modules** da respectiva versão do Node.js (a compatível com a versão do npm).
+
+# <a id="sistema-hierarquico-arquivos"></a>Sistema Hierárquico de Arquivos
+
+Os pacotes instalados pelo npm serão utilizados no ambiente de execução Node.js específico, por isso faz sentido cada versão do Node.js possuir a própria pasta **node_modules** (**/home/A< usuário >/.nvm/versions/node/A< versões >/lib/node_modules**).
 
 # <a id="desinstalando-nvm"></a>Desinstalando o NVM
 
@@ -118,6 +121,10 @@ export NVM_DIR="$HOME/.nvm"
 que devem ser apagadas.
 
 Após ter realizado as ações acima, reinicie o terminal e verifique se a versão do NVM é exibida.
+
+# <a id="desinstalacao-pacotes"></a>Desinstalação de Pacotes
+
+Para desinstalar um pacote instalado globalmente, considerando uma versão do Node.js gerenciada pelo nvm, você deve exluir a pasta do pacote em **~/.nvm/versions/node/$< versão do Node.js >/lib/node_modules**.
 
 # <a id="comandos-utilizados-cli"></a>Comandos Utilizados Através do CLI
 

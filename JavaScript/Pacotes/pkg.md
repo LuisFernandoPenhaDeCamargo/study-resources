@@ -10,6 +10,7 @@
     + [Observações Importantes](#compilando-codigo-fonte-pkg-observacoes-importantes)
       - [Recursos Não Sendo Incluídos no Compilado](#compilando-codigo-fonte-pkg-observacoes-importantes-recursos-nao-incluidos-compilado)
       - [`pkg` e o JavaScript obfuscator](#compilando-codigo-fonte-pkg-observacoes-importantes-pkg-javascript-obfuscator)
+      - [`devDependencies`](#compilando-codigo-fonte-pkg-observacoes-importantes-devdependencies)
 
 # <a id="pkg-x-nexe"></a>`pkg` x Nexe
 
@@ -142,7 +143,7 @@ Após a conclusão do processo de compilação, o `pkg` deve ter criado um ou ma
 
 ## <a id="compilando-codigo-fonte-pkg-especificacao-target"></a>Especificação de Target
 
-Quando você usa o `pkg` para compilar seu aplicativo, ele não necessariamente usa a versão do Node.js que está atualmente ativa no seu sistema via nvm ou qualquer outro gerenciador de versões. Em vez disso, o `pkg` utiliza uma versão específica do Node.js que está incorporada dentro dos binários que ele cria, com base nas "targets" (alvos) que você específica ou que são assumidas por padrão.
+Quando você usa o `pkg` para compilar seu aplicativo, ele não necessariamente usa a versão do Node.js que está atualmente ativa no seu sistema via NVM ou qualquer outro gerenciador de versões. Em vez disso, o `pkg` utiliza uma versão específica do Node.js que está incorporada dentro dos binários que ele cria, com base nas "targets" (alvos) que você específica ou que são assumidas por padrão.
 
 Aqui está como isso funciona:
 
@@ -155,7 +156,7 @@ pkg server.js -t node16-linux-x64
 
 Nesse caso, você está especificando explicitamente que o binário deve usar o Node.js versão 16 para Linux x64. Se você não especificar um target, o `pkg` usará um default com a versão que você está utilizando no momento.
 
-- **Versão do Node.js na execução:** após a compilação, quando você executa o binário (`./server`), ele está executando o Node.js na versão embutida no binário, e não a versão que está instalada no seu sistema. Isso significa que independente de qual versão do Node.js você tem instalada via nvm ou instaladores diretos, o seu aplicativo empacotado sempre usará a versão que foi especificada durante a compilação com `pkg`
+- **Versão do Node.js na execução:** após a compilação, quando você executa o binário (`./server`), ele está executando o Node.js na versão embutida no binário, e não a versão que está instalada no seu sistema. Isso significa que independente de qual versão do Node.js você tem instalada via NVM ou instaladores diretos, o seu aplicativo empacotado sempre usará a versão que foi especificada durante a compilação com `pkg`
 
 Portanto, digamos que você esteja usando Node.js 16.20.2 em seu ambiente de desenvolvimento, mas compilou seu aplicativo com um target `node16`, o binário resultante está usando a versão específica do Node.js 16 que o `pkg` tem disponível para esse target, que pode ser diferente da versão 16.20.2.
 
@@ -181,83 +182,52 @@ A chave no arquivo **package.json** utilizada para possibilitar isso é a chave 
 
 Quando você obfusca um código com o Javascript obfuscator, se você aplicar o `pkg` neste código, um erro será gerado. O `pkg` não consegue criar um **executável funcional a partir do código obfuscado, eles são incompatíveis**.
 
-#
+### <a id="compilando-codigo-fonte-pkg-observacoes-importantes-devdependencies"></a>`devDependencies`
 
-- Refatorar o repositório **pessoal** (novos títulos)
-- Pontuar em **pessoal** que **tasks/raffle_promotion.js** não deve ser usado a um certo tempo, pois a um erro de sintaxe no arquivo e ele não é alterado a cinco anos
-- Refatorar para o novo formato o **Diretorio-heterogeneo**
-- Pontuar como o `pkg` não incluí no executável o conteúdo da chave `devDependencies`
-- O link simbólico parece estar sendo criado de forma adequada, mas o log não está sendo inserido aonde se espera
-- Ajustar o arquivo de serviço para funcionar com o binário
-- Antigo arquivo de serviço da zoe-game-api:
+**Aparentemente** o `pkg` não empacota automaticamente as dependências de desenvolvimento (`devDependencies`) especificadas no **package.json** a menos que elas sejam explicitamente usadas pelo código incluído no binário. Normalmente, as dependências de desenvolvimento são usadas apenas durante o processo de desenvolvimento e construção, e não são necessárias no ambiente de produção.
 
-```bash
-$ cat /etc/systemd/system/pm2-zoe.service [Unit]
-Description=PM2 process manager
-Documentation=https://pm2.keymetrics.io/
-After=network.target
+No entanto, se uma dependência de desenvolvimento é realmente necessária em tempo de execução, você pode fazer com que o `pkg` inclua essas dependências de algumas maneiras:
 
-[Service]
-Type=forking
-User=zoe
-LimitNOFILE=infinity
-LimitNPROC=infinity
-LimitCORE=infinity
-Environment=PATH=/usr/bin:/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
-Environment=PM2_HOME=/home/zoe/.pm2
-PIDFile=/home/zoe/.pm2/pm2.pid
-
-ExecStart=/usr/lib/node_modules/pm2/bin/pm2 resurrect
-ExecReload=/usr/lib/node_modules/pm2/bin/pm2 reload all
-ExecStop=/usr/lib/node_modules/pm2/bin/pm2 kill
-Restart=on-failure
-
-[Install]
-WantedBy=multi-user.target
-```
-
-- Template **package.json:**
+1. **Mover dependências de desenvolvimento para dependências normais:** se você tem uma dependência que está em `devDependencies` mas é necessária em tempo de execução, mova-a para `dependencies`
 
 ```json
-{
-  "name": "@zoeslots/zoe-game-api",
-  "version": "2.5.0",
-  "description": "Game API manages game operations including money in/out, accumulated/jackpot raffle",
-  "main": "server.js",
-  "author": "Zoe Slots, LLC",
-  "bin": {
-    "orion-game-server": "server.js"
-  },
-  "scripts": {
-    "test": "./node_modules/mocha/bin/mocha -R spec tests/api/*",
-    "no-test-example": "echo \"Error: no test specified\" && exit 1",
-    "benchmark": "node tests/benchmark/benchmark.js"
-  },
   "dependencies": {
-    "axios": "^0.19.0",
-    "body-parser": "~1.0.1",
-    "express": "~4.0.0",
-    "log-timestamp": "^0.1.2",
-    "moment": "^2.11.1",
-    "mysql": "^2.5.4",
-    "mysql2": "1.0.0-rc.1",
-    "redis": "~2.4.2",
-    "request": "^2.81.0",
-    "sequelize": "^3.24.3"
-  },
+    "express": "^4.0.0",
+    "mocha": "^8.0.0"
+  }
+```
+
+e remova-a de `devDependencies`:
+
+```json
   "devDependencies": {
-    "chai": "^3.5.0",
-    "mocha": "^2.4.5",
-    "request": "^2.81.0",
-    "supertest": "^1.2.0"
-  },
-  "files": [
-    "./pwd/file"
-  ],
+    "chai": "^4.0.0"
+  }
+```
+
+2. **Incluir explicitamente arquivos necessários:** se você precisar incluir arquivos específicos que não são capturados automaticamente pelo `pkg`, pode especificá-los na seção `pkg` do **package.json**
+
+```json
   "pkg": {
+    "assets": [
+      "path/to/needed/file.js"
+    ],
     "scripts": [
-      "./models/*.js"
+      "path/to/needed/script.js"
     ]
   }
-}
+```
+
+3. **Usar o campo pkg.files:** este campo pode ser usado para especificar quais arquivos e diretórios devem ser incluídos no pacote. Certifique-se de que ele está configurado corretamente para incluir todos os arquivos necessários
+
+```json
+  "pkg": {
+    "files": [
+      "server.js",
+      "api/models/**",
+      "config/**",
+      "lib/**",
+      "node_modules/your-dev-dependency/**"
+    ]
+  }
 ```

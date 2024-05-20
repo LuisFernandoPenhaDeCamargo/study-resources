@@ -94,7 +94,7 @@ Se a proteção do código-fonte é uma preocupação crítica para o seu projet
 
 ## <a id="compilando-codigo-fonte-nexe-especificacao-target"></a>Especificação de Target
 
-Quando você usa o Nexe para compilar seu aplicativo, ele não necessariamente usa a versão do Node.js que está atualmente ativa no seu sistema via nvm ou qualquer outro gerenciador de versões. Em vez disso, o Nexe utiliza uma versão específica do Node.js que está incorporada dentro dos binários que ele cria, com base nas "targets" (alvos) que você específica ou que são assumidas por padrão.
+Quando você usa o Nexe para compilar seu aplicativo, ele não necessariamente usa a versão do Node.js que está atualmente ativa no seu sistema via NVM ou qualquer outro gerenciador de versões. Em vez disso, o Nexe utiliza uma versão específica do Node.js que está incorporada dentro dos binários que ele cria, com base nas "targets" (alvos) que você específica ou que são assumidas por padrão.
 
 Aqui está como isso funciona:
 
@@ -107,7 +107,7 @@ pkg server.js --target "8.16.0-linux-x64"
 
 Nesse caso, você está especificando explicitamente que o binário deve usar o Node.js versão 8.16.0 para Linux x64.
 
-- **Versão do Node.js na execução:** após a compilação, quando você executa o binário (`./server`), ele está executando o Node.js na versão embutida no binário, e não a versão que está instalada no seu sistema. Isso significa que independente de qual versão do Node.js você tem instalada via nvm ou instaladores diretos, o seu aplicativo empacotado sempre usará a versão que foi especificada durante a compilação com o Nexe
+- **Versão do Node.js na execução:** após a compilação, quando você executa o binário (`./server`), ele está executando o Node.js na versão embutida no binário, e não a versão que está instalada no seu sistema. Isso significa que independente de qual versão do Node.js você tem instalada via NVM ou instaladores diretos, o seu aplicativo empacotado sempre usará a versão que foi especificada durante a compilação com o Nexe
 
 Portanto, digamos que você esteja usando Node.js 16.20.2 em seu ambiente de desenvolvimento, mas compilou seu aplicativo com um target `8.16.0`, o binário resultante está usando a versão específica do Node.js 8.16.0 que o Nexe tem disponível para esse target, que é diferente da versão Node.js 16.20.2.
 

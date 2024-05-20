@@ -412,17 +412,6 @@ Com essa sintaxe corrigida, você deve conseguir alterar o tipo da coluna homolo
 #
 
 User
-tá, vamos por partes, primeiro, o nvm é instalado a nível de usuário? (Falar nível de usuário esta certo?)
-ChatGPT
-Sim, está correto dizer "nível de usuário". O Node Version Manager (nvm) é instalado no nível do usuário. Isso significa que ele é instalado e gerenciado para um usuário específico no sistema operacional e não requer permissões de superusuário (root) para instalação ou uso.
-
-Quando você instala o nvm, ele cria um diretório no seu diretório pessoal (geralmente em ~/.nvm/) e gerencia todas as instalações do Node.js dentro desse diretório. Isso permite que você instale e use várias versões do Node.js sem interferir nas instalações globais do sistema ou requerer privilégios de superusuário.
-
-Além disso, como o nvm é específico para cada usuário, diferentes usuários em um mesmo sistema podem ter suas próprias versões do Node.js instaladas e gerenciadas separadamente, de acordo com suas necessidades e preferências. Isso oferece uma grande flexibilidade no desenvolvimento e na execução de aplicativos Node.js em ambientes compartilhados.
-
-#
-
-User
 como eu desinstá-lo o nvm?
 ChatGPT
 Para desinstalar o Node Version Manager (nvm) do seu sistema, você pode seguir os seguintes passos:
