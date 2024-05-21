@@ -200,38 +200,19 @@ Usando esses comandos, você pode garantir que seus processos Node.js gerenciado
 
 #
 
-- O link simbólico parece estar sendo criado de forma adequada, mas o log não está sendo inserido aonde se espera
-- Ajustar o arquivo de serviço para funcionar com o binário
-- Refatorar para o novo formato o **Diretorio-heterogeneo**
-- Utilizar o `pm2 reload` para ver se a zoe-game-api cai de forma perceptível para as slots ou não (insirá um log para mostrar que o processo foi gerado pelo novo código)
-- Antigo arquivo de serviço da zoe-game-api:
+- `pkg server.js -o server -t node16-linux-x64 --config package.json --compress Brotli`
 
-```bash
-$ cat /etc/systemd/system/pm2-zoe.service [Unit]
-Description=PM2 process manager
-Documentation=https://pm2.keymetrics.io/
-After=network.target
+-> pm2 save ->
 
-[Service]
-Type=forking
-User=zoe
-LimitNOFILE=infinity
-LimitNPROC=infinity
-LimitCORE=infinity
-Environment=PATH=/usr/bin:/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
-Environment=PM2_HOME=/home/zoe/.pm2
-PIDFile=/home/zoe/.pm2/pm2.pid
++ O link simbólico parece estar sendo criado de forma adequada, mas o log não está sendo inserido aonde se espera
 
-ExecStart=/usr/lib/node_modules/pm2/bin/pm2 resurrect
-ExecReload=/usr/lib/node_modules/pm2/bin/pm2 reload all
-ExecStop=/usr/lib/node_modules/pm2/bin/pm2 kill
-Restart=on-failure
++ Ajustar o arquivo de serviço para funcionar com o binário
++ Refatorar para o novo formato o **Diretorio-heterogeneo**
++ Utilizar o `pm2 reload` para ver se a zoe-game-api cai de forma perceptível para as slots ou não (insirá um log para mostrar que o processo foi gerado pelo novo código)
 
-[Install]
-WantedBy=multi-user.target
-```
++ Template **package.json:**
 
-- Template **package.json:**
+anotar essas chaves, colocar esse exemplo em algum lugar
 
 ```json
 {
@@ -276,3 +257,10 @@ WantedBy=multi-user.target
   }
 }
 ```
+
+  "scripts": {
+    "postinstall": "npm run delete && npm run start && pm2 run save",
+    "delete": "su -l zoe -c 'pm2 delete 0'",
+    "start": "su -l zoe -c 'pm2 start /usr/lib/node_modules/@zoeslots/zoe-game-api/server --log /var/log/orion-game-server.log'",
+    "save": "su -l zoe -c 'pm2 save'"
+  },

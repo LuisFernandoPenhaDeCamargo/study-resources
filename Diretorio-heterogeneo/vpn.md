@@ -8,10 +8,10 @@ Além de segurança, as VPNs também podem ser usadas para acessar conteúdo res
 
 ### Sumário
 
-- [Observações Sobre o Sistema Operacional](#observacoes-sistema-operacional)
+- [Contexto: SO Utilizado](#contexto-so-utilizado)
 - [Configurando a VPN](#configurando-vpn)
 
-# <a id="observacoes-sistema-operacional"></a>Observações Sobre o Sistema Operacional
+# <a id="contexto-so-utilizado"></a>Contexto: SO Utilizado
 
 Sistema Operacional:
 

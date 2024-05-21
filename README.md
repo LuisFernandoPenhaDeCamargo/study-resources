@@ -53,7 +53,20 @@ Conceitos e observações sobre esta linguagem de marcação.
 - **.service (ponto-service.md):**
     + [Contexto: SO Utilizado](#contexto-so-utilizado)
     + [Arquivo de Serviço](#arquivo-servico)
+        - [Seções](#arquivo-servico-secoes)
+            + [Unit](#arquivo-servico-secoes-unit)
+            + [Service](#arquivo-servico-secoes-service)
+            + [Install](#arquivo-servico-secoes-install)
+            + [Timer](#arquivo-servico-secoes-timer)
+            + [Socket](#arquivo-servico-secoes-socket)
+            + [Mount](#arquivo-servico-secoes-mount)
+            + [Path](#arquivo-servico-secoes-path)
+            + [Scope](#arquivo-servico-secoes-scope)
+            + [Swap](#arquivo-servico-secoes-swap)
     + [Arquivo de Ambiente](#arquivo-ambiente)
+- **VPN (VPN.md):** como utilizar uma VPN
+    + [Contexto: SO Utilizado](#contexto-so-utilizado)
+    + [Configurando a VPN](#configurando-vpn)
 
 ## JavaScript/
 
@@ -197,15 +210,6 @@ Arquivo que trata sobre a AWS e os serviços ofertados por ela.
 ## MariaDB (Diretorio-heterogeneo/mariadb.md)
 
 ### Sumário
-
-## VPN (Diretorio-heterogeneo/vpn.md)
-
-Como configurar uma VPN e alguns pontos sobre ela.
-
-### Sumário
-
-- [Observações Sobre o Sistema Operacional](#observacoes-sistema-operacional)
-- [Configurando a VPN](#configurando-vpn)
 
 ## Redes (Diretorio-heterogeneo/redes.md)
 

@@ -78,7 +78,8 @@ seria igual a isto:
 
 Observe que você também pode definir os arquivos executáveis usando "directory.bin".
 
-Atente-se também que os arquivos especificados na chave `bin` estarão sempre presentes no pacote publicado no npm.
+- Atente-se também que os arquivos especificados na chave `bin` estarão sempre presentes no pacote publicado no npm
+- Ao publicar um executável, se você especificar a chave `bin` (com o valor sendo o executável), mas não especificar a chave `files`, todos os arquivos serão incluídos em seu pacote
 
 ## <a id="chaves-scripts"></a>`scripts`
 
@@ -137,6 +138,7 @@ Dessa forma, você pode definir uma sequência de tarefas a serem executadas ap�
 - A chave `"files"` é usada para especificar quais arquivos e diretórios devem ser incluídos no pacote npm quando ele for publicado no registro npm. Você pode listar arquivos e diretórios individuais ou usar padrões de correspondência de globo (glob patterns) para incluir várias entradas
 - Por exemplo, se você deseja incluir apenas o arquivo `server.js` e o diretório **public**, você definiria a chave `"files"` assim: `"files": ["server.js", "public/**/*"]`
 - Todos os arquivos e diretórios especificados nesta chave serão incluídos no pacote npm quando você executar o comando `npm publish`
+- Ao publicar um executável, se você especificar a chave `bin` (com o valor sendo o executável), mas não especificar a chave `files`, todos os arquivos serão incluídos em seu pacote
 
 # <a id="dependencias-utilizadas-pacote"></a>Dependências Utilizadas por Um Pacote
 
