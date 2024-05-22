@@ -1,3 +1,5 @@
+pkg, nexe, template, npm, pm2, readme
+
 # README
 
 Este repositório tem como objetivo auxiliar o estudo de certas tecnologias relacionadas a TI. Abaixo segue uma lista com as tecnologias, especificando qual é o arquivo que fala sobre elas, além de uma breve descrição do que você encontrará naquele arquivo e um sumário dos tópicos.
@@ -67,6 +69,9 @@ Conceitos e observações sobre esta linguagem de marcação.
 - **VPN (VPN.md):** como utilizar uma VPN
     + [Contexto: SO Utilizado](#contexto-so-utilizado)
     + [Configurando a VPN](#configurando-vpn)
+- **Configurando a Minha Máquina (configurando-maquina.md):** arquivo que lista as ferramentas que eu utilizo, pretendo criar um script de configuração de ambiente
+    + [Contexto: SO Utilizado](#contexto-so-utilizado)
+    + [Projeto de Script de Configuração de Ambiente](#projeto-script-configuracao-ambiente)
 
 ## JavaScript/
 

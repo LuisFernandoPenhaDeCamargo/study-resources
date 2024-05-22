@@ -259,7 +259,7 @@ anotar essas chaves, colocar esse exemplo em algum lugar
 ```
 
   "scripts": {
-    "postinstall": "npm run delete && npm run start && pm2 run save",
+    "postinstall": "npm run delete && npm run start && npm run save",
     "delete": "su -l zoe -c 'pm2 delete 0'",
     "start": "su -l zoe -c 'pm2 start /usr/lib/node_modules/@zoeslots/zoe-game-api/server --log /var/log/orion-game-server.log'",
     "save": "su -l zoe -c 'pm2 save'"
