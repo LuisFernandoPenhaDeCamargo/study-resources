@@ -52,7 +52,7 @@ Se segurança é a sua maior preocupação, tenha em mente que a compilação pa
 
 - Se você incluir scripts dentro do seu executável, eles não serão mais acessíveis como scripts diretamente
 - O executável gerado pelo Nexe não é reconhecido como um executável pelo PM2, o PM2 ainda tenta executar o binário como arquivos JS
-- Tanto o `pkg` quando o Nexe tiverem problemas em adicionar os arquivos do diretório **models** do meu projeto ao binário
+- Tanto o `pkg` quanto o Nexe tiverem problemas em adicionar os arquivos do diretório **models** do meu projeto ao binário
     + Eles acabavam por adicionar dois de vários arquivos
     + Não sei se é algo específico com esse diretório, como o nome, por exemplo
 

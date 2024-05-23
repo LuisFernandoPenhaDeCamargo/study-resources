@@ -107,6 +107,16 @@ Além disso, você pode usar variáveis de ambiente especiais, como `npm_package
 
 Em resumo, a chave `scripts` no **package.json** é uma maneira conveniente de definir e organizar comandos que podem ser executados facilmente usando o npm. Eles ajudam a automatizar tarefas de desenvolvimento comuns e a manter um fluxo de trabalho consistente em seu projeto.
 
+**Exemplos Interessantes**
+
+- **Exemplo de como especificar a ausência de uma chave da chave "**`scripts`**":**
+
+```json
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+    },
+```
+
 ### <a id="chaves-scripts-chaves-chave-scripts"></a>Chaves da chave `scripts`
 
 Dentro da seção `scripts` do arquivo **package.json**, os nomes como `start` e `test` são apenas convenções comuns, mas você pode definir scripts com qualquer nome que desejar. No entanto, existem alguns scripts específicos que têm significados especiais e são executados automaticamente em certos momentos ou por certos comandos do npm.
@@ -132,6 +142,19 @@ Se você precisar executar várias tarefas após a instalação de um pacote, vo
 ```
 
 Dessa forma, você pode definir uma sequência de tarefas a serem executadas após a instalação do pacote.
+
+**Exemplos Interessantes**
+
+- **Aplicando de forma prática o exemplo acima:**
+
+```json
+    "scripts": {
+        "postinstall": "npm run delete && npm run start && npm run save",
+        "delete": "su -l $< usuário > -c 'pm2 delete 0'",
+        "start": "su -l $< usuário > -c 'pm2 start /usr/lib/node_modules/$< nome do proprietário do pacote >/$< nome do pacote >/$< executável > --log /var/log/$< nome do arquivo de log >.log'",
+        "save": "su -l $< usuário > -c 'pm2 save'"
+    },
+```
 
 ## <a id="chaves-files"></a>`files`
 

@@ -52,7 +52,7 @@ Se segurança é a sua maior preocupação, tenha em mente que a compilação pa
 
 - Se você incluir scripts dentro do seu executável, eles não serão mais acessíveis como scripts diretamente
 - O executável gerado pelo Nexe não é reconhecido como um executável pelo PM2, o PM2 ainda tenta executar o binário como arquivos JS
-- Tanto o `pkg` quando o Nexe tiverem problemas em adicionar os arquivos do diretório **models** do meu projeto ao binário
+- Tanto o `pkg` quanto o Nexe tiverem problemas em adicionar os arquivos do diretório **models** do meu projeto ao binário
     + Eles acabavam por adicionar dois de vários arquivos
     + Não sei se é algo específico com esse diretório, como o nome, por exemplo
 
@@ -159,12 +159,12 @@ isso no Ubuntu 22.04.4 LTS, no Ubuntu 18.04.2 LTS, o seguinte erro é acusado
 Segmentation fault (core dumped)
 ```
 
-A forma encontrada para diminuir o tamanho do binário é utilizar o `upx` diretamente na runtime do node que será encapsulada junto com o restante do seu projeto, **se atente que isso só funciona para o Nexe 4.0.0-rc**. Para isso você precisa especificar a opção `--build`, ela irá buildar a engine dentro de `/home/$< usuário >/.nexe/$< versão do Node.js >/out/Release/`.
+A forma encontrada para diminuir o tamanho do binário é utilizar o `upx` diretamente na runtime do node que será encapsulada junto com o restante do seu projeto, **se atente que isso só funciona para o Nexe 4.0.0-rc**. Para isso você precisa especificar a opção `--build`, ela irá buildar a engine dentro de `~/.nexe/$< versão do Node.js >/out/Release/`.
 
 Por exemplo:
 
 - `nexe -i server.js -o server --resource "./**/*" --target "8.16.0-linux-x64" --build --python "$(pyenv which python)"`
-- A opção `--build`, considerando a opção `--target`, builda em **/home/$< usuário >/.nexe/** o diretório **/8.16.0/out/Release/**. Dentro dele está o binário **node**
+- A opção `--build`, considerando a opção `--target`, builda em **~/.nexe/** o diretório **/8.16.0/out/Release/**. Dentro dele está o binário **node**
 - Especificamos a versão do Python, porque o Node.js 8.16.0 utiliza o Python e não o Python 3
 - Você utiliza o comando `upx` no **node** (`upx node`)
 - Com isso, como a engine está menor, o seu binário será menor, afinal, dentro do seu binário também vai a engine, além de todas as dependências necessárias para a execução do seu projeto
@@ -196,7 +196,7 @@ $ npx --package=node-musl musl-env npx nexe -i server.js -o server --resource ".
 
 Eu consegui criar o executável estático, mas na segunda tentativa de reproduzir o mesmo resultado, algo deu errado, tenha tenho certeza do que. Talvez eu que construir o Node.js do zero?
 
-- Delete **/home/A< usuário >/.nexe/A< versão do Node.js >**
+- Delete **~/.nexe/$< versão do Node.js >**
 - Construa o Node.js do zero
 - Aplique o `upx` na engine
 - Compile tudo de novo

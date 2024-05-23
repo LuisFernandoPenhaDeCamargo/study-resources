@@ -96,17 +96,17 @@ O que o log "adicional" pontua é bem interessante, ele fala que a os módulos i
 
 Para desistalar esses pacotes você deve utilizar a versão `system` do Node.js. A versão do Node.js e do npm estão ligadas, afinal, elas precisam ser compatíveis.
 
-O NVM específica uma versão do Node.js, por consequência uma versão do npm. Um pacote instalado por uma versão do npm, vai ser identificado como diferente do mesmo pacote instalado por outra versão do npm, você pode observar isso pela hierarquia de arquivos `/home/$< usuário >/.nvm/versions/node/$< versão do Node.js >/lib/node_modules/`.
+O NVM específica uma versão do Node.js, por consequência uma versão do npm. Um pacote instalado por uma versão do npm, vai ser identificado como diferente do mesmo pacote instalado por outra versão do npm, você pode observar isso pela hierarquia de arquivos `~/.nvm/versions/node/$< versão do Node.js >/lib/node_modules/`.
 
 O mesmo pacote, instalado por versões diferentes do npm, estará no diretório **node_modules** da respectiva versão do Node.js (a compatível com a versão do npm).
 
 # <a id="sistema-hierarquico-arquivos"></a>Sistema Hierárquico de Arquivos
 
-Os pacotes instalados pelo npm serão utilizados no ambiente de execução Node.js específico, por isso faz sentido cada versão do Node.js possuir a própria pasta **node_modules** (**/home/A< usuário >/.nvm/versions/node/A< versões >/lib/node_modules**).
+Os pacotes instalados pelo npm serão utilizados no ambiente de execução Node.js específico, por isso faz sentido cada versão do Node.js possuir a própria pasta **node_modules** (**~/.nvm/versions/node/A< versões >/lib/node_modules**).
 
 # <a id="desinstalando-nvm"></a>Desinstalando o NVM
 
-Para desinstalar o NVM, você pode excluir o diretório onde ele está instalado. Por padrão, o NVM é instalado no diretório **/home/$< usuário >/.nvm**.
+Para desinstalar o NVM, você pode excluir o diretório onde ele está instalado. Por padrão, o NVM é instalado no diretório **/~/.nvm**.
 
 Além disso, você deve remover as entradas do NVM do seu arquivo de perfil. O NVM adiciona algumas linhas ao seu arquivo de perfil (como **.bashrc**, **.bash_profile**, ou **.profile**). Você pode editar manualmente esses arquivos e remover quaisquer linhas relacionadas ao NVM.
 

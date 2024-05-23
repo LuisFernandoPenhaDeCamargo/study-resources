@@ -7,9 +7,11 @@ Estrutura a se seguir em relação as anotações do conteúdo estudado.
 - [Template](#template)
     + [Prático](#pratico)
     + [Contexto: SO Utilizado](#contexto-so-utilizado)
+    + [Instalação](#instalacao)
     + [Sistema Hierárquico de Arquivos](#sistema-hierarquico-arquivos)
     + [Anotações](#anotacoes)
-    + [Instalação](#instalacao)
+    + [Arquivos Relacionados](#arquivos-relacionados)
+    + [Erros Enfrentados](#erros-enfrentados)
     + [Comandos Utilizados Através do CLI](#comandos-utilizados-cli)
 - [Formatação do Documento](#formatacao-documento)
     + [Código](#formatacao-documento-codigo)
@@ -33,12 +35,14 @@ Estrutura a se seguir em relação as anotações do conteúdo estudado.
 + [Contexto: SO Utilizado](#contexto-so-utilizado) <!-- Novo formato do tópico. -->
 + [Observações Sobre o Sistema Operacional](#observacoes-sistema-operacional) <!-- Antigo formato do tópico. -->
 
++ [Instalação](#instalacao)
 + [Sistema Hierárquico de Arquivos](#sistema-hierarquico-arquivos)
 
 + [Anotações](#anotacoes) <!-- Novo formato do tópico. -->
 + [Anotações Não Alocadas](#anotacoes-nao-alocadas) <!-- Antigo formato do tópico. -->
 
-+ [Instalação](#instalacao)
++ [Arquivos Relacionados](#arquivos-relacionados)
++ [Erros Enfrentados](#erros-enfrentados)
 
 + [Comandos Utilizados Através do CLI](#comandos-utilizados-cli) <!-- Novo formato do tópico. -->
 + [Comandos](#comandos) <!-- Antigo formato do tópico. -->
@@ -56,6 +60,8 @@ Codename:	jammy
 - # <a id="instalacao"></a>Instalação
 - # <a id="sistema-hierarquico-arquivos"></a>Sistema Hierárquico de Arquivos
 - # <a id="anotacoes"></a>Anotações
+- # <a id="arquivos-relacionados"></a>Arquivos Relacionados
+- # <a id="erros-enfrentados"></a>Erros Enfrentados
 - # <a id="comandos-utilizados-cli"></a>Comandos Utilizados Através do CLI
 
 # <a id="formatacao-documento"></a>Formatação do Documento
@@ -76,6 +82,8 @@ Codename:	jammy
     + **Exemplo:** `// Output: number` (JavaScript)
 - Links de referência não devem possuir em seu corpo o argumento
     + **Exemplo:** `## <a id="comandos-utilizados-cli-describe"></a>´pm2 describe $< ID >´` (Markdown)
+- Em links de referência você deve substituir o ponto pelo traço
+    +  **Exemplo:** `## <a id="dump-pm2"></a>dump.pm2` (Markdown)
 - No primeiro paragráfo, primeira sentença, devemos fornecer uma descrição resumida do comando (comece com **"É utilizado para ..."**). Destaque a parte mais importante, se possível
     + Após isso, podemos fornecer mais informações sobre ele
 
@@ -131,4 +139,4 @@ TODO
 -->
 ```
 - **Markdown:** entre crases, na hora de especificar um bloco de código simples, quando for necessário o uso de crases dentro deste bloco, como não está sendo possível escapar o caractere, utilize o acento agudo no lugar da crase. Exemplo: "`## <a id="comandos-utilizados-cli-describe"></a>´pm2 describe $< ID >´`"
-- **Markdown:** entre asteriscos, na hora de especificar uma frase em negrito, quando for necessário o uso do "$" dentro deste bloco, como não está sendo possível escapar o caractere, utilize o "A" no lugar do cifrão. Exemplo: "**/home/A< usuário >/.nvm/versions/node/A< versões >/lib/node_modules**"
+- **Markdown:** entre asteriscos, na hora de especificar uma frase em negrito, quando for necessário o uso do "$" dentro deste bloco, como não está sendo possível escapar o caractere, utilize o "A" no lugar do cifrão. Exemplo: "**~/.nvm/versions/node/A< versões >/lib/node_modules**"

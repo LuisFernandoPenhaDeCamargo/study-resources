@@ -1,8 +1,7 @@
-- MariaDB
-- README
-- Template
-- Refatorar
-- JavaScript
+- É obrigatória a existência da chave "`scripts`" no seu **package.json**?
+    + Além de pesquisar, testar isso na hora de publicar um pacote
+    + A chave `scripts` não é obrigatória
+- Refatorar para o novo formato o **Diretorio-heterogeneo**
 
 #
 
@@ -91,15 +90,7 @@ warning: `updater` (lib) generated 14 warnings (run `cargo fix --lib -p updater`
 [cargo-make] WARN - Build Failed.
 
 #
-
-npm WARN deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142                                                                                                                             
-npm WARN deprecated sequelize@3.35.1: Please update to v6 or higher! A migration guide can be found here: https://sequelize.org/v6/manual/upgrade-to-v6.html                                                                                    
-
-npm WARN deprecated har-validator@5.1.5: this library is no longer supported                                                                                                                                                                    
-npm WARN deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.                     
-npm WARN deprecated terraformer-wkt-parser@1.2.1: terraformer-wkt-parser is deprecated and no longer supported. Please use @terraformer/wkt.                                                                                                    
-npm WARN deprecated terraformer@1.0.12: terraformer is deprecated and no longer supported. Please use @terraformer/arcgis.                                                                                                                      
-npm ERR! path /usr/lib/node_modules/@zoeslots/zoe-game-api                                                                                                                                                                                      
+                       
 npm ERR! code EISGIT                                                                                                                                                                                                                            
 npm ERR! git /usr/lib/node_modules/@zoeslots/zoe-game-api: Appears to be a git repo or submodule.                                                                                                                                               
 npm ERR! git     /usr/lib/node_modules/@zoeslots/zoe-game-api                                                                                                                                                                                   

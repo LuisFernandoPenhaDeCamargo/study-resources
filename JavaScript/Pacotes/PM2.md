@@ -16,7 +16,10 @@ Em resumo, o PM2 é uma ferramenta poderosa e versátil para gerenciar aplicativ
 ### Sumário
 
 - [Contexto: SO Utilizado](#contexto-so-utilizado)
+- [Sistema Hierárquico de Arquivos](#sistema-hierarquico-arquivos)
 - [Anotações](#anotacoes)
+- [Arquivos Relacionados](#arquivos-relacionados)
+    + [dump.pm2](#arquivos-relacionados-dump-pm2)
 - [Informações Sobre os Aplicativos em Execução](#informacoes-aplicativos-execucao)
     + [`status`](#informacoes-aplicativos-execucao-status)
 - [Comandos Utilizados Através do CLI](#comandos-utilizados-cli)
@@ -27,6 +30,7 @@ Em resumo, o PM2 é uma ferramenta poderosa e versátil para gerenciar aplicativ
     + [`kill`](#comandos-utilizados-cli-kill)
     + [`save`](#comandos-utilizados-cli-save)
     + [`resurrect`](#comandos-utilizados-cli-ressurect)
+    + [`delete`](#comandos-utilizados-cli-delete)
 
 # <a id="contexto-so-utilizado"></a>Contexto: SO Utilizado
 
@@ -37,11 +41,29 @@ Release:	22.04
 Codename:	jammy
 ```
 
+# <a id="sistema-hierarquico-arquivos"></a>Sistema Hierárquico de Arquivos
+
+- O diretório **~/.pm2** é onde o PM2 armazena todas as suas informações de configuração e logs (por padrão)
+
 # <a id="anotacoes"></a>Anotações
 
-- Os arquivos relacionados ao PM2 geralmente se encontram em **/home/$< usuário >/.pm2**. Os associados ao root se encontram em **/root/.pm2**
+- Os arquivos relacionados ao PM2 geralmente se encontram em **~/.pm2**. Os associados ao root se encontram em **/root/.pm2**
     + Nestes diretórios você encontra arquivos como o **dump.pm2**
 - O PM2 não consegue **identificar como um executável (ele continua tentando executar o arquivo como um arquivo JavaScript) os binários construídos pelo Nexe**. Isso ocorre mesmo quando você configura a chave "`interpreter`" como "`none`" no seu arquivo **ecosystem.config.json**
+
+# <a id="arquivos-relacionados"></a>Arquivos Relacionados
+
+### Sumário
+
+- [dump.pm2](#arquivos-relacionados-dump-pm2)
+
+## <a id="dump-pm2"></a>dump.pm2
+
+É um **arquivo de configuração gerado pelo PM2** que contém o estado atual dos processos gerenciados pelo PM2. Ele armazena informações sobre todos os aplicativos que estão sendo gerenciados, incluindo seus scripts de inicialização, opção de configuração, variáveis de ambiente, e estados de execução. Este arquivo é crucial para persistir o estado dos processos entre reinicializações do sistema ou do PM2.
+
+- O arquivo **dump.pm2** é criado na primeira vez que você executa `pm2 save`
+    + Este comando **cria ou atualiza** o **dump.pm2** com as informações atuais do processo
+- Sempre que houver uma alteração nos processos (adição, remoção, ou alteração de configurações), execute `pm2 save` para atualizar o **dump.pm2**
 
 # <a id="informacoes-aplicativos-execucao"></a>Informações Sobre os Aplicativos em Execução
 
@@ -60,6 +82,7 @@ Codename:	jammy
 - [`kill`](#comandos-utilizados-cli-kill)
 - [`save`](#comandos-utilizados-cli-save)
 - [`ressurect`](#comandos-utilizados-cli-ressurect)
+- [`delete`](#comandos-utilizados-cli-delete)
 
 ## <a id="comandos-utilizados-cli-list"></a>`pm2 list`
 
@@ -154,7 +177,7 @@ Este comando pode ser útil para entender como o ambiente está configurado para
 
 É utilizado para salvar o estado atual de todos os processos gerenciados. Esse comando cria um snapshot da configuração atual dos processos em uma arquivo chamado **dump.pm2** localizado no diretório de configuração do PM2 (geralmente em **~/.pm2**).
 
-A configuração atual inclui informações como os scripts que estão sendo executados, seus parâmetros, variáveis de ambiente, etc.
+- A configuração atual inclui informações como os scripts que estão sendo executados, seus parâmetros, variáveis de ambiente, etc
 
 ## <a id="comandos-utilizados-cli-resurrect"></a>`pm2 resurrect`
 
@@ -198,69 +221,21 @@ $ pm2 save
 
 Usando esses comandos, você pode garantir que seus processos Node.js gerenciados pelo PM2 sejam salvos e restaurados automaticamente, proporcionando alta disponibilidade e recuperação automática após reinicializações do sistema.
 
-#
+## <a id="comandos-utilizados-cli-delete"></a>`pm2 delete $< nome do processo ou ID >`
 
-- `pkg server.js -o server -t node16-linux-x64 --config package.json --compress Brotli`
+É utilizado para **remover processos gerenciados pelo PM2**. Esse comando pode ser aplicado a processos específicos ou a todos os processos em execução.
 
--> pm2 save ->
+**Exemplos**
 
-+ O link simbólico parece estar sendo criado de forma adequada, mas o log não está sendo inserido aonde se espera
+- **Deletando um processo específico pelo nome ou ID:**
 
-+ Ajustar o arquivo de serviço para funcionar com o binário
-+ Refatorar para o novo formato o **Diretorio-heterogeneo**
-+ Utilizar o `pm2 reload` para ver se a zoe-game-api cai de forma perceptível para as slots ou não (insirá um log para mostrar que o processo foi gerado pelo novo código)
-
-+ Template **package.json:**
-
-anotar essas chaves, colocar esse exemplo em algum lugar
-
-```json
-{
-  "name": "@zoeslots/zoe-game-api",
-  "version": "2.5.0",
-  "description": "Game API manages game operations including money in/out, accumulated/jackpot raffle",
-  "main": "server.js",
-  "author": "Zoe Slots, LLC",
-  "bin": {
-    "orion-game-server": "server.js"
-  },
-  "scripts": {
-    "test": "./node_modules/mocha/bin/mocha -R spec tests/api/*",
-    "no-test-example": "echo \"Error: no test specified\" && exit 1",
-    "benchmark": "node tests/benchmark/benchmark.js"
-  },
-  "dependencies": {
-    "axios": "^0.19.0",
-    "body-parser": "~1.0.1",
-    "express": "~4.0.0",
-    "log-timestamp": "^0.1.2",
-    "moment": "^2.11.1",
-    "mysql": "^2.5.4",
-    "mysql2": "1.0.0-rc.1",
-    "redis": "~2.4.2",
-    "request": "^2.81.0",
-    "sequelize": "^3.24.3"
-  },
-  "devDependencies": {
-    "chai": "^3.5.0",
-    "mocha": "^2.4.5",
-    "request": "^2.81.0",
-    "supertest": "^1.2.0"
-  },
-  "files": [
-    "./pwd/file"
-  ],
-  "pkg": {
-    "scripts": [
-      "./models/*.js"
-    ]
-  }
-}
+```bash
+$ pm2 delete my-app # Deleta o processo com o nome "my-app".
+$ pm2 delete 0      # Deleta o processo com o ID 0.
 ```
 
-  "scripts": {
-    "postinstall": "npm run delete && npm run start && npm run save",
-    "delete": "su -l zoe -c 'pm2 delete 0'",
-    "start": "su -l zoe -c 'pm2 start /usr/lib/node_modules/@zoeslots/zoe-game-api/server --log /var/log/orion-game-server.log'",
-    "save": "su -l zoe -c 'pm2 save'"
-  },
+- **Deletando todos os processos gerenciados pelo PM2:**
+
+```bash
+$ pm2 delete all
+```

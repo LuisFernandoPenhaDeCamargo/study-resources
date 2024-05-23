@@ -1,46 +1,6 @@
-pkg, nexe, template, npm, pm2, readme
-
 # README
 
 Este repositório tem como objetivo auxiliar o estudo de certas tecnologias relacionadas a TI. Abaixo segue uma lista com as tecnologias, especificando qual é o arquivo que fala sobre elas, além de uma breve descrição do que você encontrará naquele arquivo e um sumário dos tópicos.
-
-## Linux (Diretorio-heterogeneo/linux.md)
-
-Conceitos e observações sobre este sistema operacional.
-
-### Sumário
-
-- [GLIBC](#glib)
-- [Sistema Hierárquico de Arquivos](#sistema-hierarquico-arquivos)
-    + [/proc](#sistema-hierarquico-arquivos-proc)
-
-## Bash (Diretorio-heterogeneo/bash.md)
-
-Ferramentas e comandos utilizados juntos desta interface de linha de comando.
-
-### Sumário
-
-- [Comandos](#comandos)
-    + [`lsb_release -a`](#comandos-lsb-release)
-    + [`sudo -E`](#comandos-sudo-e)
-    + [`sudo apt update`](#comandos-sudo-apt-update)
-    + [`sudo apt upgrade`](#comandos-sudo-apt-upgrade)
-    + [`ssh`](#comandos-ssh)
-    + [`arp`](#comandos-arp)
-    + [`pgrep`](#comandos-pgrep)
-    + [`kill`](#comandos-kill)
-    + [`cat`](#comandos-cat)
-    + [`tr`](#comandos-tr)
-    + [`sed`](#comandos-sed)
-    + [`curl`](#comandos-curl)
-    + [`strip`](#comandos-strip)
-    + [`upx`](#comandos-upx)
-    + [`strings`](#comandos-strings)
-    + [`ldd`](#comandos-ldd)
-- [Observações Sobre o Sistema Operacional](#observacoes-sistema-operacional)
-- [`apt`](#apt)
-- [Snap](#snap)
-- [`vim`](#vim)
 
 ## Markdown (Diretorio-heterogeneo/markdown.md)
 
@@ -52,6 +12,33 @@ Conceitos e observações sobre esta linguagem de marcação.
 
 ## Diretorio-heterogeneo/
 
+- **Linux (Linux.md):** SO
+    + [Sistema Hierárquico de Arquivos](#sistema-hierarquico-arquivos)
+        - [~/]
+        - [/proc](#sistema-hierarquico-arquivos-proc)
+    + [Snap](#snap)
+    + [GLIBC](#glibc)
+- **Bash (bash.md)**:
+    + [Contexto: SO Utilizado](#contexto-so-utilizado)
+    + [`apt`](#apt)
+    + [`vim`](#vim)
+    + [Comandos Utilizados Através do CLI](#comandos-utilizados-cli)
+        - [`lsb_release -a`](#comandos-utilizados-cli-lsb-release)
+        - [`sudo -E`](#comandos-utilizados-cli-sudo-e)
+        - [`sudo apt update`](#comandos-utilizados-cli-sudo-apt-update)
+        - [`sudo apt upgrade`](#comandos-utilizados-cli-sudo-apt-upgrade)
+        - [`ssh`](#comandos-utilizados-cli-ssh)
+        - [`arp`](#comandos-utilizados-cli-arp)
+        - [`pgrep`](#comandos-utilizados-cli-pgrep)
+        - [`kill`](#comandos-utilizados-cli-kill)
+        - [`cat`](#comandos-utilizados-cli-cat)
+        - [`tr`](#comandos-utilizados-cli-tr)
+        - [`sed`](#comandos-utilizados-cli-sed)
+        - [`curl`](#comandos-utilizados-cli-curl)
+        - [`strip`](#comandos-utilizados-cli-strip)
+        - [`upx`](#comandos-utilizados-cli-upx)
+        - [`strings`](#comandos-utilizados-cli-strings)
+        - [`ldd`](#comandos-utilizados-cli-ldd)
 - **.service (ponto-service.md):**
     + [Contexto: SO Utilizado](#contexto-so-utilizado)
     + [Arquivo de Serviço](#arquivo-servico)
@@ -66,6 +53,9 @@ Conceitos e observações sobre esta linguagem de marcação.
             + [Scope](#arquivo-servico-secoes-scope)
             + [Swap](#arquivo-servico-secoes-swap)
     + [Arquivo de Ambiente](#arquivo-ambiente)
+- **VM (VM.md):** como criar e utilizar uma VM
+    + [Contexto: SO Utilizado](#contexto-so-utilizado)
+    + [Criando uma VM](#criando-vm)
 - **VPN (VPN.md):** como utilizar uma VPN
     + [Contexto: SO Utilizado](#contexto-so-utilizado)
     + [Configurando a VPN](#configurando-vpn)
@@ -122,6 +112,8 @@ Conceitos e observações sobre esta linguagem de marcação.
 - **npm (npm.md):** gerenciador de pacotes
     + [Compatibilidade Entre o Node.js e o npm](#compatibilidade-nodejs-npm)
     + [Ato de Publicação](#ato-publicacao)
+    + [Erros Enfrentados](#erros-enfrentados)
+        - [Ao Tentar Instalar as Dependências do Nosso Projeto](#ao-instalar-dependencias-projeto)
     + [Comandos Utilizados Através do CLI](#comandos-utilizados-cli)
         - [`npm login` x `npm adduser`](#comandos-utilizados-cli-npm-login-x-npm-adduser)
         - [`npm install`](#comandos-utilizados-cli-npm-install)
@@ -152,7 +144,10 @@ Conceitos e observações sobre esta linguagem de marcação.
 - **Pacotes/**
     + **PM2 (PM2.md):** gerenciador de processos
         - [Contexto: SO Utilizado](#contexto-so-utilizado)
+        - [Sistema Hierárquico de Arquivos](#sistema-hierarquico-arquivos)
         - [Anotações](#anotacoes)
+        - [Arquivos Relacionados](#arquivos-relacionados)
+            + [dump.pm2](#arquivos-relacionados-dump-pm2)
         - [Informações Sobre os Aplicativos em Execução](#informacoes-aplicativos-execucao)
             + [`status`](#informacoes-aplicativos-execucao-status)
         - [Comandos Utilizados Através do CLI](#comandos-utilizados-cli)
@@ -163,6 +158,7 @@ Conceitos e observações sobre esta linguagem de marcação.
             + [`kill`](#comandos-utilizados-cli-kill)
             + [`save`](#comandos-utilizados-cli-save)
             + [`resurrect`](#comandos-utilizados-cli-ressurect)
+            + [`delete`](#comandos-utilizados-cli-delete)
     + **JavaScript obfuscator (JavaScript-obfuscator.md):** utilizado na ofuscação de código JavaScript
     + `pkg` **(pkg.md):** utilizado para compilar o código-fonte Node.js em um binário executável
         - [`pkg` x Nexe](#"pkg-x-nexe")
@@ -204,6 +200,28 @@ Conceitos e observações sobre esta linguagem de marcação.
         - [`local`](#comandos-utilizados-cli-local)
         - [`shell $< versão >`](#comandos-utilizados-cli-shell)
 
+## Template (template.md)
+
+Template de estrutura a tentar seguir em relação as anotações do conteúdo estudado.
+
+### Sumário
+
+- [Template](#template)
+    + [Prático](#pratico)
+    + [Contexto: SO Utilizado](#contexto-so-utilizado)
+    + [Instalação](#instalacao)
+    + [Sistema Hierárquico de Arquivos](#sistema-hierarquico-arquivos)
+    + [Anotações](#anotacoes)
+    + [Arquivos Relacionados](#arquivos-relacionados)
+    + [Erros Enfrentados](#erros-enfrentados)
+    + [Comandos Utilizados Através do CLI](#comandos-utilizados-cli)
+- [Formatação do Documento](#formatacao-documento)
+    + [Código](#formatacao-documento-codigo)
+    + [Subtópicos](#formatacao-documento-subtopicos)
+    + [Nomenclatura](#formatacao-documento-nomenclatura)
+    + [Negrito](#formatacao-documento-negrito)
+- [Key Words](#formatacao-documento-key-words)
+
 ## AWS (Diretorio-heterogeneo/aws.md)
 
 Arquivo que trata sobre a AWS e os serviços ofertados por ela.
@@ -233,17 +251,6 @@ Arquivo que trata de formas de proteger o seu código-fonte.
 
 - [Técnicas de Ofuscação de Código](#tecnicas-ofuscacao-codigo)
 
-## VM (Diretorio-heterogeneo/VM.md)
-
-Como criar uma VM e alguns pontos sobre ela.
-
-Arquivo que trata sobre 
-
-### Sumário
-
-- [Contexto: SO Utilizado](#contexto-so-utilizado)
-- [Criando uma VM](#criando-vm)
-
 ## Termos Utilizados na Área de TI (Diretorio-heterogeneo/termos-TI.md)
 
 Explicação do significado dos termos utilizados com frequência na área de TI.
@@ -258,26 +265,6 @@ Explicação do significado dos termos utilizados com frequência na área de TI
 - [LTS](#lts)
 - [Snapshot](#snapshot)
 - [SO](#so)
-
-## Template (template.md)
-
-Template de estrutura a tentar seguir em relação as anotações do conteúdo estudado.
-
-### Sumário
-
-- [Template](#template)
-    + [Prático](#pratico)
-    + [Contexto: SO Utilizado](#contexto-so-utilizado)
-    + [Sistema Hierárquico de Arquivos](#sistema-hierarquico-arquivos)
-    + [Anotações](#anotacoes)
-    + [Instalação](#instalacao)
-    + [Comandos Utilizados Através do CLI](#comandos-utilizados-cli)
-- [Formatação do Documento](#formatacao-documento)
-    + [Código](#formatacao-documento-codigo)
-    + [Subtópicos](#formatacao-documento-subtopicos)
-    + [Nomenclatura](#formatacao-documento-nomenclatura)
-    + [Negrito](#formatacao-documento-negrito)
-- [Key Words](#formatacao-documento-key-words)
 
 ## Configurando a Minha Máquina (Diretorio-heterogeneo/configurando-maquina.md)
 
@@ -298,16 +285,17 @@ Configurando o ambiente para que agrade o meu gosto pessoal, além de uma lista 
 
 ## Bash
 
-- `~/` referência qual diretório do sistema hierárquico de arquivos?
 - O que são "dependências externas"? No contexto de ferramentas de geração de binários
 - `systemctl daemon-reload`
 
 ## JavaScript/Node.js/npm/nvm/PM2
 
-- `pm2 delete`
-- **dump.pm2**
 - Cada processo do pm2 pode ser vinculado a um usuário?
+    + Ponto importante, provavelmente vai ser pontuado em "Anotações"
 - Engine, runtime, ambiente de execução. Contexto: Node.js
+- "`npm WARN`"
+    + "`npm WARN old lockfile }`"
+    + "`npm WARN deprecated request@2.88.2:`"
 - Criar um exemplo de exportação/importação com o código abaixo:
 
 ```JavaScript

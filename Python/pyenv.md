@@ -53,7 +53,7 @@ $ curl https://pyenv.run | bash
 
 - **Set up your shell environment for Pyenv** (https://github.com/pyenv/pyenv?tab=readme-ov-file#set-up-your-shell-environment-for-pyenv)
 
-Em **/home/$< usuário >/.bashrc**, adicione ao final do arquivo ou ao seu local de preferência:
+Em **~/.bashrc**, adicione ao final do arquivo ou ao seu local de preferência:
 
 ```bash
 # As linhas abaixo foram adicionadas por mim.
@@ -64,7 +64,7 @@ export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 ```
 
-Realize o processo acima em **/home/$< usuário >/.profile** também.
+Realize o processo acima em **~/.profile** também.
 
 - Para que as alterações tenham efeito, recarregue o arquivo de configuração do shell executando:
 
@@ -101,7 +101,7 @@ $ pyenv global $< versão >
 
 # <a id="sistema-hierarquico-arquivos"></a>Sistema Hierárquico de Arquivos
 
-O diretório do Pyenv se encontra em **/home/$< usuário >/.pyenv/**.
+O diretório do Pyenv se encontra em **~/.pyenv/**.
 
 # <a id="comandos-utilizados-cli"></a>Comandos Utilizados Através do CLI
 

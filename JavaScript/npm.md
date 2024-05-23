@@ -4,6 +4,8 @@
 
 - [Compatibilidade Entre o Node.js e o npm](#compatibilidade-nodejs-npm)
 - [Ato de Publicação](#ato-publicacao)
+- [Erros Enfrentados](#erros-enfrentados)
+    + [Ao Tentar Instalar as Dependências do Nosso Projeto](#ao-instalar-dependencias-projeto)
 - [Comandos Utilizados Através do CLI](#comandos-utilizados-cli)
     + [`npm login` x `npm adduser`](#comandos-utilizados-cli-npm-login-x-npm-adduser)
     + [`npm install`](#comandos-utilizados-cli-npm-install)
@@ -27,22 +29,18 @@ O npm é apenas usado para empacotar e distribuir o código-fonte do pacote. Uma
 
 Em resumo, desde que o pacote seja compatível com a versão do Node.js na máquina de destino, não deve haver problemas em publicar o pacote em uma versão diferente do Node.js. No entanto, é sempre uma prática recomendada testar o pacote em diferentes versões do Node.js para garantir a compatibilidade e o funcionamento adequado em diferentes ambientes de execução.
 
-# <a id=""></a>Erros Encontrados
+# <a id="erros-enfrentados"></a>Erros Enfrentados
 
-npm WARN old lockfile }
-npm ERR! code EEXIST
-npm ERR! syscall mkdir
-npm ERR! path /home/fernando/.npm/_cacache/content-v2/sha512/58/55
-npm ERR! errno -13
-npm ERR! EACCES: permission denied, mkdir '/home/fernando/.npm/_cacache/content-v2/sha512/58/55'
-npm ERR! File exists: /home/fernando/.npm/_cacache/content-v2/sha512/58/55
-npm ERR! Remove the existing file and try again, or run npm
-npm ERR! with --force to overwrite files recklessly.
+## <a id="ao-instalar-dependencias-projeto"></a>Ao Tentar Instalar as Dependências do Nosso Projeto
 
-npm ERR! A complete log of this run can be found in: /home/fernando/.npm/_logs/2024-05-22T16_46_32_366Z-debug-0.log
+As mensagens abaixo foram impressas ao se tentar instalar localmente as dependências do nosso projeto:
+10.5.0
+6.4.1
 
+- Este foi o primeiro log de erro gerado:
 
-Unhandled rejection Error: EACCES: permission denied, mkdir '/home/fernando/.npm/_cacache/index-v5/af/03'
+```bash
+Unhandled rejection Error: EACCES: permission denied, mkdir '/home/$< usuário >/.npm/_cacache/index-v5/af/03'
 
 npm ERR! cb() never called!
 
@@ -50,7 +48,27 @@ npm ERR! This is an error with npm itself. Please report this error at:
 npm ERR!     <https://npm.community>
 
 npm ERR! A complete log of this run can be found in:
-npm ERR!     /home/fernando/.npm/_logs/2024-05-22T16_33_47_021Z-debug.log
+npm ERR!     /home/$< usuário >/.npm/_logs/2024-05-22T16_33_47_021Z-debug.log
+```
+
+A suspeita caiu sobre a versão do npm (6.4.1)
+
+- Atualizamos a versão do npm (10.5.0) e o seguinte log de erro foi gerado:
+
+```bash
+npm ERR! code EEXIST
+npm ERR! syscall mkdir
+npm ERR! path /home/$< usuário >/.npm/_cacache/content-v2/sha512/58/55
+npm ERR! errno -13
+npm ERR! EACCES: permission denied, mkdir '/home/$< usuário >/.npm/_cacache/content-v2/sha512/58/55'
+npm ERR! File exists: /home/$< usuário >/.npm/_cacache/content-v2/sha512/58/55
+npm ERR! Remove the existing file and try again, or run npm
+npm ERR! with --force to overwrite files recklessly.
+
+npm ERR! A complete log of this run can be found in: /home/$< usuário >/.npm/_logs/2024-05-22T16_46_32_366Z-debug-0.log
+```
+
+Acabou que, para resolver o problema, nós simplesmente deletamos o diretório "`_cacache`" e tentamos instalar as dependências novamente. Não lembro se acabei por alterar as permissões de algum diretório.
 
 # <a id="comandos-utilizados-cli"></a>Comandos Utilizados Através do CLI
 
