@@ -24,8 +24,9 @@ Codename:	jammy
 - **NVM:** `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash`
 - Login no npm
 - `pyenv`
-- **Redis**
+- **Redis:** `sudo apt install redis-server`
 - **MariaDB:** `sudo apt install mariadb-server`
+    + Verifique uma forma de instalar a seguinte versão, "`mariadb Ver 15.1 Distrib 10.1.40-MariaDB, for debian-linux-gnu (x86_64) using readline 5.2`"
     + Adquira um dump
     + **Crie o banco:** `sudo mariadb -e "CREATE DATABASE zoeslots;"`
     + **Insira o dump:** `sudo mariadb zoeslots < dump.sql`

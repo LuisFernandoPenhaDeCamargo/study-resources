@@ -5,6 +5,9 @@
 - [Sistema Hierárquico de Arquivos](#sistema-hierarquico-arquivos)
     + [~/]
     + [/proc](#sistema-hierarquico-arquivos-proc)
+- [systemctl](#systemctl)
+    + [Comandos Utilizados Através do CLI](#systemctl-comandos-utilizados-cli)
+        - [`daemon-reload`](#systemctl-comandos-utilizados-cli-daemon-reload)
 - [Snap](#snap)
 - [GLIBC](#glibc)
 
@@ -41,6 +44,35 @@ O comando `cat /proc/$< PID >/environ | tr '\0 \n'` é usado para exibir o ambie
 A saída do comando acima seria uma sequência de variáveis de ambiente, cada uma delas em uma linha separada e com o formato `NOME=VALOR`. No entanto, como as variáveis de ambiente são separadas por null bytes, geralmente é útil usar o comando `tr` (translate) para substituir os null bytes por quebras de linha (`/n`), tornando a saída mais legível.
 
 Portanto, o comando completo `cat /proc/$< PID >/environ | tr '\0 \n'` exibirá as variáveis de ambiente do processo especificado pelo PID, com cada variável em uma linha separada.
+
+# <a id="systemctl"></a>`systemctl`
+
+## <a id="comandos-utilizados-cli"></a>Comandos Utilizados Através do CLI
+
+### Sumário
+
+- [`daemon-reload`](#systemctl-comandos-utilizados-cli-daemon-reload)
+
+### <a id=""></a>`systemctl daemon-reload`
+
+É utilizado para **recarregar os arquivos de configuração das unidades** (serviços, sockets, targets, etc.) do systemd. Este comando é necessário após qualquer modificação nos arquivos de configuração das unidades, como criação, alteração ou remoção de arquivos **.service**, **.socket**, **.target**, etc.
+
+**Quando Usar**
+
+1. **Depois de criar um novo arquivo de unidade:** se você adicionou um novo arquivo de serviço em **/etc/systemd/system** ou **/lib/systemd/system**, precisa informar ao systemd sobre essa nova unidade
+2. **Depois de modificar um arquivo de unidade existente:** se você editou um arquivo de serviço, como alterar comandos em `ExecStart` ou modificar variáveis de ambientes
+3. **Depois de remover um arquivo de unidade:** se você removeu um serviço que não é mais necessário
+
+**Porque é Necessário?**
+
+O systemd lê os arquivos de configurações das unidades durante a inicialização do sistema e mantém essas informações em cache para melhorar o desempenho. Quando você faz alterações nos arquivos de configuração, o systemd precisa ser informado para recarregar essas configurações e atualizar seu cache. O comando `systemctl daemon-reload` faz exatamente isso.
+
+**Considerações**
+
+- **Não reinicia serviços automaticamente:** o comando `daemon-reload` não reinicia os serviços que já estão em execução. Se você precisar aplicar as mudanças em um serviço em execução, você terá que reiniciar manualmente esse serviço usando `systemctl restart $< serviço >`
+- **Não recarrega arquivos de configuração de serviços:** se você alterou os arquivos de configuração que o serviço lê (por exemplo, arquivos de configuração específicos da aplicação), você ainda precisa reiniciar o serviço para aplicar essas mudanças
+
+O comando `systemctl daemon-reload` é uma ferramenta essencial para a administração de sistemas baseados em systemd, garantindo que qualquer alteração nos arquivos de configuração das unidades seja reconhecida e aplicada corretamente pelo daemon do systemd.
 
 # <a id="snap"></a>Snap
 

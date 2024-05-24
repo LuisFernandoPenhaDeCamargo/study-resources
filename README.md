@@ -16,6 +16,9 @@ Conceitos e observações sobre esta linguagem de marcação.
     + [Sistema Hierárquico de Arquivos](#sistema-hierarquico-arquivos)
         - [~/]
         - [/proc](#sistema-hierarquico-arquivos-proc)
+    + [systemctl](#systemctl)
+        - [Comandos Utilizados Através do CLI](#systemctl-comandos-utilizados-cli)
+            + [`daemon-reload`](#systemctl-comandos-utilizados-cli-daemon-reload)
     + [Snap](#snap)
     + [GLIBC](#glibc)
 - **Bash (bash.md)**:
@@ -62,6 +65,8 @@ Conceitos e observações sobre esta linguagem de marcação.
 - **Configurando a Minha Máquina (configurando-maquina.md):** arquivo que lista as ferramentas que eu utilizo, pretendo criar um script de configuração de ambiente
     + [Contexto: SO Utilizado](#contexto-so-utilizado)
     + [Projeto de Script de Configuração de Ambiente](#projeto-script-configuracao-ambiente)
+- **AWS (AWS.md):**
+    + [AWS Secrets Manager](#aws-secrets-manager)
 
 ## JavaScript/
 
@@ -161,6 +166,7 @@ Conceitos e observações sobre esta linguagem de marcação.
             + [`delete`](#comandos-utilizados-cli-delete)
     + **JavaScript obfuscator (JavaScript-obfuscator.md):** utilizado na ofuscação de código JavaScript
     + `pkg` **(pkg.md):** utilizado para compilar o código-fonte Node.js em um binário executável
+        - [Dependências Externas](#dependencias-externas)
         - [`pkg` x Nexe](#"pkg-x-nexe")
         - [Segurança](#seguranca)
         - [Arquivo de Serviço e PM2](#arquivo-serviço-e-pm2)
@@ -171,6 +177,7 @@ Conceitos e observações sobre esta linguagem de marcação.
                 - [`pkg` e o JavaScript obfuscator](#compilando-codigo-fonte-pkg-observacoes-importantes-pkg-javascript-obfuscator)
                 - [`devDependencies`](#compilando-codigo-fonte-pkg-observacoes-importantes-devdependencies)
     + **Nexe (nexe.md):** utilizado para compilar o código-fonte Node.js em um binário executável
+        - [Dependências Externas](#dependencias-externas)
         - [`pkg` x Nexe](#"pkg-x-nexe")
         - [Segurança](#seguranca)
         - [Compilando o seu Código-fonte com o Nexe](#compilando-codigo-fonte-nexe)
@@ -222,14 +229,6 @@ Template de estrutura a tentar seguir em relação as anotações do conteúdo e
     + [Negrito](#formatacao-documento-negrito)
 - [Key Words](#formatacao-documento-key-words)
 
-## AWS (Diretorio-heterogeneo/aws.md)
-
-Arquivo que trata sobre a AWS e os serviços ofertados por ela.
-
-### Sumário
-
-- [AWS Secrets Manager](#aws-secrets-manager)
-
 ## MariaDB (Diretorio-heterogeneo/mariadb.md)
 
 ### Sumário
@@ -266,16 +265,6 @@ Explicação do significado dos termos utilizados com frequência na área de TI
 - [Snapshot](#snapshot)
 - [SO](#so)
 
-## Configurando a Minha Máquina (Diretorio-heterogeneo/configurando-maquina.md)
-
-Configurando o ambiente para que agrade o meu gosto pessoal, além de uma lista de ferramentas que eu utilizo com frequência.
-
-### Sumário
-
-- [Contexto: SO Utilizado](#contexto-so-utilizado)
-- [Ferramentas Instaladas](#ferramentas-instaladas)
-- [Projeto de Script de Configuração de Ambiente](#projeto-script-configuracao-ambiente)
-
 # Anotações Não Alocadas
 
 - No final das contas, seja interpretada ou compilada, a CPU lê código de máquina, o que acaba por se tornar um processo
@@ -285,8 +274,9 @@ Configurando o ambiente para que agrade o meu gosto pessoal, além de uma lista 
 
 ## Bash
 
-- O que são "dependências externas"? No contexto de ferramentas de geração de binários
-- `systemctl daemon-reload`
+- O que é o "Bash"?
+- `systemctl status`
+- `redis-cli ping`
 
 ## JavaScript/Node.js/npm/nvm/PM2
 
@@ -317,6 +307,7 @@ export const nome2 = "João";
 
 ## AWS
 
+- O que é a AWS?
 - s3
 - ec2
 - route53

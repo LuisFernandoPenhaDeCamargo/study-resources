@@ -2,6 +2,7 @@
 
 ### Sumário
 
+- [Dependências Externas](#dependencias-externas)
 - [`pkg` x Nexe](#"pkg-x-nexe")
 - [Segurança](#seguranca)
 - [Compilando o seu Código-fonte com o Nexe](#compilando-codigo-fonte-nexe)
@@ -13,6 +14,74 @@
         - [Problemas de Segurança](#compilando-codigo-fonte-nexe-observacoes-importantes-problemas-seguranca)
         - [Problemas de Depêndencias Externas](#compilando-codigo-fonte-nexe-observacoes-importantes-problemas-dependencias-externas)
         - [Problemas com o PM2](#compilando-codigo-fonte-nexe-observacoes-importantes-problemas-pm2)
+
+# <a id="dependencias-externas"></a>Dependências Externas
+
+No contexto de ferramentas de geração de binários, "dependências externas" referem-se a bibliotecas, módulos, ou componentes de software que não fazem parte do código-fonte principal do projeto, mas são necessários para compilar, vincular, ou executar o binário gerado. Essas dependências podem incluir:
+
+1. **Bibliotecas de sistema:** bibliotecas fornecidas pelo SO, como bibliotecas C padrão (GLIBC, no Linux), bibliotecas de rede, bibliotecas gráficas, etc
+2. **Bibliotecas de terceiros:** bibliotecas ou frameworks desenvolvidos por terceiros, que são necessários para adicionar funcionalidades ao software, como `OpenSSL` para criptografia, `Boost` para várias utilidades em C++, etc
+3. **Pacotes e módulos:** no caso de linguagens de alto nível como Python, Node.js, etc., podem incluir pacotes ou módulos instalados via gerenciadores de pacotes como `pip` (para Python) ou npm (para Node.js)
+4. **Ferramentas de compilação e linkagem:** ferramentas necessárias durante a fase de compilação e linkagem, como `make`, `gcc` (GNU Compiler Collection), `ld` (GNU linker), etc.
+
+**Exemplos**
+
+1. **Bibliotecas de sistema:** se você estiver compilando um programa C que usa funções matemáticas avançadas, você pode precisar da biblioteca matemática padrão do C (`libm`):
+
+```c
+#include <math.h>
+```
+
+Aqui, `libm` é uma dependência externa
+
+2. **Bibliotecas de terceiros:** para um projeto C++ que usa a biblioteca Boost:
+
+```cpp
+#include <boost/algorithm/string.hpp>
+```
+
+A biblioteca Boost deve estar instalada no sistema para compilar este projeto
+
+3. **Pacotes e módulos:** para um projeto Node.js que depende do Express:
+
+```javascript
+const express = require("express");
+```
+
+O pacote Express deve ser instalado via npm
+
+4. **Ferramentas de compilação e linkagem:** para um projeto que usa `make` para automatizar a compilação, `make` e o compilador especificado (como `gcc` ou `g++`) são dependências externas:
+
+```makefile
+all: myprogram
+
+myprogram: main.o utils.o
+  gcc -o myprogram main.o utils.o
+
+main.o: main.c
+  gcc -c main.c
+
+utils.o: utils.c
+  gcc -c utils.c
+```
+
+**Gerenciamento de Dependências**
+
+As dependências externas são geralmente gerenciadas por:
+
+- **Gerenciadores de pacotes:** como `apt`, `yum`, `brew` para bibliotecas de sistema, ou npm, `pip` para bibliotecas de linguagens específicas
+- **Ferramentas de build:** como `CMake`, `make`, `Gradle`, `Maven` que podem baixar e configurar dependências
+- **Arquivos de configuração:** como **package.json** para Node.js, **requirements.txt** para Python, **Cargo.toml** para Rust
+
+**Importância das Dependências Externas**
+
+Gerenciar corretamente as dependências externas é crucial para:
+
+- **Compatibilidade:** garantir que todas as bibliotecas necessárias estão disponíveis e compatíveis com o projeto
+- **Reprodutibilidade:** facilitar a replicação do ambiente de desenvolvimento em diferentes sistemas ou por diferentes desenvolvedores
+- **Segurança:** manter as dependências atualizadas para evitar vulnerabilidades
+
+Em resumo, dependências externas são componentes de software adicionais necessários para que um projeto funcione corretamente, e o gerenciamento eficaz dessas dependências é essencial para o sucesso do desenvolvimento e implantação do software.
 
 # <a id="pkg-x-nexe"></a>`pkg` x Nexe
 

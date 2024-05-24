@@ -138,52 +138,6 @@ PirateSoftware -> 2 facto FUCKING EVERYTHING
 
 #
 
-instá-la a porra do Redis
-instá-la a porra do MariaDB (10.1.40-MariaDB-0ubuntu0.18.04.1)
-
-Para instalar o MariaDB no Ubuntu, você pode seguir estas etapas:
-
-Abra um terminal.
-
-Atualize o índice de pacotes:
-
-bash
-Copy code
-sudo apt update
-Instale o pacote do MariaDB:
-bash
-Copy code
-sudo apt install mariadb-server
-Durante a instalação, você será solicitado a configurar uma senha para o usuário root do MariaDB. Escolha uma senha forte e insira-a quando solicitado.
-
-Após a instalação, o MariaDB será iniciado automaticamente. Você pode verificar se o serviço está em execução usando:
-
-bash
-Copy code
-sudo systemctl status mariadb
-Se o serviço estiver ativo e em execução, você verá uma saída indicando que o serviço está "active (running)".
-
-O MariaDB não é acessível diretamente pelo usuário root do sistema operacional. Para acessá-lo, você pode usar o seguinte comando:
-bash
-Copy code
-sudo mysql -u root -p
-Ele solicitará a senha que você configurou durante a instalação. Após inserir a senha correta, você estará conectado ao MariaDB e pronto para começar a trabalhar com o banco de dados.
-
-Se você deseja permitir acesso remoto ao MariaDB, precisará ajustar as configurações de segurança do servidor MariaDB para permitir conexões remotas.
-Depois de seguir esses passos, você terá o MariaDB instalado e configurado no seu sistema Ubuntu.
-
-sudo apt install mariadb-server
-
-mysql  Ver 15.1 Distrib 10.6.16-MariaDB, for debian-linux-gnu (x86_64) using  EditLine wrapper
-
-não esquece do Dump
-
-sudo apt install redis-server
-
-redis-cli ping
-
-#
-
 instalando a porra de um servidor ssh na minha máquina
 
 
