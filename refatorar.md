@@ -3,6 +3,10 @@
     + A chave `scripts` não é obrigatória
 - Refatorar para o novo formato o **Diretorio-heterogeneo**
 
+- array.forEach();
+- axios.post();
+- Model.update({ where: { id: { $in: array }},},)
+
 #
 
 luis@lfernando:~/.config$ git config --global -l
@@ -131,40 +135,6 @@ npm ERR!     /root/.npm/_logs/2024-03-26T12_46_08_018Z-debug.log
 FUCK MY BUT
 
 CERTIFICADO TEM QUE SER 600 SÓ O PRIMEIRO MOTHERFUCKER PODE USAR
-
-#
-
-PirateSoftware -> 2 facto FUCKING EVERYTHING
-
-#
-
-instalando a porra de um servidor ssh na minha máquina
-
-
-Se o comando systemctl status ssh não retornou nada, isso indica que o serviço SSH não está instalado ou não está sendo executado no sistema. Isso é provavelmente a causa do erro "Connection refused".
-
-Para resolver isso, você precisará instalar e configurar o servidor SSH. No Ubuntu, você pode fazer isso seguindo estas etapas:
-
-Instale o servidor SSH (OpenSSH Server):
-bash
-Copy code
-sudo apt update
-sudo apt install openssh-server
-Após a instalação, o servidor SSH deve ser iniciado automaticamente. Você pode verificar o status do serviço com o comando:
-bash
-Copy code
-sudo systemctl status ssh
-Se o servidor estiver em execução, ele mostrará um status "active (running)".
-
-Se o servidor não estiver em execução, você pode iniciar manualmente com o comando:
-bash
-Copy code
-sudo systemctl start ssh
-Verifique novamente o status para garantir que o servidor SSH esteja em execução:
-bash
-Copy code
-sudo systemctl status ssh
-Após seguir estas etapas e confirmar que o servidor SSH está em execução, tente novamente usar o scp para copiar o arquivo dump.sql para o host de destino. Certifique-se de usar o endereço e o nome de usuário corretos.
 
 #
 

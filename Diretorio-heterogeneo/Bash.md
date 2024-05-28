@@ -1,5 +1,16 @@
 # Bash
 
+O Bash (Bourne Again SHell) é um **interpretador de comandos e linguagem de script** amplamente utilizado em sistemas Unix e Linux. Ele foi criado como uma substituição melhorada para o shell Bourne original (`sh`) e incorpora muitas características de outros shells, como o Kornshell (`ksh`) e o C shell (`csh`), além de várias inovações próprias. O Bash é o shell padrão em muitras distribuições de Linux, incluindo Ubuntu e Debian.
+
+**Características Principais do Bash**
+
+1. **Interpretação de Comandos:** o Bash permite aos usuários interagir com o SO através de comandos digitados no terminal. Estes comandos podem ser simples (como listar arquivos `ls`) ou complexos, envolvendo pipelines e redirecionamentos
+2. **Scripting:** o Bash suporta scripts, que são arquivos de texto contendo uma sequência de comandos Bash. Scripts Bash são usados para automatizar tarefas repetitivas, realizar backups, gerenciar arquivos, etc.
+3. **Variáveis:** o Bash permite a definição e utilização de variáveis, que podem armazenar valores como strings, números ou saídas de comandos
+4. **Estruturas de controle:** semelhante a linguagens de programação, o Bash suporta estruturas de controle como loops (`for`, `while`, `until`), condicionais (`if`, `case`), e funções
+5. **Histórico de comandos:** o Bash mantém um histórico dos comandos digitados, permitindo que os usuários reutilizem comandos anteriores facilmente
+6. **Alias e funções:** o Bash permite a criação de alias para comandos complexo ou frequentemente usados, assim como funções para agrupar comandos relacionados
+
 ### Sumário
 
 - [Contexto: SO Utilizado](#contexto-so-utilizado)
@@ -28,6 +39,7 @@
 Sistema Operacional:
 
 ```bash
+No LSB modules are available.
 Distributor ID:	Ubuntu
 Description:	Ubuntu 22.04.4 LTS
 Release:	22.04
@@ -80,14 +92,14 @@ O `apt` é uma interface de usuário mais amigável para o sistema de gerenciame
 - Se você definir uma variável de ambiente no seu shell atual e precisar executar um comando com `sudo`, pode usar `sudo -E` para garantir que o comando tenha acesso às mesmas variáveis de ambiente que você têm no seu shell atual:
 
 ```bash
-sudo -E $< comando >
+$ sudo -E $< comando >
 ```
 
 Isso garantirá que o comando `comando` tenha acesso às variáveis de ambiente definidas no seu shell atual
 
 ## <a id="comandos-utilizados-cli-sudo-apt-update"></a>`sudo apt update`
 
-É utilizado para **atualizar a lista de pacotes disponíveis nos repositórios configurados no sistema**. Quando você executa este comando, o sistema irá verificar os repositórios definidos no arquivo **/etc/apt/sources.list** e em qualquer arquivo de lista de repositórios dentro do diretório **etc/apt/sources.list.d/**. Ele irá baixar as informações mais recentes sobre os pacotes disponíveis e suas versões.
+É utilizado para **atualizar a lista de pacotes disponíveis nos repositórios configurados no sistema**. Quando você executa este comando, o sistema irá verificar os repositórios definidos no arquivo **/etc/apt/sources.list** e em qualquer arquivo de lista de repositórios dentro do diretório **/etc/apt/sources.list.d/**. Ele irá baixar as informações mais recentes sobre os pacotes disponíveis e suas versões.
 
 É importante atualizar a lista de pacotes regularmente para garantir que você tenha acesso às versões mais recentes e às últimas correções de segurança. No entanto, este comando **não instala ou atualiza os próprios pacotes, ele apenas atualiza a lista de pacotes disponíveis**. Para instalar ou atualizar os pacotes, você precisa usar o comando `sudo apt install` ou `sudo apt upgrade`, respectivamente.
 

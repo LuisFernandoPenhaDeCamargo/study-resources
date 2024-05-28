@@ -16,6 +16,7 @@ Além de segurança, as VPNs também podem ser usadas para acessar conteúdo res
 Sistema Operacional:
 
 ```bash
+No LSB modules are available.
 Distributor ID:	Ubuntu
 Description:	Ubuntu 22.04.4 LTS
 Release:	22.04

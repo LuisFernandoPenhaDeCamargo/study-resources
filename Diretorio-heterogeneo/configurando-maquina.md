@@ -10,6 +10,7 @@
 Sistema Operacional:
 
 ```bash
+No LSB modules are available.
 Distributor ID:	Ubuntu
 Description:	Ubuntu 22.04.4 LTS
 Release:	22.04
@@ -21,6 +22,7 @@ Codename:	jammy
 - `sudo apt update`
 - `sudo apt upgrade`
 - `curl`**:** `sudo apt install curl`
+- **servidor SSH (OpenSSH Server):** `sudo apt install openssh-server`
 - **NVM:** `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash`
 - Login no npm
 - `pyenv`

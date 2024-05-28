@@ -2,14 +2,6 @@
 
 Este repositório tem como objetivo auxiliar o estudo de certas tecnologias relacionadas a TI. Abaixo segue uma lista com as tecnologias, especificando qual é o arquivo que fala sobre elas, além de uma breve descrição do que você encontrará naquele arquivo e um sumário dos tópicos.
 
-## Markdown (Diretorio-heterogeneo/markdown.md)
-
-Conceitos e observações sobre esta linguagem de marcação.
-
-### Sumário
-
-- [Quebra de Linha](#quebra-linha)
-
 ## Diretorio-heterogeneo/
 
 - **Linux (Linux.md):** SO
@@ -19,9 +11,10 @@ Conceitos e observações sobre esta linguagem de marcação.
     + [systemctl](#systemctl)
         - [Comandos Utilizados Através do CLI](#systemctl-comandos-utilizados-cli)
             + [`daemon-reload`](#systemctl-comandos-utilizados-cli-daemon-reload)
+            + [`status`](#systemctl-comandos-utilizados-cli-status)
     + [Snap](#snap)
     + [GLIBC](#glibc)
-- **Bash (bash.md)**:
+- **Bash (Bash.md)**: interpretador de comandos e linguagem de script
     + [Contexto: SO Utilizado](#contexto-so-utilizado)
     + [`apt`](#apt)
     + [`vim`](#vim)
@@ -65,6 +58,8 @@ Conceitos e observações sobre esta linguagem de marcação.
 - **Configurando a Minha Máquina (configurando-maquina.md):** arquivo que lista as ferramentas que eu utilizo, pretendo criar um script de configuração de ambiente
     + [Contexto: SO Utilizado](#contexto-so-utilizado)
     + [Projeto de Script de Configuração de Ambiente](#projeto-script-configuracao-ambiente)
+- **Markdown (Markdown.md):** linguagem de marcação
+    + [Quebra de Linha](#quebra-linha)
 - **AWS (AWS.md):**
     + [AWS Secrets Manager](#aws-secrets-manager)
 
@@ -77,6 +72,7 @@ Conceitos e observações sobre esta linguagem de marcação.
     + [Objetos](#objetos)
         - [`Object`](#objetos-object)
             + [`.toString()`](#objetos-object-tostring)
+            + [`.prototype.toString.call()`](#objetos-object-prototype-tostring-call)
         - [`Date`](#objetos-date)
     + [Métodos](#metodos)
         - [Array](#metodos-array)
@@ -274,8 +270,6 @@ Explicação do significado dos termos utilizados com frequência na área de TI
 
 ## Bash
 
-- O que é o "Bash"?
-- `systemctl status`
 - `redis-cli ping`
 
 ## JavaScript/Node.js/npm/nvm/PM2
@@ -335,6 +329,9 @@ export const nome2 = "João";
 ## Tópicos Não Classificados
 
 - Todo binário não é um executável?
+- **PirateSoftware (Streamer):** habilitar a verificação de dois fatores ("Two Factor") sempre que possível nos seus programas
+    + Como este tipo de verificação funciona?
+    + Quais as vantagens que ela trás?
 - git flow, trunk based (dois formatos de fluxo)
 - CI/CD
 - Redirecionamento de DNS

@@ -35,6 +35,7 @@ Em resumo, o PM2 é uma ferramenta poderosa e versátil para gerenciar aplicativ
 # <a id="contexto-so-utilizado"></a>Contexto: SO Utilizado
 
 ```bash
+No LSB modules are available.
 Distributor ID:	Ubuntu
 Description:	Ubuntu 22.04.4 LTS
 Release:	22.04

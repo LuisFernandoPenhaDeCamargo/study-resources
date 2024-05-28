@@ -121,7 +121,7 @@ Se segurança é a sua maior preocupação, tenha em mente que a compilação pa
 
 - Se você incluir scripts dentro do seu executável, eles não serão mais acessíveis como scripts diretamente
 - O executável gerado pelo Nexe não é reconhecido como um executável pelo PM2, o PM2 ainda tenta executar o binário como arquivos JS
-- Tanto o `pkg` quanto o Nexe tiverem problemas em adicionar os arquivos do diretório **models** do meu projeto ao binário
+- Tanto o `pkg` quanto o Nexe tiverem problemas em adicionar os arquivos do diretório **./models** do meu projeto ao binário
     + Eles acabavam por adicionar dois de vários arquivos
     + Não sei se é algo específico com esse diretório, como o nome, por exemplo
 
@@ -233,7 +233,7 @@ A forma encontrada para diminuir o tamanho do binário é utilizar o `upx` diret
 Por exemplo:
 
 - `nexe -i server.js -o server --resource "./**/*" --target "8.16.0-linux-x64" --build --python "$(pyenv which python)"`
-- A opção `--build`, considerando a opção `--target`, builda em **~/.nexe/** o diretório **/8.16.0/out/Release/**. Dentro dele está o binário **node**
+- A opção `--build`, considerando a opção `--target`, builda em **~/.nexe/** o diretório **/8.16.0/out/Release**. Dentro dele está o binário **node**
 - Especificamos a versão do Python, porque o Node.js 8.16.0 utiliza o Python e não o Python 3
 - Você utiliza o comando `upx` no **node** (`upx node`)
 - Com isso, como a engine está menor, o seu binário será menor, afinal, dentro do seu binário também vai a engine, além de todas as dependências necessárias para a execução do seu projeto

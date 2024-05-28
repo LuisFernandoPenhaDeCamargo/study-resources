@@ -36,6 +36,7 @@ Em resumo, o `pyenv` é uma ferramenta poderosa para desenvolvedores Python que 
 Sistema Operacional:
 
 ```bash
+No LSB modules are available.
 Distributor ID:	Ubuntu
 Description:	Ubuntu 22.04.4 LTS
 Release:	22.04
@@ -101,7 +102,7 @@ $ pyenv global $< versão >
 
 # <a id="sistema-hierarquico-arquivos"></a>Sistema Hierárquico de Arquivos
 
-O diretório do Pyenv se encontra em **~/.pyenv/**.
+- O diretório do Pyenv se encontra em **~/.pyenv/**
 
 # <a id="comandos-utilizados-cli"></a>Comandos Utilizados Através do CLI
 
@@ -114,16 +115,16 @@ O diretório do Pyenv se encontra em **~/.pyenv/**.
 
 ## <a id="comandos-utilizados-cli-install-list"></a>`pyenv install --list`
 
-É utilizado para listar todas as versões do Python disponíveis para instalação.
+É utilizado para **listar todas as versões do Python disponíveis para instalação**.
 
 ## <a id="comandos-utilizados-cli-versions"></a>`pyenv versions`
 
-É utilizado para mostrar todas as versões do Python que foram instaladas pelo Pyenv e também aquela que está atualmente em uso (marcada com um asterisco).
+É utilizado para **mostrar todas as versões do Python que foram instaladas pelo Pyenv e também aquela que está atualmente em uso (marcada com um asterisco)**.
 
 ## <a id="comandos-utilizados-cli-local"></a>`pyenv local`
 
-É utilizado para exibir a versão do Python configurada para um diretório específico.
+É utilizado para **exibir a versão do Python configurada para um diretório específico**.
 
 ## <a id="comandos-utilizados-cli-shell"></a>`pyenv shell $< versão >`
 
-É utilizado para mudar para a versão desejada somente na sessão atual.
+É utilizado para **mudar para a versão desejada somente na sessão atual**.

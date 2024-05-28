@@ -8,6 +8,7 @@
 - [systemctl](#systemctl)
     + [Comandos Utilizados Através do CLI](#systemctl-comandos-utilizados-cli)
         - [`daemon-reload`](#systemctl-comandos-utilizados-cli-daemon-reload)
+        - [`status`](#systemctl-comandos-utilizados-cli-status)
 - [Snap](#snap)
 - [GLIBC](#glibc)
 
@@ -52,8 +53,9 @@ Portanto, o comando completo `cat /proc/$< PID >/environ | tr '\0 \n'` exibirá 
 ### Sumário
 
 - [`daemon-reload`](#systemctl-comandos-utilizados-cli-daemon-reload)
+- [`status`](#systemctl-comandos-utilizados-cli-status)
 
-### <a id=""></a>`systemctl daemon-reload`
+### <a id="systemctl-comandos-utilizados-cli-daemon-reload"></a>`systemctl daemon-reload`
 
 É utilizado para **recarregar os arquivos de configuração das unidades** (serviços, sockets, targets, etc.) do systemd. Este comando é necessário após qualquer modificação nos arquivos de configuração das unidades, como criação, alteração ou remoção de arquivos **.service**, **.socket**, **.target**, etc.
 
@@ -73,6 +75,55 @@ O systemd lê os arquivos de configurações das unidades durante a inicializaç
 - **Não recarrega arquivos de configuração de serviços:** se você alterou os arquivos de configuração que o serviço lê (por exemplo, arquivos de configuração específicos da aplicação), você ainda precisa reiniciar o serviço para aplicar essas mudanças
 
 O comando `systemctl daemon-reload` é uma ferramenta essencial para a administração de sistemas baseados em systemd, garantindo que qualquer alteração nos arquivos de configuração das unidades seja reconhecida e aplicada corretamente pelo daemon do systemd.
+
+### <a id="systemctl-comandos-utilizados-cli-status"></a>`systemctl status $<nome da unidade>`
+
+É utilizado para **obter informações detalhadas sobre o status de uma unidade** (serviço, socket, target, etc.). Este comando fornece uma visão geral do estado atual da unidade, incluindo se está ativa ou inativa, o PID do processo princiapl (se aplicável), logs recentes e outros detalhes relevantes.
+
+**Informação Exibida**
+
+Quando você executa `systemctl status $<nome da unidade>`, você verá uma saída semelhante à seguinte:
+
+```bash
+● nginx.service - A high performance web server and a reverse proxy server
+   Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)
+   Active: active (running) since Mon 2024-05-20 12:34:56 UTC; 1h 2min ago
+     Docs: man:nginx(8)
+ Main PID: 1234 (nginx)
+    Tasks: 3 (limit: 4915)
+   Memory: 5.0M
+   CGroup: /system.slice/nginx.service
+           ├─1234 nginx: master process /usr/sbin/nginx -g daemon on; master_process on;
+           ├─1235 nginx: worker process
+           └─1236 nginx: worker process
+
+May 20 12:34:56 yourhostname systemd[1]: Starting A high performance web server and a reverse proxy server...
+May 20 12:34:56 yourhostname nginx[1234]: nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+May 20 12:34:56 yourhostname nginx[1234]: nginx: configuration file /etc/nginx/nginx.conf test is successful
+May 20 12:34:56 yourhostname systemd[1]: Started A high performance web server and a reverse proxy server.
+```
+
+**Componentes de Saída**
+
+1. **Primeira linha:**
+    - `●`**:**  o ponto colorido indica o status da unidade (verde para ativo, vermelho para falha, amarelo para outras condições)
+    - O nome da unidade ("`nginx.service`")
+    - Uma breve descrição do serviço ("`A high performance web server and a reverse proxy server`")
+2. `Loaded`**:**
+    - Indica se o arquivo de configuração da unidade foi carregado com sucesso
+    - **"**`enabled`**":** se a unidade está configurada para iniciar automaticamente no boot
+    - **"**`vendor preset`**":** a configuração padrão fornecida pelo pacote do fornecedor
+3. **"**`Active`**":**
+    - Indica o status atual da unidade (e.g, `active (running)`, `inactive`, `failed`)
+    - Tempo desde que a unidade está neste estado
+4. **"**`Docs`**":** links para a documentação relevante, se disponível
+5. **"**`Main PID`**":** o ID do processo principal associado a esta unidade
+6. **"**`Tasks`**":** número de tarefas (processos ou threads) que a unidade está usando atualmente
+7. **"**`Memory`**":** quantidade de memória que a unidade está utilizando
+8. **"**`CGroup`**":** mostra a hierarquia de grupos de controle do sistema (`control group`) relacionados à unidade
+9. **Log entries:** entradas recentes do log relacionadas ao serviço, monstrando eventos importantes como inicialização, erros de configuração, etc.
+
+Em resumo, `systemctl status` é uma ferramenta poderosa para monitorar e diagnosticar o estado de unidades no sistema, proporcionando uma visão detalhada que é crucial para a administração do sistema.
 
 # <a id="snap"></a>Snap
 

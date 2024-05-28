@@ -8,6 +8,8 @@
 - [Objetos](#objetos)
     + [`Object`](#objetos-object)
         - [`.toString()`](#objetos-object-tostring)
+        - [`.prototype.toString.call()`](#objetos-object-prototype-tostring-call)
+    + [`error`](#objetos-error)
     + [`Date`](#objetos-date)
 - [Métodos](#metodos)
     + [Array](#metodos-array)
@@ -101,13 +103,17 @@ console.log(typeof null);            // Output: object. (um erro conhecido em Ja
 ### Sumário
 
 - [`Object`](#objetos-object)
+- [`error`](#objetos-error)
 - [`Date`](#objetos-date)
 
 ## <a id="objetos-object"></a>`Object`
 
+- Objeto base de todos os objetos JavaScript. Todos os objetos JavaScript herdam propriedades e métodos de `Object. prototype`
+
 ### Sumário
 
 - [`.toString()`](#objetos-object-tostring)
+- [`.prototype.toString.call()`](#objetos-object-prototype-tostring-call)
 
 ### <a id="objetos-object-tostring"></a>`.toString()`
 
@@ -154,6 +160,79 @@ console.log(pessoa.toString()); // Output: João, 30 anos
 Neste exemplo, substituímos o método `.toString()` no protótipo da função `Pessoa` para fornecer uma representação personalizada da instância `Pessoa`.
 
 Em resumo, o método `.toString()` é uma maneira conveniente de obter uma representação de string de um objeto em JavaScript e é frequentemente usado para depuração, registro ou formatação de saída.
+
+### <a id="objetos-object-prototype-tostring-call"></a>`.prototype.toString.call()`
+
+A técnica "`Object.prototype.toString.call()`" é poderosa para identificar de forma precisa o  tipo de um objeto. Isso é particularmente útil porque ele retorna uma string com o formato "`[object $< Type >]`", onde `Type` é o tipo do objeto. Este método é mais confiável do que o operador `typeof` para tipos complexos, como arrays, datas e null.
+
+1. `.prototype`**:** é uma propriedade que existe em todas as funções JavaScript. Quando uma função é usada como um construtor (com o operador `new`), a nova instância herda as propriedades e métodos do protótipo da função
+2. `Object.prototype`**:** é o protótipo do objeto base. Isso inclui métodos como `.toString()`, `valueOf()`, `hasOwnProperty()`, etc.
+3. `.toString`**:** é um método de `Object.prototype`. Ele retorna uma string que representa o objeto. Para objetos padrão, o método `.toString()` retorna "`[object Object]`". No entanto, quando é usado diretamente em tipos específicos (como Array, Date, etc.), ele retorna uma string específica que indica o tipo do objeto
+4. `.call()`**:** é um método de função que permite chamar uma função com um valor `this` específico e argumentos fornecidos individualmente. Isso é útil para invocar funções de objetos em contextos diferentes
+
+**Juntando Tudo**
+
+Quando usamos `Object.prototype.toString.call()`, estamos fazendo o seguinte:
+
+- `Object.prototype.toString`**:** chamamos o método `.toString` que existe no protótipo de `Object`
+- `call(value)`**:** usamos o método `.call()` para invocar `.toString` e passamos o valor que queremos verificar como o contexto `this`
+
+Ao fazer isso, `.toString` retorna uma string que representa o tipo do objeto passado. Essa string é mais detalhada e específica do que o resultado de `typeof`.
+
+**Exemplos**
+
+```JavaScript
+const obj = {};
+const arr = [];
+const date = new Date();
+const num = 42;
+
+console.log(Object.prototype.toString.call(obj));  // Output: [object Object]
+console.log(Object.prototype.toString.call(arr));  // Output: [object Array]
+console.log(Object.prototype.toString.call(date)); // Output: [object Date]
+console.log(Object.prototype.toString.call(num));  // Output: [object Number]
+console.log(typeof obj);                           // Output: object
+console.log(typeof arr);                           // Output: object
+```
+
+**Explicação do Código**
+
+1. `Object.prototype.toString.call(obj)`**:**
+    - `Object`**:** é o objeto global base
+    - `prototype`**:** é a propriedade que dá acesso ao protótipo do `Object`
+    - `toString`**:** é o método que converte um objeto em uma string
+    - `call(obj)`**:** invoca o método `toString` com `obj` como valor de `this`
+2. **Saídas:**
+    - `obj`**:** é um objeto padrão, então retorna "`[object Object]`"
+    - `arr`**:** é um array, então retorna "`[object Array]`"
+    - `date`**:** é uma instância de `Date`, então retorna "`[object Date]`"
+    - `num`**:** é um número, então retorna "`[object Number]`"
+
+**Por Que Isso É Útil**
+
+Essa técnica é útil porque `typeof` não é suficiente para distinguir entre diferentes tipos de objetos. Observe como `typeof {}` e `typeof []` ambos retornam "`object`". Ao usar `Object.prototype.toString.call()`, podemos identificar precisamente o tipo de objeto.
+
+**Conclusão**
+
+`Object.prototype.toString.call()` é uma técnica poderosa para determinar o tipo de um objeto em JavaScript, especialmente quando precisamos distinguir entre tipos de objetos complexos como arrays, datas e null.
+
+**Observações Importantes**
+
+`Object.prototype.toString.call(obj)` x `Object.prototype.toString().call(obj)`
+
+`Object.prototype.toString.call()` é o encadeamento correto:
+
+1. `Object.prototype`**:** referência ao protótipo do objeto base `Object`
+2. `toString`**:** método do protótipo que converte um objeto em uma string. **Aqui não estamos chamando o método ainda, apenas obtendo a referência a ele**
+3. `call`**:** método das funções JavaScript que permite chamar uma função com um valor específico para `this`
+4. `(obj)`**:** 
+
+## <a id="objetos-error"></a>`error`
+
+**Quando se captura um erro usando um bloco** `try...catch`, o objeto `error` contém várias propriedades que ajudam a entender a natureza do error:
+
+- `message`**:** contém uma descrição da mensagem de erro
+- `stack`**:** é uma string que contém informações sobre a **pilha de chamadas no momento em que o erro foi lançado. Isso pode ser extremamente útil para depuração, pois mostra a sequência de chamadas de função que levarão ao erro**
 
 ## <a id="objetos-date"></a>`Date`
 

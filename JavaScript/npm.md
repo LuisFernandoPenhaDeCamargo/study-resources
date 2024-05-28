@@ -34,8 +34,6 @@ Em resumo, desde que o pacote seja compatível com a versão do Node.js na máqu
 ## <a id="ao-instalar-dependencias-projeto"></a>Ao Tentar Instalar as Dependências do Nosso Projeto
 
 As mensagens abaixo foram impressas ao se tentar instalar localmente as dependências do nosso projeto:
-10.5.0
-6.4.1
 
 - Este foi o primeiro log de erro gerado:
 

@@ -51,6 +51,7 @@ Estrutura a se seguir em relação as anotações do conteúdo estudado.
 - # <a id="contexto-so-utilizado"></a>Contexto: SO Utilizado
 
 ```bash
+No LSB modules are available.
 Distributor ID:	Ubuntu
 Description:	Ubuntu 22.04.4 LTS
 Release:	22.04
@@ -77,7 +78,9 @@ Codename:	jammy
 
 - Primeiro eu importo os módulos externos, deixo um espaço em branco, ai importo os módulos internos
 - **Normalmente** eu mantenho um espaço em branco acima e abaixo de mensagens de log e de "`response`s"
-- As mensagens de erro seguem o seguinte formato, `[ $< arquivo ou função/método > ERROR ]` seguido pelo erro em si
+- As mensagens de erro seguem o seguinte formato, `[ $< nome da função() ou método()/ nome do arquivo > ERROR ], ${error.message}` seguido pelo erro em si
+    + A parte "`${error.message}` é específica do JavaScript
+    + Para outras linguagens, siga a mesma ideia, mas utilizando das propriedades da linguagem em questão
 - Para especificar que o comentário se trata de uma saída, uma impressão, pontue antes dele "Output:"
     + **Exemplo:** `// Output: number` (JavaScript)
 - Links de referência não devem possuir em seu corpo o argumento

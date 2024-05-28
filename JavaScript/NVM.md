@@ -16,6 +16,7 @@
 Sistema Operacional:
 
 ```bash
+No LSB modules are available.
 Distributor ID:	Ubuntu
 Description:	Ubuntu 22.04.4 LTS
 Release:	22.04
@@ -102,7 +103,7 @@ O mesmo pacote, instalado por versões diferentes do npm, estará no diretório 
 
 # <a id="sistema-hierarquico-arquivos"></a>Sistema Hierárquico de Arquivos
 
-Os pacotes instalados pelo npm serão utilizados no ambiente de execução Node.js específico, por isso faz sentido cada versão do Node.js possuir a própria pasta **node_modules** (**~/.nvm/versions/node/A< versões >/lib/node_modules**).
+Os pacotes instalados pelo npm serão utilizados no ambiente de execução Node.js específico, por isso faz sentido cada versão do Node.js possuir a própria pasta **node_modules** (**~/.nvm/versions/node/$< versões >/lib/node_modules**).
 
 # <a id="desinstalando-nvm"></a>Desinstalando o NVM
 
@@ -128,8 +129,10 @@ Para desinstalar um pacote instalado globalmente, considerando uma versão do No
 
 # <a id="comandos-utilizados-cli"></a>Comandos Utilizados Através do CLI
 
+### Sumário
+
 - [ls-remote](#comandos-ls-remote)
 
 ## <a id="comandos-utilizados-cli-ls-remote"></a>`nvm ls-remote`
 
-É utilizado para listar todas as versões disponíveis do Node.js que podem ser instaladas através do NVM.
+É utilizado para **listar todas as versões disponíveis do Node.js que podem ser instaladas** através do NVM.
