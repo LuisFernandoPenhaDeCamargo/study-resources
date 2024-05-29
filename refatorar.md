@@ -3,9 +3,23 @@
     + A chave `scripts` não é obrigatória
 - Refatorar para o novo formato o **Diretorio-heterogeneo**
 
-- array.forEach();
-- axios.post();
-- Model.update({ where: { id: { $in: array }},},)
+- **server.js** -> **./routes/index.js** -> **./middlewares/token_auth_server.js** -> **./routes/places.js**
+- Array de objetos
+    + `[{id: 1, machine: 102, game: 0, prize: -2, bet: 0, line: 0, created: 2024-03-18T12:51:50.000Z, exported: 0, name: null, cards_open: null,  prize_name: null, is_forced: null}]`
+- curl http://localhost:8081/v2/places/2276/big_winners -X POST -H "Authorization: Bearer a767dab3-a603-4399-a326-06bc59babdf2" -H "Content-Type: application/json" -d '{"big_winners": [{"machine": 1000, "game": 2000, "prize": 3000, "bet": 4000, "line": 5000, "created": "2025-01-01"}]}'
+
+- Passando um array de objetos em JSON em uma requisição utilizando o curl
+  + A resposta está no ChatGPT, a documente
+- O que é a EC2
+  + Como eu substituo o código em execução na EC2
+- .isArray()
+- .hasOwnProperty()
+- .status()
+- .json()
+
+- Modificar a query, para inserir valores de forma dinâmica e assim conseguir cruzar os servidores de RC/HOMOLOG x PROD, pois os de PROD não exportaram `prize_name` e `is_forced`
+- Ver no zoe-game-api o formato de console.log que eu estou padronizando
+- Ver no zoe-game-api o formato de console.error que eu estou padronizando
 
 #
 
@@ -251,15 +265,6 @@ nobody --- me fode
 ## fi
 
 su -l piranha -c 'pm2 start /usr/lib/node_modules/@zoeslots/zoe-terminal/ecosystem.config.js'
-
-#
-
-sudo apt update
-
-sudo snap install dbeaver-ce
-
-LF260490PC
-luis_fernando_pc
 
 #
 

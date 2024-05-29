@@ -16,6 +16,8 @@ O Bash (Bourne Again SHell) é um **interpretador de comandos e linguagem de scr
 - [Contexto: SO Utilizado](#contexto-so-utilizado)
 - [`apt`](#apt)
 - [`vim`](#vim)
+- [`redis-cli`](#redis-cli)
+    + [`redis-cli-ping`](#redis-cli-ping)
 - [Comandos Utilizados Através do CLI](#comandos-utilizados-cli)
     + [`lsb_release -a`](#comandos-utilizados-cli-lsb-release)
     + [`sudo -E`](#comandos-utilizados-cli-sudo-e)
@@ -57,6 +59,42 @@ O `apt` é uma interface de usuário mais amigável para o sistema de gerenciame
 # <a id="vim"></a>`vim`
 
 - Para utilizar o `vim.tiny`, você precisa ter o `vim` instalado (`sudo apt install vim`)
+
+# <a id="redis-cli"></a>`redis-cli`
+
+### Sumário
+
+- [`redis-cli-ping`](#redis-cli-ping)
+
+## <a id="redis-cli-ping"></a>`redis-cli-ping`
+
+É utilizado para **verificar se o servidor Redis está em execução e acessível**. Quando executado, o comando envia um `PING` ao servidor Redis, e o servidor deve responder com `PONG` se estiver funcionando corretamente.
+
+**Saída Esperada**
+
+- `PONG`**:** isso indica que o servidor Redis está em execução e pode ser acessado com sucesso
+- **Erro:** se o servidor Redis não estiver em execução ou não puder ser acessado, você receberá uma mensagem de erro, como `Could not connect to Redis at 127.1.0.1:6379: Connection refused.`
+
+**Exemplos**
+
+1. **Testar conexão local:** para testar a conexão com um servidor Redis em execução na máquina local na porta padrão (6379)
+2. **Testar conexão com um servidor Redis remoto:** se o servidor Redis estiver em um host remoto ou em uma porta diferente, você pode especificar o endereço do host e a porta
+
+```bash
+$ redis-cli -h $< host > -p $< porta > ping
+```
+
+por exemplo, para um servidor Redis em `192.168.1.100` na porta `6380`:
+
+```bash
+$ redis-cli -h 192.168.1.100 -p 6380 ping
+```
+
+3. **Testar conexão com autenticação:** se o servidor Redis requer autenticação, você pode usar a opção `-a` para fornecer a senha
+
+```bash
+$ redis-cli -a $< senha > ping
+```
 
 # <a id="comandos-utilizados-cli"></a>Comandos Utilizados Através do CLI
 

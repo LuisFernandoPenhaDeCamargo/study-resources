@@ -102,8 +102,8 @@ Existem alguns subtópicos comuns, abaixo segue a lista deles, observado que a l
     + **Como Funciona:**
     + **Quando Usar:**
     + **Benefícios:**
-- **Saída Típica**
-- Após o subtópico "**Saída Típica**", você pode fazer anotações sobre a utilizade do comando
+- **Saída Típica**/**Saída Esperada**
+- Após o subtópico "**Saída Típica**/**Saída Esperada**", você pode fazer anotações sobre a utilidade do comando
 - **Opções Comuns**
 - **Exemplos**
 - **Exemplos Interessantes**

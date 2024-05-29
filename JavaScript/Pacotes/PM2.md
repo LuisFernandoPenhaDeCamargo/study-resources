@@ -50,6 +50,8 @@ Codename:	jammy
 
 - Os arquivos relacionados ao PM2 geralmente se encontram em **~/.pm2**. Os associados ao root se encontram em **/root/.pm2**
     + Nestes diretórios você encontra arquivos como o **dump.pm2**
+    + Quando você executa PM2 como um usuário específico, ele cria (se ainda não existir) e usa a pasta **~/.pm2** desse usuário para armazenar suas informações
+        - Quando você executa PM2 com diferentes usuários, cada um deles terá seu próprio ambiente PM2 independente
 - O PM2 não consegue **identificar como um executável (ele continua tentando executar o arquivo como um arquivo JavaScript) os binários construídos pelo Nexe**. Isso ocorre mesmo quando você configura a chave "`interpreter`" como "`none`" no seu arquivo **ecosystem.config.json**
 
 # <a id="arquivos-relacionados"></a>Arquivos Relacionados

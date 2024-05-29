@@ -9,10 +9,11 @@ Sequelize é um ORM (Object-Relational Mapper) para Node.js, que permite manipul
 
 - [Tipos de Coluna](#tipos-coluna)
 - [Métodos](#metodos)
-    + [`queryInterface.addColumn()`](#queryInterface-addcolumn)
-    + [`queryInterface.removeColumn()`](#queryInterface-removecolumn)
-    + [`Model.create()`](#model-create)
-    + [`Model.findOne()`](#model-findOne)
+    + [`queryInterface.addColumn()`](#metodos-queryinterface-addcolumn)
+    + [`queryInterface.removeColumn()`](#metodos-queryinterface-removecolumn)
+    + [`Model.create()`](#metodos-model-create)
+    + [`Model.findOne()`](#metodos-model-findone)
+    + [`Model.update()`](#metodos-model-update)
 
 # <a id="tipos-coluna"></a>Tipos de Coluna
 
@@ -36,12 +37,13 @@ const User = sequelize.define("user", {
 
 ### Sumário
 
-- [`queryInterface.addColumn()`](#metodos-queryInterface-addcolumn)
-- [`queryInterface.removeColumn()`](#metodos-queryInterface-removecolumn)
+- [`queryInterface.addColumn()`](#metodos-queryinterface-addcolumn)
+- [`queryInterface.removeColumn()`](#metodos-queryinterface-removecolumn)
 - [`Model.create()`](#metodos-model-create)
-- [`Model.findOne()`](#metodos-model-findOne)
+- [`Model.findOne()`](#metodos-model-findone)
+- [`Model.update()`](#metodos-model-update)
 
-# <a id="metodos-queryInterface-addcolumn"></a>`queryInterface.addColumn()`
+# <a id="metodos-queryinterface-addcolumn"></a>`queryInterface.addColumn()`
 
 Para **adicionar uma coluna a uma tabela existente** usando o Sequelize, você pode usar o método `.addColumn()` da interface de consulta (`queryInterface`).
 
@@ -89,7 +91,7 @@ Dentro da função `down`, `.removeColumn()` é usado para remover a coluna `ida
 
 Essas migrações são executadas pelo Umzug (ou outra ferramenta de migração que você esteja usando) quando você executa o comando para aplicar ou reverter migrações. Isso mantém o controle das alterações de esquema do banco de dados e permite que você as aplique ou reverta de forma consistente em diferentes ambientes.
 
-# <a id="metodos-queryInterface-removecolumn"></a>`queryInterface.removeColumn()`
+# <a id="metodos-queryinterface-removecolumn"></a>`queryInterface.removeColumn()`
 
 Para **remover uma coluna de uma tabela existente** usando o Sequelize, você pode usar o método `.removeColumn()` da interface de consulta (`queryInterface`).
 
@@ -183,7 +185,7 @@ Neste exemplo, definimos um modelo `User` com campos `username` e `birthday`. Us
 - As operações de banco de dados podem falhar por várias razões, como violações de restrições de integridade, então é sempre uma boa prática envolver chamadas de banco de dados em bloco `try/catch` ou usar cadeias de promessas com `.catch()` para lidar com erros
 - A função `.create()` retorna uma promessa que, ao ser resolvida, fornece uma instância do modelo representando o registro recém-criado
 
-# <a id="metodos-model-findOne"></a>`Model.findOne()`
+# <a id="metodos-model-findone"></a>`Model.findOne()`
 
 É utilizado para **encontrar o primeiro registro que corresponda a um conjunto de critérios de busca**.
 
@@ -226,3 +228,21 @@ User.findOne({
 Neste exemplo, estamos tentando encontrar o primeiro usuário com o nome de usuário "`john_doe`". Se um usuário for encontrado, suas informações serão impressas no console. Se nenhum usuário for encontrado, uma mensagem indicando isso será impressa. Se ocorrer algum erro durante a operação, será capturado pelo `.catch()` e uma mensagem de erro será impressa no console.
 
 O `.findOne()` é útil quando você precisa encontrar apenas um registro com base em certos critérios, como encontrar um usuário específico, uma entrada em uma tabela de configurações, etc.
+
+# <a id="metodos-model-update"></a>`Model.update()`
+
+É utilizado para **atualizar registros em uma tabela de banco de dados**. Quando você precisa atualizar múltiplos registros com base em uma condição, você pode usar a cláusula `where` para especificar quais registros devem ser atualizados. O operador `$in` é usado para verificar se um valor em uma coluna está presente em um array de valores.
+
+- **Sintaxe Básica**
+
+```JavaScript
+Model.update(values, {
+    where: {
+        id: { $in: array }
+    },
+});
+```
+
++ **Parâmetros**
+    - `values`**:** um objeto contendo as colunas que você deseja atualizar e os novos valores para essas colunas
+    - `options`**:** um objeto de opções que inclui a cláusula `where` e outras opções (como hooks, transações, etc.)

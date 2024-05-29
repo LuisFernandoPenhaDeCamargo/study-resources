@@ -6,6 +6,7 @@
     + [`new`](#operadores-new)
     + [`typeof`](#operadores-typeof)
 - [Objetos](#objetos)
+    + [Definindo Métodos em Objetos](#objetos-definindo-metodos-objetos)
     + [`Object`](#objetos-object)
         - [`.toString()`](#objetos-object-tostring)
         - [`.prototype.toString.call()`](#objetos-object-prototype-tostring-call)
@@ -13,7 +14,8 @@
     + [`Date`](#objetos-date)
 - [Métodos](#metodos)
     + [Array](#metodos-array)
-        - [array.every()](#metodos-array-every)
+        - [`array.every()`](#metodos-array-every)
+        - [`array.forEach()`](#metodos-array-foreach)
 - [Função de Flecha](#funcao-flecha)
 - [Closures](#closures)
 - [Época Unix](#epoca-unix)
@@ -102,9 +104,40 @@ console.log(typeof null);            // Output: object. (um erro conhecido em Ja
 
 ### Sumário
 
+- [Definindo Métodos em Objetos](#objetos-definindo-metodos-objetos)
 - [`Object`](#objetos-object)
 - [`error`](#objetos-error)
 - [`Date`](#objetos-date)
+
+## <a id="objetos-definindo-metodos-objetos"></a>Definindo Métodos em Objetos
+
+**Antes do ES6**
+
+```JavaScript
+const handler = {
+    log: function() {
+        console.log(element);
+    }
+};
+
+handler.log(42); // Output: 42
+```
+
+`log` é a chave (ou nome do método) no objeto.
+
+**Usando a Sintaxe de Métodos ES6**
+
+A partir do ES6, você pode definir métodos em objetos de forma mais concisa.
+
+```JavaScript
+const handler = {
+    log(element) {
+        console.log(element);
+    }
+}
+```
+
+Embora ambas as sintaxes sejam válidas e você possa usar qualquer uma delas conforme sua preferência ou necessidade, a sintaxe abreviada introduzida no ES6 é a mais comum e preferia na comunidade JavaScript moderna devido à sua simplicidade e clareza. Se você está iniciando um novo projeto ou contribuindo para projetos existentes, é recomendável usar a sintaxe abreviada para manter a consistência com as práticas modernas.
 
 ## <a id="objetos-object"></a>`Object`
 
@@ -225,7 +258,9 @@ Essa técnica é útil porque `typeof` não é suficiente para distinguir entre 
 1. `Object.prototype`**:** referência ao protótipo do objeto base `Object`
 2. `toString`**:** método do protótipo que converte um objeto em uma string. **Aqui não estamos chamando o método ainda, apenas obtendo a referência a ele**
 3. `call`**:** método das funções JavaScript que permite chamar uma função com um valor específico para `this`
-4. `(obj)`**:** 
+4. `(obj)`**:** argumento passado para o método `call()`, especificando o valor de `this` dentro da função `toString`
+
+Se você fizer `Object.prototype.toString().call(obj)`, você está chamando `.toString()` imediatamente no protótipo do objeto, o que retornaria a string "`[object Object]`". Então, você tentaria chamar `.call()` na string resultante, o que resultaria em um erro, porque strings não têm um método `.call()`.
 
 ## <a id="objetos-error"></a>`error`
 
@@ -296,7 +331,8 @@ O objeto `Date` em JavaScript pode ser bastatente flexível e poderoso para lida
 
 ### Sumário
 
-- [array.every()](#metodos-array-every)
+- [`array.every()`](#metodos-array-every)
+- [`array.forEach()`](#metodos-array-foreach)
 
 ## <a id="metodos-array-every"></a>`array.every()`
 
@@ -340,6 +376,70 @@ console.log(allAdults); // Output: false. Porque 16 não é maior ou igual a 18.
 Neste exemplo, `ages.every(checkAdult)` verifica se todos os elementos no array `ages` são maiores ou iguais a 18. A função `checkAdult` é chamada para cada elemento do array. Uma vez que um dos elementos, 16, não passa no teste (não é maior ou igual a 18), `.every()` retorna `false`.
 
 `.every()` é uma ferramenta poderosa para validações onde todos os itens de uma coleção devem atender a uma condição específica.
+
+## <a id="metodos-array-foreach"></a>`array.forEach()`
+
+É utilizado para **iterar sobre todos os elementos de um array e executar uma função fornecida para cada elemento**.
+
+- **Sintaxe Básica**
+
+```JavaScript
+array.forEach(callback(currentValue, index, array), thisArg);
+```
+
++ **Parâmetros:**
+    - `callback`**:** função a ser executada em cada elemento
+        + `currentValue`**:** o valor do elemento atual sendo processado no array
+        + `index` **(opcional):** o índice do elemento atual sendo processado no array
+        + `array` **(opcional):** o array sobre o qual `.forEach()` foi chamado
+    - `thisArg` **(opcional):** valor a ser usado como `this` ao executar a função `callback`
+
+- **Exemplos**
+
++ **Usando índice e array como parâmetros:**
+
+```JavaScript
+const fruits = ["apple", "banana", "cherry"];
+
+fruits.forEach(function(fruit, index, array) {
+    console.log(`Index: ${index}, Fruit: ${fruit}, Array: ${array}`);
+});
+
+/*
+Output:
+Index: 0, Fruit: apple, Array: apple, banana, cherry
+Index: 1, Fruit: banana, Array: apple, banana, cherry
+Index: 2, Fruit: chery, Array: apple, banana, cherry
+*/
+```
+
++ **Usando** `thisArg`**:**
+
+```JavaScript
+const handler = {
+    log: function(element) {
+        console.log(element);
+    }
+};
+
+const numbers = [1, 2, 3, 4, 5];
+numbers.forEach(function(number) {
+    this.log(number);
+}, handler);
+
+/*
+Output:
+1
+2
+3
+4
+5
+*/
+```
+
+- **Observações Importantes**
+    + **Não interrompe o loop:** diferentemente de um loop `for` tradicional, não é possível interromper um `.forEach()` (não há `break` ou `return` que interrompa o loop). Se você precisar de tal funcionalidade, considere usar um loop `for`, `for...of` ou métodos como `some` ou `every`
+    + **Não retorna um novo array:** embora você possa modificar os elementos do array dentro de `.forEach()`, isso não é uma prática recomendada. Em vez disso, você deve usar `.map()` se precisar criar um novo array com os elementos modificados
 
 # <a id="funcao-flecha"></a>Função de Flecha
 

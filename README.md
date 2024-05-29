@@ -2,7 +2,7 @@
 
 Este repositório tem como objetivo auxiliar o estudo de certas tecnologias relacionadas a TI. Abaixo segue uma lista com as tecnologias, especificando qual é o arquivo que fala sobre elas, além de uma breve descrição do que você encontrará naquele arquivo e um sumário dos tópicos.
 
-## Diretorio-heterogeneo/
+## ./Diretorio-heterogeneo
 
 - **Linux (Linux.md):** SO
     + [Sistema Hierárquico de Arquivos](#sistema-hierarquico-arquivos)
@@ -18,6 +18,8 @@ Este repositório tem como objetivo auxiliar o estudo de certas tecnologias rela
     + [Contexto: SO Utilizado](#contexto-so-utilizado)
     + [`apt`](#apt)
     + [`vim`](#vim)
+    + [`redis-cli`](#redis-cli)
+        - [`redis-cli-ping`](#redis-cli-ping)
     + [Comandos Utilizados Através do CLI](#comandos-utilizados-cli)
         - [`lsb_release -a`](#comandos-utilizados-cli-lsb-release)
         - [`sudo -E`](#comandos-utilizados-cli-sudo-e)
@@ -55,6 +57,9 @@ Este repositório tem como objetivo auxiliar o estudo de certas tecnologias rela
 - **VPN (VPN.md):** como utilizar uma VPN
     + [Contexto: SO Utilizado](#contexto-so-utilizado)
     + [Configurando a VPN](#configurando-vpn)
+- **Redes (redes.md):**
+    + [Interfaces de Rede](#interfaces-rede)
+    + [Requisições de Outra Máquina Para Um Localhost](#requisições-outra-maquina-localhost)
 - **Configurando a Minha Máquina (configurando-maquina.md):** arquivo que lista as ferramentas que eu utilizo, pretendo criar um script de configuração de ambiente
     + [Contexto: SO Utilizado](#contexto-so-utilizado)
     + [Projeto de Script de Configuração de Ambiente](#projeto-script-configuracao-ambiente)
@@ -63,13 +68,14 @@ Este repositório tem como objetivo auxiliar o estudo de certas tecnologias rela
 - **AWS (AWS.md):**
     + [AWS Secrets Manager](#aws-secrets-manager)
 
-## JavaScript/
+## ./JavaScript
 
 - **JavaScript (JavaScript.md):** linguagem de programação
     + [Operadores](#operadores)
         - [`new`](#operadores-new)
         - [`typeof`](#operadores-typeof)
     + [Objetos](#objetos)
+        - [Definindo Métodos em Objetos](#objetos-definindo-metodos-objetos)
         - [`Object`](#objetos-object)
             + [`.toString()`](#objetos-object-tostring)
             + [`.prototype.toString.call()`](#objetos-object-prototype-tostring-call)
@@ -77,6 +83,7 @@ Este repositório tem como objetivo auxiliar o estudo de certas tecnologias rela
     + [Métodos](#metodos)
         - [Array](#metodos-array)
             + [array.every()](#metodos-array-every)
+            + [`array.forEach()`](#metodos-array-foreach)
     + [Função de Flecha](#funcao-flecha)
     + [Closures](#closures)
     + [Época Unix](#epoca-unix)
@@ -132,15 +139,19 @@ Este repositório tem como objetivo auxiliar o estudo de certas tecnologias rela
     + `cluster` **(cluster.md):** utilizada para criar processos filhos
     + `moment` **(moment.md):** utilizada na manipulação de datas
     + Express **(Express.md):** utilizada na criação de servidores HTTP
-        + [Métodos](#metodos)
-            - [app.listen()](#metodos-app-listen)
+        - [Métodos](#metodos)
+            + [app.listen()](#metodos-app-listen)
+    + **Axios (axios.md):**
+        - [Métodos](#metodos)
+            + [`axios.post()`](#metodos-axios-post)
     + **Sequelize (sequelize.md):** utilizada na manipulação de banco de dados SQL
-        + [Tipos de Coluna](#tipos-coluna)
-        + [Métodos](#metodos)
-            - [`queryInterface.addColumn()`](#queryInterface-addcolumn)
-            - [`queryInterface.removeColumn()`](#queryInterface-removecolumn)
-            - [`Model.create()`](#model-create)
-            - [`Model.findOne()`](#model-findOne)
+        - [Tipos de Coluna](#tipos-coluna)
+        - [Métodos](#metodos)
+            + [`queryInterface.addColumn()`](#metodos-queryinterface-addcolumn)
+            + [`queryInterface.removeColumn()`](#metodos-queryinterface-removecolumn)
+            + [`Model.create()`](#metodos-model-create)
+            + [`Model.findOne()`](#metodos-model-findone)
+            + [`Model.update()`](#metodos-model-update)
     + `umzug` **(umzug.md):** utilizada no controle de migrações
 - **Pacotes/**
     + **PM2 (PM2.md):** gerenciador de processos
@@ -189,7 +200,7 @@ Este repositório tem como objetivo auxiliar o estudo de certas tecnologias rela
     + **NPX (NPX.md):** executor de pacotes do NPM
 - **ateste.js:** arquivo utilizado para testes
 
-## Python/
+## ./Python
 
 - **Python (Python.md):** linguagem de programação
     + [Anotações](#anotacoes)
@@ -227,17 +238,6 @@ Template de estrutura a tentar seguir em relação as anotações do conteúdo e
 
 ## MariaDB (Diretorio-heterogeneo/mariadb.md)
 
-### Sumário
-
-## Redes (Diretorio-heterogeneo/redes.md)
-
-Arquivo que trata pontos relacionados a redes de computadores.
-
-### Sumário
-
-- [Interfaces de Rede](#interfaces-rede)
-- [Requisições de Outra Máquina Para Um Localhost](#requisições-outra-maquina-localhost)
-
 ## Segurança (Diretorio-heterogeneo/seguranca.md)
 
 Arquivo que trata de formas de proteger o seu código-fonte.
@@ -270,12 +270,8 @@ Explicação do significado dos termos utilizados com frequência na área de TI
 
 ## Bash
 
-- `redis-cli ping`
-
 ## JavaScript/Node.js/npm/nvm/PM2
 
-- Cada processo do pm2 pode ser vinculado a um usuário?
-    + Ponto importante, provavelmente vai ser pontuado em "Anotações"
 - Engine, runtime, ambiente de execução. Contexto: Node.js
 - "`npm WARN`"
     + "`npm WARN old lockfile }`"
