@@ -51,7 +51,8 @@ Substituir o código em execução em uma instância EC2 pode ser feito de vári
     3. **Transfira o novo código** use `scp` ou `rsync` para copiar os arquivos do seu computador local para a instância EC2, `scp -i "sua-chave.pem" -r /caminho/para/novo/codigo ec2-user@seu-endereco-ec2:/caminho/para/seu/codigo`
     4. **Reinicie o serviço** se a aplicação estiver sendo executada como um serviço, reinicie-o, `sudo systemctl restart nome-do-servico`
 2. **Uso de scripts de implantação**
-    1. **Automatize com scripts:** crie scripts de shell para automatizar a substituição do código e reinicialização do serviço
+
+- **Automatize com scripts:** crie scripts de shell para automatizar a substituição do código e reinicialização do serviço
 
 ```bash
 #!/bin/bash
@@ -60,7 +61,8 @@ git pull origin main
 sudo systemctl restart nome-do-seu-servico
 ```
 
-    2. **Execute o script remotamente:** use `ssh` para executar o script na instância da EC2, `ssh -i "sua-chave.pem" ec2-user@seu-endereco-ec2 'bash -s' > seu-script.sh`
+- **Execute o script remotamente:** use `ssh` para executar o script na instância da EC2, `ssh -i "sua-chave.pem" ec2-user@seu-endereco-ec2 'bash -s' > seu-script.sh`
+
 3. **Uso de ferramentas de implantação**
     . ****
     . ****
