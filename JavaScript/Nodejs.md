@@ -2,6 +2,7 @@
 
 ### Sumário
 
+- [Engine, Runtime e Ambiente de Execução](#engine-runtime-ambiente-execucao)
 - [Compatibilidade Entre o Node.js e o npm](#compatibilidade-nodejs-npm)
 - [Ato de Publicação](#ato-publicacao)
 - [`npx`](#npx)
@@ -20,6 +21,41 @@
   + [Notas](#node-22-criacao-de-executaveis-unicos-script-principal-injetado-notas)
   + [Testando esta Feature](#node-22-criacao-executaveis-unicos-script-principal-injetado-testando-feature)
   + [Conclusão](#node-22-criacao-executaveis-unicos-script-principal-injetado-conclusao)
+
+# <a id="engine-runtime-ambiente-execucao"></a>Engine, Runtime e Ambiente de Execução
+
+Os termos "engine", "runtime" e "ambiente de execução" são frequentemente usados para descrever diferentes aspectos da infraestrutura que permite a execução de código JavaScript fora de um navegador.
+
+**Engine**
+
+Engine refere-se ao mecanismo que interpreta e executa o código JavaScript. No caso do Node.js, a engine utilizada é o V8, que é desenvolvida pelo Google e também utilizada no navegador Google Chrome.
+
+- **V8:** é uma engine de código aberto escrita em C++. Ela compila o código JavaScript diretamente em código de máquina nativo antes de executá-lo, o que resulta em uma execução muito rápida. O V8 também é conhecido por seu eficiente gerenciamento de memória e otimizações de execução
+
+**Runtime**
+
+Runtime (ou ambiente de execução) se refere ao conjunto de ferramentas e bibliotecas que permitem a execução de código JavaScript no servidor. O runtime inclui a engine JavaScript, mas também adiciona APIs e funcionalidades adicionais que não estão disponíveis no ambiente do navegador.
+
+- **Node.js Runtime:** Node.js estende as capacidades do V8 adicionando várias APIs e bibliotecas que permitem realizar operações de E/S (entrada/saída), manipulação de arquivos, operações de rede, entre outras. O runtime do Node.js inclui:
+  + **Módulos de núcleo:** como `fs` para manipulação de sistema de arquivos, `http` para criar servidores web, `path` para manipulação de caminhos de arquivos, etc.
+  + **Eventos:** um loop de eventos que permite a execução de operações assíncronas
+  + **Gerenciamento de pacotes:** embora separado, o npm é frequentemente usado em conjunto com o Node.js para gerenciar pacotes e dependências
+
+**Ambiente de Execução**
+
+Ambiente de Execução geralmente se refere ao contexto mais amplo no qual o código Node.js está sendo executado. Isso inclui o sistema operacional, as configurações de ambiente, as variáveis de ambiente, e outras dependências externas.
+
+- **Sistema Operacional:** o ambiente onde o Node.js está instalado pode ser Windows, macOS, Linux, etc.
+- **Variáveis de ambiente:** variáveis que configuram o comportamento do Node.js e da aplicação, como `NODE_ENV`, que define se a aplicação está em mode de desenvolvimento ou produção
+- **Dependências externas:** qualquer outra software ou serviço que a aplicação Node.js pode depender, como bancos de dados, caches, filas de mensagens, etc.
+
+**Resumo**
+
+- **Engine (V8):** mecanismo que interpreta e executa o código JavaScript
+- **Runtime (Node.js):** inclui a engine V8 mais APIs e bibliotecas adicionais para permitir operações do lado do servidor
+- **Ambiente de execução:** contexto mais amplo onde o Node.js é executado, incluindo sistema operacional, variáveis de ambiente e outras dependências externas
+
+**Exemplos**
 
 # <a id="compatibilidade-nodejs-npm"></a>Compatibilidade Entre o Node.js e o npm
 

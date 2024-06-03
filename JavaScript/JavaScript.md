@@ -8,14 +8,15 @@
 - [Objetos](#objetos)
     + [Definindo Métodos em Objetos](#objetos-definindo-metodos-objetos)
     + [`Object`](#objetos-object)
+        - [`.hasOwnProperty()`](#objetos-object-hasownproperty)
         - [`.toString()`](#objetos-object-tostring)
         - [`.prototype.toString.call()`](#objetos-object-prototype-tostring-call)
+    + [`Array`](#objetos-array)
+        - [`.isArray()`](#objetos-array-isarray)
+        - [`.every()`](#objetos-array-every)
+        - [`.forEach()`](#objetos-array-foreach)
     + [`error`](#objetos-error)
     + [`Date`](#objetos-date)
-- [Métodos](#metodos)
-    + [Array](#metodos-array)
-        - [`array.every()`](#metodos-array-every)
-        - [`array.forEach()`](#metodos-array-foreach)
 - [Função de Flecha](#funcao-flecha)
 - [Closures](#closures)
 - [Época Unix](#epoca-unix)
@@ -106,6 +107,7 @@ console.log(typeof null);            // Output: object. (um erro conhecido em Ja
 
 - [Definindo Métodos em Objetos](#objetos-definindo-metodos-objetos)
 - [`Object`](#objetos-object)
+- [`Array`](#objetos-array)
 - [`error`](#objetos-error)
 - [`Date`](#objetos-date)
 
@@ -145,8 +147,106 @@ Embora ambas as sintaxes sejam válidas e você possa usar qualquer uma delas co
 
 ### Sumário
 
+- [`.hasOwnProperty()`](#objetos-object-hasownproperty)
 - [`.toString()`](#objetos-object-tostring)
 - [`.prototype.toString.call()`](#objetos-object-prototype-tostring-call)
+
+### <a id="objetos-object-hasownproperty"></a>`.hasOwnProperty()`
+
+É uma função nativa de JavaScript que verifica se um objeto possui uma propriedade específica como uma propriedade direta (não herdada) do objeto. Esse método é útil para distinguir propriedades do próprio objeto de propriedades herdadas do seu protótipo.
+
+**Sintaxe Básica**
+
+```JavaScript
+obj.hasOwnProperty(prop);
+```
+
+- **Parâmetros:**
+    + `obj`**:** o objeto no qual você quer verificar a existência da propriedade
+    + `prop` **(String):** o nome da propriedade que você quer verificar
+- **Valor de Retorno:** retorna `true` se o objeto possui a propriedade especificada como uma propriedade direta do objeto e retorna `false`, caso contrário
+
+**Exemplos**
+
+- **Verificando propriedades diretas:**
+
+```JavaScript
+const person = {
+    name: "John",
+    age: 30,
+};
+
+console.log(person.hasOwnProperty("name"));     // Output: true
+console.log(person.hasOwnProperty("age"));      // Output: true
+console.log(person.hasOwnProperty("toString")); // Output: false
+```
+
+- **Propriedades herdadas:**
+
+```JavaScript
+const person = {
+    name: "John",
+    age: 30,
+};
+
+console.log(person.hasOwnProperty("toString")); // Output: false (herdada do protótipo).
+```
+
+- **Usando** `.hasOwnProperty()` **em um objeto criado com** `Object.create()`**:**
+
+```JavaScript
+const baseObject =  { baseProp: "base"};
+const newObject = Object.create(baseObject);
+
+newObject.newProp = "new";
+
+console.log(newObject.hasOwnProperty("newProp"));  // Output: true
+console.log(newObject.hasOwnProperty("baseProp")); // Output: false (herdada).
+```
+
+- **Uso em laços** `for...in`
+
+Ao iterar sobre as propriedades de um objeto com um laço `for...in`, é uma boa prática usar `.hasOwnProperty()` para garantir que você está lidando apenas com as propriedades do próprio objeto, e não com propriedades herdadas:
+
+```JavaScript
+const person = {
+    name: "John",
+    age: 30,
+};
+
+Object.prototype.gender = "male"; // Adicionando uma propriedade ao protótipo.
+
+for (let key in person) {
+    if (person.hasOwnProperty(key)) {
+        console.log(key, person[key]); // Output: name John, age 30
+    }
+}
+```
+
+- **Comparação com** `in`
+
+O operador `in` verifica tanto as propriedades próprias quanto as herdadas:
+
+```JavaScript
+const person = {
+    name: "John",
+    age: 30,
+};
+
+console.log("name" in person);   // Output: true
+console.log("gender" in person); // Output: true (herdada do protótipo).
+```
+
+Enquanto `.hasOwnProperty()` é mais específico, verificando apenas as propriedades próprias do objeto:
+
+```JavaScript
+console.log(person.hasOwnProperty("name"));   // Output: true
+console.log(person.hasOwnProperty("gender")); // Output: false
+```
+
+**Conclusão**
+
+O método `.hasOwnProperty()` é uma ferramenta essencial para trabalhar com objetos em JavaScript, especialmente quando se lida com herança prototípica. Ela permite que você verifique de forma confiável se uma propriedade pertence diretamente a um objeto, evitando possíveis problemas causados por propriedades herdadas.
 
 ### <a id="objetos-object-tostring"></a>`.toString()`
 
@@ -262,79 +362,73 @@ Essa técnica é útil porque `typeof` não é suficiente para distinguir entre 
 
 Se você fizer `Object.prototype.toString().call(obj)`, você está chamando `.toString()` imediatamente no protótipo do objeto, o que retornaria a string "`[object Object]`". Então, você tentaria chamar `.call()` na string resultante, o que resultaria em um erro, porque strings não têm um método `.call()`.
 
-## <a id="objetos-error"></a>`error`
-
-**Quando se captura um erro usando um bloco** `try...catch`, o objeto `error` contém várias propriedades que ajudam a entender a natureza do error:
-
-- `message`**:** contém uma descrição da mensagem de erro
-- `stack`**:** é uma string que contém informações sobre a **pilha de chamadas no momento em que o erro foi lançado. Isso pode ser extremamente útil para depuração, pois mostra a sequência de chamadas de função que levarão ao erro**
-
-## <a id="objetos-date"></a>`Date`
-
-É **usado para trabalhar com datas e horas**. Ele fornece métodos para criar objetos de data, acessar e manipular componentes de data e hora, e formatar datas para exibição.
-
-Aqui estão algumas maneiras comuns de usar o objeto `Date` em JavaScript:
-
-1. **Criar um objeto de data:** você pode criar um objeto de data usando o construtor `Date()` sem argumentos para representar a data e hora atuais ou passando argumentos para representar uma data específica. Por exemplo:
-
-```JavaScript
-// Data e hora atuais.
-const agora = new Date();
-
-// Data específica (ano, mês, dia, hora, minuto, segundo, milissegundo).
-cont dataEspecifica = new Date(2024, 4, 8, 15, 30, 0);
-```
-
-2. **Acessar componentes de data e hora:** você pode acessar os componentes de data e hora de um objeto de data, como ano, mês, dia, hora, minuto, segundo e milissegundo, usando os métodos "`get`" correspondentes. Por exemplo
-
-```JavaScript
-const data = new Date();
-const ano = data.getFullYear();
-const mes = data.getMonth(); // Janeiro é 0, fevereiro 1, e assim por diante.
-const dia = data.getDate();
-const hora = data.getHours();
-const minuto = data.getMinutes();
-const segundo = data.getSeconds();
-const milissegundo = data.getMilliseconds();
-```
-
-3. **Manipular datas:** você pode manipular datas adicionando ou subtraindo valores usando os métodos "`set`" correspondentes. Por exemplo
-
-```JavaScript
-const data = new Date();
-data.setFullYear(2025);
-data.setMonth(6); // Julho.
-data.setDate(15);
-data.setHours(12);
-data.setMinutes(0);
-data.setSeconds(0);
-```
-
-4. **Formatar datas para exibição:** você pode formatar datas para exibição usando métodos como `.toDateString()`, `.toLocaleDateString()`, `.toISOString()`, etc. Ou você pode usar bibliotecas externas como `moment.js` para formatação mais avançada.
-
-```JavaScript
-const data = new Date();
-console.log(data.toDateString());   // Exemplo: "Sat May 08 2024".
-console.log(data.toLocaleString()); // Dependente do idioma e região.
-console.log(data.toISOString());    // Formato ISO 8601: "2024-05-08T12:00:00.000Z".
-```
-
-O objeto `Date` em JavaScript pode ser bastatente flexível e poderoso para lidar com manipulação de datas e horas, mas também pode ser complicado de usar em alguns casos. Por isso, é sempre útil consultar a documentação oficial da Mozilla Developer Network (MDN) ou outras fontes confiáveis para obter mais informações sobre o objeto `Date` e suas funcionalidades.
-
-# <a id="metodos"></a>Métodos
+## <a id="objetos-array"></a>`Array`
 
 ### Sumário
 
-- [Array](#metodos-array)
+- [`.isArray()`](#objetos-array-isarray)
+- [`.every()`](#objetos-array-every)
+- [`.forEach()`](#objetos-array-foreach)
 
-# <a id="array"></a>Array
+### <a id="objetos-array-isarray"></a>`.isArray()`
 
-### Sumário
+É um método estático do objeto `Array` que **verifica se um valor é um array**. Ele retorna `true` se o valor passado for um array, e `false` caso contrário.
 
-- [`array.every()`](#metodos-array-every)
-- [`array.forEach()`](#metodos-array-foreach)
+**Sintaxe Básica**
 
-## <a id="metodos-array-every"></a>`array.every()`
+```JavaScript
+Array.isArray(value);
+```
+
+- **Parâmetros:**
+    + `value`**:** o valor a ser verificado
+
+**Exemplos**
+
+- **Verificando Arrays:**
+
+```JavaScript
+console.log(Array.isArray([1, 2, 3]));       // Output: true
+console.log(Array.isArray([]));              // Output: true
+console.log(Array.isArray(['a', 'b', 'c'])); // Output: true
+```
+
+- **Verificando outros tipos de dados:**
+
+```JavaScript
+console.log(Array.isArray({}));        // Output: false
+console.log(Array.isArray('Hello'));   // Output: false
+console.log(Array.isArray(123));       // Output: false
+console.log(Array.isArray(undefined)); // Output: false
+console.log(Array.isArray(null));      // Output: false
+console.log(Array.isArray(true));      // Output: false
+```
+
+**Uso em Funções**
+
+`Array.isArray()` é especialmente útil quando se trabalhar com funções que podem receber diferentes tipos de dados e você precisa tratar arrays de maneia específica.
+
+```JavaScript
+function processData(data) {
+    if (Arra.isArray(data)) {
+        data.forEach(item => {
+            console.log("Array item:", item);
+        });
+    } else {
+        console.log("Not an array:", data);
+    }
+}
+
+procesData([1, 2, 3]);      // Processa cada item do array;
+procesData("Hello");        // Exibe a mensagem "Not an array".
+procesData({key: "value"}); // Exibe a mensagem "Not an array".
+```
+
+**Comparação com** `instanceof`
+
+Embora seja possível usar `instanceof` para verificar se um objeto é uma instância de `Array`, essa abordagem pode falhar quando se lida com múltiplos contextos de execução (por exemplo, ao trabalhar com iframes). `Array.isArray()` é uma maneira mais confiável de verificar arrays.
+
+### <a id="objetos-array-every"></a>`.every()`
 
 **Testa se todos os elementos em um array passam por um teste especificado por um função**.
 
@@ -377,7 +471,7 @@ Neste exemplo, `ages.every(checkAdult)` verifica se todos os elementos no array 
 
 `.every()` é uma ferramenta poderosa para validações onde todos os itens de uma coleção devem atender a uma condição específica.
 
-## <a id="metodos-array-foreach"></a>`array.forEach()`
+### <a id="objetos-array-foreach"></a>`.forEach()`
 
 É utilizado para **iterar sobre todos os elementos de um array e executar uma função fornecida para cada elemento**.
 
@@ -440,6 +534,65 @@ Output:
 - **Observações Importantes**
     + **Não interrompe o loop:** diferentemente de um loop `for` tradicional, não é possível interromper um `.forEach()` (não há `break` ou `return` que interrompa o loop). Se você precisar de tal funcionalidade, considere usar um loop `for`, `for...of` ou métodos como `some` ou `every`
     + **Não retorna um novo array:** embora você possa modificar os elementos do array dentro de `.forEach()`, isso não é uma prática recomendada. Em vez disso, você deve usar `.map()` se precisar criar um novo array com os elementos modificados
+
+## <a id="objetos-error"></a>`error`
+
+**Quando se captura um erro usando um bloco** `try...catch`, o objeto `error` contém várias propriedades que ajudam a entender a natureza do error:
+
+- `message`**:** contém uma descrição da mensagem de erro
+- `stack`**:** é uma string que contém informações sobre a **pilha de chamadas no momento em que o erro foi lançado. Isso pode ser extremamente útil para depuração, pois mostra a sequência de chamadas de função que levarão ao erro**
+
+## <a id="objetos-date"></a>`Date`
+
+É **usado para trabalhar com datas e horas**. Ele fornece métodos para criar objetos de data, acessar e manipular componentes de data e hora, e formatar datas para exibição.
+
+Aqui estão algumas maneiras comuns de usar o objeto `Date` em JavaScript:
+
+1. **Criar um objeto de data:** você pode criar um objeto de data usando o construtor `Date()` sem argumentos para representar a data e hora atuais ou passando argumentos para representar uma data específica. Por exemplo:
+
+```JavaScript
+// Data e hora atuais.
+const agora = new Date();
+
+// Data específica (ano, mês, dia, hora, minuto, segundo, milissegundo).
+cont dataEspecifica = new Date(2024, 4, 8, 15, 30, 0);
+```
+
+2. **Acessar componentes de data e hora:** você pode acessar os componentes de data e hora de um objeto de data, como ano, mês, dia, hora, minuto, segundo e milissegundo, usando os métodos "`get`" correspondentes. Por exemplo
+
+```JavaScript
+const data = new Date();
+const ano = data.getFullYear();
+const mes = data.getMonth(); // Janeiro é 0, fevereiro 1, e assim por diante.
+const dia = data.getDate();
+const hora = data.getHours();
+const minuto = data.getMinutes();
+const segundo = data.getSeconds();
+const milissegundo = data.getMilliseconds();
+```
+
+3. **Manipular datas:** você pode manipular datas adicionando ou subtraindo valores usando os métodos "`set`" correspondentes. Por exemplo
+
+```JavaScript
+const data = new Date();
+data.setFullYear(2025);
+data.setMonth(6); // Julho.
+data.setDate(15);
+data.setHours(12);
+data.setMinutes(0);
+data.setSeconds(0);
+```
+
+4. **Formatar datas para exibição:** você pode formatar datas para exibição usando métodos como `.toDateString()`, `.toLocaleDateString()`, `.toISOString()`, etc. Ou você pode usar bibliotecas externas como `moment.js` para formatação mais avançada.
+
+```JavaScript
+const data = new Date();
+console.log(data.toDateString());   // Exemplo: "Sat May 08 2024".
+console.log(data.toLocaleString()); // Dependente do idioma e região.
+console.log(data.toISOString());    // Formato ISO 8601: "2024-05-08T12:00:00.000Z".
+```
+
+O objeto `Date` em JavaScript pode ser bastatente flexível e poderoso para lidar com manipulação de datas e horas, mas também pode ser complicado de usar em alguns casos. Por isso, é sempre útil consultar a documentação oficial da Mozilla Developer Network (MDN) ou outras fontes confiáveis para obter mais informações sobre o objeto `Date` e suas funcionalidades.
 
 # <a id="funcao-flecha"></a>Função de Flecha
 

@@ -69,6 +69,8 @@ Este repositório tem como objetivo auxiliar o estudo de certas tecnologias rela
     + [Amazon EC2](#amazon-ec2)
         - [Substituindo o Código em Execução no EC2](#amazon-ec2-substituindo-codigo-execucao-ec2)
     + [AWS Secrets Manager](#aws-secrets-manager)
+- **Segurança (seguranca.md)**
+    + [Técnicas de Ofuscação de Código](#tecnicas-ofuscacao-codigo)
 
 ## ./JavaScript
 
@@ -79,17 +81,20 @@ Este repositório tem como objetivo auxiliar o estudo de certas tecnologias rela
     + [Objetos](#objetos)
         - [Definindo Métodos em Objetos](#objetos-definindo-metodos-objetos)
         - [`Object`](#objetos-object)
+            + [`.hasOwnProperty()`](#objetos-object-hasownproperty)
             + [`.toString()`](#objetos-object-tostring)
             + [`.prototype.toString.call()`](#objetos-object-prototype-tostring-call)
+        - [`Array`](#objetos-array)
+            + [`.isArray()`](#objetos-array-isarray)
+            + [`.every()`](#objetos-array-every)
+            + [`.forEach()`](#objetos-array-foreach)
+        - [`error`](#objetos-error)
         - [`Date`](#objetos-date)
-    + [Métodos](#metodos)
-        - [Array](#metodos-array)
-            + [array.every()](#metodos-array-every)
-            + [`array.forEach()`](#metodos-array-foreach)
     + [Função de Flecha](#funcao-flecha)
     + [Closures](#closures)
     + [Época Unix](#epoca-unix)
 - **Node.js (Nodejs.md):** engine, runtime, ambiente de execução JavaScript
+    + [Engine, Runtime e Ambiente de Execução](#engine-runtime-ambiente-execucao)
     + [Compatibilidade Entre o Node.js e o npm](#compatibilidade-nodejs-npm)
     + [Ato de Publicação](#ato-publicacao)
     + [`npx`](#npx)
@@ -122,11 +127,15 @@ Este repositório tem como objetivo auxiliar o estudo de certas tecnologias rela
 - **npm (npm.md):** gerenciador de pacotes
     + [Compatibilidade Entre o Node.js e o npm](#compatibilidade-nodejs-npm)
     + [Ato de Publicação](#ato-publicacao)
+    + [npm Logs](#npm-logs)
+        - [`npm WARN`](#npm-logs-npm-warn)
     + [Erros Enfrentados](#erros-enfrentados)
         - [Ao Tentar Instalar as Dependências do Nosso Projeto](#ao-instalar-dependencias-projeto)
     + [Comandos Utilizados Através do CLI](#comandos-utilizados-cli)
         - [`npm login` x `npm adduser`](#comandos-utilizados-cli-npm-login-x-npm-adduser)
         - [`npm install`](#comandos-utilizados-cli-npm-install)
+            + [Opção `--unsafe-perm`](#comandos-utilizados-cli-npm-install-opcao-unsafe-perm)
+        - [`npm show $< nome do pacote > version`](#comandos-utilizados-cli-npm-show-nome-pacote-version)
         - [`npm show $< nome do pacote > dependencies`](#comandos-utilizados-cli-npm-show-nome-pacote-dependencies)
 - **NVM (NVM.md):** gerenciador de versões para Node.js
     + [Contexto: SO Utilizado](#contexto-so-utilizado)
@@ -143,6 +152,8 @@ Este repositório tem como objetivo auxiliar o estudo de certas tecnologias rela
     + Express **(Express.md):** utilizada na criação de servidores HTTP
         - [Métodos](#metodos)
             + [app.listen()](#metodos-app-listen)
+            + [`response.status()`](#metodos-reponse-status)
+            + [`response.json()`](#metodos-reponse-json)
     + **Axios (axios.md):**
         - [Métodos](#metodos)
             + [`axios.post()`](#metodos-axios-post)
@@ -239,14 +250,6 @@ Template de estrutura a tentar seguir em relação as anotações do conteúdo e
 - [Key Words](#formatacao-documento-key-words)
 
 ## MariaDB (Diretorio-heterogeneo/mariadb.md)
-
-## Segurança (Diretorio-heterogeneo/seguranca.md)
-
-Arquivo que trata de formas de proteger o seu código-fonte.
-
-### Sumário
-
-- [Técnicas de Ofuscação de Código](#tecnicas-ofuscacao-codigo)
 
 ## Termos Utilizados na Área de TI (Diretorio-heterogeneo/termos-TI.md)
 

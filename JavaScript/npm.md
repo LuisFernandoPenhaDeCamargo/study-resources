@@ -4,11 +4,15 @@
 
 - [Compatibilidade Entre o Node.js e o npm](#compatibilidade-nodejs-npm)
 - [Ato de Publicação](#ato-publicacao)
+- [npm Logs](#npm-logs)
+    + [`npm WARN`](#npm-logs-npm-warn)
 - [Erros Enfrentados](#erros-enfrentados)
     + [Ao Tentar Instalar as Dependências do Nosso Projeto](#ao-instalar-dependencias-projeto)
 - [Comandos Utilizados Através do CLI](#comandos-utilizados-cli)
     + [`npm login` x `npm adduser`](#comandos-utilizados-cli-npm-login-x-npm-adduser)
     + [`npm install`](#comandos-utilizados-cli-npm-install)
+        - [Opção `--unsafe-perm`](#comandos-utilizados-cli-npm-install-opcao-unsafe-perm)
+    + [`npm show $< nome do pacote > version`](#comandos-utilizados-cli-npm-show-nome-pacote-version)
     + [`npm show $< nome do pacote > dependencies`](#comandos-utilizados-cli-npm-show-nome-pacote-dependencies)
 
 # <a id="compatibilidade-nodejs-npm"></a>Compatibilidade Entre o Node.js e o npm
@@ -28,6 +32,45 @@ O ato de publicar um pacote, enquanto se utiliza uma versão do Node.js em uma m
 O npm é apenas usado para empacotar e distribuir o código-fonte do pacote. Uma vez publicado, o pacote é independente da versão do Node.js usada para publicá-lo (se atentando que quem o publica é o npm). O que importa é a compatibilidade do pacote com a versão do Node.js na máquina onde ele será executado.
 
 Em resumo, desde que o pacote seja compatível com a versão do Node.js na máquina de destino, não deve haver problemas em publicar o pacote em uma versão diferente do Node.js. No entanto, é sempre uma prática recomendada testar o pacote em diferentes versões do Node.js para garantir a compatibilidade e o funcionamento adequado em diferentes ambientes de execução.
+
+# <a id="npm-logs"></a>npm Logs
+
+## <a id="npm-logs-npm-warn"></a>`npm WARN`
+
+Os avisos (`npm WARN`) exibidos pelo npm indicam possíveis problemas que podem não ser críticos, mas que podem afetar o funcionamento do pacote ou do ambiente. Esses avisos podem ocorrer por vários motivos, como dependências ausentes, versões incompatíveis ou práticas não recomendadas.
+
+Para resolver esses avisos, você pode investigar o motivo específico de cada um e aplicar as correções necessárias. Aqui estão alguns exemplos comuns de avisos do npm e como resolvê-los:
+
+1. **Aviso de dependência ausente:** `npm WARN some-package@1.0.0 requires a peer of another-package@^2.0.0 but none is installed. You must install peer dependencies yourself`
+    - **Solução:** instale a dependência indicada, `npm install another-package@^2.0.0`
+2. **Aviso de versão incompatível:** `npm WARN deprecated package-name@1.0.0: This package is deprecated, use another-package instead.`
+    - **Solução:** atualize o pacote para a versão recomendada ou subtitua-o pelo pacote alternativo, `npm install another-package`
+3. **Aviso de uso de versão desatualizada do Node.js ou npm:** `npm WARN npm@5.0.0 requires a peer of node@>=6.0.0 but node@4.0.0 is installed.`
+    - **Solução:** atualize o Node.js ou npm para a versão recomendada, `nvm install 6.0.0`
+4. **Aviso de licença faltando:** `npm WARN package-name@1.0.0 No license field.`
+    - **Solução:** adicione um campo de licença no **package.json**
+
+```json
+{
+    "name": "package-name",
+    "version": "1.0.0",
+    "license": "MIT"
+}
+```
+
+5. **Aviso de pacote desatualizado:** `npm WARN deprecated package-name@1.0.0: This package has been deprecated.`
+    - **Solução:** verifique se já uma versão mais recente ou um pacote alternativo e faça a atualização, `npm install package-name@latest`
+6. `npm WARN old lockfile`
+
+Este aviso geralmente indica que o arquivo **package-lock.json** foi gerado por uma versão mais antiga do npm e pode não estar em conformidade com a versão atual do npm que você está utilizando. Isso pode levar a inconsistências ou problemas durante a instalação dos pacotes.
+
+**Como Resolver o** `npm WARN old lockfile`
+
+Para resolver este aviso, você deve atualizar o arquivo **package-lock.json** para garantir que ele esteja no formato correto para a versão atual do npm.
+
+- **Atualize o package-lock.json:**
+    + Remova o arquivo **package-lock.json** antigo
+    + Execute `npm install` para gerar um novo **package-lock.json** com a versão atual do npm
 
 # <a id="erros-enfrentados"></a>Erros Enfrentados
 
@@ -73,8 +116,10 @@ Acabou que, para resolver o problema, nós simplesmente deletamos o diretório "
 ### Sumário
 
 - [`npm login` x `npm adduser`](#comandos-utilizados-cli-npm-login-x-npm-adduser)
-- [`npm install`](#comandos-npm-install)
-- [`npm show $< nome do pacote > dependencies`](#comandos-npm-show-nome-pacote-dependencies)
+- [`npm install`](#comandos-utilizados-cli-npm-install)
+    + [Opção `--unsafe-perm`](#comandos-utilizados-cli-npm-install-opcao-unsafe-perm)
+- [`npm show $< nome do pacote > version`](#comandos-utilizados-cli-npm-show-nome-pacote-version)
+- [`npm show $< nome do pacote > dependencies`](#comandos-utilizados-cli-npm-show-nome-pacote-dependencies)
 
 ## <a id="comandos-utilizados-cli-npm-login-x-npm-adduser"></a>`npm login` x `npm adduser`
 
@@ -95,6 +140,30 @@ $ npm install lodash --save
 Isso instalará o pacote lodash localmente no seu projeto e adicionará uma entrada no seu arquivo **package.json** sob a seção de dependências de produção.
 
 Em resumo, o comando `npm install` é usado para instalar todas as dependências listadas no **package.json** localmente no diretório do seu projeto, garantindo que seu projeto tenha todas as bibliotecas necessárias para funcionar corretamente.
+
+### <a id="comandos-utilizados-cli-npm-install-opcao-unsafe-perm"></a>Opção `--unsafe-perm`
+
+É usada para **permitir que os scripts de instalação sejam executados com as permissões do usuário que iniciou o comando** `npm install`.
+
+**Contexto de Uso**
+
+Quando o npm instala pacotes globalmente (`-g`) ou em algumas circunstâncias de instalações locais, ele pode **alterar o usuário efetivo** (usando `nobody` ou outro usuário sem privilégios) para executar os scripts de instalação, mesmo que o processo npm seja iniciado como root. Isso é uma medida de segurança para impedir que scripts maliciosos façam alterações indesejadas no sistema.
+
+No entanto, em alguns casos, especialmente quando scripts de instalação precisam fazer alterações que requerem permissões de root (como instalação de dependências em diretórios protegidos), é necessário permitir que esses scripts sejam executados com permissões elevadas.
+
+## <a id="comandos-utilizados-cli-npm-show-nome-pacote-version"></a>`npm show $< nome do pacote > version`
+
+O comando `npm show` (ou `npm info`) é utilizado para **exibir informações sobre um pacote específico**. Quando você deseja **obter a versão de um pacote específico, você pode usar esse comando com a propriedade** `version`.
+
+**Sintaxe Básica**
+
+```bash
+npm show $< package name > version
+```
+
+- `npm show`**:** este comando exibe informações sobre um pacote
+- `package name`**:** o nome do pacote sobre o qual você deseja obter informações
+- `version`**:** a propriedade específica que você deseja consultar. Neste caso, `version` retorna a versão mais recente disponível do pacote (e que a tag seja latest)
 
 ## <a id="comandos-utilizados-cli-npm-show-nome-pacote-dependencies"></a>`npm show $< nome do pacote > dependencies`
 

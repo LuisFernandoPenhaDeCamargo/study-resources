@@ -6,7 +6,7 @@
     + [Substituindo o Código em Execução no EC2](#amazon-ec2-substituindo-codigo-execucao-ec2)
 - [AWS Secrets Manager](#aws-secrets-manager)
 
-# <a id=""></a>Amazon EC2
+# <a id="amazon-ec2"></a>Amazon EC2
 
 O Amazon EC2 (Elastic Compute Cloud) é um serviço da Amazon Web Services (AWS) que oferece capacidade de computação escalável na nuvem. Ele permite que os usuários criem e gerenciem instâncias de máquinas virtuais (VMs) na infraestrutura da AWS. O serviço é projetado para facilitar a escalabilidade e a flexibilidade, permitindo que os usuários ajustem os recursos computacionais conforme a demanda.
 
@@ -133,9 +133,30 @@ hooks:
 + **Configure a Pipeline no CodePipeline:** adicione a origem (repositório de código), a fase de compilação (CodeBuild) e a fase de implantação (CodeDeploy)
 
 5. **Uso de Docker e Amazon ECS/EKS**
-    . ****
-    . ****
-    . ****
+    - **Containerize sua aplicação:** crie um **Dockerfile** para sua aplicação
+
+```dockerfile
+FROM node:14
+WORKDIR /usr/scr/app
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 8080
+CMD [ "node", "app.js" ]
+```
+
+- **Crie uma imagem Docker e envie para o Amazon ECR:**
+
+```bash
+docker build -t seu-repo-ecr .
+docker tag seu-repo-ecr:latest seu-id-de-conta.dkr.ecr.regiao.amazonaws.com/seu-repo-ecr:latest
+$(aws ecr get-login-password --region regiao) | docker login --username AWS --password-stdin seu-id-de-conta.dkr.ecr.regiao.amazonaws.com
+docker push seu-id-de-conta.drk.ecr.regiao.amazonaws.com/seu-repo-ecr:latest
+```
+
+- **Use Amazon ECS ou EKS para gerenciar Contêineres**
+    +  Crie uma tarefa ECS ou um pod EKS que use a imagem Docker do ECR
+    +  Configure um serviço ECS ou um deployment EKS para gerenciar a escalabilidade e disponibilidade do aplicativo
 
 **Considerações Finais**
 

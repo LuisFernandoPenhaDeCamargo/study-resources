@@ -98,6 +98,7 @@ Existem alguns subtópicos comuns, abaixo segue a lista deles, observado que a l
     + Se o título do tópico já for a "**Sintaxe Básica**", não precisamos fornecer este subtópico
     + **Parâmetros:**
         - Pontuar se podem ser opcionais ou não
+        - Pontuar o seu tipo
     + **Valor de Retorno:**
     + **Como Funciona:**
     + **Quando Usar:**
@@ -110,6 +111,7 @@ Existem alguns subtópicos comuns, abaixo segue a lista deles, observado que a l
 - **Observações Interessantes**/**Observações Importantes**/**Considerações Importantes**
 
 - **Principais Características**
+- **conclusão**
 
 ## <a id="formatacao-documento-nomenclatura"></a>Nomenclatura
 
