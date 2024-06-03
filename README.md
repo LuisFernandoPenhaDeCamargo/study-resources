@@ -66,6 +66,8 @@ Este repositório tem como objetivo auxiliar o estudo de certas tecnologias rela
 - **Markdown (Markdown.md):** linguagem de marcação
     + [Quebra de Linha](#quebra-linha)
 - **AWS (AWS.md):**
+    + [Amazon EC2](#amazon-ec2)
+        - [Substituindo o Código em Execução no EC2](#amazon-ec2-substituindo-codigo-execucao-ec2)
     + [AWS Secrets Manager](#aws-secrets-manager)
 
 ## ./JavaScript
@@ -272,10 +274,6 @@ Explicação do significado dos termos utilizados com frequência na área de TI
 
 ## JavaScript/Node.js/npm/nvm/PM2
 
-- Engine, runtime, ambiente de execução. Contexto: Node.js
-- "`npm WARN`"
-    + "`npm WARN old lockfile }`"
-    + "`npm WARN deprecated request@2.88.2:`"
 - Criar um exemplo de exportação/importação com o código abaixo:
 
 ```JavaScript

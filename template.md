@@ -109,6 +109,8 @@ Existem alguns subtópicos comuns, abaixo segue a lista deles, observado que a l
 - **Exemplos Interessantes**
 - **Observações Interessantes**/**Observações Importantes**/**Considerações Importantes**
 
+- **Principais Características**
+
 ## <a id="formatacao-documento-nomenclatura"></a>Nomenclatura
 
 Tente utilizar palavras em português para nomes de função, variáveis, etc.

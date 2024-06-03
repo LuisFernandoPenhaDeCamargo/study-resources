@@ -8,14 +8,16 @@
     + `[{id: 1, machine: 102, game: 0, prize: -2, bet: 0, line: 0, created: 2024-03-18T12:51:50.000Z, exported: 0, name: null, cards_open: null,  prize_name: null, is_forced: null}]`
 - curl http://localhost:8081/v2/places/2276/big_winners -X POST -H "Authorization: Bearer a767dab3-a603-4399-a326-06bc59babdf2" -H "Content-Type: application/json" -d '{"big_winners": [{"machine": 1000, "game": 2000, "prize": 3000, "bet": 4000, "line": 5000, "created": "2025-01-01"}]}'
 
-- Passando um array de objetos em JSON em uma requisição utilizando o curl
-  + A resposta está no ChatGPT, a documente
-- O que é a EC2
-  + Como eu substituo o código em execução na EC2
 - .isArray()
 - .hasOwnProperty()
 - .status()
 - .json()
+- `npm show @zoeslots/zoe-game-api@rc version`
+- `npm install -g --unsafe-perms @zoeslots/zoe-terminal@teste`
+- Engine, runtime, ambiente de execução. Contexto: Node.js
+- "`npm WARN`"
+    + "`npm WARN old lockfile }`"
+    + "`npm WARN deprecated request@2.88.2:`"
 
 - Modificar a query, para inserir valores de forma dinâmica e assim conseguir cruzar os servidores de RC/HOMOLOG x PROD, pois os de PROD não exportaram `prize_name` e `is_forced`
 - Ver no zoe-game-api o formato de console.log que eu estou padronizando
@@ -265,24 +267,6 @@ nobody --- me fode
 ## fi
 
 su -l piranha -c 'pm2 start /usr/lib/node_modules/@zoeslots/zoe-terminal/ecosystem.config.js'
-
-#
-
-npm install -g --unsafe-perms @zoeslots/zoe-terminal@teste
-
-você vincula processos do pm2 a usuários?
-
-e quando você inicia um processo do pm2 como um usuário, ele fica vinculado a esse usuário? Por exemplo, se eu executar pm2 list em um usuário, o processo aparece, mas não aparece em outro usuários
-
-
-Quando você inicia um processo do PM2 como um usuário específico, esse processo será executado no contexto desse usuário e será gerenciado pelo PM2 iniciado por esse usuário. Portanto, ao executar pm2 list como esse usuário, você verá apenas os processos gerenciados pelo PM2 iniciado por esse usuário.
-
-Se você iniciar um processo do PM2 como um usuário diferente, ele será gerenciado pelo PM2 iniciado por esse usuário e não será visível para outros usuários ao executar pm2 list.
-
-Em resumo, os processos do PM2 estão vinculados ao PM2 que os iniciou e estão visíveis apenas para esse PM2 e o usuário associado a ele. Cada instância do PM2 é isolada e gerencia apenas os processos iniciados por ela.
-
-em um script de chave postinstall eu quero que um comando específico seja rodado por um usuário específico.
-Estamos falando de um package.json que executa um comando pm2 start /usr/lib/node_modules/@zoeslots/zoe-terminal/ecosystem.config.js como usuário piranha
 
 #
 

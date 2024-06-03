@@ -439,18 +439,24 @@ O `curl` é uma ferramenta podera e altamente flexível, com muitas opções e r
 
 **Exemplos Interessantes**
 
+-
+
 ```bash
 $ curl $< protocolo >://$< host >:$< porta >/$< restante da URL > -X GET -H "Content-Type: application/json" -H 'Authorization: Bearer $< token >' -d '{"key": value}'
 ```
 
 No exemplo acima, estamos:
 
-- Utilizando o protocolo `protocolo`
-- A requisição está sendo feita para o host `host` (para fazermos uma requisição para um host local, usamos `localhost`), utilizando a porta "`porta`"
-- É um método HTTP `GET` (logo, o protocolo deve ser algo que se adeque a isso)
-- É uma requisição que possui um cabeçalho HTTP personalizado, que específica que dados JSON serão utilizados ("`Content-Type: application/json`"). Não esquecer que o protocolo deve se adequar a isso
-- No cabeçalho também está especificado a forma de autenticação ("`Authorization: Bearer $< token >`")
-- O corpo da requisição é composto por "`'{"key": "value"}'`"
++ Utilizando o protocolo `protocolo`
++ A requisição está sendo feita para o host `host` (para fazermos uma requisição para um host local, usamos `localhost`), utilizando a porta "`porta`"
++ É um método HTTP `GET` (logo, o protocolo deve ser algo que se adeque a isso)
++ É uma requisição que possui um cabeçalho HTTP personalizado, que específica que dados JSON serão utilizados ("`Content-Type: application/json`"). Não esquecer que o protocolo deve se adequar a isso
++ No cabeçalho também está especificado a forma de autenticação ("`Authorization: Bearer $< token >`")
++ O corpo da requisição é composto por "`'{"key": "value"}'`"
+
+- Passando um array de objetos em JSON em uma requisição: `-d [{"$< chave 1 >": "$< valor 1 entre aspas >"}, {"$< chave 2 >": $< valor 2 >}]`
+    + Enviando um JSON a partir de um arquivo  
+        Se o JSON for muito grande ou se você já tiver o JSON salvo em um arquivo, você pode usar um arquivo para fornecer os dados. Suponha que o JSON esteja em um arquivo chamado **data.json**: `-d @data.json`
 
 ## <a id="comandos-utilizados-cli-strip"></a>`strip`
 
