@@ -64,15 +64,74 @@ sudo systemctl restart nome-do-seu-servico
 - **Execute o script remotamente:** use `ssh` para executar o script na instância da EC2, `ssh -i "sua-chave.pem" ec2-user@seu-endereco-ec2 'bash -s' > seu-script.sh`
 
 3. **Uso de ferramentas de implantação**
-    . ****
-    . ****
-    . ****
+
+- **Utilize ferramentas como Ansible, Chef ou Puppet:** configure um playbook (Ansible) ou receita (Chef) para atualizar o código e gerenciar a aplicação
+- **Exemplo de Ansible Playbook:**
+
+```yaml
+- hosts: seu-grupo-de-hosts
+  tasks:
+    - name: Atualizar o repositório de código
+      git:
+        repo: 'seu-repo-git'
+        dest: '/caminho/para/seu/codigo'
+        version: 'main'
+    - name: Reiniciar o serviço
+      service:
+        name: 'nome-do-seu-servico'
+        state: restarted
+```
+
+- **Execute o playbook:** `ansible-playbook -i inventario seu-playbook.yml`
+
 4. **Uso de pipelines de CI/CD**
-    . ****
-    . ****
-    . ****
-    . ****
-    . ****
+
+- **Configure um Pipeline de CI/CD (Continuous Integration/ Continuous Deployment):** use serviços como AWS CodePipeline, Jenkins, GitHub Actions, ou GitLab CI/CD
+- **Exemplo com AWS CodePipeline:**
+
++ **Crie um repositório de código:** use AWS CodeCommit, GitHub, ou Bitbucket para armazenar seu código
++ **Configure CodeBuild:**
+    - Crie um projeto CodeBuild que compilará e testará seu código
+    - Defina um arquivo **buildspec.yml** para especificar as etapas de construção e implantação
+
+```yaml
+version: 0.2
+
+phases:
+    install:
+        runtime-versions:
+            nodejs: 14
+    build:
+        commands:
+            - echo Build started on `date`
+            - echo Compiling the Node.js code
+            - npm install
+            - npm run build
+artifacts:
+    files:
+        - '**/*'
+```
+
++ **Crie uma fase de implantação no CodePipeline:** adicione uma etapa de implantação que use AWS CodeDeploy ou scripts personalizados para substituir o código em execução na instância EC2
++ **Exemplo com AWS Code:**
+    - Configure um aplicativo CodeDeploy e um grupo de implantação
+    - Crie um arquivo **appspec.yml** no seu repositório de código para definir como o CodeDeploy deve implantar o aplicativo
+
+```yaml
+version: 0.0
+os: Linux
+files:
+    - source: /
+      destination: /caminho/para/seu/codigo
+hooks:
+    AfterInstall:
+        - location: scripts/restart-server.sh
+          timeout: 300
+          runas: ec2-user
+```
+
++ **Configure a Pipeline no CodePipeline:** adicione a origem (repositório de código), a fase de compilação (CodeBuild) e a fase de implantação (CodeDeploy)
+
 5. **Uso de Docker e Amazon ECS/EKS**
     . ****
     . ****
