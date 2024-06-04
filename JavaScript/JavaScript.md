@@ -9,12 +9,16 @@
     + [Definindo Métodos em Objetos](#objetos-definindo-metodos-objetos)
     + [`Object`](#objetos-object)
         - [`.hasOwnProperty()`](#objetos-object-hasownproperty)
+        - [`.keys()`](#objetos-object-keys)
         - [`.toString()`](#objetos-object-tostring)
         - [`.prototype.toString.call()`](#objetos-object-prototype-tostring-call)
     + [`Array`](#objetos-array)
         - [`.isArray()`](#objetos-array-isarray)
         - [`.every()`](#objetos-array-every)
         - [`.forEach()`](#objetos-array-foreach)
+        - [`.map()`](#objetos-array-map)
+        - [`.push()`](#objetos-array-push)
+        - [`.join()`](#objetos-array-join)
     + [`error`](#objetos-error)
     + [`Date`](#objetos-date)
 - [Função de Flecha](#funcao-flecha)
@@ -148,12 +152,14 @@ Embora ambas as sintaxes sejam válidas e você possa usar qualquer uma delas co
 ### Sumário
 
 - [`.hasOwnProperty()`](#objetos-object-hasownproperty)
+- [`.keys()`](#objetos-object-keys)
 - [`.toString()`](#objetos-object-tostring)
 - [`.prototype.toString.call()`](#objetos-object-prototype-tostring-call)
 
 ### <a id="objetos-object-hasownproperty"></a>`.hasOwnProperty()`
 
-É uma função nativa de JavaScript que verifica se um objeto possui uma propriedade específica como uma propriedade direta (não herdada) do objeto. Esse método é útil para distinguir propriedades do próprio objeto de propriedades herdadas do seu protótipo.
+- É uma função nativa de JavaScript que verifica se um objeto possui uma propriedade específica como uma propriedade direta (não herdada) do objeto. Esse método é útil para distinguir propriedades do próprio objeto de propriedades herdadas do seu protótipo
+- É utilizado para verficar **se um objeto possui uma propriedade específica, sem recorrer à cadeia de protótipos**
 
 **Sintaxe Básica**
 
@@ -244,9 +250,161 @@ console.log(person.hasOwnProperty("name"));   // Output: true
 console.log(person.hasOwnProperty("gender")); // Output: false
 ```
 
+- **Verificação em um array**
+
+**Arrays em JavaScript são objetos com propriedades inteiras não negativas como chaves, que correspondem aos índices do array**
+
+```JavaScript
+const array = ["apple", "banana", "cherry"];
+
+console.log(array.hasOwnProperty("0")); // Output: true
+console.log(array.hasOwnProperty("2")); // Output: true
+console.log(array.hasOwnProperty("3")); // Output: false
+```
+
+- **Verificação em uma string**
+
++ Em JavaScript, strings são objetos similares a arrays. Cada caractere da string é acessível por um índice númerico, e esses índices são propriedades do objeto string
++ Embora strings em JavaScript sejam tipos primitivos, quando você acessa propriedades ou métodos em uma string, o JavaScript temporariamente a converte em um objeto String para que você possa trabalhar com ela
++ Cada caractere da string está em um índice específico, e esses índices são tratados como propriedades da string
+
+```JavaScript
+let string = "teste";
+
+// Acessando caracteres como propriedades.
+console.log(string[0]); // Output: t
+console.log(string[1]); // Output: e
+
+// Verificando propriedades com `.hasOwnProperty()`.
+console.log(string.hasOwnProperty("0")); // Output: true
+console.log(string.hasOwnProperty("1")); // Output: true
+console.log(string.hasOwnProperty("5")); // Output: false (fora do comprimento da string).
+
+// Strings também têm propriedades e métodos.
+console.log(string.length);        // Output: 5
+console.log(string.toUpperCase()); // Output: TESTE
+```
+
 **Conclusão**
 
 O método `.hasOwnProperty()` é uma ferramenta essencial para trabalhar com objetos em JavaScript, especialmente quando se lida com herança prototípica. Ela permite que você verifique de forma confiável se uma propriedade pertence diretamente a um objeto, evitando possíveis problemas causados por propriedades herdadas.
+
+### <a id="objetos-object-keys"></a>`.keys()`
+
+Retorna um array de propriedades enumeráveis de um objeto, ou seja, ele lista as chaves (propriedades) do próprio objeto, sem incluir as propriedades herdadas pela cadeia de protótipos.
+
+**Sintaxe Básica**
+
+```JavaScript
+Object.keys(obj);
+```
+
+- **Parâmetros:**
+    + `obj`**:** o objeto do qual você deseja obter as propriedades enumeráveis
+
+**Exemplos**
+
+- **Objeto simples**
+
+```JavaScript
+const object = {
+    name: "Alice",
+    age: 30,
+    profession: "Enginer",
+};
+
+const keys = Object.keys(object);
+
+console.log(keys); // Output: [ 'name', 'age', 'profession' ]
+```
+
+- **Array**
+
+Quando usado com arrays, retorna os índices do array como strings.
+
+```JavaScript
+const array = ["a", "b", "c"];
+const keys = Object.keys(array);
+
+console.log(keys); // Output: [ '0', '1', '2' ];
+```
+
+- **Objeto com propriedades não enumeráveis**
+
+Propriedades não enumeráveis não são incluídas no resultado de `.keys()`.
+
+```JavaScript
+const object = {};
+
+Object.defineProperty(object, "hidden", {
+    value: "secret",
+    enumerable: false
+});
+
+const keys = Object.keys(object);
+
+console.log(keys); // Output: []
+```
+
+- **Objeto com propriedades herdadas**
+
+Propriedades herdadas não são incluídas no resultado de `.keys()`.
+
+```JavaScript
+function Parent() {
+    this.parentProp = "parant";
+}
+
+Parent.prototype.inheritedProp = "inherited";
+
+const child = new Parent();
+
+child.childProp = "child";
+
+const keys = Object.keys(child);
+
+console.log(keys); // Output: [ 'parentProp', 'childProp' ]
+```
+
+**Exemplos Interessantes**
+
+- **Iteração sobre chaves**
+
+Você pode usar `.keys()` com um loop `.forEach()` para iterar sobre as chaves de um objeto.
+
+```JavaScript
+const object = {
+    name: "Alice",
+    age: 30,
+    profession: "Engineer",
+};
+
+Object.keys(object).forEach(key => {
+    console.log(`${key}: ${object[key]}`);
+});
+
+/*
+Output:
+name: Alice
+age: 30
+profession: Enginner
+*/
+```
+
+- **Mapeamento de propriedades**
+
+Você pode usar `.keys()` com o método `.map()` para criar um novo array baseado nas chaves e valores de um objeto.
+
+```JavaScript
+const object = {
+    name: "Alice",
+    age: 30,
+    profession: "Enginer",
+};
+const entries = Object.keys(object).map(key => [key, object[key]]);
+
+console.log(entries); // Output: [ [ 'name': 'Alice' ], [ 'age': 30 ], [ 'profession': 'Enginner' ] ]
+```
 
 ### <a id="objetos-object-tostring"></a>`.toString()`
 
@@ -369,6 +527,9 @@ Se você fizer `Object.prototype.toString().call(obj)`, você está chamando `.t
 - [`.isArray()`](#objetos-array-isarray)
 - [`.every()`](#objetos-array-every)
 - [`.forEach()`](#objetos-array-foreach)
+- [`.map()`](#objetos-array-map)
+- [`.push()`](#objetos-array-push)
+- [`.join()`](#objetos-array-join)
 
 ### <a id="objetos-array-isarray"></a>`.isArray()`
 
@@ -441,7 +602,7 @@ array.every(function(element, index, array) {
 ```
 
 - **Parâmetros:**
-    + `function(element, index, array)`**:** uma função de teste que é chamada para cada elemento do array. Ela recebe três argumentos
+    + `function()`**:** uma função de teste que é chamada para cada elemento do array. Ela recebe três argumentos
         - `element`**:** o elemento atual sendo processado no array
         - `index` **(opcional):** o índice do elemento atual sendo processado no array
         - `array` **(opcional):** o array no qual `.every()` foi chamado
@@ -482,7 +643,7 @@ array.forEach(callback(currentValue, index, array), thisArg);
 ```
 
 + **Parâmetros:**
-    - `callback`**:** função a ser executada em cada elemento
+    - `callback()`**:** função a ser executada em cada elemento
         + `currentValue`**:** o valor do elemento atual sendo processado no array
         + `index` **(opcional):** o índice do elemento atual sendo processado no array
         + `array` **(opcional):** o array sobre o qual `.forEach()` foi chamado
@@ -501,9 +662,9 @@ fruits.forEach(function(fruit, index, array) {
 
 /*
 Output:
-Index: 0, Fruit: apple, Array: apple, banana, cherry
-Index: 1, Fruit: banana, Array: apple, banana, cherry
-Index: 2, Fruit: chery, Array: apple, banana, cherry
+Index: 0, Fruit: apple, Array: apple,banana,cherry
+Index: 1, Fruit: banana, Array: apple,banana,cherry
+Index: 2, Fruit: chery, Array: apple,banana,cherry
 */
 ```
 
@@ -534,6 +695,174 @@ Output:
 - **Observações Importantes**
     + **Não interrompe o loop:** diferentemente de um loop `for` tradicional, não é possível interromper um `.forEach()` (não há `break` ou `return` que interrompa o loop). Se você precisar de tal funcionalidade, considere usar um loop `for`, `for...of` ou métodos como `some` ou `every`
     + **Não retorna um novo array:** embora você possa modificar os elementos do array dentro de `.forEach()`, isso não é uma prática recomendada. Em vez disso, você deve usar `.map()` se precisar criar um novo array com os elementos modificados
+
+### <a id="objetos-array-map"></a>`.map()`
+
+É utilizado para **criar um novo array com os resultados da aplicação de uma função em cada elemento de um array original**. Este método não modifica o array original.
+
+**Sintaxe Básica**
+
+```JavaScript
+array.map(callback(element, index, array), thisArg);
+```
+
+- **Parâmetros**:
+    + `callback()`**:** função que é chamada para cada elemento do array
+        - `element`**:** o elemento atual sendo processado no array
+        - `index` **(opcional):** o índice do elemento atual sendo processado no array
+        - `array` **(opcional):** o array ao qual `.map()` foi chamado
+    + `thisArg` **(opcional):** valor a ser usado como `this` ao executar o `callback()`
+
+**Exemplos**
+
+- **Transformação simples**
+
+Convertendo todos os números de um array em seus quadrados
+
+```JavaScript
+const numbers = [1, 2, 3, 4];
+const squares = numbers.map(number => number * number);
+
+console.log(squares); // Output: [ 1, 4, 9, 16 ]
+```
+
+- **Uso do índice**
+
+Adicionando o índice de cada elemento ao próprio elemento.
+
+```JavaScript
+const numbers = [1, 2, 3, 4];
+const indexedNumbers = numbers.map((number, index) => number + index);
+
+console.log(indexedNumbers); // Output: [ 1, 3, 5, 7]
+```
+
+- **Mapeamento de objetos**
+
+```JavaScript
+const users = [
+    { name: "Alice", age: 25 },
+    { name: "Bob", age: 30 },
+    { name: "Charlie", age: 35 },
+];
+const names = users.map(user => user.name);
+
+console.log(names); // Output: [ 'Alice', 'Bob', 'Charlie' ]
+```
+
+- **Com** `thisArg`
+
+```JavaScript
+const numbers = [1, 2, 3, 4];
+const multiplier = {
+    factor: 10,
+    multiply(value) {
+        return value * this.factor;
+    }
+};
+const multipliedNumbers = numbers.map(function (number) {
+    return this.multiply(number)
+}, multiplier);
+
+console.log(multipliedNumbers); // Output: [ 10, 20, 30, 40 ]
+```
+
+**Exemplos Interessantes**
+
+- **Encadeamento de métodos**
+
+Você pode encadear o `.map()` com outros métodos, como `.filter()`.
+
+```JavaScript
+const numbers = [1, 2, 3, 4, 5];
+const evenSquares = numbers
+    .filter(number => number % 2 === 0)
+    .map(number => number * number);
+
+console.log(evenSquares); // Output: [ 4, 16 ]
+```
+
+- **Mapeamento e redução**
+
+Usando `.map()` com `.reduce()` para somar os quadrados dos elementos de um array.
+
+```JavaScript
+const numbers = [1, 2, 3, 4];
+const sumOfSquares = numbers
+    .map(number => number * number)
+    .reduce((sum, square) => sum + square, 0);
+
+console.log(sumOfSquares); // Output: 30
+```
+
+### <a id="objetos-array-push"></a>`.push()`
+
+É utilizado para **adicionar um ou mais elementos ao final de um array**. **Ele modifica o array original e retorna o novo comprimento do array**.
+
+**Sintaxe Baśica**
+
+```JavaScript
+array.push(element1, ..., elementN);
+```
+
+- **Parâmetros:**
+    + `element1, ..., elementN`**:** os elementos a serem adicionados ao final do array
+
+**Exemplos Interessantes**
+
+- **Concatenar arrays**
+
+```JavaScript
+let array1 = [1, 2, 3];
+let array2 = [4, 5, 6];
+
+Array.prototype.push.apply(array1, array2);
+
+console.log(array1); // Output: [ 1, 2, 3, 4, 5, 6 ]
+console.log(array2); // Output: [ 4, 5, 6 ]
+```
+
+### <a id="objetos-array-join"></a>`.join()`
+
+É utilizado para **unir todos os elementos de um array em uma única string**. Um separador especificado é inserido entre os elementos no resultado final. Se nenhum separador for especificado, uma vírgula será usada por padrão.
+
+**Sintaxe Básica**
+
+```JavaScript
+array.join(separator);
+```
+
+- **Parâmetros:**
+    + `separator` **(opcional):** especifica a string a ser usada como separador entre os elementos. Se omitido, o separador padrão é uma vírgula
+
+**Exemplos**
+
+- **Unindo elementos com vírgula**
+
+```JavaScript
+const elements = ["Fire", "Air", "Water"];
+const result = elements.join();
+
+console.log(result); // Output: Fire,Air,Water
+```
+
+- **Sem separador (string vazia)**
+
+```JavaScript
+const elements = ["Fire", "Air", "Water"];
+const result = elements.join("");
+
+console.log(result); // Output: FireAirWater
+```
+
+- **Array com elementos vazios ou** `undefined`
+
+```JavaScript
+const elements = ["Fire", , "Water", undefined];
+const result = elements.join("|");
+
+console.log(result); // Output: Fire||Water|
+```
 
 ## <a id="objetos-error"></a>`error`
 

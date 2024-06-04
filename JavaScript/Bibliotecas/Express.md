@@ -4,6 +4,7 @@
 
 - [Métodos](#metodos)
     + [app.listen()](#metodos-app-listen)
+    + [`router.post()`](#metodos-router-post)
     + [`response.status()`](#metodos-reponse-status)
     + [`response.json()`](#metodos-reponse-json)
 
@@ -12,6 +13,7 @@
 ### Sumário
 
 - [`app.listen()`](#metodos-app-listen)
+- [`router.post()`](#metodos-router-post)
 - [`response.status()`](#metodos-reponse-status)
 - [`response.json()`](#metodos-reponse-json)
 
@@ -53,6 +55,10 @@ Se você quiser começar a escutar em uma porta específica, basta chamar `.list
 No JavaScript, a função `app.listen()` do Express é capaz de identificar os argumentos que você passou com base em sua quantidade e tipo, graças a sobrecargas de função internamente. Basicamente, a implementação verifica os argumentos fornecidos e ajusta o comportamento com base nisso (identifica quais são).
 
 Esta abordagem permite que o Express flexibilize a maneira como os desenvolvedores podem configurar o servidor, tornando a API mais amigável e adaptável às necessidades do projeto.
+
+# <a id="metodos-router-post"></a>`router.post()`
+
+
 
 # <a id="metodos-reponse-status"></a>`response.status()`
 

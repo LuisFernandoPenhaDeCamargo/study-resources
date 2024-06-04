@@ -71,6 +71,8 @@ Este repositório tem como objetivo auxiliar o estudo de certas tecnologias rela
     + [AWS Secrets Manager](#aws-secrets-manager)
 - **Segurança (seguranca.md)**
     + [Técnicas de Ofuscação de Código](#tecnicas-ofuscacao-codigo)
+- **Termos Utilizados na Área de TI (termos-TI.md):**
+
 
 ## ./JavaScript
 
@@ -82,12 +84,16 @@ Este repositório tem como objetivo auxiliar o estudo de certas tecnologias rela
         - [Definindo Métodos em Objetos](#objetos-definindo-metodos-objetos)
         - [`Object`](#objetos-object)
             + [`.hasOwnProperty()`](#objetos-object-hasownproperty)
+            + [`.keys()`](#objetos-object-keys)
             + [`.toString()`](#objetos-object-tostring)
             + [`.prototype.toString.call()`](#objetos-object-prototype-tostring-call)
         - [`Array`](#objetos-array)
             + [`.isArray()`](#objetos-array-isarray)
             + [`.every()`](#objetos-array-every)
             + [`.forEach()`](#objetos-array-foreach)
+            + [`.map()`](#objetos-array-map)
+            + [`.push()`](#objetos-array-push)
+            + [`.join()`](#objetos-array-join)
         - [`error`](#objetos-error)
         - [`Date`](#objetos-date)
     + [Função de Flecha](#funcao-flecha)
@@ -152,6 +158,7 @@ Este repositório tem como objetivo auxiliar o estudo de certas tecnologias rela
     + Express **(Express.md):** utilizada na criação de servidores HTTP
         - [Métodos](#metodos)
             + [app.listen()](#metodos-app-listen)
+            + [`router.post()`](#metodos-router-post)
             + [`response.status()`](#metodos-reponse-status)
             + [`response.json()`](#metodos-reponse-json)
     + **Axios (axios.md):**
@@ -249,23 +256,6 @@ Template de estrutura a tentar seguir em relação as anotações do conteúdo e
     + [Negrito](#formatacao-documento-negrito)
 - [Key Words](#formatacao-documento-key-words)
 
-## MariaDB (Diretorio-heterogeneo/mariadb.md)
-
-## Termos Utilizados na Área de TI (Diretorio-heterogeneo/termos-TI.md)
-
-Explicação do significado dos termos utilizados com frequência na área de TI.
-
-### Sumário
-
-- [blob e glob](#blob-glob)
-- [CLI](#cli)
-- [CWD](#cwd)
-- [foo](#foo)
-- [Linter](#linter)
-- [LTS](#lts)
-- [Snapshot](#snapshot)
-- [SO](#so)
-
 # Anotações Não Alocadas
 
 - No final das contas, seja interpretada ou compilada, a CPU lê código de máquina, o que acaba por se tornar um processo
@@ -277,14 +267,10 @@ Explicação do significado dos termos utilizados com frequência na área de TI
 
 ## JavaScript/Node.js/npm/nvm/PM2
 
-- Criar um exemplo de exportação/importação com o código abaixo:
+## AWS
 
-```JavaScript
-const nome1 = "Maria";
-export default nome1;
-
-export const nome2 = "João";
-```
+- route53
+- ecr
 
 ## MariaDB
 
@@ -295,14 +281,6 @@ export const nome2 = "João";
 - `ALTER TABLE $< tabela > DROP COLUMN $< coluna >;`
 - `SHOW GRANTES FOR $< usuário >@$< host >`
 - `GRANT SYSTEM_USER ON *.* TO '$< usuário >'@'$< host >'`
-
-## AWS
-
-- O que é a AWS?
-- s3
-- ec2
-- route53
-- ecr
 
 ## Python
 
