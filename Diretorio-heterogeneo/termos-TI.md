@@ -13,7 +13,7 @@
 
 # <a id="blob-glob"></a>blob e glob
 
-Considerando o seguinte contexto, que é uma explicação de como o pacote npm `nexe` funciona, pacote este utilizado para compilar Node.js:
+Considerando o seguinte contexto, que é uma explicação de como o pacote Nexe funciona, pacote este utilizado para compilar Node.js:
 
 "All dependencies and entrypoint are bundled together in a blob that nexe refers to as a virtual file system. This is then appended to a prebuilt binary.
 

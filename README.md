@@ -72,7 +72,14 @@ Este repositório tem como objetivo auxiliar o estudo de certas tecnologias rela
 - **Segurança (seguranca.md)**
     + [Técnicas de Ofuscação de Código](#tecnicas-ofuscacao-codigo)
 - **Termos Utilizados na Área de TI (termos-TI.md):**
-
+    + [blob e glob](#blob-glob)
+    + [CLI](#cli)
+    + [CWD](#cwd)
+    + [foo](#foo)
+    + [Linter](#linter)
+    + [LTS](#lts)
+    + [Snapshot](#snapshot)
+    + [SO](#so)
 
 ## ./JavaScript
 
@@ -98,7 +105,14 @@ Este repositório tem como objetivo auxiliar o estudo de certas tecnologias rela
         - [`Date`](#objetos-date)
     + [Função de Flecha](#funcao-flecha)
     + [Closures](#closures)
+    + [`async` e `await`](#async-await)
+    + [Importação e Exportação](#importacao-exportacao)
+        - [Common.js](#importacao-exportacao-commonjs)
+        - [ES6](#importacao-exportacao-es6)
+        - [Common.js x ES6](#importacao-exportacao-commonjs-x-es6)
     + [Época Unix](#epoca-unix)
+    + [ES6](#es6)
+    + [CommonJS x ES6](#commonjs-x-es6)
 - **Node.js (Nodejs.md):** engine, runtime, ambiente de execução JavaScript
     + [Engine, Runtime e Ambiente de Execução](#engine-runtime-ambiente-execucao)
     + [Compatibilidade Entre o Node.js e o npm](#compatibilidade-nodejs-npm)
@@ -315,15 +329,12 @@ Template de estrutura a tentar seguir em relação as anotações do conteúdo e
 
 # TODO
 
-Refatorar, reorganizar os seguintes diretórios/arquivos, além de tentar realizar:
-
-- refatorar.md
-- Refatorar2
-- Refatorar
-- Rust
-- images
-- Criar do zero uma instância no **ec2**
-    + Colocar o **nginx** para rodar junto com a API em Node.js
+- Talvez a seção "**Exemplos**" se torne um subtítulo
+- Refatorar, reorganizar o seguinte diretórios/arquivos:
+    + **refatorar.md**
+    + **Refatorar**
+- Criar do zero uma instância no EC2
+    + Colocar o nginx para rodar junto com a API em Node.js
     + Instalar https na instância
     + Ativar a atualização do certificado ssl de forma automâtica
 - Criar um pipeline de deploy

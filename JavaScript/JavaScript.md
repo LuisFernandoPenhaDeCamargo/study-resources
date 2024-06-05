@@ -23,7 +23,14 @@
     + [`Date`](#objetos-date)
 - [Função de Flecha](#funcao-flecha)
 - [Closures](#closures)
+- [`async` e `await`](#async-await)
+- [Importação e Exportação](#importacao-exportacao)
+    + [CommonJS](#importacao-exportacao-commonjs)
+    + [ES6](#importacao-exportacao-es6)
+    + [CommonJS x ES6](#importacao-exportacao-commonjs-x-es6)
 - [Época Unix](#epoca-unix)
+- [ES6](#es6)
+- [CommonJS x ES6](#commonjs-x-es6)
 
 # <a id="operadores"></a>Operadores
 
@@ -978,8 +985,278 @@ console.log(increment()); // Output: 2
 console.log(increment()); // Output: 3
 ```
 
+# <a id="async-await"></a>`async` e `await`
+
+O suporte para `async` e `await` foi introduzido no Node.js versão 7.6.0, lançado em fevereiro de 2017. Essa versão trouxe suporte inicial para essas funcionalidades baseadas em Promises, permitindo que desenvolvedores escrevessem código assíncrono de maneira mais síncrona e legível.
+
+A partir da versão 8.0.0, o Node.js estabilizou completamente o suporte para `async` e `await`, trazendo várias melhorias e correções de bugs. Por isso, é recomendado usar no mínimo a versão 8 para um suporte robusto.
+
+# <a id="importacao-exportacao"></a>Importação e Exportação
+
+No JavaScript, especialmente quando se usa módulos ES6, há diferentes formas de exportar e importar valores. As duas principais são exportações nomeadas (named exports) e a exportação padrão (default export).
+
+## <a id="importacao-exportacao-commonjs"></a>CommonJS
+
+- O CommonJS é o sistema de módulos usado pelo Node.js desde o início
+- O `module.exports` e o `require` são a forma original de exportar e importar módulos no Node.js, utilizando o padrão CommonJS. O ES6 introduziu uma nova sintaxe de módulos com `import` e `export`, mas ambos coexistem no ecossistema Node.js
+
+Você usa o `module.exports` para exportar **um valor** de um módulo. Pode ser um objeto, uma função, uma classe ou qualquer outro valor.
+
+```JavaScript
+// module.js
+module.exports = function() {
+    console.log("Função exportada!");
+};
+
+// ou
+
+module.exports = {
+    nome1: "Maria1",
+    nome2: "João",
+    saudacao: function() {
+        console.log("Olá!");
+    },
+};
+```
+
+```JavaScript
+// main.js
+const saudacao = require("./module");
+
+saudacao(); // Output: Função exportada!
+
+// ou
+
+const modulo = require("./module");
+
+console.log(modulo.nome1); // Output: Maria
+console.log(modulo.nome2); // Output: João
+
+modulo.saudacao();         // Output: Olá!
+```
+
+**Exportações Nomeadas (Named Exports)**
+
+**Embora** `module.exports` **exporte um único valor**, você pode estruturar seu módulo para imitar exportações nomeadas, colocando propriedades em um objeto.
+
+```JavaScript
+// module.js
+module.exports.nome1 = "Maria";
+module.exports.nome2 = "João";
+module.exports.saudacao = function() {
+    console.log("Olá");
+};
+
+// ou
+
+exports.nome1 = "Maria";
+exports.nome2 = "João";
+exports.saudacao = function() {
+    console.log("Olá");
+};
+```
+
+## <a id="importacao-exportacao-es6"></a>ES6
+
+**Exportações Nomeadas (Named Exports)**
+
+Você pode exportar múltiplos valores de um módulo usando exportações nomeadas. Cada exportação tem um nome específico que é usado ao importar o valor em outro módulo.
+
+```JavaScript
+// module.js
+export const nome1 = "Maria";
+export const nome2 = "João";
+export function saudacao() {
+    console.log("Olá!");
+}
+```
+
+```JavaScript
+// main.js
+import { nome1, nome2, saudacao } from "./module";
+
+console.log(nome1); // Output: Maria
+console.log(nome2); // Output: João
+
+saudacao();         // Output: Olá!
+```
+
+Você também pode importar todas as exportações nomeadas de um módulo usando o operador `*` e um namespace.
+
+```JavaScript
+// main.js
+import * as modulo from "./module";
+
+console.log(modulo.nome1); // Output: Maria
+console.log(modulo.nome2); // Output: João
+
+modulo.saudacao();         // Output: Olá
+```
+
+**Exportação Padrão (Default Export)**
+
+Um módulo pode ter **uma exportação padrão**. Este é um valor que é exportado por padrão quando o módulo é importado. **Um módulo só pode ter uma exportação padrão**.
+
+```JavaScript
+// module.js
+const nome1 = "Maria";
+
+export default nome1;
+```
+
+```JavaScript
+// main.js
+import nome from "./module";
+
+console.log(nome); //Output: Maria
+```
+
+**Combinação de Exportações**
+
+Você pode combinar exportações nomeadas e a exportação padrão no mesmo módulo.
+
+```JavaScript
+// module.js
+const nome1 = "Maria";
+const nome2 = "João";
+
+function saudacao() {
+    console.log("Olá");
+}
+
+export default nome1;
+export { nome2, saudacao };
+```
+
+```JavaScript
+// main.js
+import nome, { nome2, saudacao } from "./module";
+
+console.log(nome);  // Output: Maria
+console.log(nome2); // Output: João
+
+saudacao();         //Output: Olá
+```
+
+**Renomeando Exportações Durante a Importação**
+
+Você pode renomear uma exportação ao importá-la para evitar conflitos de nome ou por clareza.
+
+```JavaScript
+// module.js
+export const nome1 = "Maria";
+export const nome2 = "João";
+```
+
+```JavaScript
+// main.js
+import { nome1 as primeiroNome, nome2 as segundoNome } from "./module";
+
+console.log(primeiroNome); // Output: Maria
+console.log(segundoNome);  // Output: João
+```
+
+## <a id="importacao-exportacao-commonjs-x-es6"></a>CommonJS x ES6
+
+**Diferenças Principais**
+
+1. **Sintaxe:**
+    - **CommonJS:** `module.exports` e `require`
+    - **ES6:** `export` e `import`
+2. **Importação/Exportação padrão e nomeada:**
+    - **CommonJS** não distingue entre exportações padrão e nomeadas, **você exporta e importa um único objeto**
+    - **ES6** distingue claramente entre exportações padrão e nomeadas
+3. **Sincronicidade:**
+    - **CommonJS:** importações são síncronas
+    - **ES6:** importações podem ser assíncronas
+4. **Suporte em navegadores:**
+    - **CommonJS:** é específico para Node.js e não é suportado nativamente por navegadores
+    - **ES6:** ES6 modules são suportados nativamente em navegadores modernos
+5. **Análise estática:** ES6 modules permitem análise estática, o que pode levar a melhores otimizações em ferramentas de bundling como Webpack
+
+Ambos os sistemas de móduloes têm suas próprias vantagens e casos de uso. `module.exports` e `require` são amplamente usados em Node.js devido à sua simplicidade e ao longo tempo de suporte. Os módulos ES6 (`import` e `export`) são mais modernos e são a escolha padrão para novos projetos que visam interoperabilidade entre Node.js e navegadores modernos. Em muitos casos, você pode misturar ambos os sistemas, especialmente ao trabalhar em ambientes Node.js, usando transpilers como Babel para converter ES6 modules para CommonJS quando necessário.
+
+**Importando CommonJS em ES Modules**
+
+```JavaScript
+// module.cjs (CommonJS)
+const nome = "Maria";
+
+module.exports = nome;
+
+// main.mjs (ESM)
+import nome from "./module.cjs"
+
+console.log(nome); // Output: Maria
+```
+
+**Importando ES Modules em CommonJS**
+
+```JavaScript
+// module.mjs (ESM)
+export const nome = "Maria";
+
+// main.cjs (CommonJS)
+const { createRequire } = require("module");
+const require = createRequire(import.meta.url);
+const { nome } = require("./module.mjs");
+
+console.log(nome); // Output: Maria
+```
+
 # <a id="epoca-unix"></a>Época Unix
 
 É um padrão comum para muitas linguagens de programação que as suas bibliotecas representem o tempo como um número em milissegundos decorridos desde um ponto de referência específico, como a Época Unix, para a biblioteca `moment` do JavaScript.
 
 A Época Unix é o marco zero do sistema de tempo Unix, também é conhecida como "marco zero do calendário Unix", e é definida como primeiro de janeiro de 1970, 00:00:00 UTC. O `moment` realiza a conversão da data para milissegundos a partir da Época Unix.
+
+# <a id="es6"></a>ES6
+
+Os módulos ES6, também conhecidos como ECMAScripts Modules (ESM), foram introduzidos no Node.js de forma experimental a partir da versão 8.5.0, lançada em setembro de 2017. No entanto, foi apenas a partir da versão 12.0.0, lançada em abril de 2019, que o suporte a módulos ES6 começou a ser estável. O suporte completo e estável para módulos ES6 foi oficializado na versão 14.0.0, lançada em abril de 2020.
+
+Aqui estão alguns marcos importantes:
+
+1. **Node.js 8.5.0(Setembro de 2017):** introdução experimental do suporte a módulos ES6 com a extensão **.mjs**
+2. **Node.js 12.0.0(Abril de 2019):** melhorias significativas no suporte a módulos ES6, tornando-o mais estável
+3. **Node.js 14.0.0(Abril de 2020):** suporte oficial e estável para módulos ES6, permitindo o uso da extensão **.mjs** e a configuração "`"type": "module"`" no **package.json**
+
+**Usando a Extensão .mjs**
+
+```JavaScript
+// module.mjs
+
+export const nome = "Maria";
+
+// main.mjs
+import { nome } from "./module.mjs";
+
+console.log(nome); // Output: Maria
+```
+
+**Usando** `"type": "module"` **no package.json**
+
+```json
+{
+    "type": "module"
+}
+```
+
+Agora você pode usar a extensão **.js**.
+
+```JavaScript
+// module.js
+export const nome = "Maria";
+
+// main.js
+import { nome } from "./module.js";
+
+console.log(nome); // Output: Maria
+```
+
+Ambos os métodos permitem o uso dos recurso do ES6. Se precisar de interoperabilidade com os módulos CommonJS, você pode usar técnicas de interoperabilidade fornecidas pelo Node.js.
+
+# <a id="commonjs-x-es6"></a>CommonJS x ES6
+
+Se seu arquivo tem a extensão **.js**, ele será tratado como um módulo CommonJS por padrão. Para usar a sintaxe de módulos ES6 (ESM) em arquivos **.js**, você precisa especificar "`"type": "module"`" no seu **package.json**. Caso contrário, você deve usar a extensão **.mjs** para que o Node.js reconheça or arquivos como módulos ES6.
+
+Caso você use a chave "`"type": "module"`" no seu **package.json**, os arquivos **.js** serão tratados como módulos ES6 e os arquivos **.cjs** são tratados como módulos CommonJS.

@@ -3,15 +3,6 @@
     + A chave `scripts` não é obrigatória
 - Refatorar para o novo formato o **Diretorio-heterogeneo**
 
-- Criar um exemplo de exportação/importação com o código abaixo:
-
-```JavaScript
-const nome1 = "Maria";
-export default nome1;
-
-export const nome2 = "João";
-```
-
 - O que é a AWS?
 - s3
 
@@ -20,6 +11,24 @@ export const nome2 = "João";
 ```bash
 $git config --global -l
 fatal: unable to read config file '/home/luis/.gitconfig': Arquivo ou diretório inexistente
+```
+
+- `.join() em array de arrays`
+    + em NULL
+- `.filter()`
+- `.includes()`
+- `return` retornando dois valores
+- `.unshift()`
+- Operador de espalhamento (spread operator)
+- Destruturação
+- Operador instanceof
+- **Exemplo Interessante**
+
+```JavaScript
+let columns = Object.keys(registers[0]).filter(key => validColumns.includes(key)); // .join() depois
+console.log(columns);
+let values = registers.map(register => columns.map(column => register[column]));
+console.log(values);
 ```
 
 #

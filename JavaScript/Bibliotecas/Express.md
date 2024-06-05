@@ -58,7 +58,79 @@ Esta abordagem permite que o Express flexibilize a maneira como os desenvolvedor
 
 # <a id="metodos-router-post"></a>`router.post()`
 
+É utilizado para **definir uma rota que responde a requisições HTTP POST**. Ele permite que você lide com dados enviados a partir de um formulário HTML ou qualquer outra fonte que faça requisições POST ao seu servidor.
 
+**Sintaxe Básica**
+
+```JavaScript
+router.post(path, callback);
+```
+
+- **Parâmetros:**
+    + `path`**:** a URL da rota
+    + `callback`**:** uma função de callback que será executada quando a rota for acessada via uma requisição POST
+
+**Exemplos**
+
+- **Manipulação de dados do formulário**
+
+Você pode processar dados de um formulário HTML enviado via POST.
+
+```html
+<form action="/submit-form" method="POST">
+    <input type="text" name="name" />
+    <button type="submit">Enviar</button>
+</form>
+```
+
+```JavaScript
+const express = require("express");
+const bodyParser = require("body-parser");
+
+const app = express();
+const router = express.Router();
+
+app.use(bodyParser.urlencoded({ extended: true })); // Middleware para analisar dados de formulário.
+
+router.post("/submit-form", (request, response) => {
+    const formData = request.body;
+
+    console.log(formData);
+
+    response.send("Formulário recebido!");
+});
+
+app.use("/", router);
+
+app.listen(3000, () => {
+    console.log("Servidor rodando na porta 3000");
+});
+```
+
+- **Trabalhando com arquivo**
+
+Usando `multer` para lidar com uploads de arquivos.
+
+```JavaScript
+const express = require("express");
+const multer = require("multer");
+
+const app = express();
+const router = express.Router();
+const upload = multer({ dest: "uploads/" });
+
+router.post("/upload", upload.single("file"), (request, response) => {
+    console.log(request.file); // Informações sobre o arquivo enviado.
+
+    response.send("Arquivo enviado!")
+});
+
+app.use("/", router);
+
+app.listen(3000, () => {
+    console.log("Servidor rodando na porta 3000");
+});
+```
 
 # <a id="metodos-reponse-status"></a>`response.status()`
 
