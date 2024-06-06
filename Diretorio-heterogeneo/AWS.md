@@ -56,9 +56,9 @@ Substituir o código em execução em uma instância EC2 pode ser feito de vári
 
 ```bash
 #!/bin/bash
-cd /caminho/para/seu/codigo
-git pull origin main
-sudo systemctl restart nome-do-seu-servico
+$ cd /caminho/para/seu/codigo
+$ git pull origin main
+$ sudo systemctl restart nome-do-seu-servico
 ```
 
 - **Execute o script remotamente:** use `ssh` para executar o script na instância da EC2, `ssh -i "sua-chave.pem" ec2-user@seu-endereco-ec2 'bash -s' > seu-script.sh`
@@ -148,10 +148,10 @@ CMD [ "node", "app.js" ]
 - **Crie uma imagem Docker e envie para o Amazon ECR:**
 
 ```bash
-docker build -t seu-repo-ecr .
-docker tag seu-repo-ecr:latest seu-id-de-conta.dkr.ecr.regiao.amazonaws.com/seu-repo-ecr:latest
-$(aws ecr get-login-password --region regiao) | docker login --username AWS --password-stdin seu-id-de-conta.dkr.ecr.regiao.amazonaws.com
-docker push seu-id-de-conta.drk.ecr.regiao.amazonaws.com/seu-repo-ecr:latest
+$ docker build -t seu-repo-ecr .
+$ docker tag seu-repo-ecr:latest seu-id-de-conta.dkr.ecr.regiao.amazonaws.com/seu-repo-ecr:latest
+$ $(aws ecr get-login-password --region regiao) | docker login --username AWS --password-stdin seu-id-de-conta.dkr.ecr.regiao.amazonaws.com
+$ docker push seu-id-de-conta.drk.ecr.regiao.amazonaws.com/seu-repo-ecr:latest
 ```
 
 - **Use Amazon ECS ou EKS para gerenciar Contêineres**

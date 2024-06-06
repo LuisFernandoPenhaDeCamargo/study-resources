@@ -220,7 +220,7 @@ Aqui está como isso funciona:
 quando você compila seu aplicativo com `pkg`, pode especificar uma target de compilação que inclui a versão do Node.js. Por exemplo:
 
 ```bash
-pkg server.js -t node16-linux-x64
+$ pkg server.js -t node16-linux-x64
 ```
 
 Nesse caso, você está especificando explicitamente que o binário deve usar o Node.js versão 16 para Linux x64. Se você não especificar um target, o `pkg` usará um default com a versão que você está utilizando no momento.

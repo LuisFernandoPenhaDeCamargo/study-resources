@@ -158,7 +158,7 @@ O comando `npm show` (ou `npm info`) é utilizado para **exibir informações so
 **Sintaxe Básica**
 
 ```bash
-npm show $< package name > version
+$ npm show $< package name > version
 ```
 
 - `npm show`**:** este comando exibe informações sobre um pacote

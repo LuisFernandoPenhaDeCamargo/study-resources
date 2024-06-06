@@ -3,6 +3,39 @@
     + A chave `scripts` não é obrigatória
 - Refatorar para o novo formato o **Diretorio-heterogeneo**
 
+---
+
+- `const AWS = require("aws-sdk")`
+- `AWS.config`
+- `AWS.config.update()`
+- `new AWS.IAM()`
+    + chave "`apiVersion`"
+- `new AWS.S3()`
+- `new AWS.Endpoint()`
+- `static get $< nome do Objeto, string, recurso >`
+- Atributos das "policies" (políticas)
+    + `Sid`
+    + `Action`
+    + `Effect`
+    + `Resource`
+- `require("util")`
+- `.promisify()`
+- `.getUser()`
+    + `.bind()`
+- `.createUser`
+- `.stringify()`
+- `.addUserToGroup()`
+- `.getPolicyVersion()`
+- `.createPolicyVersion()`
+- `.attachUserPolicy()`
+- `.deletePolicyVersion()`
+- `.getPolicy()`
+- `.createPolicy()`
+
++ `git diff` no game-server
+
+---
+
 - O que é a AWS?
 - s3
 
@@ -22,7 +55,7 @@ fatal: unable to read config file '/home/luis/.gitconfig': Arquivo ou diretório
 - Operador de espalhamento (spread operator)
 - Destruturação
 - Operador instanceof
-- **Exemplo Interessante**
+- **Exemplo Interessante (está incompleto. O código dele está no data-server)**
 
 ```JavaScript
 let columns = Object.keys(registers[0]).filter(key => validColumns.includes(key)); // .join() depois

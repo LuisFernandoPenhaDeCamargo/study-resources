@@ -29,7 +29,7 @@ Codename:	jammy
 - Você também pode executar o comando:
 
 ```bash
-sudo openvpn $< arquivo.ovpn >
+$ sudo openvpn $< arquivo.ovpn >
 ```
 
 Observando que, normalmente, o `openvpn` já vem instalado, e que o processo precisa continuar em execução, caso contrário, a conexão com a rede é interrompida.

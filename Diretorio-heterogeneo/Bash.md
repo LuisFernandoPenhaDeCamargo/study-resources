@@ -337,7 +337,7 @@ Aqui `[:lower:]` e `[:upper:]` são classes de caracteres que representam, respe
 - O `tr` também pode ser usado para excluir caracteres ou fazer outras substituições simples. Por exemplo, para remover todos os espaços de um texto, você poderia usar:
 
 ```bash
-echo "Olá Mundo" | tr -d ' '
+$ echo "Olá Mundo" | tr -d ' '
 ```
 
 Isso removerá todos os espaços do texto de entrada

@@ -1,2 +1,13 @@
-let teste = new Date();
-console.log(Object.prototype.toString.call(teste));
+function isEven() {
+    // console.log("isEven()");
+
+    return !isOdd();
+}
+
+function isOdd() {
+    // console.log("isOdd()");
+
+    return !isEven();
+}
+
+isEven();

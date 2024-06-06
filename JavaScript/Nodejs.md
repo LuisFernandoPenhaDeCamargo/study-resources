@@ -292,7 +292,7 @@ Em vez de depender de um `require()` baseado em arquivo, os usuários podem agru
 
 No entanto, se um `require()` baseado em arquivo ainda for necessário, isso também poderá ser alcançado:
 
-```bash
+```JavaScript
 const { createRequire } = require('node:module');
 require = createRequire(__filename);
 ```

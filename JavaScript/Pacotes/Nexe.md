@@ -171,7 +171,7 @@ Aqui está como isso funciona:
 quando você compila seu aplicativo com o Nexe, pode especificar uma target de compilação que inclui a versão do Node.js. Por exemplo:
 
 ```bash
-pkg server.js --target "8.16.0-linux-x64"
+$ pkg server.js --target "8.16.0-linux-x64"
 ```
 
 Nesse caso, você está especificando explicitamente que o binário deve usar o Node.js versão 8.16.0 para Linux x64.

@@ -63,6 +63,11 @@ Este repositório tem como objetivo auxiliar o estudo de certas tecnologias rela
 - **Configurando a Minha Máquina (configurando-maquina.md):** arquivo que lista as ferramentas que eu utilizo, pretendo criar um script de configuração de ambiente
     + [Contexto: SO Utilizado](#contexto-so-utilizado)
     + [Projeto de Script de Configuração de Ambiente](#projeto-script-configuracao-ambiente)
+- **Git (Git.md):**
+    + [Realizando o Merge de Uma Branch Local com Uma Branch do Repositório Remoto](#realizando-merge-branch-local-branch-repositorio-remoto)
+        - [Resoluções de Conflito de Merge](#realizando-merge-branch-local-branch-repositorio-remoto-resolucoes-conflito-merge)
+    + [Comandos Utilizados Através do CLI](#comandos-utilizados-cli)
+        - [`diff $< nome da branch com a qual você quer comparar a branch atual >` ](#comandos-utilizados-cli-diff)
 - **Markdown (Markdown.md):** linguagem de marcação
     + [Quebra de Linha](#quebra-linha)
 - **AWS (AWS.md):**
@@ -85,6 +90,7 @@ Este repositório tem como objetivo auxiliar o estudo de certas tecnologias rela
 
 - **JavaScript (JavaScript.md):** linguagem de programação
     + [Operadores](#operadores)
+        - [Operador de negação (`!`)](#operadores-operador-negacao)
         - [`new`](#operadores-new)
         - [`typeof`](#operadores-typeof)
     + [Objetos](#objetos)

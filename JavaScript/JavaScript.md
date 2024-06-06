@@ -3,6 +3,7 @@
 ### Sumário
 
 - [Operadores](#operadores)
+    + [Operador de negação (`!`)](#operadores-operador-negacao)
     + [`new`](#operadores-new)
     + [`typeof`](#operadores-typeof)
 - [Objetos](#objetos)
@@ -38,8 +39,36 @@ Os operadores em JavaScript são símbolos ou palavras-chave que realizam opera�
 
 ### Sumário
 
+- [Operador de negação (`!`)](#operadores-operador-negacao)
 - [`new`](#operadores-new)
 - [`typeof`](#operadores-typeof)
+
+## <a id="operadores-operador-negacao"></a>Operador de negação (`!`)
+
+O operador `!` em JavaScript é o operador lógico de negação. Ele inverte o valor booleano de uma expressão. Se a expressão for `true`, a negação a transformará em `false`, e vice-versa.
+
+**Exemplos Interessantes**
+
+```JavaScript
+function isEven() {
+    return !isOdd();
+}
+
+function isOdd() {
+    return !isEven();
+}
+
+isEven();
+```
+
+No exemplo acima, o operador de negação não consegur cumprir o seu papel porque a recursão infinita impede que um valor seja retornada, consequentemente, negado. Cada chamada a `isEven()` ou `isOdd()` leva a outra chamada a outra função, sem nunca atingir um valor que possa ser negado pelo operador `!`. Isso cria uma recursão infinita que resulta em um erro de estorou de pilha (stack overflow).
+
+O operador `!` espera operar em um valor booleano (ou qualquer valor que possa ser coerentemente convertido para booleano). Por exemplo:
+
+- `!true` retorna `false`
+- `!false` retorna `true`
+- `!0` retorna `true` (porque `0` é considerado `false` em contexto booleano)
+- `!1` retorna `false` (porque `1` é considerado `true` em contexto booleano)
 
 ## <a id="operadores-new"></a>`new`
 
