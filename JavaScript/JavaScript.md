@@ -869,35 +869,41 @@ array.join(separator);
 ```
 
 - **Parâmetros:**
-    + `separator` **(opcional):** especifica a string a ser usada como separador entre os elementos. Se omitido, o separador padrão é uma vírgula
+    + `separator` **(opcional):** especifica a string a ser usada como separador entre os elementos. Se omitido, **o separador padrão é uma vírgula**
 
 **Exemplos**
 
-- **Unindo elementos com vírgula**
-
 ```JavaScript
 const elements = ["Fire", "Air", "Water"];
-const result = elements.join();
+const elementsAndNullOrUndefined = ["Fire", , "Air", undefined, "Water", null];
+const arrayOfArrays = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+
+// Unindo elementos com vírgula.
+let result = elements.join();
 
 console.log(result); // Output: Fire,Air,Water
-```
 
-- **Sem separador (string vazia)**
-
-```JavaScript
-const elements = ["Fire", "Air", "Water"];
-const result = elements.join("");
+// Sem separador (string vazia).
+result = elements.join("");
 
 console.log(result); // Output: FireAirWater
-```
 
-- **Array com elementos vazios ou** `undefined`
+/*
+Array com elementos vazios ou `undefined`.
 
-```JavaScript
-const elements = ["Fire", , "Water", undefined];
-const result = elements.join("|");
+*/
+result = elementsAndNullOrUndefined.join("|");
 
 console.log(result); // Output: Fire||Water|
+
+/*
+Array de arrays.
+
+- Quando utilizado em um array de arrays, `.join()` concatena cada sub-array em uma string e depois junta essas strings com o delimitador especificado
+*/
+result = arrayOfArrays.join("|");
+
+console.log(result); // Output: 1,2,3|4,5,6|7,8,9 // <-- JS refat READ template
 ```
 
 ## <a id="objetos-error"></a>`error`

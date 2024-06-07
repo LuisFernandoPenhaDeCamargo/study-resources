@@ -5,6 +5,7 @@
 
 ---
 
+- O AWS KMS e o AWS Secrets são a mesma coisa?
 - `const AWS = require("aws-sdk")`
 - `AWS.config`
 - `AWS.config.update()`
@@ -33,20 +34,33 @@
 - `.createPolicy()`
 
 + `git diff` no game-server
++ Variar mais os meus casos de teste (por conta do problema com `'null'` na data-api)
++ AWS Lambda -> atualizar os jogos da oriongames_testnew (com os jogos inseridos na oriongames), de forma automática
++ Pontuar as responsabilidades do game-api, data-api, zoe-updater, data-server
++ orion-data-server:
+
+```JavaScript
+let values = registers.map(register => 
+    [server_id, ...columns.map(column => formatValue(register[column]))].join(", "))
+  .join("), (");
+
+// =>
+
+let values = registers.map(register => 
+    [server_id, ...columns.map(column => formatValue(register[column]))])
+  .join("), (");
+
+/*
+- Testar se é válido. Não precisamos transformar o array interno em uma string
+- Não esquecer de testar para valores nulos
+- A principal diferença é que antes a formatação ficava "elemento1, elemento2, elemento3), ("
+- E depois da refatoração, não terá mais o espaço em branco separando os elementos, "elemento1,elemento2,elemento3), ("
+*/
+```
 
 ---
 
-- O que é a AWS?
-- s3
 
--
-
-```bash
-$git config --global -l
-fatal: unable to read config file '/home/luis/.gitconfig': Arquivo ou diretório inexistente
-```
-
-- `.join() em array de arrays`
     + em NULL
 - `.filter()`
 - `.includes()`
@@ -58,10 +72,12 @@ fatal: unable to read config file '/home/luis/.gitconfig': Arquivo ou diretório
 - **Exemplo Interessante (está incompleto. O código dele está no data-server)**
 
 ```JavaScript
-let columns = Object.keys(registers[0]).filter(key => validColumns.includes(key)); // .join() depois
-console.log(columns);
+// Seção de exemplos interessantes?
+const register = [{}, {}, {}]; // Array de objetos.
+
+let columns = Object.keys(registers[0]).filter(key => validColumns.includes(key));
+
 let values = registers.map(register => columns.map(column => register[column]));
-console.log(values);
 ```
 
 #

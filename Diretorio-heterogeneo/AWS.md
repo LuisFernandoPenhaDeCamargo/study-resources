@@ -1,9 +1,57 @@
 # AWS
 
+AWS (Amazon Web Services) é uma plataforma de serviços de computação em nuvem oferecida pela Amazon. Ela fornece uma ampla gama de serviços de computação, armazenamento, banco de dados, análise, aprendizado de máquina, Internet das Coisas (IoT), segurança, entre outros. Esses serviços permitem que empresas e desenvolvedores criem, implantem e gerenciem aplicativos e infraestruturas de maneira escalável e econômica.
+
+**Principais Serviços da AWS**
+
+1. **Computação:**
+    - **Amazon EC2 (Elastic Compute Cloud):** instâncias de máquinas virtuais para executar aplicações
+    - **AWS Lambda:** execução de código em resposta a eventos sem a necessidade de gerenciar servidores
+2. **Armazenamento:**
+    - **Amazon S3 (Simple Storage Service):** armazenamento de objetos com alta durabilidade e escabilidade
+    - **Amazon EBS (Elastic Block Store):** armazenamento em bloco para uso com instâncias do EC2
+3. **Banco de Dados:**
+    - **Amazon RDS (Relational Database Service):** banco de dados gerenciado para MySQL, PostgreSQL, Oracle, SQL Server, entre outros
+    - **Amazon DynamoDB:** banco de dados NoSQL rápido e flexível
+4. **Rede e entrega de conteúdo:**
+    - **Amazon VPC (Virtual Private Cloud):** rede isolada logicamente para provisionamento de recursos AWS
+    - **Amazon CloudFront:** rede de entrega de conteúdo (CDN) para distribuição rápida de conteúdo
+5. **Ferramentas de desenvolvimento:**
+    - **AWS CodePipeline:** serviço de entrega contínua para automação de pipelines de lançamento
+    - **AWS CodeBuild:** serviço de integração contínua para compilar código, executar testes e produzir pacotes de software prontos para implantação
+6. **Segurança, identidade e conformidade:**
+    - **AWS IAM (Identity and Access Management):** gerenciamento de usuários e permissões
+    - **AWS KMS (Key Management Service):** criação e controle de chaves de criptografia
+7. **Análise:**
+    - **Amazon Redshift:** data warehouse rápido e escalável
+    - **Amazon EMR (Elastic MapReduce):** processamento de grandes volumes de dados usando Hadoop, Spark, etc.
+8. **Aprendizado de máquina:**
+    - **Amazon SageMaker:** plataforma para construção, treinamento e implantação de modelos de machine learning
+9. **Internet das Coisas (IoT):**
+    - **AWS IoT Core:** conexão de dispositivos IoT à nuvem
+
+**Vantagens da AWS**
+
+- **Escalabilidade:** escala automaticamente de acordo com a demanda
+- **Confiabilidade:** alta disponibilidade e recuperação de desastres
+- **Segurança:** recursos robustos de segurança e conformidade
+- **Economia:** pague apenas pelo que usar, com modelos de preços flexíveis
+- **Variedade de serviços:** amplo conjunto de serviços para atender diversas necessidades de negócios e desenvolvedores
+
+**Casos de Uso Comuns**
+
+- Hospedagem de sites e aplicativos web
+- Armazenamento e backup de dados
+- Processamento e análise de grandes volumes de dados
+- Desenvolvimento e testes de software
+- Implementação de aplicativos de Internet das Coisas
+- Treinamento e implantação de modelos de aprendizado de máquina
+
 ### Sumário
 
 - [Amazon EC2](#amazon-ec2)
     + [Substituindo o Código em Execução no EC2](#amazon-ec2-substituindo-codigo-execucao-ec2)
+- [Amazon S3](#amazon-s3)
 - [AWS Secrets Manager](#aws-secrets-manager)
 
 # <a id="amazon-ec2"></a>Amazon EC2
@@ -165,6 +213,37 @@ $ docker push seu-id-de-conta.drk.ecr.regiao.amazonaws.com/seu-repo-ecr:latest
 - **Monitoramento:** implemente monitoramento e logging para detectar problemas rapidamente após a implantação
 
 Escolha o método que melhor se adapta à sua infraestrutura e necessidades operacionais. A automação através de pipelines CI/CD e o uso de containers são geralmente as melhores práticas para ambientes de produção.
+
+# <a id="amazon-s3"></a>Amazon S3
+
+O Amazon S3 (Simple Storage Service) é um serviço de armazenamento de objetos oferecido pela AWS. Ele fornece uma interface web simples que pode ser usada para armazenar e recuperar qualquer quantidade de dados a qualquer momento, de qualquer lugar na web. O S3 foi projetado para ser altamente escalável, durável e seguro, o que tonar uma escolha popular para uma ampla varidade de casos de uso, incluindo backup e recuperação, arquivamento, big data, computação em nuvem, e muito mais.
+
+**Principais Características**
+
+1. **Armazenamento de objetos:** o S3 armazena dados como objetos dentro de buckets. Um objeto consiste em dados, metadados e uma chave única
+2. **Buckets:** buckets são contêineres para objetos armazenados no S3. Cada objeto é identificado de forma exclusiva por uma chave dentro de um bucket
+3. **Escalabilidade e disponibilidade:** o S3 é projetado para fornecer 99.999999999 (11 9's) de durabilidade e 99.99% de disponibilidade dos objetos durante um determinado ano
+4. **Segurança:**
+    - Suporte para controle de acesso detalhado usando AWS IAM, listas de controle de acesso (ACLs), e políticas de bucket
+    - Suporte para criptografia de dados em repouso e trânsito
+5. **Gestão de ciclo de vida:** políticas para automatizar a migração de dados para classes de armazenamento de custo mais baixo à medida que envelhecem
+6. **Versão de objetos:** suporte para versionamento de objetos, permitindo manter múltiplas variantes de um objeto no mesmo bucket
+7. **Replicação entre regiões:** suporte para replicação de objetos entre buckets em diferentes regiões da AWS para aumentar a durabilidade e a disponibilidade
+8. **Classes de armazenamento:** várias classes de armazenamento para diferentes casos de uso e necessidades de custo:
+    - **S3 Standard:** para dados acessados com mais frequência
+    - **S3 Intelligent-Tiering:** move dados automaticamente entre duas camadas de acesso (frequente e infrequente)
+    - **S3 Standard-IA (Infrequent Access):** para dados acessados menos frequentemente, mas que precisam estar disponíveis frequentemente
+    - **S3 One Zone-IA:** similar ao Standard-IA, mas armazenado em uma única zona de disponibilidade
+    - **S3 Glacier e S3 Glacier Deep Archive:** para arquivamento de longo prazo com tempos de recuperação variáveis
+9. **:**
+
+**Exemplos de Casos de Uso**
+
+1. **Backup e recuperação:** armazenar backups de dados de forma segura e durável
+2. **Armazenamento e distribuição de conteúdo:** hospedar arquivos de mídia, como vídeos, imagens e documentos, com distribuição global através do Amazon CloudFront
+3. **Big Data e análise:** armazenar grandes volumes de dados para análise e processamento com serviços como Amazon EMR, AWS Glue, e Amazon RedShift
+4. **Arquivamento de dados:** arquivar dados antigos ou menos acessados usando S3 Glacier e S3 Glacier Deep Archive para redução de custos
+5. **Hospedagem de sites estáticos:** hospedar sites estáticos diretamente em buckets S3
 
 # <a id="aws-secrets-manager"></a>AWS Secrets Manager
 

@@ -79,7 +79,7 @@ Alguns linters também podem fornecer sugestões de correção ou formatação a
 
 # <a id="snapshot"></a>Snapshot
 
-Um "snapshot" em programação refere-se a um instantâneo ou imagem do estado de um sistema em um determinado momento. No contexto do Node.js, um "snapshot" é uma forma de otimização de desempenho que captura o estado inicial de uma aplicação e o salva para uso posterior durante a inicialização.
+Um "snapshot" em programação refere-se a **um instantâneo ou imagem do estado de um sistema em um determinado momento**. No contexto do Node.js, um "snapshot" é uma forma de otimização de desempenho que captura o estado inicial de uma aplicação e o salva para uso posterior durante a inicialização.
 
 Ao criar um snapshot, o Node.js registra o estado inicial da aplicação, incluindo o estado da memória, variáveis, funções, e outras estruturas de dados, em um formato otimizado. Este snapshot é então armazenado em um arquivo e pode ser usado para acelerar a inicialização da aplicação no futuro.
 

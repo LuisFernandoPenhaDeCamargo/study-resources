@@ -64,15 +64,19 @@ Este repositório tem como objetivo auxiliar o estudo de certas tecnologias rela
     + [Contexto: SO Utilizado](#contexto-so-utilizado)
     + [Projeto de Script de Configuração de Ambiente](#projeto-script-configuracao-ambiente)
 - **Git (Git.md):**
+    + [Contexto: SO Utilizado](#contexto-so-utilizado)
     + [Realizando o Merge de Uma Branch Local com Uma Branch do Repositório Remoto](#realizando-merge-branch-local-branch-repositorio-remoto)
         - [Resoluções de Conflito de Merge](#realizando-merge-branch-local-branch-repositorio-remoto-resolucoes-conflito-merge)
     + [Comandos Utilizados Através do CLI](#comandos-utilizados-cli)
         - [`diff $< nome da branch com a qual você quer comparar a branch atual >` ](#comandos-utilizados-cli-diff)
+        - [config --global -l](#comandos-utilizados-cli-config-global-l)
+- **:**
 - **Markdown (Markdown.md):** linguagem de marcação
     + [Quebra de Linha](#quebra-linha)
-- **AWS (AWS.md):**
+- **AWS (AWS.md):** plataforma de serviços de computação em nuvem oferecida pela Amazon
     + [Amazon EC2](#amazon-ec2)
         - [Substituindo o Código em Execução no EC2](#amazon-ec2-substituindo-codigo-execucao-ec2)
+    + [Amazon S3](#amazon-s3)
     + [AWS Secrets Manager](#aws-secrets-manager)
 - **Segurança (seguranca.md)**
     + [Técnicas de Ofuscação de Código](#tecnicas-ofuscacao-codigo)
@@ -283,10 +287,6 @@ Template de estrutura a tentar seguir em relação as anotações do conteúdo e
 
 # Estudar
 
-## Bash
-
-## JavaScript/Node.js/npm/nvm/PM2
-
 ## AWS
 
 - route53
@@ -336,6 +336,7 @@ Template de estrutura a tentar seguir em relação as anotações do conteúdo e
 # TODO
 
 - Talvez a seção "**Exemplos**" se torne um subtítulo
+- Talves eu queria um linter para JS
 - Refatorar, reorganizar o seguinte diretórios/arquivos:
     + **refatorar.md**
     + **Refatorar**

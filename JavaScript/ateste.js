@@ -1,13 +1,23 @@
-function isEven() {
-    // console.log("isEven()");
+const elements = ["Fire", "Air", "Water"];
+const elementsAndNullOrUndefined = ["Fire", , "Air", undefined, "Water", null];
+const arrayOfArrays = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
 
-    return !isOdd();
-}
+// Unindo elementos com vírgula.
+let result = elements.join();
 
-function isOdd() {
-    // console.log("isOdd()");
+console.log(result); // Output: Fire,Air,Water
 
-    return !isEven();
-}
+// Sem separador (string vazia).
+result = elements.join("");
 
-isEven();
+console.log(result); // Output: FireAirWater
+
+// Array com elementos vazios ou `undefined`.
+result = elementsAndNullOrUndefined.join("|");
+
+console.log(result); // Output: Fire||Water|
+
+// Array de arrays.
+result = arrayOfArrays.join("|");
+
+console.log(result); // Output: 

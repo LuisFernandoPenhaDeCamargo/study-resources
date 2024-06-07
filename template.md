@@ -31,21 +31,13 @@ Estrutura a se seguir em relação as anotações do conteúdo estudado.
 - ### Sumário
 
 + [Prático](#pratico)
-
-+ [Contexto: SO Utilizado](#contexto-so-utilizado) <!-- Novo formato do tópico. -->
-+ [Observações Sobre o Sistema Operacional](#observacoes-sistema-operacional) <!-- Antigo formato do tópico. -->
-
++ [Contexto: SO Utilizado](#contexto-so-utilizado)
 + [Instalação](#instalacao)
 + [Sistema Hierárquico de Arquivos](#sistema-hierarquico-arquivos)
-
-+ [Anotações](#anotacoes) <!-- Novo formato do tópico. -->
-+ [Anotações Não Alocadas](#anotacoes-nao-alocadas) <!-- Antigo formato do tópico. -->
-
++ [Anotações](#anotacoes)
 + [Arquivos Relacionados](#arquivos-relacionados)
 + [Erros Enfrentados](#erros-enfrentados)
-
-+ [Comandos Utilizados Através do CLI](#comandos-utilizados-cli) <!-- Novo formato do tópico. -->
-+ [Comandos](#comandos) <!-- Antigo formato do tópico. -->
++ [Comandos Utilizados Através do CLI](#comandos-utilizados-cli)
 
 - # <a id="pratico"></a>Prático
 - # <a id="contexto-so-utilizado"></a>Contexto: SO Utilizado
@@ -110,8 +102,9 @@ Existem alguns subtópicos comuns, abaixo segue a lista deles, observado que a l
 - **Exemplos Interessantes**
 - **Observações Interessantes**/**Observações Importantes**/**Considerações Importantes**
 
-- **Principais Características**
-- **conclusão**
++ **Principais Características**
++ **Exemplos de Casos de Uso** 
++ **conclusão**
 
 ## <a id="formatacao-documento-nomenclatura"></a>Nomenclatura
 

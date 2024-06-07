@@ -2,10 +2,22 @@
 
 ### Sumário
 
+- [Contexto: SO Utilizado](#contexto-so-utilizado)
 - [Realizando o Merge de Uma Branch Local com Uma Branch do Repositório Remoto](#realizando-merge-branch-local-branch-repositorio-remoto)
     + [Resoluções de Conflito de Merge](#realizando-merge-branch-local-branch-repositorio-remoto-resolucoes-conflito-merge)
 - [Comandos Utilizados Através do CLI](#comandos-utilizados-cli)
     + [`diff $< nome da branch com a qual você quer comparar a branch atual >` ](#comandos-utilizados-cli-diff)
+    + [config --global -l](#comandos-utilizados-cli-config-global-l)
+
+# <a id="contexto-so-utilizado"></a>Contexto: SO Utilizado
+
+```bash
+No LSB modules are available.
+Distributor ID:	Ubuntu
+Description:	Ubuntu 22.04.4 LTS
+Release:	22.04
+Codename:	jammy
+```
 
 # <a id="realizando-merge-branch-local-branch-repositorio-remoto"></a>Realizando o Merge de Uma Branch Local com Uma Branch do Repositório Remoto
 
@@ -72,6 +84,7 @@ Quando você encontra conflitos durante um merge, o Git marca as áreas conflita
 ### Sumário
 
 - [`diff $< nome da branch com a qual você quer comparar a branch atual >` ](#comandos-utilizados-cli-diff)
+- [config --global -l](#comandos-utilizados-cli-config-global-l)
 
 ## <a id="comandos-utilizados-cli-diff"></a>`git diff $< nome da branch com a qual você quer comparar a branch atual >`
 
@@ -82,3 +95,29 @@ $ git diff A
 ```
 
 Este comando mostrará todas as diferenças entre o estado atual da sua branch e o estado da branch A.
+
+## <a id=""></a>`git config --global -l`
+
+É utilizado para **exibir a lista de todas as configurações globais do Git para o usuário atual**. Essas configurações são armazenadas no arquivo **~/.gitconfig** e afetam todos os repositórios do usuário.
+
+**Saída Típica**
+
+A saída por incluir várias configurações, como:
+
+```bash
+user.name=Your Name
+user.email=youremail@example.com
+color.ui=auto
+core.editor=vim
+core.autocrlf=input
+credential.helper=cache
+```
+
+Aqui está uma breve explicação de algumas configurações comuns:
+
+- `user.name`**:** o nome do usuário configurado globalmente. Esse nome será usado em todos os commits
+- `user.email`**:** o e-mail do usuário configurado globalmente. Esse e-mail será usado em todos os commits
+- `color.ui`**:** configuração para colorir a saída do Git. `auto` habilita a colorização quando o terminal suporta
+- `core.editor`**:** o editor de texto padrão usado pelo Git. `vim` é um exemplo de um editor configurado
+- `core.autocrlf`**:** configuração para converter automaticamente finais de linha. `input` converte CRLF para LF ao fazer commit
+- `credential.helper`**:** configuração para cache de credenciais. `cache` armazena temporariamente as credenciais em memória
