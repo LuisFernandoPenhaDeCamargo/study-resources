@@ -16,6 +16,7 @@ Estrutura a se seguir em relação as anotações do conteúdo estudado.
 - [Formatação do Documento](#formatacao-documento)
     + [Código](#formatacao-documento-codigo)
     + [Subtópicos](#formatacao-documento-subtopicos)
+    + [Exemplos](#formatacao-documento-exemplos)
     + [Nomenclatura](#formatacao-documento-nomenclatura)
     + [Negrito](#formatacao-documento-negrito)
 - [Key Words](#formatacao-documento-key-words)
@@ -63,6 +64,7 @@ Codename:	jammy
 
 - [Código](#formatacao-documento-codigo)
 - [Subtópicos](#formatacao-documento-subtopicos)
+- [Exemplos](#formatacao-documento-exemplos)
 - [Nomenclatura](#formatacao-documento-nomenclatura)
 - [Negrito](#formatacao-documento-negrito)
 
@@ -84,27 +86,46 @@ Codename:	jammy
 
 ## <a id="formatacao-documento-subtopicos"></a>Subtópicos
 
-Existem alguns subtópicos comuns, abaixo segue a lista deles, observado que a lista segue a ordem na qual eles devem aparecer dentro de um tópico.
+Existem alguns subtópicos comuns, abaixo segue listas deles, observado que a lista segue a ordem na qual eles devem aparecer dentro de um tópico.
 
-- **Sintaxe Básica**
+- **Sintaxe Básica**/**Estrutura Básica**
     + Se o título do tópico já for a "**Sintaxe Básica**", não precisamos fornecer este subtópico
-    + **Parâmetros:**
-        - Pontuar se podem ser opcionais ou não
-        - Pontuar o seu tipo
-    + **Valor de Retorno:**
-    + **Como Funciona:**
-    + **Quando Usar:**
-    + **Benefícios:**
-- **Saída Típica**/**Saída Esperada**
-- Após o subtópico "**Saída Típica**/**Saída Esperada**", você pode fazer anotações sobre a utilidade do comando
+- **Parâmetros**
+    + Pontuar se podem ser opcionais ou não
+    + Pontuar o seu tipo
+- **Valor de Retorno**
+- **Como Funciona**
+- **Quando Usar**/**Vantagens de Usar**
+- **Saída Esperada**/**Saída Típica**
 - **Opções Comuns**
-- **Exemplos**
-- **Exemplos Interessantes**
-- **Observações Interessantes**/**Observações Importantes**/**Considerações Importantes**
+- **Considerações**/**Observações Interessantes**/**Observações Importantes**
+- **Conclusão**
+- `### Exemplos`
+- ### $< comparações de um tópico com outros >
+- `### Exemplos Interessantes`
 
-+ **Principais Características**
-+ **Exemplos de Casos de Uso** 
-+ **conclusão**
+---
+
+- `### Principais Características/Principais Funcionalidades e Características`
+- **Exemplos de Casos de Uso** 
+- **Conclusão**
+
+## <a id="formatacao-documento-exemplos"></a>Exemplos
+
+- O nome das variáveis deve estar em português, preferencialmente
+- O acento agudo será substituído pela letra "h", se for necessário para o entendimento
+- Para valores de nomes:
+    + `Alice`
+    + `Bob`
+    + `Charlie`
+- Para valores de idade:
+    + `25`
+- Para animais:
+    + Nome, `Buddy`
+    + Raça, `Golden Retriever`
+- Para carros:
+    + Fabricante, `Toyota`
+    + Modelo, `Corolla`
 
 ## <a id="formatacao-documento-nomenclatura"></a>Nomenclatura
 

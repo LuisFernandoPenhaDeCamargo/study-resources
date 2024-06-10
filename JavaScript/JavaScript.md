@@ -6,6 +6,8 @@
     + [Operador de negação (`!`)](#operadores-operador-negacao)
     + [`new`](#operadores-new)
     + [`typeof`](#operadores-typeof)
+    + [`instanceof`](#operadores-instanceof)
+    + [Spreed Operator (`...`)](#operadores-spreed-operator)
 - [Objetos](#objetos)
     + [Definindo Métodos em Objetos](#objetos-definindo-metodos-objetos)
     + [`Object`](#objetos-object)
@@ -13,25 +15,35 @@
         - [`.keys()`](#objetos-object-keys)
         - [`.toString()`](#objetos-object-tostring)
         - [`.prototype.toString.call()`](#objetos-object-prototype-tostring-call)
+    + [`String`]()
+        - [`.includes()`](#objetos-string-includes)
     + [`Array`](#objetos-array)
         - [`.isArray()`](#objetos-array-isarray)
         - [`.every()`](#objetos-array-every)
         - [`.forEach()`](#objetos-array-foreach)
         - [`.map()`](#objetos-array-map)
         - [`.push()`](#objetos-array-push)
+        - [`.unshift`](#objetos-array-unshift)
+        - [`.filter()`](#objetos-array-filter)
+        - [`.includes()`](#objetos-array-includes)
         - [`.join()`](#objetos-array-join)
     + [`error`](#objetos-error)
     + [`Date`](#objetos-date)
+- [`return`](#return)
+    + [Shorthand Property Names Syntax](#return-shorthand-property-names-syntax)
 - [Função de Flecha](#funcao-flecha)
 - [Closures](#closures)
+- [Desestruturação](#desestruturacao)
+- [Shallow Copy e Deep Copy](#shallow-copy-deep-copy)
+- [`static get`](#static-get)
 - [`async` e `await`](#async-await)
 - [Importação e Exportação](#importacao-exportacao)
     + [CommonJS](#importacao-exportacao-commonjs)
     + [ES6](#importacao-exportacao-es6)
     + [CommonJS x ES6](#importacao-exportacao-commonjs-x-es6)
-- [Época Unix](#epoca-unix)
 - [ES6](#es6)
 - [CommonJS x ES6](#commonjs-x-es6)
+- [Época Unix](#epoca-unix)
 
 # <a id="operadores"></a>Operadores
 
@@ -42,6 +54,8 @@ Os operadores em JavaScript são símbolos ou palavras-chave que realizam opera�
 - [Operador de negação (`!`)](#operadores-operador-negacao)
 - [`new`](#operadores-new)
 - [`typeof`](#operadores-typeof)
+- [`instanceof`](#operadores-instanceof)
+- [Spreed Operator (`...`)](#operadores-spreed-operator)
 
 ## <a id="operadores-operador-negacao"></a>Operador de negação (`!`)
 
@@ -126,9 +140,10 @@ Sem o uso do `this`, os argumentos são visíveis no escopo da função `Pessoa(
 
 ## <a id="operadores-typeof"></a>`typeof`
 
-`typeof` é usado para determinar o tipo de dado de um valor, variável ou expressão. O operador `typeof` é uma palavra-chave da linguagem JavaScript e retorna uma string representando o tipo do operando.
+- É utilizado para **determinar o tipo de dado de um valor, variável ou expressão**
+- É uma palavra-chave da linguagem JavaScript e **retorna uma string** representando o tipo do operando
 
-**Exemplos**
+### Exemplos
 
 ```JavaScript
 console.log(typeof 42);              // Output: number
@@ -141,12 +156,159 @@ console.log(typeof undefined);       // Output: undefined
 console.log(typeof null);            // Output: object. (um erro conhecido em JavaScript, o tipo real de null é "object").
 ```
 
+## <a id="operadores-instanceof"></a>`instanceof`
+
+É utilizado para **verificar se um objeto é uma instância de uma classe (ou função construtora) específica**. Ele percorre a cadeia de protótipos do objeto para determinar se ele foi criado a partir da função construtora ou classe especificada.
+
+**Sintaxe Básica**
+
+```JavaScript
+objeto instanceof Construtor
+```
+
+- `objeto`**:** é o objeto que você está verificando
+- `Construtor`**:** é a função construtora ou classe contra a qual você está verificando
+
+**Considerações**
+
+1. **Cadeia de protótipos:** `instanceof` verifica a cadeia de protótipos do objeto. Se o protótipo de `Construtor` aparece em qualquer lugar na cadeia de protótipos de `objeto`, `instanceof` retorna `true`
+2. **Objetos e funções: qualquer objeto em JavaScript é uma instância de** `Object`, então `objeto instanceof Object` retorna `true` para qualquer objeto
+3. **Subclasses:** `instanceof` também funciona com classes herdadas, verificando corretamente a instância em relação a toda a hierarquia de classes
+4. **Problemas de ambiente:** se você tiver múltiplos contextos globais (por exemplo, múltiplos frames em um navegador), objetos criados em um contexto não serão reconhecidos como instâncias de funções construtoras do outros contexto
+
+### Exemplos
+
+- `instanceof` **com arrays**
+
+```JavaScript
+const numeros = [1, 2, 3];
+
+console.log(numeros instanceof Array);  // Output: true
+console.log(numeros instanceof Object); // Output: true
+```
+
+- `instanceof` **com funções construtoras**
+
+```JavaScript
+function Carro(fabricante, modelo) {
+    this.fabricante = fabricante;
+    this.modelo = modelo;
+}
+
+const meuCarro = new Carro("Toyota", "Corolla");
+
+console.log(meuCarro instanceof Carro);  // Output: true
+console.log(meuCarro instanceof Object); // Output: true
+```
+
+- `instanceof` **com classes**
+
+```JavaScript
+class Animal {
+    constructor(nome) {
+        this.nome = nome;
+    }
+}
+
+class Cachorro extends Animal {
+    constructor(nome, raca) {
+        super(name);
+        this.raca = raca;
+    }
+}
+
+const meuCachorro = new Cachorro("Buddy", "Golden Retriever");
+
+console.log(meuCachorro instanceof Cachorro); // Output: true
+console.log(meuCachorro instanceof Animal);   // Output: true
+console.log(meuCachorro instanceof Object);   // Output: true
+```
+
+### Comparação com `typeof`
+
+O operador `typeof` retorna uma string indicando o tipo do operando, mas **não verifica a cadeia de protótipos**, tornando-o menos útil para verificar a instância de objeto complexos.
+
+```JavaScript
+console.log(typeof numeros);     // Output: object
+console.log(typeof meuCarro);    // Output: object
+console.log(typeof meuCachorro); // Output: object
+```
+
+Enquanto `typeof` é útil para verificar tipos primitivos, `instanceof` é mais útil para verificar se um objeto é uma instância de uma função construtora ou classe específica.
+
+## <a id="operadores-spreed-operator"></a>Spreed Operator (`...`)
+
+- O operador de espalhamento (spread operator) é representando por três pontos
+- Ele permite que um iterable (como um array ou objeto) seja expandido em locais onde múltiplos elementos ou parâmetros são esperados
+- Ele é utilizado para copiar, concatenar, combinar ou manipular arrays e objetos de forma mais concisa e legível
+- Ele cria uma cópia superficial (shallow copy) do objeto ou array que está sendo espalhado
+
+### Arrays
+
+```JavaScript
+const array1 = [1, 2, 3];
+const array2 = [4, 5, 6];
+
+// Copiar arrays.
+const copiaArray1 = [...array1];
+
+console.log(copiaArray1); // Output: [ 1, 2, 3]
+
+// Concatenar arrays.
+const arrayConcatenado = [...array1, ...array2];
+
+console.log(arrayConcatenado); // Output: [ 1, 2, 3, 4, 5, 6]
+
+// Passando elementos de um array como argumentos de função.
+console.log(Math.max(...array1)); // Output: 3
+```
+
+### Objetos
+
+```JavaScript
+const objeto1 = { a: 1, b: 2 };
+const objeto2 = { c: 3, d: 4 };
+
+// Copiar objetos.
+const copiaObjeto1 = { ...objeto1 }
+
+console.log(copiaObjeto1); // Output: { a: 1, b: 2 }
+
+// Combinar objetos.
+const objetoCombinado = { ...objeto1, ...objeto2 };
+
+console.log(objetoCombinado); // Output: { a: 1, b: 2, c: 3, d: 4 }
+
+// Adicionar ou substituir propriedades em objetos.
+const objeto3 = { ...objeto1, b: 3, c: 4 };
+
+console.log(objeto3); // Output: { a: 1, b: 3, c: 4};
+```
+
+### Exemplos
+
+```JavaScript
+// Funções com múltiplos parâmetros.
+function soma(x, y, z) {
+    return x + y + z;
+}
+
+const numeros = [1, 2, 3];
+
+console.log(soma(...numeros)); // Output: 6
+
+// Uso em JSX (React).
+const propriedades = { nome: "Alice", idade: 25 };
+const componente = <Component {...propriedades} />;
+```
+
 # <a id="objetos"></a>Objetos
 
 ### Sumário
 
 - [Definindo Métodos em Objetos](#objetos-definindo-metodos-objetos)
 - [`Object`](#objetos-object)
+- [`String`](#objetos-string)
 - [`Array`](#objetos-array)
 - [`error`](#objetos-error)
 - [`Date`](#objetos-date)
@@ -556,6 +718,36 @@ Essa técnica é útil porque `typeof` não é suficiente para distinguir entre 
 
 Se você fizer `Object.prototype.toString().call(obj)`, você está chamando `.toString()` imediatamente no protótipo do objeto, o que retornaria a string "`[object Object]`". Então, você tentaria chamar `.call()` na string resultante, o que resultaria em um erro, porque strings não têm um método `.call()`.
 
+## <a id="#objetos-string"></a>`String`
+
+### Sumário
+
+- [`.includes()`](#objetos-string-includes)
+
+### <a id="objetos-string-includes"></a>`.includes()`
+
+É utilizado para determinar se um string contém um determinado valor entre seus caracteres. Ele retorna `true` se o valor for encontrado e `false` caso contrário.
+
+```JavaScript
+string.includes(searchString[, position]);
+```
+
+- **Parâmetros:**
+    - `searchString`**:** a string que você está procurando
+    - `position` **(opcional):** a posição na string em que a busca começa. O padrão é 0
+
+**Exemplos**
+
+```JavaScript
+let text = "Hello, world!";
+
+// Verificando se uma string contém uma substring.
+console.log("world"); // Output: true
+
+// Especificando a posição  a partir da qual a busca deve começar.
+console.log("world", 5); // Output: true
+```
+
 ## <a id="objetos-array"></a>`Array`
 
 ### Sumário
@@ -565,6 +757,9 @@ Se você fizer `Object.prototype.toString().call(obj)`, você está chamando `.t
 - [`.forEach()`](#objetos-array-foreach)
 - [`.map()`](#objetos-array-map)
 - [`.push()`](#objetos-array-push)
+- [`.unshift`](#objetos-array-unshift)
+- [`.filter()`](#objetos-array-filter)
+- [`.includes()`](#objetos-array-includes)
 - [`.join()`](#objetos-array-join)
 
 ### <a id="objetos-array-isarray"></a>`.isArray()`
@@ -858,6 +1053,65 @@ console.log(array1); // Output: [ 1, 2, 3, 4, 5, 6 ]
 console.log(array2); // Output: [ 4, 5, 6 ]
 ```
 
+### <a id="objetos-array-unshift"></a>`.unshift()`
+
+É utilizado para **adicionar um ou mais elementos ao ínicio do array e retorna o novo comprimento do array**.
+
+**Sintaxe Básica**
+
+```JavaScript
+array.unshift(elemento1, elemento2, ...);
+```
+
+- `elemento1`**:** o elemento a ser adicionado no índice 0 do array;
+- `elemento2`**:** o elemento a ser adicionado no índice 1 do array;
+
+### <a id="objetos-array-filter"></a>`.filter()`
+
+É utilizado para **criar um novo array com todos os elementos que passam no teste implementado pela função fornecida**. É uma maneira eficiente de filtrar itens de um array com base em condições específicas.
+
+**Sintaxe Básica**
+
+```JavaScript
+array.filter(callback(element[, index[, array]])[, thisArg]);
+```
+
+- **Parâmetros:**
+    + `callback`**:** função que é chamada para cada elemento no array
+        - `element`**:** o elemento atual que está sendo processado no array
+        - `index` **(opcional):** o índice do elemento atual que está sendo processado no array
+        - `array` **(opcional):** o array ao qual o método `.filter()` foi chamado
+    + `thisArg` **(opcional):** valor a ser usado como `this` quando executa a `callback()`
+
+**Exemplos**
+
+```JavaScript
+let people = [
+    { name: "Alice", age: 17 },
+    { name: "Bob", age: 22 },
+    { name: "Charlie", age: 16 },
+    { name: "David", age: 19 },
+];
+
+let adults = people.filter(person => {
+    return person.age > 18;
+});
+
+console.log(adults); // Output: [{ name: 'Bob', age: 22 }, { name: 'David', age: 19 }]
+```
+
+### <a id="objetos-array-includes"></a>`.includes()`
+
+É utilizado para determinar se um array contém um determinado valor entre seus elementos. Ele retorna `true` se o valor for encontrado e `false` caso contrário.
+
+```JavaScript
+array.includes(valueToFind[, fromIndex]);
+```
+
+- **Parâmetros:**
+    - `valueToFind`**:** o valor que você está procurando
+    - `fromIndex` **(opcional):** a posição no array em que a busca começa. O padrão é 0
+
 ### <a id="objetos-array-join"></a>`.join()`
 
 É utilizado para **unir todos os elementos de um array em uma única string**. Um separador especificado é inserido entre os elementos no resultado final. Se nenhum separador for especificado, uma vírgula será usada por padrão.
@@ -891,6 +1145,7 @@ console.log(result); // Output: FireAirWater
 /*
 Array com elementos vazios ou `undefined`.
 
+- O `.join()` substitui valores `undefined`/`null` por "espaços vazios" (como visto na saída abaixo)
 */
 result = elementsAndNullOrUndefined.join("|");
 
@@ -903,7 +1158,7 @@ Array de arrays.
 */
 result = arrayOfArrays.join("|");
 
-console.log(result); // Output: 1,2,3|4,5,6|7,8,9 // <-- JS refat READ template
+console.log(result); // Output: 1,2,3|4,5,6|7,8,9
 ```
 
 ## <a id="objetos-error"></a>`error`
@@ -965,6 +1220,77 @@ console.log(data.toISOString());    // Formato ISO 8601: "2024-05-08T12:00:00.00
 
 O objeto `Date` em JavaScript pode ser bastatente flexível e poderoso para lidar com manipulação de datas e horas, mas também pode ser complicado de usar em alguns casos. Por isso, é sempre útil consultar a documentação oficial da Mozilla Developer Network (MDN) ou outras fontes confiáveis para obter mais informações sobre o objeto `Date` e suas funcionalidades.
 
+# <a id="return"></a>`return`
+
+Em JavaScript, uma função não pode retornar diretamente dois valores separados, como em algumas outras linguagens que suportam tuplas (como Python). No entanto, você pode retornar múltiplos valores usando um array ou um objeto.
+
+**Usando um Array**
+
+Se a ordem dos valores é importante e você deseja retornar múltiplos valores, você pode usar um array:
+
+```JavaScript
+function getCoordinates() {
+    let x = 10;
+    let y = 20;
+    return [x, y];
+}
+
+let [x, y] = getCoordinates();
+
+console.log(x); // Output: 10
+console.log(y); // Output: 20
+```
+
+**Usando um Objeto**
+
+Se você deseja retornar múltiplos valores com mais clareza sobre o que cada valor representa, você pode usar um objeto:
+
+```JavaScript
+function getCoordinates() {
+    let x = 10;
+    let y = 20;
+    return { x: x, y: y};
+}
+
+let coordinates = getCoordinates();
+
+console.log(coordinates.x); // Output: 10
+console.log(coordinates.y); // Output: 20
+```
+
+**Vantagens e Desvantagens**
+
+- **Array:**
+    + **Vantangens:** simplicidade e menor uso de memória em alguns casos
+    + **Desvantagens:** pode ser menos claro, especialmente se a função retornar muitos valores ou valores que não têm uma ordem óbvia
+- **Objeto:**
+    + **Vantangens:** mais claro e legível, especialmente quando retornando múltiplos valores com significados distintos
+    + **Desvantagens:** uso ligeiramente maior de memória devido aos nomes das propriedades
+
+## <a id="return-shorthand-property-names-syntax"></a>Shorthand Property Names Syntax
+
+Você pode retornar um objeto utilizando a shorthand property names syntax em JavaScript, onde os nomes das propriedades são iguais aos nomes das variáveis.
+
+```JavaScript
+function getDatabaseInfo() {
+    let columns = ["id", "name", "age"];
+    let values = [
+        [1, "Alice", 30],
+        [2, "Bob", 25],
+        [3, "Charlie", 35],
+    ];
+
+    return { columns, values };
+}
+
+let databaseInfo = getDatabaseInfo();
+
+console.log(databaseInfo.columns); // Output: [ 'id', 'name', 'age' ]
+console.log(databaseInfo.values);  // Output: [ [ 1, 'Alice', 30 ], [ 2, 'Bob', 25 ], [ 3, 'Charlie', 35 ] ]
+```
+
+Neste exemplo, `return { columns, values };` é uma forma abreviada de escrever `return { columns: columns, values: values };`. Quando o nome da variável é o mesmo que o nome da propriedade, você pode usar a forma curta (shorthand property names syntax).
+
 # <a id="funcao-flecha"></a>Função de Flecha
 
 **Funções de flecha de uma linha retornam implicitamente o resultado da expressão após a seta. Funções de seta de mais de uma linha (quando o seu corpo está envolvido por chaves, quando seu escopo está especificado) retornam** `undefined` **implicitamente, quando você não define o retorno explicitamente**.
@@ -1019,6 +1345,180 @@ console.log(increment()); // Output: 1
 console.log(increment()); // Output: 2
 console.log(increment()); // Output: 3
 ```
+
+# <a id="desestruturacao"></a>Desestruturação
+
+Destruturacao é uma característica do JavaScript que permite **extrair valores de arrays ou propriedades de objetos em variáveis distintas**. Isso torna o código mais conciso e legível.
+
+### Desestruturação de Arrays
+
+A desestruturação de arrays permite extrair valores dos arrays e atribuí-los a variáveis individuais.
+
+```JavaScript
+const array = [1, 2, 3, 4];
+
+// Sem desestruturação.
+const a = array[0];
+const b = array[1];
+
+// Com desestruturação
+const [x, y] = array;
+
+console.log(a, b); // Output: 1 2
+console.log(x, y); // Output: 1 2
+
+// Ignorando elementos.
+const [first, , third] = array;
+console.log(first, third); // Output: 1, 3
+
+// Usando o operador rest para capturar o restante dos elementos.
+const [head, ...tail] = array;
+
+console.log(head); // Output: 1
+console.log(tail); // Output: [ 2, 3, 4 ]
+```
+
+### Destruturação de Objetos
+
+A destruturação de objetos permite extrair propriedades de objetos e atribuí-las a variáveis.
+
+```JavaScript
+const objeto = { nome: "Alice", idade: 25, cidade: "Wonderland" };
+
+// Sem desestruturação.
+const nome1  = objeto.nome;
+const idade1 = objeto.idade;
+
+// Com desestruturação.
+const { nome, idade }  = objeto;
+
+console.log(nome1, idade1); // Output: Alice 25
+console.log(nome, idade);   // Output: Alice 25
+
+// Usando um nome de variável diferente.
+const { nome: nomePessoa, idade: idadePessoa } = objeto;
+
+console.log(nomePessoa, idadePessoa); // Output: Alice 25
+// console.log(nome, idade); geraria um erro de referência, se não fosse pela declaração no exemplo "Com desestruturação", pois o nome das variáveis declaradas "neste" exemplo é `nomePessoa` e `idadePessoa`.
+
+// Valores padrão.
+const { paihs = "Unknown" } = objeto;
+
+console.log(paihs); // Output: Unknown
+
+// Usando o operador rest para capturar o restante das propriedades.
+const { nome: n, ...rest } = objeto;
+
+console.log(n);    // Output: Alice
+console.log(rest); // Output: { idade: 25, cidade: 'Wonderland' }
+```
+
+### Desestruturação em Parâmetros de Função
+
+A desestruturação também pode ser usada diretamente nos parâmetros das funções.
+
+```JavaScript
+const pessoa = {
+    nome: "Alice",
+    idade: 25,
+    cidade: "Wonderland",
+};
+
+// Função com desestruturação no parâmetro.
+function saudacao({ nome, idade }) {
+    console.log(`Hello, my name is ${nome} and I am ${idade} years old.`);
+}
+
+saudacao(pessoa); // Output: Hello, my name is Alice anda I am 25 years old.
+```
+
+### Desestruturação Aninhada
+
+Também é possível fazer desestruturação aninhada para arrays e objetos dentro de objetos.
+
+```JavaScript
+const usuario = {
+    id: 1,
+    nome: "Alice",
+    endereco: {
+        rua: "123 Main St",
+        cidade: "Wonderland",
+    },
+};
+
+const { nome, endereco: { rua, cidade } } = usuario;
+
+console.log(nome);   // Output: Alice
+console.log(rua);    // Output: 123 Main St
+console.log(cidade); // Output: Wonderland
+```
+
+### Benefícios da Desestruturação
+
+- **Clareza e concisão:** reduz a verbosidade e melhora a legibilidade do código
+- **Acessibilidade direta:** permite o acesso direto aos valores sem a necessidade de referências adicionais
+- **Flexibilidade:** facilita a extração de dados de estruturas complexas
+
+# <a id="shallow-copy-deep-copy"></a>Shallow Copy e Deep Copy
+
+### Shallow Copy
+
+A Cópia Rasa (Shallow Copy) é uma cópia de um objeto em que os campos que contêm referências para outros objetos apontam para os mesmos objetos referenciados pelo original. Em outras palavras, a shallow copy copia os valores dos atributos do objeto original para o novo objeto, mas não faz uma cópia profunda dos objetos referenciados.
+
+```JavaScript
+const original = { a: 1, b: { c: 2 } };
+const copia = { ...original };
+
+console.log(copia);        // Output: { a: 1, b: { c: 2 } }
+
+copia.a = 3;
+
+console.log(original.a);   // Output: 1. Valor primitivo não é afetado.
+
+copia.b.c = 4;
+
+console.log(original.b.c); // Output: 4. Objeto referenciado é afetado.
+```
+
+Ou seja:
+
+- A shallow copy cópia os **valores primitivos diretamente**
+- A shallow copy cópia objetos aninhados por referência. Isso significa que **modificações em objetos aninhados afetam o original**
+
+### Deep Copy
+
+Em contraste com a shallow copy, a Cópia Profunda (Deep Copy) envolve a criação de cópias reais dos objetos referenciados, de modo que as alterações em um objeto copiado não afetam o objeto original. Em JavaScript, uma deep copy pode ser feita usando bibliotecas como Lodash (`_.cloneDeep()`) ou métodos customizados.
+
+# <a id="static-get"></a>`static get`
+
+A sintaxe `static get` é usada em JavaScript dentro de uma classe para definir um método getter estático. Getter estáticos são métodos que são chamados na própria classe, em vez de serem chamados nas instâncias da classe.
+
+**Estrutura Básica**
+
+```JavaScript
+class MinhaClasse {
+    static get minhaPropriedadeEstatica() {
+        return "This is a static property";
+    }
+}
+
+console.log(MinhaClasse.minhaPropriedadeEstatica); // Output: This is a static property
+```
+
+**Vantagens de Uso**
+
+1. **Centralização de configurações:** permite centralizar configurações ou constantes que são acessadas diretamente na classe
+2. **Facilidade de acesso:** simplifica o acesso a valores que não dependem do estado da instância
+3. **Imutabilidade:** como são estáticos e geralmente não possuem setters correspondentes, são imutáveis, fornecendo segurança adicional ao seu código
+
+**Considerações**
+
+- **Métodos estáticos em JavaScript**
+    + **Estático:** um método ou propriedade que pertence à classe em si, não a uma instância específica da classe. Isso significa que ele é acessível a partir do contexto da classe e não precisa de uma instância pra ser chamado  
+        Observe que como pertence a classe em si, ele não pertence a uma instância, mas é compartilhado entre todas as instâncias. Isso é útil para valores constantes, configurações, ou qualquer outro recurso que deva ser acessível globalmente a partir da classe.
+    + **Getter estático:** um método que funciona como um getter, mas é definido como estático, retornando uma propriedade da classe
+- **Por que não precisamos de parênteses:** 
+
 
 # <a id="async-await"></a>`async` e `await`
 
@@ -1239,12 +1739,6 @@ const { nome } = require("./module.mjs");
 console.log(nome); // Output: Maria
 ```
 
-# <a id="epoca-unix"></a>Época Unix
-
-É um padrão comum para muitas linguagens de programação que as suas bibliotecas representem o tempo como um número em milissegundos decorridos desde um ponto de referência específico, como a Época Unix, para a biblioteca `moment` do JavaScript.
-
-A Época Unix é o marco zero do sistema de tempo Unix, também é conhecida como "marco zero do calendário Unix", e é definida como primeiro de janeiro de 1970, 00:00:00 UTC. O `moment` realiza a conversão da data para milissegundos a partir da Época Unix.
-
 # <a id="es6"></a>ES6
 
 Os módulos ES6, também conhecidos como ECMAScripts Modules (ESM), foram introduzidos no Node.js de forma experimental a partir da versão 8.5.0, lançada em setembro de 2017. No entanto, foi apenas a partir da versão 12.0.0, lançada em abril de 2019, que o suporte a módulos ES6 começou a ser estável. O suporte completo e estável para módulos ES6 foi oficializado na versão 14.0.0, lançada em abril de 2020.
@@ -1295,3 +1789,9 @@ Ambos os métodos permitem o uso dos recurso do ES6. Se precisar de interoperabi
 Se seu arquivo tem a extensão **.js**, ele será tratado como um módulo CommonJS por padrão. Para usar a sintaxe de módulos ES6 (ESM) em arquivos **.js**, você precisa especificar "`"type": "module"`" no seu **package.json**. Caso contrário, você deve usar a extensão **.mjs** para que o Node.js reconheça or arquivos como módulos ES6.
 
 Caso você use a chave "`"type": "module"`" no seu **package.json**, os arquivos **.js** serão tratados como módulos ES6 e os arquivos **.cjs** são tratados como módulos CommonJS.
+
+# <a id="epoca-unix"></a>Época Unix
+
+É um padrão comum para muitas linguagens de programação que as suas bibliotecas representem o tempo como um número em milissegundos decorridos desde um ponto de referência específico, como a Época Unix, para a biblioteca `moment` do JavaScript.
+
+A Época Unix é o marco zero do sistema de tempo Unix, também é conhecida como "marco zero do calendário Unix", e é definida como primeiro de janeiro de 1970, 00:00:00 UTC. O `moment` realiza a conversão da data para milissegundos a partir da Época Unix.

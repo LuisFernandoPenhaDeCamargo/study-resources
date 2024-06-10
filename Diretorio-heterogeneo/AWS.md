@@ -53,6 +53,7 @@ AWS (Amazon Web Services) é uma plataforma de serviços de computação em nuve
     + [Substituindo o Código em Execução no EC2](#amazon-ec2-substituindo-codigo-execucao-ec2)
 - [Amazon S3](#amazon-s3)
 - [AWS Secrets Manager](#aws-secrets-manager)
+- [AWS KMS x AWS Secrets Manager](#aws-kms-x-aws-secrets-manager)
 
 # <a id="amazon-ec2"></a>Amazon EC2
 
@@ -259,3 +260,53 @@ Aqui estão algumas características e funcionalidades chave do AWS Secrets Mana
 6. **Versionamento:** o Secrets Manager suporta o versionamento de segredos, permitindo que você armazene várias versões de um segredo e recupere versões específicas conforme necessário
 
 No geral, o AWS Secrets Manager simplifica o gerenciamento de informações sensíveis e ajuda a melhorar a segurança, reduzindo o risco de acesso não autorizado ou exposição.
+
+# <a id="aws-kms-x-aws-secrets-manager"></a>AWS KMS x AWS Secrets Manager
+
+O AWS KMS (AWS Key Management Service) e o AWS Secrets Manager são serviços diferentes oferecidos pela AWS, embora ambos estejam relacionados à segurança e ao gerenciamento de informações sensíveis. Aqui está a visão geral de cada um:
+
+### AWS KMS
+
+É um serviço gerenciado que facilita a criação e o controle de chaves de criptografia usadas para proteger dados. O KMS é projetado para gerenciar chaves de criptografia e controlar o uso de criptografia em um ambiente seguro.
+
+**Principais Funcionalidades**
+
+- **Criação e gerenciamento de chaves:** permite criar, gerenciar e excluir chaves de criptografia
+- **Criptografia e descriptografia:** permite criptografar e descriptografar dados com essas chaves
+- **Integração com outros serviços AWS:** pode ser usado com outros serviços AWS, como S3, EBS, RDS, e Lambda, para criptografas dados
+- **Controle de acesso:** implementa políticas detalhadas para controlar quem pode usar as chaves e como elas podem ser usadas
+
+**Casos de Uso**
+
+- Criptografia de dados em repouso
+- Controle de acesso rigoroso a chaves de criptografia
+- Integração de segurança com outros serviços AWS
+
+### AWS Secrets Manager
+
+É um serviço que ajuda a proteger o acesso a aplicativos, serviços e recursos de TI sem a necessidade de codificar informações confidenciais em texto plano. Ele permite gerenciar, recuperar e rotacionar credenciais de banco de dados, chaves de API, e outros segredos.
+
+**Principais Funcionalidades**
+
+- **Gerenciamento de segredos:** armazena e gerencia credenciais e outras informações sensíveis
+- **Rotação automática de segredos:** pode configurar a rotação automática das credenciais para segurança adicional
+- **Acesso seguro:** permite que aplicativos e serviços recuperem segredos de forma programática usando chamadas de API
+- **Integração com AWS IAM:** controla o acesso aos segredos usando políticas do AWS IAM
+
+**Casos de Uso**
+
+- Armazenamento seguro de credenciais de banco de dados e chaves de API
+- Rotação automática de senhas e outros segredos
+- Recuperação programática de segredos por aplicativos em execução
+
+### Principais Diferenças
+
+- **Objetivo principal:**
+    + **KMS:** focado na criptografia e gerenciamento de chaves criptográficas
+    + **Secrets Manager:** focado no gerenciamento e acesso seguro a segredos como credenciais, senhas e chaves API
+- **Casos de uso:**
+    + **KMS:** ideal para criptografas dados em repouso e gerenciar chaves criptográficas usadas para criptografia
+    + **Secrets Manager:** ideal para armazenar, gerenciar e acessar segredos usados por aplicativos e serviços
+- **Funcionalidades:**
+    + **KMS:** fornece APIs para operações de criptografia e descriptografia
+    + **Secrets Manager:** fornece APIs para armazenar, recuperar e rotacionar segredos

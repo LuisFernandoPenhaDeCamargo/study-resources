@@ -5,26 +5,18 @@
 
 ---
 
-- O AWS KMS e o AWS Secrets são a mesma coisa?
-- `const AWS = require("aws-sdk")`
-- `AWS.config`
-- `AWS.config.update()`
-- `new AWS.IAM()`
-    + chave "`apiVersion`"
-- `new AWS.S3()`
-- `new AWS.Endpoint()`
-- `static get $< nome do Objeto, string, recurso >`
+- `require("util")`
+- `.promisify()`
+- `.stringify()`
+- `.bind()` (`.getUser()`)
+- IAM
 - Atributos das "policies" (políticas)
     + `Sid`
     + `Action`
     + `Effect`
     + `Resource`
-- `require("util")`
-- `.promisify()`
 - `.getUser()`
-    + `.bind()`
 - `.createUser`
-- `.stringify()`
 - `.addUserToGroup()`
 - `.getPolicyVersion()`
 - `.createPolicyVersion()`
@@ -56,28 +48,6 @@ let values = registers.map(register =>
 - A principal diferença é que antes a formatação ficava "elemento1, elemento2, elemento3), ("
 - E depois da refatoração, não terá mais o espaço em branco separando os elementos, "elemento1,elemento2,elemento3), ("
 */
-```
-
----
-
-
-    + em NULL
-- `.filter()`
-- `.includes()`
-- `return` retornando dois valores
-- `.unshift()`
-- Operador de espalhamento (spread operator)
-- Destruturação
-- Operador instanceof
-- **Exemplo Interessante (está incompleto. O código dele está no data-server)**
-
-```JavaScript
-// Seção de exemplos interessantes?
-const register = [{}, {}, {}]; // Array de objetos.
-
-let columns = Object.keys(registers[0]).filter(key => validColumns.includes(key));
-
-let values = registers.map(register => columns.map(column => register[column]));
 ```
 
 #
