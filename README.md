@@ -225,6 +225,8 @@ Este repositório tem como objetivo auxiliar o estudo de certas tecnologias rela
         - [`AWS.config.update()`](#aws-config-update)
         - [chave `apiVersion`](#chave-apiversion)
         - [`new AWS.IAM()`](#new-aws-iam)
+        - [Atributos das Declarações](#atributos-declaracoes)
+        - [`iam.getUser()`](#iam-getuser)
         - [`new AWS.S3()`](#new-aws-s3)
         - [`new AWS.ENDPOINT()`](#new-aws-endpoint)
 - **./Pacotes**

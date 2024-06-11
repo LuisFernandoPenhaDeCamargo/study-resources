@@ -18,6 +18,7 @@
 - [chave `apiVersion`](#chave-apiversion)
 - [`new AWS.IAM()`](#new-aws-iam)
 - [Atributos das Declarações](#atributos-declaracoes)
+- [`iam.getUser()`](#iam-getuser)
 - [`new AWS.S3()`](#new-aws-s3)
 - [`new AWS.ENDPOINT()`](#new-aws-endpoint)
 
@@ -120,7 +121,7 @@ Usar a chave `apiVersion` é uma prática recomendada para garantir que seu cód
 
 # <a id="new-aws-iam"></a>`new AWS.IAM()`
 
-É utilizado para **criar uma nova instância do serviço AWS IAM**. Com o SDK você pode programaticamente criar, ler, atualizar e excluir recursos IAM, como usários, grupos, políticas e funções.
+É utilizado para **criar uma nova instância do serviço AWS IAM**. Com o SDK você pode programaticamente criar, ler, atualizar e excluir recursos IAM, como usuários, grupos, políticas e funções.
 
 **Sintaxe Básica**
 
@@ -132,18 +133,89 @@ const iam = new AWS.IAM();
 
 No AWS IAM, as **políticas são usadas para definir permissões**. Elas podem incluir várias declarações (statements), e cada declaração pode ter os seguintes atributos:
 
-**Sid (Statement ID)**  
-    - **Significado:** é um identificador opcional exclusivo para a declaração. Ele facilita a identificação de declarações específicas em uma política, especialmente em políticas complexas com muitas declarações
-    - **Exemplo:** `"Sid": "Stmt1"`
-**Action**  
-    - **Significado:** especifica
-    - **Exemplo:**
-**Effect**  
-    - **Significado:**
-    - **Exemplo:**
-**Resource**  
-    - **Significado:**
-    - **Exemplo:**
+**Sid (Statement ID)**
+
+- **Significado:** é um identificador opcional exclusivo para a declaração. Ele facilita a identificação de declarações específicas em uma política, especialmente em políticas complexas com muitas declarações
+- **Exemplo:** `"Sid": "Stmt1"`
+
+**Action**
+
+- **Significado:** especifica a(s) ação(ões) que são permitidas ou negadas pela declaração. As ações são operações específicas que você pode executar nos serviços da AWS, como `s3:ListBucket` ou `ec2:StartInstances`
+- **Exemplo:** `"Action": "s3:ListBucket"`
+
+**Effect**
+
+- **Significado:** define se a ação é "Allow" (permitir) ou "Deny" (negar). O padrão é negar todas as ações, então você deve explicitamente permitir ações usando "Allow"
+- **Exemplo:** `"Effect": "Allow"`
+
+**Resource**
+
+- **Significado:** especifica o recurso(s) ao qual a ação se aplica. Isso pode ser um ARN (Amazon Resource Name) específico ou um padrão que abrange vários recursos
+- **Exemplo:** `"Resource": "arn:aws:s3:::example_bucket"`
+
+### Exemplos
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "Stmt1",
+            "Effect": "Allow",
+            "Action": [
+                "s3:ListBucket",
+                "s3:GetObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::example_bucket",
+                "arn:aws:s3:::example_bucket/*"
+            ]
+        },
+        {
+            "Sid": "Stmt2",
+            "Effect": "Deny",
+            "Action": "s3:DeleteObject",
+            "Resource": "arn:aws:s3:::example_bucket/*"
+        }
+    ]
+}
+```
+
+- `Sid`**:** `"Stmt1"` e  `"Stmt2"` são identificadores exclusivos para cada declaração
+- `Effect`**:** `"Allow"` permite as ações especificadas e `"Deny"` nega a ação
+- `Action`**:** as ações `s3:ListBucket` e `s3:GetObject` são permitidas, enquanto `s3:DeleteObject` é negada
+- `Resource`**:** as ações se aplicam ao bucket `example_bucket` e a todos os objetos dentro desse bucket (`arn:aws:s3:::example_bucket/*`)
+
+# <a id="iam-getuser">`iam.getUser()`
+
+É utilizado para **obter informações sobre o usuário IAM especificado ou o usuário cujo acesso foi autenticado pelo SDK (se nenhuma identificação de usuário for especificada)**.
+
+**Sintaxe Básica**
+
+```JavaScript
+iam.getUser(parametro, callback);
+```
+
+- `parametro`**:** parâmetros para a chamada de API. Pode incluir `{ UserName: "some-username" }` para especificar um usuário
+- `callback`**:** função callback que processa a resposta da API
+
+### Exemplo
+
+```JavaScript
+const AWS = require("aws-sdk");
+
+AWS.config.update({ region: "us-west=2" });
+
+const iam = new AWS.IAM();
+
+iam.getUser({}, (error, dado) => {
+    if (error) {
+        console.error("Erro ao obter informações do usuário:", error);
+    } else {
+        console.log("Informações do usuário:", dado.User);
+    }
+});
+```
 
 # <a id="new-aws-s3"></a>`new AWS.S3()`
 
@@ -185,5 +257,17 @@ const s3 = new AWS.S3({
     secretAccessKey: "your-secret-access-key",
     endpoint: enpoint,
     s3ForcePathStyle: true, // Necessário para alguns endpoints personalizados.
+});
+
+// Serviços de terceiros.
+const DIGITAL_OCEAN = require("aws-sdk");
+
+const endpointSpaces = new DIGITAL_OCEAN.Endpoint("$< URL para o endpoint do serviço Spaces da Digital Ocean >");
+
+//  Aqui estamos criando uma nova instância do Spaces da Digital Ocean (equivalente ao S3 da AWS).
+const spaces = new DIGITAL_OCEAN.S3({
+  endpoint: endpointSpaces,
+  accessKeyId: "your-access-key-id",
+  secretAccessKey: "your-secret-access-key",
 });
 ```

@@ -1,3 +1,6 @@
+fucking caos <--
+sobre o "(Ok)"
+
 - É obrigatória a existência da chave "`scripts`" no seu **package.json**?
     + Além de pesquisar, testar isso na hora de publicar um pacote
     + A chave `scripts` não é obrigatória
@@ -5,17 +8,12 @@
 
 ---
 
-- `.getUser()`
-- `.createUser`
-- `.addUserToGroup()`
-- `.getPolicyVersion()`
-- `.createPolicyVersion()`
-- `.attachUserPolicy()`
-- `.deletePolicyVersion()`
-- `.getPolicy()`
-- `.createPolicy()`
+curl http://localhost:8081/v2/updater/2276/key \
+-H "Authorization: Bearer a767dab3-a603-4399-a326-06bc59babdf2" -H "Content-Type: application/json" \
+-X GET
 
-+ Testar a necessidade do `.bind()`
+---
+
 + `git diff` no game-server
 + Variar mais os meus casos de teste (por conta do problema com `'null'` na data-api)
 + AWS Lambda -> atualizar os jogos da oriongames_testnew (com os jogos inseridos na oriongames), de forma automática
