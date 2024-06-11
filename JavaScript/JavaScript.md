@@ -1517,7 +1517,7 @@ console.log(MinhaClasse.minhaPropriedadeEstatica); // Output: This is a static p
     + **Estático:** um método ou propriedade que pertence à classe em si, não a uma instância específica da classe. Isso significa que ele é acessível a partir do contexto da classe e não precisa de uma instância pra ser chamado  
         Observe que como pertence a classe em si, ele não pertence a uma instância, mas é compartilhado entre todas as instâncias. Isso é útil para valores constantes, configurações, ou qualquer outro recurso que deva ser acessível globalmente a partir da classe.
     + **Getter estático:** um método que funciona como um getter, mas é definido como estático, retornando uma propriedade da classe
-- **Por que não precisamos de parênteses:** 
+- **Por que não precisamos de parênteses para realizar a sua chamada:** a diferença dos métodos estáticos comuns e os getters estáticos é que os getters não precisam ser chamados explicitamente como funções. Eles têm um **comportamento especial onde retornam o valor quando acessados diretamente**
 
 
 # <a id="async-await"></a>`async` e `await`

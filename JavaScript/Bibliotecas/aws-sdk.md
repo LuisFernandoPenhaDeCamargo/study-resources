@@ -1,4 +1,4 @@
-# `aws-sdk`
+# `aws-sdk` (Ok)
 
 É a SDK oficial fornecida pela AWS para facilitar a interação com diversos serviços da AWS a partir de aplicações Node.js. Esta biblioteca permite que os desenvolvedores acessem e gerenciem serviços como Amazon S3, DynamoDB, Lambda, EC2, SQS, entre muitos outros, diretamente do seu código Node.js.
 
@@ -17,6 +17,7 @@
 - [`AWS.config.update()`](#aws-config-update)
 - [chave `apiVersion`](#chave-apiversion)
 - [`new AWS.IAM()`](#new-aws-iam)
+- [Atributos das Declarações](#atributos-declaracoes)
 - [`new AWS.S3()`](#new-aws-s3)
 - [`new AWS.ENDPOINT()`](#new-aws-endpoint)
 
@@ -69,7 +70,7 @@ Se você está executando o seu código em uma instância EC2 ou em um contêine
 
 É um objeto que permite configurar globalmente os parâmetros de autenticação, região e outros ajustes necessários para interagir com os serviços da AWS. Esta configuração é aplicada a todas as instâncias dos serviços AWS que você criar depois de configurá-la.
 
-# <a id="aws-config-update)"></a>`AWS.config.update()`
+# <a id="aws-config-update"></a>`AWS.config.update()`
 
 É utilizado para **atualizar a configuração global do AWS SDK com novas credenciais, região ou outros parâmetros**. Isso permite definir ou alterar as configurações de autenticação e região que o SDK usará para fazer chamadas aos serviços da AWS.
 
@@ -126,6 +127,23 @@ Usar a chave `apiVersion` é uma prática recomendada para garantir que seu cód
 ```JavaScript
 const iam = new AWS.IAM();
 ```
+
+# <a id="atributos-declaracoes"></a>Atributos das Declarações
+
+No AWS IAM, as **políticas são usadas para definir permissões**. Elas podem incluir várias declarações (statements), e cada declaração pode ter os seguintes atributos:
+
+**Sid (Statement ID)**  
+    - **Significado:**
+    - **Exemplo:**
+**Action**  
+    - **Significado:**
+    - **Exemplo:**
+**Effect**  
+    - **Significado:**
+    - **Exemplo:**
+**Resource**  
+    - **Significado:**
+    - **Exemplo:**
 
 # <a id="new-aws-s3"></a>`new AWS.S3()`
 

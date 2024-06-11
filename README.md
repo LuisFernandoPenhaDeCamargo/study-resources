@@ -93,6 +93,13 @@ Este repositório tem como objetivo auxiliar o estudo de certas tecnologias rela
 
 ## ./JavaScript
 
+- **./JavaScript**
+    + **Objetos (objetos.md):**
+        - [Funções](#funcoes)
+            + [`.bind()`](#funcoes-bind)
+        - [`JSON`](#json)
+            + [`.stringify()`](#json-stringify)
+
 - **JavaScript (JavaScript.md):** linguagem de programação
     + [Operadores](#operadores)
         - [Operador de negação (`!`)](#operadores-operador-negacao)
@@ -189,17 +196,11 @@ Este repositório tem como objetivo auxiliar o estudo de certas tecnologias rela
     + [Desinstalação de Pacotes](#desinstalacao-pacotes)
     + [Comandos Utilizados Através do CLI](#comandos-utilizados-cli)
         - [`ls-remote`](#comandos-utilizados-cli-ls-remote)
-- **Bibliotecas/**
-    + `aws-sdk` **(aws-sdk.md):** utilizada para facilitar a integração com diversos serviços da AWS
-        - [Autenticação](#autenticacao)
-        - [`AWS.config`](#aws-config)
-        - [`AWS.config.update()`](#aws-config-update)
-        - [chave `apiVersion`](#chave-apiversion)
-        - [`new AWS.IAM()`](#new-aws-iam)
-        - [`new AWS.S3()`](#new-aws-s3)
-        - [`new AWS.ENDPOINT()`](#new-aws-endpoint)
+- **./Bibliotecas**
     + `cluster` **(cluster.md):** utilizada para criar processos filhos
     + `moment` **(moment.md):** utilizada na manipulação de datas
+    + `util` **(util.md):** fornece utilitários úteis para operações comuns em JavaScript
+        - [`.promisify()`](#promisify)
     + Express **(Express.md):** utilizada na criação de servidores HTTP
         - [Métodos](#metodos)
             + [app.listen()](#metodos-app-listen)
@@ -218,7 +219,15 @@ Este repositório tem como objetivo auxiliar o estudo de certas tecnologias rela
             + [`Model.findOne()`](#metodos-model-findone)
             + [`Model.update()`](#metodos-model-update)
     + `umzug` **(umzug.md):** utilizada no controle de migrações
-- **Pacotes/**
+    + `aws-sdk` **(aws-sdk.md):** utilizada para facilitar a integração com diversos serviços da AWS
+        - [Autenticação](#autenticacao)
+        - [`AWS.config`](#aws-config)
+        - [`AWS.config.update()`](#aws-config-update)
+        - [chave `apiVersion`](#chave-apiversion)
+        - [`new AWS.IAM()`](#new-aws-iam)
+        - [`new AWS.S3()`](#new-aws-s3)
+        - [`new AWS.ENDPOINT()`](#new-aws-endpoint)
+- **./Pacotes**
     + **PM2 (PM2.md):** gerenciador de processos
         - [Contexto: SO Utilizado](#contexto-so-utilizado)
         - [Sistema Hierárquico de Arquivos](#sistema-hierarquico-arquivos)

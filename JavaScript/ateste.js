@@ -1,4 +1,12 @@
-let arr = [1, 2, 3];
-let newLength = arr.unshift({ teste: 1 }, 0, -1); // Adiciona 0 e -1 ao início do array
-console.log(arr); // [0, -1, 1, 2, 3]
-console.log(newLength); // 5, novo comprimento do array
+function saudacao(cumprimento, pontuacao) {
+    console.log(cumprimento + ", " + this.usuario + pontuacao);
+}
+
+const objeto = { usuario: "Alice" };
+
+saudacao.call(objeto, "Hello", "!");   // Output: 
+saudacao.apply(objeto, ["Hi", "..."]); // Output: 
+
+const saudacaoAlice = saudacao.bind(objeto, "Hey");
+
+saudacaoAlice("?");                    // Output:

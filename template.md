@@ -21,27 +21,22 @@ Estrutura a se seguir em relação as anotações do conteúdo estudado.
     + [Negrito](#formatacao-documento-negrito)
 - [Key Words](#formatacao-documento-key-words)
 
-# <a id="template"></a>$< nome do conteúdo >
+# <a id="template"></a>$< nome do documento >
 
----
+- `### Resumo`
+- `### Sumário`
 
-- ### Resumo
++ `- [Prático](#pratico)`
++ `- [Contexto: SO Utilizado](#contexto-so-utilizado)`
++ `- [Instalação](#instalacao)`
++ `- [Sistema Hierárquico de Arquivos](#sistema-hierarquico-arquivos)`
++ `- [Anotações](#anotacoes)`
++ `- [Arquivos Relacionados](#arquivos-relacionados)`
++ `- [Erros Enfrentados](#erros-enfrentados)`
++ `- [Comandos Utilizados Através do CLI](#comandos-utilizados-cli)`
 
----
-
-- ### Sumário
-
-+ [Prático](#pratico)
-+ [Contexto: SO Utilizado](#contexto-so-utilizado)
-+ [Instalação](#instalacao)
-+ [Sistema Hierárquico de Arquivos](#sistema-hierarquico-arquivos)
-+ [Anotações](#anotacoes)
-+ [Arquivos Relacionados](#arquivos-relacionados)
-+ [Erros Enfrentados](#erros-enfrentados)
-+ [Comandos Utilizados Através do CLI](#comandos-utilizados-cli)
-
-- # <a id="pratico"></a>Prático
-- # <a id="contexto-so-utilizado"></a>Contexto: SO Utilizado
+- `# <a id="pratico"></a>Prático`
+- `# <a id="contexto-so-utilizado"></a>Contexto: SO Utilizado`
 
 ```bash
 No LSB modules are available.
@@ -51,12 +46,12 @@ Release:	22.04
 Codename:	jammy
 ```
 
-- # <a id="instalacao"></a>Instalação
-- # <a id="sistema-hierarquico-arquivos"></a>Sistema Hierárquico de Arquivos
-- # <a id="anotacoes"></a>Anotações
-- # <a id="arquivos-relacionados"></a>Arquivos Relacionados
-- # <a id="erros-enfrentados"></a>Erros Enfrentados
-- # <a id="comandos-utilizados-cli"></a>Comandos Utilizados Através do CLI
+- `# <a id="instalacao"></a>Instalação`
+- `# <a id="sistema-hierarquico-arquivos"></a>Sistema Hierárquico de Arquivos`
+- `# <a id="anotacoes"></a>Anotações`
+- `# <a id="arquivos-relacionados"></a>Arquivos Relacionados`
+- `# <a id="erros-enfrentados"></a>Erros Enfrentados`
+- `# <a id="comandos-utilizados-cli"></a>Comandos Utilizados Através do CLI`
 
 # <a id="formatacao-documento"></a>Formatação do Documento
 
@@ -70,38 +65,51 @@ Codename:	jammy
 
 ## <a id="formatacao-documento-codigo"></a>Código
 
-- Primeiro eu importo os módulos externos, deixo um espaço em branco, ai importo os módulos internos
-- **Normalmente** eu mantenho um espaço em branco acima e abaixo de mensagens de log e de "`response`s"
-- As mensagens de erro seguem o seguinte formato, `[ $< nome da função() ou método()/ nome do arquivo > ERROR ], ${error.message}` seguido pelo erro em si
-    + A parte "`${error.message}` é específica do JavaScript
-    + Para outras linguagens, siga a mesma ideia, mas utilizando das propriedades da linguagem em questão
-- Para especificar que o comentário se trata de uma saída, uma impressão, pontue antes dele "Output:"
-    + **Exemplo:** `// Output: number` (JavaScript)
-- Links de referência não devem possuir em seu corpo o argumento
-    + **Exemplo:** `## <a id="comandos-utilizados-cli-describe"></a>´pm2 describe $< ID >´` (Markdown)
-- Em links de referência você deve substituir o ponto pelo traço
-    +  **Exemplo:** `## <a id="dump-pm2"></a>dump.pm2` (Markdown)
-- No primeiro paragráfo, primeira sentença, devemos fornecer uma descrição resumida do comando (comece com **"É utilizado para ..."**). Destaque a parte mais importante, se possível
-    + Após isso, podemos fornecer mais informações sobre ele
+- Eu prefiro utilizar listas para ressaltar pontos importantes, se possível
+    + A listas serão numeradas se isso fizer sentido para mim
+- Se eu não "encontrar" um substituto adequado para o nome de uma váriavel em português, eu usarei o nome em inglês mesmo
+
+- Se eu estiver pontuando sobre uma função (ou método) em um tópico que não se trata do módulo (ou objeto) associado a ele, também o insira na hora de citar o método. Exemplo:  
+    `.readFile()` do módulo `fs`, seria citado como `fs.readFile()` no módulo `util`
+
++ Primeiro eu importo os módulos externos, deixo um espaço em branco, ai importo os módulos internos
++ **Normalmente** eu mantenho um espaço em branco acima e abaixo de mensagens de log e de "`response`s"
++ As mensagens de erro seguem o seguinte formato, `[ $< nome da função() ou método()/ nome do arquivo > ERROR ], ${error.message}` seguido pelo erro em si
+    - A parte "`${error.message}` é específica do JavaScript
+    - Para outras linguagens, siga a mesma ideia, mas utilizando das propriedades da linguagem em questão
++ Para especificar que o comentário se trata de uma saída, uma impressão, pontue antes dele "Output:"
+    - **Exemplo:** `// Output: number` (JavaScript)
++ Links de referência não devem possuir em seu corpo o argumento
+    - **Exemplo:** `## <a id="comandos-utilizados-cli-describe"></a>´pm2 describe $< ID >´` (Markdown)
++ Em links de referência você deve substituir o ponto pelo traço
+    -  **Exemplo:** `## <a id="dump-pm2"></a>dump.pm2` (Markdown)
++ No primeiro paragráfo, primeira sentença, devemos fornecer uma descrição resumida do comando (comece com **"É utilizado para ..."**). Destaque a parte mais importante, se possível
+    - Após isso, podemos fornecer mais informações sobre ele
+
+### <a id=""></a>Notação de Colchetes
+
+
 
 ## <a id="formatacao-documento-subtopicos"></a>Subtópicos
 
 Existem alguns subtópicos comuns, abaixo segue listas deles, observado que a lista segue a ordem na qual eles devem aparecer dentro de um tópico.
 
-- **Sintaxe Básica**/**Estrutura Básica**
-    + Se o título do tópico já for a "**Sintaxe Básica**", não precisamos fornecer este subtópico
+- `**Sintaxe Básica**`/`**Estrutura Básica**`
+    + Se o título do tópico já for a "Sintaxe Básica", não precisamos fornecer este subtópico
 - **Parâmetros**
+    + Não é necessário pontuar o título deste subtópico, só os parâmetros em si
     + Pontuar se podem ser opcionais ou não
     + Pontuar o seu tipo
 - **Valor de Retorno**
-- **Como Funciona**
-- **Quando Usar**/**Vantagens de Usar**
-- **Saída Esperada**/**Saída Típica**
-- **Opções Comuns**
-- **Considerações**/**Observações Interessantes**/**Observações Importantes**
-- **Conclusão**
+    + Não é necessário pontuar o título deste subtópico, só o valor de retorno em si
+- `**Como Funciona**`
+- `**Quando Usar**`/`**Benefícios**`/`**Vantagens de Usar**`
+- `**Saída Esperada**`/`**Saída Típica**`
+- `**Opções Comuns**`
+- `**Observações Importantes**`/`**Considerações**`/`**Observações Interessantes**`
+- `**Conclusão**`
 - `### Exemplos`
-- ### $< comparações de um tópico com outros >
+- `### $< comparações de um tópico com outros >`
 - `### Exemplos Interessantes`
 
 ---
@@ -120,6 +128,8 @@ Existem alguns subtópicos comuns, abaixo segue listas deles, observado que a li
     + `Charlie`
 - Para valores de idade:
     + `25`
+- Para cidades:
+    + `New York`
 - Para animais:
     + Nome, `Buddy`
     + Raça, `Golden Retriever`

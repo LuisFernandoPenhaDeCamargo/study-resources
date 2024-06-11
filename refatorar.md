@@ -5,16 +5,6 @@
 
 ---
 
-- `require("util")`
-- `.promisify()`
-- `.stringify()`
-- `.bind()` (`.getUser()`)
-- IAM
-- Atributos das "policies" (políticas)
-    + `Sid`
-    + `Action`
-    + `Effect`
-    + `Resource`
 - `.getUser()`
 - `.createUser`
 - `.addUserToGroup()`
@@ -25,6 +15,7 @@
 - `.getPolicy()`
 - `.createPolicy()`
 
++ Testar a necessidade do `.bind()`
 + `git diff` no game-server
 + Variar mais os meus casos de teste (por conta do problema com `'null'` na data-api)
 + AWS Lambda -> atualizar os jogos da oriongames_testnew (com os jogos inseridos na oriongames), de forma automática
@@ -49,6 +40,38 @@ let values = registers.map(register =>
 - E depois da refatoração, não terá mais o espaço em branco separando os elementos, "elemento1,elemento2,elemento3), ("
 */
 ```
+
+---
+
+- O que seria objetos em JavaScript? Exemplo: `Objetct`, `String`, `Array`, `JSON`, etc.
+- `JSON`
+- Classificar melhor onde a `return` deve se encaixar
+- Classificar melhor onde a `static` deve se encaixar
+  + Pontuar melhor o que é algo `static`
+- `this` (tenho bastante dificuldade com este conceito)
+- callback x Promises
+- O que seriam funções estritas e funções não estritas?
+- Sobre este exemplo:
+
+```JavaScript
+const util = require("util");
+
+function minhaFuncaoCallback(argumentos, callback) {
+    if (argumentos) {
+        callback(null, "Success");
+    } else {
+        callback("Error");
+    }
+}
+
+const minhaFuncaoPromisificada = util.promisify(minhaFuncaoCallback);
+
+minhaFuncaoPromisificada(true)
+    .then(result => console.log(result))
+    .catch(error => console.error(error));
+```
+
+existe literalmente a função `callback()`?
 
 #
 
