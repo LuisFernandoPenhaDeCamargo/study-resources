@@ -133,10 +133,10 @@ const iam = new AWS.IAM();
 No AWS IAM, as **políticas são usadas para definir permissões**. Elas podem incluir várias declarações (statements), e cada declaração pode ter os seguintes atributos:
 
 **Sid (Statement ID)**  
-    - **Significado:**
-    - **Exemplo:**
+    - **Significado:** é um identificador opcional exclusivo para a declaração. Ele facilita a identificação de declarações específicas em uma política, especialmente em políticas complexas com muitas declarações
+    - **Exemplo:** `"Sid": "Stmt1"`
 **Action**  
-    - **Significado:**
+    - **Significado:** especifica
     - **Exemplo:**
 **Effect**  
     - **Significado:**
