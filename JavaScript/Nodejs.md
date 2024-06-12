@@ -57,6 +57,26 @@ Ambiente de Execução geralmente se refere ao contexto mais amplo no qual o có
 
 **Exemplos**
 
+# <a id="incluido-instalacao-padrao"></a>"Incluído na Instalação Padrão do Node.js" (Ok)
+
+Estar incluído na instalação padrão do Node.js significa que o módulo ou biblioteca faz parte do conjunto básico de funcionalidades que vem com o Node.js quando você o instala. Esses módulos são conhecidos como **módulos internos** ou **módulos nativos** (também chamados de **módulos core**). Eles são mantidos e suportados pela equipe do Node.js e não requerem instalação adicional através do npm.
+
+### Vantagens dos Módulos Internos
+
+- **Disponibilidade imediata:** não é necessário instalar módulos internos usando o npm. Eles estão prontos para uso assim que você instala o Node.js
+- **Desempenho e eficiência:** são otimizados para funcionar com o Node.js e geralmente oferecem desempenho superior comparado a algumas alternativas de terceiros
+- **Suporte e manutenção:** são mantidos e atualizados pela equipe oficial do Node.js, garantindo compatibilidade com as versões mais recentes do Node.js
+
+### Exemplos de Módulos Internos
+
+- `path`**:** fornece utilitários para trabalhar com caminhos de arquivos e diretórios
+- `fs`**:** fornece uma API para interagir com o sistema de arquivos
+- `os`**:** fornece informações sobre o sistema operacional
+- `http`**:** permite a criação de servidores e clientes HTTP
+- `url`**:** analisar e resolver URLs
+- `crypto`**:** fornece criptografia para dados
+- `events`**:** manipulação de eventos e criação de emissores de eventos personalizados
+
 # <a id="compatibilidade-nodejs-npm"></a>Compatibilidade Entre o Node.js e o npm
 
 O Node.js e o npm estão relacionados, mas são dois componentes separados. O Node.js é um ambiente de tempo de execução JavaScript que permite executar código JavaScript no servidor, enquanto o npm é um gerenciador de pacotes para JavaScript.

@@ -1,55 +1,58 @@
-fucking caos <--
-sobre o "(Ok)"
+### Cronograma
 
-- É obrigatória a existência da chave "`scripts`" no seu **package.json**?
-    + Além de pesquisar, testar isso na hora de publicar um pacote
-    + A chave `scripts` não é obrigatória
-- Refatorar para o novo formato o **Diretorio-heterogeneo**
+- Pesquisar pelo menos dois tópicos
+    + Do subtópico "Tópicos a se Estudar"
+    + Quando o item acima não possuir itens, do tópico "Estudar" do READEME
+- Refatorar uma seção
+    + Começando com os tópicos não nomeados neste arquivo
+        - Só os arquivos com "(Ok)" após o seu título, estão de acordo com o que eu gostaria
+    + Quando acabarem os tópicos acima, refatore de cima para baixo os arquivos fora do diretório **Refatorar**
+    + Quando acabarem os tópicos acima, refatore de cima para baixo os arquivos fora do diretório **Refatorar** e dentro do diretório **Refatorar2**
+    + Quando acabarem os tópicos acima, refatore de cima para baixo os arquivos dentro do diretório **Refatorar**
+- Após cumprir as tarefas acima, realize as atividades abaixo até elas acabarem
 
----
++ Pontuar o que eu conversei com o Ventura e com o Antônio
++ Como eu seto o 1 e 0 para o forçado no zoe-game-api mesmo?
++ `git diff` no zoe-game-api
+    - Arquivos alterados (pacote 2.5.3-rc.3, RC):  
+        Acho que vou testar todas essas funcionalidades novamente
+        + **./routes/machines.js**
+        + **./routes/prizes.js**
+        + **./services/raffle_prizes.js**
+        + **./tasks/publish_prizes.js**
+        + **./tasks/raffle_prizes.js**
+        + curl http://localhost:8080/game/accumulated_reset -X POST -H "Content-Type: application/json" -d '{"machine_id": 101}'
+        + curl http://localhost:8080/game/jackpot_reset     -X POST -H "Content-Type: application/json" -d '{"machine_id": 101}'
+        + curl http://localhost:8080/game/bigwinner         -X POST -H "Content-Type: application/json" -d '{"machine_id": 101}'
+            - Query que gera um erro
+        + curl http://localhost:8080/game/bigwinner         -X POST -H "Content-Type: application/json" -d '{"machine_id": 101, "game": 1, "bet": 2, "prize": 3}'
+            - Valores de chaves sem embasamento algum
+        + SELECT force_accumulated FROM settings;
+        + UPDATE settings SET force_accumulated = 101;
+        + SELECT force_jackpot FROM settings;
+        + UPDATE settings SET force_jackpot = 101;
+        + DELETE FROM big_winners where id > ;
+        + UPDATE settings SET accumulated_games_left = 0, accumulated_paid_at = '2024-02-14 00:00:00';
+        + UPDATE settings SET jackpot_games_left = 0, jackpot_paid_at = '2024-02-14 00:00:00';
+        + SELECT id, accumulated_enabled, jackpot_enabled, compete_acumulado, payout_enabled, credit_balance, online FROM machines WHERE online = 1;
 
-curl http://localhost:8081/v2/updater/2276/key \
--H "Authorization: Bearer a767dab3-a603-4399-a326-06bc59babdf2" -H "Content-Type: application/json" \
--X GET
-
----
-
-+ `git diff` no game-server
-+ Variar mais os meus casos de teste (por conta do problema com `'null'` na data-api)
-+ AWS Lambda -> atualizar os jogos da oriongames_testnew (com os jogos inseridos na oriongames), de forma automática
-+ Pontuar as responsabilidades do game-api, data-api, zoe-updater, data-server
-+ orion-data-server:
-
-```JavaScript
-let values = registers.map(register => 
-    [server_id, ...columns.map(column => formatValue(register[column]))].join(", "))
-  .join("), (");
-
-// =>
-
-let values = registers.map(register => 
-    [server_id, ...columns.map(column => formatValue(register[column]))])
-  .join("), (");
-
-/*
-- Testar se é válido. Não precisamos transformar o array interno em uma string
-- Não esquecer de testar para valores nulos
-- A principal diferença é que antes a formatação ficava "elemento1, elemento2, elemento3), ("
-- E depois da refatoração, não terá mais o espaço em branco separando os elementos, "elemento1,elemento2,elemento3), ("
-*/
-```
-
----
+### Tópicos a se Estudar
 
 - O que seria objetos em JavaScript? Exemplo: `Objetct`, `String`, `Array`, `JSON`, etc.
+    + Tem diferença entre criar um objeto como um literal ou usando o operador `new`?
+    + Só o objeto `JSON` é global? <--
+    + O que seria um objeto de primeira classe?
 - `JSON`
 - Classificar melhor onde a `return` deve se encaixar
 - Classificar melhor onde a `static` deve se encaixar
-  + Pontuar melhor o que é algo `static`
+    + Pontuar melhor o que é algo `static`
 - `this` (tenho bastante dificuldade com este conceito)
 - callback x Promises
 - O que seriam funções estritas e funções não estritas?
 - Sobre este exemplo:
+- É obrigatória a existência da chave "`scripts`" no seu **package.json**?
+    + Além de pesquisar, testar isso na hora de publicar um pacote
+    + A chave `scripts` não é obrigatória
 
 ```JavaScript
 const util = require("util");
@@ -71,88 +74,24 @@ minhaFuncaoPromisificada(true)
 
 existe literalmente a função `callback()`?
 
-#
+- Reinstalar
+    + Tilix
+    + As ferramentas necessárias para executar o updater
+    + AWS CLI
 
-sudo apt install tilix
+### Prático
 
-https://gnunn1.github.io/tilix-web/manual/vteconfig/
+```bash
+curl http://localhost:8081/v2/updater/2276/key \
+-H "Authorization: Bearer a767dab3-a603-4399-a326-06bc59babdf2" -H "Content-Type: application/json" \
+-X GET
 
-documentar sobre o updater -> o que precisa fazer para ele ser executado
+curl http://localhost:8081/v2/places/2276/big_winners \
+-H "Authorization: Bearer a767dab3-a603-4399-a326-06bc59babdf2" -H "Content-Type: application/json" \
+-X POST -d @data.json
+```
 
-sudo apt update
-sudo apt install python3-pip
-sudo pip3 install awscli
-
-cargo install cross
-
----
-
-for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt remove $pkg; done
-
-Install using the apt repository
-sudo apt install ca-certificates curl
-sudo install -m 0755 -d /etc/apt/keyrings
-sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-sudo chmod a+r /etc/apt/keyrings/docker.asc
-
-Add Docker's official GPG key:
-sudo apt-get update
-sudo apt-get install ca-certificates curl
-sudo install -m 0755 -d /etc/apt/keyrings
-sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-sudo chmod a+r /etc/apt/keyrings/docker.asc
-echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
-  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-
-sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-
-sudo docker run hello-world
-
----
-
-sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt update
-sudo apt install docker-ce docker-ce-cli containerd.io
-sudo docker run hello-world
-
----
-
-![alt text](image.png)
-
-
-Add the repository to Apt sources:
-echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
-  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt-get update
-
-`cargo make --makefile workflow.toml cross-release`
-
----
-
-groups
-
-sudo usermod -aG docker $USER
-
-reiniciou o rolê
-
----
-
-warning: `updater` (lib) generated 14 warnings (run `cargo fix --lib -p updater` to apply 8 suggestions)
-    Finished release [optimized] target(s) in 0.10s
-[cargo-make] INFO - Execute Command: "strip" "-s" "./target/x86_64-unknown-linux-musl/release/updater"
-[cargo-make] INFO - Execute Command: "upx" "--best" "--lzma" "./target/x86_64-unknown-linux-musl/release/updater"
-[cargo-make] ERROR - Error while executing command, error: Os {
-    code: 2,
-    kind: NotFound,
-    message: "No such file or directory",
-}
-[cargo-make] WARN - Build Failed.
+O token é do servidor 2276.
 
 #
                        

@@ -94,11 +94,26 @@ Este repositório tem como objetivo auxiliar o estudo de certas tecnologias rela
 ## ./JavaScript
 
 - **./JavaScript**
-    + **Objetos (objetos.md):**
+    + **JavaScript (JavaScript.md)**
+        - [Módulo x Biblioteca](#modulo-x-biblioteca)
+    + **Objetos (objetos.md)**
+        - [`String`](#string)
+            + [`.trim()`](#string-trim)
         - [Funções](#funcoes)
             + [`.bind()`](#funcoes-bind)
         - [`JSON`](#json)
             + [`.stringify()`](#json-stringify)
+- **Node.js (Nodejs.md):** engine, runtime, ambiente de execução JavaScript
+    + ["Incluído na Instalação Padrão do Node.js"](#incluido-instalacao-padrao)
+- **./bibliotecas**
+    + `fs` **(fs.md):** é utilizado para interagir com o sistema de arquivos
+        - [`.readFileSync()`](#readfilesync)
+    + `os` **(os.md):** fornece várias utilidades relacionadas ao SO
+        - [`.cpus()`](#cpus)
+    + `crypto` **(crypto.md):** fornece criptografia para implementar várias funções de segurança
+        - [`.createHash()`](#createhash)
+        - [`.update()`](#update)
+        - [`.digest()`](#digest)
 
 - **JavaScript (JavaScript.md):** linguagem de programação
     + [Operadores](#operadores)
@@ -307,11 +322,13 @@ Template de estrutura a tentar seguir em relação as anotações do conteúdo e
     + [Comandos Utilizados Através do CLI](#comandos-utilizados-cli)
 - [Formatação do Documento](#formatacao-documento)
     + [Código](#formatacao-documento-codigo)
-    + [Subtópicos](#formatacao-documento-subtopicos)
-    + [Exemplos](#formatacao-documento-exemplos)
-    + [Nomenclatura](#formatacao-documento-nomenclatura)
+        - [Notação de Colchetes](#formatacao-documento-codigo-notacao-colchetes)
+        - [Subtópicos](#formatacao-documento-subtopicos)
+        - [Exemplos](#formatacao-documento-exemplos)
+    + [Subtítulos](#formatacao-documento-subtitulos)
     + [Negrito](#formatacao-documento-negrito)
 - [Key Words](#formatacao-documento-key-words)
+- [Siglas e Abreviações](#formatacao-documento-siglas-abreviacoes)
 
 # Anotações Não Alocadas
 
@@ -368,11 +385,7 @@ Template de estrutura a tentar seguir em relação as anotações do conteúdo e
 
 # TODO
 
-- Talvez a seção "**Exemplos**" se torne um subtítulo
 - Talves eu queria um linter para JS
-- Refatorar, reorganizar o seguinte diretórios/arquivos:
-    + **refatorar.md**
-    + **Refatorar**
 - Criar do zero uma instância no EC2
     + Colocar o nginx para rodar junto com a API em Node.js
     + Instalar https na instância

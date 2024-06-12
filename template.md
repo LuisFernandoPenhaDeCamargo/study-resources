@@ -1,4 +1,4 @@
-# Template
+# Template (Ok)
 
 Estrutura a se seguir em relação as anotações do conteúdo estudado.
 
@@ -15,9 +15,10 @@ Estrutura a se seguir em relação as anotações do conteúdo estudado.
     + [Comandos Utilizados Através do CLI](#comandos-utilizados-cli)
 - [Formatação do Documento](#formatacao-documento)
     + [Código](#formatacao-documento-codigo)
-    + [Subtópicos](#formatacao-documento-subtopicos)
-    + [Exemplos](#formatacao-documento-exemplos)
-    + [Nomenclatura](#formatacao-documento-nomenclatura)
+        - [Notação de Colchetes](#formatacao-documento-codigo-notacao-colchetes)
+        - [Subtópicos](#formatacao-documento-subtopicos)
+        - [Exemplos](#formatacao-documento-exemplos)
+    + [Subtítulos](#formatacao-documento-subtitulos)
     + [Negrito](#formatacao-documento-negrito)
 - [Key Words](#formatacao-documento-key-words)
 
@@ -51,7 +52,7 @@ Codename:	jammy
 - `# <a id="anotacoes"></a>Anotações`
 - `# <a id="arquivos-relacionados"></a>Arquivos Relacionados`
 - `# <a id="erros-enfrentados"></a>Erros Enfrentados`
-- `# <a id="comandos-utilizados-cli"></a>Comandos Utilizados Através do CLI`
+- `# <a id="comandos-utilizados-cli"></a>Comandos Utilizados Através do CLI`/`# <a id="metodos"></a>Métodos`
 
 # <a id="formatacao-documento"></a>Formatação do Documento
 
@@ -62,11 +63,12 @@ Codename:	jammy
 ### Sumário
 
 - [Código](#formatacao-documento-codigo)
-    + 
+    + [Notação de Colchetes](#formatacao-documento-codigo-notacao-colchetes)
     + [Subtópicos](#formatacao-documento-codigo-subtopicos)
     + [Exemplos](#formatacao-documento-codigo-exemplos)
 - [Subtítulos](#formatacao-documento-subtitulos)
 - [Negrito](#formatacao-documento-negrito)
+- [Siglas e Abreviações](#formatacao-documento-siglas-abreviacoes)
 
 ## <a id="formatacao-documento-codigo"></a>Código
 
@@ -78,18 +80,32 @@ Codename:	jammy
     `.readFile()` do módulo `fs`, seria citado como `fs.readFile()` no módulo `util`
 - Primeiro eu importo os módulos externos, deixo um espaço em branco, ai importo os módulos internos
 - **Normalmente** eu mantenho um espaço em branco acima e abaixo de mensagens de log, de `return`s e de `response`s
+- Links de referência não devem possuir em seu corpo o parâmetro
+    + **Exemplo:** `## <a id="comandos-utilizados-cli-describe"></a>´pm2 describe $< ID >´` (Markdown)
+- Em links de referência você deve substituir o ponto pelo traço
+    +  **Exemplo:** `## <a id="dump-pm2"></a>dump.pm2` (Markdown)
+- As mensagens de erro seguem o seguinte formato, `[ $< nome da função ou método/ nome do arquivo > ERROR ], ${error.message}`
+    + A parte `${error.message}` é específica do JavaScript
+    + Para outras linguagens, siga a mesma ideia, mas utilizando das propriedades da linguagem em questão
+- Para especificar que o comentário se trata de uma saída, uma impressão, pontue antes dele "Output:"
+    + **Exemplo:** `// Output: number` (JavaScript)
 
-+ As mensagens de erro seguem o seguinte formato, `[ $< nome da função() ou método()/ nome do arquivo > ERROR ], ${error.message}` seguido pelo erro em si <--
-    - A parte "`${error.message}` é específica do JavaScript
-    - Para outras linguagens, siga a mesma ideia, mas utilizando das propriedades da linguagem em questão
-+ Para especificar que o comentário se trata de uma saída, uma impressão, pontue antes dele "Output:"
-    - **Exemplo:** `// Output: number` (JavaScript)
-+ Links de referência não devem possuir em seu corpo o argumento
-    - **Exemplo:** `## <a id="comandos-utilizados-cli-describe"></a>´pm2 describe $< ID >´` (Markdown)
-+ Em links de referência você deve substituir o ponto pelo traço
-    -  **Exemplo:** `## <a id="dump-pm2"></a>dump.pm2` (Markdown)
+### <a id="formatacao-documento-codigo-notacao-colchetes"></a>Notação de Colchetes
 
-### <a id=""></a>Notação de Colchetes <!
+Os colchetes em notações como 
+
+```JavaScript
+funcao.bind(thisArg[, argumento1 [, argumento2 [, ...]]]);
+```
+
+indicam que os parâmetros `argumento1`, `argumento2`, `...`, são opcionais, se você não fornecer esses argumentos, a função ainda funcionará corretamente, apenas sem or agumentos predefinidos.
+
+- A presença de colchetes ao redor dos argumentos, indica que você pode optar por não passar nenhum desses argumentos, ou pode passar alguns ou todos eles
+- Os colchetes aninhados na notação indicam que, para fornecer um argumento que está mais internamente aninhado, você deve primeiro fornecer todos os argumentos que estão nos níveis mais externos
+    + `thisArg`**:** obrigatório
+    + `argumento1`**:** opcional, mas só pode ser fornecido se `thisArg` também for fornecido
+    + `argumento2`**:** opcional, mas só pode ser fornecido se `thisArg` e `argumento1` também forem fornecidos
+    + `...`**:** opcionais, mas só podem ser fornecidos se `thisArg`, `argumento1` e `argumento2` também forem fornecidos
 
 ### <a id="formatacao-documento-codigo-subtopicos"></a>Subtópicos
 
@@ -117,20 +133,36 @@ Existem alguns subtópicos comuns, abaixo segue listas deles, observado que a li
 
 - Se eu não "encontrar" um substituto adequado para o nome de uma váriavel (função, método, classe) em português, eu usarei o nome em inglês mesmo
 - O acento agudo será substituído pela letra "h", se for necessário para o entendimento
-- **Para valores de nomes:**
+- **Para valores de nomes (primeiro nome):**
     + `Alice`
     + `Bob`
     + `Charlie`
+- **Para valores de nomes (segundo nome):**
+    + `Doe`
 - **Para valores de idade:**
     + `25`
 - **Para cidades:**
     + `New York`
+- **Para números:**
+    + `42`
+- **Para Strings**
+    + `text`
 - **Para animais:**
     + Nome, `Buddy`
     + Raça, `Golden Retriever`
 - **Para carros:**
     + Fabricante, `Toyota`
     + Modelo, `Corolla`
+- **Para funções (JavaScript):**
+
+```JavaScript
+function saudacao() {
+    console.log("Hello");
+}
+```
+
+- **Para mensagens de erro:**
+    + `"Something went wrong"`
 
 ## <a id="formatacao-documento-subtitulos"></a>Subtítulos
 
@@ -140,11 +172,14 @@ Existem alguns subtítulos comuns, abaixo segue a lista deles, observando que a 
 - `### Observações Importantes`
 - `### Exemplos de Casos de Uso`
 - `### Conclusão`
-- `## <a id="metodos-"></a>Métodos`
 
 ## <a id="formatacao-documento-negrito"></a>Negrito
 
 - Os nomes dos arquivos e diretórios devem estar em negrito
+
+## <a id="formatacao-documento-siglas-abreviacoes"></a>Siglas e Abreviações
+
+- A decisão de usar somente a sigla (a abreviação) ou não, vai de acordo com a minha dificuldade de lembrar o significado dela
 
 # <a id="key-words"></a>Key Words
 

@@ -1,13 +1,217 @@
 # Objetos (Ok)
 
+Em JavaScript, objetos são coleções de propriedades, onde cada propriedade é uma associação entre um nome (ou chave) e um valor. Eles são uma estrutura de dados central em JavaScript e são usados para armazenar vários tipos de dados e entidades complexas.
+
+Objetos em JavaScript são extremamente versáteis e são usados para representar tudo, desde dados simples até estruturas complexas e entidades do mundo real.
+
+### Principais Tipos de Objetos
+
+1. `Object`
+
+- É o tipo mais básico de objeto
+- Pode conter propriedades e métodos
+- Criado usando a sintaxe do objeto literal `{}` ou o construtor `new Object()`
+
+```JavaScript
+let objeto = {
+    nome: "Alice",
+    idade: 25,
+    saudacao: function() {
+        console.log("Hello");
+    }
+};
+```
+
+2. `Number`
+
+- É um objeto que representa números
+- Criado com literais (`42`) ou usando o construtor `new Number()`
+
+```JavaScript
+let numero1 = 42;
+let numero2 = new Number(42);
+```
+
+3. `String`
+
+- É um objeto que representa uma sequência de caracteres
+- Strings podem ser criadas como literais (`"text"`) ou usando o construtor `new String()`
+
+```JavaScript
+let string1 = "Hello, world!";
+let string2 = new String("Hello, world!");
+```
+
+4. `Array`
+
+- É um tipo especial de objeto usado para armazenar listas ordenadas de valores
+- Criado usando colchetes `[]` ou o construtor `new Array()`
+
+```JavaScript
+let array = [1, 2, 3, 4];
+```
+
+5. `Boolean`
+
+- Representa um valor booleano (`true` ou `false`)
+- Criado como literais (`true`, `false`) ou usando o construtor `new Boolean()`
+
+```JavaScript
+let booleano1 = true;
+let booleano2 = new Boolean(true);
+```
+
+6. **Função**
+
+- É um objeto que representa uma função
+- Funções são objetos de primeira classe em JavaScript e podem ser atribuídas a variáveis, passadas como argumentos e retornadas de outras funções
+
+```JavaScript
+function saudacao() {
+    console.log("Hello");
+}
+```
+
+7. `Date`
+
+- É um objeto que representa datas e horas
+- Criado usando o construtor `new Date()`
+
+```JavaScript
+let dataNesteMomento = new Date();
+```
+
+8. `Error`
+
+- Representa um erro em execução
+- Criado usando o construtor `new Error()`
+
+```JavaScript
+let erro = new Error("Something went wrong");
+```
+
+9. `JSON`
+
+- É um objeto global que fornece métodos para trabalhar com dados JSON (JavaScript Object Notation)
+- Inclui métodos como `JSON.parse()` para analisar strings JSON
+
+```JavaScript
+let stringJson = '{"name":"Alice", "age":25}'
+let json = JSON.parse(stringJson);
+```
+
+10. `RegExp`
+
+- Representa expressões regulares
+- Criado usando a sintaxe literal "`/pattern/`" ou o construtor `new RegExp()`
+
+```JavaScript
+let regex1 = /abc/;
+let regex2 = new RegExp("abc");
+```
+
+### Exemplos de Criação de Objetos
+
+```JavaScript
+// Objeto Literal
+let pessoaLiteral = {
+    primeiroNome: "Alice",
+    segundoNome: "Doe",
+    idade: 25,
+};
+
+// Construtor de Objeto
+let pessoaConstrutor =  new Object();
+pessoaConstrutor.primeiroNome = "Alice";
+pessoaConstrutor.segundoNome = "Doe";
+pessoaConstrutor.idade = 25;
+
+// Função Construtora
+function Pessoa(primeiroNome, segundoNome, idade) {
+    this.primeroNome = primeroNome;
+    this.segundoNome = segundoNome;
+    this.idade = idade;
+}
+
+let alice = new Pessoa("Alice", "Doe", 25);
+```
+
+### Objetos Literais x Objetos Criados com `new`
+
+**Tipos Primitivos (Number, String, Boolean)**
+
+- **Literais:** criar um valor de tipo primitivo de forma literal resulta em um valor que é realmente do tipo primitivo
+    + Operações em literais retornam novos valores sem modificar o original
+    + Você pode acessar métodos e propriedades diretamente no literal devido ao autoboxing (conversão automática do valor primitivo para o objeto correspondente)
+- **Operador** `new`**:** usar o operador `new` com construtores dos tipos primitivos cria um objeto wrapper, que é um objeto real em JavaScript
+
+**Prototipagem (**`Object`**)**
+
+- Objetos ("`Object`") criados com literais não têm acesso a um protótipo específico, além do protótipo base (`Object`)
+- Objetos ("`Object`") criados com `new` têm acesso ao protótipo da função construtora, permitindo a definição de métodos compartilhados
+
+**Exemplos**
+
+```JavaScript
+let string1 = "hello";
+let string2 = "hello";
+
+console.log (string1 === string2); // Output: true
+
+let objeto1 = new String("hello");
+let objeto2 = new String("hello");
+
+console.log(objeto1 === objeto2);                      // Output: false (compara referências).
+console.log(objeto1.valueOf() ==== objeto2.valueOf()); // Output: true (compara valores).
+```
+
 ### Sumário
 
-- [Funções](#funcoes)
-    + [`.bind()`](#funcoes-bind)
+- [`Object`](#object)
+- [`Number`](#number)
+- [`String`](#string)
+    + [`.trim()`](#string-trim)
+- [`Array`](#array)
+- [`Boolean`](#boolean)
+- [Função](#funcao)
+    + [`.bind()`](#funcao-bind)
+- [`Date`](#date)
+- [`Error`](#error)
 - [`JSON`](#json)
     + [`.stringify()`](#json-stringify)
+- [`RegExp`](#regexp)
 
-# <a id="funcoes"></a>Funções
+# <a id="string"></a>`String`
+
+### Sumário
+
+- [`.trim()`](#string-trim)
+
+## <a id="string-trim"></a>`.trim()`
+
+É utilizado para **remover os espaços em branco do ínicio e do fim de uma string**. Espaços em branco no meio da string não são afetados. Este método não altera a string original, mas retorna uma nova string com os espaços em branco removidos.
+
+**Observações Importantes**
+
+Espaços removidos:
+
+- Espaços
+- Quebras de linha (\n)
+- Tabulações (\t)
+- Quebras de página (\f)
+- Retornos de carro (\r)
+
+### Exemplos
+
+```JavaScript
+// Removendo espaços em uma string com apenas espaços.
+const string = "     ";
+const trimmedString = string.trim();
+
+console.log(trimmedString); // Output: ""
+```
+
+# <a id="funcao"></a>Função
 
 - Em JavaScript, funções são objetos, isso significa que elas possuem propriedades e métodos, assim como qualquer outro objeto
 - Elas são um tipo especial de objeto, são objetos de primeira classe, o que significa que podem ser atribuídas a variáveis, passadas como argumentos para outras funções e retornadas por outras funções
@@ -15,9 +219,9 @@
 
 ### Sumário
 
-- [`.bind()`](#funcoes-bind)
+- [`.bind()`](#funcao-bind)
 
-## <a id="funcoes-bind"></a>`.bind()`
+## <a id="funcao-bind"></a>`.bind()`
 
 É utilizado para **criar uma nova função que, quando chamada, tem seu** `this` **setado para um valor específico**. Isso permite que você controle o contexto de execução da função, garantindo que ela sempre use o mesmo objeto como `this`, independentemente de como ou onde a função é chamada.
 
