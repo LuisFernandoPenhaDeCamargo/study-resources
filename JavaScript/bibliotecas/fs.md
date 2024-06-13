@@ -1,6 +1,6 @@
 # `fs` (Ok)
 
-O módulo `fs` em Node.js é um dos módulos principais e está incluído na instalação padrão do Node.js. Ele fornece uma API para interagir com o sistema de arquivos do seu computador. Você pode usá-lo para ler, escrever, atualizar, deletar arquivos e diretórios.
+O módulo `fs` em Node.js é um dos módulos principais e está incluído na instalação padrão do Node.js. Ele fornece uma API para **interagir com o sistema de arquivos do seu computador**. Você pode usá-lo para ler, escrever, atualizar, deletar arquivos e diretórios.
 
 ### Sumário
 

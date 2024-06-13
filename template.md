@@ -72,7 +72,7 @@ Codename:	jammy
 
 ## <a id="formatacao-documento-codigo"></a>Código
 
-- No primeiro paragráfo, primeira sentença, devemos fornecer uma descrição resumida do comando (comece com "É utilizado para **...**"). Destaque a parte mais importante, se possível  
+- No primeiro paragráfo, primeira sentença, devemos fornecer uma descrição resumida do comando (comece com "É utilizado para **...**" ou "Ele fornece **...**"). Destaque a parte mais importante, se possível  
     + Após isso, podemos fornecer mais informações sobre ele
 - Eu prefiro utilizar listas para ressaltar pontos importantes, se possível
     + A listas serão numeradas se isso fizer sentido para mim

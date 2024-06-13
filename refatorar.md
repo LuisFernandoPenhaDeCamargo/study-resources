@@ -38,10 +38,6 @@
 
 ### Tópicos a se Estudar
 
-- O que seria objetos em JavaScript? Exemplo: `Objetct`, `String`, `Array`, `JSON`, etc.
-    + Tem diferença entre criar um objeto como um literal ou usando o operador `new`?
-    + Só o objeto `JSON` é global? <--
-    + O que seria um objeto de primeira classe?
 - `JSON`
 - Classificar melhor onde a `return` deve se encaixar
 - Classificar melhor onde a `static` deve se encaixar
@@ -74,6 +70,15 @@ minhaFuncaoPromisificada(true)
 
 existe literalmente a função `callback()`?
 
+- `npm ERR!`
+
+```bash
+npm ERR! code 
+EISGIT
+```
+- `npm WARN deprecated`
+- `/` (diretório raíz, sistema hierarquico de arquivos)
+- Permissões de certificado ("600, só o primeiro pode usar"?)
 - Reinstalar
     + Tilix
     + As ferramentas necessárias para executar o updater
@@ -92,49 +97,6 @@ curl http://localhost:8081/v2/places/2276/big_winners \
 ```
 
 O token é do servidor 2276.
-
-#
-                       
-npm ERR! code EISGIT                                                                                                                                                                                                                            
-npm ERR! git /usr/lib/node_modules/@zoeslots/zoe-game-api: Appears to be a git repo or submodule.                                                                                                                                               
-npm ERR! git     /usr/lib/node_modules/@zoeslots/zoe-game-api                                                                                                                                                                                   
-npm ERR! git Refusing to remove it. Update manually,                                                                                                                                                                                            
-npm ERR! git or move it out of the way first.                                                                                                                                                                                                   
-                                                                                                                                                                                                                                                
-npm ERR! A complete log of this run can be found in:                                                                                                                                                                                            
-npm ERR!     /root/.npm/_logs/2024-03-25T19_32_12_559Z-debug.log
-
----
-
-quando as API's saírem de RC, apagar o pacote
-
-caminho "/" (diretório raiz)
-
-deu bo com /conteudo, precisava adicionar permissão, mas só o chmod +w não rolou, precisou dar o 777
-
-oot@2454-Homologacao-es:/usr/lib/node_modules/@zoeslots# npm install -g @zoeslots/zoe-game-api@rc                                                                                                                                              
-npm WARN deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142                                                                                                                             
-npm WARN deprecated axios@0.19.2: Critical security vulnerability fixed in v0.21.1. For more information, see https://github.com/axios/axios/pull/3410                                                                                          
-npm WARN deprecated sequelize@3.35.1: Please update to v6 or higher! A migration guide can be found here: https://sequelize.org/v6/manual/upgrade-to-v6.html                                                                                    
-npm WARN deprecated har-validator@5.1.5: this library is no longer supported                                                                                                                                                                    
-npm WARN deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.                     
-npm WARN deprecated terraformer-wkt-parser@1.2.1: terraformer-wkt-parser is deprecated and no longer supported. Please use @terraformer/wkt.                                                                                                    
-npm WARN deprecated terraformer@1.0.12: terraformer is deprecated and no longer supported. Please use @terraformer/arcgis.                                                                                                                      
-npm ERR! path /usr/lib/node_modules/@zoeslots/zoe-game-api                                                                                                                                                                                      
-npm ERR! code EISGIT                                                                                                                                                                                                                            
-npm ERR! git /usr/lib/node_modules/@zoeslots/zoe-game-api: Appears to be a git repo or submodule.                                                                                                                                               
-npm ERR! git     /usr/lib/node_modules/@zoeslots/zoe-game-api                                                                                                                                                                                   
-npm ERR! git Refusing to remove it. Update manually,                                                                                                                                                                                            
-npm ERR! git or move it out of the way first.                                                                                                                                                                                                   
-                                                                                                                                                                                                                                                
-npm ERR! A complete log of this run can be found in:                                                                                                                                                                                            
-npm ERR!     /root/.npm/_logs/2024-03-26T12_46_08_018Z-debug.log
-
----
-
-FUCK MY BUT
-
-CERTIFICADO TEM QUE SER 600 SÓ O PRIMEIRO MOTHERFUCKER PODE USAR
 
 #
 

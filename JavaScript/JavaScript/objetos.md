@@ -167,11 +167,14 @@ console.log(objeto1.valueOf() ==== objeto2.valueOf()); // Output: true (compara 
 
 ### Sumário
 
+- [Objeto de Primeira Classe](#objeto-de-primeira-classe)
+- [Objetos Globais](#objetos-globais)
 - [`Object`](#object)
 - [`Number`](#number)
 - [`String`](#string)
     + [`.trim()`](#string-trim)
 - [`Array`](#array)
+    + [`.find()`](#array-find)
 - [`Boolean`](#boolean)
 - [Função](#funcao)
     + [`.bind()`](#funcao-bind)
@@ -180,6 +183,82 @@ console.log(objeto1.valueOf() ==== objeto2.valueOf()); // Output: true (compara 
 - [`JSON`](#json)
     + [`.stringify()`](#json-stringify)
 - [`RegExp`](#regexp)
+- [`Promise`](#promise)
+    + [`.reject()`](#promise-reject)
+- [`process`](#process)
+    + [`.exit()`](#process-exit)
+
+# <a id="objeto-de-primeira-classe"></a>Objeto de Primeira Classe
+
+Em programação, um objeto de primeira classe (ou cidadão de primeira classe) é uma **entidade que pode ser tratrada como qualquer outro valor**. Em outras palavras, um objeto de primeira classe possui as seguintes propriedades:
+
+1. **Pode ser atribuído a uma variável:** você pode armazenar o objeto em uma variável
+2. **Pode ser passado como argumento para uma função:** você pode passar o objeto como um argumento para funções
+3. **Pode ser retornado de uma função:** uma função pode retornar um objeto
+4. **Pode ser armazenado em estruturas de dados:** você pode armazenar o objeto em arrays, objetos, ou outras estruturas de dados
+
+### Exemplos em JavaScript
+
+Em JavaScript, funções são objetos de primeira classe. Isso significa que funções podem ser tratadas como qualquer outro objeto.
+
+```JavaScript
+// Atribuição a variáveis.
+const digaOla = function () {
+    console.log("Hello!");
+}
+
+// Passagem como argumentos.
+function saudacao(funcao) {
+    funcao();
+}
+
+saudacao(digaOla); // Passa a função como argumento.
+
+// Retorno de funções.
+function getSaudacao() {
+    return function () {
+        console.log("Hello!");
+    };
+}
+
+const cumprimentador = getSaudacao();
+
+cumprimentador(); // Chama a função retornada.
+
+// Armazenamento em estruturas de dados.
+const funcoes = [
+    function () { console.log("Hello from function 1"); },
+    function () { console.log("Hello from function 2"); }
+];
+
+funcoes.forEach(funcao => funcao()); // Chama cada função no array.
+```
+
+**Objetos de Primeira Classe em Geral**
+
+Além de funções, todos os outros tipos de valores em JavaScript (números, strings, arrays, objetos) também são considerados de primeira classe, pois possuem as mesmas propriedades.
+
+### Comparação com Outras Linguagens
+
+Em algumas linguagens de programação, como C, funções não são objetos de primeira classe. Isso significa que, embora você possa chamar funções e passá-las como ponteiros de funções, não pode atribuí-las diretamente a variáveis ou retorná-las de outras funções de maneira tão simples e direta quanto em linguagens que tratam funções como objetos de primeira classe.
+
+### Conclusão
+
+O conceito de objetos de primeira classe é fundamental para a compreensão de linguagens de programação modernas, especialmente aquelas que suportam programação funcional. Ele permite um estilo de programação mais flexível e poderoso, onde funções podem ser manipuladas e usadas como qualquer outro valor.
+
+# <a id="objetos-globais"></a>Objetos Globais
+
+Os objetos globais são aqueles que **estão disponíveis em qualquer ponto do seu código, sem a necessidade de importá-los ou defini-los**. Eles são propriedades do objeto global (`window` no navegador, `global` no Node.js) e podem ser acessados diretamente.
+
+### Contexto do Node.js
+
+No Node.js, além dos objetos globais padrão, existem outros objetos globais específicos do ambiente Node.js, como:
+
+- `global`**:** o objeto global em Node.js
+- `process`**:** fornece informações e controle sobre o processo Node.js em execução
+- `Buffer`**:** útil para manipulação de dados binários
+- `require`**:** função usada para importar módulos
+- `module` **e** `exports`**:** usados para exportar módulos
 
 # <a id="string"></a>`String`
 
@@ -210,6 +289,30 @@ const trimmedString = string.trim();
 
 console.log(trimmedString); // Output: ""
 ```
+
+# <a id="array"></a>`Array`
+
+### Sumário
+
+- [`.find()`](#array-find)
+
+## <a id="array-find"></>`.find()`
+
+É utilizado para **retornar o primeiro elemento em um array que satisfaz a condição a condição fornecida em uma função de callback**. Se nenhum elemento satisfizer a condição, ele retorna `undefined`.
+
+**Sintaxe Básica**
+
+```JavaScript
+array.find(callback(elemento[, index[, array]])[, thisArg]);
+```
+
+- `callback`**:** função que é chamada para cada elemento do array
+    + `elemento`**:** o elemento atual sendo processado no array
+    + `index`**:** o índice do elemento atual sendo processado no array
+    + `array`**:** o array sobre o qual o método `.find()` foi executado
+- `thisArg`**:** valor a ser usado como `this` ao executar o `callback`
+
+O método `.find()` é útil para localizar o primeiro elemento em um array que satisfaz uma determinada condição. É uma forma conveniente de **pesquisa linear**, especialmente quando você deseja apenas o primeiro resultado que corresponde a um critério.
 
 # <a id="funcao"></a>Função
 
@@ -378,3 +481,112 @@ stringJson = JSON.stringify(array);
 
 console.log(stringJson); // Output: [1,"false",false]
 ```
+
+# <a id="promise"></a>`Promise`
+
+É um objeto que representa a **eventual conclusão (ou falha) de uma operação assíncrona e seu valor resultante**. Ela fornece uma maneira mais limpa e poderosa de lidar com operações assíncronas do que callbacks, permitindo a execução sequencial e melhor tratamento de erros.
+
+### Conceitos Básicos
+
+- **Pending (Pendente):** estado inicial da Promise, que ainda não foi resolvida nem rejeitada
+- **Fulfilled (Resolvida):** a operação foi completada com sucesso
+- **Rejected (Rejeitada):** a operação falhou
+
+### Métodos Importantes
+
+- `.then(seResolvida, seRejeitada)`**:** adiciona handlers para a eventual conclusão ou falha da Promise
+- `.catch(seRejeitada)`**:** adiciona um handler apenas para a falha da Promise
+- `.finally(finalmente)`**:** adicionar um handler para ser executado independentemente da conclusão ou falha da Promise
+
+### Exemplos
+
+```JavaScript
+// Criando uma Promise.
+let minhaPromessa = new Promise((resolve, reject) => {
+    let sucesso = true; // Pode ser o resultado de uma operação assíncrona.
+    if (sucesso) {
+        resolve("Operation was successful!");
+    } else {
+        reject("Operation failed.");
+    }
+});
+
+// Consumindo uma Promise.
+minhaPromessa
+    .then(resultado => {
+        console.log(resultado); // Output: Operation was successful!
+    })
+    .catch(error => {
+        console.error(error);   // Output: Operation failed.
+    });
+
+// Criando uma Promise simples.
+let promiseResolvida = Promise.resolve("Resolved value");
+
+promiseResolvida.then(valor => console.log(valor)); // Output: Resolved value
+
+// Criando uma Promise simples que falha.
+let promiseRejeitada = Promise.reject("Rejected reason");
+
+promiseRejeitada.catch(razao => console.error(razao)); // Output: Rejected reason
+
+// Usando `async` e `await`
+async function funcaoAssincrona() {
+    try {
+        let resultado = await minhaPromessa
+
+        console.log(resultado); // Output: Operation was successful!
+    } catch (error) {
+        console.error(error);   // Output: Operation failed.
+    } finally {
+        console.log("This is always executed.");
+    }
+}
+
+funcaoAssincrona();
+```
+
+### Sumário
+
+- [`.reject()`](#promise-reject)
+
+## <a id="promise-reject"></a>`.reject()`
+
+É utilizado para **criar uma nova Promise que é imediatamente rejeitada com o motivo fornecido**. Ele é útil quando você **deseja retornar um erro ou uma situação indesejada de uma operação assíncrona**.
+
+**Sintaxe Básica**
+
+```JavaScript
+Promise.reject(mensagemErro);
+```
+
+- `mensagemErro`**:** mensagem de erro
+
+# <a id="process"></a>`process`
+
+O objeto `process` em Node.js é um **objeto global que fornece informações e controle sobre o processo Node.js em execução**. Ele pode ser usado para interagir com o ambiente de execução, como acessar variáveis de ambiente, lidar com eventos do processo e controlar o ciclo de vida do processo.
+
+### Sumário
+
+- [`.exit()`](#process-exit)
+
+## <a id="process-exit"></a>`.exit()`
+
+É utilizado para **encerrar o processo Node.js em execução**. Você pode especificar um código de saída opcional que indica o motivo do encerramento do processo. O padrão é `0`, que geralmente indica uma saída bem-sucedida.
+
+**Sintaxe Básica**
+
+```JavaScript
+process.exit([codigo]);
+```
+
+- `codigo`**:** um número inteiro que representa o código de saída do processo. Se não for especificado, o padrão é `0`
+
+**Observações Importantes**
+
+Eventos `exit` e `beforeExit`:
+
+- O evento `exit` é emitido quando o processo está prestes a terminar
+- O evento `beforeExit` é emitido quando o Node.js limpa o loop de eventos, mas ainda há trabalhos pendentes, permitindo a execução de código assíncrono adicional
+
++ `process.exit()` força o encerramento do processo sem aguardar a conclusão das operações pendentes, como callbacks ou timers assíncronos. Isso pode resultar em perda de dados ou operações incompletas

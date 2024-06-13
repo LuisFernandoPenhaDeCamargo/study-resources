@@ -1,7 +1,7 @@
 # `os` (Ok)
 
 - O módulo `os` em Node.js está incluído na instalação padrão do Node.js
-- Ele fornece várias utilidades relacionadas ao SO
+- Ele fornece várias **utilidades relacionadas ao SO**
 
 ### Sumário
 
@@ -17,7 +17,7 @@
 os.cpus();
 ```
 
-**Estrutura do Objeto CPU**
+### Estrutura do Objeto CPU
 
 - `model`**:** uma string que descreve o modelo da CPU
 - `speed`**:** a velocidade da CPU em MHz

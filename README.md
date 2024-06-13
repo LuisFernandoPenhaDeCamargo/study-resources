@@ -94,15 +94,24 @@ Este repositório tem como objetivo auxiliar o estudo de certas tecnologias rela
 ## ./JavaScript
 
 - **./JavaScript**
-    + **JavaScript (JavaScript.md)**
+    + **JavaScript (JavaScript.md):** linguagem de programação
+        - [Objeto de Primeira Classe](#objeto-de-primeira-classe)
         - [Módulo x Biblioteca](#modulo-x-biblioteca)
     + **Objetos (objetos.md)**
+        - [Objeto de Primeira Classe](#objeto-de-primeira-classe)
+        - [Objetos Globais](#objetos-globais)
         - [`String`](#string)
             + [`.trim()`](#string-trim)
+        - [`Array`](#array)
+            + [`.find()`](#array-find)
         - [Funções](#funcoes)
             + [`.bind()`](#funcoes-bind)
         - [`JSON`](#json)
             + [`.stringify()`](#json-stringify)
+        - [`Promise`](#promise)
+            + [`.reject()`](#promise-reject)
+        - [`process`](#process)
+            + [`.exit()`](#process-exit)
 - **Node.js (Nodejs.md):** engine, runtime, ambiente de execução JavaScript
     + ["Incluído na Instalação Padrão do Node.js"](#incluido-instalacao-padrao)
 - **./bibliotecas**
@@ -114,6 +123,13 @@ Este repositório tem como objetivo auxiliar o estudo de certas tecnologias rela
         - [`.createHash()`](#createhash)
         - [`.update()`](#update)
         - [`.digest()`](#digest)
+    + `systeminformation` **(systeminformation.md):** fornece informações detalhadas sobre o sistema operacional, hardware, e componentes de software
+    + Axios **(Axios.md):** é utilizada para fazer requisições HTTP
+        - [`interceptors`](#interceptors)
+        - [`.use()`](#use)
+        - [`.eject()`](#eject)
+        - [`.get()`](#get)
+        - [`.post()`](#post)
 
 - **JavaScript (JavaScript.md):** linguagem de programação
     + [Operadores](#operadores)
@@ -217,14 +233,6 @@ Este repositório tem como objetivo auxiliar o estudo de certas tecnologias rela
     + `util` **(util.md):** fornece utilitários úteis para operações comuns em JavaScript
         - [`.promisify()`](#promisify)
     + Express **(Express.md):** utilizada na criação de servidores HTTP
-        - [Métodos](#metodos)
-            + [app.listen()](#metodos-app-listen)
-            + [`router.post()`](#metodos-router-post)
-            + [`response.status()`](#metodos-reponse-status)
-            + [`response.json()`](#metodos-reponse-json)
-    + **Axios (axios.md):**
-        - [Métodos](#metodos)
-            + [`axios.post()`](#metodos-axios-post)
     + **Sequelize (sequelize.md):** utilizada na manipulação de banco de dados SQL
         - [Tipos de Coluna](#tipos-coluna)
         - [Métodos](#metodos)
@@ -328,7 +336,6 @@ Template de estrutura a tentar seguir em relação as anotações do conteúdo e
     + [Subtítulos](#formatacao-documento-subtitulos)
     + [Negrito](#formatacao-documento-negrito)
 - [Key Words](#formatacao-documento-key-words)
-- [Siglas e Abreviações](#formatacao-documento-siglas-abreviacoes)
 
 # Anotações Não Alocadas
 

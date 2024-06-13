@@ -1,7 +1,7 @@
-# `crypto`
+# `crypto` (Ok)
 
 - O módulo `os` em Node.js está incluído na instalação padrão do Node.js
-- Ele fornece criptografia para implementar várias funções de segurança, como hashing, criptografia e geração de chaves
+- Ele fornece **criptografia para implementar várias funções de segurança**, como hashing, criptografia e geração de chaves
 
 ### Sumário
 
