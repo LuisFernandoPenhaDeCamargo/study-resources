@@ -95,6 +95,11 @@ Este repositório tem como objetivo auxiliar o estudo de certas tecnologias rela
 
 - **./JavaScript**
     + **JavaScript (JavaScript.md):** linguagem de programação
+        - [`return`](#return)
+        - [`class`](#class)
+        - [`static`](#static)
+        - [Propriedades Estáticas em Funções Construtoras](#propriedades-estaticas-funcoes-construtoras)
+        - [Classes x Objetos (no Contexto em que Ambos Podem ser Utilizados para Criar Novas Instâncias)](#classes-x-objetos-contexto-em-que-ambos-podem-ser-utilizados-para-criar-novas-instancias)
         - [Objeto de Primeira Classe](#objeto-de-primeira-classe)
         - [Módulo x Biblioteca](#modulo-x-biblioteca)
     + **Objetos (objetos.md)**

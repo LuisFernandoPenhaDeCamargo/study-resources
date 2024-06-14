@@ -11,44 +11,75 @@
     + Quando acabarem os tópicos acima, refatore de cima para baixo os arquivos dentro do diretório **Refatorar**
 - Após cumprir as tarefas acima, realize as atividades abaixo até elas acabarem
 
-+ Pontuar o que eu conversei com o Ventura e com o Antônio
-+ Como eu seto o 1 e 0 para o forçado no zoe-game-api mesmo?
-+ `git diff` no zoe-game-api
-    - Arquivos alterados (pacote 2.5.3-rc.3, RC):  
-        Acho que vou testar todas essas funcionalidades novamente
-        + **./routes/machines.js**
-        + **./routes/prizes.js**
-        + **./services/raffle_prizes.js**
-        + **./tasks/publish_prizes.js**
-        + **./tasks/raffle_prizes.js**
-        + curl http://localhost:8080/game/accumulated_reset -X POST -H "Content-Type: application/json" -d '{"machine_id": 101}'
-        + curl http://localhost:8080/game/jackpot_reset     -X POST -H "Content-Type: application/json" -d '{"machine_id": 101}'
-        + curl http://localhost:8080/game/bigwinner         -X POST -H "Content-Type: application/json" -d '{"machine_id": 101}'
-            - Query que gera um erro
-        + curl http://localhost:8080/game/bigwinner         -X POST -H "Content-Type: application/json" -d '{"machine_id": 101, "game": 1, "bet": 2, "prize": 3}'
-            - Valores de chaves sem embasamento algum
-        + SELECT force_accumulated FROM settings;
-        + UPDATE settings SET force_accumulated = 101;
-        + SELECT force_jackpot FROM settings;
-        + UPDATE settings SET force_jackpot = 101;
-        + DELETE FROM big_winners where id > ;
-        + UPDATE settings SET accumulated_games_left = 0, accumulated_paid_at = '2024-02-14 00:00:00';
-        + UPDATE settings SET jackpot_games_left = 0, jackpot_paid_at = '2024-02-14 00:00:00';
-        + SELECT id, accumulated_enabled, jackpot_enabled, compete_acumulado, payout_enabled, credit_balance, online FROM machines WHERE online = 1;
++ Quero reproduzir do 0 todas as APIs, posso utilizar a VM para isto
++ Se a feature `promotion` não estiver sendo utilizada
+    - Posso apagar o arquivo **./services/publish_prizes.js**
+    - Remover a tarefa `setInterval(tasks.publish_prizes, config.tasks.publish_prizes);` em **server.js**
+
++ Ver se eu estou conseguindo manipular de forma adequada a tabela `big_winners`
+    - Inserir um registro completo na tabela
++ Eu posso refatorar a procedure para que ela retorne os dados necessários para o log, afinal ela já os tem
++ Provavelmente posso remover os `enabled`s das premiações
++ 
+
+```SQL
+SELECT id FROM machines WHERE online = 1 AND accumulated_enabled = 0 AND credit_balance > 100 AND compete_acumulado = 1 AND payout_enabled = 0 AND client_modified_at IS NOT NULL ORDER BY client_modified_at;
+
+SELECT id, accumulated_enabled, credit_balance, compete_acumulado, payout_enabled, client_modified_at, online, promotion_enabled FROM machines;
+```
+
+
+- Arquivos alterados (pacote 2.5.3-rc.3, RC):  
+    Acho que vou testar todas essas funcionalidades novamente
+    + **./routes/machines.js**
+    + **./routes/prizes.js**
+    + **./services/raffle_prizes.js**
+    + **./tasks/publish_prizes.js**
+    + **./tasks/raffle_prizes.js**
+    + curl http://localhost:8080/game/accumulated_reset -X POST -H "Content-Type: application/json" -d '{"machine_id": 101}'
+    + curl http://localhost:8080/game/jackpot_reset     -X POST -H "Content-Type: application/json" -d '{"machine_id": 101}'
+    + curl http://localhost:8080/game/bigwinner         -X POST -H "Content-Type: application/json" -d '{"machine_id": 101}'
+        - Query que gera um erro
+    + curl http://localhost:8080/game/bigwinner         -X POST -H "Content-Type: application/json" -d '{"machine_id": 101, "game": 1, "bet": 2, "prize": 3}'
+        - Valores de chaves sem embasamento algum
+    + SELECT force_accumulated FROM settings;
+    + UPDATE settings SET force_accumulated = 101;
+    + SELECT force_jackpot FROM settings;
+    + UPDATE settings SET force_jackpot = 101;
+    + DELETE FROM big_winners where id > ;
+    + UPDATE settings SET accumulated_games_left = 0, accumulated_paid_at = '2024-02-14 00:00:00';
+    + UPDATE settings SET jackpot_games_left = 0, jackpot_paid_at = '2024-02-14 00:00:00';
+    + SELECT id, accumulated_enabled, jackpot_enabled, compete_acumulado, payout_enabled, credit_balance, online FROM machines WHERE online = 1;
 
 ### Tópicos a se Estudar
 
-- `JSON`
-- Classificar melhor onde a `return` deve se encaixar
-- Classificar melhor onde a `static` deve se encaixar
-    + Pontuar melhor o que é algo `static`
+- Reestruturar
+    + Classes x Funções Construtoras
+        - Talvez eu crie um arquivo para ambos os conceitos e vou monstrando a diferença entre ambos em vários aspectos
+        - "Propriedades Estáticas"
+        - "Herança"
+        - "Encapsulamento"
+        - Objetos são criados a partir delas
+- `constructor`
 - `this` (tenho bastante dificuldade com este conceito)
+- `Object.create()`
+- `.prototype`
 - callback x Promises
 - O que seriam funções estritas e funções não estritas?
-- Sobre este exemplo:
+- O que são palavras-chaves?
+- O que é uma função?
+- O que é um método?
+- Método x função
+- O que é uma propriedade?
+- Herança
+    + `extends`
+    + `super`
+- Encapsulamento
+- Polimorfismo
 - É obrigatória a existência da chave "`scripts`" no seu **package.json**?
     + Além de pesquisar, testar isso na hora de publicar um pacote
     + A chave `scripts` não é obrigatória
+- Sobre este exemplo:
 
 ```JavaScript
 const util = require("util");
@@ -79,6 +110,15 @@ EISGIT
 - `npm WARN deprecated`
 - `/` (diretório raíz, sistema hierarquico de arquivos)
 - Permissões de certificado ("600, só o primeiro pode usar"?)
+- `SELECT * FROM $< tabela >\G;` o que o `\G` significa?
+- Para inserir um dump em um banco, ele já precisa existir?
+    + `mariadb -e "CREATE DATABASE $< nome do banco de dados >;"`
+    + `mariadb $< nome do banco de dados > < $< dump >`
+- Criando um usuário
+    + `CREATE USER '$< nome do usuário >'@'$< host >' IDENTIFIED BY '$< senha >';`
+- Concedendo permissões a um usuário
+    + `GRANT ALL PRIVILEGES ON $< nome do banco de dados >.* TO 'nome do usuário'@'host'`
+    + Quais são as permissões existentes?
 - Reinstalar
     + Tilix
     + As ferramentas necessárias para executar o updater
@@ -97,22 +137,6 @@ curl http://localhost:8081/v2/places/2276/big_winners \
 ```
 
 O token é do servidor 2276.
-
-#
-
-PRA FAZER A PORRA DO DUMP O BANCO PRECISA JÁ EXISTIR
-
-sudo mysql -e "CREATE DATABASE zoeslots;"
-
-sudo mysql zoeslots < dump
-
-criar a porra do usuário do banco
-
-CREATE USER 'orion'@'localhost' IDENTIFIED BY 'Bl4ckBox1337';
-
-GRANT ALL PRIVILEGES ON zoeslots.* TO 'orion'@'localhost';
-
-redis error agora, my butt
 
 #
 

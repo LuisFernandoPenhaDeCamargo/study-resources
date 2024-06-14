@@ -96,7 +96,7 @@ $ git diff A
 
 Este comando mostrará todas as diferenças entre o estado atual da sua branch e o estado da branch A.
 
-## <a id=""></a>`git config --global -l`
+## <a id="comandos-utilizados-cli-config-global-l"></a>`git config --global -l`
 
 É utilizado para **exibir a lista de todas as configurações globais do Git para o usuário atual**. Essas configurações são armazenadas no arquivo **~/.gitconfig** e afetam todos os repositórios do usuário.
 

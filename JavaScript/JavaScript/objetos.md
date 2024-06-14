@@ -409,6 +409,13 @@ saudacaoAlice("?");                    // Output: Hey, Alice?
 
 # <a id="json"></a>`JSON`
 
+É um **utilitário global que fornece métodos para manipulação de dados no formato JSON** (JavaScript Object Notation). Ele é frequentemente utilizado para serializar e desserializar dados entre JavaScript e outros sistemas, como APIs, arquivos de configuração, e banco de dados.
+
+### Considerações de Segurança
+
+- **Validação de entrada:** ao utilizar `.parse()` em dados externos, é importante validar os dados para evitar ataques de injeção
+- **Manuseio de erros:** use `try...catch` para tratar erros potenciais durante a conversão de JSON
+
 ### Sumário
 
 - [`.stringify()`](#json-stringify)
