@@ -96,27 +96,44 @@ Este repositório tem como objetivo auxiliar o estudo de certas tecnologias rela
 - **./JavaScript**
     + **JavaScript (JavaScript.md):** linguagem de programação
         - [`return`](#return)
-        - [`class`](#class)
-        - [`static`](#static)
-        - [Propriedades Estáticas em Funções Construtoras](#propriedades-estaticas-funcoes-construtoras)
-        - [Classes x Objetos (no Contexto em que Ambos Podem ser Utilizados para Criar Novas Instâncias)](#classes-x-objetos-contexto-em-que-ambos-podem-ser-utilizados-para-criar-novas-instancias)
+            + [Retornando Mais de um Valor](#retornando-mais-de-um-valor)
+        - [Shorthand Property Names Syntax](#shorthand-property-names-syntax)
+        - [`this`](#this)
+            + [Contextos Diferentes de `this`](#this-contextos-diferentes-de-this)
+        - [Funções Construtoras](#funcoes-construtoras)
+            + [Definindo Métodos: Diretamente na Função Construtora x Usando a Propriedade `prototype`](#funcoes-construtoras-definindo-metodos-diretamente-na-funcao-construtora-x-usando-a-propriedade-prototype)
+        - [Classes (`class`)](#classes-class)
+        - [Funções Construtoras x Classes](#funcoes-construtoras-x-classes)
+            + [Sintaxe e Herança](#funcoes-construtoras-x-classes-sintaxe-heranca)
+            + [Encapsulamento](#funcoes-construtoras-x-classes-encapsulamento)
+            + [Propriedades Estáticas](#funcoes-construtoras-x-classes-propriedades-estaticas)
+            + [Propriedades Estáticas Encapsuladas](#funcoes-construtoras-x-classes-propriedades-estaticas-encapsuladas)
+            + [Comparação Resumida](#funcoes-construtoras-x-classes-comparacao-resumida)
+        - [`constructor`](#constructor)
+        - [`instance.constructor`](#instance-constructor)
+        - [`.prototype` e `__proto__`](#prototype-proto)
         - [Objeto de Primeira Classe](#objeto-de-primeira-classe)
         - [Módulo x Biblioteca](#modulo-x-biblioteca)
+        - [Estruturação de Código](#estruturação-codigo)
     + **Objetos (objetos.md)**
         - [Objeto de Primeira Classe](#objeto-de-primeira-classe)
         - [Objetos Globais](#objetos-globais)
+        - [`Object`](#object)
+            + [`.create()`](#object-create)
         - [`String`](#string)
             + [`.trim()`](#string-trim)
         - [`Array`](#array)
             + [`.find()`](#array-find)
-        - [Funções](#funcoes)
-            + [`.bind()`](#funcoes-bind)
+        - [Função](#funcao)
+            + [`.bind()`](#funcao-bind)
         - [`JSON`](#json)
             + [`.stringify()`](#json-stringify)
         - [`Promise`](#promise)
             + [`.reject()`](#promise-reject)
         - [`process`](#process)
             + [`.exit()`](#process-exit)
+        - [`instance.constructor`](#instance-constructor)
+        - [`.prototype` e `__proto__`](#prototype-proto)
 - **Node.js (Nodejs.md):** engine, runtime, ambiente de execução JavaScript
     + ["Incluído na Instalação Padrão do Node.js"](#incluido-instalacao-padrao)
 - **./bibliotecas**
@@ -129,12 +146,16 @@ Este repositório tem como objetivo auxiliar o estudo de certas tecnologias rela
         - [`.update()`](#update)
         - [`.digest()`](#digest)
     + `systeminformation` **(systeminformation.md):** fornece informações detalhadas sobre o sistema operacional, hardware, e componentes de software
-    + Axios **(Axios.md):** é utilizada para fazer requisições HTTP
+    + **Axios (Axios.md):** é utilizada para fazer requisições HTTP
         - [`interceptors`](#interceptors)
         - [`.use()`](#use)
         - [`.eject()`](#eject)
         - [`.get()`](#get)
         - [`.post()`](#post)
+    + **Express (Express.md):**
+        - [`request.path`](#request-path)
+    + **Redis (Redis.md):**
+        - [Erros Enfrentados](#erros-enfrentados)
 
 - **JavaScript (JavaScript.md):** linguagem de programação
     + [Operadores](#operadores)
@@ -164,8 +185,6 @@ Este repositório tem como objetivo auxiliar o estudo de certas tecnologias rela
             + [`.join()`](#objetos-array-join)
         - [`error`](#objetos-error)
         - [`Date`](#objetos-date)
-    + [`return`](#return)
-        - [Shorthand Property Names Syntax](#return-shorthand-property-names-syntax)
     + [Função de Flecha](#funcao-flecha)
     + [Closures](#closures)
     + [Desestruturação](#desestruturacao)

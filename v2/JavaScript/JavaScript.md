@@ -29,8 +29,6 @@
         - [`.join()`](#objetos-array-join)
     + [`error`](#objetos-error)
     + [`Date`](#objetos-date)
-- [`return`](#return)
-    + [Shorthand Property Names Syntax](#return-shorthand-property-names-syntax)
 - [Função de Flecha](#funcao-flecha)
 - [Closures](#closures)
 - [Desestruturação](#desestruturacao)
@@ -1219,77 +1217,6 @@ console.log(data.toISOString());    // Formato ISO 8601: "2024-05-08T12:00:00.00
 ```
 
 O objeto `Date` em JavaScript pode ser bastatente flexível e poderoso para lidar com manipulação de datas e horas, mas também pode ser complicado de usar em alguns casos. Por isso, é sempre útil consultar a documentação oficial da Mozilla Developer Network (MDN) ou outras fontes confiáveis para obter mais informações sobre o objeto `Date` e suas funcionalidades.
-
-# <a id="return"></a>`return`
-
-Em JavaScript, uma função não pode retornar diretamente dois valores separados, como em algumas outras linguagens que suportam tuplas (como Python). No entanto, você pode retornar múltiplos valores usando um array ou um objeto.
-
-**Usando um Array**
-
-Se a ordem dos valores é importante e você deseja retornar múltiplos valores, você pode usar um array:
-
-```JavaScript
-function getCoordinates() {
-    let x = 10;
-    let y = 20;
-    return [x, y];
-}
-
-let [x, y] = getCoordinates();
-
-console.log(x); // Output: 10
-console.log(y); // Output: 20
-```
-
-**Usando um Objeto**
-
-Se você deseja retornar múltiplos valores com mais clareza sobre o que cada valor representa, você pode usar um objeto:
-
-```JavaScript
-function getCoordinates() {
-    let x = 10;
-    let y = 20;
-    return { x: x, y: y};
-}
-
-let coordinates = getCoordinates();
-
-console.log(coordinates.x); // Output: 10
-console.log(coordinates.y); // Output: 20
-```
-
-**Vantagens e Desvantagens**
-
-- **Array:**
-    + **Vantangens:** simplicidade e menor uso de memória em alguns casos
-    + **Desvantagens:** pode ser menos claro, especialmente se a função retornar muitos valores ou valores que não têm uma ordem óbvia
-- **Objeto:**
-    + **Vantangens:** mais claro e legível, especialmente quando retornando múltiplos valores com significados distintos
-    + **Desvantagens:** uso ligeiramente maior de memória devido aos nomes das propriedades
-
-## <a id="return-shorthand-property-names-syntax"></a>Shorthand Property Names Syntax
-
-Você pode retornar um objeto utilizando a shorthand property names syntax em JavaScript, onde os nomes das propriedades são iguais aos nomes das variáveis.
-
-```JavaScript
-function getDatabaseInfo() {
-    let columns = ["id", "name", "age"];
-    let values = [
-        [1, "Alice", 30],
-        [2, "Bob", 25],
-        [3, "Charlie", 35],
-    ];
-
-    return { columns, values };
-}
-
-let databaseInfo = getDatabaseInfo();
-
-console.log(databaseInfo.columns); // Output: [ 'id', 'name', 'age' ]
-console.log(databaseInfo.values);  // Output: [ [ 1, 'Alice', 30 ], [ 2, 'Bob', 25 ], [ 3, 'Charlie', 35 ] ]
-```
-
-Neste exemplo, `return { columns, values };` é uma forma abreviada de escrever `return { columns: columns, values: values };`. Quando o nome da variável é o mesmo que o nome da propriedade, você pode usar a forma curta (shorthand property names syntax).
 
 # <a id="funcao-flecha"></a>Função de Flecha
 

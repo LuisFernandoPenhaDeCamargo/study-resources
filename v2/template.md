@@ -133,36 +133,6 @@ Existem alguns subtópicos comuns, abaixo segue listas deles, observado que a li
 
 - Se eu não "encontrar" um substituto adequado para o nome de uma váriavel (função, método, classe) em português, eu usarei o nome em inglês mesmo
 - O acento agudo será substituído pela letra "h", se for necessário para o entendimento
-- **Para valores de nomes (primeiro nome):**
-    + `Alice`
-    + `Bob`
-    + `Charlie`
-- **Para valores de nomes (segundo nome):**
-    + `Doe`
-- **Para valores de idade:**
-    + `25`
-- **Para cidades:**
-    + `New York`
-- **Para números:**
-    + `42`
-- **Para Strings**
-    + `text`
-- **Para animais:**
-    + Nome, `Buddy`
-    + Raça, `Golden Retriever`
-- **Para carros:**
-    + Fabricante, `Toyota`
-    + Modelo, `Corolla`
-- **Para funções (JavaScript):**
-
-```JavaScript
-function saudacao() {
-    console.log("Hello");
-}
-```
-
-- **Para mensagens de erro:**
-    + `"Something went wrong"`
 
 ## <a id="formatacao-documento-subtitulos"></a>Subtítulos
 

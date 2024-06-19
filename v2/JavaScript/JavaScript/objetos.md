@@ -170,6 +170,7 @@ console.log(objeto1.valueOf() ==== objeto2.valueOf()); // Output: true (compara 
 - [Objeto de Primeira Classe](#objeto-de-primeira-classe)
 - [Objetos Globais](#objetos-globais)
 - [`Object`](#object)
+    + [`.create()`](#object-create)
 - [`Number`](#number)
 - [`String`](#string)
     + [`.trim()`](#string-trim)
@@ -187,6 +188,8 @@ console.log(objeto1.valueOf() ==== objeto2.valueOf()); // Output: true (compara 
     + [`.reject()`](#promise-reject)
 - [`process`](#process)
     + [`.exit()`](#process-exit)
+- [`instance.constructor`](#instance-constructor)
+- [`.prototype` e `__proto__`](#prototype-proto)
 
 # <a id="objeto-de-primeira-classe"></a>Objeto de Primeira Classe
 
@@ -203,7 +206,7 @@ Em JavaScript, funções são objetos de primeira classe. Isso significa que fun
 
 ```JavaScript
 // Atribuição a variáveis.
-const digaOla = function () {
+const digaOla = function() {
     console.log("Hello!");
 }
 
@@ -216,7 +219,7 @@ saudacao(digaOla); // Passa a função como argumento.
 
 // Retorno de funções.
 function getSaudacao() {
-    return function () {
+    return function() {
         console.log("Hello!");
     };
 }
@@ -227,8 +230,8 @@ cumprimentador(); // Chama a função retornada.
 
 // Armazenamento em estruturas de dados.
 const funcoes = [
-    function () { console.log("Hello from function 1"); },
-    function () { console.log("Hello from function 2"); }
+    function() { console.log("Hello from function 1"); },
+    function() { console.log("Hello from function 2"); }
 ];
 
 funcoes.forEach(funcao => funcao()); // Chama cada função no array.
@@ -259,6 +262,93 @@ No Node.js, além dos objetos globais padrão, existem outros objetos globais es
 - `Buffer`**:** útil para manipulação de dados binários
 - `require`**:** função usada para importar módulos
 - `module` **e** `exports`**:** usados para exportar módulos
+
+# <a id="object"></a>`Object`
+
+### Sumário
+
+- [`.create()`](#object-create)
+
+## <a id="object-create"></a>`.create()`
+
+É utilizado para criar um novo objeto com um protótipo específico. Este método permite que você crie um objeto e estabeleça seu protótipo (a cadeia de herança) sem precisar definir uma função construtora.
+
+```JavaScript
+Object.create(prototipo[, propriedadesObjeto]);
+```
+
+- `prototipo`**:** o objeto que será o protótipo do novo objeto criado. Pode ser `null`
+- `propriedadesObjeto`**:** um objeto cujas propriedades próprias enumeráveis especificam descritores de propriedades a serem adicionados ao novo objeto
+
+### Exemplos
+
+- **Criação simples com protótipo**
+
+```JavaScript
+const animal = {
+    tipo: "mamífero",
+    som: function() {
+        console.log(`${this.nome} faz um som.`);
+    },
+};
+
+const gato = Objeto.create(animal);
+
+gato.nome = "Mia";
+
+console.log(gato.tipo); // Output: mamífero
+
+gato.som();             // Output: Mia faz um som.
+```
+
+Neste exemplo, `gato` herda as propriedades e métodos do objeto `animal`
+
+- **Criação com propriedades específicas**
+
+Você também pode adicionar propriedades diretamente ao novo objeto usando o seguinte parâmetro:
+
+```JavaScript
+const pessoa = {
+    saudacao: function() {
+        console.log(`Olá, meu nome é ${this.nome}.`);
+    }
+};
+
+const alice = Object.create(pessoa, {
+    nome: {
+        value: "Alice",
+        writable: true,
+        enumerable: true,
+        configurable: true,
+    }
+});
+
+alice.saudacao(); // Output: Olá, meu nome é Alice.
+```
+
+- **Herança prototípica**
+
+`.create()` é frequentemente usado para implementar herança prototípica de forma mais direta do que com funções construtoras e `new`
+
+```JavaScript
+const veiculo = {
+    tipo: "genérico",
+    iniciar: function() {
+        console.log(`Iniciando o ${this.tipo}.`);
+    }
+};
+
+const carro = Object.create(veiculo, {
+    tipo: {
+        value: "carro",
+        writable: true,
+        enumerable: true,
+        configurable: true,
+    }
+});
+
+carro.iniciar(); // Output: Iniciando o carro.
+```
 
 # <a id="string"></a>`String`
 
@@ -597,3 +687,145 @@ Eventos `exit` e `beforeExit`:
 - O evento `beforeExit` é emitido quando o Node.js limpa o loop de eventos, mas ainda há trabalhos pendentes, permitindo a execução de código assíncrono adicional
 
 + `process.exit()` força o encerramento do processo sem aguardar a conclusão das operações pendentes, como callbacks ou timers assíncronos. Isso pode resultar em perda de dados ou operações incompletas
+
+# <a id="instance-constructor"></a>`instance.constructor`
+
+A **propriedade** `constructor` de uma instância (`instance`) em JavaScript refere-se à função construtora (ou classe) que criou essa instância. Quando um objeto é criado usando uma função construtora, ele herda a propriedade `constructor` do seu protótipo, essa propriedade aponta para a função construtora que criou a instância.
+
+### Exemplos
+
+```JavaScript
+function Animal(tipo) {
+    this.tipo = tipo;
+}
+
+Animal.prototype.fazerSom = function() {
+    console.log(`${this.tipo} faz um som.`);
+};
+
+function Gato(nome){
+    Animal.call(this, "Mamífero");
+    this.nome = nome;
+}
+
+Gato.prototype = Object.create(Animal.prototype);
+Gato.prototype.constructor = Gato;
+
+Gato.prototype.miar = function() {
+    console.log(`${this.nome} mia.`);
+};
+
+const mia = new Gato("Mia");
+
+mia.fazerSom(); // Output: Mamífero faz um som.
+mia.miar();     // Output: Mia mia.
+
+// Importância da Propriedade `constructor`.
+
+console.log(mia.constructor); // Output: [Function Gato]
+
+// - Identificação da Função Construtora
+console.log(mia.constructor === Gato);   // Output: true
+console.log(mia.constructor === Animal); // Output: false
+console.log(mia instanceof Gato);        // Output: true
+console.log(mia instanceof Animal);      // Output: true
+
+// - Criando Novas Instâncias Dinamicamente
+const novoGato = new mia.constructor("Leo");
+
+console.log(novoGato.nome);            // Output: Leo
+console.log(novoGato instanceof Gato); // Output: true
+
+// Classes e Herança.
+class ClasseAnimal {
+    constructor(nome) {
+        this.nome = nome;
+    }
+
+    fazemSom() {
+        console.log(`${this.nome} faz um som.`);
+    }
+}
+
+class Cachorro extends ClasseAnimal {
+    constructor(nome, raca) {
+        super(nome);
+        this.raca = raca;
+    }
+
+    fazemSom() {
+        console.log(`${this.nome} (um ${this.raca}) late.`);
+    }
+}
+
+const teste1 = new ClasseAnimal();
+const teste2 = new Cachorro();
+
+console.log(teste1.constructor); // Output: [class ClasseAnimal]
+console.log(teste2.constructor); // Output: [class Cachorro extends ClasseAnimal]
+
+const teste3 = new teste1.constructor();
+
+console.log(teste3.constructor); // Output: [class ClasseAnimal]
+```
+
+### Conclusão
+
+A propriedade `constructor` é uma maneira de rastrear a função construtora original de uma instância. Ela é especialmente útil em contextos de herança, onde garantir que a propriedade `constructor` esteja correta pode ajudar a manter o código organizado e compreensível. Ajustar manualmente `constructor` após estabelecer a herança é uma prática comum e importante para garantir a integridade do código.
+
+# <a id="prototype-proto"></a>`.prototype` e `__proto__`
+
+`.prototype` é uma propriedade de uma função construtora (ou classe) que aponta para um objeto. Esse objeto contém propriedades e métodos que serão compartilhados por todas as instâncias criadas pela função construtora. É importante pontuar que esta propriedade não está presente em funções de flecha e que ela é usada principalmente para implementar herança.
+
+`__proto__` é uma propriedade de cada objeto (uma propriedade de instâncias de objeto) que aponta para o protótipo que ele herdou. Em objetos criados por funções construtoras, `__proto__` aponta para o objeto referenciado por `.prototype`.
+
+### Exemplos
+
+```JavaScript
+function Animal(tipo) {
+    this.tipo = tipo;
+}
+
+Animal.prototype.fazerSom = function() {
+    console.log(`${this.tipo} faz um som.`);
+};
+
+function Gato(nome) {
+    Animal.call(this, "Gato");
+    this.nome = nome;
+}
+
+Gato.prototype = Object.create(Animal.prototype);
+Gato.prototype.constructor = Gato;
+
+Gato.prototype.miar = function() {
+    console.log(`${this.nome} mia.`);
+};
+
+const felix = new Gato("Felix");
+
+felix.fazerSom(); // Output: Gato faz um som.
+felix.miar();     // Output: Felix mia.
+
+console.log(Gato.prototype.constructor);          // Output: [Function: Gato]
+console.log(Gato.prototype);                      // Output: Animal { constructor: [Function: Gato], miar: [Function (anonymous)] }
+console.log(felix.__proto__);                     // Output: Animal { constructor: [Function: Gato], miar: [Function (anonymous)] }
+console.log(Gato.prototype === felix.__proto__);  // Output: true
+
+console.log(Animal.prototype.constructor);                   // Output: [Function: Animal]
+console.log(Animal.prototype);                               // Output: { fazerSom: [Function anonymous] }
+console.log(felix.__proto__.__proto__);                      // Output: { fazerSom: [Function anonymous] }
+console.log(Animal.prototype === felix.__proto__.__proto__); // Output: true
+
+console.log(Object.prototype.constructor);                             // Output: [Function: Object]
+console.log(Object.prototype);                                         // Output: [Object: null prototype] {}
+console.log(felix.__proto__.__proto__.__proto__);                      // Output: [Object: null prototype] {}
+console.log(Object.prototype === felix.__proto__.__proto__.__proto__); // Output: true
+
+console.log(felix.constructor);                                // Output: [Function: Gato]
+console.log(Gato.prototype.constructor === felix.constructor); // Output: true
+
+console.log(felix instanceof Gato);               // Output: true
+console.log(felix instanceof Animal);             // Output: true
+console.log(felix instanceof Object);             // Output: true
+```

@@ -11,59 +11,48 @@
     + Quando acabarem os tópicos acima, refatore de cima para baixo os arquivos dentro do diretório **Refatorar**
 - Após cumprir as tarefas acima, realize as atividades abaixo até elas acabarem
 
-+ Quero reproduzir do 0 todas as APIs, posso utilizar a VM para isto
-+ Se a feature `promotion` não estiver sendo utilizada
-    - Posso apagar o arquivo **./services/publish_prizes.js**
-    - Remover a tarefa `setInterval(tasks.publish_prizes, config.tasks.publish_prizes);` em **server.js**
+---
 
-+ Ver se eu estou conseguindo manipular de forma adequada a tabela `big_winners`
-    - Inserir um registro completo na tabela
-+ Eu posso refatorar a procedure para que ela retorne os dados necessários para o log, afinal ela já os tem
-+ Provavelmente posso remover os `enabled`s das premiações
-+ 
+```Bash
+curl http://localhost:8080/game/accumulated_reset -X POST \
+-H "Content-Type: application/json" -d '{"machine_id": 101}'
 
-```SQL
-SELECT id FROM machines WHERE online = 1 AND accumulated_enabled = 0 AND credit_balance > 100 AND compete_acumulado = 1 AND payout_enabled = 0 AND client_modified_at IS NOT NULL ORDER BY client_modified_at;
+curl http://localhost:8080/game/jackpot_reset -X POST \
+-H "Content-Type: application/json" -d '{"machine_id": 101}'
 
-SELECT id, accumulated_enabled, credit_balance, compete_acumulado, payout_enabled, client_modified_at, online, promotion_enabled FROM machines;
+curl http://localhost:8080/game/bigwinner -X POST \
+-H "Content-Type: application/json" -d @data2.json
+
+curl http://localhost:8080/game/bigwinner  -X POST \
+-H "Content-Type: application/json" -d '{"machine_id": 101}'
 ```
 
+```SQL
+UPDATE settings SET accumulated_games_left = 0, accumulated_paid_at = '2024-02-14 00:00:00';
 
-- Arquivos alterados (pacote 2.5.3-rc.3, RC):  
-    Acho que vou testar todas essas funcionalidades novamente
-    + **./routes/machines.js**
-    + **./routes/prizes.js**
-    + **./services/raffle_prizes.js**
-    + **./tasks/publish_prizes.js**
-    + **./tasks/raffle_prizes.js**
-    + curl http://localhost:8080/game/accumulated_reset -X POST -H "Content-Type: application/json" -d '{"machine_id": 101}'
-    + curl http://localhost:8080/game/jackpot_reset     -X POST -H "Content-Type: application/json" -d '{"machine_id": 101}'
-    + curl http://localhost:8080/game/bigwinner         -X POST -H "Content-Type: application/json" -d '{"machine_id": 101}'
-        - Query que gera um erro
-    + curl http://localhost:8080/game/bigwinner         -X POST -H "Content-Type: application/json" -d '{"machine_id": 101, "game": 1, "bet": 2, "prize": 3}'
-        - Valores de chaves sem embasamento algum
-    + SELECT force_accumulated FROM settings;
-    + UPDATE settings SET force_accumulated = 101;
-    + SELECT force_jackpot FROM settings;
-    + UPDATE settings SET force_jackpot = 101;
-    + DELETE FROM big_winners where id > ;
-    + UPDATE settings SET accumulated_games_left = 0, accumulated_paid_at = '2024-02-14 00:00:00';
-    + UPDATE settings SET jackpot_games_left = 0, jackpot_paid_at = '2024-02-14 00:00:00';
-    + SELECT id, accumulated_enabled, jackpot_enabled, compete_acumulado, payout_enabled, credit_balance, online FROM machines WHERE online = 1;
+UPDATE settings SET accumulated_games_left = 0, accumulated_paid_at = '2024-02-14 00:00:00', force_accumulated = 102;
+
+UPDATE settings SET jackpot_games_left = 0, jackpot_paid_at = '2024-02-14 00:00:00';
+
+UPDATE settings SET jackpot_games_left = 0, jackpot_paid_at = '2024-02-14 00:00:00', force_jackpot = 102;
+
+SELECT machines.id, machines.accumulated_enabled, machines.credit_balance, machines.compete_acumulado, machines.payout_enabled, machines.client_modified_at, online, settings.accumulated_machine_id, settings.jackpot_machine_id, machines.jackpot_enabled  FROM machines JOIN settings;
+
+SELECT accumulated_games_left, accumulated_count, accumulated_amount, accumulated_paid_at, force_accumulated FROM settings;
+
+SELECT jackpot_games_left, jackpot_paid_at, force_jackpot from settings;
+
+SELECT id FROM machines WHERE online = 1 AND accumulated_enabled = 0 AND credit_balance > 100 AND compete_acumulado = 1 AND payout_enabled = 0 AND client_modified_at IS NOT NULL ORDER BY client_modified_at;
+
+DELETE FROM big_winners where id > 40;
+```
+
++ Eu posso refatorar a procedure para que ela retorne os dados necessários para o log, afinal ela já os tem
++ Provavelmente posso remover os `enabled`s das premiações
++ Quero reproduzir do "0" todas as APIs, posso utilizar a VM para isto
 
 ### Tópicos a se Estudar
 
-- Reestruturar
-    + Classes x Funções Construtoras
-        - Talvez eu crie um arquivo para ambos os conceitos e vou monstrando a diferença entre ambos em vários aspectos
-        - "Propriedades Estáticas"
-        - "Herança"
-        - "Encapsulamento"
-        - Objetos são criados a partir delas
-- `constructor`
-- `this` (tenho bastante dificuldade com este conceito)
-- `Object.create()`
-- `.prototype`
 - callback x Promises
 - O que seriam funções estritas e funções não estritas?
 - O que são palavras-chaves?
@@ -71,11 +60,8 @@ SELECT id, accumulated_enabled, credit_balance, compete_acumulado, payout_enable
 - O que é um método?
 - Método x função
 - O que é uma propriedade?
-- Herança
-    + `extends`
-    + `super`
-- Encapsulamento
-- Polimorfismo
+- `extends`
+- `super`
 - É obrigatória a existência da chave "`scripts`" no seu **package.json**?
     + Além de pesquisar, testar isso na hora de publicar um pacote
     + A chave `scripts` não é obrigatória
@@ -107,7 +93,15 @@ existe literalmente a função `callback()`?
 npm ERR! code 
 EISGIT
 ```
+
 - `npm WARN deprecated`
+- POO
+    + Herança
+    + Encapsulamento
+    + Polimorfismo
+- `git config --global pull.rebase false`
+- `git fetch origin`
+- `git reset --hard` 
 - `/` (diretório raíz, sistema hierarquico de arquivos)
 - Permissões de certificado ("600, só o primeiro pode usar"?)
 - `SELECT * FROM $< tabela >\G;` o que o `\G` significa?
@@ -137,65 +131,6 @@ curl http://localhost:8081/v2/places/2276/big_winners \
 ```
 
 O token é do servidor 2276.
-
-#
-
-User
-[2024-03-26T14:10:33.514Z] Redis error: Error: ERR AUTH <password> called without any password configured for the default user. Are you sure your configuration is correct?
-ChatGPT
-O erro que você está recebendo indica que você está tentando executar um comando que requer autenticação no Redis, mas você não configurou uma senha para o usuário padrão.
-
-Se você configurou uma senha para o Redis, você precisa fornecê-la ao se conectar ou ao executar comandos que requerem autenticação.
-
-Se você ainda não configurou uma senha ou deseja reconfigurá-la, você pode fazer isso editando o arquivo de configuração do Redis (geralmente redis.conf) e definindo a senha. Aqui está como você pode fazer isso:
-
-Abra o arquivo de configuração do Redis em um editor de texto. Você pode usar o nano, por exemplo:
-bash
-Copy code
-sudo nano /etc/redis/redis.conf
-Localize a linha que começa com requirepass. Se não existir, você pode adicionar esta linha no arquivo de configuração:
-Copy code
-requirepass sua_senha
-Substitua sua_senha pela senha que você deseja definir para o Redis.
-
-Salve e feche o arquivo de configuração. No nano, você pode fazer isso pressionando Ctrl + O, Enter para salvar e Ctrl + X para sair.
-
-Reinicie o servidor Redis para aplicar as alterações:
-
-bash
-Copy code
-sudo systemctl restart redis-server
-Depois de configurar a senha, você precisará fornecê-la ao se conectar ao Redis ou ao executar comandos que requerem autenticação. Por exemplo:
-
-bash
-Copy code
-redis-cli -a sua_senha
-Substitua sua_senha pela senha que você configurou no arquivo de configuração. Isso permitirá que você se conecte ao Redis com autenticação. Certifique-se de substituir <password> pelo valor correto da senha configurada no seu ambiente Redis.
-
-#
-
-git config --global pull.rebase false
-
-
-commit d57f6ce9750228f75769e0efba740d74bcdb29b5 (origin/dev/lfernando)
-Author: Luis <luisfernandopenhadecamargo@gmail.com>
-Date:   Wed Mar 6 17:22:04 2024 -0300
-
-    Conteúdo.
-
-quero que meu código seja esse
-ChatGPT
-Se você deseja que o código do commit d57f6ce9750228f75769e0efba740d74bcdb29b5 do branch origin/dev/lfernando seja refletido no seu branch local, você pode fazer isso facilmente usando o comando git reset para mover a referência do seu branch local para esse commit específico. Aqui está como fazer:
-
-bash
-Copy code
-git fetch origin                    # Busca as atualizações do repositório remoto
-git reset --hard d57f6ce9750228f75769e0efba740d74bcdb29b5   # Reseta seu branch local para o commit desejado
-Com este comando, o seu branch local será movido para apontar para o commit d57f6ce9750228f75769e0efba740d74bcdb29b5, que é o commit específico que você deseja ter em seu branch local.
-
-A opção --hard do comando git reset define que o Git irá realizar um reset rígido, o que significa que o índice de trabalho e a área de trabalho serão modificados para corresponderem exatamente ao commit especificado, descartando quaisquer alterações locais não salvas. Certifique-se de não ter alterações locais importantes que você deseja manter antes de executar este comando.
-
-Depois de executar esses comandos, seu branch local estará sincronizado com o commit desejado do branch remoto origin/dev/lfernando. Certifique-se de revisar as alterações resultantes e de que elas correspondam às suas expectativas antes de continuar. Se tudo estiver correto, você pode então fazer um novo commit local se necessário.
 
 #
 
