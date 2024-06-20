@@ -6,11 +6,11 @@
 - [./Diretorio-heterogeneo](#diretorio-heterogeneo)
 - [Template (template.md)](#template)
 
-# <a id="javascript">[./JavaScript](./JavaScript)</a>
+# <a id="javascript">[./JavaScript](JavaScript/)</a>
 
 Este diretório trata do ecossistema JavaScript. Abaixo segue um sumário de cada arquivo e uma descrição sobre o que ele discursa, também há outros diretórios, para separar melhor cada conteúdo, gerando assim uma divisão mais específica de temas.
 
-# <a id="diretorio-heterogeneo">[./Diretorio-heterogeneo](./Diretorio-heterogeneo)</a>
+# <a id="diretorio-heterogeneo">[./Diretorio-heterogeneo](Diretorio-heterogeneo/)</a>
 
 Este diretório contém vários arquivos que tratam de vários temas relacionados a área de TI. Esta pontuado na seção do arquivo sobre o que ele discursa.
 
