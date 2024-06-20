@@ -1,4 +1,10 @@
-# <a id="template">Template</a>
+# Template
+
+### Sumário
+
+- [Estrutura dos Arquivos (Formatação do Documento)](#estrutura-arquivos)
+
+# <a id="estrutura-arquivos">Estrutura dos Arquivos (Formatação do Documento)</a>
 
 ### Títulos
 
