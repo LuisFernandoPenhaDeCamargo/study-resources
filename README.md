@@ -11,17 +11,35 @@
 
 Este diretório trata do ecossistema JavaScript. Abaixo segue um sumário de cada arquivo e uma descrição sobre o que ele discursa, também há outros diretórios, para separar melhor cada conteúdo, gerando assim uma divisão mais específica de temas.
 
+### Sumário
+
+- [Objetos](./JavaScript/objetos.md)
+- [Node.js](./JavaScript/Nodejs.md)
+
 # <a id="diretorio-heterogeneo">[./Diretorio-heterogeneo/](./Diretorio-heterogeneo/)</a>
 
 Este diretório contém vários arquivos que tratam de vários temas relacionados a área de TI. Esta pontuado na seção do arquivo sobre o que ele discursa.
 
-## [Markdown (Markdown.md)](./Diretorio-heterogeneo/Markdown.md)
+### Sumário
+
+- [Markdown (Markdown.md)](#diretorio-heterogeneo-markdown)
+- [Termos Utilizados na Área de TI (termos-TI.md)](#diretorio-heterogeneo-termos-area-ti)
+
+## <a id="diretorio-heterogeneo-markdown">[Markdown (Markdown.md)](./Diretorio-heterogeneo/Markdown.md)</a>
 
 Este arquivo trata da linguagem de marcação Markdown, conceitos e pontos importantes.
 
 ### Sumário
 
 - [Links de Referência](./Diretorio-heterogeneo/Markdown.md#links-referencia)
+
+## <a id="diretorio-heterogeneo-termos-area-ti">[Termos Utilizados na Área de TI (termos-TI.md)](./Diretorio-heterogeneo/termos-TI.md)</a>
+
+Este arquivo pontua o significado de termos e abreviações usados com frequência na área.
+
+### Sumário
+
+- [Abreviações (Siglas e Acrônimos)](./Diretorio-heterogeneo/termos-TI.md#abreviacoes)
 
 # <a id="template">[Template (template.md)](template.md)</a>
 
@@ -41,13 +59,6 @@ A publicação dos pacotes foi realizada na segunda (17/06/2024), mas já havia 
 - Caso a coluna `prize_name` seja `NULL`, isso significa que não é um dos grandes prêmios que possuem nome (`ACCUMULATED` e `JACKPOT`)
 - Agora iremos desconsiderar os prêmios que não são forçados e iremos agrupar cada prêmio por servidor
 
-- A partir de qual versão do Node.js está em funcionamento as funcionalidade relacionadas ao `async/await`?
-- A partir de qual versão do Node.js está em funcionamento as funcionalidade relacionadas ao `try/catch`?
-- A partir de qual versão do Node.js está em funcionamento as funcionalidade do ES6?
-- A partir de qual versão do Node.js está em funcionamento as funcionalidade relacionadas ao `import`?
-- A partir de qual versão do Node.js está em funcionamento as funcionalidade relacionadas a Classe
-- Meu código funciona com a versão 8.16.0 do Node.js, se eu executo ele com uma versão superior e no momento de sua execução nenhum erro é emitido, ainda há chances desta versão do Node.js não ser compatível com meu código? Afinal ele foi completamente carregado, mas isso quer dizer que as suas funcionalidades como um todo foram testadas?
-- Quando um código é executado pelo Node.js, após sua execução ele é carregado em memória? Quer dizer que o meu código se transformou em bytes?
 - Objeto `proccess`
     + `.env`
     + Estas variáveis são visíveis a nível de SO?
@@ -91,3 +102,7 @@ A publicação dos pacotes foi realizada na segunda (17/06/2024), mas já havia 
 - Pontuar que o formato do ID do segredo vai ser `server-$< ID do servidor >`
 - `git fetch`
 - Atualizando as branchs do meu repositório local
+- Utilizar o `npm outdated` e `npm audit` para verificar como eles funcionam
+- Utilizar o GitHub Actions para criar um pipeline de CI
+- `npm fund`
+- Desinstalar uma versão do Node.js instalada pelo NVM

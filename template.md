@@ -8,6 +8,8 @@ Se atente que os arquivos são escritos em Markdown.
 
 # <a id="estrutura-arquivos">Estrutura dos Arquivos (Formatação do Documento)</a>
 
+<!-- - Pontuar sobre o uso de colchetes para indicar que um parâmetro é opcional -->
+
 ## Nomenclatura
 
 ### Diretórios e Arquivos
@@ -48,6 +50,10 @@ No Ubuntu, assim como na maioria dos SOs baseados em Unix, não há um padrão e
 - **Mantenha a simplicidade:** evite nomes excessivamente longos e complexos
 - **Use extensões apropriadas (arquivos):** sempre inclua a extensão apropriada para o tipo do arquivo
 
+### Observações
+
+- Diretórios irão terminar com uma barra
+
 ### Conclusão
 
 Seguir essas diretrizes ajudará a evitar problemas de compatibilidade e facilitará o trabalho com o terminal e scripts automatizados.
@@ -72,13 +78,24 @@ Subseções comuns:
 - `### Observações`
 - `### Conclusão`
 
+Quando se trata de documentação de código:
+
+- `### Sintaxe Básica`
+- `### Observações`
+
 ## Links de Referência
 
-Links de referência não iram possuir valores entre parênteses. Exemplo: `[Template (template.md)](#template)`
+Links de referência não iram possuir valores entre parênteses, exemplo: `[Template (template.md)](#template)`. Ou eles serão o valor em parênteses, exemplo: `[ECMAScript 2015 (ES6)](#versoes-features-especificas-es6)` (é um subtópico).
 
-<!-- Pontuar sobre a nomeclatura de Arquivos e Diretórios, ainda não sei como vou estruturar isto.
-- Diretórios irão terminar em barra
-- Pontuar que arquivos e diretórios deveram estar em Negrito (Em Negrito)
+## Listas
 
-- SOs é uma sigla? Uma abreviação? Pontuar o seu significado (Em termos-TI.md)
--->
+Se a ordem dos itens da lista não tiver que seguir um significado específico, a ordene alfabeticamente.
+
+## Negrito
+
+A lista abaixo pontua o que deverá estar em negrito:
+
+- Nome de diretórios
+- Nome de arquivos
+- Extensões
+- Nome de itens de lista

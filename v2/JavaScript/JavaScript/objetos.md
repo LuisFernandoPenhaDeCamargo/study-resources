@@ -659,35 +659,6 @@ Promise.reject(mensagemErro);
 
 - `mensagemErro`**:** mensagem de erro
 
-# <a id="process"></a>`process`
-
-O objeto `process` em Node.js é um **objeto global que fornece informações e controle sobre o processo Node.js em execução**. Ele pode ser usado para interagir com o ambiente de execução, como acessar variáveis de ambiente, lidar com eventos do processo e controlar o ciclo de vida do processo.
-
-### Sumário
-
-- [`.exit()`](#process-exit)
-
-## <a id="process-exit"></a>`.exit()`
-
-É utilizado para **encerrar o processo Node.js em execução**. Você pode especificar um código de saída opcional que indica o motivo do encerramento do processo. O padrão é `0`, que geralmente indica uma saída bem-sucedida.
-
-**Sintaxe Básica**
-
-```JavaScript
-process.exit([codigo]);
-```
-
-- `codigo`**:** um número inteiro que representa o código de saída do processo. Se não for especificado, o padrão é `0`
-
-**Observações Importantes**
-
-Eventos `exit` e `beforeExit`:
-
-- O evento `exit` é emitido quando o processo está prestes a terminar
-- O evento `beforeExit` é emitido quando o Node.js limpa o loop de eventos, mas ainda há trabalhos pendentes, permitindo a execução de código assíncrono adicional
-
-+ `process.exit()` força o encerramento do processo sem aguardar a conclusão das operações pendentes, como callbacks ou timers assíncronos. Isso pode resultar em perda de dados ou operações incompletas
-
 # <a id="instance-constructor"></a>`instance.constructor`
 
 A **propriedade** `constructor` de uma instância (`instance`) em JavaScript refere-se à função construtora (ou classe) que criou essa instância. Quando um objeto é criado usando uma função construtora, ele herda a propriedade `constructor` do seu protótipo, essa propriedade aponta para a função construtora que criou a instância.
