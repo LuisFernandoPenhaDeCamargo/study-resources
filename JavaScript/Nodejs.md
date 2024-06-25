@@ -1,6 +1,6 @@
 # Node.js
 
-<!-- - Pontuar o que é o Node.js -->
+O Node.js é um runtime JavaScript, este arquivo irá pontuar pontos importantes sobre ele.
 
 ### Sumário
 
@@ -171,7 +171,9 @@ A funcionalidades relacionadas ao `import`/`export` dos módulos ES6 foram intro
 
 Para usar módulos ES6 (`import`/`export`) de maneira estável e prática, é recomendado usar o Node.js 14.x ou superior.
 
-<!-- - Pontuar sobre o operador de encapsulamento (`#`) -->
+### Operador de Encapsulamento
+
+O operador de encapsulamento foi introduzido no ES2022.
 
 ## ECMAScript 2015 (ES6)
 

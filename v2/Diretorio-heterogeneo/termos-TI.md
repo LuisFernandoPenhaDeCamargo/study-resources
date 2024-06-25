@@ -7,7 +7,6 @@
 - [CWD](#cwd)
 - [foo](#foo)
 - [Linter](#linter)
-- [LTS](#lts)
 - [Snapshot](#snapshot)
 - [SO](#so)
 
@@ -72,10 +71,6 @@ Um "linter" é uma ferramenta de análise de código estático usada principalme
 Os linters modernos estão disponíveis para uma variedade de linguagens de programação e são capazes de fazer muito mais do que apenas verificar a sintaxe. Eles podem identificar problemas de estilo, conformidade com padrões de codificação, práticas de programação inseguras e até mesmo possíveis bugs ou problemas de desempenho.
 
 Alguns linters também podem fornecer sugestões de correção ou formatação automática do código-fonte para melhorar a legibilidade e a qualidade do código. Eles são amplamente utilizados em desenvolvimento de software para ajudar os desenvolvedores a manter um alto padrão de qualidade no código-fonte e evitar erros comuns.
-
-# <a id="lts"></a>LTS
-
-"LTS" é uma abreviação para "Long-Term Support".
 
 # <a id="snapshot"></a>Snapshot
 

@@ -15,7 +15,6 @@ Estrutura a se seguir em relação as anotações do conteúdo estudado.
     + [Comandos Utilizados Através do CLI](#comandos-utilizados-cli)
 - [Formatação do Documento](#formatacao-documento)
     + [Código](#formatacao-documento-codigo)
-        - [Notação de Colchetes](#formatacao-documento-codigo-notacao-colchetes)
         - [Subtópicos](#formatacao-documento-subtopicos)
         - [Exemplos](#formatacao-documento-exemplos)
     + [Subtítulos](#formatacao-documento-subtitulos)
@@ -84,50 +83,8 @@ Codename:	jammy
     + **Exemplo:** `## <a id="comandos-utilizados-cli-describe"></a>´pm2 describe $< ID >´` (Markdown)
 - Em links de referência você deve substituir o ponto pelo traço
     +  **Exemplo:** `## <a id="dump-pm2"></a>dump.pm2` (Markdown)
-- As mensagens de erro seguem o seguinte formato, `[ $< nome da função ou método/ nome do arquivo > ERROR ], ${error.message}`
-    + A parte `${error.message}` é específica do JavaScript
-    + Para outras linguagens, siga a mesma ideia, mas utilizando das propriedades da linguagem em questão
 - Para especificar que o comentário se trata de uma saída, uma impressão, pontue antes dele "Output:"
     + **Exemplo:** `// Output: number` (JavaScript)
-
-### <a id="formatacao-documento-codigo-notacao-colchetes"></a>Notação de Colchetes
-
-Os colchetes em notações como 
-
-```JavaScript
-funcao.bind(thisArg[, argumento1 [, argumento2 [, ...]]]);
-```
-
-indicam que os parâmetros `argumento1`, `argumento2`, `...`, são opcionais, se você não fornecer esses argumentos, a função ainda funcionará corretamente, apenas sem or agumentos predefinidos.
-
-- A presença de colchetes ao redor dos argumentos, indica que você pode optar por não passar nenhum desses argumentos, ou pode passar alguns ou todos eles
-- Os colchetes aninhados na notação indicam que, para fornecer um argumento que está mais internamente aninhado, você deve primeiro fornecer todos os argumentos que estão nos níveis mais externos
-    + `thisArg`**:** obrigatório
-    + `argumento1`**:** opcional, mas só pode ser fornecido se `thisArg` também for fornecido
-    + `argumento2`**:** opcional, mas só pode ser fornecido se `thisArg` e `argumento1` também forem fornecidos
-    + `...`**:** opcionais, mas só podem ser fornecidos se `thisArg`, `argumento1` e `argumento2` também forem fornecidos
-
-### <a id="formatacao-documento-codigo-subtopicos"></a>Subtópicos
-
-Existem alguns subtópicos comuns, abaixo segue listas deles, observado que a lista segue a ordem na qual eles devem aparecer dentro de um tópico.
-
-- `**Sintaxe Básica**`
-    + Se o título do tópico já for a "Sintaxe Básica", não precisamos fornecer este subtópico
-- **Parâmetros**
-    + Não é necessário pontuar o título deste subtópico, só os parâmetros em si
-    + Pontuar o seu tipo
-- **Valor de Retorno**
-    + Não é necessário pontuar o título deste subtópico, só o valor de retorno em si
-- `**Como Funciona**`
-- `**Quando Usar**`
-- `**Benefícios**`
-- `**Saída Típica**`
-- `**Opções Comuns**`
-- `**Observações Importantes**`
-- `**Conclusão**`
-- `### Exemplos`
-- `### Comparação com $< outras funções ou métodos >`
-- `### Exemplos Interessantes`
 
 ### <a id="formatacao-documento-codigo-exemplos"></a>Exemplos
 

@@ -8,8 +8,6 @@ Se atente que os arquivos são escritos em Markdown.
 
 # <a id="estrutura-arquivos">Estrutura dos Arquivos (Formatação do Documento)</a>
 
-<!-- - Pontuar sobre o uso de colchetes para indicar que um parâmetro é opcional -->
-
 ## Nomenclatura
 
 ### Diretórios e Arquivos
@@ -68,20 +66,34 @@ Seguir essas diretrizes ajudará a evitar problemas de compatibilidade e facilit
 
 ## Subseções
 
-Subseções não seguem a regra de nomenclatura dos tópicos. Subseções "comuns" seguem a regra de nomenclatura dos tópicos.
+Subseções não seguem a regra de nomenclatura dos tópicos. Subseções "comuns" seguem a regra de nomenclatura dos tópicos, observe que a lista segue a ordem na qual elas devem aparecer dentro de um tópico (ou subtópico).
 
 Subseções comuns:
 
 - `### Principais Características`
 - `### Usos Comuns`
 - `### Boas Práticas`
+- `### Benefícios`
+- `### Exemplos`  
+    Nem sempre esta subseção se encaixa exatamente aqui, há cenários no qual o exemplo deve ser dado antes, para a explicação utilizá-lo
 - `### Observações`
 - `### Conclusão`
+- `### Resumo`
 
 Quando se trata de documentação de código:
 
-- `### Sintaxe Básica`
+- `### Sintaxe Básica`  
+    Se o título da subtópico já "for" a "Sintaxe Básica", não precisamos fornecer esta subseção
+- É necessário pontuar os **parâmetros**, mas não é necessário pontuar o título desta subseção  
+    Tente pontuar o seu tipo
+- Tente pontuar o valor de retorno, mas não é necessário pontuar o título desta subseção
+- `### Opções Comuns`
 - `### Observações`
+- `### Exemplos`
+- `### Observações Importantes`  
+    Esta subseção trata de observações ainda mais técnicas do assunto em questão
+- `### Exemplos Importantes`  
+    Esta subseção trata de exemplos ainda mais técnicos do assunto em questão
 
 ## Links de Referência
 
@@ -99,3 +111,26 @@ A lista abaixo pontua o que deverá estar em negrito:
 - Nome de arquivos
 - Extensões
 - Nome de itens de lista
+
+## Código
+
+### Notação de Colchetes
+
+Os colchetes em notações como
+
+```JavaScript
+funcao.bind(thisArg[, argumento1 [, argumento2 [, ...]]]);
+```
+
+indicam que os parâmetros `argumento1`, `argumento2`, `...`, são **opcionais**, se você não fornecer esses argumentos, a função ainda funcionará corretamente, apenas sem os agumentos predefinidos.
+
+- A presença de colchetes ao redor dos parâmetros, indica que você pode optar por não passar nenhum desses argumentos, ou pode passar alguns ou todos eles
+- Os colchetes aninhados na notação indicam que, para fornecer um argumento que está mais internamente aninhado, você deve primeiro fornecer todos os argumentos que estão nos níveis mais externos
+    + `thisArg`**:** obrigatório
+    + `argumento1`**:** opcional, mas só pode ser fornecido se `thisArg` também for fornecido
+    + `argumento2`**:** opcional, mas só pode ser fornecido se `thisArg` e `argumento1` também forem fornecidos
+    + `...`**:** opcionais, mas só podem ser fornecidos se `thisArg`, `argumento1` e `argumento2` também forem fornecidos
+
+### Formatação
+
+- **Mensagens de erro:** seguem o seguinte formato, "`[ $< nome da função ou método/ nome do arquivo > ERROR ], ${error.message}`", sendo que o template literal e `${error.message}` fazem parte da sintaxe específica do JavaScript, para outras linguagens, siga a mesma ideia, mas utilizando das propriedades da linguagem em questão
