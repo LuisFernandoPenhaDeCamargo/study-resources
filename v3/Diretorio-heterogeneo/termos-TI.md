@@ -1,10 +1,9 @@
 # Termos Utilizados na Área de TI
 
-<!--
-- Pontuar o significado da abreviação ID
-- Pontuar o significado da abreviação ARN (AWS)
-- Pontuar o significado da abreviação JSON
--->
+<!-- - Pontuar o significado da abreviação ID -->
+<!-- - Pontuar o significado da abreviação ARN (AWS) -->
+<!-- - Pontuar o significado da abreviação JSON -->
+<!-- - Pontuar o significado da abreviação I/O -->
 
 ### Sumário
 

@@ -1,146 +1,180 @@
-# README
+- "Me dê um resumo das principais características do JavaScript."
+    + Características é a mesma coisa que funcionalidades?
+        - Não é
+- "Me dê um resumo das funcionalidades do JavaScript."
+    + Não é o que eu queria
 
-### Sumário
+- Eu vou pesquisar tudo novamente
+- Devo criar um template para as perguntas que irei fazer ao ChatGPT
+    + Tópico: $< Nome do tópico, para pontuar o contexto >:
+        - principais conceitos
+- Se atentar as regras gramáticais
+- Pontuar a ordem em que os tópicos devem ser estudados
+- Conceitos de programação
+- JavaScript
+    + O que é?
+    + Principais conceitos
+    + Boas práticas na hora de dar upgrade na versão do Node.js
+    + Objetos
+    + Objetos Globais
+    + Métodos dos Objetos
+        - Irei pontuar este tópico aqui? Não está do meu agrado
+    + Assincronicidade
+    + Módulos CommonJS
+    + Módulos ES
+        - Eu posso dizer que eles possuem versões? Qual é o termo mais adequado?
+        - Quantos existem e que features cada um adicionou ao Node.js?
+- Python
+    + O que é?
+    + Principais conceitos
+- Rust
+    + O que é?
+    + Principais conceitos
+- Git
+    + O que é?
+    + Principais conceitos
+- Comandos que são inseridos no terminal
+    + Eu nomeava este tópico como "Bash", como eu posso nomea-lo?
+    + O que é?
+    + Principais conceitos
+- SQL
+    + O que é?
+    + Principais conceitos
+- CI/CD
+    + Aonde eu irei pontuar este tópico
+    + O que é?
+    + Principais conceitos
+- Template
+    + Decidir como irei estruturar os documentos
 
-- [./JavaScript/](#javascript)
-- [./Diretorio-heterogeneo/](#diretorio-heterogeneo)
-- [Template (template.md)](#template)
-- [TODO](#todo)
+---
 
-# <a id="javascript">[./JavaScript/](./JavaScript/)</a>
++ 17h30 comitar o código
+    - Qual seria a forma mais utilizada para indicar que você irá realizar o comando `git commit`?
 
-Este diretório trata do ecossistema JavaScript. Abaixo segue um sumário com cada arquivo e no arquivo há uma descrição sobre o que ele discursa, também há outros diretórios dentro deste, para separar melhor cada conteúdo, gerando assim uma divisão mais específica de temas.
+- O que é uma API Gateway
 
-### Sumário
+"Crie uma lista de tópicos a se estudar para dominar JavaScript." foi a pergunta que gerou a resposta abaixo, que me satisfez.
 
-- [JavaScript](./JavaScript/JavaScript.md)
-- [Objetos](./JavaScript/objetos.md)
-- [Node.js](./JavaScript/Nodejs.md)
-- [Segurança](./JavaScript/seguranca.md)
-- [Bibliotecas](./JavaScript/Bibliotecas/)
-    + [`fs`](./JavaScript/Bibliotecas/fs.md)
-    + [`@aws-sdk`](./JavaScript/Bibliotecas/arrobaAws-sdk.md)
-- [CI-CD](./JavaScript/CI-CD/)
-    + [Testes Unitários](./JavaScript/CI-CD/testes-unitarios.md)
+JavaScript
 
-# <a id="diretorio-heterogeneo">[./Diretorio-heterogeneo/](./Diretorio-heterogeneo/)</a>
+Fundamentos de JavaScript
 
-Este diretório contém vários arquivos que tratam de vários temas relacionados a área de TI. Esta pontuado na seção do arquivo sobre o que ele discursa.
+1. Sintaxe e Tipos de Dados
+    - Variáveis (var, let, const)
+    - Tipos de dados primitivos (string, number, boolean, null, undefined, symbol)
+    - Operadores (aritméticos, comparação, lógicos)
+2. Estruturas de Controle
+    - Condicionais (if, else, switch)
+    - Laços de repetição (for, while, do...while)
+    - Break e continue
+3. Funções
+    - Declaração de funções
+    - Funções anônimas e arrow functions
+    - Funções de ordem superior
+    - Parâmetros e valores de retorno
+4. Objetos e Arrays
+    - Criação e manipulação de objetos
+    - Métodos de objetos
+    - Criação e manipulação de arrays
+    - Métodos de array (map, filter, reduce, forEach, etc.)
 
-### Sumário
+Conceitos Intermediários
 
-- [Markdown (Markdown.md)](#diretorio-heterogeneo-markdown)
-- [Termos Utilizados na Área de TI (termos-TI.md)](#diretorio-heterogeneo-termos-area-ti)
+5. Manipulação do DOM
+    - Seleção de elementos (getElementById, querySelector, etc.)
+    - Modificação de elementos (innerHTML, textContent, etc.)
+    - Manipulação de atributos e estilos
+    - Manipulação de classes
+6. Eventos
+    - Tipos de eventos (click, submit, keydown, etc.)
+    - Adicionar e remover event listeners
+    - Delegação de eventos
+7. Programação Assíncrona
+    - Callbacks
+    - Promises
+    - Async/await
+8. Módulos
+    - Import e export (ES6 Modules)
+    - CommonJS (require, module.exports)
 
-## <a id="diretorio-heterogeneo-markdown">[Markdown (Markdown.md)](./Diretorio-heterogeneo/Markdown.md)</a>
+Técnicas Avançadas
 
-Este arquivo trata da linguagem de marcação Markdown, conceitos e pontos importantes.
+9. Prototipagem e Herança
+    - Prototipagem e herança prototípica
+    - Classes (ES6)
+    - Métodos estáticos e de instância
+10. Manipulação de JSON
+    - JSON.parse e JSON.stringify
+11. Tratamento de Erros
+    - Try/catch
+    - Lançamentos de erros (throw)
+12. Armazenamento no Navegador
+    - Cookies
+    - LocalStorage e SessionStorage
+13. Trabalhando com APIs
+    - Fetch API
+    - AJAX com XMLHttpRequest
+    - Manipulação de dados de API
 
-### Sumário
+Ferramentas e Bibliotecas
 
-- [Links de Referência](./Diretorio-heterogeneo/Markdown.md#links-referencia)
+14. Node.js
+    - Introdução ao Node.js
+    - Módulos core (fs, http, path, etc.)
+    - NPM (Node Package Manager)
+15. Frameworks e Bibliotecas Populares
+    - React.js
+    - Angular
+    - Vue.js
+    - jQuery (para manipulação de DOM mais antiga)
+16. Testes Automatizados
+    - Mocha
+    - Chai
+    - Jest
+    - Cypress
 
-## <a id="diretorio-heterogeneo-termos-area-ti">[Termos Utilizados na Área de TI (termos-TI.md)](./Diretorio-heterogeneo/termos-TI.md)</a>
+Práticas e Padrões de Código
 
-Este arquivo pontua o significado de termos e abreviações usados com frequência na área.
+17. Boas Práticas
+    - Código limpo
+    - Modularização
+    - Comentários e documentação
+18. Padrões de Projeto
+    - Padrões comuns (Singleton, Factory, Observer, etc.)
+    - Aplicação de padrões em JavaScript
+19. Metodologias de Desenvolvimento
+    - Test-Driven Development (TDD)
+    - Behavior-Driven Development (BDD)
+20. Ferramentas de Build e Automação
+    - Webpack
+    - Babel
+    - ESLint
+    - Prettier
 
-### Sumário
+Performance e Segurança
 
-- [Abreviações (Siglas e Acrônimos)](./Diretorio-heterogeneo/termos-TI.md#abreviacoes)
+21. Otimização de Código
+    - Melhores práticas de desempenho
+    - Profiling e debugging
+22. Segurança
+    - Prevenção de vulnerabilidades comuns (XSS, CSRF, etc.)
+    - Práticas de segurança em desenvolvimento web
 
-# <a id="template">[Template (template.md)](template.md)</a>
+Projetos Práticos
 
-Este arquivo trata de como foi formulada a estrutura deste projeto, então é útil entendê-lo para navegar no mesmo. Além de ser um template a se seguir ao adicionar conteúdo.
+23. Projetos de Exemplo
+    - Aplicação ToDo List
+    - Aplicação CRUD com uma API RESTful
+    - Jogo simples (ex.: jogo da velha)
 
-### Sumário
+Recursos Adicionais
 
-- [Estrutura dos Arquivos (Formatação do Documento)](template.md#estrutura-arquivos)
-
-# <a id="todo">TODO</a>
-
-Estudar sobre:
-
-### JavaScript
-
-- `request.query` (Express)
-    + Como enviar para este servidor uma requisição que possua a query com o Axios?
-    + Qual é o código de status padrão retornado por um servidor Express?
-
-### AWS
-
-- AWS STS (Security Token Service)
-- AWS IAM
-
-### NPM
-
-- `npm outdated`
-- `npm audit`
-- `npm fund`
-
-### NVM
-
-- Desinstalar uma versão do Node.js instalada pelo NVM
-
-### Bash
-
-- Listando as variáveis de ambiente pelo terminal
-
-### Git
-
-- `git fetch`
-- Atualizar as branchs do meu repositório local
-
-### CI/CD
-
-- Utilizar o GitHub Actions para criar um pipeline de CI
-
-### MariaDB
-
-- É possível gerar o dump de um banco dando "skip" nas permissões de autenticação?
-    + Conversei isso com o Fernando
-    + O ponto é conseguir obter dados do banco desta forma
-    + Verificar se existe essa falha de segurança
-
-### Orion
-
-- **orion-data-server:**
-    + `/arn/getTempKey/:server_id GET`
-        - Documentar esta rota
-            + `request`**:**
-                - Pontuar que `specificDuration` faz parte da query de requisição, mas não é obrigatório, pois possue um valor default (como eu documento isso?)
-        - `response`**:**
-            + Retorno do `sts.assumeRole()`
-            + `´Failed to get temporary security credentials: ${error}´`
-            + O status é o default para ambos os casos acima   
-    + Migrar para o V3 do AWS SDK
-        - Leia https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/migrating.html
-        - Leia https://github.com/aws/aws-sdk-js-v3/blob/main/UPGRADING.md
-- **zoe-game-api:**
-    + Talvez eu torne as URLs dinâmicas, considerando o valor que se encontra no banco de dados
-    + **V3:**
-        - Testar o retorno do **./helpers/get_server_id.js** `function()`
-        - Testar o retorno do **./services/get_access_token.js** `function()`
-        - Testar o retorno do **./services/get_temporary_key.js** `function()`
-
-# <a id="pessoal">Pessoal</a>
-
-- **AWS STS:**
-    + O formato do ID do segredo é `server-$< ID do servidor >`
-- **orion-data-server:**
-    + **Fluxo de execução para a rota que retorna a senha do Banco Local:server.js** -> **./routes/index.js** -> **./middlewares/token_auth_server.js** -> **./routes/arn.js**
-- **zoe-game-api:**
-    + Para conseguir possuir compatibilidade com o V3 da AWS-SDK e com o pkg, iremos dar upgrade na versão do Node.js para a 18.20.3
-    + **Bibliotecas:**
-        - mocha@10.2.0: utilizada em testes unitários
-            + `npm warn deprecated glob@7.2.0`
-            + mocha@10.4.0: utiliza o inflight@1.0.6 e é altamente recomendável não utilizá-lo
-        - chai@5.1.1: utilizada em testes unitários
-    + **Fluxo de execução para se conectar ao banco: server.js** -> **./helpers/get_server_id.js** -> **./services/access_token_service.js** -> **./services/get_temporary_key.js** -> **./models/index.js**
-    + Os dados sensíveis serão armazenados em `process.env`
-- **Servidores:**
-    + V2 é a nova versão dos servidores
-    + **V2:** não possuíram conexão via ssh, a única forma de acessá-los será através do orion-terminal
-    + **V2: /etc/server-id**, possui como conteúdo o ID do servidor, por exemplo, "2278"
-    + **V2:** não iremos mais possuir, inicialmente, conectividade com o Banco de Dados Local, então teremos que obter o ID do servidor do arquivo **/etc/server-id**
-- **Minha máquina:**
-    + Criei o arquivo **/etc/server-id**
+24. Comunidade e Fóruns
+    - Stack Overflow
+    - GitHub
+    - Reddit (r/javascript)
+25. Documentação e Tutoriais
+    - MDN Web Docs
+    - W3Schools
+    - Eloquent JavaScript (livro)

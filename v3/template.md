@@ -74,6 +74,7 @@ Subseções comuns:
 - `### Usos Comuns`
 - `### Boas Práticas`
 - `### Benefícios`
+- `### Desafios`
 - `### Exemplos`  
     Nem sempre esta subseção se encaixa exatamente aqui, há cenários no qual o exemplo deve ser dado antes, para a explicação utilizá-lo
 - `### Observações`
