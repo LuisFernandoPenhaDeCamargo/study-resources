@@ -5,23 +5,23 @@ Anotações para mim mesmo:
 - Quando os subtópicos forem adicionados por mim, irei pontuar um "LF" em parênteses ao final dele
 - O "M" entre parênteses ao final do subtópico indica que eu o modifiquei. Nos parênteses, também devo pontuar o que foi alterado
 
-### Fundamentos de JavaScript
+## Fundamentos de JavaScript
 
 O que é JavaScript?
 
-1. Sintaxe e Tipos de Dados (Tópico)
+### 1. Sintaxe e Tipos de Dados (Tópico)
 
 - Variáveis (var, let, const. Subtópico)
 - Tipos de dados primitivos (string, number, boolean, null, undefined, symbol. Subtópico)
 - Operadores (aritméticos, comparação, lógicos. Subtópico)
 
-2. Estruturas de Controle
+### 2. Estruturas de Controle
 
 - Condicionais (if, else, switch)
 - Laços de repetição (for, while, do...while)
 - Break e continue
 
-3. Funções
+### 3. Funções
 
 - Declaração de funções
 - Funções anônimas (M. Desmembrei este subtópico em dois, este e o abaixo eram um só)
@@ -29,7 +29,7 @@ O que é JavaScript?
 - Funções de ordem superior
 - Parâmetros e valores de retorno
 
-4. Objetos e Arrays
+### 4. Objetos e Arrays
 
 - O que são objetos? (LF)
 - Objetos Globais (LF)
@@ -39,7 +39,7 @@ O que é JavaScript?
 - Criação e manipulação de arrays
 - Métodos de array (map, filter, reduce, forEach, etc.)
 
-### Conceitos Intermediários
+## Conceitos Intermediários
 
 5. Manipulação do DOM
 
@@ -72,7 +72,7 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES?
 - Import e export (ES6 Modules)
 - CommonJS (require, module.exports)
 
-### Técnicas Avançadas
+## Técnicas Avançadas
 
 9. Prototipagem e Herança
 
@@ -100,7 +100,7 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES?
 - AJAX com XMLHttpRequest
 - Manipulação de dados de API
 
-### Ferramentas e Bibliotecas
+## Ferramentas e Bibliotecas
 
 14. Node.js
 
@@ -123,7 +123,7 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES?
 - Jest
 - Cypress
 
-### Práticas e Padrões de Código
+## Práticas e Padrões de Código
 
 17. Boas Práticas
 
@@ -148,7 +148,7 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES?
 - ESLint
 - Prettier
 
-### Performance e Segurança
+## Performance e Segurança
 
 21. Otimização de Código
 
@@ -160,7 +160,7 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES?
 - Prevenção de vulnerabilidades comuns (XSS, CSRF, etc.)
 - Práticas de segurança em desenvolvimento web
 
-### Projetos Práticos
+## Projetos Práticos
 
 23. Projetos de Exemplo
 
@@ -168,7 +168,7 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES?
 - Aplicação CRUD com uma API RESTful
 - Jogo simples (ex.: jogo da velha)
 
-### Recursos Adicionais
+## Recursos Adicionais
 
 24. Comunidade e Fóruns
 
