@@ -8,6 +8,7 @@ Este arquivo específica as regras seguidas para formatar os documentos (arquivo
 - [Nomenclatura](#nomenclatura)
 - [Tópicos, Subtópicos e Subseções](#topicos-subtopicos-e-subsecoes)
 - [Listas](#listas)
+- [Código](#codigo)
 - [Template para Pesquisa (ChatGPT)](#template-pesquisa-chatgpt)
 
 # <a id="diretrizes">Diretrizes</a>
@@ -18,16 +19,14 @@ Este arquivo específica as regras seguidas para formatar os documentos (arquivo
 
 # <a id="nomenclatura">Nomenclatura</a>
 
-Nomes de diretórios deveram indicar o caminho relativo para eles.
+Nomes de diretórios deveram indicar o caminho relativo para eles e a barra ao final.
 
 # <a id="topicos-subtopicos-e-subsecoes">Tópicos, Subtópicos, Seções e Subseções</a>
-
-Tópicos e Subtópicos podem utilizar a estrutura `##` ou a `###`
 
 ### Seções Comuns
 
 - `## Principais Características`
-- `## Exemplos`
+- `## Exemplo`/`## Exemplos`
 - `## Conclusão`
 
 ### Exemplos
@@ -47,6 +46,10 @@ Quando o item listado possuir um nome, por exemplo:
 - **Performance:** permite que o JavaScript inicie operações longas (como I/O de arquivos ou chamadas de rede) sem bloquear a thread principal, permitindo que operações continuem a ser executadas
 
 O nome do item, também chamado de entrada da lista, ou também, item da lista, que neste caso é "Performance", deve estar em negrito, assim como os dois pontos que o sucedem.
+
+# <a id="codigo">Código</a>
+
+O nome de classes, funções, variáveis e o texto de strings, em exemplos, devem estar em inglês.
 
 # <a id="template-pesquisa-chatgpt">Template para Pesquisa (ChatGPT)</a>
 
