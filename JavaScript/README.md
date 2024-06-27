@@ -10,9 +10,9 @@ Anotações para mim mesmo:
 O que é JavaScript?
 
 1. Sintaxe e Tipos de Dados (Tópico)
-    - Variáveis (var, let, const. Subtópico)
-    - Tipos de dados primitivos (string, number, boolean, null, undefined, symbol. Subtópico)
-    - Operadores (aritméticos, comparação, lógicos. Subtópico)
+- Variáveis (var, let, const. Subtópico)
+- Tipos de dados primitivos (string, number, boolean, null, undefined, symbol. Subtópico)
+- Operadores (aritméticos, comparação, lógicos. Subtópico)
 2. Estruturas de Controle
     - Condicionais (if, else, switch)
     - Laços de repetição (for, while, do...while)
@@ -59,7 +59,7 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES?
     - Import e export (ES6 Modules)
     - CommonJS (require, module.exports)
 
-Técnicas Avançadas
+### Técnicas Avançadas
 
 9. Prototipagem e Herança
     - Prototipagem e herança prototípica
@@ -78,7 +78,7 @@ Técnicas Avançadas
     - AJAX com XMLHttpRequest
     - Manipulação de dados de API
 
-Ferramentas e Bibliotecas
+### Ferramentas e Bibliotecas
 
 14. Node.js
     - Introdução ao Node.js
@@ -96,7 +96,7 @@ Ferramentas e Bibliotecas
     - Jest
     - Cypress
 
-Práticas e Padrões de Código
+### Práticas e Padrões de Código
 
 17. Boas Práticas
     - Código limpo
@@ -114,7 +114,7 @@ Práticas e Padrões de Código
     - ESLint
     - Prettier
 
-Performance e Segurança
+### Performance e Segurança
 
 21. Otimização de Código
     - Melhores práticas de desempenho
@@ -123,14 +123,14 @@ Performance e Segurança
     - Prevenção de vulnerabilidades comuns (XSS, CSRF, etc.)
     - Práticas de segurança em desenvolvimento web
 
-Projetos Práticos
+### Projetos Práticos
 
 23. Projetos de Exemplo
     - Aplicação ToDo List
     - Aplicação CRUD com uma API RESTful
     - Jogo simples (ex.: jogo da velha)
 
-Recursos Adicionais
+### Recursos Adicionais
 
 24. Comunidade e Fóruns
     - Stack Overflow
