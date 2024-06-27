@@ -1,7 +1,5 @@
 # Brainstorming
 
-- Eu vou pesquisar tudo novamente
-
 ---
 
 - Devo criar um template para as perguntas que irei fazer ao ChatGPT
