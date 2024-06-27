@@ -9,11 +9,11 @@ Anotações para mim mesmo:
 
 O que é JavaScript?
 
-### 1. Sintaxe e Tipos de Dados (Tópico)
+### 1. Sintaxe e Tipos de Dados
 
-- Variáveis (var, let, const. Subtópico)
-- Tipos de dados primitivos (string, number, boolean, null, undefined, symbol. Subtópico)
-- Operadores (aritméticos, comparação, lógicos. Subtópico)
+- Variáveis (var, let, const)
+- Tipos de dados primitivos (string, number, boolean, null, undefined, symbol)
+- Operadores (aritméticos, comparação, lógicos)
 
 ### 2. Estruturas de Controle
 

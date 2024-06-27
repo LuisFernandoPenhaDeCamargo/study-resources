@@ -25,3 +25,11 @@ Este documento contém um apanhado de ideias, o propósito dele é ajudar a me o
 ### Template (template.md)
 
 Este arquivo específica as regras seguidas para formatar os documentos (arquivos) deste repositório, ele é útil na hora de padronizar novos conteúdos que serão adicionados a este repositório, sejam tópicos, subtópicos ou subseções dos subtópicos.
+
+# Estudar
+
+Abaixo temos uma lista de tópicos que eu irei estudar
+
+### 1. Variados
+
+- O que é uma API Gateway?

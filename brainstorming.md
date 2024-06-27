@@ -1,6 +1,11 @@
 # Brainstorming
 
+Este documento contém um apanhado de ideias, o propósito dele é ajudar a me organizar como irei estruturar o conteúdo dentro deste repositório.
+
 ---
+
+- *TESTE*
+- **TESTE**
 
 - Devo criar um template para as perguntas que irei fazer ao ChatGPT
     + Tópico: $< Nome do tópico, para pontuar o contexto >:
@@ -24,10 +29,3 @@
     + Principais conceitos
 - Template
     + Decidir como irei estruturar os documentos
-
----
-
-- 17h30 comitar o código
-    - Qual seria a forma mais utilizada para indicar que você irá realizar o comando `git commit`?
-
-+ O que é uma API Gateway?
