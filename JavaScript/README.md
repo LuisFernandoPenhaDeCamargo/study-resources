@@ -39,7 +39,7 @@ O que é JavaScript?
 - Criação e manipulação de arrays
 - Métodos de array (map, filter, reduce, forEach, etc.)
 
-## Conceitos Intermediários
+## [Conceitos Intermediários](./conceitos-intermediarios/)
 
 ### 5. Manipulação do DOM
 
@@ -63,9 +63,11 @@ O que é JavaScript?
 
 Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os módulos ES:
 
+- Por enquanto o arquivo que trata dos tópicos abaixo se chama **commonjs-es.md**
 - O termo para se referir ao CommonJS e o ES é mesmo "módulos"?
 - Eu posso dizer que eles possuem versões? Qual é o termo mais adequado?
 - Quantos existem e quais features cada um adicionou ao Node.js?
+- Como eu utilizo da sintaxe do CommonJS em conjunto com a sintaxe do ES, por exemplo, import e require no mesmo arquivo <--
 
 ### 8. Módulos
 

@@ -39,8 +39,22 @@ Contexto: Mocha, Chai e Sinon, estou criando testes unitários.
 - Chai, o que é?
 - Sinon, o que é?
 - Stub, o que é?
-
-+ Como eu utiliza da sintaxe do CommonJS em conjunto com a sintaxe do ES, por exemplo, import e require no mesmo arquivo
+- `describe`
+- `beforeEach`
+- `afterEach`
+- `it`
+- `expect`
+- `sinon.stub`
+- `.restore()`
+- `.resolves()`
+- `.rejects()`
+- `.calledOnce`
+- `.calledWith`
+- `.to`
+- `.be`
+- `.true`
+- `.equal()`
+- `.undefined`
 
 ### 2. AWS
 
