@@ -6,27 +6,38 @@ Este arquivo específica as regras seguidas para formatar os documentos (arquivo
 
 - [Diretrizes](#diretrizes)
 - [Nomenclatura](#nomenclatura)
+- [Tópicos, Subtópicos e Subseções](#topicos-subtopicos-e-subsecoes)
+- [Listas](#listas)
 - [Template para Pesquisa (ChatGPT)](#template-pesquisa-chatgpt)
 
 # <a id="diretrizes">Diretrizes</a>
 
 - Eu irei pesquisar todo o conteúdo novamente
+- 17h30: commitar o código
 
 # <a id="nomenclatura">Nomenclatura</a>
 
 Nomes de diretórios deveram indicar o caminho relativo para eles.
 
-# Tópicos, Subtópicos e Subseções
+# <a id="topicos-subtopicos-e-subsecoes">Tópicos, Subtópicos e Subseções</a>
 
 ### Exemplos
 
 Abaixo, temos um exemplo do que é um tópico e um subtópico (contexto do JavaScript):
 
-### 1. Sintaxe e Tipos de Dados                                                (Tópico)
+### 1. Sintaxe e Tipos de Dados (Tópico)
 
-- Variáveis (var, let, const)                                                  (Subtópico)
+- Variáveis (var, let, const) (Subtópico)
 - Tipos de dados primitivos (string, number, boolean, null, undefined, symbol) (Subtópico)
-- Operadores (aritméticos, comparação, lógicos)                                (Subtópico)
+- Operadores (aritméticos, comparação, lógicos) (Subtópico)
+
+# <a id="listas">Listas</a>
+
+Quando o item listado possuir um nome, por exemplo:
+
+- **Performance:** permite que o JavaScript inicie operações longas (como I/O de arquivos ou chamadas de rede) sem bloquear a thread principal, permitindo que operações continuem a ser executadas
+
+O nome do item, também chamado de entrada da lista, ou também, item da lista, que neste caso é "Performance", deve estar em negrito, assim como os dois pontos que o sucedem.
 
 # <a id="template-pesquisa-chatgpt">Template para Pesquisa (ChatGPT)</a>
 
