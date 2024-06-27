@@ -6,9 +6,10 @@ Este arquivo específica as regras seguidas para formatar os documentos (arquivo
 
 - [Diretrizes](#diretrizes)
 - [Nomenclatura](#nomenclatura)
-- [Tópicos, Subtópicos e Subseções](#topicos-subtopicos-e-subsecoes)
+- [Tópicos, Subtópicos, Seções e Subseções](#topicos-subtopicos-secoes-subsecoes)
 - [Listas](#listas)
 - [Código](#codigo)
+- [Diretórios e Arquivos](#diretorios-arquivos)
 - [Template para Pesquisa (ChatGPT)](#template-pesquisa-chatgpt)
 
 # <a id="diretrizes">Diretrizes</a>
@@ -21,12 +22,13 @@ Este arquivo específica as regras seguidas para formatar os documentos (arquivo
 
 Nomes de diretórios deveram indicar o caminho relativo para eles e a barra ao final.
 
-# <a id="topicos-subtopicos-e-subsecoes">Tópicos, Subtópicos, Seções e Subseções</a>
+# <a id="topicos-subtopicos-secoes-subsecoes">Tópicos, Subtópicos, Seções e Subseções</a>
 
 ### Seções Comuns
 
 - `## Principais Características`
 - `## Exemplo`/`## Exemplos`
+- `## Observações`
 - `## Conclusão`
 
 ### Exemplos
@@ -50,6 +52,21 @@ O nome do item, também chamado de entrada da lista, ou também, item da lista, 
 # <a id="codigo">Código</a>
 
 O nome de classes, funções, variáveis e o texto de strings, em exemplos, devem estar em inglês.
+
+# <a id="diretorios-arquivos">Diretórios e Arquivos</a>
+
+Abaixo, iremos exemplificar como eu vou representar a estrutura hierarquica do sistema de arquivos em exemplos.
+
+```Bash
+my-project/
+└── src/
+    ├── services/
+    │   └── sensitive_data_getters.js
+    ├── custom-tests/
+    │   └── getAccessToken.test.js
+    ├── index.js
+    └── package.json
+```
 
 # <a id="template-pesquisa-chatgpt">Template para Pesquisa (ChatGPT)</a>
 
