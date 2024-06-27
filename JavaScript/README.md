@@ -41,20 +41,20 @@ O que é JavaScript?
 
 ## Conceitos Intermediários
 
-5. Manipulação do DOM
+### 5. Manipulação do DOM
 
 - Seleção de elementos (getElementById, querySelector, etc.)
 - Modificação de elementos (innerHTML, textContent, etc.)
 - Manipulação de atributos e estilos
 - Manipulação de classes
 
-6. Eventos
+### 6. Eventos
 
 - Tipos de eventos (click, submit, keydown, etc.)
 - Adicionar e remover event listeners
 - Delegação de eventos
 
-7. Programação Assíncrona
+### 7. Programação Assíncrona
 
 - O que é assincronicidade? (LF)
 - Callbacks
@@ -67,34 +67,34 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES?
     - Eu posso dizer que eles possuem versões? Qual é o termo mais adequado?
     - Quantos existem e quais features cada um adicionou ao Node.js?
 
-8. Módulos
+### 8. Módulos
 
 - Import e export (ES6 Modules)
 - CommonJS (require, module.exports)
 
 ## Técnicas Avançadas
 
-9. Prototipagem e Herança
+### 9. Prototipagem e Herança
 
 - Prototipagem e herança prototípica
 - Classes (ES6)
 - Métodos estáticos e de instância
 
-10. Manipulação de JSON
+### 10. Manipulação de JSON
 
 - JSON.parse e JSON.stringify
 
-11. Tratamento de Erros
+### 11. Tratamento de Erros
 
 - Try/catch
 - Lançamentos de erros (throw)
 
-12. Armazenamento no Navegador
+### 12. Armazenamento no Navegador
 
 - Cookies
 - LocalStorage e SessionStorage
 
-13. Trabalhando com APIs
+### 13. Trabalhando com APIs
 
 - Fetch API
 - AJAX com XMLHttpRequest
@@ -102,21 +102,21 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES?
 
 ## Ferramentas e Bibliotecas
 
-14. Node.js
+### 14. Node.js
 
 - Introdução ao Node.js
 - Módulos core (fs, http, path, etc.)
 - NPM (Node Package Manager)
 - Boas práticas na hora de dar upgrade na versão do Node.js
 
-15. Frameworks e Bibliotecas Populares
+### 15. Frameworks e Bibliotecas Populares
 
 - React.js
 - Angular
 - Vue.js
 - jQuery (para manipulação de DOM mais antiga)
 
-16. Testes Automatizados
+### 16. Testes Automatizados
 
 - Mocha
 - Chai
@@ -125,23 +125,23 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES?
 
 ## Práticas e Padrões de Código
 
-17. Boas Práticas
+### 17. Boas Práticas
 
 - Código limpo
 - Modularização
 - Comentários e documentação
 
-18. Padrões de Projeto
+### 18. Padrões de Projeto
 
 - Padrões comuns (Singleton, Factory, Observer, etc.)
 - Aplicação de padrões em JavaScript
 
-19. Metodologias de Desenvolvimento
+### 19. Metodologias de Desenvolvimento
 
 - Test-Driven Development (TDD)
 - Behavior-Driven Development (BDD)
 
-20. Ferramentas de Build e Automação
+### 20. Ferramentas de Build e Automação
 
 - Webpack
 - Babel
@@ -150,19 +150,19 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES?
 
 ## Performance e Segurança
 
-21. Otimização de Código
+### 21. Otimização de Código
 
 - Melhores práticas de desempenho
 - Profiling e debugging
 
-22. Segurança
+### 22. Segurança
 
 - Prevenção de vulnerabilidades comuns (XSS, CSRF, etc.)
 - Práticas de segurança em desenvolvimento web
 
 ## Projetos Práticos
 
-23. Projetos de Exemplo
+### 23. Projetos de Exemplo
 
 - Aplicação ToDo List
 - Aplicação CRUD com uma API RESTful
@@ -170,13 +170,13 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES?
 
 ## Recursos Adicionais
 
-24. Comunidade e Fóruns
+### 24. Comunidade e Fóruns
 
 - Stack Overflow
 - GitHub
 - Reddit (r/javascript)
 
-25. Documentação e Tutoriais
+### 25. Documentação e Tutoriais
 
 - MDN Web Docs
 - W3Schools
