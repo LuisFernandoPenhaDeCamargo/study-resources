@@ -38,10 +38,9 @@ Contexto: Mocha, Chai e Sinon, estou criando testes unitários.
 - Mocha, o que é?
 - Chai, o que é?
 - Sinon, o que é?
-- Se o nome do diretório for "test", o nome da chave em "scripts" deve ser "test"?
-- O que significa o ".test" no nome, por exemplo, getAccessToken.test.js
-- O padrão para o nome do arquivo que vai testar a função é o nome da função?
 - Stub, o que é?
+
++ Como eu utiliza da sintaxe do CommonJS em conjunto com a sintaxe do ES, por exemplo, import e require no mesmo arquivo
 
 ### 2. AWS
 
