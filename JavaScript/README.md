@@ -61,11 +61,11 @@ O que é JavaScript?
 - Promises
 - Async/await
 
-Devo pontuar aqui o que são os módulos CommonJS e os módulos ES?  
-    Sobre os módulos ES
-    - O termo para se referir ao CommonJS e o ES é mesmo "módulos"?
-    - Eu posso dizer que eles possuem versões? Qual é o termo mais adequado?
-    - Quantos existem e quais features cada um adicionou ao Node.js?
+Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os módulos ES:
+
+- O termo para se referir ao CommonJS e o ES é mesmo "módulos"?
+- Eu posso dizer que eles possuem versões? Qual é o termo mais adequado?
+- Quantos existem e quais features cada um adicionou ao Node.js?
 
 ### 8. Módulos
 
@@ -141,9 +141,9 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES?
 - Test-Driven Development (TDD)
 - Behavior-Driven Development (BDD)
 
-### 20. Ferramentas de Build e Automação
+### [20. Ferramentas de Build e Automação](./ferramentas-build-automacao/ferramentas-build-automacao.md)
 
-- Webpack
+- [Webpack](./ferramentas-build-automacao/ferramentas-build-automacao.md#webpack)
 - Babel
 - ESLint
 - Prettier

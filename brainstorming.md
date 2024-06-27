@@ -4,9 +4,6 @@ Este documento contém um apanhado de ideias, o propósito dele é ajudar a me o
 
 ---
 
-- *TESTE*
-- **TESTE**
-
 - Devo criar um template para as perguntas que irei fazer ao ChatGPT
     + Tópico: $< Nome do tópico, para pontuar o contexto >:
         - principais conceitos
@@ -27,5 +24,3 @@ Este documento contém um apanhado de ideias, o propósito dele é ajudar a me o
     + Aonde eu irei pontuar este tópico
     + O que é?
     + Principais conceitos
-- Template
-    + Decidir como irei estruturar os documentos
