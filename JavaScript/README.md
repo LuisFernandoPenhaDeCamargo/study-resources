@@ -116,9 +116,9 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
 - Vue.js
 - jQuery (para manipulação de DOM mais antiga)
 
-### 16. Testes Automatizados
+### [16. Testes Automatizados](./testes-automatizados/)
 
-- Mocha
+- [Mocha](./testes-automatizados/Mocha.md)
 - Chai
 - Jest
 - Cypress
@@ -141,9 +141,9 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
 - Test-Driven Development (TDD)
 - Behavior-Driven Development (BDD)
 
-### [20. Ferramentas de Build e Automação](./ferramentas-build-automacao/ferramentas-build-automacao.md)
+### [20. Ferramentas de Build e Automação](./ferramentas-build-automacao/)
 
-- [Webpack](./ferramentas-build-automacao/ferramentas-build-automacao.md#webpack)
+- [Webpack](./ferramentas-build-automacao/Webpack.md)
 - Babel
 - ESLint
 - Prettier

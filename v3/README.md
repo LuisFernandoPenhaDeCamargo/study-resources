@@ -66,11 +66,6 @@ Estudar sobre:
     + Como enviar para este servidor uma requisição que possua a query com o Axios?
     + Qual é o código de status padrão retornado por um servidor Express?
 
-### AWS
-
-- AWS STS (Security Token Service)
-- AWS IAM
-
 ### NPM
 
 - `npm outdated`

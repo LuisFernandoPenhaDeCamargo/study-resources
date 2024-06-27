@@ -30,6 +30,28 @@ Este arquivo específica as regras seguidas para formatar os documentos (arquivo
 
 Abaixo temos uma lista de tópicos que eu irei estudar
 
-### 1. Variados
+### 1. JavaScript
 
-- O que é uma API Gateway?
+Contexto: Mocha, Chai e Sinon, estou criando testes unitários.
+
+- O que são testes unitários?
+- Mocha, o que é?
+- Chai, o que é?
+- Sinon, o que é?
+- Se o nome do diretório for "test", o nome da chave em "scripts" deve ser "test"?
+- O que significa o ".test" no nome, por exemplo, getAccessToken.test.js
+- O padrão para o nome do arquivo que vai testar a função é o nome da função?
+- Stub, o que é?
+
+### 2. AWS
+
+- AWS STS (Security Token Service)
+- AWS IAM
+
+### 3. Variados
+
+- Qual é a diferença entre métodos e funções?
+- Qual é a diferença Módulos, Bibliotecas e Frameworks?
+- JSON, o que é?
+- API Gateway, O que é?
+- "RESTful", o que é?

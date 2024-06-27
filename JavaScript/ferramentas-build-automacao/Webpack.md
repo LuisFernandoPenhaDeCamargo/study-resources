@@ -1,13 +1,4 @@
-# Ferramentas de Build e Automação
-
-### Sumário
-
-- [Webpack](#webpack)
-- Babel
-- ESLint
-- Prettier
-
-# <a id="webpack">Webpack</a>
+# Webpack
 
 Webpack é uma ferramenta de build e automação extremamente popular no ecossistema JavaScript. Sua principal função é empacotar módulos JavaScript, junto com suas dependências, em um ou mais arquivos de saída, chamados de "bundles". Isso facilita a gestão e a distribuição de código em aplicações web modernas.
 
@@ -48,7 +39,7 @@ Webpack é uma ferramenta de build e automação extremamente popular no ecossis
 - Permite atualizar módulos no navegador em tempo real sem recarregar a página inteira
 - Acelera o processo de desenvolvimento, mantendo o estado da aplicação enquanto faz atualizações
 
-## Exemplos
+## Exemplo
 
 Um exemplo básico de configuração de um arquivo webpack.config.js para uma aplicação JavaScript simples:
 
