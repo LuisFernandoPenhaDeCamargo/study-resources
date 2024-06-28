@@ -5,9 +5,13 @@ Anotações para mim mesmo:
 - Quando os subtópicos forem adicionados por mim, irei pontuar um "LF" em parênteses ao final dele
 - O "M" entre parênteses ao final do subtópico indica que eu o modifiquei. Nos parênteses, também devo pontuar o que foi alterado
 
-## Fundamentos de JavaScript
+### Sumário
 
-O que é JavaScript?
+## [Fundamentos de JavaScript](./fundamentos-javascript/)
+
+- O que é JavaScript?
+
+No sumário abaixo, há subseções que foram pontuadas porque eu achei necessário destacar a existência delas, mas fique atento ao fato de que nem toda subseção foi listada.
 
 ### 1. Sintaxe e Tipos de Dados
 
@@ -21,11 +25,12 @@ O que é JavaScript?
 - Laços de repetição (for, while, do...while)
 - Break e continue
 
-### 3. Funções
+### [3. Funções](./fundamentos-javascript/funcoes.md)
 
 - Declaração de funções
 - Funções anônimas (M. Desmembrei este subtópico em dois, este e o abaixo eram um só)
-- Arrow functions
+- [Arrow functions](./fundamentos-javascript/funcoes.md#arrow-functions)
+- [IIFE (Immediately Invoked Function Expressions)](./fundamentos-javascript/funcoes.md#iife)
 - Funções de ordem superior
 - Parâmetros e valores de retorno
 
@@ -54,25 +59,26 @@ O que é JavaScript?
 - Adicionar e remover event listeners
 - Delegação de eventos
 
-### 7. Programação Assíncrona
+### [7. Programação Assíncrona](./conceitos-intermediarios/programacao-assincrona.md)
 
 - O que é assincronicidade? (LF)
 - Callbacks
 - Promises
+- [`then`/`catch`](./conceitos-intermediarios/programacao-assincrona.md#thencatch)
 - Async/await
 
 Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os módulos ES:
 
-- Por enquanto o arquivo que trata dos tópicos abaixo se chama **commonjs-es.md**
 - O termo para se referir ao CommonJS e o ES é mesmo "módulos"?
 - Eu posso dizer que eles possuem versões? Qual é o termo mais adequado?
 - Quantos existem e quais features cada um adicionou ao Node.js?
-- Como eu utilizo da sintaxe do CommonJS em conjunto com a sintaxe do ES, por exemplo, import e require no mesmo arquivo <--
 
-### 8. Módulos
+### [8. Módulos](./conceitos-intermediarios/modulos.md)
 
 - Import e export (ES6 Modules)
 - CommonJS (require, module.exports)
+- [CommonJS e ES Modules no Mesmo Arquivo](./conceitos-intermediarios/modulos.md#commonjs-es-mesmo-arquivo)
+- [Import dinâmico](./conceitos-intermediarios/modulos.md#import-dinamico)
 
 ## Técnicas Avançadas
 
@@ -102,12 +108,18 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
 - AJAX com XMLHttpRequest
 - Manipulação de dados de API
 
-## Ferramentas e Bibliotecas
+## [Ferramentas e Bibliotecas](./ferramentas-bibliotecas/)
 
-### 14. Node.js
+### [14. Node.js](./ferramentas-bibliotecas/Nodejs.md)
+
++ Módulos built-in (internos) e módulos core são a mesma coisa?
 
 - Introdução ao Node.js
-- Módulos core (fs, http, path, etc.)
+- [Módulos nativos (ou core)](./ferramentas-bibliotecas/Nodejs.md#modulos-nativos)
+- [Módulos internos](./ferramentas-bibliotecas/Nodejs.md#modulos-internos)
+- [`module`](./ferramentas-bibliotecas/Nodejs.md#modulos-internos-module)
+    + [`createRequire`](./ferramentas-bibliotecas/Nodejs.md#modulos-internos-module-createrequire)
+- [Módulos Nativos x Módulos Internos](./ferramentas-bibliotecas/Nodejs.md#modulos-nativos-x-modulos-internos)
 - NPM (Node Package Manager)
 - Boas práticas na hora de dar upgrade na versão do Node.js
 
@@ -118,14 +130,17 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
 - Vue.js
 - jQuery (para manipulação de DOM mais antiga)
 
-### [16. Testes Automatizados](./testes-automatizados/)
+### [16. Testes Automatizados](./ferramentas-bibliotecas/testes-automatizados.md)
 
-- [Mocha](./testes-automatizados/Mocha.md)
+- [Testes unitários](./ferramentas-bibliotecas/testes-automatizados.md#testes-unitarios)
+    + [Mocked](./ferramentas-bibliotecas/testes-automatizados.md#testes-unitarios-mocked)
+    + [Stubs](./ferramentas-bibliotecas/testes-automatizados.md#testes-unitarios-stubs)
+- [Mocha](./ferramentas-bibliotecas/testes-automatizados.md#mocha)
 - Chai
 - Jest
 - Cypress
 
-## Práticas e Padrões de Código
+## [Práticas e Padrões de Código](./praticas-padroes-codigo/)
 
 ### 17. Boas Práticas
 
@@ -143,9 +158,9 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
 - Test-Driven Development (TDD)
 - Behavior-Driven Development (BDD)
 
-### [20. Ferramentas de Build e Automação](./ferramentas-build-automacao/)
+### [20. Ferramentas de Build e Automação](./praticas-padroes-codigo/ferramentas-build-automacao.md)
 
-- [Webpack](./ferramentas-build-automacao/Webpack.md)
+- [Webpack](./praticas-padroes-codigo/ferramentas-build-automacao.md#webpack)
 - Babel
 - ESLint
 - Prettier

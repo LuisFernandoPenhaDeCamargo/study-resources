@@ -11,6 +11,7 @@ Tenha em mente que se o sumário, seja deste documento README ou qualquer outro,
 - [JavaScript](./JavaScript/)
 - Rust
 - Python
+- [Diretório Heterogêneo](./diretorio-heterogeneo/)
 - [Brainstorming](./brainstorming.md)
 - [Template](./template.md)
 
@@ -18,11 +19,15 @@ Tenha em mente que se o sumário, seja deste documento README ou qualquer outro,
 
 Este diretório contém informações sobre o ecosssitema JavaScript, sejam conceitos, bibliotecas, frameworks ou até mesmo ferramentas (pacotes).
 
-### Brainstorming (brainstorming.md)
+### Diretório Heterogêneo
+
+Este diretório contém vários documentos que tratam dos mais variados assuntos relacionados a tecnologia.
+
+### Brainstorming
 
 Este documento contém um apanhado de ideias, o propósito dele é ajudar a me organizar como irei estruturar o conteúdo dentro deste repositório.
 
-### Template (template.md)
+### Template
 
 Este arquivo específica as regras seguidas para formatar os documentos (arquivos) deste repositório, ele é útil na hora de padronizar novos conteúdos que serão adicionados a este repositório, sejam tópicos, subtópicos ou subseções dos subtópicos.
 
@@ -34,7 +39,6 @@ Abaixo temos uma lista de tópicos que eu irei estudar
 
 Contexto: Mocha, Chai e Sinon, estou criando testes unitários.
 
-- O que são testes unitários?
 - Mocha, o que é?
 - Chai, o que é?
 - Sinon, o que é?
@@ -63,7 +67,8 @@ Contexto: Mocha, Chai e Sinon, estou criando testes unitários.
 
 ### 3. Variados
 
-- Qual é a diferença entre métodos e funções?
+- Qual é a diferença entre funções e métodos?
+- Qual é a diferença entre parâmetros e argumentos?
 - Qual é a diferença Módulos, Bibliotecas e Frameworks?
 - JSON, o que é?
 - API Gateway, O que é?

@@ -1,10 +1,52 @@
-# Mocha
+# Testes Automatizados
 
 ### Sumário
 
-- [Criando Testes para uma Função](#criando-testes-funcao)
+- [Testes Unitários](#testes-unitarios)
+- [Mocha](#mocha)
 
-# <a id="criando-testes-funcao">Criando Testes para uma Função</a>
+# <a id="testes-unitarios">Testes Unitários</a>
+
+Testes unitários são uma forma de teste de software que verifica a menor parte do código aplicável, chamada de "unidade". Uma unidade pode ser uma função, método, procedimento, módulo, ou objeto. O objetivo dos testes unitários é garantir que cada unidade do código funcione conforme o esperado.
+
+## Principais Características
+
+### 1. Isolamento
+
+Testes unitários isolam a unidade de código dos outros componentes do sistema. Isso significa que depedências externas, como banco de dados, serviços externos, ou até mesmo outras partes do código, **são simuladas (<a id="testes-unitarios-mocked">mocked</a>)** ou **substituídas por dublês (<a id="testes-unitarios-stub">stubs</a>)**.
+
+### 2. Automatização
+
+Os teste unitários são frequentemente automatizados para serem executados rapidamente e frequentemente, geralmente como parte de um processo de integração contínua.
+
+### 3. Rapidez
+
+Por serem focados em pequenas partes do código e serem executados de forma isolada, os testes unitários tendem a ser rápidos.
+
+### 4. Determinismo
+
+Testes unitários devem ser determinísticos, ou seja, a mesma entrada deve sempre produzir a mesma saída, independente do ambiente em que são executados.
+
+### 5. Documentação
+
+Servem como documentação do comportamento esperado do código. Quando bem escritos, os testes unitários podem ajudar os desenvolvedores a entender o que o código deve fazer.
+
+## Benefícios
+
+1. **:**
+2. **:**
+3. **:**
+4. **:**
+
+## Conclusão
+
+# <a id="mocha">Mocha</a>
+
+### Sumário
+
+- [Criando Testes para uma Função](#mocha-criando-testes-funcao)
+
+# <a id="mocha-criando-testes-funcao">Criando Testes para uma Função</a>
 
 Tome como exemplo a função abaixo, iremos criar testes para ela:
 
