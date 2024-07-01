@@ -32,6 +32,7 @@ Nomes de diretórios deveram indicar o caminho relativo para eles e a barra ao f
 ### Seções Comuns
 
 - `## Principais Características`
+- `## Principais Funções`
 - `## Exemplo`/`## Exemplos`
 - `## Benefícios`
 - `## Observações`

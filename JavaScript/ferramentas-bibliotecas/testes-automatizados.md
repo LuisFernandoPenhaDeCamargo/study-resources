@@ -4,6 +4,9 @@
 
 - [Testes Unitários](#testes-unitarios)
 - [Mocha](#mocha)
+- [Chai](#chai)
+- [Biblioteca de Assertivas](#biblioteca-assertivas)
+- [Sinon](#sinon)
 - [Criando Testes para uma Função](#criando-testes-funcao)
 
 # <a id="testes-unitarios">Testes Unitários</a>
@@ -14,7 +17,7 @@ Testes unitários são uma forma de teste de software que verifica a menor parte
 
 ### 1. Isolamento
 
-Testes unitários isolam a unidade de código dos outros componentes do sistema. Isso significa que depedências externas, como banco de dados, serviços externos, ou até mesmo outras partes do código, **são simuladas (<a id="testes-unitarios-mocked">mocked</a>)** ou **substituídas por dublês (<a id="testes-unitarios-stub">stubs</a>)**.
+Testes unitários isolam a unidade de código dos outros componentes do sistema. Isso significa que depedências externas, como banco de dados, serviços externos, ou até mesmo outras partes do código, **são simuladas (mocked)** ou **substituídas por dublês (stubs)**.
 
 ### 2. Automatização
 
@@ -82,7 +85,202 @@ Integra-se facilmente com ferramentas de automação de testes e de integração
 - **beforeEach:** executado antes de cada teste no bloco
 - **afterEach:** executado após cada teste no bloco
 
-#
+# <a id="chai">Chai</a>
+
+Chai é uma biblioteca de assertivas para JavaScript que pode ser utilizada com qualquer framework de teste, como Mocha, Jasmine ou Jest. Ele fornece uma maneira simples e expressiva de escrever testes, permitindo que os desenvolvedores verifiquem se os resultados esperados correspondem aos resultados reais do código testado.
+
+## Principais Características
+
+### 1. Estilos de assertivas
+
+- **BDD (Behavior Driven Development):** `expect` e `should`
+- **TDD (Test Driven Development):** `assert`
+
+### 2. Interface flexíveis
+
+- **Expect/should:** estilo mais legível e descritivo, adequado para escrita de testes que leem como frases em inglês
+- **Assert:** estilo clássico e direto, mais semelhante a outras bibliotecas de asssertivas
+
+### 3. Plugins
+
+Chai suporta uma variedade de plugins que estendem suas funcionalidades, como `chai-as-promised` para trabalhar com promises e `chai-http` para testar APIs HTTP.
+
+## Estilos de Assertivas
+
+```JavaScript
+// BDD com `expect`.
+import { expect } from "chai";
+
+expect(2 + 2).to.equal(4);
+expect([1, 2, 3]).to.be.an("array").that.includes(2);
+expect("foo").to.have.lengthOf(3);
+
+// BDD com `should`.
+import { should } from "chai";
+
+(2 + 2).should.equal(4);
+[1, 2, 3].should.be.an("array").that.includes(2);
+"foo".should.have.lengthOf(3);
+
+// TDD com `assert`.
+import { assert } from "chai";
+
+assert.equal(2 + 2, 4);
+assert.isArray([1, 2, 3]);
+assert.lengthOf("foo", 3);
+```
+
+## Plugins
+
+### Chai-as-Promised
+
+Chai-as-Promised é um plugin para Chai que adiciona assertivas para trabalhar com promises.
+
+```JavaScript
+import { expect } from "chai";
+import chaiAsPromised from "chai-as-promised";
+
+chai.use(chaiAsPromised);
+
+async function fetchData() {
+    return "data";
+}
+
+expect(fetchData()).to.eventually.equal("data");
+```
+
+### Chai-HTTP
+
+Chai-HTTP é um plugin para Chai que facilita o teste de APIs HTTP.
+
+```JavaScript
+import { expect } from "chai";
+import chaiHttp from "chai-http";
+
+chai.use(chaiHttp);
+
+import app from "../app"; // Supondo que app é a sua aplicação Express.
+
+describe("GET /users", () => {
+    it("should return all users", (done) => {
+        chai.request(app);
+            .get("./users")
+            .end((err, res) => {
+                expect(res).to.have.status(200);
+                expect(res.body).to.be.an("array");
+                done();
+            })
+    })
+});
+```
+
+# <a id="biblioteca-assertivas">Biblioteca de Assertivas</a>
+
+Uma biblioteca de assertivas é uma ferramenta que fornece um conjunto de funções ou métodos para realizar verificações em seu código durante os testes. Essas verificações são chamadas de assertivas (ou assertions, em inglês), e elas comparam os resultados esperados com os resultados reais obtidos pelo código que está sendo testado. Se a assertiva falhar (ou seja, se o resultado real não corresponder ao esperado), a biblioteca de assertivas lança um erro, indicando que algo está errado no código que está sendo testado.
+
+## Principais Funções
+
+### 1. Comparações simples
+
+- Verificar se um valor é igual ao outro
+- Verificar se um valor é verdadeiro ou falso
+
+### 2. Verificações de tipos
+
+Verificar se um valor é de um tipo específico.
+
+### 3. Verificações de propriedades
+
+Verificar se um objeto tem uma propriedade específica.
+
+### 4. Verificações de estrutura de dados
+
+- Verificar o tamanho de arrays ou strings
+- Verificar se um array contém um elemento específico
+
+### 5. Verificações avançadas
+
+- Verificar se uma função lança um erro quando chamada
+- Verificar o conteúdo de objetos complexos
+
+## Benefícios
+
+- **Clareza:** assertivas tornam os testes mais legíveis e compreensíveis
+- **Facilidade de uso:** bibliotecas de assertivas fornecem métodos simples para verificar resultados esperados
+- **Flexibilidade:** muitas bibliotecas de assertivas suportam diferentes estilos de escrita de testes, permitindo que os desenvolvedores escolham o que melhor se adapta ao seu fluxo de trabalho
+- **Diagnóstico:** quando uma assertiva falha, as mensagens de erro claras ajudam a diagnosticar rapidamente o problema
+
+# <a id="sinon">Sinon</a>
+
+Sinon é uma biblioteca para JavaScript que facilita a criação de espições (spies), esboços (stubs), e mocks, que são usados para testes unitários. É especialmente útil quando você precisa testar o comportamento de uma função ou módulo isoladamente, sem depender de suas dependências externas.
+
+## Principais Funções
+
+### 1. Espiões (spies)
+
+- Monitoram as chamadas para funções existentes, registrando informações sobre cada chamada (como argumentos, valores de retorno, e exceções lançadas)
+- Útil para verificar se uma função foi chamada, quantas vezes foi chamada, com quais argumentos, etc.
+
+### <a id="sinon-stubs">2. Esboços (stubs)</a>
+
+- Substituem funções existentes com funções que você controla completamente
+- Permitem definir o comportamento de uma função (por exemplo, o valor de retorno ou se lança uma exceção)
+- Útil para isolar a função que você está testando de suas dependências
+
+### <a id="sinon-mocks">3. Mocks</a>
+
+- São como esboços, mas com a capacidade adicional de definir expectativas (como está função deve ser chamada uma vez com esses argumentos)
+- Útil para testes que verificam interações específicas entre diferentes partes do código
+
+## Exemplos
+
+```JavaScript
+const sinon = require("sinon");
+
+const myObj = {
+    myMethod: function() {
+        console.log("Method called.");
+    },
+    myOtherMethod: function () {
+        return "Original value.";
+    },
+    myEmptyMethod: function() {},
+};
+// Usando spies.
+const spy = sinon.spy(myObj, "myMethod");
+
+myObj.myMethod();
+
+console.log(spy.called);    // Output: true
+console.log(spy.callCount); // Output: 1
+
+// Usando stubs.
+const stub = sinon.stub(myObj, "myOtherMethod").returns("Stubbed value.");
+
+console.log(myObj.myOtherMethod()); // Output: Stubbed value.
+
+// Usando mocks.
+const mock = sinon.mock(myObj);
+
+mock.expects("myEmptyMethod").once().withArgs("arg1", "arg2");
+myObj.myEmptyMethod("arg1", "arg2");
+mock.verify(); // Verifica se as expectativas foram atendidas, caso contrário, lança um erro.
+```
+
+## Beneficíos
+
+- **Isolamento:** permite isolar a unidade de código que está sendo testada de suas depedências
+- **Controle:** dá controle total sobre o comportamento de funções durante o teste
+- **Flexibilidade:** suporta spies, stubs, e mocks, permitindo diferentes níveis de verificação e controle conforme necessário
+- **Diagnóstico:** as ferramentas de verificação do Sinon ajudam a diagnosticar problemas ao verificar se as funções são chamadas corretamente
+
+## Observações
+
+Você não pode chamar a função `spy`, `stub` ou `mock.expects` no mesmo método.
+
+## Conclusão
+
+Sinon é uma ferramenta poderosa para desenvolvedores que escrevem testes unitários em JavaScript. Ela complementa bibliotecas de testes como o Chai, fornecendo os meios para monitorar, controlar e verificar o comportamento de funções e interações no código, contribuindo para um conjunto de testes mais robusto e confiável.
 
 # <a id="criando-testes-funcao">Criando Testes para uma Função</a>
 
@@ -139,41 +337,42 @@ $ npm install --save-dev mocha chai sinon
 ### 2. Crie um arquivo de teste
 
 ```JavaScript
-// Por exemplo: ./test/getAccessToken.test.js.
+// Por exemplo: ./test/getAccessToken.test.mjs.
 
-const { expect } = require('chai');
-const sinon = require('sinon');
-const axios = require('axios');
-const { getAccessToken } = require('../services/sensitive_data_getters'); // Ajuste o caminho conforme necessário
+import sinon from "sinon";
+import axios from "axios";
+import { expect } from "chai";
 
-describe('getAccessToken', () => {
+import SensitiveDataGetters from "../services/sensitive_data_getters.js";
+
+describe("getAccessToken", () => {
   let postStub;
 
   beforeEach(() => {
-    postStub = sinon.stub(axios, 'post');
+    postStub = sinon.stub(axios, "post");
   });
 
   afterEach(() => {
     postStub.restore();
   });
 
-  it('should return an access token when the request is successful', async () => {
-    const fakeResponse = { data: { access_token: 'fake_access_token' } };
+  it("should return an access token when the request is successful", async () => {
+    const fakeResponse = { data: { access_token: "fake_access_token" } };
     postStub.resolves(fakeResponse);
 
-    const token = await getAccessToken();
+    const token = await SensitiveDataGetters.getAccessToken();
 
-    expect(token).to.equal('fake_access_token');
+    expect(token).to.equal("fake_access_token");
     expect(postStub.calledOnce).to.be.true;
-    expect(postStub.calledWith(`https://api.orionapps.net:443/v2/servers/${process.env.SERVER_ID}/auth`)).to.be.true;
+    expect(postStub.calledWith(`https://example.net:443/v2/servers/${process.env.SERVER_ID}/auth`)).to.be.true;
   });
 
-  it('should log an error message when the request fails', async () => {
-    const consoleErrorStub = sinon.stub(console, 'error');
-    const fakeError = new Error('Request failed');
+  it("should log an error message when the request fails", async () => {
+    const consoleErrorStub = sinon.stub(console, "error");
+    const fakeError = new Error("Request failed");
     postStub.rejects(fakeError);
 
-    const token = await getAccessToken();
+    const token = await SensitiveDataGetters.getAccessToken();
 
     expect(token).to.be.undefined;
     expect(consoleErrorStub.calledOnce).to.be.true;

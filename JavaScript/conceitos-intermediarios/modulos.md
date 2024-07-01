@@ -18,6 +18,10 @@ const chaiPromise = import("chai");
 
 chaiPromise.then(chai => {
     // Use o módulo Chai aqui.
+    /*
+    Por exemplo:
+    const expect = chai.expect;
+    */
 }).catch(error => {
     console.error(error);
 });
@@ -33,12 +37,13 @@ import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 
 // Agora você pode usar `require` como de costume.
+// Observe que você não pode usar a função `require` com um módulo ES, isto é só um exemplo.
 const chai = require("chai");
 ```
 
 # <a id="import-dinamico">Import Dinâmico</a>
 
-O import dinâmico é uma têcnica em JavaScript que permite **importar módulos de maneira assíncrona**, diferente dar importações estáticas que são resolvidas durante a compilação. Ele é útil para carregar módulos apenas quando necessário, o que pode melhorar a performance e a organização do código. A sintaxe do import dinâmico utiliza a função `import` e retorna uma promessa.
+O import dinâmico é uma têcnica em JavaScript que permite **importar módulos de maneira assíncrona**, diferente das importações estáticas que são resolvidas durante a compilação. Ele é útil para carregar módulos apenas quando necessário, o que pode melhorar a performance e a organização do código. A sintaxe do import dinâmico utiliza a função `import` e retorna uma promessa.
 
 ### Principais Características
 
