@@ -4,6 +4,7 @@
 
 - [Testes Unitários](#testes-unitarios)
 - [Mocha](#mocha)
+- [Criando Testes para uma Função](#criando-testes-funcao)
 
 # <a id="testes-unitarios">Testes Unitários</a>
 
@@ -33,20 +34,57 @@ Servem como documentação do comportamento esperado do código. Quando bem escr
 
 ## Benefícios
 
-1. **:**
-2. **:**
-3. **:**
-4. **:**
+1. **Detecção precoce de erros:** ajudam a identificar erros e problemas no código logo no início do ciclo de desenvolvimento
+2. **Facilidade de refatoração:** proporcionam segurança ao refatorar o código, garantindo que as mudanças não quebrem funcionalidades existentes
+3. **Confiança no código:** aumentam a confiança dos desenvolvedores na estabilidade e na qualidade do código
+4. **Documentação:** fornecem uma forma viva de documentação sobre como o código deve se comportar
 
 ## Conclusão
 
+Os testes unitários são uma prática essencial no desenvolvimento de software que ajudam a garantir que cada parte individual do código funcione conforme o esperado. Eles são rápidos, isolados, automatizados e determinísticos, proporcionando benefícios significativos como detecção precoce de erros, facilidade de refatoração e maior confiança no código.
+
 # <a id="mocha">Mocha</a>
 
-### Sumário
+Mocha é um framework de teste para JavaScript que roda em Node.js e no navegador, desenvolvido para tornar a escrita de teste simples e divertida. Ele permite a criação de testes de unidade e de integração, com suporte a vários estilos assertivos e bibliotecas de mocks.
 
-- [Criando Testes para uma Função](#mocha-criando-testes-funcao)
+## Principais Características
 
-# <a id="mocha-criando-testes-funcao">Criando Testes para uma Função</a>
+### 1. Flexibilidade
+
+Mocha não impõe nenhuma estrutura específica para seus testes, permitindo que os desenvolvedores escolham suas próprias bibliotecas de assertivas (como Chai), bibliotecas de mocks (como Sinon), e abordagens de estruturação de testes.
+
+### 2. Suporte a `async`
+
+Suporta testes assíncronos com facilidade, utilizando callbacks e promises, também aceita a sintaxe `async`/`await`.
+
+### 3. Hooks de ciclo de vida
+
+Fornece hooks (`before`, `after`, `beforeEach`, `afterEach`) para configurar e limpar o ambiente de teste, permitindo que você execute código antes e depois de cada teste ou grupo de testes.
+
+### 4. Relatórios de saída
+
+Vários repórteres disponíveis para saída de resultados de testes, desde simples relatórios de linha de comando até relatórios mais complexos em HTML, JSON e outros formatos.
+
+### 5. Fácil integração
+
+Integra-se facilmente com ferramentas de automação de testes e de integração contínua, como Jenkins, Travis CI, e outros.
+
+## Estrutura de Testes com Mocha
+
+- **Suites (**`describe`**):** agrupamentos de testes relacionados
+- **Testes (**`it`**):** blocos de código que testam uma funcionalidade específica
+- **Hooks (**`before`**,** `after`**,** `beforeEach`**,** `afterEach`**):** blocos de código executados em pontos específicos do ciclo de vida dos testes
+
+## Hooks de Ciclo de Vida
+
+- **before:** executado uma vez antes de todos os testes no bloco
+- **after:** executado uma vez após todos os testes no bloco
+- **beforeEach:** executado antes de cada teste no bloco
+- **afterEach:** executado após cada teste no bloco
+
+#
+
+# <a id="criando-testes-funcao">Criando Testes para uma Função</a>
 
 Tome como exemplo a função abaixo, iremos criar testes para ela:
 

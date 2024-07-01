@@ -137,6 +137,7 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
     + [Stubs](./ferramentas-bibliotecas/testes-automatizados.md#testes-unitarios-stubs)
 - [Mocha](./ferramentas-bibliotecas/testes-automatizados.md#mocha)
 - Chai
+- [Criando Testes para uma Função](./ferramentas-bibliotecas/testes-automatizados.md#criando-testes-funcao)
 - Jest
 - Cypress
 

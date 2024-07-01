@@ -39,8 +39,7 @@ Abaixo temos uma lista de tópicos que eu irei estudar
 
 Contexto: Mocha, Chai e Sinon, estou criando testes unitários.
 
-- Mocha, o que é?
-- Chai, o que é?
+- O que é uma biblioteca de assertiva?
 - Sinon, o que é?
 - Stub, o que é?
 - `describe`
