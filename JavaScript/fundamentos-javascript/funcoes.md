@@ -34,4 +34,4 @@ A técnica conhecida como IIFE (Immediately Invoked Function Expressions) consis
 })();
 ```
 
-Observe que você deve envolver a declaração da função entre parênteses e depois, utilizar mais um conjunto de parênteses para invocá-la imediatamente.
+Observe que você deve envolver a declaração da função entre parênteses, e depois, utilizar mais um conjunto de parênteses para invocá-la imediatamente.

@@ -39,9 +39,6 @@ Abaixo temos uma lista de tópicos que eu irei estudar
 
 Contexto: Mocha, Chai e Sinon, estou criando testes unitários.
 
-- O que é uma biblioteca de assertiva?
-- Sinon, o que é?
-- Stub, o que é?
 - `describe`
 - `beforeEach`
 - `afterEach`
@@ -58,6 +55,8 @@ Contexto: Mocha, Chai e Sinon, estou criando testes unitários.
 - `.true`
 - `.equal()`
 - `.undefined`
+
++ `[ERR_REQUIRE_ESM]: require() of ES Module`
 
 ### 2. AWS
 

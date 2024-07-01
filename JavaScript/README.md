@@ -38,7 +38,6 @@ No sumário abaixo, há subseções que foram pontuadas porque eu achei necessá
 
 - O que são objetos? (LF)
 - Objetos Globais (LF)
-- Métodos dos Objetos (LF)
 - Criação e manipulação de objetos
 - Métodos de objetos
 - Criação e manipulação de arrays
@@ -69,7 +68,7 @@ No sumário abaixo, há subseções que foram pontuadas porque eu achei necessá
 
 Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os módulos ES:
 
-- O termo para se referir ao CommonJS e o ES é mesmo "módulos"?
+- O termo para se referir ao CommonJS e ao ES é mesmo "módulos"?
 - Eu posso dizer que eles possuem versões? Qual é o termo mais adequado?
 - Quantos existem e quais features cada um adicionou ao Node.js?
 
@@ -112,8 +111,6 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
 
 ### [14. Node.js](./ferramentas-bibliotecas/Nodejs.md)
 
-+ Módulos built-in (internos) e módulos core são a mesma coisa?
-
 - Introdução ao Node.js
 - [Módulos nativos (ou core)](./ferramentas-bibliotecas/Nodejs.md#modulos-nativos)
 - [Módulos internos](./ferramentas-bibliotecas/Nodejs.md#modulos-internos)
@@ -133,10 +130,12 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
 ### [16. Testes Automatizados](./ferramentas-bibliotecas/testes-automatizados.md)
 
 - [Testes unitários](./ferramentas-bibliotecas/testes-automatizados.md#testes-unitarios)
-    + [Mocked](./ferramentas-bibliotecas/testes-automatizados.md#testes-unitarios-mocked)
-    + [Stubs](./ferramentas-bibliotecas/testes-automatizados.md#testes-unitarios-stubs)
 - [Mocha](./ferramentas-bibliotecas/testes-automatizados.md#mocha)
-- Chai
+- [Chai](./ferramentas-bibliotecas/testes-automatizados.md#chai)
+- [Biblioteca de Assertivas](./ferramentas-bibliotecas/testes-automatizados.md#biblioteca-assertivas)
+- [Sinon](./ferramentas-bibliotecas/testes-automatizados.md#sinon)
+    + [Stubs](./ferramentas-bibliotecas/testes-automatizados.md#sinon-stubs)
+    + [Mocks](./ferramentas-bibliotecas/testes-automatizados.md#sinon-mocks)
 - [Criando Testes para uma Função](./ferramentas-bibliotecas/testes-automatizados.md#criando-testes-funcao)
 - Jest
 - Cypress
@@ -154,10 +153,10 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
 - Padrões comuns (Singleton, Factory, Observer, etc.)
 - Aplicação de padrões em JavaScript
 
-### 19. Metodologias de Desenvolvimento
+### [19. Metodologias de Desenvolvimento](./praticas-padroes-codigo/metodologias-desenvolvimento.md)
 
-- Test-Driven Development (TDD)
-- Behavior-Driven Development (BDD)
+- [Test-Driven Development (TDD)](./praticas-padroes-codigo/metodologias-desenvolvimento.md#tdd)
+- [Behavior-Driven Development (BDD)](./praticas-padroes-codigo/metodologias-desenvolvimento.md#bdd)
 
 ### [20. Ferramentas de Build e Automação](./praticas-padroes-codigo/ferramentas-build-automacao.md)
 
