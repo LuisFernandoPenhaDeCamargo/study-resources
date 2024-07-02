@@ -69,7 +69,7 @@ Abaixo, temos um exemplo do que é um tópico e um subtópico (contexto do JavaS
 
 # <a id="listas">Listas</a>
 
-- Quando o item listado possuir um nome, por exemplo:
+- Quando o item listado possuir um nome, por exemplo:  
     " + **Performance:** permite que o JavaScript inicie operações longas (como I/O de arquivos ou chamadas de rede) sem bloquear a thread principal, permitindo que operações continuem a ser executadas"
 
 O nome do item, também chamado de entrada da lista, ou também, item da lista, que neste caso é "Performance", deve estar em negrito, assim como os dois pontos que o sucedem.
@@ -106,7 +106,8 @@ my-project/
 # <a id="chatgpt">Template para Pesquisa (ChatGPT)</a>
 
 1. A pergunta utilizada para gerar uma lista de tópicos e subtópicos que iram me ajudar a estruturar o conhecimento que eu quero pontuar segue o seguinte formato, "crie uma lista de tópicos a se estudar para dominar JavaScript", por exemplo
-2. A pergunta utilizada para pesquisar funções ou métodos:  
+2. A pergunta utilizada para pesquisar funções ou métodos:
+
 $< nome da função ou método >:  
 - Sintaxe Básica
     + Parâmetros
