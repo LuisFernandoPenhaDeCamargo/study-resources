@@ -1,21 +1,6 @@
 # Template
 
-# Contexto para o Chat GPT
-
-## Novos Arquivos
-
-Lista de tópicos para o aprendizado da _____ que considere a curva de aprendizado.
-
 # Funções/métodos
-
-`funcao/metodo` é um método ou uma função?
-
-- O que ele faz?
-- Assinatura do método;
-- Parâmetros: quais os tipos deles, se eles são opcionais ou não;
-- Retorno;
-- Se ele possui uma subcategoria, por exemplo, é uma função de iteração e transformação ou de redução e agregação?
-- Exemplo de uso.
 
 - Para demonstrar a sua saída, utilize a estrutura `// Saída:`. Se no mesmo bloco de código houver mais de uma demonstração de "saída", as alinhe de acordo com a coluna da direita;
 - Quando o comentário for muito grande, o coloque na linha acima da linha de código em questão ao invés de na mesma linha;
@@ -27,18 +12,6 @@ Lista de tópicos para o aprendizado da _____ que considere a curva de aprendiza
 "`.metodo()` é um método utilizado"
 
 `Na assinatura do método você não utiliza ponto e vírgula ao final.`
-
-# Bibliotecas/Frameworks
-
-- `modulo` é uma biblioteca ou um framework?
-- Precisa ser instalado?
-- Para o que ele serve?
-
-# Objetos/Propriedades
-
-Para verificar o tipo deles:
-
-`console.log("typeof:", Object.prototype.toString.call(objectOrPropriety))`
 
 # Documentação
 
@@ -67,10 +40,6 @@ Os três itens acima:
 
 - Listas enumeradas;
 - Não utilizar de pontuação ao final.
-
-# Markdown e VS Code
-
-Deixe o VS Code sugerir as âncoras, mas não utilize acentuação nelas.
 
 # Marcadores de Posição
 
