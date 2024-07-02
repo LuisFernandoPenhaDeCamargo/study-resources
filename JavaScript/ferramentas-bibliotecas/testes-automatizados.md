@@ -8,6 +8,7 @@
 - [Biblioteca de Assertivas](#biblioteca-assertivas)
 - [Sinon](#sinon)
 - [Criando Testes para uma Função](#criando-testes-funcao)
+- [Cucumber](#cucumber)
 
 # <a id="testes-unitarios">Testes Unitários</a>
 
@@ -84,6 +85,85 @@ Integra-se facilmente com ferramentas de automação de testes e de integração
 - **after:** executado uma vez após todos os testes no bloco
 - **beforeEach:** executado antes de cada teste no bloco
 - **afterEach:** executado após cada teste no bloco
+
+## Sumário
+
+- [`describe`](#mocha-describe)
+- [`it`](#mocha-it)
+- [`before`](#mocha-before)
+- [`beforeEach`](#mocha-beforeeach)
+- [`after`](#mocha-after)
+- [`afterEach`](#mocha-aftereach)
+
+## <a id="mocha-describe">`describe`</a>
+
+A função `describe` é utilizada para **agrupar um conjunto de testes relacionados (para criar suites)**, ela define um bloco de teste que descreve uma funcionalidade específica ou um componente do código que está sendo testado. Dentro de um bloco `describe`, você pode definir vários testes individuais usando a função `it`.
+
+### Sintaxe Básica
+
+```JavaScript
+describe(title, callback);
+```
+
+- `title` **:** uma **string** que descreve o conjunto de testes
+- `callback` **:** uma **função** que contém as definições dos testes e os hooks
+
+## <a id="mocha-it">`it`</a>
+
+A função `it` é utilizada para **definir casos de testes individuais**, cada bloco `it` representa um teste específico que você deseja executar. Dentro desse bloco, você escreve o código para configurar o teste, realizar as ações necessárias e fazer as assertivas para verificar se o comportamento do código está conforme esperado.
+
+### Sintaxe Básica
+
+```JavaScript
+it(title, callback)
+```
+
+- `title` **:** uma **string** que descreve o caso de teste que se deve verificar
+- `callback` **:** uma **função** que contém o código do teste e as assertivas que verificam o comportamento esperado
+
+## <a id="mocha-before">`before`</a>
+
+A função `before` é utilizada para **definir um bloco de código que será executado antes de qualquer teste dentro de um determinado escopo** (geralmente um `describe`).
+
+### Sintaxe Básica
+
+```JavaScript
+before(callback);
+```
+
+- `callback`**:** uma **função** a ser executada antes dos testes
+
+## <a id="mocha-beforeeach">`beforeEach`</a>
+
+A função `beforeEach` é utilizada para **definir um bloco de código que será executado antes de cada teste dentro de um determinado escopo** (geralmente um `describe`).
+
+### Sintaxe Básica
+
+```JavaScript
+beforeEach(callback);
+```
+
+- `callback`**:** uma função a ser executada antes de cada teste
+
+## <a id="mocha-after">`after`</a>
+
+A função `after` é utilizada para **definir um bloco de código que será executado após todos os testes dentro de um determinado escopo** (geralmente um `describe`).
+
+### Sintaxe Básica
+
+```JavaScript
+after(callback);
+```
+
+- `callback`**:** uma **função** a ser executada após todos os testes
+
+## <a id="mocha-aftereach">`afterEach`</a>
+
+### Sintaxe Básica
+
+```JavaScript
+
+```
 
 # <a id="chai">Chai</a>
 
@@ -232,19 +312,26 @@ Sinon é uma biblioteca para JavaScript que facilita a criação de espições (
 - São como esboços, mas com a capacidade adicional de definir expectativas (como está função deve ser chamada uma vez com esses argumentos)
 - Útil para testes que verificam interações específicas entre diferentes partes do código
 
+## Benefícios
+
+- **Isolamento:** permite isolar a unidade de código que está sendo testada de suas depedências
+- **Controle:** dá controle total sobre o comportamento de funções durante o teste
+- **Flexibilidade:** suporta spies, stubs, e mocks, permitindo diferentes níveis de verificação e controle conforme necessário
+- **Diagnóstico:** as ferramentas de verificação do Sinon ajudam a diagnosticar problemas ao verificar se as funções são chamadas corretamente
+
 ## Exemplos
 
 ```JavaScript
 const sinon = require("sinon");
 
 const myObj = {
-    myMethod: function() {
+    myMethod: function () {
         console.log("Method called.");
     },
     myOtherMethod: function () {
         return "Original value.";
     },
-    myEmptyMethod: function() {},
+    myEmptyMethod: function () {},
 };
 // Usando spies.
 const spy = sinon.spy(myObj, "myMethod");
@@ -266,13 +353,6 @@ mock.expects("myEmptyMethod").once().withArgs("arg1", "arg2");
 myObj.myEmptyMethod("arg1", "arg2");
 mock.verify(); // Verifica se as expectativas foram atendidas, caso contrário, lança um erro.
 ```
-
-## Beneficíos
-
-- **Isolamento:** permite isolar a unidade de código que está sendo testada de suas depedências
-- **Controle:** dá controle total sobre o comportamento de funções durante o teste
-- **Flexibilidade:** suporta spies, stubs, e mocks, permitindo diferentes níveis de verificação e controle conforme necessário
-- **Diagnóstico:** as ferramentas de verificação do Sinon ajudam a diagnosticar problemas ao verificar se as funções são chamadas corretamente
 
 ## Observações
 
@@ -483,3 +563,152 @@ Essas convenções ajudam a manter os testes organizados e facilmente identific�
 Se você executar o Mocha sem especificar nenhum caminho ou padrão de arquivo, o Mocha, por padrão, procurará arquivos de teste apenas no diretório **./test/** e executará qualquer arquivo que esteja diretamente dentro desse diretório, com as extensões **.js**, **.mjs**, **.ts** e **.coffe**.
 
 Isso significa que, por padrão, ele não busca recursivamente em subdiretórios dentro de **./test/**.
+
+# <a id="cucumber">Cucumber</a>
+
+Cucumber é uma ferramenta de software de código aberto que suporta BDD. Ela permite que você escreva especificações de software em um formato compreensível tanto por técnicos quanto por não técnicos, usando uma linguagem de domínio específica chamada Gherkin.
+
+## Principais Características
+
+### 1. Especificações executáveis
+
+As especificações são escritas em Gherkin, uma linguam simples de texto estruturado, e podem ser executadas como testes automatizados.
+
+### 2. Integração com ferramentas de teste
+
+O Cucumber pode ser integrado com várias bibliotecas e frameworks de teste, como JUnit, RSpec, Selenium, etc.
+
+### 3. Suporte multiplataforma
+
+O Cucumber suporta diversas linguagens de programação, incluindo Ruby, Java, JavaScript, C#, Python, entre outras.
+
+### 4. Foco na colaboração
+
+Promove a colaboração entre desenvolvedores, testadores e stakeholders através de uma linguagem comum e especificações claras.
+
+## Sintaxe Gherkin
+
+Gherkin é a linguagem utilizada para escrever especificações no Cucumber. Abaixo estão os componentes básicos da sintaxe Gherkin:
+
+- **Feature:** define a funcionalidade que está sendo especificada
+- **Scenario:** descreve um exemplo específico de como a funcionalidade deve se comportar
+- **Given:** define o contexto inicial do cenário
+- **When:** descreve a ação que é realizada no cenário
+- **Then:** descreve o resultado esperado da ação
+- **And:** conecta passos adicionais em Given, When ou Then
+
+## Benefícios
+
+### 1. Comunicação clara
+
+Promove uma comunicação clara e concisa entre todos os envolvidos no projeto.
+
+### 2. Documentação viva
+
+As especificações em Gherkin servem como documentação viva que descreve o comportamento do sistema
+
+### 3. Facilidade de manutenção
+
+As especificações são de fãcil manutenção e atualização conforme o sistema evolui
+
+### 4. Testes automatizados
+
+Permite a automação dos testes a partir das especificações, garantindo que o comportamento esperado do sistema seja validado continuamente.
+
+## Exemplo
+
+### 1. Instalação
+
+```Bash
+$ npm install --save-dev @cucumber/cucumber
+```
+
+### 2. Estrutura do projeto
+
+Crie a seguinte estrutura de diretórios:
+
+```Bash
+project-root/
+└── features/
+│   ├── login.feature
+│   └── step_definitions/
+│       └── login.step.js
+└── package.json
+```
+
+### 3. Escreva o arquivo de feature (login.feature)
+
+Especificação escrita em Gherkin.
+
+```gherkin
+Feature: Login no sistema
+    Scenario: Login com sucesso
+        Given que o usuário está na página de login
+        And o usuário tem um nome de usuário e senha válidos
+        When o usuário insere o nome do usuário e senha
+        And clica no botão de login
+        Then o usuário deve ser redirecionado para a página inicial
+        And deve ver uma mensagem de boas-vindas
+```
+
+### 4. Defina os passos (login.step.js)
+
+```JavaScript
+// Exemplo que não foi testado, mas já fique ciente que Chai é um módulo ES.
+const { Given, When, Then } = require("@cucumber/cucumber");
+const { expect } = require("chai");
+const { Builder, By } = require("selenium-webdriver");
+
+let driver;
+
+Given("que o usuário está na página de login", async function () {
+    driver = new Builder().forBrowser("firefox").build();
+    await driver.get("http://localhost:3000/login");
+});
+
+Given("o usuário tem um nome de usuário e senha válidos", function () {
+    this.username = "validUser";
+    this.password = "validPassword";
+});
+
+When("o usuário insere o nome de usuário e senha", async function () {
+    await driver.findElement(By.id("username")).sendKeys(this.username);
+    await driver.findElement(By.id("password")).sendKeys(this.password);
+});
+
+When("clica no botão de login", async function () {
+    await driver.findElement(By.id("login-button")).click();
+});
+
+Then("o usuário deve ser redirecionado para a página inicial", async function () {
+    const url = await driver.getCurrentUrl();
+
+    expect(url).to.equal("http://localhost:3000/home");
+});
+
+Then("deve ver uma mensagem de boas-vindas", async function () {
+    const message = await driver.findElement(By.css(".welcome-message")).getText();
+
+    expect(message).to.equal("Bem-vindo, validUser!");
+});
+```
+
+### 5. Configuração no package.json
+
+```JSON
+{
+    "scripts": {
+        "test": "cucumber-js"
+    }
+}
+```
+
+### 6. Executar os testes
+
+```Bash
+$ npm test
+```
+
+## Conclusão
+
+O Cucumber é uma ferramenta poderosa para BDD, permitindo que equipes de desenvolvimento, QA, stackholders colaborem de maneira eficaz na definição e validação do comportamento do sistema. Ao utilizar especificações executáveis e uma linguagem comum, o Cucumber ajuda a garantir que o software desenvolvido atenda às expectativas do usuário final e aos requisitos de negócio.

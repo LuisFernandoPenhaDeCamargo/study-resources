@@ -51,6 +51,12 @@ O import dinâmico é uma têcnica em JavaScript que permite **importar módulos
 2. **Condicional:** permite importar módulos com base em condições específicas
 3. **Melhoria de performance:** pode ajudar a reduzir o tempo de carregamento inicial da aplicação, carregando módulos apenas quando eles são realmente necessários
 
+### Benefícios
+
+1. **Carregamento sob demanda:** módulos são carregados apenas quando necessários, o que pode economizar recursos e melhorar a performance
+2. **Código mais limpo:** pode tornar o código mais limpo, evitando importações desnecessárias
+3. **Facilidade em aplicações grandes:** em grandes aplicações, permite a divisão de código em partes menores e mais gerenciáveis
+
 ### Exemplo
 
 ```JavaScript
@@ -71,9 +77,3 @@ loadComponent("header").then(Header => {
     // Use o componente Header.
 });
 ```
-
-### Benefícios
-
-1. **Carregamento sob demanda:** módulos são carregados apenas quando necessários, o que pode economizar recursos e melhorar a performance
-2. **Código mais limpo:** pode tornar o código mais limpo, evitando importações desnecessárias
-3. **Facilidade em aplicações grandes:** em grandes aplicações, permite a divisão de código em partes menores e mais gerenciáveis

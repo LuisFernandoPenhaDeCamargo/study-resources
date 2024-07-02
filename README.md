@@ -39,10 +39,11 @@ Abaixo temos uma lista de tópicos que eu irei estudar
 
 Contexto: Mocha, Chai e Sinon, estou criando testes unitários.
 
-- `describe`
-- `beforeEach`
-- `afterEach`
-- `it`
+15:02
+afterEach
+- Sintaxe Básica
+        + Parâmetros
+
 - `expect`
 - `sinon.stub`
 - `.restore()`
@@ -57,6 +58,14 @@ Contexto: Mocha, Chai e Sinon, estou criando testes unitários.
 - `.undefined`
 
 + `[ERR_REQUIRE_ESM]: require() of ES Module`
+
+## <a id="">``</a>
+
+### Sintaxe Básica
+
+```JavaScript
+
+```
 
 ### 2. AWS
 

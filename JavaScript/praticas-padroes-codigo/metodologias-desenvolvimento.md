@@ -3,7 +3,7 @@
 ### Sumário
 
 - [Test-Driven Development (TDD)](#tdd)
-- [Driven Development (TDD)](#bdd)
+- [Behavior-Driven Development (TDD)](#bdd)
 
 # <a id="tdd">Test-Driven Development (TDD)</a>
 
@@ -93,7 +93,7 @@ Nesse caso simples, não há muito a refatorar, mas se houvesse uma implementaç
 
 O TDD é uma abordagem poderosa para desenvolver software de alta qualidade. Ele não só ajuda a garantir que o código esteja correto desde o início, mas também promove um design mais limpo e bem pensado. Embora possa exigir um investimento inicial maior em termos de tempo e esforço, os benefícios a longo prazo em termos de manutenção, qualidade e robustez do código são significativos.
 
-# <a id="bdd">Driven Development (TDD)</a>
+# <a id="bdd">Behavior-Driven Development (TDD)</a>
 
 Behavior-Driven Development (BDD) é uma prática de desenvolvimento de software que estende a ideia do TDD ao focar no comportamento do sistema em vez de simplesmente testar sua funcionalidade. O BDD promove a comunicação entre desenvolvedores, QA e stackholders não técnicos para garantir que todos tenham uma compreensão clara dos requisitos e do comportamento esperado do sistema.
 

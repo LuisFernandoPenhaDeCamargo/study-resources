@@ -9,12 +9,11 @@ Anotações para mim mesmo:
 
 ## [Fundamentos de JavaScript](./fundamentos-javascript/)
 
-- O que é JavaScript?
-
 No sumário abaixo, há subseções que foram pontuadas porque eu achei necessário destacar a existência delas, mas fique atento ao fato de que nem toda subseção foi listada.
 
 ### 1. Sintaxe e Tipos de Dados
 
+- O que é JavaScript? (LF)
 - Variáveis (var, let, const)
 - Tipos de dados primitivos (string, number, boolean, null, undefined, symbol)
 - Operadores (aritméticos, comparação, lógicos)
@@ -137,6 +136,7 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
     + [Stubs](./ferramentas-bibliotecas/testes-automatizados.md#sinon-stubs)
     + [Mocks](./ferramentas-bibliotecas/testes-automatizados.md#sinon-mocks)
 - [Criando Testes para uma Função](./ferramentas-bibliotecas/testes-automatizados.md#criando-testes-funcao)
+- [Cucumber](./ferramentas-bibliotecas/testes-automatizados.md#cucumber)
 - Jest
 - Cypress
 
