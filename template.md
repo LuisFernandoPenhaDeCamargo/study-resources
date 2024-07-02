@@ -43,6 +43,8 @@ Abaixo segue uma lista de diretrizes que eu sigo:
 - `## Exemplo`/`## Exemplos`
 - `## Observações`
 - `## Conclusão`
+- `# Métodos e Propriedades`
+    + `### Sumário`
 
 ### Exemplos
 
@@ -91,12 +93,12 @@ my-project/
 - **Descrição da função ou método:** começa da seguinte forma, *"A função `$< nome da função >` é utilizada para ..."*, por exemplo
 - **Descrição de propriedades:** começa da seguinte forma, *"A propriedade `$< nome da propriedade >` é uma propriedade do ..."*
 - **Sintaxe Básica**  
-    **Parâmetro**
-    + Pontue os parâmetros na forma de uma lista
-    + Não é necessário pontuar no nome do item o tipo do argumento, caso você vá fornecê-lo no texto que descreve o item  
-    **Retorno**  
-    + Pontue o nome deste item como *"Retorno"*
-    + Se o retorno não foi pontuado inicialmente e eu não tiver a necessidade de saber o valor dele, não irei incluí-lo nas anotações
+    + **Parâmetro**
+        - Pontue os parâmetros na forma de uma lista
+        - Não é necessário pontuar no nome do item o tipo do argumento, caso você vá fornecê-lo no texto que descreve o item  
+    + **Retorno**  
+        - Pontue o nome deste item como *"Retorno"*
+        - Se o retorno não foi pontuado inicialmente e eu não tiver a necessidade de saber o valor dele, não irei incluí-lo nas anotações
 
 ### Seções Comuns
 

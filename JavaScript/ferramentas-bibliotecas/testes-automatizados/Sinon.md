@@ -24,7 +24,7 @@ Sinon é uma biblioteca para JavaScript que facilita a criação de espiões (sp
 
 - **Isolamento:** permite isolar a unidade de código que está sendo testada de suas depedências
 - **Controle:** dá controle total sobre o comportamento de funções durante o teste
-- **Flexibilidade:** suporta spies, stubs, e mocks, permitindo diferentes níveis de verificação e controle conforme necessário
+- **Flexibilidade:** suporta spies, stubs e mocks, permitindo diferentes níveis de verificação e controle conforme necessário
 - **Diagnóstico:** as ferramentas de verificação do Sinon ajudam a diagnosticar problemas ao verificar se as funções são chamadas corretamente
 
 ## Exemplos
@@ -41,20 +41,20 @@ const myObj = {
     },
     myEmptyMethod: function () {},
 };
-// Usando spies.
+// - Usando spies
 const spy = sinon.spy(myObj, "myMethod");
 
-myObj.myMethod();
+myObj.myMethod();           // Ouput: Method called.
 
 console.log(spy.called);    // Output: true
 console.log(spy.callCount); // Output: 1
 
-// Usando stubs.
+// - Usando stubs
 const stub = sinon.stub(myObj, "myOtherMethod").returns("Stubbed value.");
 
 console.log(myObj.myOtherMethod()); // Output: Stubbed value.
 
-// Usando mocks.
+// - Usando mocks
 const mock = sinon.mock(myObj);
 
 mock.expects("myEmptyMethod").once().withArgs("arg1", "arg2");
@@ -64,23 +64,24 @@ mock.verify(); // Verifica se as expectativas foram atendidas, caso contrário, 
 
 ## Observações
 
-Você não pode chamar a função `spy`, `stub` ou `mock.expects` no mesmo método.
+Você não pode chamar o método `spy`, `stub` ou `mock.expects` na mesma função.
 
 ## Conclusão
 
-Sinon é uma ferramenta poderosa para desenvolvedores que escrevem testes unitários em JavaScript. Ela complementa bibliotecas de testes como o Chai, fornecendo os meios para monitorar, controlar e verificar o comportamento de funções e interações no código, contribuindo para um conjunto de testes mais robusto e confiável.
+Sinon é uma ferramenta poderosa para desenvolvedores que escrevem testes unitários em JavaScript. Ela complementa bibliotecas de testes como a Chai, fornecendo os meios para monitorar, controlar e verificar o comportamento de funções e interações no código, contribuindo para um conjunto de testes mais robusto e confiável.
 
-# <a id="metodos-propriedades">Métodos e Propriedades</a>
+# Métodos e Propriedades
 
 ### Sumário
 
-- [stub](#metodos-propriedades-stub)
-- [restore](#metodos-propriedades-restore)
-- [resolves](#metodos-propriedades-resolves)
-- [rejects](#metodos-propriedades-rejects)
-- [calledOnce](#metodos-propriedades-calledOnce)
+- [stub](#stub)
+- [restore](#restore)
+- [resolves](#resolves)
+- [rejects](#rejects)
+- [calledOnce](#calledonce)
+- [`calledWith`](#calledwith)
 
-## <a id="metodos-propriedades-stub">`stub`</a>
+## <a id="stub">`stub`</a>
 
 O método `stub` é utilizado para **criar stubs em funções ou métodos**, permitindo que você controle o comportamento das funções durante os testes. Stubs são usados para substituir o comportamento real de uma função com um comportamento simulado.
 
@@ -107,7 +108,7 @@ myStub.returns("stubbed value");
 console.log(myStub()); // Output: stubbed value
 ```
 
-## <a id="metodos-propriedades-restore">`restore`</a>
+## <a id="restore">`restore`</a>
 
 O método `restore` é utilizado para **restaurar o comportamento original de um stub, spy ou mock** criado pelo Sinon. Isso é útil para garantir que os testes não causem efeitos colaterais em outras partes do código.
 
@@ -119,7 +120,7 @@ spy.restore();
 mock.restore();
 ```
 
-## <a id="metodos-propriedades-resolves">`resolves`</a>
+## <a id="resolves">`resolves`</a>
 
 O método `resolves` é utilizado com stubs do Sinon para **especificar que o stub deve retornar uma promise resolvida com um valor específico**. Este método é especialmente útil para testar funções assíncronas que retornam promises.
 
@@ -131,7 +132,7 @@ stub.resolves(value);
 
 - `value`**:** o valor com o qual a promise deve ser resolvida. Por ser qualquer valor, incluindo objetos, strings, números, etc.
 
-## <a id="metodos-propriedades-rejects">`rejects`</a>
+## <a id="rejects">`rejects`</a>
 
 O método `rejects` é utilizado para **configurar um stub para retornar uma promise rejeitada com um valor específico**. Isso é útil para simular falhas em operações assíncronas durante testes.
 
@@ -143,25 +144,18 @@ stub.rejects(value);
 
 - `value`**:** o valor com o qual a promessa será rejeitada. Este valor pode ser um objeto de erro, uma string, ou qualquer outro valor que você deseja que a promise rejeite.
 
-## <a id="metodos-propriedades-calledOnce">`calledOnce`</a>
+## <a id="calledonce">`calledOnce`</a>
 
 A propriedade `calledOnce` é uma propriedade do stub do Sinon (`stub.calledOnce`), que verifica se o stub foi chamado exatamente uma vez durante a execução do teste. Esta propriedade é útil para validar que uma função foi invocada uma única vez, garantindo assim que o comportamento esperado ocorreu apenas uma vez.
 
-### Sintaxe Básica
+## <a id="calledwith">`calledWith`</a>
 
-```JavaScript
-```
-
-## <a id="metodos-">``</a>
+O método `calledWith` é utilizado para **verificar se o stub foi chamado com argumentos específicos durante a execução do teste**. Este método é útil para validar que uma função foi invocada com os parâmetros esperados, garantindo assim que o comportamento ocorreu de maneira prevista.
 
 ### Sintaxe Básica
 
 ```JavaScript
+stub.calledWith(arg1, arg2, ...);
 ```
 
-## <a id="metodos-">``</a>
-
-### Sintaxe Básica
-
-```JavaScript
-```
+- `arg1, arg2, ...`**:** os argumentos que se espera que tenham sido passados para o stub durante a chamada

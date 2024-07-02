@@ -37,13 +37,9 @@ Abaixo temos uma lista de tópicos que eu irei estudar
 
 ### 1. JavaScript
 
-Contexto: Mocha, Chai e Sinon, estou criando testes unitários.
-
 - Sintaxe Básica
     + Parâmetros
 
-- `expect`
-- `.to`
 - `.be`
 - `.true`
 - `.equal()`
