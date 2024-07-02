@@ -39,18 +39,10 @@ Abaixo temos uma lista de tópicos que eu irei estudar
 
 Contexto: Mocha, Chai e Sinon, estou criando testes unitários.
 
-15:02
-afterEach
 - Sintaxe Básica
-        + Parâmetros
+    + Parâmetros
 
 - `expect`
-- `sinon.stub`
-- `.restore()`
-- `.resolves()`
-- `.rejects()`
-- `.calledOnce`
-- `.calledWith`
 - `.to`
 - `.be`
 - `.true`

@@ -132,9 +132,10 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
 - [Mocha](./ferramentas-bibliotecas/testes-automatizados.md#mocha)
 - [Chai](./ferramentas-bibliotecas/testes-automatizados.md#chai)
 - [Biblioteca de Assertivas](./ferramentas-bibliotecas/testes-automatizados.md#biblioteca-assertivas)
-- [Sinon](./ferramentas-bibliotecas/testes-automatizados.md#sinon)
-    + [Stubs](./ferramentas-bibliotecas/testes-automatizados.md#sinon-stubs)
-    + [Mocks](./ferramentas-bibliotecas/testes-automatizados.md#sinon-mocks)
+- [Sinon](./ferramentas-bibliotecas/testes-automatizados/Sinon.md)
+    + [Stubs](./ferramentas-bibliotecas/testes-automatizados/Sinon.md#stubs)
+    + [Mocks](./ferramentas-bibliotecas/testes-automatizados/Sinon.md#mocks)
+    + [Métodos e Propriedades](./ferramentas-bibliotecas/testes-automatizados/Sinon.md#metodos-propriedades)
 - [Criando Testes para uma Função](./ferramentas-bibliotecas/testes-automatizados.md#criando-testes-funcao)
 - [Cucumber](./ferramentas-bibliotecas/testes-automatizados.md#cucumber)
 - Jest

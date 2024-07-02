@@ -16,19 +16,24 @@ Este arquivo específica as regras para formatar os documentos (arquivos) deste 
 
 # <a id="diretrizes">Diretrizes</a>
 
-- Eu irei pesquisar todo o conteúdo novamente
-- Cuidado para não tentar se aprofundar de forma exagerada no conteúdo (inicialmente), respeite a necessidade do contexto do momento
+Abaixo segue uma lista de diretrizes que eu sigo:
+
+- Eu irei pesquisar todo o conteúdo deste repositório novamente. Estou refatorando os seguintes diretórios:
+    + **v2**
+    + **v3**
+    + **Pos-graduacao**
+- Cuidado para não tentar se aprofundar de forma exagerada no conteúdo (inicialmente), respeite a necessidade do contexto no momento
 - **17h30:** commitar o código
 
 # <a id="nomenclatura">Nomenclatura</a>
 
-Nomes de diretórios deveram indicar o caminho relativo para eles e a barra ao final.
+- **Diretórios:** nome de diretórios deveram indicar o caminho relativo para eles e a barra ao final
 
 # <a id="topicos-subtopicos-secoes-subsecoes">Tópicos, Subtópicos, Seções e Subseções</a>
 
-- Tópicos, subtópicos, seções e subseções seguiram as regras gramáticais de "título"
-- Observe que ao listar tópicos, subtópicos, seções ou subseções em sumários, eles não precisam seguir as regras gramaticais de "título"
+- Tópicos, subtópicos, seções e subseções seguiram as regras gramáticais de "títulos"
 - Se atente que listas (enumeradas ou não) são uma coisa, o conjunto acima, outra
+- Se for necessário, coloque o nome das "Seções Comuns" plural
 
 ### Seções Comuns
 
@@ -38,17 +43,6 @@ Nomes de diretórios deveram indicar o caminho relativo para eles e a barra ao f
 - `## Exemplo`/`## Exemplos`
 - `## Observações`
 - `## Conclusão`
-
-### Seções Comuns (Código)
-
-- `### Sintaxe Básica`
-    + Pontue os parâmetros na forma de uma lista, pontue também os seus tipos. Tudo dentro da subseção acima
-    + Pontue o retorno, nomeie o item da lista como **Retorno**
-- `## Principais Características`
-- `## Exemplo`/`## Exemplos`
-- `## Observações`
-- `## Conclusão`
-- `## Exemplos Interessantes`
 
 ### Exemplos
 
@@ -95,9 +89,23 @@ my-project/
 
 - O nome de classes, objetos, funções, métodos, variáveis e o texto de strings, em exemplos, devem estar em inglês (se possível)
 - **Descrição da função ou método:** começa da seguinte forma, *"A função `$< nome da função >` é utilizada para ..."*, por exemplo
-- **Sintaxe Básica**
-    + **Parâmetro:** não é necessário pontuar no nome do item o tipo do argumento, caso você vá fornecê-lo no texto que descreve o item
-    + **Retorno:** se não foi pontuado inicialmente e eu não tiver a necessidade de saber o valor dele, não irei incluí-lo nas anotações
+- **Descrição de propriedades:** começa da seguinte forma, *"A propriedade `$< nome da propriedade >` é uma propriedade do ..."*
+- **Sintaxe Básica**  
+    **Parâmetro**
+    + Pontue os parâmetros na forma de uma lista
+    + Não é necessário pontuar no nome do item o tipo do argumento, caso você vá fornecê-lo no texto que descreve o item  
+    **Retorno**  
+    + Pontue o nome deste item como *"Retorno"*
+    + Se o retorno não foi pontuado inicialmente e eu não tiver a necessidade de saber o valor dele, não irei incluí-lo nas anotações
+
+### Seções Comuns
+
+- `## Sintaxe Básica`
+- `## Principais Características`
+- `## Exemplo`
+- `## Observações`
+- `## Conclusão`
+- `## Exemplos Interessantes`
 
 ### Formatação do Código Fonte
 
@@ -106,7 +114,8 @@ my-project/
     + Pule uma linha entre a declaração de variáveis e as expressões
     + Pule uma linha quando for realizar impressões
     + Pule uma linha quando for retornar `response`s
-- **Log**
+    + Dependências externas, arquivos do projeto, variáveis, expressões, logs e `response`s podem ser agrupados se forem da mesma "categoria". Por exemplo: um bloco de logs
+- **Logs**
     + Para ilustrar a saída (impressão) de um exemplo, na linha do log, insira ao seu final a simbologia utilizada para documentação, seguida de *"`Output:`"*. Por exemplo: `console.log("Hello, world!"); // Output: Hello, world!` (JavaScript)
     + Se no mesmo bloco de código houver mais de uma linha de log, as alinhe (se fizer sentido) de acordo com a coluna da direita
 - **Comentários**

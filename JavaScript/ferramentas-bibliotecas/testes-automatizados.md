@@ -6,7 +6,6 @@
 - [Mocha](#mocha)
 - [Chai](#chai)
 - [Biblioteca de Assertivas](#biblioteca-assertivas)
-- [Sinon](#sinon)
 - [Criando Testes para uma Função](#criando-testes-funcao)
 - [Cucumber](#cucumber)
 
@@ -97,7 +96,7 @@ Integra-se facilmente com ferramentas de automação de testes e de integração
 
 ## <a id="mocha-describe">`describe`</a>
 
-A função `describe` é utilizada para **agrupar um conjunto de testes relacionados (para criar suites)**, ela define um bloco de teste que descreve uma funcionalidade específica ou um componente do código que está sendo testado. Dentro de um bloco `describe`, você pode definir vários testes individuais usando a função `it`.
+O método `describe` é utilizado para **agrupar um conjunto de testes relacionados (para criar suites)**, ele define um bloco de teste que descreve uma funcionalidade específica ou um componente do código que está sendo testado. Dentro de um bloco `describe`, você pode definir vários testes individuais usando o método `it`.
 
 ### Sintaxe Básica
 
@@ -110,7 +109,7 @@ describe(title, callback);
 
 ## <a id="mocha-it">`it`</a>
 
-A função `it` é utilizada para **definir casos de testes individuais**, cada bloco `it` representa um teste específico que você deseja executar. Dentro desse bloco, você escreve o código para configurar o teste, realizar as ações necessárias e fazer as assertivas para verificar se o comportamento do código está conforme esperado.
+O método `it` é utilizado para **definir casos de testes individuais**, cada bloco `it` representa um teste específico que você deseja executar. Dentro desse bloco, você escreve o código para configurar o teste, realizar as ações necessárias e fazer as assertivas para verificar se o comportamento do código está conforme esperado.
 
 ### Sintaxe Básica
 
@@ -123,7 +122,7 @@ it(title, callback)
 
 ## <a id="mocha-before">`before`</a>
 
-A função `before` é utilizada para **definir um bloco de código que será executado antes de qualquer teste dentro de um determinado escopo** (geralmente um `describe`).
+O Método `before` é utilizado para **definir um bloco de código que será executado antes de qualquer teste dentro de um determinado escopo** (geralmente um `describe`).
 
 ### Sintaxe Básica
 
@@ -147,7 +146,7 @@ beforeEach(callback);
 
 ## <a id="mocha-after">`after`</a>
 
-A função `after` é utilizada para **definir um bloco de código que será executado após todos os testes dentro de um determinado escopo** (geralmente um `describe`).
+O método `after` é utilizado para **definir um bloco de código que será executado após todos os testes dentro de um determinado escopo** (geralmente um `describe`).
 
 ### Sintaxe Básica
 
@@ -159,11 +158,15 @@ after(callback);
 
 ## <a id="mocha-aftereach">`afterEach`</a>
 
+O método `afterEach` é utilizado para definir um bloco de código que será executado após cada teste dentro de um determinado escopo (geralmente um `describe`).
+
 ### Sintaxe Básica
 
 ```JavaScript
-
+afterEach(callback);
 ```
+
+- `callback`**:** uma **função** a ser executada após cada teste
 
 # <a id="chai">Chai</a>
 
@@ -289,78 +292,6 @@ Verificar se um objeto tem uma propriedade específica.
 - **Facilidade de uso:** bibliotecas de assertivas fornecem métodos simples para verificar resultados esperados
 - **Flexibilidade:** muitas bibliotecas de assertivas suportam diferentes estilos de escrita de testes, permitindo que os desenvolvedores escolham o que melhor se adapta ao seu fluxo de trabalho
 - **Diagnóstico:** quando uma assertiva falha, as mensagens de erro claras ajudam a diagnosticar rapidamente o problema
-
-# <a id="sinon">Sinon</a>
-
-Sinon é uma biblioteca para JavaScript que facilita a criação de espições (spies), esboços (stubs), e mocks, que são usados para testes unitários. É especialmente útil quando você precisa testar o comportamento de uma função ou módulo isoladamente, sem depender de suas dependências externas.
-
-## Principais Funções
-
-### 1. Espiões (spies)
-
-- Monitoram as chamadas para funções existentes, registrando informações sobre cada chamada (como argumentos, valores de retorno, e exceções lançadas)
-- Útil para verificar se uma função foi chamada, quantas vezes foi chamada, com quais argumentos, etc.
-
-### <a id="sinon-stubs">2. Esboços (stubs)</a>
-
-- Substituem funções existentes com funções que você controla completamente
-- Permitem definir o comportamento de uma função (por exemplo, o valor de retorno ou se lança uma exceção)
-- Útil para isolar a função que você está testando de suas dependências
-
-### <a id="sinon-mocks">3. Mocks</a>
-
-- São como esboços, mas com a capacidade adicional de definir expectativas (como está função deve ser chamada uma vez com esses argumentos)
-- Útil para testes que verificam interações específicas entre diferentes partes do código
-
-## Benefícios
-
-- **Isolamento:** permite isolar a unidade de código que está sendo testada de suas depedências
-- **Controle:** dá controle total sobre o comportamento de funções durante o teste
-- **Flexibilidade:** suporta spies, stubs, e mocks, permitindo diferentes níveis de verificação e controle conforme necessário
-- **Diagnóstico:** as ferramentas de verificação do Sinon ajudam a diagnosticar problemas ao verificar se as funções são chamadas corretamente
-
-## Exemplos
-
-```JavaScript
-const sinon = require("sinon");
-
-const myObj = {
-    myMethod: function () {
-        console.log("Method called.");
-    },
-    myOtherMethod: function () {
-        return "Original value.";
-    },
-    myEmptyMethod: function () {},
-};
-// Usando spies.
-const spy = sinon.spy(myObj, "myMethod");
-
-myObj.myMethod();
-
-console.log(spy.called);    // Output: true
-console.log(spy.callCount); // Output: 1
-
-// Usando stubs.
-const stub = sinon.stub(myObj, "myOtherMethod").returns("Stubbed value.");
-
-console.log(myObj.myOtherMethod()); // Output: Stubbed value.
-
-// Usando mocks.
-const mock = sinon.mock(myObj);
-
-mock.expects("myEmptyMethod").once().withArgs("arg1", "arg2");
-myObj.myEmptyMethod("arg1", "arg2");
-mock.verify(); // Verifica se as expectativas foram atendidas, caso contrário, lança um erro.
-```
-
-## Observações
-
-Você não pode chamar a função `spy`, `stub` ou `mock.expects` no mesmo método.
-
-## Conclusão
-
-Sinon é uma ferramenta poderosa para desenvolvedores que escrevem testes unitários em JavaScript. Ela complementa bibliotecas de testes como o Chai, fornecendo os meios para monitorar, controlar e verificar o comportamento de funções e interações no código, contribuindo para um conjunto de testes mais robusto e confiável.
 
 # <a id="criando-testes-funcao">Criando Testes para uma Função</a>
 
