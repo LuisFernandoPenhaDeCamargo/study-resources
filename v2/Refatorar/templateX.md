@@ -39,7 +39,7 @@ Os três itens acima:
 # Sumário
 
 - Listas enumeradas;
-- Não utilizar de pontuação ao final.
+
 
 # Marcadores de Posição
 
