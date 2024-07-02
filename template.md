@@ -70,8 +70,8 @@ Abaixo, temos um exemplo do que é um tópico e um subtópico (contexto do JavaS
 # <a id="listas">Listas</a>
 
 - Quando o item listado possuir um nome, por exemplo:
-    + **Performance:** permite que o JavaScript inicie operações longas (como I/O de arquivos ou chamadas de rede) sem bloquear a thread principal, permitindo que operações continuem a ser executadas
-O nome do item, também chamado de entrada da lista, ou também, item da lista, que neste caso é "Performance", deve estar em negrito, assim como os dois pontos que o sucedem.
+    + **Performance:** permite que o JavaScript inicie operações longas (como I/O de arquivos ou chamadas de rede) sem bloquear a thread principal, permitindo que operações continuem a ser executadas  
+    O nome do item, também chamado de entrada da lista, ou também, item da lista, que neste caso é "Performance", deve estar em negrito, assim como os dois pontos que o sucedem.
 - Não utilizar pontuação no final dos itens
 
 # <a id="diretorios-arquivos">Diretórios e Arquivos</a>
