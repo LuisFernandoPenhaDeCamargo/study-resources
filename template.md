@@ -92,10 +92,18 @@ my-project/
 # <a id="codigo">Código</a>
 
 - O nome de classes, objetos, funções, métodos, variáveis e o texto de strings, em exemplos, devem estar em inglês (se possível)
-- **Descrição da função ou método:** começa da seguinte forma, "A função `$< nome da função >` é utilizada para ...", por exemplo
+- **Descrição da função ou método:** começa da seguinte forma, *"A função `$< nome da função >` é utilizada para ..."*, por exemplo
 - **Sintaxe Básica:**
     + **Parâmetro:** não é necessário pontuar no nome do item o tipo do argumento, caso você vá fornecê-lo no texto que descreve o item
     + **Retorno:** se não foi pontuado inicialmente e eu não tiver a necessidade de saber o valor dele, não irei incluí-lo nas anotações
+- **Log:** 
+    + Para ilustrar a saída (impressão) de um exemplo, na linha do log, insira ao seu final a simbologia utilizada para documentação, seguida de *"`Output:`"*. Por exemplo: `console.log("Hello, world!"); // Output: Hello, world!` (JavaScript)
+    + Se no mesmo bloco de código houver mais de uma linha de log, as alinhe (se fizer sentido) de acordo com a coluna da direita
+    
+- Se no mesmo bloco de código houver mais de uma demonstração de "saída", as alinhe de acordo com a coluna da direita;    
+- Quando o comentário for muito grande, o coloque na linha acima da linha de código em questão ao invés de na mesma linha;
+- Para valores de chave, quando eles forem uma string e você quiser indicar um espaçamento, você pode utilizar o underscore;
+- Espaçamento de uma linha entre imports, declaração de variáveis, console logs e classes/funções/métodos.
 
 # <a id="javascript">JavaScript</a>
 
@@ -104,7 +112,7 @@ my-project/
 # <a id="chatgpt">Template para Pesquisa (ChatGPT)</a>
 
 1. A pergunta utilizada para gerar uma lista de tópicos e subtópicos que iram me ajudar a estruturar o conhecimento que eu quero pontuar segue o seguinte formato, *"crie uma lista de tópicos a se estudar para dominar JavaScript"*, por exemplo
-2. A pergunta utilizada para pesquisar funções ou métodos:
+2. Modelo de pergunta para pesquisar funções ou métodos:
 
 ```
 $< nome da função ou método >:

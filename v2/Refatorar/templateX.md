@@ -1,18 +1,3 @@
-# Template
-
-# Funções/métodos
-
-- Para demonstrar a sua saída, utilize a estrutura `// Saída:`. Se no mesmo bloco de código houver mais de uma demonstração de "saída", as alinhe de acordo com a coluna da direita;
-- Quando o comentário for muito grande, o coloque na linha acima da linha de código em questão ao invés de na mesma linha;
-- Para valores de chave, quando eles forem uma string e você quiser indicar um espaçamento, você pode utilizar o underscore;
-- Espaçamento de uma linha entre imports, declaração de variáveis, console logs e classes/funções/métodos.
-
-### Template
-
-"`.metodo()` é um método utilizado"
-
-`Na assinatura do método você não utiliza ponto e vírgula ao final.`
-
 # Documentação
 
 Descrição geral sobre o que o arquivo se trata no ínicio dele. Pule uma linha entre a descrição geral e o código.\
@@ -70,29 +55,6 @@ Me gere um conjunto de tópicos do básico ao avançado para meu arquivo de estu
 - Terminal x Prompt de comando;
 - Diretório x pasta.
 
-### Contexto para o ChatGPT.
-
-**JavaScript.**
-
-Contexto:
-
-- Linux;
-- JavaScript;
-- Node.js;
-- API;
-- MySQL;
-- Git/GitHub.
-
-Linguagem: português (BR).
-
-**Python.**
-
-Contexto:
-
-Python.
-
-Linguagem: português (BR).
-
 # Estruturas.
 
 ### Títulos.
@@ -108,15 +70,3 @@ Os itens nominais de uma lista e de forma geral devem estar em **negrito**, incl
 ### Negrito.
 
 Diretórios, arquivos e extensões devem estar em negrito. O significado de anagramas/abreviações e a sua tradução também.
-
-# Programação.
-
-### Roteiro.
-
-Roteiro a se seguir quando tratar de uma linguagem de programação.
-
-- Cada linguagem de programação dever ter seu próprio diretório;
-- Principais pontos sobre a linguagem;
-- Executando arquivos;
-- Funções/métodos;
-- Bibliotecas padrão.
