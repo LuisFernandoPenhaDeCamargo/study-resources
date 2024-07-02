@@ -4,13 +4,19 @@ Chai é uma biblioteca de assertivas para JavaScript que pode ser utilizada com 
 
 ## Principais Características
 
-1. **Estilos de assertivas:**
-    - **BDD (Behavior-Driven Development):** `expect` e `should`
-    - **TDD (Test-Driven Development):** `assert`
-2. **Interface flexíveis:**
-    - **Expect/should:** estilo mais legível e descritivo, adequado para escrita de testes que leem como frases em inglês
-    - **Assert:** estilo clássico e direto, mais semelhante a outras bibliotecas de asssertivas
-3. **Plugins:** Chai suporta uma variedade de plugins que estendem suas funcionalidades, como `chai-as-promised` para trabalhar com promises e `chai-http` para testar APIs HTTP
+### 1. Estilos de assertivas
+
+- **BDD (Behavior Driven Development):** `expect` e `should`
+- **TDD (Test Driven Development):** `assert`
+
+### 2. Interface flexíveis
+
+- **Expect/should:** estilo mais legível e descritivo, adequado para escrita de testes que leem como frases em inglês
+- **Assert:** estilo clássico e direto, mais semelhante a outras bibliotecas de asssertivas
+
+### 3. Plugins
+
+Chai suporta uma variedade de plugins que estendem suas funcionalidades, como `chai-as-promised` para trabalhar com promises e `chai-http` para testar APIs HTTP.
 
 ## Estilos de Assertivas
 
