@@ -106,9 +106,9 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
 - AJAX com XMLHttpRequest
 - Manipulação de dados de API
 
-## [Ferramentas e Bibliotecas](./ferramentas-bibliotecas/)
+## [Ferramentas e Bibliotecas](./ferramentas-bibliotecas/Nodejs/)
 
-### [14. Node.js](./ferramentas-bibliotecas/Nodejs.md)
+### [14. Node.js](./ferramentas-bibliotecas/)
 
 - Introdução ao Node.js
 - [Módulos nativos (ou core)](./ferramentas-bibliotecas/Nodejs.md#modulos-nativos)
@@ -116,6 +116,7 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
 - [`module`](./ferramentas-bibliotecas/Nodejs.md#modulos-internos-module)
     + [`createRequire`](./ferramentas-bibliotecas/Nodejs.md#modulos-internos-module-createrequire)
 - [Módulos Nativos x Módulos Internos](./ferramentas-bibliotecas/Nodejs.md#modulos-nativos-x-modulos-internos)
+- [Erros Enfrentados](./ferramentas-bibliotecas/Nodejs/erros-enfrentados.md)
 - NPM (Node Package Manager)
 - Boas práticas na hora de dar upgrade na versão do Node.js
 
@@ -126,7 +127,7 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
 - Vue.js
 - jQuery (para manipulação de DOM mais antiga)
 
-### [16. Testes Automatizados](./ferramentas-bibliotecas/testes-automatizados.md)
+### [16. Testes Automatizados](./ferramentas-bibliotecas/testes-automatizados/)
 
 - [Testes unitários](./ferramentas-bibliotecas/testes-automatizados.md#testes-unitarios)
 - [Mocha](./ferramentas-bibliotecas/testes-automatizados.md#mocha)

@@ -146,7 +146,7 @@ stub.rejects(value);
 
 ## <a id="calledonce">`calledOnce`</a>
 
-A propriedade `calledOnce` é uma propriedade do stub do Sinon (`stub.calledOnce`), que verifica se o stub foi chamado exatamente uma vez durante a execução do teste. Esta propriedade é útil para validar que uma função foi invocada uma única vez, garantindo assim que o comportamento esperado ocorreu apenas uma vez.
+A propriedade `calledOnce` é uma propriedade do stub do Sinon (`stub.calledOnce`) que verifica se o stub foi chamado exatamente uma vez durante a execução do teste. Esta propriedade é útil para validar que uma função foi invocada uma única vez, garantindo assim que o comportamento esperado ocorreu apenas uma vez.
 
 ## <a id="calledwith">`calledWith`</a>
 

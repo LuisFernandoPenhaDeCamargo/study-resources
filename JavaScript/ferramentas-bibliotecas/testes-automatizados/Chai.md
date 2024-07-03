@@ -21,21 +21,21 @@ Chai suporta uma variedade de plugins que estendem suas funcionalidades, como `c
 ## Estilos de Assertivas
 
 ```JavaScript
-// BDD com `expect`.
+// - BDD com `expect`
 import { expect } from "chai";
 
 expect(2 + 2).to.equal(4);
 expect([1, 2, 3]).to.be.an("array").that.includes(2);
 expect("foo").to.have.lengthOf(3);
 
-// BDD com `should`.
+// - BDD com `should`
 import { should } from "chai";
 
 (2 + 2).should.equal(4);
 [1, 2, 3].should.be.an("array").that.includes(2);
 "foo".should.have.lengthOf(3);
 
-// TDD com `assert`.
+// - TDD com `assert`
 import { assert } from "chai";
 
 assert.equal(2 + 2, 4);
@@ -76,14 +76,14 @@ import app from "../app"; // Supondo que app é a sua aplicação Express.
 
 describe("GET /users", () => {
     it("should return all users", (done) => {
-        chai.request(app);
+        chai.request(app)
             .get("./users")
             .end((err, res) => {
                 expect(res).to.have.status(200);
                 expect(res.body).to.be.an("array");
                 done();
             })
-    })
+    });
 });
 ```
 
@@ -92,7 +92,9 @@ describe("GET /users", () => {
 ### Sumário
 
 - [`expect`](#expect)
-- [`to`](#to)
+- [Cadeias de Conveniência](#cadeia-conveniencia)
+- [Propriedades de Asserção](#propriedades-assercao)
+- [`equal`](#equal)
 
 ## <a id="expect">`expect`</a>
 
@@ -101,12 +103,50 @@ O método `expect` é utilizado para **escrever afirmações nos testes**. Ela p
 ### Sintaxe Básica
 
 ```JavaScript
-expect(actual).convenienceChain.;
+expect(actual).$< cadeia de conveniência >.$< propriedade de afirmação ou método >;
 ```
 
 - `actual`**:** o valor ou expressão que está sendo testado
-- `convenienceChain`**:** cadeia de conveniência
+- `cadeia de conveniência`**:** representa uma cadeia de conveniência
+- `propriedade de afirmação ou método`**:** uma propriedade de afirmação ou método que verifica se o valor testado corresponde a outro.
 
-## <a id="to">`to`</a>
+## <a id="cadeias-conveniencia">Cadeias de Conveniência</a>
 
-`to` é uma cadeia de conveniência que não altera a verificação, mas melhora a legibilidade das assertivas. Ele permite a construção de sentenças mais naturais quando se escreve testes, facilitando a leitura e a compreensão das intenções do teste.
+Cadeias de conveniência (como o `to`, por exemplo) não alteram a verificação, mas melhoram a legibilidade das assertivas. Elas permitem a construção de sentenças mais naturais quando se escreve testes, facilidando a leitura e a compreensão das intenções do teste.
+
+### Exemplo
+
+```JavaScript
+expect(actual).to.be.true;
+```
+
+### Lista de Cadeias de Conveniência
+
+- `to`
+- `be`
+
+### Observações
+
+Como dito acima, as cadeias de conveniência não alteram a verificação, então em termos de funcionalidade a ordem não importa, elas são intercambiáveis. No entanto, é importante manter a ordem convencional para melhorar a legibilidade e seguir as práticas comuns da comunidade, portanto, enquanto você tecnicamente poderia usar `be.to`, é mais claro e legível usar `to.be`.
+
+## <a id="propriedades-assercao">Propriedades de Asserção</a>
+
+Uma propriedade de asserção é uma propriedade que verifica se o valor testado corresponde a outro. Por exemplo, a propriedade `true` é uma propriedade de asserção do Chai que verifica se o valor testado é exatamente `true`.
+
+### Lista de Propriedades de Asserção
+
+- `true`
+- `undefined`
+
+## <a id="equal">`equal`</a>
+
+O método `equal` é utilizado para **verificar a igualdade estrita (sem coersão de tipo) entre dois valores**.
+
+### Sintaxe Básica
+
+```JavaScript
+expect(actual).equal(expected);
+```
+
+- `actual`**:** o valor que você está testando
+- `expected`**:** o valor que você espera que `actual` seja igual

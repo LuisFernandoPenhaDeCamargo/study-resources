@@ -1,8 +1,8 @@
 # README
 
-O objetivo deste repositório é pontuar conceitos e ferramentas que são importantes para um desenvolvedor. Abaixo, teremos um sumário dos diretórios (ou arquivos) que se encontram no nível superior deste repositório, aqui, iremos fornecer um breve resumo do que cada um trata.
+O objetivo deste repositório é pontuar conceitos e ferramentas que são importantes para um desenvolvedor. Abaixo, teremos um sumário dos diretórios (ou arquivos) que se encontram no nível superior deste repositório, também iremos fornecer um breve resumo do que cada um trata.
 
-Observe que dentro de cada diretório que se encontra no nível superior, também existirá outro arquivo README, pontuando o sumário daquele diretório. A ordem dos itens nos sumários, normalmente, tem significado, seja uma sugestão em relação a ordem de estudo, aumento de complexidade ou até mesmo um conteúdo que eu uso com mais frequência na minha vida profissional.
+Observe que dentro de cada diretório que se encontra no nível superior, também existirá outro arquivo README pontuando o sumário daquele diretório. A ordem dos itens nos sumários, normalmente, tem significado, seja uma sugestão em relação a ordem de estudo por conta do aumento de complexidade, a até mesmo, um conteúdo que eu uso com mais frequência na minha vida profissional.
 
 Tenha em mente que se o sumário, seja deste documento README ou qualquer outro, não possuir links ativos para o diretório, tópico ou subtópico, quer dizer que o item em questão ainda não foi adicionado.
 
@@ -29,31 +29,13 @@ Este documento contém um apanhado de ideias, o propósito dele é ajudar a me o
 
 ### Template
 
-Este arquivo específica as regras seguidas para formatar os documentos (arquivos) deste repositório, ele é útil na hora de padronizar novos conteúdos que serão adicionados a este repositório, sejam tópicos, subtópicos ou subseções dos subtópicos.
+Este arquivo específica as regras seguidas para formatar os documentos (arquivos) deste repositório, ele é útil na hora de padronizar novos conteúdos que serão adicionados a este repositório.
 
 # Estudar
 
-Abaixo temos uma lista de tópicos que eu irei estudar
+Abaixo temos uma lista de tópicos que eu irei estudar.
 
 ### 1. JavaScript
-
-- Sintaxe Básica
-    + Parâmetros
-
-- `.be`
-- `.true`
-- `.equal()`
-- `.undefined`
-
-+ `[ERR_REQUIRE_ESM]: require() of ES Module`
-
-## <a id="">``</a>
-
-### Sintaxe Básica
-
-```JavaScript
-
-```
 
 ### 2. AWS
 

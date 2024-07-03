@@ -33,9 +33,9 @@ Abaixo segue uma lista de diretrizes que eu sigo:
 
 - Tópicos, subtópicos, seções e subseções seguiram as regras gramáticais de "títulos"
 - Se atente que listas (enumeradas ou não) são uma coisa, o conjunto acima, outra
-- Se for necessário, coloque o nome das "Seções Comuns" plural
+- Se for necessário, coloque o nome das "Subseções Comuns" plural
 
-### Seções Comuns
+### Subseções Comuns <--
 
 - `## Principais Características`
 - `## Principais Funções`
@@ -46,11 +46,11 @@ Abaixo segue uma lista de diretrizes que eu sigo:
 - `# Métodos e Propriedades`
     + `### Sumário`
 
-### Exemplos
+### Exemplo
 
-Abaixo, temos um exemplo do que é um tópico e um subtópico (contexto do JavaScript):
+Abaixo, temos um exemplo do que é um subtópico e uma seção (contexto do JavaScript):
 
-### 1. Sintaxe e Tipos de Dados (Tópico)
+### 1. Sintaxe e Tipos de Dados (Tópico) <--
 
 - Variáveis (var, let, const) (Subtópico)
 - Tipos de dados primitivos (string, number, boolean, null, undefined, symbol) (Subtópico)
@@ -58,10 +58,10 @@ Abaixo, temos um exemplo do que é um tópico e um subtópico (contexto do JavaS
 
 # <a id="links-referencia">Links de Referência</a>
 
-- Não é necessário incluir o conteúdo em parênteses do tópico, subtópico, seção ou subseção (ou utilizar somente ele) no link de referência. Por exemplo:  
-    O link de referência deste subtópico "IIFE (Immediately Invoked Function Expressions)" seria `iife` ou `immediately-invoked-function-expressions`, mas não `iife-immediately-invoked-function-expressions`.
-- Se uma subseção faz parte de uma seção, ou se uma seção faz parte de um subtópico, ou se um subtópico faz parte de um tópico, você deve incluir no link de referência o valor do link de referência superior como prefixo. Por exemplo:  
-    `module` é uma seção do subtópico "Módulos Internos" e o link de referência de Módulos Internos é "`modulos-internos`". O link de referência do `module` ficará da seguinte forma então: `modulos-internos-module`, observe que o link de referência de Módulos Internos foi utilizado como prefixo no link de refência do `module`, o ponto é indicar uma hierarquia e evitar um possível conflito nos links de referência causados por repetição.
+- Não é necessário incluir o conteúdo em parênteses do tópico, subtópico, seção ou subseção no link de referência (ou utilizar somente ele). Por exemplo:  
+    O link de referência da seção "IIFE (Immediately Invoked Function Expressions)" seria `iife` ou `immediately-invoked-function-expressions`, mas não `iife-immediately-invoked-function-expressions`.
+- Se uma subseção faz parte de uma seção, ou se uma seção faz parte de um subtópico, ou se um subtópico faz parte de um tópico, você deve incluir no link de referência o valor do link de referência "superior" como prefixo. Por exemplo:  
+    "`module`" é uma subseção da seção "Módulos Internos" e o link de referência de Módulos Internos é "`modulos-internos`". O link de referência de `module` ficará da seguinte forma então: `modulos-internos-module`, observe que o link de referência de Módulos Internos foi utilizado como prefixo no link de refência de `module`, o ponto é indicar uma hierarquia e evitar um possível conflito nos links de referência causados por repetição.
 
 # <a id="listas">Listas</a>
 
@@ -90,8 +90,11 @@ my-project/
 ### Template para Documentação
 
 - O nome de classes, objetos, funções, métodos, variáveis e o texto de strings, em exemplos, devem estar em inglês (se possível)
+- Quando a representação "`$<  >`" for utilizada, o texto dentro dela deverá estar em português (se possível), pois ele é uma explicação sobre um valor que será utilizado nesta posição
 - **Descrição da função ou método:** começa da seguinte forma, *"A função `$< nome da função >` é utilizada para ..."*, por exemplo
-- **Descrição de propriedades:** começa da seguinte forma, *"A propriedade `$< nome da propriedade >` é uma propriedade do ..."*
+- **Descrição de propriedades:** começa da seguinte forma, *"A propriedade `$< nome da propriedade >` é uma propriedade do ..."*. Por exemplo:
+    + "A propriedade `calledOnce` é uma propriedade do stub do Sinon (`stub.calledOnce`) que verifica ..."
+    + "A propriedade `true` é uma propriedade de asserção do Chai que verifica ..."
 - **Sintaxe Básica**  
     + **Parâmetro**
         - Pontue os parâmetros na forma de uma lista
@@ -100,7 +103,7 @@ my-project/
         - Pontue o nome deste item como *"Retorno"*
         - Se o retorno não foi pontuado inicialmente e eu não tiver a necessidade de saber o valor dele, não irei incluí-lo nas anotações
 
-### Seções Comuns
+### Subseções Comuns
 
 - `## Sintaxe Básica`
 - `## Principais Características`

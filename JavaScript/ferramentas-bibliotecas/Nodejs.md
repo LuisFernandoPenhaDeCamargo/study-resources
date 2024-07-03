@@ -7,6 +7,7 @@
 - [`module`](#modulos-internos-module)
     + [`createRequire`](#modulos-internos-module-createrequire)
 - [Módulos Nativos x Módulos Internos](#modulos-nativos-x-modulos-internos)
+- [Erros Enfrentados](#erros-enfrentados)
 
 # <a id="modulos-nativos">Módulos Nativos (ou Core)</a>
 
