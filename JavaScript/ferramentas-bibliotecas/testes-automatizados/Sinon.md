@@ -120,6 +120,14 @@ spy.restore();
 mock.restore();
 ```
 
+### Observações Importantes
+
+Porque usar `restore`
+
+1. **Limpeza e isolamento:** ao restaurar o método original, você garante que os testes não interfiram uns nos outros. Se você não restaurar o método, os efeitos do stub podem vazar para outros testes, causando resultados inesperados e falhas difíceis de diagnosticas
+2. **Manutenção do comportamento original:** restaurar o método garante que o comportamento original do método seja mantido para outros testes ou **partes do código** que não estejam relacionadas ao stub
+3. **Boas práticas:** usar `restore` é uma prática recomendada em testes unitários para manter a integridade e previsibilidade dos testes. Isso torna os testes mais robustos e o código mais fácil de manter
+
 ## <a id="resolves">`resolves`</a>
 
 O método `resolves` é utilizado com stubs do Sinon para **especificar que o stub deve retornar uma promise resolvida com um valor específico**. Este método é especialmente útil para testar funções assíncronas que retornam promises.

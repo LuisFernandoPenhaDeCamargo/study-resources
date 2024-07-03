@@ -130,7 +130,7 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
 ### [16. Testes Automatizados](./ferramentas-bibliotecas/testes-automatizados/)
 
 - [Testes unitários](./ferramentas-bibliotecas/testes-automatizados.md#testes-unitarios)
-- [Mocha](./ferramentas-bibliotecas/testes-automatizados.md#mocha)
+- [Mocha](./ferramentas-bibliotecas/testes-automatizados/Mocha.md)
 - [Chai](./ferramentas-bibliotecas/testes-automatizados/Chai.md)
 - [Biblioteca de Assertivas](./ferramentas-bibliotecas/testes-automatizados.md#biblioteca-assertivas)
 - [Sinon](./ferramentas-bibliotecas/testes-automatizados/Sinon.md)
