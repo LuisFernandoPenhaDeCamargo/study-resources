@@ -122,7 +122,7 @@ mock.restore();
 
 ### Observações Importantes
 
-Porque usar `restore`
+Porque usar `restore`.
 
 1. **Limpeza e isolamento:** ao restaurar o método original, você garante que os testes não interfiram uns nos outros. Se você não restaurar o método, os efeitos do stub podem vazar para outros testes, causando resultados inesperados e falhas difíceis de diagnosticas
 2. **Manutenção do comportamento original:** restaurar o método garante que o comportamento original do método seja mantido para outros testes ou **partes do código** que não estejam relacionadas ao stub

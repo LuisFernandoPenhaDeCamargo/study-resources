@@ -24,14 +24,14 @@ Chai suporta uma variedade de plugins que estendem suas funcionalidades, como `c
 // - BDD com `expect`
 import { expect } from "chai";
 
-expect(2 + 2).to.equal(4);
+expect(2 + 2).to.be.equal(4);
 expect([1, 2, 3]).to.be.an("array").that.includes(2);
 expect("foo").to.have.lengthOf(3);
 
 // - BDD com `should`
 import { should } from "chai";
 
-(2 + 2).should.equal(4);
+(2 + 2).should.be.equal(4);
 [1, 2, 3].should.be.an("array").that.includes(2);
 "foo".should.have.lengthOf(3);
 
@@ -59,7 +59,7 @@ async function fetchData() {
     return "data";
 }
 
-expect(fetchData()).to.eventually.equal("data");
+expect(fetchData()).to.eventually.be.equal("data");
 ```
 
 ### Chai-HTTP
@@ -92,7 +92,7 @@ describe("GET /users", () => {
 ### Sumário
 
 - [`expect`](#expect)
-- [Cadeias de Conveniência](#cadeia-conveniencia)
+- [Cadeias de Conveniência](#cadeias-conveniencia)
 - [Propriedades de Asserção](#propriedades-assercao)
 - [`equal`](#equal)
 

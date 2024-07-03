@@ -35,7 +35,7 @@ Abaixo segue uma lista de diretrizes que eu sigo:
 - Se atente que listas (enumeradas ou não) são uma coisa, o conjunto acima, outra
 - Se for necessário, coloque o nome das "Subseções Comuns" plural
 
-### Subseções Comuns <--
+### Subseções Comuns
 
 - `## Principais Características`
 - `## Principais Funções`
@@ -43,18 +43,23 @@ Abaixo segue uma lista de diretrizes que eu sigo:
 - `## Exemplo`/`## Exemplos`
 - `## Observações`
 - `## Conclusão`
+- `## Exemplo Interessante`/`## Exemplos Interessantes`
+- `## Observações Importantes`
 - `# Métodos e Propriedades`
-    + `### Sumário`
 
 ### Exemplo
 
-Abaixo, temos um exemplo do que é um subtópico e uma seção (contexto do JavaScript):
+Abaixo temos um exemplo do que é um tópico, um subtópico e uma seção (contexto do JavaScript).
 
-### 1. Sintaxe e Tipos de Dados (Tópico) <--
+```Markdown
+## Fundamentos de JavaScript (tópico)
 
-- Variáveis (var, let, const) (Subtópico)
-- Tipos de dados primitivos (string, number, boolean, null, undefined, symbol) (Subtópico)
-- Operadores (aritméticos, comparação, lógicos) (Subtópico)
+### 1. Sintaxe e Tipos de Dados (subtópico)
+
+- Variáveis (var, let, const) (seção)
+- Tipos de dados primitivos (string, number, boolean, null, undefined, symbol) (seção)
+- Operadores (aritméticos, comparação, lógicos) (seção)
+```
 
 # <a id="links-referencia">Links de Referência</a>
 
@@ -107,10 +112,11 @@ my-project/
 
 - `## Sintaxe Básica`
 - `## Principais Características`
-- `## Exemplo`
+- `## Exemplo`/`## Exemplos`
 - `## Observações`
 - `## Conclusão`
-- `## Exemplos Interessantes`
+- `## Exemplo Interessante`/`## Exemplos Interessantes`
+- `## Observações Importantes`
 
 ### Formatação do Código Fonte
 

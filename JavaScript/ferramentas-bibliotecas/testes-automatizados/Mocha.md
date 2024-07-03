@@ -6,7 +6,7 @@ Mocha é um framework de teste para JavaScript que roda em Node.js e no navegado
 
 ### 1. Flexibilidade
 
-Mocha não impõe nenhuma estrutura específica para seus testes, permitindo que os desenvolvedores escolham suas próprias bibliotecas de assertivas (como Chai), bibliotecas de mocks (como Sinon), e abordagens de estruturação de testes.
+Mocha não impõe nenhuma estrutura específica para seus testes, permitindo que os desenvolvedores escolham suas próprias bibliotecas de assertivas (como Chai), bibliotecas de mocks (como Sinon) e abordagens de estruturação de testes.
 
 ### 2. Suporte a `async`
 
@@ -22,7 +22,7 @@ Vários repórteres disponíveis para saída de resultados de testes, desde simp
 
 ### 5. Fácil integração
 
-Integra-se facilmente com ferramentas de automação de testes e de integração contínua, como Jenkins, Travis CI, e outros.
+Integra-se facilmente com ferramentas de automação de testes e de integração contínua, como Jenkins, Travis CI e outros.
 
 ## Estrutura de Testes com Mocha
 
@@ -37,16 +37,22 @@ Integra-se facilmente com ferramentas de automação de testes e de integração
 - **beforeEach:** executado antes de cada teste no bloco
 - **afterEach:** executado após cada teste no bloco
 
-## Sumário
+## Observações Importantes
 
-- [`describe`](#mocha-describe)
-- [`it`](#mocha-it)
-- [`before`](#mocha-before)
-- [`beforeEach`](#mocha-beforeeach)
-- [`after`](#mocha-after)
-- [`afterEach`](#mocha-aftereach)
 
-## <a id="mocha-describe">`describe`</a>
+
+# Métodos e Propriedades
+
+### Sumário
+
+- [`describe`](#describe)
+- [`it`](#it)
+- [`before`](#before)
+- [`beforeEach`](#beforeeach)
+- [`after`](#after)
+- [`afterEach`](#aftereach)
+
+## <a id="describe">`describe`</a>
 
 O método `describe` é utilizado para **agrupar um conjunto de testes relacionados (para criar suites)**, ele define um bloco de teste que descreve uma funcionalidade específica ou um componente do código que está sendo testado. Dentro de um bloco `describe`, você pode definir vários testes individuais usando o método `it`.
 
@@ -59,7 +65,7 @@ describe(title, callback);
 - `title` **:** uma **string** que descreve o conjunto de testes
 - `callback` **:** uma **função** que contém as definições dos testes e os hooks
 
-## <a id="mocha-it">`it`</a>
+## <a id="it">`it`</a>
 
 O método `it` é utilizado para **definir casos de testes individuais**, cada bloco `it` representa um teste específico que você deseja executar. Dentro desse bloco, você escreve o código para configurar o teste, realizar as ações necessárias e fazer as assertivas para verificar se o comportamento do código está conforme esperado.
 
@@ -72,7 +78,7 @@ it(title, callback)
 - `title` **:** uma **string** que descreve o caso de teste que se deve verificar
 - `callback` **:** uma **função** que contém o código do teste e as assertivas que verificam o comportamento esperado
 
-## <a id="mocha-before">`before`</a>
+## <a id="before">`before`</a>
 
 O Método `before` é utilizado para **definir um bloco de código que será executado antes de qualquer teste dentro de um determinado escopo** (geralmente um `describe`).
 
@@ -84,7 +90,7 @@ before(callback);
 
 - `callback`**:** uma **função** a ser executada antes dos testes
 
-## <a id="mocha-beforeeach">`beforeEach`</a>
+## <a id="beforeeach">`beforeEach`</a>
 
 A função `beforeEach` é utilizada para **definir um bloco de código que será executado antes de cada teste dentro de um determinado escopo** (geralmente um `describe`).
 
@@ -96,7 +102,7 @@ beforeEach(callback);
 
 - `callback`**:** uma função a ser executada antes de cada teste
 
-## <a id="mocha-after">`after`</a>
+## <a id="after">`after`</a>
 
 O método `after` é utilizado para **definir um bloco de código que será executado após todos os testes dentro de um determinado escopo** (geralmente um `describe`).
 
@@ -108,7 +114,7 @@ after(callback);
 
 - `callback`**:** uma **função** a ser executada após todos os testes
 
-## <a id="mocha-aftereach">`afterEach`</a>
+## <a id="aftereach">`afterEach`</a>
 
 O método `afterEach` é utilizado para definir um bloco de código que será executado após cada teste dentro de um determinado escopo (geralmente um `describe`).
 
