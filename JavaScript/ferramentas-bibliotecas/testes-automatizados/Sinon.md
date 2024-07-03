@@ -103,9 +103,9 @@ const sinon = require("sinon");
 
 const myStub = sinon.stub();
 
-myStub.returns("stubbed value");
+myStub.returns("Stubbed value.");
 
-console.log(myStub()); // Output: stubbed value
+console.log(myStub()); // Output: Stubbed value.
 ```
 
 ## <a id="restore">`restore`</a>

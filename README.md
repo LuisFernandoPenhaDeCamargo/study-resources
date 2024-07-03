@@ -37,6 +37,8 @@ Abaixo temos uma lista de tópicos que eu irei estudar.
 
 ### 1. JavaScript
 
+- `interface`
+
 ### 2. AWS
 
 - AWS STS (Security Token Service)

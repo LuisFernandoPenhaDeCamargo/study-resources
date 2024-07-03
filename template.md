@@ -59,6 +59,8 @@ Abaixo temos um exemplo do que é um tópico, um subtópico e uma seção (conte
 - Variáveis (var, let, const) (seção)
 - Tipos de dados primitivos (string, number, boolean, null, undefined, symbol) (seção)
 - Operadores (aritméticos, comparação, lógicos) (seção)
+
+(Markdown)
 ```
 
 # <a id="links-referencia">Links de Referência</a>
@@ -137,6 +139,7 @@ my-project/
 /*
 - Primeira linha da documentação
 - Segunda linha da documentação
+(JavaScript)
 */
 ```
 

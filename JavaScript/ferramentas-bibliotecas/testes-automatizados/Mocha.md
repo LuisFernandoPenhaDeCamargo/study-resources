@@ -39,7 +39,7 @@ Integra-se facilmente com ferramentas de automação de testes e de integração
 
 ## Observações Importantes
 
-
+**Não importa aonde o hook está sendo invocado dentro da suite**, por exemplo, aonde o método `before` está sendo invocado dentro da suite criada pelo método `describe`. O método `before`, no caso do exemplo anterior, será executado uma vez **antes de todos os testes no bloco**.
 
 # Métodos e Propriedades
 
@@ -72,7 +72,7 @@ O método `it` é utilizado para **definir casos de testes individuais**, cada b
 ### Sintaxe Básica
 
 ```JavaScript
-it(title, callback)
+it(title, callback);
 ```
 
 - `title` **:** uma **string** que descreve o caso de teste que se deve verificar

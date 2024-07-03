@@ -1,6 +1,6 @@
 # README (JavaScript)
 
-Anotações para mim mesmo:
+Anotações para mim mesmo.
 
 - Quando os subtópicos forem adicionados por mim, irei pontuar um "LF" em parênteses ao final dele
 - O "M" entre parênteses ao final do subtópico indica que eu o modifiquei. Nos parênteses, também devo pontuar o que foi alterado
@@ -73,8 +73,8 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
 
 ### [8. Módulos](./conceitos-intermediarios/modulos.md)
 
-- Import e export (ES6 Modules)
-- CommonJS (require, module.exports)
+- Importações e Exportações nos Módulos CommonJS
+- [Importações e Exportações nos Módulos ES](./conceitos-intermediarios/modulos.md#importacoes-exportacoes-modulos-es)
 - [CommonJS e ES Modules no Mesmo Arquivo](./conceitos-intermediarios/modulos.md#commonjs-es-mesmo-arquivo)
 - [Import dinâmico](./conceitos-intermediarios/modulos.md#import-dinamico)
 
@@ -130,13 +130,12 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
 ### [16. Testes Automatizados](./ferramentas-bibliotecas/testes-automatizados/)
 
 - [Testes unitários](./ferramentas-bibliotecas/testes-automatizados.md#testes-unitarios)
-- [Mocha](./ferramentas-bibliotecas/testes-automatizados/Mocha.md)
-- [Chai](./ferramentas-bibliotecas/testes-automatizados/Chai.md)
+- [Mocha (OK)](./ferramentas-bibliotecas/testes-automatizados/Mocha.md)
+- [Chai (OK)](./ferramentas-bibliotecas/testes-automatizados/Chai.md)
 - [Biblioteca de Assertivas](./ferramentas-bibliotecas/testes-automatizados.md#biblioteca-assertivas)
-- [Sinon](./ferramentas-bibliotecas/testes-automatizados/Sinon.md)
+- [Sinon (OK)](./ferramentas-bibliotecas/testes-automatizados/Sinon.md)
     + [Stubs](./ferramentas-bibliotecas/testes-automatizados/Sinon.md#stubs)
     + [Mocks](./ferramentas-bibliotecas/testes-automatizados/Sinon.md#mocks)
-    + [Métodos e Propriedades](./ferramentas-bibliotecas/testes-automatizados/Sinon.md#metodos-propriedades)
 - [Criando Testes para uma Função](./ferramentas-bibliotecas/testes-automatizados.md#criando-testes-funcao)
 - [Cucumber](./ferramentas-bibliotecas/testes-automatizados.md#cucumber)
 - Jest
