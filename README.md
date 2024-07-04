@@ -37,8 +37,14 @@ Abaixo temos uma lista de tópicos que eu irei estudar.
 
 ### 1. JavaScript
 
-- O que são testes de regressão?
+- Quais parâmetros a callback utilizada no `it` possui?
+- `chai.use`
 - `interface`
+
+### 2. SQL
+
+- `LIKE`
+- `SUBSTRING_INDEX`
 
 ### 2. AWS
 
@@ -47,6 +53,12 @@ Abaixo temos uma lista de tópicos que eu irei estudar.
 
 ### 3. Variados
 
+- O que deduzimos sobre a tabela users
+- O que deduzimos sobre a tabela remote_queries
+- Reformular as queries, pontuando a data inicial e a data final de forma mais adequada
+- Selecionar as ocorrências de padrões de texto para apagar valores. Estou tentando gerar um documento mais agradável (LibreOffice Writer)
+- Pontuar a lógica da rota que será implementada no data-server para gerar o "pdf do faturamento"
+- O que deduzimos sobre a tabela remote_commands
 - Qual é a diferença entre funções e métodos?
 - Qual é a diferença entre parâmetros e argumentos?
 - Qual é a diferença Módulos, Bibliotecas e Frameworks?

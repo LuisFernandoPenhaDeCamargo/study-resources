@@ -183,6 +183,7 @@ Normalmente, essas situações ocorrem quando o código que está comentado é u
 # <a id="javascript">JavaScript</a>
 
 - **Funções anônimas:** deveram ter um espaço entre a palavra-chave `function` e os parênteses
+- **Importações e exportações:** nos exemplos, irei especificar na extensão qual módulo eu utilizo de forma explicita (**.cjs** ou **.mjs**)
 
 # <a id="chatgpt">Template para Pesquisa (ChatGPT)</a>
 

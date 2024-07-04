@@ -60,7 +60,43 @@ Utilizar mocks e stubs para simular serviços externos e dependências que são 
 import chai from "chai";
 import chaiHttp from "chai-http";
 
-import server from "../app"; // Assumindo 
+import server from "../app.mjs"; // Assumindo que o app é o seu servidor Express
+
+chai.use(chaiHttp);
+
+const { expect } = chai;
+
+describe("User API Integration Tests", () -> {
+    it("should register a new user and return a token", (done) => {
+        chai.request(server)
+            .post("/api/register")
+            .send({
+                username: "testuser",
+                password: "testpass",
+            })
+            .end((err, res) => {
+                expect(res).to.have.status(201);
+                expect(res.body).to.have.property("token");
+                done();
+            });
+    });
+
+    it("should login an existing user and return a token", (done) => {
+        chai.request(server)
+            .post("/api/login")
+            .send({
+                username: "testuser",
+                password: "testpass",
+            })
+            .end((err, res) => {
+                expect(res).to.have.status(200);
+                expect(res.body).to.have.property("token");
+                done();
+            });
+    });
+});
 ```
 
 ## Conclusão
+
+Testes de integração são uma parte essencial do ciclo de desenvolvimento de software, garantindo que os diferentes componentes do sistema funcionem juntos como esperado. Eles complementam os testes unitários, fornecendo uma camada adicional de verificação que foca nas interfaces e na comunicação entre módulos.

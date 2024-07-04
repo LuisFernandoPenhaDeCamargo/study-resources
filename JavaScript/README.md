@@ -57,7 +57,7 @@ No sumário abaixo, há subseções que foram pontuadas porque eu achei necessá
 - Adicionar e remover event listeners
 - Delegação de eventos
 
-### [7. Programação Assíncrona](./conceitos-intermediarios/programacao-assincrona.md)
+### [7. Programação Assíncrona](./conceitos-intermediarios/programacao-assincrona.md) <--
 
 - O que é assincronicidade? (LF)
 - Callbacks
@@ -141,6 +141,7 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
 - Jest
 - Cypress
 - [Testes de Integração (OK)](./ferramentas-bibliotecas/testes-automatizados/testes-integracao.md)
+- [Testes de Regressão (OK)](./ferramentas-bibliotecas/testes-automatizados/testes-regressao.md)
 
 ## [Práticas e Padrões de Código](./praticas-padroes-codigo/)
 
