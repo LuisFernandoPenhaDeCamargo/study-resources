@@ -37,6 +37,7 @@ Abaixo temos uma lista de tópicos que eu irei estudar.
 
 ### 1. JavaScript
 
+- O que são testes de regressão?
 - `interface`
 
 ### 2. AWS

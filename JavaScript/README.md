@@ -24,7 +24,7 @@ No sumário abaixo, há subseções que foram pontuadas porque eu achei necessá
 - Laços de repetição (for, while, do...while)
 - Break e continue
 
-### [3. Funções](./fundamentos-javascript/funcoes.md)
+### [3. Funções (OK)](./fundamentos-javascript/funcoes.md)
 
 - Declaração de funções
 - Funções anônimas (M. Desmembrei este subtópico em dois, este e o abaixo eram um só)
@@ -71,10 +71,10 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
 - Eu posso dizer que eles possuem versões? Qual é o termo mais adequado?
 - Quantos existem e quais features cada um adicionou ao Node.js?
 
-### [8. Módulos](./conceitos-intermediarios/modulos.md)
+### [8. Módulos](./conceitos-intermediarios/modulos/)
 
 - Importações e Exportações nos Módulos CommonJS
-- [Importações e Exportações nos Módulos ES](./conceitos-intermediarios/modulos.md#importacoes-exportacoes-modulos-es)
+- [Importações e Exportações nos Módulos ES (OK)](./conceitos-intermediarios/modulos/importacoes-exportacoes-modulos-es.md)
 - [CommonJS e ES Modules no Mesmo Arquivo](./conceitos-intermediarios/modulos.md#commonjs-es-mesmo-arquivo)
 - [Import dinâmico](./conceitos-intermediarios/modulos.md#import-dinamico)
 
@@ -140,6 +140,7 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
 - [Cucumber](./ferramentas-bibliotecas/testes-automatizados.md#cucumber)
 - Jest
 - Cypress
+- [Testes de Integração (OK)](./ferramentas-bibliotecas/testes-automatizados/testes-integracao.md)
 
 ## [Práticas e Padrões de Código](./praticas-padroes-codigo/)
 

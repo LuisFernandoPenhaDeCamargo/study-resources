@@ -144,7 +144,7 @@ const require = createRequire(filename);
 ## Exemplos
 
 ```JavaScript
-// example.js
+// example.mjs
 // Criando um método `require` personalizado em um ESM.
 import { createRequire } from "module";
 

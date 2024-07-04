@@ -55,7 +55,6 @@ Vamos considerar um exemplo simples onde queremos implementar uma função que s
 ### 1. Red: escrever um teste que falha
 
 ```JavaScript
-// .mjs
 import { expect } from "chai";
 
 import add from "./add.js"
