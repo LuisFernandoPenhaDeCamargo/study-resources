@@ -123,7 +123,8 @@ my-project/
 
 - Para comentários de múltiplas linhas, utilize um bloco de documentação, mas não insira nada em sua abertura ou fechamento. Por exemplo:
 
-<a id="codigo-abertura-fechamento">
+<a id="codigo-abertura-fechamento"></a>
+
 ```JavaScript
 /*
 - Primeira linha da documentação
@@ -131,7 +132,6 @@ my-project/
 (JavaScript)
 */
 ```
-</a>
 
 - Para comentários de múltiplas linhas que contém código, as linhas que não são código, deveram ser comentadas novamente. O objetivo é a facilidade ao descomentar a estrutura mais externa e poder simplesmente executar o que é código. Por exemplo:
 
