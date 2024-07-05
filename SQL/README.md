@@ -1,4 +1,4 @@
-README (SQL)
+# README (SQL) (OK)
 
 Por enquanto, eu não sei como irei estruturar este diretório.
 
@@ -44,4 +44,18 @@ SELECT SUBSTRING_INDEX('a,b,c,d', ',', -2);
 
 ## Exemplo Interessante
 
-Considere o seguinte cenário, você tem a tabela `remote_queries` que possui a coluna `query` que é do tipo `text`. Dentre seus vários valores há "`UPDATE \`settings\` SET \`force_jackpot\` = '108', \`jackpot_games_left\` = '10'`", por exemplo, e você quer obter a palavra "`jackpot`" desta string.
+Considere o seguinte cenário, você tem a tabela `remote_queries` que possui a coluna `query` que é do tipo `text`. Dentre seus vários valores há "`UPDATE ´settings´ SET ´force_jackpot´ = '108', ´jackpot_games_left´ = '10';`", por exemplo, e você quer obter a palavra "`jackpot`" desta string.
+
+```SQL
+SELECT query FROM remote_queries;
+-- Output: UPDATE `settings` SET `force_jackpot` = '108', `jackpot_games_left` = '10';. Uma das linhas.
+
+SELECT SUBSTRING_INDEX(query, 'force_' , -1) FROM remote_queries;
+-- Output: jackpot` = '108', `jackpot_games_left` = '10';. Seria como ficaria a linha citada acima.
+
+SELECT SUBSTRING_INDEX(SUBSTRING_INDEX(query, 'force_' , -1), '`', 1) FROM remote_queries;
+-- Seria o mesmo que fazer:
+-- SELECT SUBSTRING_INDEX('jackpot\` = \'108\', \`jackpot_games_left\` = \'10\';', '`', 1) FROM remote_queries;
+-- Estamos escapando o acento grave e as aspas simples para conseguir tornar a adaptação acima executável ao descomentá-la. A chamamos de adaptação porque a string retornada anteriormente não possui as barras
+-- Output: jackpot. Seria como ficaria a linha citada acima.
+```
