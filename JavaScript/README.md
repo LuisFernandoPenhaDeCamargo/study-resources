@@ -7,7 +7,7 @@ Anotações para mim mesmo.
 
 ### Sumário
 
-## [Fundamentos de JavaScript](./fundamentos-javascript/)
+## [Fundamentos de JavaScript (OK)](./fundamentos-javascript/)
 
 No sumário abaixo, há subseções que foram pontuadas porque eu achei necessário destacar a existência delas, mas fique atento ao fato de que nem toda subseção foi listada.
 
@@ -24,7 +24,7 @@ No sumário abaixo, há subseções que foram pontuadas porque eu achei necessá
 - Laços de repetição (for, while, do...while)
 - Break e continue
 
-### [3. Funções (OK)](./fundamentos-javascript/funcoes.md)
+### [3. Funções](./fundamentos-javascript/funcoes.md)
 
 - Declaração de funções
 - Funções anônimas (M. Desmembrei este subtópico em dois, este e o abaixo eram um só)
@@ -57,12 +57,12 @@ No sumário abaixo, há subseções que foram pontuadas porque eu achei necessá
 - Adicionar e remover event listeners
 - Delegação de eventos
 
-### [7. Programação Assíncrona](./conceitos-intermediarios/programacao-assincrona.md) <--
+### [7. Programação Assíncrona](./conceitos-intermediarios/programacao-assincrona.md)
 
 - O que é assincronicidade? (LF)
 - Callbacks
 - Promises
-- [`then`/`catch`](./conceitos-intermediarios/programacao-assincrona.md#thencatch)
+- [`then`/`catch` (OK)](./conceitos-intermediarios/programacao-assincrona.md#thencatch)
 - Async/await
 
 Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os módulos ES:
@@ -75,7 +75,7 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
 
 - Importações e Exportações nos Módulos CommonJS
 - [Importações e Exportações nos Módulos ES (OK)](./conceitos-intermediarios/modulos/importacoes-exportacoes-modulos-es.md)
-- [CommonJS e ES Modules no Mesmo Arquivo](./conceitos-intermediarios/modulos.md#commonjs-es-mesmo-arquivo)
+- [CommonJS e ES Modules no Mesmo Arquivo](./conceitos-intermediarios/modulos.md#commonjs-es-mesmo-arquivo) <--
 - [Import dinâmico](./conceitos-intermediarios/modulos.md#import-dinamico)
 
 ## Técnicas Avançadas

@@ -37,6 +37,10 @@ Abaixo temos uma lista de tópicos que eu irei estudar.
 
 ### 1. JavaScript
 
+14:12
+- `toUpperCase`
+- Utilizando o acento grave (backtick) dentro de um template literal
+    + Utilizando o `\`
 - Quais parâmetros a callback utilizada no `it` possui?
 - `chai.use`
 - `interface`
