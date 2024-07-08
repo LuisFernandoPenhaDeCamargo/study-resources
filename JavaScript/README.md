@@ -5,95 +5,98 @@ Anotações para mim mesmo.
 - Quando os subtópicos forem adicionados por mim, irei pontuar um "LF" em parênteses ao final dele
 - O "M" entre parênteses ao final do subtópico indica que eu o modifiquei. Nos parênteses, também devo pontuar o que foi alterado
 
+No sumário abaixo, há subseções que foram pontuadas porque eu achei necessário destacar a existência delas, mas fique atento ao fato de que nem toda subseção foi listada.
+
 ### Sumário
 
-## [Fundamentos de JavaScript (OK)](./fundamentos-javascript/)
-
-No sumário abaixo, há subseções que foram pontuadas porque eu achei necessário destacar a existência delas, mas fique atento ao fato de que nem toda subseção foi listada.
+## [Fundamentos de JavaScript](./fundamentos-javascript/)
 
 ### 1. Sintaxe e Tipos de Dados
 
 - O que é JavaScript? (LF)
-- Variáveis (var, let, const)
-- Tipos de dados primitivos (string, number, boolean, null, undefined, symbol)
-- Operadores (aritméticos, comparação, lógicos)
+- Variáveis (`var`, `let`, `const`)
+- Tipos de Dados Primitivos (`string`, `number`, `boolean`, `null`, `undefined`, symbol)
+- Operadores (Aritméticos, Comparação, Lógicos)
 
 ### 2. Estruturas de Controle
 
-- Condicionais (if, else, switch)
-- Laços de repetição (for, while, do...while)
-- Break e continue
+- Condicionais (`if`, `else`, `switch`)
+- Laços de Repetição (`for`, `while`, do...while)
+- Break e Continue
 
 ### [3. Funções](./fundamentos-javascript/funcoes.md)
 
-- Declaração de funções
-- Funções anônimas (M. Desmembrei este subtópico em dois, este e o abaixo eram um só)
-- [Arrow functions](./fundamentos-javascript/funcoes.md#arrow-functions)
+- Declaração de Funções
+- Funções Anônimas (M. Desmembrei este subtópico em dois, este e o abaixo eram um só)
+- [Arrow Functions](./fundamentos-javascript/funcoes.md#arrow-functions)
 - [IIFE (Immediately Invoked Function Expressions)](./fundamentos-javascript/funcoes.md#iife)
-- Funções de ordem superior
-- Parâmetros e valores de retorno
+- Funções de Ordem Superior
+- Parâmetros e Valores de Retorno
 
-### 4. Objetos e Arrays
+### [4. Objetos e Arrays](./fundamentos-javascript/objetos-arrays/objetos-arrays.md)
 
-- O que são objetos? (LF)
+- O que são Objetos? (LF)
 - Objetos Globais (LF)
-- Criação e manipulação de objetos
-- Métodos de objetos
-- Criação e manipulação de arrays
-- Métodos de array (map, filter, reduce, forEach, etc.)
+- Criação e Manipulação de Objetos
+- [Template Literals](./fundamentos-javascript/objetos-arrays/objetos-arrays.md#template-literals)
+    + [Utilizando a Crase Dentro de um Template Literal](./fundamentos-javascript/objetos-arrays/objetos-arrays.md#utilizando-crase-dentro-template-literal)
+- [Métodos de Objetos](./fundamentos-javascript/objetos-arrays/metodos-objetos/README.md)
+- Criação e Manipulação de Arrays
+- Métodos de Array (`map`, `filter`, `reduce`, `forEach`, etc.)
 
 ## [Conceitos Intermediários](./conceitos-intermediarios/)
 
 ### 5. Manipulação do DOM
 
-- Seleção de elementos (getElementById, querySelector, etc.)
-- Modificação de elementos (innerHTML, textContent, etc.)
-- Manipulação de atributos e estilos
-- Manipulação de classes
+- Seleção de Elementos (getElementById, querySelector, etc.)
+- Modificação de Elementos (innerHTML, textContent, etc.)
+- Manipulação de Atributos e Estilos
+- Manipulação de Classes
 
 ### 6. Eventos
 
-- Tipos de eventos (click, submit, keydown, etc.)
-- Adicionar e remover event listeners
-- Delegação de eventos
+- Tipos de Eventos (click, submit, keydown, etc.)
+- Adicionar e Remover Event Listeners
+- Delegação de Eventos
 
 ### [7. Programação Assíncrona](./conceitos-intermediarios/programacao-assincrona.md)
 
-- O que é assincronicidade? (LF)
+- O que é Assincronicidade? (LF)
 - Callbacks
 - Promises
-- [`then`/`catch` (OK)](./conceitos-intermediarios/programacao-assincrona.md#thencatch)
-- Async/await
-
-Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os módulos ES:
-
-- O termo para se referir ao CommonJS e ao ES é mesmo "módulos"?
-- Eu posso dizer que eles possuem versões? Qual é o termo mais adequado?
-- Quantos existem e quais features cada um adicionou ao Node.js?
+- [`then`/`catch`](./conceitos-intermediarios/programacao-assincrona.md#thencatch)
+- `async`/`await`
 
 ### [8. Módulos](./conceitos-intermediarios/modulos/)
 
+Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os módulos ES:
+
++ O termo para se referir ao CommonJS e ao ES é mesmo "módulos"?
++ Eu posso dizer que eles possuem versões? Qual é o termo mais adequado?
++ Quantos existem e quais features cada um adicionou ao Node.js?
+
 - Importações e Exportações nos Módulos CommonJS
-- [Importações e Exportações nos Módulos ES (OK)](./conceitos-intermediarios/modulos/importacoes-exportacoes-modulos-es.md)
-- [CommonJS e ES Modules no Mesmo Arquivo](./conceitos-intermediarios/modulos.md#commonjs-es-mesmo-arquivo) <--
-- [Import dinâmico](./conceitos-intermediarios/modulos.md#import-dinamico)
+- [Importações e Exportações nos Módulos ES](./conceitos-intermediarios/modulos/importacoes-exportacoes-modulos-es.md)
+- [Módulos CommonJS e Módulos ES no Mesmo Arquivo](./conceitos-intermediarios/modulos/modulos.md#commonjs-es-mesmo-arquivo)
+- [Import dinâmico](./conceitos-intermediarios/modulos/modulos.md#import-dinamico)
+    + [Importação Dinâmica de Exportação Padrão](./conceitos-intermediarios/modulos/modulos.md#importacao-dinamica-exportacao-padrao)
 
 ## Técnicas Avançadas
 
 ### 9. Prototipagem e Herança
 
-- Prototipagem e herança prototípica
+- Prototipagem e Herança Prototípica
 - Classes (ES6)
-- Métodos estáticos e de instância
+- Métodos Estáticos e de Instância
 
 ### 10. Manipulação de JSON
 
-- JSON.parse e JSON.stringify
+- `JSON.parse` e `JSON.stringify`
 
 ### 11. Tratamento de Erros
 
-- Try/catch
-- Lançamentos de erros (throw)
+- `try`/`catch`
+- Lançamentos de Erros (`throw`)
 
 ### 12. Armazenamento no Navegador
 
@@ -104,7 +107,7 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
 
 - Fetch API
 - AJAX com XMLHttpRequest
-- Manipulação de dados de API
+- Manipulação de Dados de API
 
 ## [Ferramentas e Bibliotecas](./ferramentas-bibliotecas/Nodejs/)
 
@@ -118,7 +121,7 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
 - [Módulos Nativos x Módulos Internos](./ferramentas-bibliotecas/Nodejs.md#modulos-nativos-x-modulos-internos)
 - [Erros Enfrentados](./ferramentas-bibliotecas/Nodejs/erros-enfrentados.md)
 - NPM (Node Package Manager)
-- Boas práticas na hora de dar upgrade na versão do Node.js
+- Boas Práticas na Hora de Dar Upgrade na Versão do Node.js
 
 ### 15. Frameworks e Bibliotecas Populares
 
@@ -129,32 +132,32 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
 
 ### [16. Testes Automatizados](./ferramentas-bibliotecas/testes-automatizados/)
 
-- [Testes unitários](./ferramentas-bibliotecas/testes-automatizados.md#testes-unitarios)
-- [Mocha (OK)](./ferramentas-bibliotecas/testes-automatizados/Mocha.md)
-- [Chai (OK)](./ferramentas-bibliotecas/testes-automatizados/Chai.md)
-- [Biblioteca de Assertivas](./ferramentas-bibliotecas/testes-automatizados.md#biblioteca-assertivas)
-- [Sinon (OK)](./ferramentas-bibliotecas/testes-automatizados/Sinon.md)
+- [Testes unitários](./ferramentas-bibliotecas/testes-automatizados.md#testes-unitarios) <--
+- [Mocha](./ferramentas-bibliotecas/testes-automatizados/Mocha.md)
+- [Chai](./ferramentas-bibliotecas/testes-automatizados/Chai.md)
+- [Biblioteca de Assertivas](./ferramentas-bibliotecas/testes-automatizados.md#biblioteca-assertivas) <--
+- [Sinon](./ferramentas-bibliotecas/testes-automatizados/Sinon.md)
     + [Stubs](./ferramentas-bibliotecas/testes-automatizados/Sinon.md#stubs)
     + [Mocks](./ferramentas-bibliotecas/testes-automatizados/Sinon.md#mocks)
-- [Criando Testes para uma Função](./ferramentas-bibliotecas/testes-automatizados.md#criando-testes-funcao)
-- [Cucumber](./ferramentas-bibliotecas/testes-automatizados.md#cucumber)
+- [Criando Testes para uma Função](./ferramentas-bibliotecas/testes-automatizados.md#criando-testes-funcao) <--
+- [Cucumber](./ferramentas-bibliotecas/testes-automatizados.md#cucumber) <--
 - Jest
 - Cypress
-- [Testes de Integração (OK)](./ferramentas-bibliotecas/testes-automatizados/testes-integracao.md)
-- [Testes de Regressão (OK)](./ferramentas-bibliotecas/testes-automatizados/testes-regressao.md)
+- [Testes de Integração](./ferramentas-bibliotecas/testes-automatizados/testes-integracao.md)
+- [Testes de Regressão](./ferramentas-bibliotecas/testes-automatizados/testes-regressao.md)
 
 ## [Práticas e Padrões de Código](./praticas-padroes-codigo/)
 
 ### 17. Boas Práticas
 
-- Código limpo
+- Código Limpo
 - Modularização
-- Comentários e documentação
+- Comentários e Documentação
 
 ### 18. Padrões de Projeto
 
-- Padrões comuns (Singleton, Factory, Observer, etc.)
-- Aplicação de padrões em JavaScript
+- Padrões Comuns (Singleton, Factory, Observer, etc.)
+- Aplicação de Padrões em JavaScript
 
 ### [19. Metodologias de Desenvolvimento](./praticas-padroes-codigo/metodologias-desenvolvimento.md)
 
@@ -172,13 +175,13 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
 
 ### 21. Otimização de Código
 
-- Melhores práticas de desempenho
-- Profiling e debugging
+- Melhores Práticas de Desempenho
+- Profiling e Debugging
 
 ### 22. Segurança
 
-- Prevenção de vulnerabilidades comuns (XSS, CSRF, etc.)
-- Práticas de segurança em desenvolvimento web
+- Prevenção de Vulnerabilidades Comuns (XSS, CSRF, etc.)
+- Práticas de Segurança em Desenvolvimento Web
 
 ## Projetos Práticos
 
@@ -186,7 +189,7 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
 
 - Aplicação ToDo List
 - Aplicação CRUD com uma API RESTful
-- Jogo simples (ex.: jogo da velha)
+- Jogo Simples (ex.: Jogo da Velha)
 
 ## Recursos Adicionais
 

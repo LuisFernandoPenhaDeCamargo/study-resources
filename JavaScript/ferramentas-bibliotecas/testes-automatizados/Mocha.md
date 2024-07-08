@@ -59,10 +59,10 @@ O método `describe` é utilizado para **agrupar um conjunto de testes relaciona
 ### Sintaxe Básica
 
 ```JavaScript
-describe(title, callback);
+describe(description, callback);
 ```
 
-- `title` **:** uma **string** que descreve o conjunto de testes
+- `description` **:** uma **string** que descreve o conjunto de testes
 - `callback` **:** uma **função** que contém as definições dos testes e os hooks
 
 ## <a id="it">`it`</a>
@@ -72,11 +72,12 @@ O método `it` é utilizado para **definir casos de testes individuais**, cada b
 ### Sintaxe Básica
 
 ```JavaScript
-it(title, callback);
+it(description, callback([done]));
 ```
 
-- `title` **:** uma **string** que descreve o caso de teste que se deve verificar
+- `description` **:** uma **string** que descreve o caso de teste que se deve verificar
 - `callback` **:** uma **função** que contém o código do teste e as assertivas que verificam o comportamento esperado
+    + `done`**:** função a ser chamada quando o teste assíncrono estiver completo. Isso é particularmente útil para testes que envolvem operações assíncronas, como chamadas de API, temporizadores ou promessas
 
 ## <a id="before">`before`</a>
 

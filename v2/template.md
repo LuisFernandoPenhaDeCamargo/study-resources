@@ -56,7 +56,6 @@ Codename:	jammy
 # <a id="formatacao-documento"></a>Formatação do Documento
 
 - Nem todo subtítulo (`###`) precisa de link de referência
-- **Markdown:** entre crases, na hora de especificar um bloco de código simples, quando for necessário o uso de crases dentro deste bloco, como não está sendo possível escapar o caractere, utilize o acento agudo no lugar da crase. Exemplo: `## <a id="comandos-utilizados-cli-describe"></a>´pm2 describe $< ID >´`
 - **Markdown:** entre asteriscos, na hora de especificar uma frase em negrito, quando for necessário o uso do "$" dentro deste bloco, como não está sendo possível escapar o caractere, utilize o "A" no lugar do cifrão. Exemplo: **~/.nvm/versions/node/A< versões >/lib/node_modules**
 
 ### Sumário

@@ -63,7 +63,7 @@ describe("add", () => {
     it("should return the sum of two numbers", () => {
         const result = add(2, 3);
 
-        expect(result).to.equal(5);
+        expect(result).to.be.equal(5);
     });
 });
 ```
@@ -166,7 +166,7 @@ Given("que o usuário está na página de login", async function () {
     await browser.url("/login");
 });
 
-Given("o usuário tem um nome de usuário e senha válidos", async function () {
+Given("o usuário tem um nome de usuário e senha válidos", function () {
     this.username = "validUser";
     this.password = "validPassword";
 });

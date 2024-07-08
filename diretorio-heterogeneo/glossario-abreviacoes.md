@@ -1,6 +1,6 @@
 # Glossário de Abreviações
 
-Este documento é um glossário de abreviações (siglas e acrônimos) utilizados de forma frequente neste repositório.
+Este documento é um glossário de abreviações (siglas e acrônimos) e de termos utilizados de forma frequente neste repositório.
 
 ### Sumário
 

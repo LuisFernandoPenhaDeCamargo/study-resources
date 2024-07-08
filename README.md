@@ -29,7 +29,7 @@ Este documento contém um apanhado de ideias, o propósito dele é ajudar a me o
 
 ### Template
 
-Este arquivo específica as regras seguidas para formatar os documentos (arquivos) deste repositório, ele é útil na hora de padronizar novos conteúdos que serão adicionados a este repositório.
+Este arquivo específica as regras para formatar os documentos (arquivos) deste repositório, ele é útil na hora de padronizar novos conteúdos que serão adicionados a este repositório.
 
 # Estudar
 
@@ -37,18 +37,11 @@ Abaixo temos uma lista de tópicos que eu irei estudar.
 
 ### 1. JavaScript
 
-14:12
-- `toUpperCase`
-- Utilizando o acento grave (backtick) dentro de um template literal
-    + Utilizando o `\`
-- Quais parâmetros a callback utilizada no `it` possui?
-- `chai.use`
 - `interface`
 
 ### 2. SQL
 
 - `LIKE`
-- `SUBSTRING_INDEX`
 
 ### 2. AWS
 
@@ -57,6 +50,9 @@ Abaixo temos uma lista de tópicos que eu irei estudar.
 
 ### 3. Variados
 
+- Docker
+    + -> CI/CD
+- Arquitetura
 - O que deduzimos sobre a tabela users
 - O que deduzimos sobre a tabela remote_queries
 - Reformular as queries, pontuando a data inicial e a data final de forma mais adequada

@@ -95,6 +95,7 @@ describe("GET /users", () => {
 - [Cadeias de Conveniência](#cadeias-conveniencia)
 - [Propriedades de Asserção](#propriedades-assercao)
 - [`equal`](#equal)
+- [`use`](#use)
 
 ## <a id="expect">`expect`</a>
 
@@ -150,3 +151,66 @@ expect(actual).equal(expected);
 
 - `actual`**:** o valor que você está testando
 - `expected`**:** o valor que você espera que `actual` seja igual
+
+## <a id="use">`use`</a>
+
+O método `use` é utilizado para **adicionar plugins ou estender a funcionalidade padrão do Chai**.
+
+### Sintaxe Básica
+
+```JavaScript
+chai.use(plugin);
+```
+
+- `plugin`**:** um módulo que estende a funcionalidade do Chai. Esse plugin deve ser uma função que aceita a instância do Chai como argumento e adiciona novas asserções ou funcionalidades
+
+## Observações Interessantes
+
+Você também pode criar seu próprio plugin customizado para adicionar funcionalidades personalizadas ao Chai. Por exemplo:
+
+### 1. Crie o plugin
+
+```JavaScript
+// myPlugin.js
+
+module.exports = function(chai, utils) {
+    const Assertion = chai.Assertion;
+
+    Assertion.addMethod("greaterThan", function(expectValue) {
+        const actualValue = this._obj;
+
+        this.assert(
+            actualValue > expectValue,
+            'expect #{this} to be greater than #{exp}',
+            'expect #{this} not to be greater than #{exp}',
+            expectValue,
+            actualValue
+        );
+    });
+};
+```
+
+### 2. Use o plugin
+
+```JavaScript
+// Observe que você não pode usar a função `require` com um módulo ES, isto é só um exemplo.
+const chai = require("chai");
+
+const meuPlugin = require("./myPlugin.js");
+
+// Usar o plugin customizado.
+chai.use(myPlugin);
+
+const expect = chai.expect;
+
+// Exemplo de uso do plugin customizado.
+describe("Testing my custom plugin", function() {
+    it("should be greater than 10", function() {
+        expect(15).to.be.greaterThan(10);
+    });
+
+    it("should not be greater than 20", function() {
+        expect(15).to.not.be.greaterThan(20);
+    });
+});
+```

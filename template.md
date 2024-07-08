@@ -1,6 +1,6 @@
 # Template
 
-Este arquivo específica as regras para formatar os documentos (arquivos) deste repositório, ele é útil na hora de padronizar novos conteúdos que serão adicionados, sejam tópicos, subtópicos seções ou subseções.
+Este arquivo específica as regras para formatar os documentos (arquivos) deste repositório, ele é útil na hora de padronizar novos conteúdos que serão adicionados a este repositório, sejam eles tópicos, subtópicos seções ou subseções.
 
 ### Sumário
 
@@ -11,6 +11,7 @@ Este arquivo específica as regras para formatar os documentos (arquivos) deste 
 - [Listas](#listas)
 - [Diretórios e Arquivos](#diretorios-arquivos)
 - [Código](#codigo)
+- [Markdown](#markdown)
 - [JavaScript](#javascript)
 - [Template para Pesquisa (ChatGPT)](#chatgpt)
 
@@ -179,6 +180,10 @@ Normalmente, essas situações ocorrem quando o código que está comentado é u
 
 - Quando o comentário for muito grande, o coloque na linha acima da linha de código em questão ao invés de colocá-lo na mesma linha   
 - Para comentários de múltiplas linhas, utilize um bloco de documentação, mas não insira nada em sua [abertura ou fechamento](#codigo-abertura-fechamento)
+
+# <a id="markdown">Markdown</a>
+
+- Na hora de especificar um bloco de código simples, quando for necessário o uso de  crases (acentos graves) dentro deste bloco, como não está sendo possível escapar o caractere, utilize o acento agudo no lugar da crase. Exemplo: `UPDATE ´settings´ SET ´force_jackpot´ = '108', ´jackpot_games_left´ = '10';`, onde está sendo utilizado o acento agudo, na verdade é uma crase
 
 # <a id="javascript">JavaScript</a>
 
