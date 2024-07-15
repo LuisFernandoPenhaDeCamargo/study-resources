@@ -39,10 +39,6 @@ Abaixo temos uma lista de tópicos que eu irei estudar.
 
 - `interface`
 
-### 2. SQL
-
-- `LIKE`
-
 ### 2. AWS
 
 - AWS STS (Security Token Service)
@@ -50,18 +46,17 @@ Abaixo temos uma lista de tópicos que eu irei estudar.
 
 ### 3. Variados
 
-- Docker
-    + -> CI/CD
-- Arquitetura
 - O que deduzimos sobre a tabela users
 - O que deduzimos sobre a tabela remote_queries
-- Reformular as queries, pontuando a data inicial e a data final de forma mais adequada
-- Selecionar as ocorrências de padrões de texto para apagar valores. Estou tentando gerar um documento mais agradável (LibreOffice Writer)
-- Pontuar a lógica da rota que será implementada no data-server para gerar o "pdf do faturamento"
 - O que deduzimos sobre a tabela remote_commands
+- Docker
+    + -> CI/CD
 - Qual é a diferença entre funções e métodos?
 - Qual é a diferença entre parâmetros e argumentos?
 - Qual é a diferença Módulos, Bibliotecas e Frameworks?
 - JSON, o que é?
 - API Gateway, O que é?
 - "RESTful", o que é?
+- Shebang (Linux)
+- Terminal x Prompt de Comando
+- Diretório x Pasta

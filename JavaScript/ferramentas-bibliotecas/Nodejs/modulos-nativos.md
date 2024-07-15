@@ -1,0 +1,5 @@
+# Módulos Nativos (ou Core)
+
+Módulos Nativos e Módulos Core são geralmente sinônimos e podem ser utilizados de forma intercambiável, eles são módulos que vêm integrados com o ambiente de execução (como Node.js) e não requerem instalação adicional, fazendo parte da distribuição padrão. Estão diretamente acessíveis através da função `require`, por exemplo, e alguns deles (ou partes deles) são escritos em C/C++ para obter melhor performance ou para acessar funcionalidades de baixo nível do SO.
+
+Módulos escritos (ou partes deles) em C/C++ são chamados de bindings nativos, por exemplo, o módulo `crypto` utiliza bindings C/C++ para acessas bibliotecas criptográficas nativas. Ainda assim, tenha em mente, que a maioria dos módulos core do Node.js é implementada em JavaScript para facilitar manutenção e extensibilidade.

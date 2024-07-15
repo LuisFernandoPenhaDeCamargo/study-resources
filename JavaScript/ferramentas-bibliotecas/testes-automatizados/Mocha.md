@@ -39,7 +39,8 @@ Integra-se facilmente com ferramentas de automação de testes e de integração
 
 ## Observações Importantes
 
-**Não importa aonde o hook está sendo invocado dentro da suite**, por exemplo, aonde o método `before` está sendo invocado dentro da suite criada pelo método `describe`. O método `before`, no caso do exemplo anterior, será executado uma vez **antes de todos os testes no bloco**.
+- **Não importa aonde o hook está sendo invocado dentro da suite**, por exemplo, aonde o método `before` está sendo invocado dentro da suite criada pelo método `describe`. O método `before` será executado uma vez **antes de todos os testes no bloco**
+- Se você executar o Mocha sem especificar nenhum caminho ou padrão de arquivo, ele procurará arquivos de teste apenas no diretório **./test/** e executará qualquer arquivo que esteja diretamente dentro desse diretório, com as extensões **.js**, **.mjs**, **.ts** e **.coffe**. Isso significa que por padrão, ele não busca recursivamente em subdiretórios dentro de **./test/**
 
 # Métodos e Propriedades
 

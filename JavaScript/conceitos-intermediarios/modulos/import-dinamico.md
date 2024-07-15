@@ -1,47 +1,4 @@
-# Módulos
-
-### Sumário
-
-- [Módulos CommonJS e Módulos ES no Mesmo Arquivo](#commonjs-es-mesmo-arquivo)
-- [Import Dinâmico](#import-dinamico)
-
-# <a id="commonjs-es-mesmo-arquivo">Módulos CommonJS e Módulos ES no Mesmo Arquivo</a>
-
-Misturar a sintaxe Commonjs e ES no mesmo arquivo não é permitido diretamente no Node.js, pois os dois sistemas de módulos têm modos de operação diferentes. No entanto, você pode utilizar algumas técnicas para trabalhar com ambos os sistemas no mesmo projeto.
-
-## 1. Usando Módulos ES em um Arquivo CommonJS (Importações)
-
-Você pode importar módulos ES usando a função `import` de maneira dinâmica, também conhecido como "[import dinâmico](#import-dinamico)".
-
-```JavaScript
-const chaiPromise = import("chai");
-
-chaiPromise.then(chai => {
-    // Use o módulo Chai aqui.
-    /*
-    Por exemplo:
-    const expect = chai.expect;
-    */
-}).catch(error => {
-    console.error(error);
-});
-```
-
-## 2. Usando Módulos CommonJS em um Arquivo ES (Importações)
-
-Você pode importar módulos CommonJS usando a função `createRequire` do módulo `module` do Node.js.
-
-```JavaScript
-import { createRequire } from "module";
-
-const require = createRequire(import.meta.url);
-
-// Agora você pode usar `require` como de costume.
-// Observe que você não pode usar a função `require` com um módulo ES, isto é só um exemplo.
-const chai = require("chai");
-```
-
-# <a id="import-dinamico">Import Dinâmico</a>
+# Import Dinâmico
 
 O import dinâmico (ou importação dinâmica) é uma têcnica em JavaScript que permite **importar módulos de maneira assíncrona**, diferente das importações estáticas que são resolvidas durante a compilação. Ele é útil para carregar módulos apenas quando necessário, o que pode melhorar a performance e a organização do código. A sintaxe do import dinâmico utiliza a função `import` e retorna uma promessa.
 
@@ -84,32 +41,39 @@ loadComponent("header").then(Header => {
 
 No CommonJS, ao usar a sintaxe de importação dinâmica para importar um módulo ES, você pode acessar a exportação padrão do módulo ES, mas você não pode renomear diretamente essa exportação durante a importação. Em vez disso, você deve acessar a exportação padrão usando a propriedade `default`.
 
-Suponha que você tenha um módulo ES **esModule.mjs**
+Suponha que você tenha um módulo ES **es-module.mjs**
 
 ```JavaScript
+export const myVariable = 42;
+
 export default function sayHello() {
-    console.log("Hello fro ES Module.");
+    console.log("Hello from ES Module.");
 }
 ```
 
-e você quer importá-lo dinamicamente em um módulo CommonJS **commonjsModule.js**
+e você quer importá-lo dinamicamente em um módulo CommonJS **commonjs-module.js**
 
 ```JavaScript
 (async () => {
-    const esModule = await import("./esModule.mjs");
+    const esModule = await import("./es-module.mjs");
     const sayHello = esModule.default;
+    // "`const sayHello = (await import("./es-module.mjs")).default;`" também é válido, afinal você importa um objeto que contém todas as exportações do módulo ES.
 
     sayHello(); // Chama a função sayHello do módulo ES.
 })();
 ```
 
-`esModule` (`const esModule = await import("./esModule.mjs");`) é um objeto que contém todas as exportações do módulo ES. A exportação padrão está acessível através da propriedade `default`.
+`esModule` (`const esModule = await import("./es-module.mjs");`) é um objeto que contém todas as exportações do módulo ES e a exportação padrão está acessível através da propriedade `default`. Se você imprimisse o objeto `esModule` a saída seria a seguinte:
 
-Você acessa a exportação padrão do módulo ES e pode atribuí-la a uma variável com o nome que preferir, nessa caso, `sayHello`.
+```JavaScript
+[Module: null prototype] {
+    default: [Function: sayHello],
+    myVariable: 42
+}
+```
 
-Testar:
+Você acessa a exportação padrão do módulo ES e pode atribuí-la a uma variável com o nome que preferir, no caso acima, `sayHello`.
 
-- `const esModule = (await import("./esModule.mjs")).default`
-- Pontuar que, por estar atribuida a propriedade `default`, você precisa acessar essa propriedade para obter a exportação padrão
+Observe que a importação dinâmica retorna um objeto onde as exportações nomeadas são mapeadas diretamente para propriedades do objeto, enquanto a exportação padrão é tratada de forma especial e atribuída à propriedade `default`. Isto é parte do mecanismo de compatibilidade do JavaScript para suportar tanto módulos ES quanto CommonJS, onde a semântica das exportações precisa ser mantida consistente.
 
-então não pode usar desestruturação ({ valor } = nãoTaNesseObjeto -> nãoTaNesseObjeto.default)
+Por conta disso, embora `default` seja, tecnicamente, uma propriedade do objeto de exportação, ela não pode ser diretamente desestruturada como as exportações nomeadas devido à forma como a importação dinâmica lida com essa exportação.

@@ -29,6 +29,7 @@ Abaixo segue uma lista de diretrizes que eu sigo:
 # <a id="nomenclatura">Nomenclatura</a>
 
 - **Diretórios:** nome de diretórios deveram indicar o caminho relativo para eles e a barra ao final
+- **Diretórios e arquivos:** para nomes compostos por mais de uma palavra, as irei separar por um traço (ao invés de usar a convenção Camel Case)
 
 # <a id="topicos-subtopicos-secoes-subsecoes">Tópicos, Subtópicos, Seções e Subseções</a>
 
@@ -137,7 +138,7 @@ my-project/
 - Para comentários de múltiplas linhas que contém código, as linhas que não são código, deveram ser comentadas novamente. O objetivo é a facilidade ao descomentar a estrutura mais externa e poder simplesmente executar o que é código. Por exemplo:
 
 ```JavaScript
-// myModule.mjs
+// my-module.mjs
 // - Exportando uma função como padrão
 export default function myFunction() {
     console.log("This is the default export function.");

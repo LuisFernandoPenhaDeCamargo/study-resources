@@ -1,4 +1,4 @@
-# README (SQL) (OK)
+# README (SQL)
 
 Por enquanto, eu não sei como irei estruturar este diretório.
 
@@ -11,6 +11,7 @@ Abaixo temos uma lista de tópicos que eu irei estudar.
     + `>=`
     + `<=`
 - O retorno da função `SUBSTRING_INDEX` remove os espaços em branco no começo ou ao final da substring?
+- `LIKE`
 
 # `SUBSTRING_INDEX`
 

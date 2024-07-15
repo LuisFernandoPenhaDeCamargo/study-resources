@@ -7,7 +7,7 @@ Nos módulos ES, você pode exportar variáveis, funções, classes ou objetos p
 Exportações nomeadas permitem exportar múltiplas entidades do mesmo módulo, você pode exportar variáveis, funções, classes ou objetos com um nome específico.
 
 ```JavaScript
-// myModule.mjs
+// my-module.mjs
 // - Declaração e exportação de variáveis
 export const myVariable = 42;
 export const anotherVariable = "Hello, World!";
@@ -31,7 +31,7 @@ export const address = {
 };
 
 /*
-- Você também pode exportar múltiplas entidades juntas
+// - Você também pode exportar múltiplas entidades juntas
 export { myVariable, anotherVariable, myFunction, MyClass, address }
 */
 ```
@@ -41,8 +41,8 @@ export { myVariable, anotherVariable, myFunction, MyClass, address }
 Para importar exportações nomeadas, você deve usar o mesmo nome com o qual foram exportadas.
 
 ```JavaScript
-// anotherModule.mjs
-import { myVariable, anotherVariable, myFunction, MyClass, address } from "./myModule.mjs";
+// another-module.mjs
+import { myVariable, anotherVariable, myFunction, MyClass, address } from "./my-module.mjs";
 
 console.log(myVariable);        // Output: 42
 console.log(anotherVariable);   // Output: Hello, World!
@@ -56,7 +56,7 @@ console.log(address);           // Output: { street: 'Main Street', number: 123 
 A exportação padrão permite exportar uma **única** entidade como padrão do módulo. Pode ser uma variável, função, classe ou objeto.
 
 ```JavaScript
-// myModule.mjs
+// my-module.mjs
 // - Exportando uma função como padrão
 export default function myFunction() {
     console.log("This is the default export function.");
@@ -78,8 +78,8 @@ export default const myVariable; // Você não pode nem utilizar as palavras-cha
 Para importar uma exportação padrão, você pode usar qualquer nome.
 
 ```JavaScript
-// anotherModule.mjs
-import myFunctionWithAnyName from "./myModule.mjs";
+// another-module.mjs
+import myFunctionWithAnyName from "./my-module.mjs";
 
 myFunctionWithAnyName(); // Output: This is the default export function.
 ```
@@ -89,7 +89,7 @@ myFunctionWithAnyName(); // Output: This is the default export function.
 Você pode combinar exportações nomeadas e a exportação padrão no mesmo módulo.
 
 ```JavaScript
-// myModule.mjs
+// my-module.mjs
 const myVariable = 42;
 
 function myFunction() {
@@ -108,8 +108,8 @@ export default class MyClass {
 ## Importações Combinadas
 
 ```JavaScript
-// anotherModule.mjs
-import MyClassWithAnyName, { myVariable, myFunction } from "./myModule.mjs";
+// another-module.mjs
+import MyClassWithAnyName, { myVariable, myFunction } from "./my-module.mjs";
 
 console.log(myVariable); // Output:
 myFunction(); // Ouput: 
@@ -123,14 +123,14 @@ Você pode reexportar entidades de outro módulo, facilitando a organização e 
 ```JavaScript
 // currentModule.mjs
 // - Reexportar todas as exportações nomeadas de outro módulo
-export * from "./anotherModule.mjs";
+export * from "./another-module.mjs";
 
 // - Reexportar exportações especificas
-export { greeting, Person } from "./anotherModule.mjs";
+export { greeting, Person } from "./another-module.mjs";
 
 /*
 - Reexportar a exportação padrão
 Para realizar a reexportação padrão de um módulo, você precisa atribuir um nome à exportação padrão ao reexportá-la.
 */
-export { default as defaultGreeting } from "./anotherModule.js";
+export { default as defaultGreeting } from "./another-module.js";
 ```

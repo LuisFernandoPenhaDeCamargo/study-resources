@@ -171,7 +171,7 @@ Você também pode criar seu próprio plugin customizado para adicionar funciona
 ### 1. Crie o plugin
 
 ```JavaScript
-// myPlugin.js
+// my-plugin.js
 
 module.exports = function(chai, utils) {
     const Assertion = chai.Assertion;
@@ -196,7 +196,7 @@ module.exports = function(chai, utils) {
 // Observe que você não pode usar a função `require` com um módulo ES, isto é só um exemplo.
 const chai = require("chai");
 
-const meuPlugin = require("./myPlugin.js");
+const myPlugin = require("./my-plugin.js");
 
 // Usar o plugin customizado.
 chai.use(myPlugin);

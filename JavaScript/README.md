@@ -33,13 +33,13 @@ No sumário abaixo, há subseções que foram pontuadas porque eu achei necessá
 - Funções de Ordem Superior
 - Parâmetros e Valores de Retorno
 
-### [4. Objetos e Arrays](./fundamentos-javascript/objetos-arrays/objetos-arrays.md)
+### [4. Objetos e Arrays](./fundamentos-javascript/objetos-arrays/)
 
 - O que são Objetos? (LF)
 - Objetos Globais (LF)
 - Criação e Manipulação de Objetos
-- [Template Literals](./fundamentos-javascript/objetos-arrays/objetos-arrays.md#template-literals)
-    + [Utilizando a Crase Dentro de um Template Literal](./fundamentos-javascript/objetos-arrays/objetos-arrays.md#utilizando-crase-dentro-template-literal)
+- [Template Literals](./fundamentos-javascript/objetos-arrays/template-literals.md)
+    + [Utilizando a Crase Dentro de um Template Literal](./fundamentos-javascript/objetos-arrays/template-literals.md#utilizando-crase-dentro-template-literal)
 - [Métodos de Objetos](./fundamentos-javascript/objetos-arrays/metodos-objetos/README.md)
 - Criação e Manipulação de Arrays
 - Métodos de Array (`map`, `filter`, `reduce`, `forEach`, etc.)
@@ -77,9 +77,9 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
 
 - Importações e Exportações nos Módulos CommonJS
 - [Importações e Exportações nos Módulos ES](./conceitos-intermediarios/modulos/importacoes-exportacoes-modulos-es.md)
-- [Módulos CommonJS e Módulos ES no Mesmo Arquivo](./conceitos-intermediarios/modulos/modulos.md#commonjs-es-mesmo-arquivo)
-- [Import dinâmico](./conceitos-intermediarios/modulos/modulos.md#import-dinamico)
-    + [Importação Dinâmica de Exportação Padrão](./conceitos-intermediarios/modulos/modulos.md#importacao-dinamica-exportacao-padrao)
+- [Módulos CommonJS e Módulos ES no Mesmo Arquivo](./conceitos-intermediarios/modulos/modulos-commonjs-modulos-es-mesmo-arquivo.md)
+- [Import dinâmico](./conceitos-intermediarios/modulos/import-dinamico.md)
+    + [Importação Dinâmica de Exportação Padrão](./conceitos-intermediarios/modulos/import-dinamico.md#importacao-dinamica-exportacao-padrao)
 
 ## Técnicas Avançadas
 
@@ -114,11 +114,12 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
 ### [14. Node.js](./ferramentas-bibliotecas/)
 
 - Introdução ao Node.js
-- [Módulos nativos (ou core)](./ferramentas-bibliotecas/Nodejs.md#modulos-nativos)
-- [Módulos internos](./ferramentas-bibliotecas/Nodejs.md#modulos-internos)
-- [`module`](./ferramentas-bibliotecas/Nodejs.md#modulos-internos-module)
-    + [`createRequire`](./ferramentas-bibliotecas/Nodejs.md#modulos-internos-module-createrequire)
-- [Módulos Nativos x Módulos Internos](./ferramentas-bibliotecas/Nodejs.md#modulos-nativos-x-modulos-internos)
+- [Módulos Nativos (ou Core)](./ferramentas-bibliotecas/Nodejs/modulos-nativos.md)
+- [Módulos Internos](./ferramentas-bibliotecas/Nodejs/modulos-internos.md)
+    + [`module`](./ferramentas-bibliotecas/Nodejs/modulos-internos.md)
+        - [`createRequire`](./ferramentas-bibliotecas/Nodejs/createrequire.md)
+            + [`import.meta.url`](./ferramentas-bibliotecas/Nodejs/createrequire.md#importmetaurl)
+- [Módulos Nativos x Módulos Internos](./ferramentas-bibliotecas/Nodejs/modulos-nativos-x-modulos-internos.md)
 - [Erros Enfrentados](./ferramentas-bibliotecas/Nodejs/erros-enfrentados.md)
 - NPM (Node Package Manager)
 - Boas Práticas na Hora de Dar Upgrade na Versão do Node.js
@@ -132,15 +133,15 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
 
 ### [16. Testes Automatizados](./ferramentas-bibliotecas/testes-automatizados/)
 
-- [Testes unitários](./ferramentas-bibliotecas/testes-automatizados.md#testes-unitarios) <--
+- [Testes Unitários](./ferramentas-bibliotecas/testes-automatizados/testes-unitarios.md)
 - [Mocha](./ferramentas-bibliotecas/testes-automatizados/Mocha.md)
 - [Chai](./ferramentas-bibliotecas/testes-automatizados/Chai.md)
-- [Biblioteca de Assertivas](./ferramentas-bibliotecas/testes-automatizados.md#biblioteca-assertivas) <--
+- [Biblioteca de Assertivas](./ferramentas-bibliotecas/testes-automatizados/biblioteca-assertivas.md)
 - [Sinon](./ferramentas-bibliotecas/testes-automatizados/Sinon.md)
     + [Stubs](./ferramentas-bibliotecas/testes-automatizados/Sinon.md#stubs)
     + [Mocks](./ferramentas-bibliotecas/testes-automatizados/Sinon.md#mocks)
-- [Criando Testes para uma Função](./ferramentas-bibliotecas/testes-automatizados.md#criando-testes-funcao) <--
-- [Cucumber](./ferramentas-bibliotecas/testes-automatizados.md#cucumber) <--
+- [Criando Testes para uma Função](./ferramentas-bibliotecas/testes-automatizados/criando-testes-funcao.md)
+- [Cucumber](./ferramentas-bibliotecas/testes-automatizados/Cucumber.md)
 - Jest
 - Cypress
 - [Testes de Integração](./ferramentas-bibliotecas/testes-automatizados/testes-integracao.md)

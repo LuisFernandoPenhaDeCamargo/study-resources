@@ -1,10 +1,4 @@
-# Objetos e Arrays
-
-### Sumário
-
-- [Template Literals](#template-literals)
-
-# <a id="template-literals">Template Literals</a>
+# Template Literals
 
 ## <a id="utilizando-crase-dentro-template-literal">Utilizando a Crase Dentro de um Template Literal</a>
 
