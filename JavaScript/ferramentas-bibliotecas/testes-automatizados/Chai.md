@@ -50,7 +50,7 @@ assert.lengthOf("foo", 3);
 Chai-as-Promised é um plugin para Chai que adiciona assertivas para trabalhar com promises.
 
 ```JavaScript
-import { expect } from "chai";
+import { expect }     from "chai";
 import chaiAsPromised from "chai-as-promised";
 
 chai.use(chaiAsPromised);
@@ -68,7 +68,7 @@ Chai-HTTP é um plugin para Chai que facilita o teste de APIs HTTP.
 
 ```JavaScript
 import { expect } from "chai";
-import chaiHttp from "chai-http";
+import chaiHttp   from "chai-http";
 
 chai.use(chaiHttp);
 
@@ -194,7 +194,7 @@ module.exports = function(chai, utils) {
 
 ```JavaScript
 // Observe que você não pode usar a função `require` com um módulo ES, isto é só um exemplo.
-const chai = require("chai");
+const chai     = require("chai");
 
 const myPlugin = require("./my-plugin.js");
 

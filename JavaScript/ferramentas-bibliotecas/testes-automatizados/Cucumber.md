@@ -90,8 +90,8 @@ Feature: Login no sistema
 ```JavaScript
 // Exemplo que não foi testado, mas já fique ciente que Chai é um módulo ES.
 const { Given, When, Then } = require("@cucumber/cucumber");
-const { expect } = require("chai");
-const { Builder, By } = require("selenium-webdriver");
+const { expect }            = require("chai");
+const { Builder, By }       = require("selenium-webdriver");
 
 let driver;
 

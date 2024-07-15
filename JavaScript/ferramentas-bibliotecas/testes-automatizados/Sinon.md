@@ -74,11 +74,13 @@ Sinon é uma ferramenta poderosa para desenvolvedores que escrevem testes unitá
 
 ### Sumário
 
-- [stub](#stub)
-- [restore](#restore)
-- [resolves](#resolves)
-- [rejects](#rejects)
-- [calledOnce](#calledonce)
+- [`stub`](#stub)
+- [`restore`](#restore)
+- [`returns`](#returns)
+- [`resolves`](#resolves)
+- [`rejects`](#rejects)
+- [`returnsThis`](#returnsthis)
+- [`calledOnce`](#calledonce)
 - [`calledWith`](#calledwith)
 
 ## <a id="stub">`stub`</a>
@@ -99,7 +101,7 @@ sinon.stub([object [, method]]);
 
 ```JavaScript
 // Stub independente.
-const sinon = require("sinon");
+const sinon  = require("sinon");
 
 const myStub = sinon.stub();
 
@@ -128,6 +130,18 @@ Porque usar `restore`.
 2. **Manutenção do comportamento original:** restaurar o método garante que o comportamento original do método seja mantido para outros testes ou **partes do código** que não estejam relacionadas ao stub
 3. **Boas práticas:** usar `restore` é uma prática recomendada em testes unitários para manter a integridade e previsibilidade dos testes. Isso torna os testes mais robustos e o código mais fácil de manter
 
+## <a id="returns">`returns`</a>
+
+O método `returns` é utilizado para **configurar um stub para retornar um valor específico de maneira síncrona**. Este método é útil quando você deseja substituir uma função que retorna um valor imediatamente (não uma promessa) em seus testes.
+
+### Sintaxe Básica
+
+```JavaScript
+stub.returns(value);
+```
+
+- `value`**:** o valor que o método stubado deve retornar
+
 ## <a id="resolves">`resolves`</a>
 
 O método `resolves` é utilizado com stubs do Sinon para **especificar que o stub deve retornar uma promise resolvida com um valor específico**. Este método é especialmente útil para testar funções assíncronas que retornam promises.
@@ -150,7 +164,83 @@ O método `rejects` é utilizado para **configurar um stub para retornar uma pro
 stub.rejects(value);
 ```
 
-- `value`**:** o valor com o qual a promessa será rejeitada. Este valor pode ser um objeto de erro, uma string, ou qualquer outro valor que você deseja que a promise rejeite.
+- `value`**:** o valor com o qual a promessa será rejeitada. Este valor pode ser um objeto de erro, uma string, ou qualquer outro valor que você deseja que a promise rejeite
+
+## <a id="returnsthis">`returnsThis`</a>
+
+O método `returnsThis` é utilizado para **configurar um stub de forma que ele retorne o contexto (**`this`**) no qual foi chamado**. Este método é útil em situações onde a função stubada faz parte de um objeto e você deseja manter a cadeia de chamadas fluente (method chaining).
+
+### Sintaxe Básica
+
+```JavaScript
+stub.returnThis();
+```
+
+## Exemplo
+
+Vamos considerar uma classe `Car` que possui métodos que retornam o próprio objeto (`this`), permitindo a criação de uma cadeia de chamadas.
+
+```JavaScript
+class Car {
+    constructor() {
+        this.speed = 0;
+    }
+
+    accelerate(amount) {
+        this.speed += amount;
+
+        return this;
+    }
+
+    brake(amount) {
+        this.speed -= amount;
+
+        return this;
+    }
+}
+```
+
+Para testar a classe `Car` e stubar os métodos `accelerate` e `brake`.
+
+```JavaScript
+// Observe que você não pode usar a função `require` com um módulo ES, isto é só um exemplo.
+const { expect } = require("chai");
+const sinon      = require("sinon");
+
+describe ("Car", () => {
+    let car;
+
+    beforeEach(() => {
+        car = new Car();
+    });
+
+    it("deve permitir o encadeamento de métodos", () => {
+        // Criar os stubs.
+        const accelerateStub = sinon.stub(car, "accelerate").returnThis();
+        const brakeStub      = sinon.stub(car, "brake").returnThis();
+
+        // Usar os stubs.
+        car.accelerate(10).brake(5);
+
+        // Verificar se os stubs foram chamados corretamente.
+        expect(accelerateStub.calledOnceWith(10)).to.be.true;
+        expect(brakeStub.calledOnceWith(5)).to.be.true;
+
+        // Restaurar os métodos originais após o teste.
+        accelerateStub.restore();
+        brakeStub.restore();
+    });
+});
+```
+
+1. **Criar os stubs:** usamos `sinon.stub(car, "accelerate").returnThis()` e `sinon.stub(car, "brake").returnThis()` para fazer com que esses métodos retornem o próprio objeto `car` ao serem chamados
+2. **Usar os stubs:** chamamos os métodos stubados `car.accelerate(10).brake(5)` para verificar se o encadeamento de métodos funciona
+3. **Verificar as chamadas:** usamos `expect` para verificar se os stubs foram chamados com os argumentos corretos
+4. **Restaurar os métodos originais:** chamamos `accelerateStub.restore()` e `brakeStub.restore()` para restaurar os métodos originais após o teste
+
+## Conclusão
+
+O métodos `returnThis` é útil para testar métodos que retornam o contexto (`this`) para permitir encadeamento de métodos. Usando `returnThis`, você pode manter a fluidez das chamadas de métodos em seus testes, garantindo que a lógica de encadeamento funcione conforme esperado.
 
 ## <a id="calledonce">`calledOnce`</a>
 

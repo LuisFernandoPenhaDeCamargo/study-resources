@@ -12,6 +12,7 @@
 ```JavaScript
 (async () => {
     const chaiModule = await import("chai");
+
     expect = chaiModule.expect;
 })();
 ```

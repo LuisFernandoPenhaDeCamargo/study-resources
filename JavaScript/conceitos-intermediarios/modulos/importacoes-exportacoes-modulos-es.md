@@ -9,7 +9,7 @@ Exportações nomeadas permitem exportar múltiplas entidades do mesmo módulo, 
 ```JavaScript
 // my-module.mjs
 // - Declaração e exportação de variáveis
-export const myVariable = 42;
+export const myVariable      = 42;
 export const anotherVariable = "Hello, World!";
 
 // - Declarando e exportando funções
@@ -46,8 +46,11 @@ import { myVariable, anotherVariable, myFunction, MyClass, address } from "./my-
 
 console.log(myVariable);        // Output: 42
 console.log(anotherVariable);   // Output: Hello, World!
+
 myFunction();                   // Output: This is my function.
+
 const instance = new MyClass(); // Output: This is my Class.
+
 console.log(address);           // Output: { street: 'Main Street', number: 123 }
 ```
 
@@ -111,9 +114,11 @@ export default class MyClass {
 // another-module.mjs
 import MyClassWithAnyName, { myVariable, myFunction } from "./my-module.mjs";
 
-console.log(myVariable); // Output:
-myFunction(); // Ouput: 
-const instance = new MyClassWithAnyName(); // Ouput:
+console.log(myVariable);                   // Output: 42
+
+myFunction();                              // Ouput: This is my function.
+
+const instance = new MyClassWithAnyName(); // Ouput: This is the default export class.
 ```
 
 ## Exportações Reexportadas

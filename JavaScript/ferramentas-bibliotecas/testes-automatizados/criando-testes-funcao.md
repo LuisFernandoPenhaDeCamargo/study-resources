@@ -191,3 +191,11 @@ test/
 ```
 
 Essas convenções ajudam a manter os testes organizados e facilmente identificáveis.
+
+## Observações
+
+**Foque no código da aplicação** ao invés de testar funcionalidades dos módulos nativos (por exemplo), o foco deve estar em testar o código da aplicação para garantir a estabilidade e a compatibilidade. Testar como sua aplicação interage com esses módulos (mockando ou stubando) é mais eficiente e relevante para garantir a funcionalidade correta da aplicação.
+
+Por exemplo, no código da função acima, a gente não está verificando a validade do hash gerado para o endpoint especificado, mas sim a validade do funcionamento da função. Tendo disto isso, é comum usar mocks e stubs para simular o comportamento de dependências externas, como módulos nativos ou chamadas de API, de forma a forcar no código da aplicação.
+
+Mocks e stubs são práticas comuns nos testes unitários, pois ajudam a isolar a lógica da função em teste e garantir que seu comportamento está correto independente das dependências externas. No entanto, é importante que os testes reflitam de maneira adequada as interações reais com essas dependências.

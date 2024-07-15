@@ -5,7 +5,7 @@ O método `createRequire` é uma funcionalidade do Node.js que permite criar uma
 ### Sintaxe Básica
 
 ```JavaScript
-const { createRequire } = require("module");
+import { createRequire } from "module";
 
 const require = createRequire(filename);
 ```
@@ -38,7 +38,7 @@ import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 
 // Usando o `require` personalizado para carregar um módulo CommonJS.
-const fs = require("fs");
+const fs     = require("fs");
 const lodash =  require("lodash");
 
 console.log(fs.readFileSync); // Método `readFileAsync` do módulo `fs`.

@@ -57,10 +57,10 @@ Utilizar mocks e stubs para simular serviços externos e dependências que são 
 ## Exemplo
 
 ```JavaScript
-import chai from "chai";
+import chai     from "chai";
 import chaiHttp from "chai-http";
 
-import server from "../app.mjs"; // Assumindo que o app é o seu servidor Express
+import server   from "../app.mjs"; // Assumindo que o app é o seu servidor Express
 
 chai.use(chaiHttp);
 
