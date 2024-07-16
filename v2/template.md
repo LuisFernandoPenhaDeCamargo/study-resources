@@ -1,19 +1,5 @@
 + `- [Comandos Utilizados Através do CLI](#comandos-utilizados-cli)`
 
-- `# <a id="contexto-so-utilizado"></a>Contexto: SO Utilizado`
-
-```bash
-No LSB modules are available.
-Distributor ID:	Ubuntu
-Description:	Ubuntu 22.04.4 LTS
-Release:	22.04
-Codename:	jammy
-```
-
-# <a id="formatacao-documento"></a>Formatação do Documento
-
-- **Markdown:** entre asteriscos, na hora de especificar uma frase em negrito, quando for necessário o uso do "$" dentro deste bloco, como não está sendo possível escapar o caractere, utilize o "A" no lugar do cifrão. Exemplo: **~/.nvm/versions/node/A< versões >/lib/node_modules**
-
 ## <a id="formatacao-documento-codigo"></a>Código
 
 - No primeiro paragráfo, primeira sentença, devemos fornecer uma descrição resumida do comando (comece com "É utilizado para **...**" ou "Ele fornece **...**"). Destaque a parte mais importante, se possível  
@@ -33,12 +19,7 @@ Codename:	jammy
 
 ### <a id="formatacao-documento-codigo-exemplos"></a>Exemplos
 
-- Se eu não "encontrar" um substituto adequado para o nome de uma váriavel (função, método, classe) em português, eu usarei o nome em inglês mesmo
 - O acento agudo será substituído pela letra "h", se for necessário para o entendimento
-
-## <a id="formatacao-documento-negrito"></a>Negrito
-
-- Os nomes dos arquivos e diretórios devem estar em negrito
 
 ## <a id="formatacao-documento-siglas-abreviacoes"></a>Siglas e Abreviações
 

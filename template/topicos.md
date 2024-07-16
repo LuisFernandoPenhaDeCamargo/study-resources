@@ -8,7 +8,16 @@
 ### Tópicos Comuns
 
 - `Prático`
-- `Contexto: SO Utilizado`
+- `Contexto: SO Utilizado`. Seu conteúdo será, por exemplo:
+
+```bash
+No LSB modules are available.
+Distributor ID:	Ubuntu
+Description:	Ubuntu 22.04.4 LTS
+Release:	22.04
+Codename:	jammy
+```
+
 - `Instalação`
 - `Sistema Hierárquico de Arquivos`
 - `Principais Características`
