@@ -1,41 +1,5 @@
-# Template (Ok)
-
-Estrutura a se seguir em relação as anotações do conteúdo estudado.
-
-### Sumário
-
-- [Template](#template)
-    + [Prático](#pratico)
-    + [Contexto: SO Utilizado](#contexto-so-utilizado)
-    + [Instalação](#instalacao)
-    + [Sistema Hierárquico de Arquivos](#sistema-hierarquico-arquivos)
-    + [Anotações](#anotacoes)
-    + [Arquivos Relacionados](#arquivos-relacionados)
-    + [Erros Enfrentados](#erros-enfrentados)
-    + [Comandos Utilizados Através do CLI](#comandos-utilizados-cli)
-- [Formatação do Documento](#formatacao-documento)
-    + [Código](#formatacao-documento-codigo)
-        - [Subtópicos](#formatacao-documento-subtopicos)
-        - [Exemplos](#formatacao-documento-exemplos)
-    + [Subtítulos](#formatacao-documento-subtitulos)
-    + [Negrito](#formatacao-documento-negrito)
-- [Key Words](#formatacao-documento-key-words)
-
-# <a id="template"></a>$< nome do documento >
-
-- `### Resumo`
-- `### Sumário`
-
-+ `- [Prático](#pratico)`
-+ `- [Contexto: SO Utilizado](#contexto-so-utilizado)`
-+ `- [Instalação](#instalacao)`
-+ `- [Sistema Hierárquico de Arquivos](#sistema-hierarquico-arquivos)`
-+ `- [Anotações](#anotacoes)`
-+ `- [Arquivos Relacionados](#arquivos-relacionados)`
-+ `- [Erros Enfrentados](#erros-enfrentados)`
 + `- [Comandos Utilizados Através do CLI](#comandos-utilizados-cli)`
 
-- `# <a id="pratico"></a>Prático`
 - `# <a id="contexto-so-utilizado"></a>Contexto: SO Utilizado`
 
 ```bash
@@ -46,27 +10,9 @@ Release:	22.04
 Codename:	jammy
 ```
 
-- `# <a id="instalacao"></a>Instalação`
-- `# <a id="sistema-hierarquico-arquivos"></a>Sistema Hierárquico de Arquivos`
-- `# <a id="anotacoes"></a>Anotações`
-- `# <a id="arquivos-relacionados"></a>Arquivos Relacionados`
-- `# <a id="erros-enfrentados"></a>Erros Enfrentados`
-- `# <a id="comandos-utilizados-cli"></a>Comandos Utilizados Através do CLI`/`# <a id="metodos"></a>Métodos`
-
 # <a id="formatacao-documento"></a>Formatação do Documento
 
-- Nem todo subtítulo (`###`) precisa de link de referência
 - **Markdown:** entre asteriscos, na hora de especificar uma frase em negrito, quando for necessário o uso do "$" dentro deste bloco, como não está sendo possível escapar o caractere, utilize o "A" no lugar do cifrão. Exemplo: **~/.nvm/versions/node/A< versões >/lib/node_modules**
-
-### Sumário
-
-- [Código](#formatacao-documento-codigo)
-    + [Notação de Colchetes](#formatacao-documento-codigo-notacao-colchetes)
-    + [Subtópicos](#formatacao-documento-codigo-subtopicos)
-    + [Exemplos](#formatacao-documento-codigo-exemplos)
-- [Subtítulos](#formatacao-documento-subtitulos)
-- [Negrito](#formatacao-documento-negrito)
-- [Siglas e Abreviações](#formatacao-documento-siglas-abreviacoes)
 
 ## <a id="formatacao-documento-codigo"></a>Código
 
@@ -89,15 +35,6 @@ Codename:	jammy
 
 - Se eu não "encontrar" um substituto adequado para o nome de uma váriavel (função, método, classe) em português, eu usarei o nome em inglês mesmo
 - O acento agudo será substituído pela letra "h", se for necessário para o entendimento
-
-## <a id="formatacao-documento-subtitulos"></a>Subtítulos
-
-Existem alguns subtítulos comuns, abaixo segue a lista deles, observando que a lista segue a ordem na qual eles devem aparecer dentro de um título.
-
-- `### Principais Características/### Principais Características e Funcionalidades`
-- `### Observações Importantes`
-- `### Exemplos de Casos de Uso`
-- `### Conclusão`
 
 ## <a id="formatacao-documento-negrito"></a>Negrito
 

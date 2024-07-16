@@ -1,11 +1,3 @@
-## Links de Referência
-
-Links de referência não iram possuir valores entre parênteses, exemplo: `[Template (template.md)](#template)`. Ou eles serão o valor em parênteses, exemplo: `[ECMAScript 2015 (ES6)](#versoes-features-especificas-es6)` (é um subtópico).
-
-## Listas
-
-Se a ordem dos itens da lista não tiver que seguir um significado específico, a ordene alfabeticamente.
-
 ## Negrito
 
 A lista abaixo pontua o que deverá estar em negrito:

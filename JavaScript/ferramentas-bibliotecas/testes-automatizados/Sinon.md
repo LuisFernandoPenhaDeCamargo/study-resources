@@ -82,6 +82,7 @@ Sinon é uma ferramenta poderosa para desenvolvedores que escrevem testes unitá
 - [`restore`](#restore)
 - [`calledOnce`](#calledonce)
 - [`calledWith`](#calledwith)
+- [`CalledOnceWith`](#calledoncewith)
 
 ## <a id="stub">`stub`</a>
 
@@ -262,3 +263,16 @@ stub.calledWith(arg1, arg2, ...);
 ```
 
 - `arg1, arg2, ...`**:** os argumentos que se espera que tenham sido passados para o stub durante a chamada
+
+## <a id="calledoncewith">`CalledOnceWith`</a>
+
+O método `calledOnceWith` é utilizado para **verificar se o stub foi chamado exatamente uma vez com argumentos específicos durante a execução do teste**. É uma asserção útil do Sinon.js que ajuda a garantir que suas funções são chamadas conforme esperado, aumentando a confiabilidade dos seus testes.
+
+### Sintaxe Básica
+
+```JavaScript
+$< stub / spy >.calledOnceWith(arg1[, arg2[, ...argN]]);
+```
+
+- `arg1, arg2, argN`**:** os argumentos que o stub deve ter recebido na única chamada. Você pode passar quantos argumentos forem necessários para verificar se o stub foi chamado com esses valores específicos
+- **Retorno:** retorna `true` se o stub tiver sido chamado exatamente uma vez com os argumentos especificados; caso contrário, retorna `false`
