@@ -12,8 +12,9 @@ Este diretório específica as regras para formatar os documentos (arquivos) des
 - [Diretórios e Arquivos](./diretorios-arquivos.md)
 - [Negrito](./negrito.md)
 - [Código](./codigo.md)
-- [Markdown](./markdown.md)
-- [JavaScript](./javascript.md)
+- [Markdown](./Markdown.md)
+- [JavaScript](./JavaScript.md)
+- [Palavras-chaves](./palavras-chaves.md)
 - [Template para Pesquisa (ChatGPT)](./chatgpt.md)
 
 [Diretrizes -->](./diretrizes.md)

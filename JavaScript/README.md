@@ -28,12 +28,13 @@ No sumário abaixo há subseções que foram pontuadas porque eu achei necessár
 
 ### [4. Objetos e Arrays](./fundamentos-javascript/objetos-arrays/)
 
-- O que são Objetos? (LF)
-- Objetos Globais (LF)
+- O que são Objetos?
+- Objetos Globais
+- [Objetos](./fundamentos-javascript/objetos-arrays/objetos/)
 - Criação e Manipulação de Objetos
 - [Template Literals](./fundamentos-javascript/objetos-arrays/template-literals.md)
     + [Utilizando a Crase Dentro de um Template Literal](./fundamentos-javascript/objetos-arrays/template-literals.md#utilizando-crase-dentro-template-literal)
-- [Métodos de Objetos](./fundamentos-javascript/objetos-arrays/metodos-objetos/README.md)
+- [Métodos de Objetos](./fundamentos-javascript/objetos-arrays/metodos-objetos/)
 - Criação e Manipulação de Arrays
 - Métodos de Array (`map`, `filter`, `reduce`, `forEach`, etc.)
 
