@@ -35,20 +35,21 @@ Abaixo segue uma lista de diretrizes que eu sigo:
 
 - Tópicos, subtópicos, seções e subseções seguiram as regras gramáticais de "títulos"
 - Se atente que listas (enumeradas ou não) são uma coisa, o conjunto acima, outra
-- Se for necessário, coloque o nome das "Subseções Comuns" plural
+- Se for necessário, coloque o nome das "Subseções Comuns" no plural
 
 ### Subseções Comuns
 
-- `## Principais Características`
-- `## Principais Funções`
-- `## Benefícios`
-- `## Ferramentas e Abordagens`
-- `## Exemplo`/`## Exemplos`
-- `## Observações`
-- `## Conclusão`
-- `## Exemplo Interessante`/`## Exemplos Interessantes`
-- `## Observações Importantes`
-- `# Métodos e Propriedades`
+- `Principais Características`
+- `Principais Funções`
+- `Usos Comuns`
+- `Benefícios`
+- `Ferramentas e Abordagens`
+- `Exemplo`/`Exemplos`
+- `Observações`
+- `Conclusão`
+- `Exemplo Interessante`/`Exemplos Interessantes`
+- `Observações Importantes`
+- `Métodos e Propriedades`
 
 ### Exemplo
 
@@ -63,7 +64,7 @@ Abaixo temos um exemplo do que é um tópico, um subtópico e uma seção (conte
 - Tipos de dados primitivos (string, number, boolean, null, undefined, symbol) (seção)
 - Operadores (aritméticos, comparação, lógicos) (seção)
 
-(Markdown)
+(Bloco de código escrito em Markdown)
 ```
 
 # <a id="links-referencia">Links de Referência</a>

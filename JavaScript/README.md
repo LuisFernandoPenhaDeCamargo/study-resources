@@ -1,19 +1,12 @@
 # README (JavaScript)
 
-Anotações para mim mesmo.
-
-- Quando os subtópicos forem adicionados por mim, irei pontuar um "LF" em parênteses ao final dele
-- O "M" entre parênteses ao final do subtópico indica que eu o modifiquei. Nos parênteses, também devo pontuar o que foi alterado
-
-No sumário abaixo, há subseções que foram pontuadas porque eu achei necessário destacar a existência delas, mas fique atento ao fato de que nem toda subseção foi listada.
-
-### Sumário
+No sumário abaixo há subseções que foram pontuadas porque eu achei necessário destacar a existência delas, mas fique atento ao fato de que nem toda subseção foi listada.
 
 ## [Fundamentos de JavaScript](./fundamentos-javascript/)
 
-### 1. Sintaxe e Tipos de Dados
+### [1. Sintaxe e Tipos de Dados](./fundamentos-javascript/sintaxe-tipos-dados/)
 
-- O que é JavaScript? (LF)
+- [O que é JavaScript?](./fundamentos-javascript/sintaxe-tipos-dados/javascript.md)
 - Variáveis (`var`, `let`, `const`)
 - Tipos de Dados Primitivos (`string`, `number`, `boolean`, `null`, `undefined`, symbol)
 - Operadores (Aritméticos, Comparação, Lógicos)

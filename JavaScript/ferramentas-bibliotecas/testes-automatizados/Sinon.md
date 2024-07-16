@@ -75,11 +75,11 @@ Sinon é uma ferramenta poderosa para desenvolvedores que escrevem testes unitá
 ### Sumário
 
 - [`stub`](#stub)
-- [`restore`](#restore)
 - [`returns`](#returns)
 - [`resolves`](#resolves)
 - [`rejects`](#rejects)
 - [`returnsThis`](#returnsthis)
+- [`restore`](#restore)
 - [`calledOnce`](#calledonce)
 - [`calledWith`](#calledwith)
 
@@ -109,26 +109,6 @@ myStub.returns("Stubbed value.");
 
 console.log(myStub()); // Output: Stubbed value.
 ```
-
-## <a id="restore">`restore`</a>
-
-O método `restore` é utilizado para **restaurar o comportamento original de um stub, spy ou mock** criado pelo Sinon. Isso é útil para garantir que os testes não causem efeitos colaterais em outras partes do código.
-
-### Sintaxe Básica
-
-```JavaScript
-stub.restore();
-spy.restore();
-mock.restore();
-```
-
-### Observações Importantes
-
-Porque usar `restore`.
-
-1. **Limpeza e isolamento:** ao restaurar o método original, você garante que os testes não interfiram uns nos outros. Se você não restaurar o método, os efeitos do stub podem vazar para outros testes, causando resultados inesperados e falhas difíceis de diagnosticas
-2. **Manutenção do comportamento original:** restaurar o método garante que o comportamento original do método seja mantido para outros testes ou **partes do código** que não estejam relacionadas ao stub
-3. **Boas práticas:** usar `restore` é uma prática recomendada em testes unitários para manter a integridade e previsibilidade dos testes. Isso torna os testes mais robustos e o código mais fácil de manter
 
 ## <a id="returns">`returns`</a>
 
@@ -241,6 +221,31 @@ describe ("Car", () => {
 ## Conclusão
 
 O métodos `returnThis` é útil para testar métodos que retornam o contexto (`this`) para permitir encadeamento de métodos. Usando `returnThis`, você pode manter a fluidez das chamadas de métodos em seus testes, garantindo que a lógica de encadeamento funcione conforme esperado.
+
+## <a id="restore">`restore`</a>
+
+O método `restore` é utilizado para **restaurar o comportamento original de um stub, spy ou mock** criado pelo Sinon. Isso é útil para garantir que os testes não causem efeitos colaterais em outras partes do código.
+
+### Sintaxe Básica
+
+```JavaScript
+stub.restore();
+spy.restore();
+mock.restore();
+sinon.restore();
+```
+
+### Benefícios
+
+Porque usar o `restore`:
+
+1. **Limpeza e isolamento:** ao restaurar o método original, você garante que os testes não interfiram uns nos outros. Se você não restaurar o método, os efeitos do stub, por exemplo, podem vazar para outros testes, causando resultados inesperados e falhas difíceis de diagnosticar
+2. **Manutenção do comportamento original:** restaurar o método garante que o comportamento original do método seja mantido para outros testes ou **partes do código** que não estejam relacionadas ao stub
+3. **Boas práticas:** usar `restore` é uma prática recomendada em testes unitários para manter a integridade e previsibilidade dos testes. Isso torna os testes mais robustos e o código mais fácil de manter
+
+### Observações
+
+`sinon.restore` é utilizado para restaurar todos os stubs, mocks e spys de uma só vez. Este método é especialmente conveniente quando você possui uma grande quantidade de stubs, mocks e spys que precisam ser restaurados após os testes.
 
 ## <a id="calledonce">`calledOnce`</a>
 

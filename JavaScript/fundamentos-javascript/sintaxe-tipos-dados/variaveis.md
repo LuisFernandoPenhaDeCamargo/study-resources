@@ -1,0 +1,1 @@
+# Variáveis (`var`, `let`, `const`)
