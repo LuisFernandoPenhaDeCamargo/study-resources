@@ -1,43 +1,11 @@
-# Template
+# <a id="topicos">Tópicos</a>
 
-Este arquivo específica as regras para formatar os documentos (arquivos) deste repositório, ele é útil na hora de padronizar novos conteúdos que serão adicionados a este repositório, sejam eles tópicos, subtópicos seções ou subseções.
+- Tópicos seguem as regras gramáticais dos títulos
+- Se atente que listas (enumeradas ou não) são uma coisa, tópicos, outra
+- Se for necessário, coloque o nome dos "Tópicos Comuns" no plural
+- Observe que a lista abaixo segue a ordem na qual elas devem aparecer dentro de um documento
 
-### Sumário
-
-- [Diretrizes](#diretrizes)
-- [Nomenclatura](#nomenclatura)
-- [Tópicos, Subtópicos, Seções e Subseções](#topicos-subtopicos-secoes-subsecoes)
-- [Links de Referência](#links-referencia)
-- [Listas](#listas)
-- [Diretórios e Arquivos](#diretorios-arquivos)
-- [Código](#codigo)
-- [Markdown](#markdown)
-- [JavaScript](#javascript)
-- [Template para Pesquisa (ChatGPT)](#chatgpt)
-
-# <a id="diretrizes">Diretrizes</a>
-
-Abaixo segue uma lista de diretrizes que eu sigo:
-
-- Eu irei pesquisar todo o conteúdo deste repositório novamente. Estou refatorando os seguintes diretórios:
-    + **v2**
-    + **v3**
-    + **Pos-graduacao**
-- Cuidado para não tentar se aprofundar de forma exagerada no conteúdo (inicialmente), respeite a necessidade do contexto no momento
-- **17h30:** commitar o código
-
-# <a id="nomenclatura">Nomenclatura</a>
-
-- **Diretórios:** nome de diretórios deveram indicar o caminho relativo para eles e a barra ao final
-- **Diretórios e arquivos:** para nomes compostos por mais de uma palavra, as irei separar por um traço (ao invés de usar a convenção Camel Case)
-
-# <a id="topicos-subtopicos-secoes-subsecoes">Tópicos, Subtópicos, Seções e Subseções</a>
-
-- Tópicos, subtópicos, seções e subseções seguiram as regras gramáticais de "títulos"
-- Se atente que listas (enumeradas ou não) são uma coisa, o conjunto acima, outra
-- Se for necessário, coloque o nome das "Subseções Comuns" no plural
-
-### Subseções Comuns
+### Tópicos Comuns
 
 - `Principais Características`
 - `Principais Funções`
@@ -50,22 +18,6 @@ Abaixo segue uma lista de diretrizes que eu sigo:
 - `Exemplo Interessante`/`Exemplos Interessantes`
 - `Observações Importantes`
 - `Métodos e Propriedades`
-
-### Exemplo
-
-Abaixo temos um exemplo do que é um tópico, um subtópico e uma seção (contexto do JavaScript).
-
-```Markdown
-## Fundamentos de JavaScript (tópico)
-
-### 1. Sintaxe e Tipos de Dados (subtópico)
-
-- Variáveis (var, let, const) (seção)
-- Tipos de dados primitivos (string, number, boolean, null, undefined, symbol) (seção)
-- Operadores (aritméticos, comparação, lógicos) (seção)
-
-(Bloco de código escrito em Markdown)
-```
 
 # <a id="links-referencia">Links de Referência</a>
 
@@ -104,9 +56,10 @@ my-project/
 - Quando a representação "`$<  >`" for utilizada, o texto dentro dela deverá estar em português (se possível), pois ele é uma explicação sobre um valor que será utilizado nesta posição
 - **Descrição da função ou método:** começa da seguinte forma, *"A função `$< nome da função >` é utilizada para ..."*, por exemplo
 - **Descrição de propriedades:** começa da seguinte forma, *"A propriedade `$< nome da propriedade >` é uma propriedade do ..."*. Por exemplo:
-    + "A propriedade `calledOnce` é uma propriedade do stub do Sinon (`stub.calledOnce`) que verifica ..."
-    + "A propriedade `true` é uma propriedade de asserção do Chai que verifica ..."
+    + *"A propriedade `calledOnce` é uma propriedade do stub do Sinon (`stub.calledOnce`) que verifica ..."*
+    + *"A propriedade `true` é uma propriedade de asserção do Chai que verifica ..."*
 - **Sintaxe Básica**  
+    + Se o título do tópico já for a "Sintaxe Básica", não é necessário fornecer este subtópico
     + **Parâmetro**
         - Pontue os parâmetros na forma de uma lista
         - Não é necessário pontuar no nome do item o tipo do argumento, caso você vá fornecê-lo no texto que descreve o item  
@@ -114,6 +67,13 @@ my-project/
         - Pontue o nome deste item como *"Retorno"*
         - Se o retorno não foi pontuado inicialmente e eu não tiver a necessidade de saber o valor dele, não irei incluí-lo nas anotações
 
+### Tópicos Comuns
+
+- `Opções Comuns`
+- `Exemplo`/`Exemplos`
+- `Observações`
+- `Exemplo Interessante`/`Exemplos Interessantes`
+- `Observações Importantes`
 
 ### Exemplos
 

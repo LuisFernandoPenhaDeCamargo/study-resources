@@ -7,7 +7,7 @@ No sumário abaixo há subseções que foram pontuadas porque eu achei necessár
 ### [1. Sintaxe e Tipos de Dados](./fundamentos-javascript/sintaxe-tipos-dados/)
 
 - [O que é JavaScript?](./fundamentos-javascript/sintaxe-tipos-dados/javascript.md)
-- Variáveis (`var`, `let`, `const`)
+- [Variáveis (`var`, `let`, `const`)](./fundamentos-javascript/sintaxe-tipos-dados/variaveis.md)
 - Tipos de Dados Primitivos (`string`, `number`, `boolean`, `null`, `undefined`, symbol)
 - Operadores (Aritméticos, Comparação, Lógicos)
 
@@ -17,13 +17,13 @@ No sumário abaixo há subseções que foram pontuadas porque eu achei necessár
 - Laços de Repetição (`for`, `while`, do...while)
 - Break e Continue
 
-### [3. Funções](./fundamentos-javascript/funcoes.md)
+### [3. Funções](./fundamentos-javascript/funcoes/)
 
 - Declaração de Funções
-- Funções Anônimas (M. Desmembrei este subtópico em dois, este e o abaixo eram um só)
-- [Arrow Functions](./fundamentos-javascript/funcoes.md#arrow-functions)
-- [IIFE (Immediately Invoked Function Expressions)](./fundamentos-javascript/funcoes.md#iife)
-- Funções de Ordem Superior
+- Funções Anônimas
+- [Arrow Functions](./fundamentos-javascript/funcoes/arrow-functions.md)
+- [IIFE (Immediately Invoked Function Expressions)](./fundamentos-javascript/funcoes/iife.md)
+- [Funções de Ordem Superior](./fundamentos-javascript/funcoes/funcoes-ordem-superior.md)
 - Parâmetros e Valores de Retorno
 
 ### [4. Objetos e Arrays](./fundamentos-javascript/objetos-arrays/)

@@ -1,13 +1,3 @@
-# Template
-
-Se atente que os arquivos são escritos em Markdown.
-
-### Sumário
-
-- [Estrutura dos Arquivos (Formatação do Documento)](#estrutura-arquivos)
-
-# <a id="estrutura-arquivos">Estrutura dos Arquivos (Formatação do Documento)</a>
-
 ## Nomenclatura
 
 ### Diretórios e Arquivos
@@ -55,46 +45,6 @@ No Ubuntu, assim como na maioria dos SOs baseados em Unix, não há um padrão e
 ### Conclusão
 
 Seguir essas diretrizes ajudará a evitar problemas de compatibilidade e facilitará o trabalho com o terminal e scripts automatizados.
-
-## Títulos
-
-- O título "`#`" é bastante adequado para começar um novo tópico
-- O título "`##`" parece adequado para um subtópico mais longo
-- O título "`###`" parece adequado para subtópicos mais curtos
-    + Vai pertencer ao tópico (ou subtópico criado com "`##`") mais externo
-    + Também é utilizado para pontuar subseções
-
-## Subseções
-
-Subseções não seguem a regra de nomenclatura dos tópicos. Subseções "comuns" seguem a regra de nomenclatura dos tópicos, observe que a lista segue a ordem na qual elas devem aparecer dentro de um tópico (ou subtópico).
-
-Subseções comuns:
-
-- `### Principais Características`
-- `### Usos Comuns`
-- `### Boas Práticas`
-- `### Benefícios`
-- `### Desafios`
-- `### Exemplos`  
-    Nem sempre esta subseção se encaixa exatamente aqui, há cenários no qual o exemplo deve ser dado antes, para a explicação utilizá-lo
-- `### Observações`
-- `### Conclusão`
-- `### Resumo`
-
-Quando se trata de documentação de código:
-
-- `### Sintaxe Básica`  
-    Se o título da subtópico já "for" a "Sintaxe Básica", não precisamos fornecer esta subseção
-- É necessário pontuar os **parâmetros**, mas não é necessário pontuar o título desta subseção  
-    Tente pontuar o seu tipo
-- Tente pontuar o valor de retorno, mas não é necessário pontuar o título desta subseção
-- `### Opções Comuns`
-- `### Observações`
-- `### Exemplos`
-- `### Observações Importantes`  
-    Esta subseção trata de observações ainda mais técnicas do assunto em questão
-- `### Exemplos Importantes`  
-    Esta subseção trata de exemplos ainda mais técnicos do assunto em questão
 
 ## Links de Referência
 
