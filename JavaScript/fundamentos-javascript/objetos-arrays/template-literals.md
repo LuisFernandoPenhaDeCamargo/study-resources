@@ -1,8 +1,8 @@
 # Template Literals
 
-## <a id="utilizando-crase-dentro-template-literal">Utilizando a Crase Dentro de um Template Literal</a>
+## <a id="utilizando-acento-grave-dentro-template-literal">Utilizando o Acento Grave Dentro de um Template Literal</a>
 
-Para incluir uma crase (backtik) dentro de um template literal, você deve usar a sequência de escape `\`. Isso permitirá que a crase seja tratada como um caractere literal e não como o delimitador do templa literal.
+Para incluir um acento gravo (backtik) dentro de um template literal, você deve usar a sequência de escape `\`. Isso permitirá que a crase seja tratada como um caractere literal e não como o delimitador do template literal.
 
 ### Exemplo
 
@@ -22,3 +22,5 @@ let remoteQueries = await pool.query(`
     ORDER BY date DESC;
 `);
 ```
+
+[Métodos de Objetos -->](./metodos-objetos/README.md)

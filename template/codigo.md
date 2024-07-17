@@ -18,7 +18,7 @@ Os colchetes em notações como
 ```JavaScript
 funcao.bind(thisArg[, arg1 [, arg2 [, ...]]]);
 
-// (Escrito em JavaScript)
+// (Exemplo em JavaScript)
 ```
 
 indicam que os parâmetros `arg1`, `arg2`, `...`, são **opcionais**, se você não fornecer esses argumentos, a função ainda funcionará corretamente, apenas sem os agumentos predefinidos.
@@ -58,7 +58,7 @@ Observe que a lista abaixo segue a ordem na qual os tópicos devem aparecer dent
 
 ## Formatação do Código-fonte
 
-- **Mensagens de erro** seguem o seguinte formato, "`[ $< nome da função ou método/ nome do arquivo > ERROR ], ${error.message}`", sendo que o template literal, a técnica de interpolação de expressão e a propriedade `message` do objeto `error`, fazem parte do JavaScript, para outras linguagens siga a mesma ideia, mas utilizando das propriedades da linguagem em questão
+- **Mensagens de erro** seguem o seguinte formato, "`[ $< nome da função ou método/ nome do arquivo > ${error.name} ], ${error.message}`", sendo que o template literal, a técnica de interpolação de expressão e a propriedade `message` do objeto `error`, fazem parte do JavaScript, para outras linguagens siga a mesma ideia, mas utilizando das propriedades da linguagem em questão
 
 ### Espaçamento
 

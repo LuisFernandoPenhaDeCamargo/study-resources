@@ -8,7 +8,7 @@ No sumário abaixo há subseções que foram pontuadas porque eu achei necessár
 
 - [O que é JavaScript?](./fundamentos-javascript/sintaxe-tipos-dados/javascript.md)
 - [Variáveis (`var`, `let`, `const`)](./fundamentos-javascript/sintaxe-tipos-dados/variaveis.md)
-- Tipos de Dados Primitivos (`string`, `number`, `boolean`, `null`, `undefined`, symbol)
+- [Tipos de Dados Primitivos](./fundamentos-javascript/sintaxe-tipos-dados/tipos-dados-primitivos.md)
 - Operadores (Aritméticos, Comparação, Lógicos)
 
 ### 2. Estruturas de Controle
@@ -30,11 +30,11 @@ No sumário abaixo há subseções que foram pontuadas porque eu achei necessár
 
 - O que são Objetos?
 - Objetos Globais
-- [Objetos](./fundamentos-javascript/objetos-arrays/objetos/)
 - Criação e Manipulação de Objetos
+- [Objetos](./fundamentos-javascript/objetos-arrays/objetos/README.md)
 - [Template Literals](./fundamentos-javascript/objetos-arrays/template-literals.md)
-    + [Utilizando a Crase Dentro de um Template Literal](./fundamentos-javascript/objetos-arrays/template-literals.md#utilizando-crase-dentro-template-literal)
-- [Métodos de Objetos](./fundamentos-javascript/objetos-arrays/metodos-objetos/)
+    + [Utilizando a Crase Dentro de um Template Literal](./fundamentos-javascript/objetos-arrays/template-literals.md#utilizando-acento-grave-dentro-template-literal)
+- [Métodos de Objetos](./fundamentos-javascript/objetos-arrays/metodos-objetos/README.md)
 - Criação e Manipulação de Arrays
 - Métodos de Array (`map`, `filter`, `reduce`, `forEach`, etc.)
 
@@ -53,12 +53,12 @@ No sumário abaixo há subseções que foram pontuadas porque eu achei necessár
 - Adicionar e Remover Event Listeners
 - Delegação de Eventos
 
-### [7. Programação Assíncrona](./conceitos-intermediarios/programacao-assincrona.md)
+### [7. Programação Assíncrona](./conceitos-intermediarios/programacao-assincrona/)
 
-- O que é Assincronicidade? (LF)
+- O que é Assincronicidade?
 - Callbacks
 - Promises
-- [`then`/`catch`](./conceitos-intermediarios/programacao-assincrona.md#thencatch)
+- [`then`/`catch`](./conceitos-intermediarios/programacao-assincrona/then-catch.md)
 - `async`/`await`
 
 ### [8. Módulos](./conceitos-intermediarios/modulos/)

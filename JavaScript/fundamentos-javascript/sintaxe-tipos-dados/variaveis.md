@@ -1,1 +1,3 @@
-# Variáveis (`var`, `let`, `const`)
+# Variáveis
+
+[Tipos de Dados Primitivos -->](./tipos-dados-primitivos.md)
