@@ -26,4 +26,4 @@ LTS é uma forma abreviada de Long-Term Support.
 
 SO é uma forma abreviada de Sistema Operacional (ou Sistemas Operacionais).
 
-[README -->](./README.md)
+[README (Diretório Heterogêneo) -->](./README.md)
