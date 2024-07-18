@@ -4,8 +4,7 @@ Este diretório contém vários documentos que tratam dos mais variados assuntos
 
 ### Sumário
 
-- Conceitos de Programação
-    + CI/CD
+- [Conceitos de Programação](./conceitos-programacao/README.md)
 - Git
 - SQL
 - [Glossário de Abreviações](./glossario-abreviacoes.md)

@@ -61,3 +61,17 @@ Abaixo temos uma lista de tópicos que eu irei estudar.
 - Shebang (Linux)
 - Terminal x Prompt de Comando
 - Diretório x Pasta
+
+---
+
+Arquivos abertos no repositório zoe-game-api:
+
+- **getAccessToken.teste.mjs**
+- **send_error.js**
+- **debug.js**
+- **package.json**
+- **server.js**
+- **prize.js**
+- **raffle_prizes.js**
+- **raffle_accumulated_prize.sql**
+- **raffle_jackpot.prize.sql**
