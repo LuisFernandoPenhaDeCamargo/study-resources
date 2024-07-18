@@ -1,15 +1,17 @@
 # README (JavaScript)
 
-No sumário abaixo há subseções que foram pontuadas porque eu achei necessário destacar a existência delas, mas fique atento ao fato de que nem toda subseção foi listada.
+- Se você encontrar algum conceito ou termo que não entende em um tópico em questão, não se preocupe, eles serão explicados mais a frente
+- No sumário abaixo há subseções que foram pontuadas porque eu achei necessário destacar a existência delas, mas fique atento ao fato de que nem toda subseção foi listada
 
 ## [Fundamentos de JavaScript](./fundamentos-javascript/)
 
 ### [1. Sintaxe e Tipos de Dados](./fundamentos-javascript/sintaxe-tipos-dados/)
 
 - [O que é JavaScript?](./fundamentos-javascript/sintaxe-tipos-dados/javascript.md)
-- [Variáveis (`var`, `let`, `const`)](./fundamentos-javascript/sintaxe-tipos-dados/variaveis.md)
+- [Variáveis](./fundamentos-javascript/sintaxe-tipos-dados/variaveis.md)
 - [Tipos de Dados Primitivos](./fundamentos-javascript/sintaxe-tipos-dados/tipos-dados-primitivos.md)
-- Operadores (Aritméticos, Comparação, Lógicos)
+- Escopo
+- Operadores
 
 ### 2. Estruturas de Controle
 

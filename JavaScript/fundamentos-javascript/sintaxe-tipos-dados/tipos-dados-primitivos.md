@@ -77,14 +77,18 @@ const anotherBigNumber = 12345678901234567890n;
 ## Exemplo
 
 ```JavaScript
-// Usando `bigint`.
+// - Usando `symbol`
+let symbol1 = Symbol("sameString");
+let symbol2 = Symbol("sameString");
+
+console.log(symbol1 === symbol2); // Output: false. Cada símbolo é único.
+
+// - Usando `bigint`.
 const bigNumber        = 1234567890123456789012345678901234567890n;
 const anotherBigNumber = BigInt("1234567890123456789012345678901234567890");
 
-console.log(bigNumber === anotherBigNumber); // Output: true
+console.log(bigNumber === anotherBigNumber); // Output: true. Com exceção do caracter "n", o restante do número precisa ser igual para a comparação ser verdadeira.
 ```
-
-Com exceção do caracter "n", o restante do número precisa ser igual para a comparação ser verdadeira.
 
 ## Conclusão
 

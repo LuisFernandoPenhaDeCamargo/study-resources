@@ -37,6 +37,7 @@ Abaixo temos uma lista de tópicos que eu irei estudar.
 
 ### 1. JavaScript
 
+- "ES namespaces are immutable per the spec", o que isto significa?
 - `interface`
 
 ### 2. AWS
