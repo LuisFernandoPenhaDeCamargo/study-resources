@@ -6,6 +6,7 @@ Este documento é um glossário de abreviações (siglas e acrônimos) e de term
 
 - [CI/CD](#cicd)
 - [ESM](#esm)
+- [LTS](#lts)
 - [SO](#so)
 
 ### <a id="cicd">CI/CD</a>
@@ -17,6 +18,12 @@ Este documento é um glossário de abreviações (siglas e acrônimos) e de term
 
 ESM é uma forma abreviada de ES Modules (Módulos ES).
 
+### <a id="lts">LTS</a>
+
+LTS é uma forma abreviada de Long-Term Support.
+
 ### <a id="so">SO</a>
 
 SO é uma forma abreviada de Sistema Operacional (ou Sistemas Operacionais).
+
+[README -->](./README.md)

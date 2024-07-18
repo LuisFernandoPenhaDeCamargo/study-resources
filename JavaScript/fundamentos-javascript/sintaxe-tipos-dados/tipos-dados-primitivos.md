@@ -83,7 +83,7 @@ let symbol2 = Symbol("sameString");
 
 console.log(symbol1 === symbol2); // Output: false. Cada símbolo é único.
 
-// - Usando `bigint`.
+// - Usando `bigint`
 const bigNumber        = 1234567890123456789012345678901234567890n;
 const anotherBigNumber = BigInt("1234567890123456789012345678901234567890");
 
@@ -94,4 +94,4 @@ console.log(bigNumber === anotherBigNumber); // Output: true. Com exceção do c
 
 Os tipos de dados primitivos são fundamentais em JavaScript. representando os blocos de construção básicos do gerenciamento de dados. Cada tipo tem suas características e usos específicos, permitindo que os desenvolvedores manipulem e armazenem dados de forma eficiente e eficaz.
 
-[Operadores (Aritméticos, Comparação, Lógicos) -->](./operadores.md)
+[Escopo -->](./escopo.md)

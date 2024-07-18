@@ -2,7 +2,7 @@
 
 Em JavaScript, há três formas principais de declarar variáveis: `var`, `let` e `const`. Cada uma tem suas próprias características e usos específicos, vamos analisar cada uma delas em detalhes:
 
-### `var`
+## `var`
 
 1. **Escopo de função:** variáveis declaradas com `var` são limitadas ao escopo da função mais próxima. Se declaradas fora de uma função, têm escopo global
 2. **Hoisting:** variáveis declaradas com `var` são "içadas" (hoisted) ao topo do escopo, o que significa que podem ser usadas antes de serem declaradas, mas o valor inicial será `undefined`
@@ -23,7 +23,7 @@ var b = 2; // Redefinição permitida.
 b = 3; // Reatribuição permitida.
 ```
 
-### `let`
+## `let`
 
 1. **Escopo de bloco:** variáveis declaradas com `let` são limitadas ao bloco de código (`{}`) em que são definidas
 2. **Hoisting:** variáveis declaradas com `let` são içadas ao topo do bloco, mas não podem ser usadas antes de serem declaradas, resultando em um erro de referência se acessadas antes da declaração
@@ -43,7 +43,7 @@ let b = 1;
 b = 3; // Reatribuição permitida.
 ```
 
-### `const`
+## `const`
 
 1. **Escopo de bloco:** assim como `let`, variáveis declaradas com `const` são limitadas ao bloco em que são definidas
 2. **Hoisting:** variáveis declaradas com `const` são içadas ao topo do bloco, mas não podem ser usadas antes de declaradas, resultando em um erro de referência se acessadas antes da declaração
