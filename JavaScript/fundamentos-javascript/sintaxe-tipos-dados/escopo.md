@@ -1,0 +1,110 @@
+# Escopo
+
+Em JavaScript, escopo refere-se ao contexto em que variáveis e funções são acessíveis e podem ser referenciadas. Existem diferentes tipos de escopo em JavaScript:
+
+## Tipos de Escopo
+
+### 1. Escopo Global
+
+- Variáveis e funções declaradas fora de qualquer função ou bloco são acessíveis em qualquer parte do código
+- No navegador, variáveis globais se tornam propriedades do objeto `window`
+
+```JavaScript
+let globalVar = "I'm global.";
+
+function globalFunction() {
+    console.log(globalVar); // Acessível aqui.
+}
+
+globalFunction()
+
+console.log(globalVar); // Acessível aqui também.
+```
+
+### 2. Escopo de Função
+
+- Variáveis declaradas dentro de uma função só são acessíveis dentro dessa função
+- Usado por `var`
+
+```JavaScript
+function myFunction() {
+    var functionVar = "I'm in a function.";
+
+    console.log(functionVar); // Acessível aqui.
+}
+
+myFunction();
+
+console.log(functionVar); // Erro: functionVar não está definido.
+```
+
+### 3. Escopo de Bloco
+
+- Variáveis declaradas dentro de um bloco `{}` (como em loops, condições, etc.) só são acessíveis dentro desse bloco
+- Usado por `let` e `const`
+
+```JavaScript
+if (true) {
+    let blockVar = "I'm in a block.";
+    const blockConst = "I'm a constant in a block.";
+    var varVar = "I'm in a block and I'm acessible outside of it too."
+
+    console.log(blockVar); // Acessível aqui.
+    console.log(blockConst); // Acessível aqui.
+    console.log(varVar); // Acessível aqui, pois seu escopo é delimitado pelo escopo de Função ou pelo escopo Global.
+}
+
+console.log(blockVar); // Erro: blockVar não está definido.
+console.log(blockConst); // Erro: blockConst não está definido.
+console.log(varVar); // Acessível aqui, pois seu escopo é delimitado pelo escopo de Função ou pelo escopo Global.
+```
+
+### 4. Escopo Lexical
+
+- Funções internas podem acessar variáveis do escopo externo em que foram definidas
+- Isso é a base para closures
+
+```JavaScript
+function outerFunction() {
+    let outerVar = "I'm outside.";
+
+    function innerFunction() {
+        console.log(outerVar); // Acessível aqui.
+    }
+
+    innerFunction();
+}
+
+outerFunction();
+```
+
+### 5. Escopo de Módulo
+
+- Cada arquivo de módulo tem seu próprio escopo
+- Variáveis e funções declaradas em um módulo não são acessíveis fora dele, a menos que sejam exportadas
+
+```JavaScript
+// module1.mjs
+export const moduleVar = "I'm in a module.";
+
+// module2.mjs
+import { moduleVar } from "./module1.js";
+
+console.log(moduleVar); // Acessível aqui porque foi importado.
+```
+
+## Principais Funções
+
+- **Encapsulamento e isolamento:** o escopo ajuda a encapsular o código, prevenindo conflitos de nomes e melhorando a organização
+- **Segurança:** variáveis no escopo adequado evitam que partes não intencionais do código as modifiquem
+- **Gerenciamento de memória:** variáveis fora do escopo são elegíveis para coleta de lixo, ajudando na eficiência de memória
+
+## Ferramentas e Abordagens
+
+- **Closures:** funções que lembram o ambiente em que foram criadas
+- **Hoisting:** comportamento de elevação das declarações de funções e variáveis para o topo do seu escopo
+- **Strict Mode:** modo que aplica regras mais restritas, ajudando a evitar erros comuns relacionados ao escopo
+
+Entender o escopo é fundamental para escrever código JavaScript eficiente e livre de bugs.
+
+[Operadores -->](./operadores.md)

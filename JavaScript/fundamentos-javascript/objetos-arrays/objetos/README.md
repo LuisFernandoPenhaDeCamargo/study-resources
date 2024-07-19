@@ -5,4 +5,4 @@
 - [`Error`](./error.md)
 - [`console`](./console.md)
 
-[Template Literals -->](../template-literals.md)
+[Métodos de Objetos -->](../metodos-objetos/README.md)

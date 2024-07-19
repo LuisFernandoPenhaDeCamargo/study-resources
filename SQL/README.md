@@ -10,7 +10,7 @@ Abaixo temos uma lista de tópicos que eu irei estudar.
     + `!=`
     + `>=`
     + `<=`
-- O retorno da função `SUBSTRING_INDEX` remove os espaços em branco no começo ou ao final da substring?
+- O retorno da função `SUBSTRING_INDEX` remove os espaços em branco no começo ou/e ao final da substring?
 - `LIKE`
 
 # `SUBSTRING_INDEX`
@@ -49,14 +49,13 @@ Considere o seguinte cenário, você tem a tabela `remote_queries` que possui a 
 
 ```SQL
 SELECT query FROM remote_queries;
--- Output: UPDATE `settings` SET `force_jackpot` = '108', `jackpot_games_left` = '10';. Uma das linhas.
+-- Output: UPDATE `settings` SET `force_jackpot` = '108', `jackpot_games_left` = '10';. Um dos registros.
 
 SELECT SUBSTRING_INDEX(query, 'force_' , -1) FROM remote_queries;
--- Output: jackpot` = '108', `jackpot_games_left` = '10';. Seria como ficaria a linha citada acima.
+-- Output: jackpot` = '108', `jackpot_games_left` = '10';. Seria como ficaria o registro citado acima.
 
 SELECT SUBSTRING_INDEX(SUBSTRING_INDEX(query, 'force_' , -1), '`', 1) FROM remote_queries;
 -- Seria o mesmo que fazer:
--- SELECT SUBSTRING_INDEX('jackpot\` = \'108\', \`jackpot_games_left\` = \'10\';', '`', 1) FROM remote_queries;
--- Estamos escapando o acento grave e as aspas simples para conseguir tornar a adaptação acima executável ao descomentá-la. A chamamos de adaptação porque a string retornada anteriormente não possui as barras
--- Output: jackpot. Seria como ficaria a linha citada acima.
+-- SELECT SUBSTRING_INDEX('jackpot` = '108', `jackpot_games_left` = '10';', '`', 1) FROM remote_queries;
+-- Output: jackpot. Seria como ficaria o registro citado acima.
 ```

@@ -31,7 +31,7 @@ b = 3; // Reatribuição permitida.
 
 ```JavaScript
 function example() {
-    // console.log(a); // ReferenceError: Cannot access 'a' before initialization
+    // console.log(a); // `ReferenceError: Cannot access 'a' before initialization`
     let a = 10;
     console.log(a); // Output: 10
 }
@@ -39,7 +39,7 @@ function example() {
 example();
 
 let b = 1;
-// let b = 2; // SyntaxError: Identifier 'b' has already been declared
+// let b = 2; // `SyntaxError: Identifier 'b' has already been declared`
 b = 3; // Reatribuição permitida.
 ```
 
@@ -51,7 +51,7 @@ b = 3; // Reatribuição permitida.
 
 ```JavaScript
 function example() {
-    // console.log(a); // ReferenceError: Cannot access 'a' before initialization
+    // console.log(a); // `ReferenceError: Cannot access 'a' before initialization`
     const a = 10;
     console.log(a); // Ouput: 10
 }
@@ -59,9 +59,11 @@ function example() {
 example();
 
 const b = 1;
-// const b = 2; // SyntaxError: Identifier 'd' has already been declared
+// const b = 2; // `SyntaxError: Identifier 'd' has already been declared`
 // d = 3; // TypeError: Assignment to constant variable
 ```
+
+<-- Objetos e arrays declarados como `const`
 
 ## Usos Comuns
 

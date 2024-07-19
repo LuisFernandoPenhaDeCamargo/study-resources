@@ -1,4 +1,4 @@
-# README
+# README <--
 
 O objetivo deste repositório é pontuar conceitos e ferramentas que são importantes para um desenvolvedor. Abaixo, teremos um sumário dos diretórios (ou arquivos) que se encontram no nível superior deste repositório, também iremos fornecer um breve resumo do que cada um trata.
 
@@ -37,7 +37,23 @@ Abaixo temos uma lista de tópicos que eu irei estudar.
 
 ### 1. JavaScript
 
-- "ES namespaces are immutable per the spec", o que isto significa?
+- Me explique cada detalhe do log abaixo:
+
+```Bash
+<ref *1> [AsyncFunction: getTemporaryCredentials] {
+  default: [Circular *1],
+  getDatabasePassword: [AsyncFunction: getDatabasePassword],
+  esmkTreeId: 'file:///home/luis/APIs/zoe-game-api/services/sensitive_data_getters.mjs?esmk=1'
+}
+```
+
+- O que significa o "`_`" no exemplo:
+    + Qual é o nome deste símbolo?
+
+```JavaScript
+const _ = require("lodash");
+```
+
 - `interface`
 
 ### 2. AWS
@@ -51,16 +67,16 @@ Abaixo temos uma lista de tópicos que eu irei estudar.
 - O que deduzimos sobre a tabela remote_queries
 - O que deduzimos sobre a tabela remote_commands
 - Docker
-    + -> CI/CD
-- Qual é a diferença entre funções e métodos?
-- Qual é a diferença entre parâmetros e argumentos?
-- Qual é a diferença Módulos, Bibliotecas e Frameworks?
-- JSON, o que é?
-- API Gateway, O que é?
-- "RESTful", o que é?
-- Shebang (Linux)
-- Terminal x Prompt de Comando
+    + Utilizando Docker para implementar CI/CD
+- Funções x Métodos?
+- Parâmetros x Argumentos?
+- Módulos x Bibliotecas x Frameworks?
 - Diretório x Pasta
+- Terminal x Prompt de Comando
+- JSON
+- API Gateway
+- "RESTful"
+- Shebang (Linux)
 
 ---
 

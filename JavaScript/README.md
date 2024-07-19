@@ -10,7 +10,7 @@
 - [O que é JavaScript?](./fundamentos-javascript/sintaxe-tipos-dados/javascript.md)
 - [Variáveis](./fundamentos-javascript/sintaxe-tipos-dados/variaveis.md)
 - [Tipos de Dados Primitivos](./fundamentos-javascript/sintaxe-tipos-dados/tipos-dados-primitivos.md)
-- Escopo
+- [Escopo](./fundamentos-javascript/sintaxe-tipos-dados/escopo.md)
 - Operadores
 
 ### 2. Estruturas de Controle
@@ -23,20 +23,22 @@
 
 - Declaração de Funções
 - Funções Anônimas
-- [Arrow Functions](./fundamentos-javascript/funcoes/arrow-functions.md)
+- [Arrow Functions](./fundamentos-javascript/funcoes/arrow-functions.md) <--
 - [IIFE (Immediately Invoked Function Expressions)](./fundamentos-javascript/funcoes/iife.md)
 - [Funções de Ordem Superior](./fundamentos-javascript/funcoes/funcoes-ordem-superior.md)
 - Parâmetros e Valores de Retorno
 
 ### [4. Objetos e Arrays](./fundamentos-javascript/objetos-arrays/)
 
-- O que são Objetos?
+- [O que são Objetos?](./fundamentos-javascript/objetos-arrays/objetos.md)
+    + [Comparando dois Objetos](./fundamentos-javascript/objetos-arrays/objetos.md#comparacao-objetos)
 - Objetos Globais
 - Criação e Manipulação de Objetos
-- [Objetos](./fundamentos-javascript/objetos-arrays/objetos/README.md)
 - [Template Literals](./fundamentos-javascript/objetos-arrays/template-literals.md)
     + [Utilizando a Crase Dentro de um Template Literal](./fundamentos-javascript/objetos-arrays/template-literals.md#utilizando-acento-grave-dentro-template-literal)
+- [Objetos](./fundamentos-javascript/objetos-arrays/objetos/README.md)
 - [Métodos de Objetos](./fundamentos-javascript/objetos-arrays/metodos-objetos/README.md)
+- [Namespaces](./fundamentos-javascript/objetos-arrays/namespaces.md)
 - Criação e Manipulação de Arrays
 - Métodos de Array (`map`, `filter`, `reduce`, `forEach`, etc.)
 
@@ -120,14 +122,18 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
 - NPM (Node Package Manager)
 - Boas Práticas na Hora de Dar Upgrade na Versão do Node.js
 
-### 15. Frameworks e Bibliotecas Populares
+### [15. Bibliotecas](./ferramentas-bibliotecas/bibliotecas/)
+
+- [esmock](./ferramentas-bibliotecas/bibliotecas/esmock.md)
+
+### 16. Frameworks Populares
 
 - React.js
 - Angular
 - Vue.js
 - jQuery (para manipulação de DOM mais antiga)
 
-### [16. Testes Automatizados](./ferramentas-bibliotecas/testes-automatizados/)
+### [17. Testes Automatizados](./ferramentas-bibliotecas/testes-automatizados/)
 
 - [Testes Unitários](./ferramentas-bibliotecas/testes-automatizados/testes-unitarios.md)
 - [Mocha](./ferramentas-bibliotecas/testes-automatizados/Mocha.md)
@@ -145,23 +151,23 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
 
 ## [Práticas e Padrões de Código](./praticas-padroes-codigo/)
 
-### 17. Boas Práticas
+### 18. Boas Práticas
 
 - Código Limpo
 - Modularização
 - Comentários e Documentação
 
-### 18. Padrões de Projeto
+### 19. Padrões de Projeto
 
 - Padrões Comuns (Singleton, Factory, Observer, etc.)
 - Aplicação de Padrões em JavaScript
 
-### [19. Metodologias de Desenvolvimento](./praticas-padroes-codigo/metodologias-desenvolvimento.md)
+### [20. Metodologias de Desenvolvimento](./praticas-padroes-codigo/metodologias-desenvolvimento.md)
 
 - [Test-Driven Development (TDD)](./praticas-padroes-codigo/metodologias-desenvolvimento.md#tdd)
 - [Behavior-Driven Development (BDD)](./praticas-padroes-codigo/metodologias-desenvolvimento.md#bdd)
 
-### [20. Ferramentas de Build e Automação](./praticas-padroes-codigo/ferramentas-build-automacao.md)
+### [21. Ferramentas de Build e Automação](./praticas-padroes-codigo/ferramentas-build-automacao.md)
 
 - [Webpack](./praticas-padroes-codigo/ferramentas-build-automacao.md#webpack)
 - Babel
@@ -170,19 +176,19 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
 
 ## Performance e Segurança
 
-### 21. Otimização de Código
+### 22. Otimização de Código
 
 - Melhores Práticas de Desempenho
 - Profiling e Debugging
 
-### 22. Segurança
+### 23. Segurança
 
 - Prevenção de Vulnerabilidades Comuns (XSS, CSRF, etc.)
 - Práticas de Segurança em Desenvolvimento Web
 
 ## Projetos Práticos
 
-### 23. Projetos de Exemplo
+### 24. Projetos de Exemplo
 
 - Aplicação ToDo List
 - Aplicação CRUD com uma API RESTful
@@ -190,13 +196,13 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
 
 ## Recursos Adicionais
 
-### 24. Comunidade e Fóruns
+### 25. Comunidade e Fóruns
 
 - Stack Overflow
 - GitHub
 - Reddit (r/javascript)
 
-### 25. Documentação e Tutoriais
+### 26. Documentação e Tutoriais
 
 - MDN Web Docs
 - W3Schools

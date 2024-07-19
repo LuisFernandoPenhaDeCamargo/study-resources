@@ -227,7 +227,7 @@ SELECT COALESCE($< coluna 1 >, $< coluna 2 >, '$< valor padrão >') FROM $ < tab
 
 Esses são alguns exemplos de como a palavra-chave `ELSE` é comumente usada em SQL, para fornecer uma alternativa em caso de não atendimento de uma condição específica.
 
-## <a id="palavras-chaves-exists"></a>`EXISTS` <!-- <-- -->
+## <a id="palavras-chaves-exists"></a>`EXISTS`
 
 A palavra-chave `EXISTS` em SQL é usada em conjunto com uma subconsulta para verificar se a subconsulta retorna algum resultado. Ela retorna verdadeiro se a subconsulta retornar um ou mais registros e falso se não retornar nenhum registro.
 

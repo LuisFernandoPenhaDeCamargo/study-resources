@@ -68,10 +68,6 @@ Descrição dos pontos da linguagem
 
 \# Executando Um Código Feito em Linguagem
 
-## Palavras-chave
-
-**"<--":** esta seta indica uma tarefa que precisa ser realizada, um tópico que precisa ser estudado.
-
 ## Negrito
 
 - Em listas, quando o item em questão é representado por uma palavra ou frase chave, elas devem estar em negrito

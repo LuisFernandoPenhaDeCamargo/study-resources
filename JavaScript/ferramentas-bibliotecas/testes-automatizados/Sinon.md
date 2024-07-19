@@ -83,8 +83,9 @@ Sinon é uma ferramenta poderosa para desenvolvedores que escrevem testes unitá
 - [`calledOnce`](#calledonce)
 - [`calledWith`](#calledwith)
 - [`CalledOnceWith`](#calledoncewith)
+- [`firstCall`](#firstcall)
 
-## <a id="stub">`stub`</a>
+# <a id="stub">`stub`</a>
 
 O método `stub` é utilizado para **criar stubs em funções ou métodos**, permitindo que você controle o comportamento das funções durante os testes. Stubs são usados para substituir o comportamento real de uma função com um comportamento simulado.
 
@@ -111,7 +112,7 @@ myStub.returns("Stubbed value.");
 console.log(myStub()); // Output: Stubbed value.
 ```
 
-## <a id="returns">`returns`</a>
+# <a id="returns">`returns`</a>
 
 O método `returns` é utilizado para **configurar um stub para retornar um valor específico de maneira síncrona**. Este método é útil quando você deseja substituir uma função que retorna um valor imediatamente (não uma promessa) em seus testes.
 
@@ -123,7 +124,7 @@ stub.returns(value);
 
 - `value`**:** o valor que o método stubado deve retornar
 
-## <a id="resolves">`resolves`</a>
+# <a id="resolves">`resolves`</a>
 
 O método `resolves` é utilizado com stubs do Sinon para **especificar que o stub deve retornar uma promise resolvida com um valor específico**. Este método é especialmente útil para testar funções assíncronas que retornam promises.
 
@@ -135,7 +136,7 @@ stub.resolves(value);
 
 - `value`**:** o valor com o qual a promise deve ser resolvida. Por ser qualquer valor, incluindo objetos, strings, números, etc.
 
-## <a id="rejects">`rejects`</a>
+# <a id="rejects">`rejects`</a>
 
 O método `rejects` é utilizado para **configurar um stub para retornar uma promise rejeitada com um valor específico**. Isso é útil para simular falhas em operações assíncronas durante testes.
 
@@ -147,7 +148,7 @@ stub.rejects(value);
 
 - `value`**:** o valor com o qual a promessa será rejeitada. Este valor pode ser um objeto de erro, uma string, ou qualquer outro valor que você deseja que a promise rejeite
 
-## <a id="returnsthis">`returnsThis`</a>
+# <a id="returnsthis">`returnsThis`</a>
 
 O método `returnsThis` é utilizado para **configurar um stub de forma que ele retorne o contexto (**`this`**) no qual foi chamado**. Este método é útil em situações onde a função stubada faz parte de um objeto e você deseja manter a cadeia de chamadas fluente (method chaining).
 
@@ -223,7 +224,7 @@ describe ("Car", () => {
 
 O métodos `returnThis` é útil para testar métodos que retornam o contexto (`this`) para permitir encadeamento de métodos. Usando `returnThis`, você pode manter a fluidez das chamadas de métodos em seus testes, garantindo que a lógica de encadeamento funcione conforme esperado.
 
-## <a id="restore">`restore`</a>
+# <a id="restore">`restore`</a>
 
 O método `restore` é utilizado para **restaurar o comportamento original de um stub, spy ou mock** criado pelo Sinon. Isso é útil para garantir que os testes não causem efeitos colaterais em outras partes do código.
 
@@ -248,11 +249,11 @@ Porque usar o `restore`:
 
 `sinon.restore` é utilizado para restaurar todos os stubs, mocks e spys de uma só vez. Este método é especialmente conveniente quando você possui uma grande quantidade de stubs, mocks e spys que precisam ser restaurados após os testes.
 
-## <a id="calledonce">`calledOnce`</a>
+# <a id="calledonce">`calledOnce`</a>
 
 A propriedade `calledOnce` é uma propriedade do stub do Sinon (`stub.calledOnce`) que verifica se o stub foi chamado exatamente uma vez durante a execução do teste. Esta propriedade é útil para validar que uma função foi invocada uma única vez, garantindo assim que o comportamento esperado ocorreu apenas uma vez.
 
-## <a id="calledwith">`calledWith`</a>
+# <a id="calledwith">`calledWith`</a>
 
 O método `calledWith` é utilizado para **verificar se o stub foi chamado com argumentos específicos durante a execução do teste**. Este método é útil para validar que uma função foi invocada com os parâmetros esperados, garantindo assim que o comportamento ocorreu de maneira prevista.
 
@@ -264,7 +265,7 @@ stub.calledWith(arg1, arg2, ...);
 
 - `arg1, arg2, ...`**:** os argumentos que se espera que tenham sido passados para o stub durante a chamada
 
-## <a id="calledoncewith">`CalledOnceWith`</a>
+# <a id="calledoncewith">`CalledOnceWith`</a>
 
 O método `calledOnceWith` é utilizado para **verificar se o stub foi chamado exatamente uma vez com argumentos específicos durante a execução do teste**. É uma asserção útil do Sinon.js que ajuda a garantir que suas funções são chamadas conforme esperado, aumentando a confiabilidade dos seus testes.
 
@@ -276,3 +277,21 @@ $< stub / spy >.calledOnceWith(arg1[, arg2[, ...argN]]);
 
 - `arg1, arg2, argN`**:** os argumentos que o stub deve ter recebido na única chamada. Você pode passar quantos argumentos forem necessários para verificar se o stub foi chamado com esses valores específicos
 - **Retorno:** retorna `true` se o stub tiver sido chamado exatamente uma vez com os argumentos especificados; caso contrário, retorna `false`
+
+# <a id="firstcall">`firstCall`</a>
+
+A propriedade `firstCall` é uma propriedade do objeto stub. Sinon.JS mantém um registro de cada chamada feita ao stub e `firstCall` permite acessar os detalhes da primeira chamada.
+
+# <a id="">`args`</a>
+
+A propriedade `args` é uma propriedade do objeto `firstCall`. Ela é um array que contém os argumentos passados para a função stub durante a chamada.
+
+## Exemplo
+
+Um exemplo com `firstCall` e `args`.
+
+```JavaScript
+expect(getStub.firstCall.args[1].headers.Authorization).to.be.equal("Bearer access-token");
+```
+
+[Criando Testes para uma Função -->](./criando-testes-funcao.md)

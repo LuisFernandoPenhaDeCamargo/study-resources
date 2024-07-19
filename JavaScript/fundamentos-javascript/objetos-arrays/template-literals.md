@@ -23,4 +23,4 @@ let remoteQueries = await pool.query(`
 `);
 ```
 
-[Métodos de Objetos -->](./metodos-objetos/README.md)
+[Objetos -->](./objetos/README.md)

@@ -94,10 +94,13 @@ describe("GET /users", () => {
 - [`expect`](#expect)
 - [Cadeias de Conveniência](#cadeias-conveniencia)
 - [Propriedades de Asserção](#propriedades-assercao)
+    + `true`
+    + `undefined`
+    + [`deep`](#propriedades-assercao-deep)
 - [`equal`](#equal)
 - [`use`](#use)
 
-## <a id="expect">`expect`</a>
+# <a id="expect">`expect`</a>
 
 O método `expect` é utilizado para **escrever afirmações nos testes**. Ela permite verificar se os resultados de sua função ou expressão atendem às expectativas definidas. É uma parte fundamental para escrever testes legíveis e mantíveis.
 
@@ -111,7 +114,7 @@ expect(actual).$< cadeia de conveniência >.$< propriedade de afirmação ou mé
 - `cadeia de conveniência`**:** representa uma cadeia de conveniência
 - `propriedade de afirmação ou método`**:** uma propriedade de afirmação ou método que verifica se o valor testado corresponde a outro.
 
-## <a id="cadeias-conveniencia">Cadeias de Conveniência</a>
+# <a id="cadeias-conveniencia">Cadeias de Conveniência</a>
 
 Cadeias de conveniência (como o `to`, por exemplo) não alteram a verificação, mas melhoram a legibilidade das assertivas. Elas permitem a construção de sentenças mais naturais quando se escreve testes, facilidando a leitura e a compreensão das intenções do teste.
 
@@ -130,7 +133,7 @@ expect(actual).to.be.true;
 
 Como dito acima, as cadeias de conveniência não alteram a verificação, então em termos de funcionalidade a ordem não importa, elas são intercambiáveis. No entanto, é importante manter a ordem convencional para melhorar a legibilidade e seguir as práticas comuns da comunidade, portanto, enquanto você tecnicamente poderia usar `be.to`, é mais claro e legível usar `to.be`.
 
-## <a id="propriedades-assercao">Propriedades de Asserção</a>
+# <a id="propriedades-assercao">Propriedades de Asserção</a>
 
 Uma propriedade de asserção é uma propriedade que verifica se o valor testado corresponde a outro. Por exemplo, a propriedade `true` é uma propriedade de asserção do Chai que verifica se o valor testado é exatamente `true`.
 
@@ -138,8 +141,38 @@ Uma propriedade de asserção é uma propriedade que verifica se o valor testado
 
 - `true`
 - `undefined`
+- [`deep`](#propriedades-assercao-deep)
 
-## <a id="equal">`equal`</a>
+## <a id="propriedades-assercao-deep">`deep`</a>
+
+A propriedade `deep` é uma propriedade **de assserção utilizada para indicar uma comparação profunda (deep equality) entre objetos e arrays**. Quando você faz uma comparação profunda, o Chai verifica se todas as propriedades e valores, incluindo os aninhados, são iguais entre os objetos ou arrays comparados.
+
+### Sintaxe Básica
+
+```JavaScript
+expect(actual).to.be.deep.equal(expected);
+```
+
+- `actual`**:** o valor ou objeto que você está testando
+- `expected`**:** o valor ou objeto que você espera que seja igual ao valor atual
+
+## Observações Importantes
+
+`deep.equal` verifica todas as propriedades, inclusive aquelas dentro de objetos aninhados. Isso é diferente de `equal`, que verifica apenas a igualdade de referências para objetos e arrays.
+
+`deep` modifica o comportamento das asserções subsequentes, quando você usa `deep`, você está explicitamente dizendo ao Chai para fazer uma comparação profunda entre os objetos ou arrays, verificando todos os níveis de propriedades aninhadas. Por exemplo:
+
+```JavaScript
+import { expect } from "chai";
+
+const obj1 = { a: 1, b: { c: 2 } };
+const obj2 = { a: 1, b: { c: 2 } };
+
+expect(obj1).to.be.deep.equal(obj2); // Passa porque a comparação é profunda.
+expect(obj1).to.be.equal(obj2); // Falha porque a comparação padrão é superficial e eles são diferentes objetos na memória.
+```
+
+# <a id="equal">`equal`</a>
 
 O método `equal` é utilizado para **verificar a igualdade estrita (sem coersão de tipo) entre dois valores**.
 
@@ -152,7 +185,7 @@ expect(actual).equal(expected);
 - `actual`**:** o valor que você está testando
 - `expected`**:** o valor que você espera que `actual` seja igual
 
-## <a id="use">`use`</a>
+# <a id="use">`use`</a>
 
 O método `use` é utilizado para **adicionar plugins ou estender a funcionalidade padrão do Chai**.
 
@@ -164,7 +197,7 @@ chai.use(plugin);
 
 - `plugin`**:** um módulo que estende a funcionalidade do Chai. Esse plugin deve ser uma função que aceita a instância do Chai como argumento e adiciona novas asserções ou funcionalidades
 
-## Observações Interessantes
+# Observações Interessantes
 
 Você também pode criar seu próprio plugin customizado para adicionar funcionalidades personalizadas ao Chai. Por exemplo:
 

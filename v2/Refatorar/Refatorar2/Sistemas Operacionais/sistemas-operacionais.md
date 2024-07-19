@@ -5,7 +5,7 @@
 - [**Kernel**](#kernel)
 - [**Unix-like**](#unix-like)
     + [**Serviços**](#servicos)
-    + [systemctl](#systemctl) <-- Parei a revisão neste tópico. Cima para baixo.
+    + [systemctl](#systemctl)
     + [Daemon](#daemon)
     + [Execução em Primeiro e Segundo Plano](#execucao-primeiro-segundo-plano)
     + [Caminho Absoluto e Caminho Relativo](#caminho-absoluto-caminho-relativo) (Y)
