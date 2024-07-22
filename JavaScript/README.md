@@ -10,8 +10,9 @@
 - [O que é JavaScript?](./fundamentos-javascript/sintaxe-tipos-dados/javascript.md)
 - [Variáveis](./fundamentos-javascript/sintaxe-tipos-dados/variaveis.md)
 - [Tipos de Dados Primitivos](./fundamentos-javascript/sintaxe-tipos-dados/tipos-dados-primitivos.md)
+- [Dinamicamente Tipada](./fundamentos-javascript/sintaxe-tipos-dados/dinamicamente-tipada.md)
 - [Escopo](./fundamentos-javascript/sintaxe-tipos-dados/escopo.md)
-- Operadores
+- [Operadores](./fundamentos-javascript/sintaxe-tipos-dados/operadores.md)
 
 ### 2. Estruturas de Controle
 
@@ -23,7 +24,7 @@
 
 - Declaração de Funções
 - Funções Anônimas
-- [Arrow Functions](./fundamentos-javascript/funcoes/arrow-functions.md)
+- [Arrow Functions](./fundamentos-javascript/funcoes/arrow-functions.md) <--
 - [IIFE (Immediately Invoked Function Expressions)](./fundamentos-javascript/funcoes/iife.md)
 - [Funções de Ordem Superior](./fundamentos-javascript/funcoes/funcoes-ordem-superior.md)
 - Parâmetros e Valores de Retorno
@@ -31,7 +32,8 @@
 ### [4. Objetos e Arrays](./fundamentos-javascript/objetos-arrays/)
 
 - [O que são Objetos?](./fundamentos-javascript/objetos-arrays/objetos.md)
-    + [Comparando dois Objetos](./fundamentos-javascript/objetos-arrays/objetos.md#comparacao-objetos)
+    + [Objetos Declarados com `const`](./fundamentos-javascript/objetos-arrays/objetos.md#objetos-declarados-const)
+    + [Comparando dois Objetos](./fundamentos-javascript/objetos-arrays/objetos.md#comparando-objetos)
 - Objetos Globais
 - Criação e Manipulação de Objetos
 - [Template Literals](./fundamentos-javascript/objetos-arrays/template-literals.md)

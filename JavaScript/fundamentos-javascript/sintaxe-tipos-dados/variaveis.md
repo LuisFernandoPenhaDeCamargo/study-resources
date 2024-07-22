@@ -4,13 +4,18 @@ Em JavaScript, há três formas principais de declarar variáveis: `var`, `let` 
 
 ## `var`
 
-1. **Escopo de função:** variáveis declaradas com `var` são limitadas ao escopo da função mais próxima. Se declaradas fora de uma função, têm escopo global
+1. [**Escopo**](./escopo.md) **de função:** variáveis declaradas com `var` são limitadas ao escopo da função mais próxima. Se declaradas fora de uma função, têm escopo global
 2. **Hoisting:** variáveis declaradas com `var` são "içadas" (hoisted) ao topo do escopo, o que significa que podem ser usadas antes de serem declaradas, mas o valor inicial será `undefined`
 3. **Reatribuição e redefinição:** variáveis declaradas com `var` podem ser reatribuídas e redefinidas
 
 ```JavaScript
 function example() {
     console.log(a); // Ouput: undefined. Hoisted.
+    /*
+    - var: palavra-chave utilizada para declarar uma variável
+    - a: identificador ou chave da variável. É utilizado para se referir a variável e assim manipulá-la
+    - 10: valor atribuído ao identificador
+    */
     var a = 10;
     console.log(a); // Ouput: 10
 }
@@ -18,9 +23,9 @@ function example() {
 example();
 
 var b = 1;
-var b = 2; // Redefinição permitida.
+var b = 2; // Redefinição permitida: você pode declarar uma nova variável com um identificador já existente. Se atente que o `b` que possuí o valor igual a 1 não existe mais.
 
-b = 3; // Reatribuição permitida.
+b = 3;     // Reatribuição permitida: você pode atribuir um novo valor a variável
 ```
 
 ## `let`
@@ -33,14 +38,15 @@ b = 3; // Reatribuição permitida.
 function example() {
     // console.log(a); // `ReferenceError: Cannot access 'a' before initialization`
     let a = 10;
-    console.log(a); // Output: 10
+    console.log(a);    // Output: 10
 }
 
 example();
 
 let b = 1;
 // let b = 2; // `SyntaxError: Identifier 'b' has already been declared`
-b = 3; // Reatribuição permitida.
+
+b = 3;        // Reatribuição permitida.
 ```
 
 ## `const`
@@ -53,17 +59,17 @@ b = 3; // Reatribuição permitida.
 function example() {
     // console.log(a); // `ReferenceError: Cannot access 'a' before initialization`
     const a = 10;
-    console.log(a); // Ouput: 10
+    console.log(a);    // Ouput: 10
 }
 
 example();
 
+// const b;     // `SyntaxError: Missing initializer in const declaration`
 const b = 1;
-// const b = 2; // `SyntaxError: Identifier 'd' has already been declared`
-// d = 3; // TypeError: Assignment to constant variable
-```
+// const b = 2; // `SyntaxError: Identifier 'b' has already been declared`
 
-<-- Objetos e arrays declarados como `const`
+// b = 3;       // `TypeError: Assignment to constant variable`
+```
 
 ## Usos Comuns
 

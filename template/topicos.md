@@ -23,7 +23,7 @@ Codename:	jammy
 - `Principais Características`
 - `Principais Funções`
 - `Usos Comuns`
-- `Benefícios`
+- `Benefícios`/`Vantagens e Desvantagens`
 - `Ferramentas e Abordagens`
 - `Arquivos Relacionados`
 - `Exemplo`
