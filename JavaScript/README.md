@@ -75,6 +75,8 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
 + Eu posso dizer que eles possuem versões? Qual é o termo mais adequado?
 + Quantos existem e quais features cada um adicionou ao Node.js?
 
+- [O que são módulos?](./conceitos-intermediarios/modulos/modulos.md)
+    + [Escopo de Módulo](./conceitos-intermediarios/modulos/modulos.md#escopo-modulo)
 - Importações e Exportações nos Módulos CommonJS
 - [Importações e Exportações nos Módulos ES](./conceitos-intermediarios/modulos/importacoes-exportacoes-modulos-es.md)
 - [Módulos CommonJS e Módulos ES no Mesmo Arquivo](./conceitos-intermediarios/modulos/modulos-commonjs-modulos-es-mesmo-arquivo.md)

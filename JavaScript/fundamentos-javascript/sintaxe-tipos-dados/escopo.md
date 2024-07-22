@@ -18,7 +18,7 @@ function globalFunction() {
 
 globalFunction()
 
-console.log(globalVar); // Acessível aqui também.
+console.log(globalVar);     // Acessível aqui também.
 ```
 
 ### 2. Escopo de Função
@@ -35,7 +35,7 @@ function myFunction() {
 
 myFunction();
 
-console.log(functionVar); // Erro: functionVar não está definido.
+console.log(functionVar);     // Erro: functionVar não está definido.
 ```
 
 ### 3. Escopo de Bloco
@@ -45,18 +45,18 @@ console.log(functionVar); // Erro: functionVar não está definido.
 
 ```JavaScript
 if (true) {
-    let blockVar = "I'm in a block.";
+    let blockLet = "I'm in a block.";
     const blockConst = "I'm a constant in a block.";
-    var varVar = "I'm in a block and I'm acessible outside of it too."
+    var blockVar = "I'm in a block and I'm acessible outside of it too."
 
-    console.log(blockVar); // Acessível aqui.
+    console.log(blockLet);   // Acessível aqui.
     console.log(blockConst); // Acessível aqui.
-    console.log(varVar); // Acessível aqui, pois seu escopo é delimitado pelo escopo de Função ou pelo escopo Global.
+    console.log(blockVar);   // Acessível aqui.
 }
 
-console.log(blockVar); // Erro: blockVar não está definido.
-console.log(blockConst); // Erro: blockConst não está definido.
-console.log(varVar); // Acessível aqui, pois seu escopo é delimitado pelo escopo de Função ou pelo escopo Global.
+console.log(blockLet);       // Erro: blockLet não está definido.
+console.log(blockConst);     // Erro: blockConst não está definido.
+console.log(blockVar);       // Acessível aqui, pois seu escopo é delimitado pelo escopo de Função ou pelo escopo Global.
 ```
 
 ### 4. Escopo Lexical
@@ -76,21 +76,6 @@ function outerFunction() {
 }
 
 outerFunction();
-```
-
-### 5. Escopo de Módulo
-
-- Cada arquivo de módulo tem seu próprio escopo
-- Variáveis e funções declaradas em um módulo não são acessíveis fora dele, a menos que sejam exportadas
-
-```JavaScript
-// module1.mjs
-export const moduleVar = "I'm in a module.";
-
-// module2.mjs
-import { moduleVar } from "./module1.js";
-
-console.log(moduleVar); // Acessível aqui porque foi importado.
 ```
 
 ## Principais Funções
