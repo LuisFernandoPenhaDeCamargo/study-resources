@@ -5,7 +5,7 @@
 - Se for necessário, coloque o nome dos "Tópicos Comuns" no plural
 - Observe que a lista abaixo segue a ordem na qual elas devem aparecer dentro de um documento
 
-### Tópicos Comuns
+## Tópicos Comuns
 
 - `Prático`
 - `Contexto: SO Utilizado`. Seu conteúdo será, por exemplo:
@@ -26,11 +26,11 @@ Codename:	jammy
 - `Benefícios`
 - `Ferramentas e Abordagens`
 - `Arquivos Relacionados`
-- `Exemplo`/`Exemplos`
+- `Exemplo`
 - `Observações`
 - `Erros Enfrentados`
 - `Conclusão`
-- `Exemplo Interessante`/`Exemplos Interessantes`
+- `Exemplo Interessante`
 - `Observações Importantes`
 - `Métodos e Propriedades`/`Comandos Utilizados através do CLI`
 

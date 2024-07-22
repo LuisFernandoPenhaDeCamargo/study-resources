@@ -36,7 +36,7 @@ Observe que a lista abaixo segue a ordem na qual os tópicos devem aparecer dent
 
 - `Sintaxe Básica`
     + Se o título do tópico já for a "Sintaxe Básica", não é necessário fornecer este subtópico
-    + **Parâmetro**
+    + **Parâmetros**
         - Pontue os parâmetros na forma de uma lista
         - Não é necessário pontuar no nome do item o tipo do argumento, caso você vá fornecê-lo no texto que descreve o item  
     + **Retorno**  
@@ -44,10 +44,10 @@ Observe que a lista abaixo segue a ordem na qual os tópicos devem aparecer dent
         - Se o retorno não foi pontuado inicialmente na pesquisa e eu não tiver a necessidade de saber o valor dele, não irei incluí-lo nas anotações
 - `Principais Características`
 - `Opções Comuns`
-- `Exemplo`/`Exemplos`
+- `Exemplo`
 - `Conclusão`
 - `Observações`
-- `Exemplo Interessante`/`Exemplos Interessantes`
+- `Exemplo Interessante`
 - `Observações Importantes`
 
 ### Logs
@@ -58,17 +58,17 @@ Observe que a lista abaixo segue a ordem na qual os tópicos devem aparecer dent
 
 ## Formatação do Código-fonte
 
-- **Mensagens de erro** seguem o seguinte formato, "`[ $< nome da função ou método/ nome do arquivo > ${error.name} ], ${error.message}`", sendo que o template literal, a técnica de interpolação de expressão e a propriedade `message` do objeto `error`, fazem parte do JavaScript, para outras linguagens siga a mesma ideia, mas utilizando das propriedades da linguagem em questão
+- **Mensagens de erro** seguem o seguinte formato, "`[ $< nome da função ou método/ nome do arquivo > ${error.name} ], ${error.message}`", sendo que o template literal, a técnica de interpolação de expressão, a propriedade `name` e a propriedade `message` do objeto `error`, fazem parte do JavaScript, para outras linguagens siga a mesma ideia, mas utilizando das propriedades da linguagem em questão
 
 ### Espaçamento
 
 - Pule uma linha:
-    + Entre a importação de uma depedências externa e a importação de um arquivo do projeto
+    + Entre a importação de uma depedência externa e a importação de um arquivo do projeto
     + Entre uma declaração e o restante do código
     + Entre uma expressão e o restante do código
     + Entre uma impressão e o restante do código
     + Entre um retorno e o restante do código
-    + Entre uma resposta (`response`s) e o restante do código
+    + Entre uma resposta (`response`s, em Javascript, por exemplo) e o restante do código
 - Dependências externas, arquivos do projeto, variáveis, expressões, logs e repostas, podem ser agrupados se forem da mesma "categoria". Por exemplo: um bloco de impressões
 
 ## Comentários
@@ -84,7 +84,7 @@ Observe que a lista abaixo segue a ordem na qual os tópicos devem aparecer dent
 */
 ```
 
-- Para comentários de múltiplas linhas que contém código, as linhas que não são código, deverão ser comentadas novamente. O objetivo é a facilidade ao descomentar a estrutura mais externa para poder executar o que é código. Por exemplo:
+- Para comentários de múltiplas linhas que contém código, as linhas que não são código, deverão ser comentadas novamente. O objetivo é obter facilidade ao descomentar a estrutura mais externa para poder executar o que é código. Por exemplo:
 
 ```JavaScript
 // my-module.mjs
@@ -100,7 +100,7 @@ const myVariable = 42;
 
 export default myVariable;
 // O código acima está correto, o abaixo gera um erro.
-export default const myVariable; // Você não pode utilizar as palavras-chave `var`, `let` e `const` após `default`.
+export default const myOtherVariable; // Você não pode utilizar as palavras-chave `var`, `let` e `const` após `default`.
 (Exemplo em JavaScript)
 */
 ```

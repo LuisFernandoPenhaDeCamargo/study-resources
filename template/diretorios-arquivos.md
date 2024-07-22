@@ -6,7 +6,7 @@ Abaixo iremos exemplificar como eu vou representar a estrutura hierarquica do si
 my-project/
 └── src/
     ├── services/
-    │   └── sensitive_data_getters.js
+    │   └── sensitive-data-getters.js
     ├── custom-tests/
     │   └── getAccessToken.test.js
     ├── index.js
