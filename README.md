@@ -1,4 +1,4 @@
-# README <--
+# README
 
 O objetivo deste repositório é pontuar conceitos e ferramentas que são importantes para um desenvolvedor. Abaixo, teremos um sumário dos diretórios (ou arquivos) que se encontram no nível superior deste repositório, também iremos fornecer um breve resumo do que cada um trata.
 
@@ -12,22 +12,17 @@ Tenha em mente que se o sumário, seja deste documento README ou qualquer outro,
 - Rust
 - Python
 - [Diretório Heterogêneo](./diretorio-heterogeneo/)
-- [Brainstorming](./brainstorming.md)
-- [Template](./template.md)
+- [Template](./template/README.md)
 
-### JavaScript
+## JavaScript
 
 Este diretório contém informações sobre o ecosssitema JavaScript, sejam conceitos, bibliotecas, frameworks ou até mesmo ferramentas (pacotes).
 
-### Diretório Heterogêneo
+## Diretório Heterogêneo
 
 Este diretório contém vários documentos que tratam dos mais variados assuntos relacionados a tecnologia.
 
-### Brainstorming
-
-Este documento contém um apanhado de ideias, o propósito dele é ajudar a me organizar como irei estruturar o conteúdo dentro deste repositório.
-
-### Template
+## Template
 
 Este arquivo específica as regras para formatar os documentos (arquivos) deste repositório, ele é útil na hora de padronizar novos conteúdos que serão adicionados a este repositório.
 
@@ -48,7 +43,7 @@ Abaixo temos uma lista de tópicos que eu irei estudar.
 ```
 
 - O que significa o "`_`" no exemplo:
-    + Qual é o nome deste símbolo?
+  + Qual é o nome deste símbolo?
 
 ```JavaScript
 const _ = require("lodash");
@@ -63,9 +58,9 @@ const _ = require("lodash");
 
 ### 3. Variados
 
-- O que deduzimos sobre a tabela users
-- O que deduzimos sobre a tabela remote_queries
-- O que deduzimos sobre a tabela remote_commands
+- Anotar o que deduzimos sobre a tabela users
+- Anotar o que deduzimos sobre a tabela remote_queries
+- Anotar o que deduzimos sobre a tabela remote_commands
 - Docker
     + Utilizando Docker para implementar CI/CD
 - Funções x Métodos?
@@ -82,7 +77,7 @@ const _ = require("lodash");
 
 Arquivos abertos no repositório zoe-game-api:
 
-- **getAccessToken.teste.mjs**
+- **services.test.mjs**
 - **send_error.js**
 - **debug.js**
 - **package.json**
@@ -90,4 +85,4 @@ Arquivos abertos no repositório zoe-game-api:
 - **prize.js**
 - **raffle_prizes.js**
 - **raffle_accumulated_prize.sql**
-- **raffle_jackpot.prize.sql**
+- **raffle_jackpot_prize.sql**

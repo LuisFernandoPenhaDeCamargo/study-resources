@@ -23,7 +23,7 @@
 
 - Declaração de Funções
 - Funções Anônimas
-- [Arrow Functions](./fundamentos-javascript/funcoes/arrow-functions.md) <--
+- [Arrow Functions](./fundamentos-javascript/funcoes/arrow-functions.md)
 - [IIFE (Immediately Invoked Function Expressions)](./fundamentos-javascript/funcoes/iife.md)
 - [Funções de Ordem Superior](./fundamentos-javascript/funcoes/funcoes-ordem-superior.md)
 - Parâmetros e Valores de Retorno
