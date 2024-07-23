@@ -17,7 +17,7 @@
 ### [2. Estruturas de Controle](./fundamentos-javascript/estruturas-controle/)
 
 - [Condicionais](./fundamentos-javascript/estruturas-controle/condicionais.md)
-
+    + [Operador Condicional (Ternário)](./fundamentos-javascript/estruturas-controle/condicionais.md#ternario)
 - Laços de Repetição (`for`, `while`, do...while) <--
 - Break e Continue
 
@@ -33,8 +33,8 @@
 ### [4. Objetos e Arrays](./fundamentos-javascript/objetos-arrays/)
 
 - [Objetos](./fundamentos-javascript/objetos-arrays/objetos.md)
-    + [Operadores de Comparação Avançada](./fundamentos-javascript/objetos-arrays/objetos.md#operadores-comparacao-avancada)
     + [Objetos Declarados com `const`](./fundamentos-javascript/objetos-arrays/objetos.md#objetos-declarados-const)
+    + [Operadores de Comparação Avançada](./fundamentos-javascript/objetos-arrays/objetos.md#operadores-comparacao-avancada)
     + [Comparando dois Objetos](./fundamentos-javascript/objetos-arrays/objetos.md#comparando-objetos)
 - Objetos Globais
 - Criação e Manipulação de Objetos

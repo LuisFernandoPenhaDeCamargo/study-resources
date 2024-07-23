@@ -35,11 +35,11 @@ JavaScript suporta operadores avançados, como o operador de coalescência nula 
 O operador de coalescência nula é utilizado para fornecer um valor padrão quando uma variável é `null` ou `undefined`. Ele é útil quando você quer garantir que uma variável tenha um valor, mesmo que ela não esteja definida.
 
 ```JavaScript
-const resultado = valor1 ?? valor2;
+const result = value1 ?? value2;
 ```
 
-- Se `valor1` não for `null` nem `undefined`, `resultado` será igual a `valor1`
-- Se `valor1` for `null` ou `undefined`, `resultado` será igual a `valor2`
+- Se `value1` não for `null` nem `undefined`, `result` será igual a `value1`
+- Se `value1` for `null` ou `undefined`, `result` será igual a `value2`
 
 Por exemplo:
 
@@ -85,7 +85,7 @@ user = null;
 console.log(user?.profile?.name); // Output: undefined. Não lança um erro.
 
 // Sem encadeamento opcional.
-console.log(user.profile.name);   // `TypeError: Cannot read properties of null (reading 'profile')`
+// console.log(user.profile.name);   // `TypeError: Cannot read properties of null (reading 'profile')`
 ```
 
 ## <a id="comparando-objetos">Comparando dois Objetos</a>
