@@ -34,8 +34,8 @@
 
 - [Objetos](./fundamentos-javascript/objetos-arrays/objetos.md)
     + [Objetos Declarados com `const`](./fundamentos-javascript/objetos-arrays/objetos.md#objetos-declarados-const)
-    + [Operadores de Comparação Avançada](./fundamentos-javascript/objetos-arrays/objetos.md#operadores-comparacao-avancada)
     + [Comparando dois Objetos](./fundamentos-javascript/objetos-arrays/objetos.md#comparando-objetos)
+- [Operadores](./fundamentos-javascript/objetos-arrays/operadores.md)
 - Objetos Globais
 - Criação e Manipulação de Objetos
 - [Template Literals](./fundamentos-javascript/objetos-arrays/template-literals.md) <--
