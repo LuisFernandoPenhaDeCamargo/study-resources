@@ -16,7 +16,7 @@
 
 ### [2. Estruturas de Controle](./fundamentos-javascript/estruturas-controle/)
 
-- [Condicionais](./fundamentos-javascript/estruturas-controle/condicionais.md) (`if`, `else`, `switch`)
+- [Condicionais](./fundamentos-javascript/estruturas-controle/condicionais.md)
 - Laços de Repetição (`for`, `while`, do...while)
 - Break e Continue
 

@@ -10,6 +10,7 @@ Em JavaScript, há três formas principais de declarar variáveis: `var`, `let` 
 
 ```JavaScript
 function example() {
+    // - `console.log()`: comando para impressão. Imprime o valor do que se encontra entre parênteses
     console.log(a); // Ouput: undefined. Hoisted.
     /*
     - var: palavra-chave utilizada para declarar uma variável
