@@ -7,16 +7,16 @@
 
 ### [1. Sintaxe e Tipos de Dados](./fundamentos-javascript/sintaxe-tipos-dados/)
 
-- [O que é JavaScript?](./fundamentos-javascript/sintaxe-tipos-dados/javascript.md)
+- [JavaScript](./fundamentos-javascript/sintaxe-tipos-dados/javascript.md)
 - [Variáveis](./fundamentos-javascript/sintaxe-tipos-dados/variaveis.md)
 - [Tipos de Dados Primitivos](./fundamentos-javascript/sintaxe-tipos-dados/tipos-dados-primitivos.md)
 - [Dinamicamente Tipada](./fundamentos-javascript/sintaxe-tipos-dados/dinamicamente-tipada.md)
 - [Escopo](./fundamentos-javascript/sintaxe-tipos-dados/escopo.md)
 - [Operadores](./fundamentos-javascript/sintaxe-tipos-dados/operadores.md)
 
-### 2. Estruturas de Controle
+### [2. Estruturas de Controle](./fundamentos-javascript/estruturas-controle/)
 
-- Condicionais (`if`, `else`, `switch`)
+- [Condicionais](./fundamentos-javascript/estruturas-controle/condicionais.md) (`if`, `else`, `switch`)
 - Laços de Repetição (`for`, `while`, do...while)
 - Break e Continue
 
@@ -31,14 +31,14 @@
 
 ### [4. Objetos e Arrays](./fundamentos-javascript/objetos-arrays/)
 
-- [O que são Objetos?](./fundamentos-javascript/objetos-arrays/objetos.md)
+- [Objetos](./fundamentos-javascript/objetos-arrays/objetos.md)
     + [Objetos Declarados com `const`](./fundamentos-javascript/objetos-arrays/objetos.md#objetos-declarados-const)
     + [Comparando dois Objetos](./fundamentos-javascript/objetos-arrays/objetos.md#comparando-objetos)
 - Objetos Globais
 - Criação e Manipulação de Objetos
 - [Template Literals](./fundamentos-javascript/objetos-arrays/template-literals.md)
     + [Utilizando a Crase Dentro de um Template Literal](./fundamentos-javascript/objetos-arrays/template-literals.md#utilizando-acento-grave-dentro-template-literal)
-- [Objetos](./fundamentos-javascript/objetos-arrays/objetos/README.md)
+- [Tipos de Objetos](./fundamentos-javascript/objetos-arrays/objetos/README.md)
 - [Métodos de Objetos](./fundamentos-javascript/objetos-arrays/metodos-objetos/README.md)
 - [Namespaces](./fundamentos-javascript/objetos-arrays/namespaces.md)
 - Criação e Manipulação de Arrays

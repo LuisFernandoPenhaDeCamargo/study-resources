@@ -82,8 +82,8 @@ Esses operadores são usado para comparar valores e retornam um valor booleano (
 - `<=`**:** menor ou igual a
 
 ```JavaScript
-let a = 5;
-let b = "5";
+const a = 5;
+const b = "5";
 
 console.log(a == b);  // Output: true
 console.log(a === b); // Output: false
@@ -106,27 +106,148 @@ console.log("5" > "4"); // Ouput: true. Ambos são strings e a comparação é l
 
 ## 4. Operadores lógicos
 
+Esses operadores são usados para combinar expressões booleanas.
 
-
-```JavaScript
-```
-
-## 5.
-
-```JavaScript
-```
-
-## 6.
+- `&&`**:** E lógico (AND)
+- `||`**:** Ou lógico (OR)
+- `!`**:** Não lógico (NOT)
 
 ```JavaScript
+const a = true;
+const b = false;
+
+console.log(a && b); // Output: false
+console.log(a || b); // Output: true
+console.log(!a);     // Output: false
+console.log(!b);     // Output: true
 ```
 
-## 7.
+## 5. Operadores de string
+
+- `+`**:** concatenação de strings
 
 ```JavaScript
+const str1 = "Hello, ";
+const str2 = "world!";
+let str3 = str1 + str2;
+
+console.log(str3); // Output: Hello, world!
+
+// Coerção de tipos.
+const a = 1;
+const b = "20";
+
+console.log(a + b);          // Output: 120
+console.log(b + a);          // Output: 201
+console.log(typeof (a + b)); // Output: string
+console.log(typeof (b + a)); // Output: string
+// Observe que `a` foi convertindo para uma string. Quando concatenamos um `number` e uma `string`, o resultado final é uma `string`, quando concatenamos um booleano e uma string, o resultado final é uma string; então fique atento ao que acontecerá quando for realizar uma concatenação.
 ```
 
-## 8.
+## 6. Operadores bit a bit
+
+Esses operadores trabalham a nível de bits.
+
+- `&`**:** AND bit a bit
+- `|`**:** OR bit a bit
+- `^`**:** XOR bit a bit
+- `~`**:** NOT bit a bit
+- `<<`**:** deslocamento à esquerda
+- `>>`**:** deslocamento à direita
+- `>>>`**:** deslocamento à direita sem sinal
 
 ```JavaScript
+const a = 5; // 0101 em binário.
+const b = 3; // 0011 em binário.
+
+console.log(a & b);   // Output: 1. 0001 em binário.
+console.log(a | b);   // Output: 7. 0111 em binário.
+console.log(a ^ b);   // Output: 6. 0110 em binário.
+console.log(~a);      // Output: -6. 1010 em binário.
+console.log(a << 1);  // Output: 10. 1010 em binário.
+console.log(a >> 1);  // Output: 2. 0010 em binário.
+console.log(a >>> 1); // Output: 2. 0010 em binário.
 ```
+
+## 7. Operador condicional (ternário)
+
+O operador condicional é o único operador JavaScript que possui três operandos. Este operador é frequentemente utilizado como um atalho para a instrução `if`.
+
+- `?`**:** operador condicional (ternário)
+
+```JavaScript
+const age = 18;
+// | condição (`(age >= 18)`) | operador ternário (`?`) | valor de retorno se a condição for verdadeira (`"YES"`) | dois pontos (`:`) | valor de retorno se a condição for falsa (`"No"`)
+const canVote = (age >= 18) ? "Yes" : "No";
+
+console.log(canVote); // Output: Yes
+```
+
+## 8. Operador de comparação avançada
+
+JavaScript também suporta operadores avançados, como o operador de coalescência nula (`??`) e o operador de encadeamento opcional (`?.`).
+
+- `??`**:** operador de coalescência nula
+- `?.`**:** operador de encadeamento opcional
+
+### Operador de coalescência nula
+
+O operador de coalescência nula é utilizado para fornecer um valor padrão quando uma variável é `null` ou `undefined`. Ele é útil quando você quer garantir que uma variável tenha um valor, mesmo que ela não esteja definida.
+
+```JavaScript
+const resultado = valor1 ?? valor2;
+```
+
+- Se `valor1` não for `null` nem `undefined`, `resultado` será igual a `valor1`
+- Se `valor1` for `null` ou `undefined`, `resultado` será igual a `valor2`
+
+Por exemplo:
+
+```JavaScript
+let name;
+const defaultName = "Visitor";
+let nameDisplayed = name ?? defaultName;
+
+console.log(nameDisplayed); // Output: Visitor
+
+name = "Alice";
+nameDisplayed = name ?? defaultName;
+
+console.log(nameDisplayed); // Output: Alice
+```
+
+### Operador de encadeamento opcional
+
+O operador de encadeamento opcional permite acessar propriedades de objetos ou chamar métodos de maneira segura, evitando erros se uma referência for `null` ou `undefined`.
+
+```JavaScript
+object?.property;
+object?.[property];
+object?.method?.();
+```
+
+- Se  `object` for `null` ou `undefined`, a expressão retorna `undefined` em vez de lançar um erro
+
+Por exemplo:
+
+```JavaScript
+let user = {
+    profile: {
+        name: "Alice",
+    },
+};
+
+console.log(user?.profile?.name); // Output: Alice
+console.log(user?.address?.city); // Output: undefined. Não lança um erro.
+
+user = null;
+
+console.log(user?.profile?.name); // Output: undefined. Não lança um erro.
+
+// Sem encadeamento opcional.
+console.log(user.profile.name);   // `TypeError: Cannot read properties of null (reading 'profile')`
+```
+
+Esses são os principais operadores em JavaScript. Eles são fundamentais para manipular dados e controlar o fluxo do programa.
+
+[Condicionais -->](../estruturas-controle/condicionais.md)

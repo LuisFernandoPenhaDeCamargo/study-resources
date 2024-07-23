@@ -1,4 +1,4 @@
-# O que é JavaScript?
+# JavaScript
 
 JavaScript é uma linguagem de programação de alto nível, dinâmica e interpretada, amplamente utilizada para criar e controlar conteúdo dinâmico em páginas web. Foi criada por Brendan Eich em 1995 enquanto trabalhava na Netscape Communications Corporation.
 

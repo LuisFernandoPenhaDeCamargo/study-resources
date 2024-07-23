@@ -1,4 +1,4 @@
-# O que são Objetos?
+# Objetos
 
 ## <a id="objetos-declarados-const">Objetos Declarados com `const`</a>
 
