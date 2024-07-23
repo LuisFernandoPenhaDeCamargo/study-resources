@@ -17,14 +17,15 @@
 ### [2. Estruturas de Controle](./fundamentos-javascript/estruturas-controle/)
 
 - [Condicionais](./fundamentos-javascript/estruturas-controle/condicionais.md)
-- Laços de Repetição (`for`, `while`, do...while)
+
+- Laços de Repetição (`for`, `while`, do...while) <--
 - Break e Continue
 
 ### [3. Funções](./fundamentos-javascript/funcoes/)
 
 - Declaração de Funções
 - Funções Anônimas
-- [Arrow Functions](./fundamentos-javascript/funcoes/arrow-functions.md) <--
+- [Arrow Functions](./fundamentos-javascript/funcoes/arrow-functions.md)
 - [IIFE (Immediately Invoked Function Expressions)](./fundamentos-javascript/funcoes/iife.md)
 - [Funções de Ordem Superior](./fundamentos-javascript/funcoes/funcoes-ordem-superior.md)
 - Parâmetros e Valores de Retorno
@@ -32,11 +33,12 @@
 ### [4. Objetos e Arrays](./fundamentos-javascript/objetos-arrays/)
 
 - [Objetos](./fundamentos-javascript/objetos-arrays/objetos.md)
+    + [Operadores de Comparação Avançada](./fundamentos-javascript/objetos-arrays/objetos.md#operadores-comparacao-avancada)
     + [Objetos Declarados com `const`](./fundamentos-javascript/objetos-arrays/objetos.md#objetos-declarados-const)
     + [Comparando dois Objetos](./fundamentos-javascript/objetos-arrays/objetos.md#comparando-objetos)
 - Objetos Globais
 - Criação e Manipulação de Objetos
-- [Template Literals](./fundamentos-javascript/objetos-arrays/template-literals.md)
+- [Template Literals](./fundamentos-javascript/objetos-arrays/template-literals.md) <--
     + [Utilizando a Crase Dentro de um Template Literal](./fundamentos-javascript/objetos-arrays/template-literals.md#utilizando-acento-grave-dentro-template-literal)
 - [Tipos de Objetos](./fundamentos-javascript/objetos-arrays/objetos/README.md)
 - [Métodos de Objetos](./fundamentos-javascript/objetos-arrays/metodos-objetos/README.md)

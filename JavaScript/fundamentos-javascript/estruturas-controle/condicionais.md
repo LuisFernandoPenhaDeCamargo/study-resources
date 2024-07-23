@@ -80,3 +80,5 @@ switch (day) {
 ```
 
 Essas estruturas permitem que você controle o fluxo do seu programa com base em condições diferentes, tornando seu código mais flexível e dinâmico.
+
+[Laços de Repetição -->](./lacos-repeticao.md)
