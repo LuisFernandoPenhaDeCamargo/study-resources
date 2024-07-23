@@ -17,7 +17,7 @@
 ### [2. Estruturas de Controle](./fundamentos-javascript/estruturas-controle/)
 
 - [Condicionais](./fundamentos-javascript/estruturas-controle/condicionais.md)
-    + [Operador Condicional (Ternário)](./fundamentos-javascript/estruturas-controle/condicionais.md#ternario)
+- [Operadores](./fundamentos-javascript/estruturas-controle/operadores.md)
 - Laços de Repetição (`for`, `while`, do...while) <--
 - Break e Continue
 

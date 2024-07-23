@@ -81,18 +81,4 @@ switch (day) {
 
 Essas estruturas permitem que você controle o fluxo do seu programa com base em condições diferentes, tornando seu código mais flexível e dinâmico.
 
-## <a id="ternario">Operador Condicional (Ternário)</a>
-
-O operador condicional é o único operador JavaScript que possui três operandos. Este operador é frequentemente utilizado como um atalho para a instrução `if`.
-
-- `?`**:** operador condicional (ternário)
-
-```JavaScript
-const age = 18;
-// | condição (`(age >= 18)`) | operador ternário (`?`) | valor de retorno se a condição for verdadeira (`"YES"`) | dois pontos (`:`) | valor de retorno se a condição for falsa (`"No"`)
-const canVote = (age >= 18) ? "Yes" : "No";
-
-console.log(canVote); // Output: Yes
-```
-
-[Laços de Repetição -->](./lacos-repeticao.md)
+[Operadores -->](./operadores.md)
