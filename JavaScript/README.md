@@ -40,7 +40,7 @@
 - Criação e Manipulação de Objetos
 - [Template Literals](./fundamentos-javascript/objetos-arrays/template-literals.md) <--
     + [Utilizando a Crase Dentro de um Template Literal](./fundamentos-javascript/objetos-arrays/template-literals.md#utilizando-acento-grave-dentro-template-literal)
-- [Tipos de Objetos](./fundamentos-javascript/objetos-arrays/objetos/README.md)
+- [Tipos de Objetos](./fundamentos-javascript/objetos-arrays/tipos-objetos/README.md)
 - [Métodos de Objetos](./fundamentos-javascript/objetos-arrays/metodos-objetos/README.md)
 - [Namespaces](./fundamentos-javascript/objetos-arrays/namespaces.md)
 - Criação e Manipulação de Arrays
@@ -145,9 +145,10 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
 - [Mocha](./ferramentas-bibliotecas/testes-automatizados/Mocha.md)
 - [Chai](./ferramentas-bibliotecas/testes-automatizados/Chai.md)
 - [Biblioteca de Assertivas](./ferramentas-bibliotecas/testes-automatizados/biblioteca-assertivas.md)
-- [Sinon](./ferramentas-bibliotecas/testes-automatizados/Sinon.md)
-    + [Stubs](./ferramentas-bibliotecas/testes-automatizados/Sinon.md#stubs)
-    + [Mocks](./ferramentas-bibliotecas/testes-automatizados/Sinon.md#mocks)
+- [Sinon](./ferramentas-bibliotecas/testes-automatizados/Sinon/Sinon.md) <--
+    + [Stubs]
+    + [Mocks]
+    + [Métodos e Propriedades](./ferramentas-bibliotecas/testes-automatizados/Sinon/metodos-propriedades.md)
 - [Criando Testes para uma Função](./ferramentas-bibliotecas/testes-automatizados/criando-testes-funcao.md)
 - [Cucumber](./ferramentas-bibliotecas/testes-automatizados/Cucumber.md)
 - Jest

@@ -32,6 +32,18 @@ Abaixo temos uma lista de tópicos que eu irei estudar.
 
 ### 1. JavaScript
 
+- `stub.throws()`
+- `typeof`
+- `process`
+- `process.env`
+- util
+- `arguments`
+- `isArray`
+- `push`
+- `slice`
+- `forEach`
+- `inspect`
+- `replace`
 - Me explique cada detalhe do log abaixo:
 
 ```Bash
@@ -49,6 +61,10 @@ Abaixo temos uma lista de tópicos que eu irei estudar.
 const _ = require("lodash");
 ```
 
+- "/\s\s/g" (expressão regular)
+- "/\n/g" (expressão regular)
+- .mjs habilita o strict mode por padrão?
+- `delete` de valores cujo tipo de dado é primitivo em ESM
 - `interface`
 
 ### 2. AWS
@@ -73,7 +89,7 @@ const _ = require("lodash");
 - "RESTful"
 - Shebang (Linux)
 
----
+# Prático
 
 Arquivos abertos no repositório zoe-game-api:
 
@@ -86,3 +102,9 @@ Arquivos abertos no repositório zoe-game-api:
 - **raffle_prizes.js**
 - **raffle_accumulated_prize.sql**
 - **raffle_jackpot_prize.sql**
+
+```Bash
+# Comando utilizado em um teste.
+curl http://localhost:8080/game/bigwinner  -X POST \
+-H "Content-Type: application/json" -d '{"machine_id": 101}'
+```

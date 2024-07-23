@@ -169,6 +169,6 @@ console.log(a >> 1);  // Output: 2. 0010 em binário.
 console.log(a >>> 1); // Output: 2. 0010 em binário.
 ```
 
-Esses são os principais operadores em JavaScript. Eles são fundamentais para manipular dados e controlar o fluxo do programa.
+Esses são alguns dos principais operadores em JavaScript. Eles são fundamentais para manipular dados e controlar o fluxo do programa.
 
 [Condicionais -->](../estruturas-controle/condicionais.md)

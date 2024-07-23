@@ -1,5 +1,7 @@
 # Operadores
 
+Para compreender melhor como os operadores abaixo funcionam, antes era necessário entender o conceito de "condicionais", por isso eles foram pontuados aqui.
+
 ## Operador Condicional (Ternário)
 
 O operador condicional é o único operador JavaScript que possui três operandos. Este operador é frequentemente utilizado como um atalho para a instrução `if`.
@@ -14,9 +16,11 @@ const canVote = (age >= 18) ? "Yes" : "No";
 console.log(canVote); // Output: Yes
 ```
 
-### Operador de coalescência nula
+## Operador de coalescência nula
 
 O operador de coalescência nula é utilizado para fornecer um valor padrão quando uma variável é `null` ou `undefined`. Ele é útil quando você quer garantir que uma variável tenha um valor, mesmo que ela não esteja definida.
+
+- `??`**:** operador de coalescência nula
 
 ```JavaScript
 const result = value1 ?? value2;
