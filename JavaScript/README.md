@@ -1,7 +1,4 @@
-# README (JavaScript)
-
-- Se você encontrar algum conceito ou termo que não entende em um tópico em questão, não se preocupe, eles serão explicados mais a frente
-- No sumário abaixo há subseções que foram pontuadas porque eu achei necessário destacar a existência delas, mas fique atento ao fato de que nem toda subseção foi listada
+# JavaScript
 
 ## [Fundamentos de JavaScript](./fundamentos-javascript/)
 
@@ -18,7 +15,7 @@
 
 - [Condicionais](./fundamentos-javascript/estruturas-controle/condicionais.md)
 - [Operadores](./fundamentos-javascript/estruturas-controle/operadores.md)
-- Laços de Repetição (`for`, `while`, do...while) <--
+- Laços de Repetição (`for`, `while`, do...while)
 - Break e Continue
 
 ### [3. Funções](./fundamentos-javascript/funcoes/)
@@ -38,7 +35,7 @@
 - [Operadores](./fundamentos-javascript/objetos-arrays/operadores.md)
 - Objetos Globais
 - Criação e Manipulação de Objetos
-- [Template Literals](./fundamentos-javascript/objetos-arrays/template-literals.md) <--
+- [Template Literals](./fundamentos-javascript/objetos-arrays/template-literals.md)
     + [Utilizando a Crase Dentro de um Template Literal](./fundamentos-javascript/objetos-arrays/template-literals.md#utilizando-acento-grave-dentro-template-literal)
 - [Tipos de Objetos](./fundamentos-javascript/objetos-arrays/tipos-objetos/README.md)
 - [Métodos de Objetos](./fundamentos-javascript/objetos-arrays/metodos-objetos/README.md)
@@ -145,10 +142,10 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
 - [Mocha](./ferramentas-bibliotecas/testes-automatizados/Mocha.md)
 - [Chai](./ferramentas-bibliotecas/testes-automatizados/Chai.md)
 - [Biblioteca de Assertivas](./ferramentas-bibliotecas/testes-automatizados/biblioteca-assertivas.md)
-- [Sinon](./ferramentas-bibliotecas/testes-automatizados/Sinon/Sinon.md) <--
+- [Sinon](./ferramentas-bibliotecas/testes-automatizados/Sinon/Sinon.md)
     + [Stubs]
     + [Mocks]
-    + [Métodos e Propriedades](./ferramentas-bibliotecas/testes-automatizados/Sinon/metodos-propriedades.md)
+    + [Métodos e Propriedades](./ferramentas-bibliotecas/testes-automatizados/SinonJS/metodos-propriedades.md)
 - [Criando Testes para uma Função](./ferramentas-bibliotecas/testes-automatizados/criando-testes-funcao.md)
 - [Cucumber](./ferramentas-bibliotecas/testes-automatizados/Cucumber.md)
 - Jest

@@ -2,6 +2,19 @@
 
 ## Template para Documentação
 
+A documentação de um método (ou função), segue a seguinte ordem:
+
+1. **Descrição:** "O método `A< nome do método >` é utilizado para **A< descrição do método >**". Exemplo: "O método `spy` é utilizado para **monitorar chamadas a outras funções**"
+2. "`### Sintaxe Básica`"
+3. **Parâmetros:** uma lista deles. Exemplo:
+    "- `A< parâmetro 1 >`**:** A< descrição do parâmetro 1 >"
+    "- `A< parâmetro 2 >`**:** a< descrição do parâmetro 2 >"
+    "- `A< ... >`**:** A< descrição dos outros parâmetros >"
+4. "- **Retorno:** A< descrição do valor retornado pelo método >"
+5. "`## Exemplo`"
+
+---
+
 - O nome de classes, objetos, funções, métodos, variáveis e o texto de strings, em exemplos, devem estar em inglês (se possível)
 - Quando a representação "`$<  >`" for utilizada, o texto dentro dela deverá estar em português (se possível), pois ele é uma explicação sobre um valor que será utilizado nesta posição
 - **Descrição da função ou método:** começa da seguinte forma, "A função `$< nome da função >` é utilizada para ...", por exemplo
