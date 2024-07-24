@@ -5,13 +5,13 @@
 A documentação de um método (ou função), segue a seguinte ordem:
 
 1. **Descrição:** "O método `A< nome do método >` é utilizado para **A< descrição do método >**". Exemplo: "O método `spy` é utilizado para **monitorar chamadas a outras funções**"
-2. "`### Sintaxe Básica`"
-3. **Parâmetros:** uma lista deles. Exemplo:
-    "- `A< parâmetro 1 >`**:** A< descrição do parâmetro 1 >"
-    "- `A< parâmetro 2 >`**:** a< descrição do parâmetro 2 >"
+2. **Sintaxe básica:** "`### Sintaxe Básica`"
+3. **Parâmetros:** uma lista deles. Exemplo:  
+    "- `A< parâmetro 1 >`**:** A< descrição do parâmetro 1 >"  
+    "- `A< parâmetro 2 >`**:** a< descrição do parâmetro 2 >"  
     "- `A< ... >`**:** A< descrição dos outros parâmetros >"
-4. "- **Retorno:** A< descrição do valor retornado pelo método >"
-5. "`## Exemplo`"
+4. **Retorno:** "- **Retorno:** A< descrição do valor retornado pelo método >"
+5. **Exemplo:** "`## Exemplo`"
 
 ---
 
