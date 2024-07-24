@@ -1,6 +1,6 @@
 # JavaScript
 
-## [Fundamentos de JavaScript](./fundamentos-javascript/)
+## [Fundamentos de JavaScript](./fundamentos-javascript/) <--
 
 ### [1. Sintaxe e Tipos de Dados](./fundamentos-javascript/sintaxe-tipos-dados/)
 

@@ -70,7 +70,7 @@ Fique atento ao fato de que, ao chamarmos a função espionada, utilizamos `spyF
 
 Invocar `spyObjMethod` também geraria os mesmos resultados, mas vamos definir como padrão seguir o exemplo acima.
 
-# <a id="callsfake">`callsFake`</a>
+# <a id="callsfake">`callsFake`</a> <--
 
 O método `callsFake` é utilizado para **substituir a implementação de uma função stubada por uma função falsa (fake function) que você define**. Isso é útil quando você deseja simular o comportamento de uma função com lógica personalizada durante os testes.
 

@@ -82,7 +82,7 @@ Invocar `spyObjMethod` também geraria os mesmos resultados, mas vamos definir c
 (Exemplo em Markdown)
 ```
 
----
+# ---
 
 - O nome de classes, objetos, funções, métodos, variáveis e o texto de strings, em exemplos, devem estar em inglês (se possível)
 - Quando a representação "`$<  >`" for utilizada, o texto dentro dela deverá estar em português (se possível), pois ele é uma explicação sobre um valor que será utilizado nesta posição
