@@ -1,17 +1,90 @@
 # Código
 
-## Template para Documentação
+# Template para Documentação
 
 A documentação de um método (ou função), segue a seguinte ordem:
 
-1. **Descrição:** "O método `A< nome do método >` é utilizado para **A< descrição do método >**". Exemplo: "O método `spy` é utilizado para **monitorar chamadas a outras funções**"
+1. **Descrição:** "O método `A< nome do método >` é utilizado para **A< descrição do método >**"
 2. **Sintaxe básica:** "`### Sintaxe Básica`"
-3. **Parâmetros:** uma lista deles. Exemplo:  
+3. **Parâmetros:** uma lista deles  
     "- `A< parâmetro 1 >`**:** A< descrição do parâmetro 1 >"  
     "- `A< parâmetro 2 >`**:** a< descrição do parâmetro 2 >"  
     "- `A< ... >`**:** A< descrição dos outros parâmetros >"
 4. **Retorno:** "- **Retorno:** A< descrição do valor retornado pelo método >"
 5. **Exemplo:** "`## Exemplo`"
+
+## Exemplo
+
+```Markdown
+O método `spy` é utilizado para **monitorar chamadas a outras funções**. Ele permite verificar como uma função foi chamada, quais argumentos foram passados, quantas vezes foi chamada, entre outros detalhes.
+
+### Sintaxe Básica
+```
+
+```JavaScript
+const spy = sinon.spy([object, ]method);
+```
+
+```Markdown
+- `object`**:** o objeto que contém o método a ser espionado. Se não for fornecdio, o `spy` será aplicado diretamente à função fornecida
+- `method`**:** a função ou método a ser espionado
+- **Retorno:** uma função `spy` que pode ser usada para verificar chamadas, argumentos e outros detalhes sobre a função original. **O** `spy` **substitui o método original durante o teste, mas mantém a funcionalidade da função**
+
+## Exemplo
+```
+
+```JavaScript
+import sinon from "sinon";
+
+// Função que será espionada.
+function myFunction(a, b) {
+    return a + b;
+}
+
+// Criando um spy para a função myFunction.
+const spyFunction = sinon.spy(myFunction);
+
+// Chamando a função espionada.
+spyFunction(1, 2);
+
+// Verificando se o spy foi chamado.
+console.log(spyFunction.called);         // Output: true
+// Verificando o número de vezes em que o spy foi chamado.
+console.log(spyFunction.callCount);      // Output: 1
+// Verificando os argumentos com os quais o spy foi chamado.
+console.log(spyFunction.firstCall.args); // Output: [ 1, 2 ]
+
+// Objeto com método a ser espionado.
+const obj = {
+    myMethod(a ,b) {
+        return a + b;
+    }
+};
+
+// Criando um spy para o método myMethod.
+const spyObjMethod = sinon.spy(obj, "myMethod");
+
+// Chamando o método espionado.
+obj.myMethod(2, 3);
+
+// Verificando se o spy foi chamado.
+console.log(spyObjMethod.called);         // Output: true
+// Verificando o número de vezes em que o spy foi chamado.
+console.log(spyObjMethod.callCount);      // Output: 1
+// Verificando os argumentos com os quais o spy foi chamado.
+console.log(spyObjMethod.firstCall.args); // Output: [ 2, 3 ]
+
+// Restaurar o método original.
+spyObjMethod.restore();
+```
+
+```Markdown
+Fique atento ao fato de que, ao chamarmos a função espionada, utilizamos `spyFunction`, enquanto para chamar o método espionado, utilizamos `obj.myMethod`. Portanto, quando se trata de funções (que não pertencem a um objeto), devemos invocar e inspecionar o espião criado (`spyFunction`). Já quando se trata de métodos (que pertencem a um objeto), devemos invocar o método espionado (`obj.myMethod`) e inspecionar o espião criado (`spyObjMethod`).
+
+Invocar `spyObjMethod` também geraria os mesmos resultados, mas vamos definir como padrão seguir o exemplo acima.
+
+(Exemplo em Markdown)
+```
 
 ---
 
@@ -69,7 +142,7 @@ Observe que a lista abaixo segue a ordem na qual os tópicos devem aparecer dent
     `console.log("Hello, world!"); // Output: Hello, world!` (exemplo em JavaScript)
 - Se no mesmo bloco de código houver mais de uma linha de log, as alinhe (se fizer sentido) de acordo com a coluna da direita
 
-## Formatação do Código-fonte
+# Formatação do Código-fonte
 
 - **Mensagens de erro** seguem o seguinte formato, "`[ $< nome da função ou método/ nome do arquivo > ${error.name} ], ${error.message}`", sendo que o template literal, a técnica de interpolação de expressão, a propriedade `name` e a propriedade `message` do objeto `error`, fazem parte do JavaScript, para outras linguagens siga a mesma ideia, mas utilizando das propriedades da linguagem em questão
 
@@ -84,7 +157,7 @@ Observe que a lista abaixo segue a ordem na qual os tópicos devem aparecer dent
     + Entre uma resposta (`response`s, em Javascript, por exemplo) e o restante do código
 - Dependências externas, arquivos do projeto, variáveis, expressões, logs e repostas, podem ser agrupados se forem da mesma "categoria". Por exemplo: um bloco de impressões
 
-## Comentários
+# Comentários
 
 - Comentários deverão estar acima da linha de código (ou bloco de código) que está sendo documentada
 - Para comentários de múltiplas linhas, utilize um bloco de documentação, mas não insira nada em sua abertura ou fechamento. Por exemplo:
