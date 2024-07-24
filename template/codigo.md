@@ -19,21 +19,18 @@ A documentação de um método (ou função), segue a seguinte ordem:
 O método `spy` é utilizado para **monitorar chamadas a outras funções**. Ele permite verificar como uma função foi chamada, quais argumentos foram passados, quantas vezes foi chamada, entre outros detalhes.
 
 ### Sintaxe Básica
-```
 
-```JavaScript
+´´´JavaScript
 const spy = sinon.spy([object, ]method);
-```
+´´´
 
-```Markdown
 - `object`**:** o objeto que contém o método a ser espionado. Se não for fornecdio, o `spy` será aplicado diretamente à função fornecida
 - `method`**:** a função ou método a ser espionado
 - **Retorno:** uma função `spy` que pode ser usada para verificar chamadas, argumentos e outros detalhes sobre a função original. **O** `spy` **substitui o método original durante o teste, mas mantém a funcionalidade da função**
 
 ## Exemplo
-```
 
-```JavaScript
+´´´JavaScript
 import sinon from "sinon";
 
 // Função que será espionada.
@@ -76,9 +73,8 @@ console.log(spyObjMethod.firstCall.args); // Output: [ 2, 3 ]
 
 // Restaurar o método original.
 spyObjMethod.restore();
-```
+´´´
 
-```Markdown
 Fique atento ao fato de que, ao chamarmos a função espionada, utilizamos `spyFunction`, enquanto para chamar o método espionado, utilizamos `obj.myMethod`. Portanto, quando se trata de funções (que não pertencem a um objeto), devemos invocar e inspecionar o espião criado (`spyFunction`). Já quando se trata de métodos (que pertencem a um objeto), devemos invocar o método espionado (`obj.myMethod`) e inspecionar o espião criado (`spyObjMethod`).
 
 Invocar `spyObjMethod` também geraria os mesmos resultados, mas vamos definir como padrão seguir o exemplo acima.
