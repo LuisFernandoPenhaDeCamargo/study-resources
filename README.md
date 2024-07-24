@@ -1,5 +1,3 @@
-# README
-
 O objetivo deste repositório é pontuar conceitos e ferramentas que são importantes para um desenvolvedor. Abaixo, teremos um sumário dos diretórios (ou arquivos) que se encontram no nível superior deste repositório, também iremos fornecer um breve resumo do que cada um trata.
 
 Observe que dentro de cada diretório que se encontra no nível superior, também existirá outro arquivo README pontuando o sumário daquele diretório. A ordem dos itens nos sumários, normalmente, tem significado, seja uma sugestão em relação a ordem de estudo por conta do aumento de complexidade, a até mesmo, um conteúdo que eu uso com mais frequência na minha vida profissional.
@@ -8,11 +6,14 @@ Tenha em mente que se o sumário, seja deste documento README ou qualquer outro,
 
 ### Sumário
 
+- [Conceitos Introdutórios para Programação](./conceitos-introdutorios-programacao/README.md)
 - [JavaScript](./JavaScript/)
 - Rust
 - Python
 - [Diretório Heterogêneo](./diretorio-heterogeneo/)
 - [Template](./template/README.md)
+
+## Conceitos Introdutórios para Programação
 
 ## JavaScript
 
@@ -108,3 +109,9 @@ Arquivos abertos no repositório zoe-game-api:
 curl http://localhost:8080/game/bigwinner  -X POST \
 -H "Content-Type: application/json" -d '{"machine_id": 101}'
 ```
+
+- Verificar o número de vezes em que os métodos (ou funções) são chamados
+- Verificar o caso de sucesso, se o retorno está de acordo com o que você espera
+- Verificar o caso de falha, se o tratamento de erro está de acordo com o que você quer. Exemplos relacionados a arquivos:
+  + Caso em que o arquivo não existe
+  + Caso em que você não tem permissão para ler o arquivo

@@ -2,7 +2,17 @@
 
 ### Sumário
 
+- [`spy`](#spy)
 - [`callsFake`](#callsfake)
+
+# <a id="spy">`spy`</a>
+
+O método `spy` é utilizado para **monitorar chamadas a outras funções**. Ele permite verificar como uma função foi chamada, quais argumentos foram passados, quantas vezes foi chamada, entre outros detalhes.
+
+### Sintaxe Básica
+
+```JavaScript
+```
 
 # <a id="callsfake">`callsFake`</a>
 
