@@ -1,6 +1,6 @@
-# Conceitos Introdutórios para Programação
+# Fundamentos da Programação
 
-Abaixo temos uma lista de tópicos que eu irei estudar.
+Abaixo temos uma lista de tópicos que eu irei estudar:
 
 - README
 - Repositório
