@@ -146,7 +146,7 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
     + [Stubs]
     + [Mocks]
     + [Métodos e Propriedades](./ferramentas-bibliotecas/testes-automatizados/SinonJS/metodos-propriedades.md)
-- [Criando Testes para uma Função](./ferramentas-bibliotecas/testes-automatizados/criando-testes-funcao.md)
+- [Desenvolvendo Testes para Funções](./ferramentas-bibliotecas/testes-automatizados/desenvolvendo-testes-funcoes.md)
 - [Cucumber](./ferramentas-bibliotecas/testes-automatizados/Cucumber.md)
 - Jest
 - Cypress
