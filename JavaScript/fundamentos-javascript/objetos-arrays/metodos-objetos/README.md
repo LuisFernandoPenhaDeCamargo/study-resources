@@ -3,5 +3,8 @@
 ### Sumário
 
 - [Métodos de String](./string.md)
+- [Métodos do `JSON`](./JSON.md)
 
-[Criação e Manipulação de Arrays -->](../criacao-manipulacao-arrays.md)
+---
+
+# [[Próximo tópico: Criação e Manipulação de Arrays]](../criacao-manipulacao-arrays.md)

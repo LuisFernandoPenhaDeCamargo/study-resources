@@ -3,7 +3,10 @@
 ### Sumário
 
 - [`spy`](#spy)
+- [`throws`](#throws)
+- [`rejects`](#rejects)
 - [`callsFake`](#callsfake)
+- [`createStubInstance`](#createstubinstance)
 
 # <a id="spy">`spy`</a>
 
@@ -12,10 +15,10 @@ O método `spy` é utilizado para **monitorar chamadas a outras funções**. Ele
 ### Sintaxe Básica
 
 ```JavaScript
-const spy = sinon.spy([object, ]method);
+const spy = sinon.spy([obj, ]method);
 ```
 
-- `object`**:** o objeto que contém o método a ser espionado. Se não for fornecdio, o `spy` será aplicado diretamente à função fornecida
+- `obj`**:** o objeto que contém o método a ser espionado. Se não for fornecdio, o `spy` será aplicado diretamente à função fornecida
 - `method`**:** a função ou método a ser espionado
 - **Retorno:** uma função `spy` que pode ser usada para verificar chamadas, argumentos e outros detalhes sobre a função original. **O** `spy` **substitui o método original durante o teste, mas mantém a funcionalidade da função**
 
@@ -30,7 +33,7 @@ function myFunction(a, b) {
 }
 
 // Criando um spy para a função myFunction.
-const spyFunction = sinon.spy(myFunction);
+const spyFunction  = sinon.spy(myFunction);
 
 // Chamando a função espionada.
 spyFunction(1, 2);
@@ -43,7 +46,7 @@ console.log(spyFunction.callCount);      // Output: 1
 console.log(spyFunction.firstCall.args); // Output: [ 1, 2 ]
 
 // Objeto com método a ser espionado.
-const obj = {
+const obj          = {
     myMethod(a ,b) {
         return a + b;
     }
@@ -69,6 +72,30 @@ spyObjMethod.restore();
 Fique atento ao fato de que, ao chamarmos a função espionada, utilizamos `spyFunction`, enquanto para chamar o método espionado, utilizamos `obj.myMethod`. Portanto, quando se trata de funções (que não pertencem a um objeto), devemos invocar e inspecionar o espião criado (`spyFunction`). Já quando se trata de métodos (que pertencem a um objeto), devemos invocar o método espionado (`obj.myMethod`) e inspecionar o espião criado (`spyObjMethod`).
 
 Invocar `spyObjMethod` também geraria os mesmos resultados, mas vamos definir como padrão seguir o exemplo acima.
+
+# <a id="throws">`throws`</a>
+
+O método `throws` é utilizado para **simular um comportamento onde uma função lança uma exceção**. Isso é útil para testar como seu código lida com erros.
+
+### Sintaxe Básica
+
+```JavaScript
+sinon.stub(obj, "method").throws(exception);
+```
+
+- `exception`**:** a exceção que será lançada quando o método stubado for chamado. Pode ser uma string, um objeto de erro, ou qualquer outro valor
+
+# <a id="rejects">`rejects`</a>
+
+O método `rejects` é utilizado para **simular um comportamento onde uma função assíncrona retorna uma promessa que é rejeitada**. Isso é útil para testar como seu código lida com promessas rejeitadas.
+
+### Sintaxe Básica
+
+```JavaScript
+sinon.stub(obj, "method").rejects(reason);
+```
+
+- `reason`**:** a razão pela qual a promessa será rejeitada. Pode ser uma string, um objeto de erro, ou qualquer outro valor
 
 # <a id="callsfake">`callsFake`</a>
 
@@ -115,6 +142,40 @@ describe("fetchData", () {
 });
 ```
 
+# <a id="createstubinstance">`createStubInstance`</a>
+
+O método `createStubInstance` é utilizado para **criar uma instância stubada de uma classe**, permitindo que você substitua métodos dessa instância por stubs.
+
+### Sintaxe Básica
+
+```JavaScript
+const stubInstance = sinon.createStubInstance(Class[, overrides]);
+```
+
+- `Class`**:** a classe da qual você deseja criar a instância stubada
+- `overrides`**:** um objeto cujas propriedades substituirão os métodos ou propriedades da instância stubada
+- **Retorno:** uma instância da classe especificada com os métodos ou propriedades especificados substituídos por stubs
+
+## Exemplo
+
+```JavaScript
+import sinon from "sinon";
+
+class MyClass {
+    myMethod() {
+        return "Original value.";
+    }
+}
+
+const stubInstance = sinon.createStubInstance(MyClass);
+
+stubInstance.myMethod.returns("Stubbed value.");
+
+const output       = stubInstance.myMethod();
+
+console.log(output); // Output: Stubbed value.
+```
+
 ---
 
-# [[Próximo Tópico: Desenvolvendo Testes para Funções]](../desenvolvendo-testes-funcoes.md)
+# [[Próximo tópico: Desenvolvendo Testes para Funções]](../desenvolvendo-testes-funcoes.md)

@@ -77,7 +77,6 @@ Sinon é uma ferramenta poderosa para desenvolvedores que escrevem testes unitá
 - [`stub`](#stub)
 - [`returns`](#returns)
 - [`resolves`](#resolves)
-- [`rejects`](#rejects)
 - [`returnsThis`](#returnsthis)
 - [`restore`](#restore)
 - [`calledOnce`](#calledonce)
@@ -136,17 +135,6 @@ stub.resolves(value);
 
 - `value`**:** o valor com o qual a promise deve ser resolvida. Por ser qualquer valor, incluindo objetos, strings, números, etc.
 
-# <a id="rejects">`rejects`</a>
-
-O método `rejects` é utilizado para **configurar um stub para retornar uma promise rejeitada com um valor específico**. Isso é útil para simular falhas em operações assíncronas durante testes.
-
-### Sintaxe Básica
-
-```JavaScript
-stub.rejects(value);
-```
-
-- `value`**:** o valor com o qual a promessa será rejeitada. Este valor pode ser um objeto de erro, uma string, ou qualquer outro valor que você deseja que a promise rejeite
 
 # <a id="returnsthis">`returnsThis`</a>
 

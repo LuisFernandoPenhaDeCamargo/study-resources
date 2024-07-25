@@ -1,5 +1,7 @@
 # Fundamentos da Programação
 
+### Sumário
+
 Abaixo temos uma lista de tópicos que eu irei pontuar:
 
 - README
