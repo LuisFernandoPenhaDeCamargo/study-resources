@@ -70,17 +70,17 @@ Fique atento ao fato de que, ao chamarmos a função espionada, utilizamos `spyF
 
 Invocar `spyObjMethod` também geraria os mesmos resultados, mas vamos definir como padrão seguir o exemplo acima.
 
-# <a id="callsfake">`callsFake`</a> <--
+# <a id="callsfake">`callsFake`</a>
 
-O método `callsFake` é utilizado para **substituir a implementação de uma função stubada por uma função falsa (fake function) que você define**. Isso é útil quando você deseja simular o comportamento de uma função com lógica personalizada durante os testes.
+O método `callsFake` é utilizado para **substituir uma função com uma implementação simulada personalizada durante os testes**. Ele é particularmente útil quando você deseja controlar o comportamento da função simulada para testar vários cenários.
 
 ### Sintaxe Básica
 
 ```JavaScript
-stub.callsFake(fakeFunction);
+sinon.stub(obj, "method").callsFake(fakeFunc);
 ```
 
-- `fakeFunction`**:** a função que você deseja usar como a implementação falsa
+- `fakeFunc`**:** uma função simulada (fake function) que será usada no lugar do método original. Essa função pode aceitar qualquer número de parâmetros, dependendo do método que está sendo stubado
 
 ## Exemplo
 
@@ -115,4 +115,6 @@ describe("fetchData", () {
 });
 ```
 
-# [Desenvolvendo Testes para Funções -->](../desenvolvendo-testes-funcoes.md)
+---
+
+# [[Próximo Tópico: Desenvolvendo Testes para Funções]](../desenvolvendo-testes-funcoes.md)
