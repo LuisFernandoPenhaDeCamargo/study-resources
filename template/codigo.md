@@ -2,9 +2,17 @@
 
 # Template para Documentação
 
+- Os nomes de classes, objetos, funções, métodos, variáveis e o texto de strings nos exemplos devem estar em inglês, se possível
+- Quando a representação "A< >" for utilizada, o texto dentro dela deverá estar em português, se possível, pois é uma explicação sobre um valor que será utilizado nessa posição
+- Se eu mencionar um método em um tópico que não se refere ao objeto (ou módulo) associado a ele, também insira o objeto (ou módulo) ao citar o método. Por exemplo:   
+    O método `.readFile` do módulo `fs` seria citado como `fs.readFile` no módulo `util`.
+
 A documentação de um método (ou função), segue a seguinte ordem:
 
-1. **Descrição:** "O método `A< nome do método >` é utilizado para **A< descrição do método >**"
+1. **Descrição:** "O método `A< nome do método >` é utilizado para **A< descrição do método >**"  
+    **Descrição de propriedades:** "A propriedade `A< nome da propriedade >`" é uma propriedade do A< ... >". Por exemplo:  
+    - "A propriedade `calledOnce` é uma propriedade do stub do Sinon (`stub.calledOnce`) que verifica ..."
+    - "A propriedade `true` é uma propriedade de asserção do Chai que verifica ..."
 2. **Sintaxe básica:** "`### Sintaxe Básica`"
 3. **Parâmetros:** uma lista deles  
     "- `A< parâmetro 1 >`**:** A< descrição do parâmetro 1 >"  
@@ -83,15 +91,6 @@ Invocar `spyObjMethod` também geraria os mesmos resultados, mas vamos definir c
 ```
 
 # ---
-
-- O nome de classes, objetos, funções, métodos, variáveis e o texto de strings, em exemplos, devem estar em inglês (se possível)
-- Quando a representação "`$<  >`" for utilizada, o texto dentro dela deverá estar em português (se possível), pois ele é uma explicação sobre um valor que será utilizado nesta posição
-- **Descrição da função ou método:** começa da seguinte forma, "A função `$< nome da função >` é utilizada para ...", por exemplo
-- **Descrição de propriedades:** começa da seguinte forma, "A propriedade `$< nome da propriedade >` é uma propriedade do ...". Por exemplo:
-    + "A propriedade `calledOnce` é uma propriedade do stub do Sinon (`stub.calledOnce`) que verifica ..."
-    + "A propriedade `true` é uma propriedade de asserção do Chai que verifica ..."
-- Se eu pontuar sobre uma função (ou método) em um tópico que não se trata do módulo (ou objeto) associado a ele, também o insira na hora de citar a função (ou método). Por exemplo:  
-    `.readFile` do módulo `fs`, seria citado como `fs.readFile` no módulo `util`
 
 ### Notação de Colchetes
 
