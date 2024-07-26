@@ -1,10 +1,10 @@
 # JavaScript
 
-## [Fundamentos de JavaScript](./fundamentos-javascript/) <--
+## [Fundamentos de JavaScript](./fundamentos-javascript/)
 
 ### [1. Sintaxe e Tipos de Dados](./fundamentos-javascript/sintaxe-tipos-dados/)
 
-- [JavaScript](./fundamentos-javascript/sintaxe-tipos-dados/javascript.md)
+- [JavaScript](./fundamentos-javascript/sintaxe-tipos-dados/JavaScript.md)  <--
 - [Variáveis](./fundamentos-javascript/sintaxe-tipos-dados/variaveis.md)
 - [Tipos de Dados Primitivos](./fundamentos-javascript/sintaxe-tipos-dados/tipos-dados-primitivos.md)
 - [Dinamicamente Tipada](./fundamentos-javascript/sintaxe-tipos-dados/dinamicamente-tipada.md)
@@ -21,6 +21,7 @@
 ### [3. Funções](./fundamentos-javascript/funcoes/)
 
 - Declaração de Funções
+- [Operadores](./fundamentos-javascript/operadores.md)
 - Funções Anônimas
 - [Arrow Functions](./fundamentos-javascript/funcoes/arrow-functions.md)
 - [IIFE (Immediately Invoked Function Expressions)](./fundamentos-javascript/funcoes/iife.md)

@@ -6,7 +6,7 @@
 
 Abaixo temos uma lista de tópicos que eu irei pontuar:
 
-- Repositório
+- Repositório  <--
 - Variáveis
 - Linguagem de Programação de Alto Nível
 - Linguagem de Programação Dinâmica
