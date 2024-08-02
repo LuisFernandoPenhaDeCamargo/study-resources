@@ -3,6 +3,7 @@
 ### Sumário
 
 - [Métodos de String](./string.md)
+- [Métodos do `Date`](./date.md)
 - [Métodos do `JSON`](./JSON.md)
 
 ---

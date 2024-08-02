@@ -18,4 +18,4 @@ string.toUpperCase();
 
 ---
 
-# [[Próximo tópico: Métodos do `JSON`]](./JSON.md)
+# [[Próximo tópico: Métodos do `Date`]](./date.md)

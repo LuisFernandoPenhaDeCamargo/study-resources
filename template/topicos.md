@@ -1,9 +1,9 @@
-# Tópicos <--
+# Tópicos
 
-- Tópicos seguem as regras gramáticais de títulos
-- Se atente que listas (enumeradas ou não) são uma coisa, tópicos, outra
+- Tópicos seguem as regras gramaticais de títulos
+    + Atente-se ao fato de que listas (enumeradas ou não) são uma coisa; tópicos são outra
 - Se for necessário, coloque o nome dos "Tópicos Comuns" no plural
-- Observe que a lista abaixo segue a ordem na qual elas devem aparecer dentro de um documento
+- Observe que a lista abaixo segue a ordem na qual os itens devem aparecer dentro de um documento
 
 ## Tópicos Comuns
 
@@ -34,4 +34,4 @@ Codename:	jammy
 - `Observações Importantes`
 - `Métodos e Propriedades`/`Comandos Utilizados através do CLI`
 
-[Links de Referência -->](./links-referencia.md)
+# [[Próximo tópico: Links de Referência]](./links-referencia.md)
