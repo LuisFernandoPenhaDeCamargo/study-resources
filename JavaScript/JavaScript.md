@@ -4,8 +4,8 @@
 
 ### [1. Sintaxe e Tipos de Dados](./fundamentos-javascript/sintaxe-tipos-dados/)
 
-- [JavaScript](./fundamentos-javascript/sintaxe-tipos-dados/JavaScript.md)  <--
-- [Variáveis](./fundamentos-javascript/sintaxe-tipos-dados/variaveis.md)
+- [JavaScript](./fundamentos-javascript/sintaxe-tipos-dados/JavaScript.md)
+- [Variáveis](./fundamentos-javascript/sintaxe-tipos-dados/variaveis.md) <--
 - [Tipos de Dados Primitivos](./fundamentos-javascript/sintaxe-tipos-dados/tipos-dados-primitivos.md)
 - [Dinamicamente Tipada](./fundamentos-javascript/sintaxe-tipos-dados/dinamicamente-tipada.md)
 - [Escopo](./fundamentos-javascript/sintaxe-tipos-dados/escopo.md)

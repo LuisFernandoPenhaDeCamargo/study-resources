@@ -4,11 +4,11 @@ JavaScript é uma linguagem de programação de alto nível, dinâmica e interpr
 
 ## Principais Características
 
-1. [**Orientada a objetos**]()**:** JavaScript suporta a criação de objetos e protótipos, permitindo a reutilização de código e a construção de programas complexos
-2. [**Baseada em prototipagem**]()**:** JavaScript também utiliza protótipos para herança. Isso significa que objetos podem herdar propriedades e métodos de outros objetos
+1. **Orientada a objetos:** JavaScript suporta a criação de objetos e protótipos, permitindo a reutilização de código e a construção de programas complexos
+2. **Baseada em prototipagem:** JavaScript também utiliza protótipos para herança. Isso significa que objetos podem herdar propriedades e métodos de outros objetos
 3. **Dinamicamente tipada:** variáveis em JavaScript não possuem tipos fixos e os tipos são determinados em tempo de execução
-4. [**Linguagem de script**]()**:** JavaScript é executado em um ambiente de tempo de execução, principalmente nos navegadores web, mas também em servidores através do Node.js
-5. [**Event-driven e assíncrono**]()**:** JavaScript é altamente adequado para programação assíncrona, utilizando eventos, callbacks, promessas e `async`/`await` para gerenciar operações não bloqueantes
+4. **Linguagem de script:** JavaScript é executado em um ambiente de tempo de execução, principalmente nos navegadores web, mas também em servidores através do Node.js
+5. **Event-driven e assíncrono:** JavaScript é altamente adequado para programação assíncrona, utilizando eventos, callbacks, promessas e `async`/`await` para gerenciar operações não bloqueantes
 
 ## Usos Comuns
 
@@ -28,4 +28,4 @@ JavaScript é uma linguagem de programação de alto nível, dinâmica e interpr
 
 JavaScript é uma linguagem de programação versátil e poderosa que desempenha um papel crucial no desenvolvimento web moderno. Seu uso se estende desde simples scripts de front-end até complexas aplicações back-end, tornando-se uma das linguagens mais populares e amplamente utilizadas na indústria de tecnologia.
 
-[Variáveis -->](./variaveis.md)
+# [[Próximo tópico: Variáveis]](./variaveis.md)

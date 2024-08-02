@@ -5,7 +5,7 @@ A ordem dos itens nos sumários segue uma sequência que vai dos assuntos mais b
 ### Sumário
 
 - [Fundamentos da Programação](./fundamentos-programacao/fundamentos-programacao.md)
-- [JavaScript](./JavaScript/README.md)
+- [JavaScript](./JavaScript/JavaScript.md)
 - Python
 - Rust
 
