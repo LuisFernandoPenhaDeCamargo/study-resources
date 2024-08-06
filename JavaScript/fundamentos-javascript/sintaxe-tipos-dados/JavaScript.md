@@ -28,4 +28,4 @@ JavaScript é uma linguagem de programação de alto nível, dinâmica e interpr
 
 JavaScript é uma linguagem de programação versátil e poderosa que desempenha um papel crucial no desenvolvimento web moderno. Seu uso se estende desde simples scripts de front-end até complexas aplicações back-end, tornando-se uma das linguagens mais populares e amplamente utilizadas na indústria de tecnologia.
 
-# [[Próximo tópico: Variáveis]](./variaveis.md)
+# [[Próximo tópico: Variáveis]](./declaracao-variaveis.md)

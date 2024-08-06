@@ -1,22 +1,17 @@
-# Variáveis
+# Declaração de Variáveis
 
 Em JavaScript, há três formas principais de declarar variáveis: `var`, `let` e `const`. Cada uma tem suas próprias características e usos específicos, vamos analisar cada uma delas em detalhes:
 
 ## `var`
 
-1. [**Escopo**](./escopo.md) **de função:** variáveis declaradas com `var` são limitadas ao escopo da função mais próxima. Se declaradas fora de uma função, têm escopo global
+1. **Escopo de função:** variáveis declaradas com `var` são limitadas ao escopo da função mais próxima. Se declaradas fora de uma função, têm escopo global  
+    Veremos mais à frente a definição de escopo no tópico [Escopo](./escopo.md) (aqui está o link, caso ajude alternar entre ambos os conceitos).
 2. **Hoisting:** variáveis declaradas com `var` são "içadas" (hoisted) ao topo do escopo, o que significa que podem ser usadas antes de serem declaradas, mas o valor inicial será `undefined`
 3. **Reatribuição e redefinição:** variáveis declaradas com `var` podem ser reatribuídas e redefinidas
 
 ```JavaScript
 function example() {
-    // - `console.log()`: comando para impressão. Imprime o valor do que se encontra entre parênteses
     console.log(a); // Ouput: undefined. Hoisted.
-    /*
-    - var: palavra-chave utilizada para declarar uma variável
-    - a: identificador ou chave da variável. É utilizado para se referir a variável e assim manipulá-la
-    - 10: valor atribuído ao identificador
-    */
     var a = 10;
     console.log(a); // Ouput: 10
 }
@@ -24,7 +19,7 @@ function example() {
 example();
 
 var b = 1;
-var b = 2; // Redefinição permitida: você pode declarar uma nova variável com um identificador já existente. Se atente que o `b` que possuí o valor igual a 1 não existe mais.
+var b = 2; // Redefinição permitida: você pode declarar uma nova variável com um identificador já existente. Observe que o `b`, que possuía o valor igual a 1, não existe mais.
 
 b = 3;     // Reatribuição permitida: você pode atribuir um novo valor a variável
 ```
@@ -37,7 +32,7 @@ b = 3;     // Reatribuição permitida: você pode atribuir um novo valor a vari
 
 ```JavaScript
 function example() {
-    // console.log(a); // `ReferenceError: Cannot access 'a' before initialization`
+    // console.log(a); // Hoisting: `ReferenceError: Cannot access 'a' before initialization`
     let a = 10;
     console.log(a);    // Output: 10
 }
@@ -45,7 +40,7 @@ function example() {
 example();
 
 let b = 1;
-// let b = 2; // `SyntaxError: Identifier 'b' has already been declared`
+// let b = 2; // Redefinição: `SyntaxError: Identifier 'b' has already been declared`
 
 b = 3;        // Reatribuição permitida.
 ```
@@ -58,7 +53,7 @@ b = 3;        // Reatribuição permitida.
 
 ```JavaScript
 function example() {
-    // console.log(a); // `ReferenceError: Cannot access 'a' before initialization`
+    // console.log(a); // Hoisting: `ReferenceError: Cannot access 'a' before initialization`
     const a = 10;
     console.log(a);    // Ouput: 10
 }
@@ -67,9 +62,9 @@ example();
 
 // const b;     // `SyntaxError: Missing initializer in const declaration`
 const b = 1;
-// const b = 2; // `SyntaxError: Identifier 'b' has already been declared`
+// const b = 2; // Redefinição: `SyntaxError: Identifier 'b' has already been declared`
 
-// b = 3;       // `TypeError: Assignment to constant variable`
+// b = 3;       // Reatribuição: `TypeError: Assignment to constant variable`
 ```
 
 ## Usos Comuns
@@ -82,4 +77,4 @@ const b = 1;
 
 Em práticas modernas de JavaScript, `let` e `const` são preferidos sobre `var` devido ao seu escopo mais previsível e a proteção adicional contra erros de redefinição e reatribuição inadvertidas.
 
-[Tipos de Dados Primitivos -->](./tipos-dados-primitivos.md)
+# [[Próximo tópico: Tipos de Dados Primitivos]](./tipos-dados-primitivos.md)
