@@ -221,3 +221,48 @@ curl http://localhost:8080/game/bigwinner -X POST \
 
 curl http://localhost:8080/game/ping -X POST \
 -H "Content-Type: application/json" -d @data2.json
+
+---
+
+- SO: remover todos os arquivos/diretórios protegidos contra escrita de uma só vez
+
+```
+eu quero remover um diretório e a mensagem: rm -r *
+
+rm: remover arquivo comum 'objects/fe/d85f28323b804ec0a042ed2188053051adae63' protegido contra escrita?
+
+como eu faço para não ter que ficar dando permissão?
+```
+
+- Realizei o push de um arquivo que tinha um segredo nele e o GitHub bloqueou. Como eu resolvo isso:
+  + https://docs.github.com/code-security/secret-scanning/pushing-a-branch-blocked-by-push-protection
+  + https://github.com/newren/git-filter-repo/
+
+```
+remote: error: GH013: Repository rule violations found for refs/heads/main.
+remote: 
+remote: - GITHUB PUSH PROTECTION
+remote:   —————————————————————————————————————————
+remote:     Resolve the following violations before pushing again
+remote: 
+remote:     - Push cannot contain secrets
+remote: 
+remote:     
+remote:      (?) Learn how to resolve a blocked push
+remote:      https://docs.github.com/code-security/secret-scanning/pushing-a-branch-blocked-by-push-protection
+remote:     
+remote:     
+remote:       —— npm Access Token ——————————————————————————————————
+remote:        locations:
+remote:          - commit: d7291366a9d5d66df118ea5092cfc2720d9417cc
+remote:            path: brainstorming.md:193
+remote:     
+remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.
+remote:        https://github.com/LuisFernandoPenhaDeCamargo/study-resources/security/secret-scanning/unblock-secret/2kHqGRquU2BSmxMX5Gelks3M9wL
+remote:     
+remote: 
+remote: 
+To https://github.com/LuisFernandoPenhaDeCamargo/study-resources
+ ! [remote rejected] main -> main (push declined due to repository rule violations)
+error: failed to push some refs to 'https://github.com/LuisFernandoPenhaDeCamargo/study-resources'`
+```
