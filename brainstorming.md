@@ -213,8 +213,7 @@ https://github.com/LuisFernandoPenhaDeCamargo/study-resources/blob/main/v2/Refat
 https://github.com/LuisFernandoPenhaDeCamargo/study-resources/blob/main/v2/JavaScript/Pacotes/PM2.md
 https://github.com/LuisFernandoPenhaDeCamargo/study-resources/blob/main/v2/JavaScript/Pacotes/pkg.md
 
-curl http://localhost:8080/game/ping -X GET \
--H "Content-Type: application/json" -d '{"machine_id": 101}'
+curl http://localhost:8080/game/ping -X GET
 
 curl http://localhost:8080/game/bigwinner -X POST \
 -H "Content-Type: application/json" -d @data2.json
@@ -266,3 +265,29 @@ To https://github.com/LuisFernandoPenhaDeCamargo/study-resources
  ! [remote rejected] main -> main (push declined due to repository rule violations)
 error: failed to push some refs to 'https://github.com/LuisFernandoPenhaDeCamargo/study-resources'`
 ```
+
+---
+
+If an ES6 module directly exports two functions (not within a class, object, etc., just directly exports the functions like in the question) and one directly calls the other, then that call cannot be mocked.
+
+In this case, funcB cannot be mocked within funcA the way the code is currently written.
+
+A mock replaces the module export for funcB, but funcA doesn't call the module export for funcB, it just calls funcB directly.
+
+3 soluções:
+
+- Move funcB to its own module
+- Import the module into itself
+
+"ES6 modules support cyclic dependencies automatically" so it is perfectly valid to import a module into itself so that functions within the module can call the module export for other functions in the module:
+
+- Injeção de dependências
+
+O que é menos custoso, a injeção de dependências ou o auto import? <-- tá no GPT
+
+https://stackoverflow.com/questions/51269431/jest-mock-inner-function
+
+- Planilha ODF (.ods) <-- Deu certo
+
+[ getTemporaryCredentials Error ], Request failed with status code 403
+*/

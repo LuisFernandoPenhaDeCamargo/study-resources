@@ -28,7 +28,7 @@ Codename:	jammy
 - `Arquivos Relacionados`
 - `Exemplo`
 - `Observações`
-- `Erros Enfrentados`
+- `Dificuldades Encontradas`
 - `Conclusão`
 - `Exemplo Interessante`
 - `Observações Importantes`
