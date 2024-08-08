@@ -1,3 +1,6 @@
+- Palavra-chave: "TODO"
+- Links de referência: "frase: frase", só utilizar uma das "frases".
+
 # Dificuldades Encontradas
 
 Contexto:
@@ -8,13 +11,13 @@ Contexto:
 - Sinon.JS
 - esmock
 
-- [`TypeError: ES Modules cannot be stubbed`](#es-modules-cannot-be-stubbed)
-- [esmock: Exportações Nomeadas vs Exportação Padrão com Nomeadas](#esmock)
-- [Mockar Função Interna](#mockar-funcao-interna)
++ [`TypeError: ES Modules cannot be stubbed`](#es-modules-cannot-be-stubbed)
++ [esmock: Exportações Nomeadas vs Exportação Padrão com Nomeadas](#esmock)
++ [Mockar Função Interna](#mockar-funcao-interna)
 
 # <a id="es-modules-cannot-be-stubbed">`TypeError: ES Modules cannot be stubbed`</a>
 
-Quando você tenta criar um stub para uma função de um ESM, você recebe a mensagem de erro que é o nosso título. TODO: explicar que ESM são read-only.
+Quando você tenta criar um stub para uma função de um ESM (substituí-la), você recebe a mensagem de erro mencionado no título. Quando você importa um ESM, o objeto obtido será "read-only", isso significa que você não pode modificar suas propriedades, como suas funções. <--
 
 ```JavaScript
 // foo-bar.mjs
@@ -47,15 +50,16 @@ describe("test suite", () => {
 
     it("foo", async () => {
         fakeReturn = await fooBar.foo();
-        console.log("fooFakeReturn:", fakeReturn); // Output: bar
+        console.log("fooReturn:", fakeReturn); // Output: bar
         expect(fakeReturn).to.be.equal("bar");
-
-        // fooStub = sinon.stub(fooBar, "foo");    // `TypeError: ES Modules cannot be stubbed`
     });
 
     it("bar", async () => {
         fakeReturn = await fooBar.bar();
-        console.log("barFakeReturn:", fakeReturn); // Output: bar
+        console.log("barReturn:", fakeReturn);  // Output: bar
+        expect(fakeReturn).to.be.equal("bar");
+
+        // fooStub = sinon.stub(fooBar, "foo"); // `TypeError: ES Modules cannot be stubbed`
     });
 });
 ```
@@ -90,39 +94,39 @@ import sinon       from "sinon";
 import * as fooBar from "./foo-bar.mjs";
 
 describe("test suite", () => {
-    let fooBarNamedMock, fooBarDefaultMock, fooBarStub, fooBarNamedStub, fooBarDefaultStub;
+    let fooBarMock, defaultBarMock, fooBarFooStub, fooBarMockFooStub, defaultBarMockFooStub;
 
     before(async () => {
         console.log("fooBar:", fooBar);
         /*
-        fooBarNamedMock: [Module: null prototype] {
+        fooBar: [Module: null prototype] {
             bar: [AsyncFunction: bar],
             foo: [AsyncFunction: foo]
         }
         */
 
-        fooBarNamedMock    = await esmock("./foo-bar.mjs");
-        console.log("fooBarNamedMock:", fooBarNamedMock);
+        fooBarMock             = await esmock("./foo-bar.mjs");
+        console.log("fooBarMock:", fooBarMock);
         /*
-        fooBarNamedMock: [Module: null prototype] {
+        fooBarMock: [Module: null prototype] {
             bar: [AsyncFunction: bar],
             foo: [AsyncFunction: foo]
         }
         */
 
-        fooBarDefaultMock  = await esmock("./default-bar.mjs");
-        console.log("fooBarDefaultMock:", fooBarDefaultMock);
+        defaultBarMock         = await esmock("./default-bar.mjs");
+        console.log("defaultBarMock:", defaultBarMock);
         /*
-        fooBarDefaultMock: <ref *1> [AsyncFunction: default] {
+        defaultBarMock: <ref *1> [AsyncFunction: default] {
             default: [Circular *1],
             foo: [AsyncFunction: foo],
             esmkTreeId: 'file:///home/luis/APIs/zoe-game-api/default-bar.mjs?esmk=1'
         }
         */
 
-        // fooBarStub      = sinon.stub(fooBar, "foo");            // `TypeError: ES Modules cannot be stubbed`
-        // fooBarNamedStub = sinon.stub(fooBarNamedMock, "foo");   // `TypeError: ES Modules cannot be stubbed`
-        fooBarDefaultStub  = sinon.stub(fooBarDefaultMock, "foo"); // O erro `TypeError: ES Modules cannot be stubbed` não ocorre.
+        // fooBarFooStub       = sinon.stub(fooBar, "foo");         // `TypeError: ES Modules cannot be stubbed`
+        // fooBarMockFooStub   = sinon.stub(fooBarMock, "foo");     // `TypeError: ES Modules cannot be stubbed`
+        defaultBarMockFooStub  = sinon.stub(defaultBarMock, "foo"); // O erro `TypeError: ES Modules cannot be stubbed` não ocorre.
     });
 
     it("foo", async () => {});
@@ -131,11 +135,11 @@ describe("test suite", () => {
 });
 ```
 
-Como você pode perceber pelo log em **foo-bar.test.mjs**, `fooBarNamedMock` é idêntico a `fooBar` (que foi importado utilizando o `import` e não o `esmock`). Quando o módulo possui apenas exportações nomeadas, mesmo o `esmock` não permite que ele seja sobrescrito. O módulo deve possuir uma exportação padrão para que o `esmock` funcione (o identificador esmkTreeId: 'file:///home/luis/APIs/zoe-game-api/default-bar.mjs?esmk=1' aparece no log).
+Como você pode perceber pelo log em **foo-bar.test.mjs**, `fooBarMock` é idêntico a `fooBar` (que foi importado utilizando o `import` e não o `esmock`). Quando o módulo possui apenas exportações nomeadas, mesmo o `esmock` não permite que ele seja sobrescrito. O módulo deve possuir uma exportação padrão para que o `esmock` funcione (o identificador esmkTreeId: `'file:///home/luis/APIs/zoe-game-api/default-bar.mjs?esmk=1'` aparece no log).
 
 Atente-se ao fato de que a exportação padrão deve ser uma **função** ou uma **classe**; se você exportar uma variável, o erro persiste. TODO: porque o esmock necessita de uma exportação padrão?
 
-Tendo essa característica do esmock em mente, vamos finalmente utilizá-lo para criar um stub para uma função de um ESM:
+Tendo essa característica do esmock em mente, vamos finalmente utilizá-lo para substituir uma função de um ESM:
 
 ```JavaScript
 // default-bar.mjs
@@ -153,13 +157,13 @@ import { expect } from "chai";
 import sinon      from "sinon";
 
 describe("test suite", () => {
-    let fooBarMock, fooBarStub, fakeReturn;
+    let defaultBarMock, fakeReturn, fooStub;
 
     before(async () => {
-        fooBarMock = await esmock("./default-bar.mjs");
-        //console.log("fooBarMock:", fooBarMock);
+        defaultBarMock = await esmock("./default-bar.mjs");
+        console.log("defaultBarMock:", defaultBarMock);
         /*
-        fooBarMock: <ref *1> [AsyncFunction: default] {
+        defaultBarMock: <ref *1> [AsyncFunction: default] {
             default: [Circular *1],
             foo: [AsyncFunction: foo],
             esmkTreeId: 'file:///home/luis/APIs/zoe-game-api/default-bar.mjs?esmk=1'
@@ -168,49 +172,280 @@ describe("test suite", () => {
     });
 
     it("foo", async () => {
-        fakeReturn = await fooBarMock.foo();
-        console.log("foofakeReturn1:", fakeReturn);
+        fakeReturn = await defaultBarMock.foo();
+        console.log("fooReturn:", fakeReturn);     // Output: bar
         expect(fakeReturn).to.be.equal("bar");
 
-        fooBarStub = sinon.stub(fooBarMock, "foo");
-        console.log("fooBarMock:", fooBarMock);     // Output: bar
+        fooStub    = sinon.stub(defaultBarMock, "foo");
+        console.log("defaultBarMock:", defaultBarMock);
         /*
-        fooBarMock: <ref *1> [AsyncFunction: default] {
+        defaultBarMock: <ref *1> [AsyncFunction: default] {
             default: [Circular *1],
             foo: [Function: foo],
             esmkTreeId: 'file:///home/luis/APIs/zoe-game-api/default-bar.mjs?esmk=1'
         }
         */
+        fooStub.resolves("foo");
 
-        fooBarStub.resolves("foo");
-        fakeReturn = await fooBarMock.foo();
-        console.log("foofakeReturn2:", fakeReturn); // Output: foo
+        fakeReturn = await defaultBarMock.foo();
+        console.log("fooFakeReturn:", fakeReturn); // Output: foo
         expect(fakeReturn).to.be.equal("foo");
 
-        fooBarStub.restore();
+        fooStub.restore();
     });
 
     it("default", async () => {
-        fakeReturn = await fooBarMock.default();
-        console.log("defaultfakeReturn1:", fakeReturn); // Output: bar
+        fakeReturn = await defaultBarMock.default();
+        console.log("defaultReturn:", fakeReturn);     // Output: bar
         expect(fakeReturn).to.be.equal("bar");
 
-        fooBarStub = sinon.stub(fooBarMock, "foo");
+        fooBarStub = sinon.stub(defaultBarMock, "foo");
         fooBarStub.resolves("foo");
-        fakeReturn = await fooBarMock.foo();
-        console.log("foofakeReturn2:", fakeReturn);     // Output: foo
+
+        fakeReturn = await defaultBarMock.foo();
+        console.log("fooFakeReturn:", fakeReturn);     // Output: foo
         expect(fakeReturn).to.be.equal("foo");
 
-        fakeReturn = await fooBarMock.default();
-        console.log("defaultfakeReturn2:", fakeReturn); // Output: bar
-        // expect(fakeReturn).to.be.equal("foo");       // `AssertionError: expected 'bar' to equal 'foo'`
+        fakeReturn = await defaultBarMock.default();
+        console.log("defaultFakeReturn:", fakeReturn); // Output: bar
+        // expect(fakeReturn).to.be.equal("foo");      // `AssertionError: expected 'bar' to equal 'foo'`
     });
 });
 ```
 
-A impressão de `fooBarMock` antes e depois da criação do stub de `foo` é diferente. Após a criação do stub de `foo`, ela deixa de ser indicada como `[AsyncFunction: foo]` e passa a ser indicada como `[Function: foo]`.
+A impressão de `defaultBarMock` antes e depois da substituição de `foo` é diferente. Após a substituição de `foo`, ela deixa de ser indicada como `[AsyncFunction: foo]` e passa a ser indicada como `[Function: foo]`.
 
 Observe que agora a dificuldade é outra: o retorno de `foo` está sendo alterado, mas quando `default` invoca `foo`, o retorno ainda é `bar` e não `foo`. Isso se deve a outra dificuldade encontrada que será explicada no tópico abaixo.
 
 # <a id="mockar-funcao-interna">Mockar Função Interna</a>
 
+Se um ESM exportar diretamente duas funções, sem encapsulá-las em uma classe ou objeto, e uma delas chamar a outra, essa chamada não poderá ser mockada (simulada).
+
+Nesse caso, `foo` não pode ser substituída dentro da função `default` da maneira como o código está escrito atualmente. A simulação substitui a exportação do módulo para `foo`, mas `default` **não chama a exportação do módulo para** `foo`**, apenas chama** `foo` **diretamente**.
+
+Para conseguir substituir `foo` neste cenário, temos três opções:
+
+# Mover `foo` para seu Próprio Módulo
+
+```JavaScript
+// foo.mjs
+export default async function() { // Lembrando que o módulo deve possuir uma exportação padrão para que esmock funcione.
+    return Promise.resolve("bar");
+}
+
+// default-bar.mjs
+import foo from "./foo.mjs"
+
+export default async function() {
+    return foo();
+}
+
+// foo-bar.test.mjs
+import esmock     from "esmock";
+import { expect } from "chai";
+import sinon      from "sinon";
+
+describe("test suite", () => {
+    /*
+    - `fooMockFooStub`: stub de `foo` (função `default`) do módulo foo.mjs que foi importado através do esmock ("fooMock" - "fooStub")
+    - `fooStub`: stub que substitui a função `foo` no momento da importação (`import foo from "./foo.mjs"`) no módulo default-bar.mjs
+    */
+    let fooMock, fooMockFooStub, fooStub, defaultBarMock, fakeReturn;
+
+    before(async () => {
+        fooMock         = await esmock("./foo.mjs");
+        fooMockFooStub  = sinon.stub(fooMock, "default");
+        fooStub         = sinon.stub();
+        defaultBarMock  = await esmock("./default-bar.mjs", {
+            "./foo.mjs": {
+                default: fooStub, // Agora você controla o comportamento de `foo`.
+            },
+        });
+    });
+
+    it("foo", async () => {
+        fakeReturn     = await fooMock.default();
+        console.log("fooReturn:", fakeReturn);     // Output: bar
+        expect(fakeReturn).to.be.equal("bar");
+
+        fooMockFooStub.resolves("foo");
+
+        fakeReturn     = await fooMock.default();
+        console.log("fooFakeReturn:", fakeReturn); // Output: foo
+        expect(fakeReturn).to.be.equal("foo");
+
+        fooStub.restore();
+    });
+
+    it("default", async () => {
+        fooStub.resolves("foo");
+
+        fakeReturn = await defaultBarMock.default();
+        console.log("defaultFakeReturn:", fakeReturn); // Output: foo
+        expect(fakeReturn).to.be.equal("foo");
+    });
+});
+```
+
+"Agora você controla o comportamento de `foo`": como vimos, o esmock fornece importação nativa de ESM e mocking global para testes de unidade. A importação `import foo from "./foo.mjs"` em **default-bar.mjs** está sendo substituída pelo que você fornece (`fooStub`), então, em vez de invocar o código exportado por **foo.mjs** (a função `default`), iremos retornar a string `foo` (`fooStub.resolves("foo")`).
+
+O problema disso é que teríamos que criar um módulo para cada função, o que possivelmente resultaria em uma quantidade muito grande de arquivos. Outra forma de conseguir substituir `foo` seria:
+
+# Importe o Módulo em si mesmo
+
+"Os ESM suportam dependências cíclicas automaticamente", portanto, é perfeitamente válido que um módulo importe a si mesmo, permitindo que as funções dentro dele possam chamar a exportação do módulo para outras funções do mesmo módulo:
+
+```JavaScript
+// default-bar.mjs
+import * as fooBar from "./default-bar.mjs"
+
+export default async function() {
+    return fooBar.foo();
+}
+
+export async function foo() {
+    return Promise.resolve("bar");
+}
+
+// foo-bar.test.mjs
+import esmock     from "esmock";
+import { expect } from "chai";
+import sinon      from "sinon";
+
+describe("test suite", () => {
+    let defaultBarMock, fakeReturn, fooStub;
+
+    it("foo", async () => {
+        defaultBarMock = await esmock("./default-bar.mjs");
+
+        fakeReturn     = await defaultBarMock.foo();
+        console.log("fooReturn:", fakeReturn);     // Output: bar
+        expect(fakeReturn).to.be.equal("bar");
+
+        fooStub        = sinon.stub(defaultBarMock, "foo");
+        fooStub.resolves("foo");
+
+        fakeReturn     = await defaultBarMock.foo();
+        console.log("fooFakeReturn:", fakeReturn); // Output: foo
+        expect(fakeReturn).to.be.equal("foo");
+
+        fooStub.restore();
+    });
+
+    it("default", async () => {
+        fooStub        = sinon.stub();
+        defaultBarMock = await esmock("./default-bar.mjs", {
+            "./default-bar.mjs": {
+                foo: fooStub,
+            },
+        });
+        fooStub.resolves("foo");
+
+        fakeReturn = await defaultBarMock.default();
+        console.log("defaultFakeReturn:", fakeReturn); // Output: foo
+        expect(fakeReturn).to.be.equal("foo");
+    });
+});
+```
+
+Como podemos observar, o comportamento de `foo` foi alterado com sucesso novamente. Outra forma de conseguir simular `foo` seria:
+
+# Injeção de Dependências
+
+```JavaScript
+// default-bar.mjs
+export default async function(fnFoo = foo) {
+    return fnFoo();
+}
+
+export async function foo() {
+    return Promise.resolve("bar");
+}
+
+// foo-bar.test.mjs
+import esmock     from "esmock";
+import { expect } from "chai";
+import sinon      from "sinon";
+
+import * as fooBar from "./default-bar.mjs";
+
+describe("test suite", () => {
+    let defaultBarMock, fakeReturn, fooStub;
+
+    before(async () => {
+        defaultBarMock = await esmock("./default-bar.mjs");
+    });
+
+    it("foo", async () => {        
+        fakeReturn     = await defaultBarMock.foo();
+        console.log("fooReturn:", fakeReturn);     // Output: bar
+        expect(fakeReturn).to.be.equal("bar");
+
+        fooStub        = sinon.stub(defaultBarMock, "foo");
+        fooStub.resolves("foo");
+
+        fakeReturn     = await defaultBarMock.foo();
+        console.log("fooFakeReturn:", fakeReturn); // Output: foo
+        expect(fakeReturn).to.be.equal("foo");
+
+        fooStub.restore();
+    });
+
+    it("default", async () => {
+        fakeReturn = await defaultBarMock.default();
+        console.log("defaultReturn:", fakeReturn);     // Output: bar
+        expect(fakeReturn).to.be.equal("bar");
+
+        fooStub    = sinon.stub(defaultBarMock, "foo");
+        fooStub.resolves("foo");
+
+        fakeReturn = await defaultBarMock.default(fooStub);
+        console.log("defaultFakeReturn:", fakeReturn); // Output: bar
+        expect(fakeReturn).to.be.equal("foo");
+    });
+});
+```
+
+# Auto Importação vs Injeção de Dependências
+
+## Auto Importação
+
+Usa importações cíclicas permitindo que as funções dentro do módulo possam chamar a sua própria exportação para outras funções do mesmo módulo.
+
+### Vantagens
+
+- **Simplicidade imediata:**
+    + Menos refatoração inicial necessária
+    + Pode ser implementado rapidamente
+- **Facilidade de implementação:** mais simples de entender e implementar no curto prazo
+
+### Desvantagens
+
+- **Dificuldades em testes:**
+    + Simular funções internar é mais difícil
+    + Testes podem ser menos isolados e precisos
+- **Manutenção e escalabilidade:**
+    + Maior acoplamento entre módulos
+    + Menos modularidade e dificuldade na manutenção a longo prazo
+
+## Injeção de Dependências
+
+Funções necessárias são passadas como argumentos para outras funções, facilitando a simulação e a substituição em testes.
+
+### Vantagens
+
+- **Flexibilidade e testabilidade:**
+    + Simulação e substituição de funções são mais fáceis, pois as dependências são passadas como argumentos
+    + Testes podem ser mais isolados e precisos
+- **Manutenção e escabilidade:**
+    + Facilita a manutenção e evolução do código
+    + Reduz o acoplamento entre módulos
+
+### Desvantagens
+
+- **Refatoração inicial:** requer mudanças iniciais no código para permitir a injeção de dependências
+- **Complexidade adicional:** introduz alguma complexidade ao design do código
+
+## Conclusão
+
+A injeção de dependências tem um custo inicial mais alto, mas oferece benefícios significativos em termos de flexibilidade, testabilidade e manutenção a longo prazo. A auto importação é mais rápida e fácil de implementar, mas pode levar a problemas de manutenção e testes à medida que o projeto cresce. Se o projeto for de longa duração e a testabilidade for uma prioridade, a injeção de dependências pode ser a melhor abordagem.
