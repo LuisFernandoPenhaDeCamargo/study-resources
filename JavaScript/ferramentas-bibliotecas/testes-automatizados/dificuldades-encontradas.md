@@ -1,5 +1,5 @@
-- Palavra-chave: "TODO"
-- Links de referência: "frase: frase", só utilizar uma das "frases".
+- Palavra-chave: "TODO" <--
+- Links de referência: "frase: frase", só utilizar uma das "frases". <--
 
 # Dificuldades Encontradas
 
@@ -14,10 +14,12 @@ Contexto:
 + [`TypeError: ES Modules cannot be stubbed`](#es-modules-cannot-be-stubbed)
 + [esmock: Exportações Nomeadas vs Exportação Padrão com Nomeadas](#esmock)
 + [Mockar Função Interna](#mockar-funcao-interna)
++ [Lidando com o Método Construtor]() <--
++ [Método Construtor Simulado Lançando um Erro]() <--
 
 # <a id="es-modules-cannot-be-stubbed">`TypeError: ES Modules cannot be stubbed`</a>
 
-Quando você tenta criar um stub para uma função de um ESM (substituí-la), você recebe a mensagem de erro mencionado no título. Quando você importa um ESM, o objeto obtido será "read-only", isso significa que você não pode modificar suas propriedades, como suas funções. <--
+Quando você tenta criar um stub para uma função de um ESM (substituí-la), você recebe a mensagem de erro mencionado no título. Quando você importa um ESM, o objeto obtido será "somente leitura" (read-only), o que significa que você não pode modificar suas propriedades, como suas funções.
 
 ```JavaScript
 // foo-bar.mjs
@@ -50,13 +52,13 @@ describe("test suite", () => {
 
     it("foo", async () => {
         fakeReturn = await fooBar.foo();
-        console.log("fooReturn:", fakeReturn); // Output: bar
+        console.log("fooReturn:", fakeReturn); // Output: fooReturn: bar
         expect(fakeReturn).to.be.equal("bar");
     });
 
     it("bar", async () => {
         fakeReturn = await fooBar.bar();
-        console.log("barReturn:", fakeReturn);  // Output: bar
+        console.log("barReturn:", fakeReturn);  // Output: barReturn: bar
         expect(fakeReturn).to.be.equal("bar");
 
         // fooStub = sinon.stub(fooBar, "foo"); // `TypeError: ES Modules cannot be stubbed`
@@ -137,7 +139,9 @@ describe("test suite", () => {
 
 Como você pode perceber pelo log em **foo-bar.test.mjs**, `fooBarMock` é idêntico a `fooBar` (que foi importado utilizando o `import` e não o `esmock`). Quando o módulo possui apenas exportações nomeadas, mesmo o `esmock` não permite que ele seja sobrescrito. O módulo deve possuir uma exportação padrão para que o `esmock` funcione (o identificador esmkTreeId: `'file:///home/luis/APIs/zoe-game-api/default-bar.mjs?esmk=1'` aparece no log).
 
-Atente-se ao fato de que a exportação padrão deve ser uma **função** ou uma **classe**; se você exportar uma variável, o erro persiste. TODO: porque o esmock necessita de uma exportação padrão?
+Atente-se ao fato de que a exportação padrão deve ser uma **função** ou uma **classe**; se você exportar uma variável, o erro persiste. O esmock requer uma exportação padrão porque ele depende dessa exportação para poder "substituir" ou "simular" as exportações do módulo. Quando um ESM tem apenas exportações nomeadas. cada exportação é vinculada de forma estática e direta, o que significa que elas são imutáveis e não podem ser substituídas ou modificadas depois que o módulo é carregado.
+
+Já com uma exportação padrão, o esmock consegue contornar essa limitação. A exportação padrão funciona como um ponto de entrada que pode ser interceptado e modificado, permitindo que o esmock faça as injeções necessárias para os testes. Sem uma exportação padrão, o esmock não tem como "redirecionar" ou interceptar as chamadas às funções exportadas, limitando a sua capacidade de simulação.
 
 Tendo essa característica do esmock em mente, vamos finalmente utilizá-lo para substituir uma função de um ESM:
 
@@ -173,7 +177,7 @@ describe("test suite", () => {
 
     it("foo", async () => {
         fakeReturn = await defaultBarMock.foo();
-        console.log("fooReturn:", fakeReturn);     // Output: bar
+        console.log("fooReturn:", fakeReturn);     // Output: fooReturn: bar
         expect(fakeReturn).to.be.equal("bar");
 
         fooStub    = sinon.stub(defaultBarMock, "foo");
@@ -188,7 +192,7 @@ describe("test suite", () => {
         fooStub.resolves("foo");
 
         fakeReturn = await defaultBarMock.foo();
-        console.log("fooFakeReturn:", fakeReturn); // Output: foo
+        console.log("fooFakeReturn:", fakeReturn); // Output: fooFakeReturn: foo
         expect(fakeReturn).to.be.equal("foo");
 
         fooStub.restore();
@@ -196,18 +200,18 @@ describe("test suite", () => {
 
     it("default", async () => {
         fakeReturn = await defaultBarMock.default();
-        console.log("defaultReturn:", fakeReturn);     // Output: bar
+        console.log("defaultReturn:", fakeReturn);     // Output: defaultReturn: bar
         expect(fakeReturn).to.be.equal("bar");
 
         fooBarStub = sinon.stub(defaultBarMock, "foo");
         fooBarStub.resolves("foo");
 
         fakeReturn = await defaultBarMock.foo();
-        console.log("fooFakeReturn:", fakeReturn);     // Output: foo
+        console.log("fooFakeReturn:", fakeReturn);     // Output: fooFakeReturn: foo
         expect(fakeReturn).to.be.equal("foo");
 
         fakeReturn = await defaultBarMock.default();
-        console.log("defaultFakeReturn:", fakeReturn); // Output: bar
+        console.log("defaultFakeReturn:", fakeReturn); // Output: defaultFakeReturn: bar
         // expect(fakeReturn).to.be.equal("foo");      // `AssertionError: expected 'bar' to equal 'foo'`
     });
 });
@@ -265,13 +269,13 @@ describe("test suite", () => {
 
     it("foo", async () => {
         fakeReturn     = await fooMock.default();
-        console.log("fooReturn:", fakeReturn);     // Output: bar
+        console.log("fooReturn:", fakeReturn);     // Output: fooReturn: bar
         expect(fakeReturn).to.be.equal("bar");
 
         fooMockFooStub.resolves("foo");
 
         fakeReturn     = await fooMock.default();
-        console.log("fooFakeReturn:", fakeReturn); // Output: foo
+        console.log("fooFakeReturn:", fakeReturn); // Output: fooFakeReturn: foo
         expect(fakeReturn).to.be.equal("foo");
 
         fooStub.restore();
@@ -281,7 +285,7 @@ describe("test suite", () => {
         fooStub.resolves("foo");
 
         fakeReturn = await defaultBarMock.default();
-        console.log("defaultFakeReturn:", fakeReturn); // Output: foo
+        console.log("defaultFakeReturn:", fakeReturn); // Output: defaultFakeReturn: foo
         expect(fakeReturn).to.be.equal("foo");
     });
 });
@@ -319,14 +323,14 @@ describe("test suite", () => {
         defaultBarMock = await esmock("./default-bar.mjs");
 
         fakeReturn     = await defaultBarMock.foo();
-        console.log("fooReturn:", fakeReturn);     // Output: bar
+        console.log("fooReturn:", fakeReturn);     // Output: fooReturn: bar
         expect(fakeReturn).to.be.equal("bar");
 
         fooStub        = sinon.stub(defaultBarMock, "foo");
         fooStub.resolves("foo");
 
         fakeReturn     = await defaultBarMock.foo();
-        console.log("fooFakeReturn:", fakeReturn); // Output: foo
+        console.log("fooFakeReturn:", fakeReturn); // Output: fooFakeReturn: foo
         expect(fakeReturn).to.be.equal("foo");
 
         fooStub.restore();
@@ -342,7 +346,7 @@ describe("test suite", () => {
         fooStub.resolves("foo");
 
         fakeReturn = await defaultBarMock.default();
-        console.log("defaultFakeReturn:", fakeReturn); // Output: foo
+        console.log("defaultFakeReturn:", fakeReturn); // Output: defaultFakeReturn: foo
         expect(fakeReturn).to.be.equal("foo");
     });
 });
@@ -378,33 +382,35 @@ describe("test suite", () => {
 
     it("foo", async () => {        
         fakeReturn     = await defaultBarMock.foo();
-        console.log("fooReturn:", fakeReturn);     // Output: bar
+        console.log("fooReturn:", fakeReturn);     // Output: fooReturn: bar
         expect(fakeReturn).to.be.equal("bar");
 
         fooStub        = sinon.stub(defaultBarMock, "foo");
         fooStub.resolves("foo");
 
         fakeReturn     = await defaultBarMock.foo();
-        console.log("fooFakeReturn:", fakeReturn); // Output: foo
+        console.log("fooFakeReturn:", fakeReturn); // Output: fooFakeReturn: foo
         expect(fakeReturn).to.be.equal("foo");
 
         fooStub.restore();
     });
 
     it("default", async () => {
-        fakeReturn = await defaultBarMock.default();
-        console.log("defaultReturn:", fakeReturn);     // Output: bar
+        fakeReturn = await fooBar.default();
+        console.log("defaultReturn:", fakeReturn);     // Output: defaultReturn: bar
         expect(fakeReturn).to.be.equal("bar");
 
         fooStub    = sinon.stub(defaultBarMock, "foo");
         fooStub.resolves("foo");
 
-        fakeReturn = await defaultBarMock.default(fooStub);
-        console.log("defaultFakeReturn:", fakeReturn); // Output: bar
+        fakeReturn = await fooBar.default(fooStub);
+        console.log("defaultFakeReturn:", fakeReturn); // Output: defaultFakeReturn: bar
         expect(fakeReturn).to.be.equal("foo");
     });
 });
 ```
+
+Observe que no caso de teste do método default, nós não utilizamos a simulação criada pelo esmock (defaultBarMock). Como nós injetamos as dependências, para substituir foo, só foi preciso passar o seu substituto como argumento para fooBar.default. <--
 
 # Auto Importação vs Injeção de Dependências
 
@@ -449,3 +455,116 @@ Funções necessárias são passadas como argumentos para outras funções, faci
 ## Conclusão
 
 A injeção de dependências tem um custo inicial mais alto, mas oferece benefícios significativos em termos de flexibilidade, testabilidade e manutenção a longo prazo. A auto importação é mais rápida e fácil de implementar, mas pode levar a problemas de manutenção e testes à medida que o projeto cresce. Se o projeto for de longa duração e a testabilidade for uma prioridade, a injeção de dependências pode ser a melhor abordagem.
+
+# <a id=""></a>
+
+Outra dificuldade encontrada foi substituir o método construtor, a abordagem abaixo utiliza o método Object.setPrototypeOf para alcançar isto. <--
+
+```JavaScript
+import sinon from "sinon";
+
+class A {
+    constructor() {
+        console.log("Class A");
+    }
+}
+
+class B extends A {}
+
+console.log("Object.getPrototypeOf(A):", Object.getPrototypeOf(A)) // Output: Object.getPrototypeOf(A): {}
+console.log("Object.getPrototypeOf(B):", Object.getPrototypeOf(B)) // Output: Object.getPrototypeOf(B): [class A]
+console.log("A.prototype:", A.prototype)                           // Output: A.prototype: {}
+console.log("B.prototype:", B.prototype)                           // Output: B.prototype: A {}
+console.log("A.prototype.constructor:", A.prototype.constructor)   // Output: A.prototype.constructor: [class A]
+console.log("B.prototype.constructor:", B.prototype.constructor)   // Output: B.prototype.constructor: [class B extends A]
+console.log("A.constructor:", A.constructor)                       // Output: A.constructor: [Function: Function]
+console.log("B.constructor:", B.constructor)                       // Output: B.constructor: [Function: Function]
+
+new A();                                                           // Output: Class A
+new B();                                                           // Output: Class A
+
+let constructorStub = sinon.stub(B, "constructor");
+new B();                                                           // Output: Class A
+console.log(constructorStub.calledOnce);                           // Output: false
+
+constructorStub = sinon.stub(B.prototype, "constructor");
+new B();                                                           // Output: Class A
+console.log(constructorStub.calledOnce);                           // Output: false
+
+Object.setPrototypeOf(B, sinon.stub().callsFake(function() { console.log("Class B"); }));
+
+console.log("Object.getPrototypeOf(A):", Object.getPrototypeOf(A)) // Output: Object.getPrototypeOf(A): {}
+console.log("Object.getPrototypeOf(B):", Object.getPrototypeOf(B)) // Output: Object.getPrototypeOf(B): [Function: functionStub]
+console.log("A.prototype:", A.prototype)                           // Output: A.prototype: {}
+console.log("B.prototype:", B.prototype)                           // Output: B.prototype: A {}
+console.log("A.prototype.constructor:", A.prototype.constructor)   // Output: A.prototype.constructor: [class A]
+console.log("B.prototype.constructor:", B.prototype.constructor)   // Output: B.prototype.constructor: [class B extends functionStub]
+console.log("A.constructor:", A.constructor)                       // Output: A.constructor: [Function: Function]
+console.log("B.constructor:", B.constructor)                       // Output: B.constructor: [Function: Function]
+
+new A();                                                           // Output: Class A
+new B();                                                           // Output: Class B
+
+console.log(Object.getPrototypeOf(B).callCount);                   // Output: 1
+console.log(Object.getPrototypeOf(B) === B.__proto__);             // Output: true
+```
+
+```JavaScript
+import esmock            from "esmock";
+import sinon             from "sinon";
+
+import * as defaultClass from "./default-bar.mjs";
+
+const defaultClassMock = await esmock("./default-bar.mjs");
+let obj, constructorStub, classStubbedInstance;
+
+console.log("defaultClass:", defaultClass);                                             // Output: defaultClass: [Module: null prototype] { default: [class A] }
+console.log("defaultClass.default:", defaultClass.default);                             // Output: defaultClass.default: [class A]
+console.log("defaultClass.default.constructor:", defaultClass.default.constructor);     // Output: defaultClass.default.constructor: [Function: Function]
+console.log("Object.getPrototypeOf(defaultClass.default):", Object.getPrototypeOf(defaultClass.default));
+// Output: Object.getPrototypeOf(defaultClass.default): {}
+console.log("defaultClass.default.prototype:", defaultClass.default.prototype);         // Output: defaultClass.default.prototype: {}
+
+obj = new defaultClass.default();
+console.log("obj:", obj);                                                               // Output: obj: A { arg: 'Class A' }
+
+constructorStub = sinon.stub(defaultClass.default, "constructor");
+obj = new defaultClass.default();
+console.log(constructorStub.calledOnce);                                                // Output: false
+
+// constructorStub = sinon.stub(defaultClass.default.prototype, "constructor");
+// obj = new defaultClass.default();
+// console.log("obj:", obj);                                                            // Output: obj: { arg: 'Class A' }
+// console.log(constructorStub.calledOnce);                                             // Output: false
+
+Object.setPrototypeOf(defaultClass.default, sinon.stub().callsFake(function() { console.log("Class B"); }));
+obj = new defaultClass.default();
+
+classStubbedInstance = sinon.createStubInstance(defaultClass.default);
+console.log("classStubbedInstance:", classStubbedInstance);                             // Output: A {}
+
+obj = new defaultClassMock.default();
+console.log("objMock:", obj);                                                           // Output: objMock: A { arg: 'Class A' }
+obj = new defaultClass.default();
+console.log("objDefault:", obj);                                                        // Output: objDefault: A { arg: 'Class A' }
+
+// constructorStub = sinon.stub(defaultClass, "default").returns(classStubbedInstance); // `TypeError: ES Modules cannot be stubbed`
+constructorStub = sinon.stub(defaultClassMock, "default").returns(classStubbedInstance);
+
+obj = new defaultClassMock.default();
+console.log("objMock:", obj);                                                           // Output: objMock: A {}
+obj = new defaultClass.default();
+console.log("objDefault:", obj);                                                        // Output: objDefault: A { arg: 'Class A' }
+
+console.log(constructorStub.calledOnce);                                                // Output: true
+
+new defaultClassMock.default();
+
+console.log(constructorStub.calledTwice);                                               // Output: true
+```
+
+Capturar os argumentos <--
+
+# <a id=""></a>
+
+brain, object, js, mo, dificuldades

@@ -39,7 +39,7 @@
 - [Template Literals](./fundamentos-javascript/objetos-arrays/template-literals.md)
     + [Utilizando a Crase Dentro de um Template Literal](./fundamentos-javascript/objetos-arrays/template-literals.md#utilizando-acento-grave-dentro-template-literal)
 - [Tipos de Objetos](./fundamentos-javascript/objetos-arrays/tipos-objetos/README.md)
-- [Métodos de Objetos](./fundamentos-javascript/objetos-arrays/metodos-objetos/README.md)
+- [Métodos de Objetos](./fundamentos-javascript/objetos-arrays/metodos-objetos/metodos-objetos.md)
 - [Namespaces](./fundamentos-javascript/objetos-arrays/namespaces.md)
 - Criação e Manipulação de Arrays
 - Métodos de Array (`map`, `filter`, `reduce`, `forEach`, etc.)

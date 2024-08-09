@@ -108,8 +108,6 @@ https://github.com/sinonjs/sinon/issues/2578
 
 Revisão ortográfica (aceita sugestões de alteração na estrutura do texto):
 
-Quando eu uso o esmock em um módulo, ele deixa de ser readonly? ELE DEIXA MANO, A VIDA É AMAZING
-
 Now I see that constructor is a syntax sugar and it's nothing to do with Function.prototype.constructor, therefore stubbing it has no effect.
 
 O que seria sandbox no contexto do JS
@@ -269,6 +267,4 @@ error: failed to push some refs to 'https://github.com/LuisFernandoPenhaDeCamarg
 ---
 
 - Planilha ODF (.ods) <-- Deu certo
-
-[ getTemporaryCredentials Error ], Request failed with status code 403
 */
