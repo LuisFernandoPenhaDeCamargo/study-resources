@@ -268,3 +268,28 @@ error: failed to push some refs to 'https://github.com/LuisFernandoPenhaDeCamarg
 
 - Planilha ODF (.ods) <-- Deu certo
 */
+
+---
+
+Vamos esclarecer alguns conceitos sobre os módulos ECMAScript (ESM), particularmente em relação às exportações nomeadas e exportações padrão.
+
+Carregamento de Módulos ESM
+Os módulos ESM são carregados de forma estática. Isso significa que as dependências e exportações de um módulo são resolvidas no momento em que o módulo é carregado, antes de qualquer código ser executado. Esse carregamento estático permite que as ferramentas de desenvolvimento e os motores JavaScript façam otimizações, como "tree shaking" (remoção de código não utilizado).
+
+Exportações Nomeadas vs. Exportação Padrão
+Exportações Nomeadas:
+
+Imutabilidade: Quando você exporta uma função, classe, ou variável com uma exportação nomeada (export { foo, bar }), cada exportação é "vinculada" de forma imutável ao módulo exportador. Isso significa que, depois que o módulo é carregado, essas exportações não podem ser modificadas no módulo importador.
+Carregamento Estático: As exportações nomeadas são resolvidas estaticamente, permitindo que o código do módulo importador seja otimizado de acordo com as dependências exatas que ele utiliza.
+Exportação Padrão:
+
+Um Único Valor: Um módulo pode ter uma única exportação padrão (export default foo), que pode ser qualquer valor: uma função, uma classe, um objeto, etc.
+Diferença na Importação: A exportação padrão pode ser importada com qualquer nome de sua escolha no módulo importador (import foo from './module'), o que a torna um pouco diferente em termos de sintaxe em comparação com as exportações nomeadas.
+Carregamento Estático: Assim como as exportações nomeadas, a exportação padrão também é resolvida estaticamente. No entanto, o comportamento da exportação padrão pode dar a impressão de ser mais "flexível" por causa da forma como é importada.
+Resumindo
+Exportações Nomeadas: São vinculadas estaticamente e não podem ser modificadas no módulo importador. O módulo que exporta não precisa ter uma exportação padrão.
+Exportação Padrão: Pode ser qualquer valor único exportado pelo módulo, e é resolvida estaticamente. Um módulo pode ter tanto exportações nomeadas quanto uma exportação padrão, mas apenas uma exportação padrão por módulo.
+Carregamento Dinâmico
+Embora ESM seja carregado estaticamente no sentido de que as exportações são resolvidas no momento do carregamento, é possível carregar módulos dinamicamente usando import(). Isso permite carregar um módulo apenas quando necessário, mas mesmo assim, uma vez carregado, as exportações são resolvidas estaticamente.
+
+Essa diferenciação entre carregamento estático e dinâmico pode ser confusa, mas o ponto principal é que as exportações, uma vez resolvidas, são imutáveis.

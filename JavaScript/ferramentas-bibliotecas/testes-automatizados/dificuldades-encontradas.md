@@ -14,8 +14,8 @@ Contexto:
 + [`TypeError: ES Modules cannot be stubbed`](#es-modules-cannot-be-stubbed)
 + [esmock: Exportações Nomeadas vs Exportação Padrão com Nomeadas](#esmock)
 + [Mockar Função Interna](#mockar-funcao-interna)
-+ [Lidando com o Método Construtor]() <--
-+ [Método Construtor Simulado Lançando um Erro]() <--
++ [Substituir o Método Construtor](#substituir-metodo-construtor)
++ [Lançando Erro em Método Construtor Simulado](#lancando-erro-metodo-construtor-simulado)
 
 # <a id="es-modules-cannot-be-stubbed">`TypeError: ES Modules cannot be stubbed`</a>
 
@@ -139,11 +139,9 @@ describe("test suite", () => {
 
 Como você pode perceber pelo log em **foo-bar.test.mjs**, `fooBarMock` é idêntico a `fooBar` (que foi importado utilizando o `import` e não o `esmock`). Quando o módulo possui apenas exportações nomeadas, mesmo o `esmock` não permite que ele seja sobrescrito. O módulo deve possuir uma exportação padrão para que o `esmock` funcione (o identificador esmkTreeId: `'file:///home/luis/APIs/zoe-game-api/default-bar.mjs?esmk=1'` aparece no log).
 
-Atente-se ao fato de que a exportação padrão deve ser uma **função** ou uma **classe**; se você exportar uma variável, o erro persiste. O esmock requer uma exportação padrão porque ele depende dessa exportação para poder "substituir" ou "simular" as exportações do módulo. Quando um ESM tem apenas exportações nomeadas. cada exportação é vinculada de forma estática e direta, o que significa que elas são imutáveis e não podem ser substituídas ou modificadas depois que o módulo é carregado.
+Atente-se ao fato de que a exportação padrão deve ser uma **função** ou uma **classe**; se você exportar uma variável, o erro persiste. O esmock precisa de uma exportação padrão para funcionar corretamente porque essa exportação padrão permite manipular o módulo como um todo, incluindo a capacidade de modificar exportações nomeadas. Quando só há exportações nomeadas, não existe esse ponto central de entrada (a exportação padrão) que o esmock pode interceptar e modificar.
 
-Já com uma exportação padrão, o esmock consegue contornar essa limitação. A exportação padrão funciona como um ponto de entrada que pode ser interceptado e modificado, permitindo que o esmock faça as injeções necessárias para os testes. Sem uma exportação padrão, o esmock não tem como "redirecionar" ou interceptar as chamadas às funções exportadas, limitando a sua capacidade de simulação.
-
-Tendo essa característica do esmock em mente, vamos finalmente utilizá-lo para substituir uma função de um ESM:
+A exportação padrão funciona como um ponto de entrada que pode ser interceptado e modificado, permitindo que o esmock faça as injeções necessárias para os testes. Sem uma exportação padrão, o esmock não tem como "redirecionar" ou interceptar as chamadas às funções exportadas, limitando a sua capacidade de simulação. Tendo essa característica do esmock em mente, vamos finalmente utilizá-lo para substituir uma função de um ESM:
 
 ```JavaScript
 // default-bar.mjs
@@ -229,7 +227,7 @@ Nesse caso, `foo` não pode ser substituída dentro da função `default` da man
 
 Para conseguir substituir `foo` neste cenário, temos três opções:
 
-# Mover `foo` para seu Próprio Módulo
+## Mover `foo` para seu Próprio Módulo
 
 ```JavaScript
 // foo.mjs
@@ -295,7 +293,7 @@ describe("test suite", () => {
 
 O problema disso é que teríamos que criar um módulo para cada função, o que possivelmente resultaria em uma quantidade muito grande de arquivos. Outra forma de conseguir substituir `foo` seria:
 
-# Importe o Módulo em si mesmo
+## Importe o Módulo em si mesmo
 
 "Os ESM suportam dependências cíclicas automaticamente", portanto, é perfeitamente válido que um módulo importe a si mesmo, permitindo que as funções dentro dele possam chamar a exportação do módulo para outras funções do mesmo módulo:
 
@@ -354,7 +352,7 @@ describe("test suite", () => {
 
 Como podemos observar, o comportamento de `foo` foi alterado com sucesso novamente. Outra forma de conseguir simular `foo` seria:
 
-# Injeção de Dependências
+## Injeção de Dependências
 
 ```JavaScript
 // default-bar.mjs
@@ -410,7 +408,7 @@ describe("test suite", () => {
 });
 ```
 
-Observe que no caso de teste do método default, nós não utilizamos a simulação criada pelo esmock (defaultBarMock). Como nós injetamos as dependências, para substituir foo, só foi preciso passar o seu substituto como argumento para fooBar.default. <--
+Observe que, no caso de teste do método `default`, não utilizamos a simulação criada pelo esmock (`defaultBarMock`). Como injetamos as dependências, para substituir foo, bastou passar o substituto como argumento para `fooBar.default`.
 
 # Auto Importação vs Injeção de Dependências
 
@@ -428,7 +426,7 @@ Usa importações cíclicas permitindo que as funções dentro do módulo possam
 ### Desvantagens
 
 - **Dificuldades em testes:**
-    + Simular funções internar é mais difícil
+    + Simular funções internas é mais difícil
     + Testes podem ser menos isolados e precisos
 - **Manutenção e escalabilidade:**
     + Maior acoplamento entre módulos
@@ -456,9 +454,9 @@ Funções necessárias são passadas como argumentos para outras funções, faci
 
 A injeção de dependências tem um custo inicial mais alto, mas oferece benefícios significativos em termos de flexibilidade, testabilidade e manutenção a longo prazo. A auto importação é mais rápida e fácil de implementar, mas pode levar a problemas de manutenção e testes à medida que o projeto cresce. Se o projeto for de longa duração e a testabilidade for uma prioridade, a injeção de dependências pode ser a melhor abordagem.
 
-# <a id=""></a>
+# <a id="substituir-metodo-construtor">Substituir o Método Construtor</a>
 
-Outra dificuldade encontrada foi substituir o método construtor, a abordagem abaixo utiliza o método Object.setPrototypeOf para alcançar isto. <--
+Outra dificuldade encontrada foi substituir o método construtor. A abordagem abaixo utiliza o método `Object.setPrototypeOf` para alcançar isso.
 
 ```JavaScript
 import sinon from "sinon";
@@ -509,7 +507,21 @@ console.log(Object.getPrototypeOf(B).callCount);                   // Output: 1
 console.log(Object.getPrototypeOf(B) === B.__proto__);             // Output: true
 ```
 
+Contudo, como podemos ver abaixo, a solução proposta acima só funciona se você estiver tratando o método construtor localmente. Quando o método é importado de outro módulo, o cenário muda. A solução proposta é mencionada como um exemplo interessante que modifica o protótipo de um objeto.
+
 ```JavaScript
+// default-bar.mjs
+export default class A {
+    constructor() {
+        this.arg = "Class A";
+    }
+
+    func() {
+        console.log("Function");
+    }
+}
+
+// foo-bar.test.mjs
 import esmock            from "esmock";
 import sinon             from "sinon";
 
@@ -532,7 +544,7 @@ constructorStub = sinon.stub(defaultClass.default, "constructor");
 obj = new defaultClass.default();
 console.log(constructorStub.calledOnce);                                                // Output: false
 
-// constructorStub = sinon.stub(defaultClass.default.prototype, "constructor");
+// constructorStub = sinon.stub(defaultClass.default.prototype, "constructor");         // Observe que essa linha altera o protótipo da classe, e a letra `A` antes de `{ arg: 'Class A' }` desaparece. No entanto, quando verificamos se o método construtor foi chamado, o retorno ainda é false.
 // obj = new defaultClass.default();
 // console.log("obj:", obj);                                                            // Output: obj: { arg: 'Class A' }
 // console.log(constructorStub.calledOnce);                                             // Output: false
@@ -563,8 +575,167 @@ new defaultClassMock.default();
 console.log(constructorStub.calledTwice);                                               // Output: true
 ```
 
-Capturar os argumentos <--
+O que fazemos acima é criar um objeto a partir da classe e substituir a dependência externa (a própria classe) por um substituto nosso, que retorna a instância criada. Dessa forma, podemos realizar verificações a partir do nosso substituto. Com isso, garantimos que o objeto criado mantém as características originais da classe, mas ainda conseguimos avaliar o seu comportamento.
 
-# <a id=""></a>
+## Capturando os Argumentos Utilizados na Criação de um Objeto
 
-brain, object, js, mo, dificuldades
+Como vimos acima, podemos criar um objeto a partir da classe e substituir a dependência externa por um substituto criado por nós. Com isso em mente, podemos usar esse substituto para capturar os argumentos usados na criação do objeto.
+
+```JavaScript
+// class-foo.mjs
+export default class Foo {
+    constructor(args) {
+        this.class = "Class Foo";
+        this.args = args;
+    }
+
+    func() {
+        console.log("Function Foo");
+    }
+}
+
+// default-bar.mjs
+import Foo from "./class-foo.mjs";
+
+export default function(args) {
+    const obj = new Foo(args);
+
+    return obj;
+}
+
+// foo-bar.test.mjs
+import sinon      from "sinon";
+import esmock     from "esmock";
+
+import Foo        from "./class-foo.mjs";
+import defaultBar from "./default-bar.mjs";
+
+describe("test suite", () => {
+    let fooStub, defaultBarMock, fakeObj;
+
+    before(async () => {
+        fooStub        = sinon.createStubInstance(Foo); // Cria um objeto substituto da classe `Foo`.
+        class FooMock { // Classe que será utilizada para simular a classe `Foo` (class-foo.mjs).
+            constructor(args) {
+                fooStub.class = "Class Bar";
+                fooStub.args = args; // Capturando os argumentos utilizados na criação do objeto e os atribuindo a propriedade `args`.
+                fooStub.func = this.func; // Atribuindo a função `func` ao objeto substituto `fooStub`; caso contrário, `fooStub` não terá acesso à função, pois ela pertence à classe `FooMock` (você retorna `fooStub` e não um objeto da classe).
+
+                return fooStub; // Retorna o objeto substituto, que mantém as características originais da classe, além de incluir as nossas modificações.
+            }
+        
+            func() {
+                console.log("Function Bar");
+            }
+        }
+        console.log("new FooMock():", new FooMock()); // Output: Foo { class: 'Class Bar', args: undefined }
+        console.log("new Foo():", new Foo());         // Output: Foo { class: 'Class Foo', args: undefined }
+
+        defaultBarMock = await esmock("./default-bar.mjs", {
+            "./class-foo.mjs": {
+                default: FooMock,
+            },
+        });
+    });
+
+    it("constructor", () => {
+        fakeObj = defaultBar("original function");
+        console.log("obj:", fakeObj);               // Output: obj: Foo { class: 'Class Foo', args: 'original function' }
+        fakeObj.func();                             // Output: Function Foo
+        console.log("obj.args:", fakeObj.args);     // Output: obj.args: original function
+
+        fakeObj = defaultBarMock("mocked function");
+        console.log("fakeObj:", fakeObj);           // Output: fakeObj: Foo { class: 'Class Bar', args: 'mocked function' }
+        fakeObj.func();                             // Output: Function Bar
+        console.log("fakeObj.args:", fakeObj.args); // Output: fakeObj.args: mocked function
+    });
+});
+```
+
+Utilizamos a classe simulada para capturar os argumentos utilizados na criação do objeto, atribuindo-os a uma propriedade que criamos no objeto substituto que será retornado.
+
+# <a id="lancando-erro-metodo-construtor-simulado">Lançando Erro em Método Construtor Simulado</a>
+
+Para simular o lançamento de erros no **momento da criação do objeto** na classe simulada, você pode utilizar a seguinte técnica:
+
+```JavaScript
+// class-foo.mjs
+export default class Foo {
+    constructor(args) {
+        this.class = "Class Foo";
+        this.args = args;
+    }
+
+    func() {
+        console.log("Function Foo");
+    }
+}
+
+// default-bar.mjs
+import Foo from "./class-foo.mjs";
+
+export default function(args) {
+    try {
+        const obj = new Foo(args);
+
+        return obj;
+    } catch(error) {
+        console.error(`[ default-bar.mjs ${error.name} ], ${error.message}`);
+    }
+}
+
+// foo-bar.test.mjs
+import sinon      from "sinon";
+import esmock     from "esmock";
+import { expect } from "chai";
+
+import Foo        from "./class-foo.mjs";
+
+describe("test suite", () => {
+    let fooStub, shouldThrowError, defaultBarMock, consoleErrorStub, fakeError, fakeObj;
+
+    before(async () => {
+        fooStub          = sinon.createStubInstance(Foo);
+        class FooMock {
+            constructor(args) {
+                if (shouldThrowError) { // Condicional que controla o lançamento de erros.
+                    throw fakeError;
+                }
+
+                fooStub.class = "Class Bar";
+                fooStub.args = args;
+                fooStub.func = this.func;
+
+                return fooStub;
+            }
+        
+            func() {
+                console.log("Function Bar");
+            }
+        }
+        defaultBarMock   = await esmock("./default-bar.mjs", {
+            "./class-foo.mjs": {
+                default: FooMock,
+            },
+        });
+        consoleErrorStub = sinon.stub(console, "error");
+    });
+
+    it("throwing errors", () => {
+        fakeError        = new Error("Throwing a false error.");
+        fakeError.name   = "FakeError";
+
+        shouldThrowError = false;
+        fakeObj          = defaultBarMock("mocked function");
+        expect(fakeObj.args).to.be.equal("mocked function");
+
+        shouldThrowError = true; // Lançando o erro.
+        fakeObj          = defaultBarMock("throwing a false error");
+        expect(consoleErrorStub.getCall(0).args[0]).to.be.equal(`[ default-bar.mjs ${fakeError.name} ], ${fakeError.message}`);
+        expect(fakeObj).to.be.equal(undefined);
+        expect(consoleErrorStub.callCount).to.be.equal(1);
+    });
+});
+```
+
+Nós basicamente utilizamos uma condicional e um boolenao, para lançar um erro no momento de criação do objeto. <--
