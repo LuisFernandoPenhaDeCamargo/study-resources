@@ -88,15 +88,6 @@ curl http://localhost:8080/game/bigwinner  -X POST \
 -H "Content-Type: application/json" -d '{"machine_id": 101}'
 ```
 
-- Verificar o número de vezes em que os métodos (ou funções) são chamados
-- Verificar o caso de sucesso, se o retorno está de acordo com o que você espera
-- Verificar o caso de falha, se o tratamento de erro está de acordo com o que você quer
-  + Caso em que o arquivo não existe
-  + Caso em que você não tem permissão para ler o arquivo
-  + Caso em que há a "ocorrência" de propriedades `undefined`
-  + Caso em que a requisição falha
-  + Basicamente é algo lançando um erro, você envolvendo a função em um `try`/`catch` já cuida de todos os cenários possíveis (tecnicamente)
-
 -> ES6
 -> constructor
 
@@ -293,3 +284,19 @@ Carregamento Dinâmico
 Embora ESM seja carregado estaticamente no sentido de que as exportações são resolvidas no momento do carregamento, é possível carregar módulos dinamicamente usando import(). Isso permite carregar um módulo apenas quando necessário, mas mesmo assim, uma vez carregado, as exportações são resolvidas estaticamente.
 
 Essa diferenciação entre carregamento estático e dinâmico pode ser confusa, mas o ponto principal é que as exportações, uma vez resolvidas, são imutáveis.
+
+o calledWith guarda informações de quais chamadas? Todas?
+
+- Utilizar a suíte para documentar qual é a responsabilidade do código
+- Documentar as querys e as curls utilizadas nos testes manuais
+- Verificar o número de vezes em que os métodos (ou funções) são chamados
+- Verificar o caso de sucesso, se o retorno está de acordo com o que você espera
+- Verificar o caso de falha, utilizar este caso para documentar os possíveis erros
+  + Caso em que o arquivo não existe
+  + Caso em que você não tem permissão para ler o arquivo
+  + Caso em que há a "ocorrência" de propriedades `undefined`
+  + Caso em que a requisição falha
+  + Basicamente é algo lançando um erro, você envolvendo a função em um `try`/`catch` já cuida de todos os cenários possíveis (tecnicamente)
+
+// Comando para encerrar a suite de testes
+// sinon.match.hasAllKeys

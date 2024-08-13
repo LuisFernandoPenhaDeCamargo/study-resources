@@ -1,5 +1,5 @@
 - Palavra-chave: "TODO" <--
-- Links de referência: "frase: frase", só utilizar uma das "frases". <--
+- Links de referência: "frase: frase", só utilizar uma das "frases" <--
 
 # Dificuldades Encontradas
 
@@ -16,6 +16,7 @@ Contexto:
 + [Mockar Função Interna](#mockar-funcao-interna)
 + [Substituir o Método Construtor](#substituir-metodo-construtor)
 + [Lançando Erro em Método Construtor Simulado](#lancando-erro-metodo-construtor-simulado)
++ []()
 
 # <a id="es-modules-cannot-be-stubbed">`TypeError: ES Modules cannot be stubbed`</a>
 
@@ -738,4 +739,105 @@ describe("test suite", () => {
 });
 ```
 
-Nós basicamente utilizamos uma condicional e um boolenao, para lançar um erro no momento de criação do objeto. <--
+Basicamente, utilizamos uma condicional e um booleano para lançar um erro no momento de criação do objeto.
+
+# <a id=""></a>
+
+- sinon.useFakeTimers
+- Controlando o retorno da invocação uma função que é chamada duas vezes a partir de uma chamada única a outra
+- stub.onCall
+
+```JavaScript
+// default-bar.mjs
+const auxVar = {
+    foo: undefined,
+    bar: undefined,
+}
+
+export default function(args, fnAux = auxFn) {
+    console.log("--------------------------");
+    console.log("Date1:", formatDate(new Date()));
+    if (args[0] === "foo") {
+        auxVar.foo = fnAux(args[0]);
+        
+    }
+
+    console.log("Date2:", formatDate(new Date()));
+    if (args[1] === "bar"){
+        auxVar.bar = fnAux(args[1]);
+    }
+
+    console.log("Date3:", formatDate(new Date()));
+    console.log("auxVar:", auxVar);
+}
+
+function auxFn(args) {
+    return args;
+}
+
+function pad(number) {
+    return number < 10 ? "0" + number : number;
+}
+
+function formatDate(date) {
+    const year    = date.getFullYear();
+    const month   = pad(date.getMonth() + 1); // Os meses são indexados de 0 a 11.
+    const day     = pad(date.getDate());
+    const hours   = pad(date.getHours());
+    const minutes = pad(date.getMinutes());
+    const seconds = pad(date.getSeconds());
+
+    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+}
+
+// foo-bar.test.mjs
+import sinon      from "sinon";
+
+import defaultBar from "./default-bar.mjs";
+
+describe("test suite", () => {
+    it("test case", () => {
+        const clock = sinon.useFakeTimers(new Date("2024-08-13 12:00:00"));
+
+        defaultBar(["foo", "bar"]);
+        /*
+        Output:
+        --------------------------
+        Date1: 2024-08-13 12:00:00
+        Date2: 2024-08-13 12:00:00
+        Date3: 2024-08-13 12:00:00
+        auxVar: { foo: 'foo', bar: 'bar' }
+        */
+
+        const auxStub = sinon.stub();
+
+        clock.tick(60 * 1000);
+        auxStub.returns("fooStub");
+        auxStub.returns("barStub");
+        defaultBar(["foo", "bar"], auxStub);
+        /*
+        Output:
+        --------------------------
+        Date1: 2024-08-13 12:01:00
+        Date2: 2024-08-13 12:01:00
+        Date3: 2024-08-13 12:01:00
+        auxVar: { foo: 'barStub', bar: 'barStub' }
+        */
+        console.log("auxStub.callCount:", auxStub.callCount); // Output: auxStub.callCount: 2
+
+        clock.tick(2 * 60 * 1000);
+        auxStub.onCall(2).returns("fooStub");
+        auxStub.onCall(3).returns("barStub");
+        defaultBar(["foo", "bar"], auxStub);
+        /*
+        Output:
+        --------------------------
+        Date1: 2024-08-13 12:03:00
+        Date2: 2024-08-13 12:03:00
+        Date3: 2024-08-13 12:03:00
+        auxVar: { foo: 'fooStub', bar: 'barStub' }
+        */
+        console.log("auxStub.callCount:", auxStub.callCount); // Output: auxStub.callCount: 4
+    });
+});
+```
