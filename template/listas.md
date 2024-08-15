@@ -1,6 +1,6 @@
 # Listas
 
-- Não utilizar pontuação no final dos itens
-- Se a ordem dos itens não tiver que seguir um significado específico, os ordene alfabeticamente
+- Não utilizar pontuação ao final dos itens
+- Se a ordem dos itens não precisar seguir um significado específico, ordene-os alfabeticamente
 
-[Diretórios e Arquivos -->](./diretorios-arquivos.md)
+# [[Próximo tópico: Diretórios e Arquivos]](./diretorios-arquivos.md)

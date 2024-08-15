@@ -1,5 +1,4 @@
 - Palavra-chave: "TODO" <--
-- Links de referência: "frase: frase", só utilizar uma das "frases" <--
 
 # Dificuldades Encontradas
 

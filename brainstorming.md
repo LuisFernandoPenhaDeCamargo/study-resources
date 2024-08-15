@@ -69,19 +69,6 @@ const _ = require("lodash");
 - "RESTful"
 - Shebang (Linux)
 
-# Prático
-
-Arquivos abertos no repositório zoe-game-api:
-
-- **send_error.js**
-- **debug.js**
-- **package.json**
-- **server.js**
-- **prize.js**
-- **raffle_prizes.js**
-- **raffle_accumulated_prize.sql**
-- **raffle_jackpot_prize.sql**
-
 ```Bash
 # Comando utilizado em um teste.
 curl http://localhost:8080/game/bigwinner  -X POST \
@@ -287,6 +274,30 @@ Essa diferenciação entre carregamento estático e dinâmico pode ser confusa, 
 
 o calledWith guarda informações de quais chamadas? Todas?
 
+---
+
+/*
+try
+    const keys = Object.keys(result);
+
+    if (keys.length === 0) {
+        throw new Error("The object is empty.");
+    }
+
+    if (!hasRequiredKeys(prize, keys)) {
+        throw new Error("Missing property.");
+    }
+
+
+function hasRequiredKeys(prize, keys) {
+    const validationArray = [`@${prize}_raffle_enabled`, "@curr_online_count", "@min_online_count", "@qualified_machines_count"];
+
+    return validationArray.every(element => keys.includes(element));
+}
+*/
+
+---
+
 - Utilizar a suíte para documentar qual é a responsabilidade do código
 - Documentar as querys e as curls utilizadas nos testes manuais
 - Verificar o número de vezes em que os métodos (ou funções) são chamados
@@ -298,5 +309,14 @@ o calledWith guarda informações de quais chamadas? Todas?
   + Caso em que a requisição falha
   + Basicamente é algo lançando um erro, você envolvendo a função em um `try`/`catch` já cuida de todos os cenários possíveis (tecnicamente)
 
-// Comando para encerrar a suite de testes
 // sinon.match.hasAllKeys
+callCount
+
+// var app  = express();
+// var router = express.Router();
+// app.use('/game', router);
+// app.listen
+// calledOnceWith ordem importa
+// o que é middleware
+// machinesData (controlador) x TokenAuthMiddleware (middleware), tudo que é passado para o router não é considerado um middleware?
+// mock x stub - simulação x substituição

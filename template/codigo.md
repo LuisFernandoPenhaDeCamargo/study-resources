@@ -4,7 +4,7 @@
 
 - Os nomes de classes, objetos, funções, métodos, variáveis e o texto de strings nos exemplos devem estar em inglês, se possível
 - Quando a representação "A< >" for utilizada, o texto dentro dela deverá estar em português, se possível, pois é uma explicação sobre um valor que será utilizado nessa posição
-- Se eu mencionar um método em um tópico que não se refere ao objeto (ou módulo) associado a ele, também insira o objeto (ou módulo) ao citar o método. Por exemplo:   
+- Se um método for mencionado em um tópico que não se refere ao objeto (ou módulo) associado a ele, também insira o objeto (ou módulo) ao citar o método. Por exemplo:   <--
     O método `.readFile` do módulo `fs` seria citado como `fs.readFile` no módulo `util`.
 
 A documentação de um método (ou função), segue a seguinte ordem:
@@ -14,12 +14,23 @@ A documentação de um método (ou função), segue a seguinte ordem:
     - "A propriedade `calledOnce` é uma propriedade do stub do Sinon (`stub.calledOnce`) que verifica ..."
     - "A propriedade `true` é uma propriedade de asserção do Chai que verifica ..."
 2. **Sintaxe básica:** "`### Sintaxe Básica`"
-3. **Parâmetros:** uma lista deles  
+    - Se o título do tópico já for a "Sintaxe Básica", não é necessário fornecer este subtópico <--
+3. **Parâmetros:**  
+    Uma lista deles:  
     "- `A< parâmetro 1 >`**:** A< descrição do parâmetro 1 >"  
-    "- `A< parâmetro 2 >`**:** a< descrição do parâmetro 2 >"  
+    "- `A< parâmetro 2 >`**:** A< descrição do parâmetro 2 >"  
     "- `A< ... >`**:** A< descrição dos outros parâmetros >"
-4. **Retorno:** "- **Retorno:** A< descrição do valor retornado pelo método >"
-5. **Exemplo:** "`## Exemplo`"
+    - Não é necessário pontuar no nome do item o tipo do argumento, caso você vá fornecê-lo no texto que descreve o item  <--
+4. **Retorno:**  
+    "- **Retorno:** A< descrição do valor retornado pelo método >"
+    - Se o retorno não foi pontuado inicialmente na pesquisa e eu não tiver a necessidade de saber o valor dele, não irei incluí-lo nas anotações <--
+5. **Principais Características:** `## Principais Características`
+6. **Opções Comuns:** `## Opções Comuns`
+7. **Exemplo:** "`## Exemplo`"
+8. **Observações:** `##Observações`
+9. **Exemplo Interessante:** `## Exemplo Interessante`
+10. **Observações Importantes:** `## Observações Importantes`
+11. **Conclusão:** `## Conclusão`
 
 ## Exemplo
 
@@ -90,9 +101,7 @@ Invocar `spyObjMethod` também geraria os mesmos resultados, mas vamos definir c
 (Exemplo em Markdown)
 ```
 
-# ---
-
-### Notação de Colchetes
+## Notação de Colchetes
 
 Os colchetes em notações como
 
@@ -111,31 +120,13 @@ indicam que os parâmetros `arg1`, `arg2`, `...`, são **opcionais**, se você n
     + `arg2`**:** opcional, mas só pode ser fornecido se `thisArg` e `arg1` também forem fornecidos
     + `...`**:** opcionais, mas só podem ser fornecidos se `thisArg`, `arg1` e `arg2` também forem fornecidos
 
-### Tópicos Comuns
+## Logs
 
-Observe que a lista abaixo segue a ordem na qual os tópicos devem aparecer dentro de um documento.
-
-- `Sintaxe Básica`
-    + Se o título do tópico já for a "Sintaxe Básica", não é necessário fornecer este subtópico
-    + **Parâmetros**
-        - Pontue os parâmetros na forma de uma lista
-        - Não é necessário pontuar no nome do item o tipo do argumento, caso você vá fornecê-lo no texto que descreve o item  
-    + **Retorno**  
-        - Pontue o nome deste item como *"Retorno"*
-        - Se o retorno não foi pontuado inicialmente na pesquisa e eu não tiver a necessidade de saber o valor dele, não irei incluí-lo nas anotações
-- `Principais Características`
-- `Opções Comuns`
-- `Exemplo`
-- `Conclusão`
-- `Observações`
-- `Exemplo Interessante`
-- `Observações Importantes`
-
-### Logs
-
-- Para ilustrar a saída (impressão), na linha do log, insira ao seu final a simbologia utilizada para documentação, seguida de *"`Output:`"*. Por exemplo:  
+- Para ilustrar a saída (impressão), na linha do log, insira ao seu final a simbologia utilizada para documentação, seguida de `Output:`. Por exemplo:  
     `console.log("Hello, world!"); // Output: Hello, world!` (exemplo em JavaScript)
 - Se no mesmo bloco de código houver mais de uma linha de log, as alinhe (se fizer sentido) de acordo com a coluna da direita
+
+# ---
 
 # Formatação do Código-fonte
 

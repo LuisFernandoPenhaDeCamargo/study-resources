@@ -1,6 +1,6 @@
 # Diretórios e Arquivos
 
-Abaixo iremos exemplificar como eu vou representar a estrutura hierarquica do sistema de arquivos em exemplos.
+Abaixo, exemplificarei como representarei a estrutura hierárquica do sistema de arquivos em exemplos.
 
 ```Bash
 my-project/
@@ -13,4 +13,4 @@ my-project/
     └── package.json
 ```
 
-[Negrito -->](./negrito.md)
+# [[Próximo tópico: Negrito]](./negrito.md)

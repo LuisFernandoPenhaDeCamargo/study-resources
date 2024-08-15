@@ -29,9 +29,9 @@ Codename:	jammy
 - `Exemplo`
 - `Observações`
 - `Dificuldades Encontradas`
-- `Conclusão`
 - `Exemplo Interessante`
 - `Observações Importantes`
+- `Conclusão`
 - `Métodos e Propriedades`/`Comandos Utilizados através do CLI`
 
 # [[Próximo tópico: Links de Referência]](./links-referencia.md)
