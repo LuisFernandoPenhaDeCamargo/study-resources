@@ -157,11 +157,6 @@ ES6 x Pkg --> O Pkg não é compatível com o ES6 => Transpilar o código
   - `code: 'BABEL_PARSE_ERROR', reasonCode: 'IllegalReturn',` (transpilando os arquivos em **node_modules**)
   - `code: 'BABEL_PARSE_ERROR', reasonCode: 'UnsupportedImport',`
 
-npm update @babel/core @babel/cli @babel/preset-env
-
-.babelrc: Usado para configuração local específica para um diretório. Se você tiver múltiplos diretórios com diferentes configurações Babel, pode usar .babelrc em cada um para definir regras específicas.
-babel.config.json: Usado para configurações globais que afetam todo o projeto. Este é o arquivo recomendado se você deseja uma configuração única para o projeto inteiro.
-
 ---
 
 teste -> transpile -> compile -> pm2
@@ -276,25 +271,61 @@ o calledWith guarda informações de quais chamadas? Todas?
 
 ---
 
-/*
-try
-    const keys = Object.keys(result);
+A razão pela qual você precisa utilizar uma arrow function para testar se a função `hasRequiredKeys` lança uma exceção é que você quer verificar se a exceção é lançada durante a execução da função. Se você chamasse `hasRequiredKeys` diretamente dentro de `expect`, a exceção seria lançada imediatamente e não seria capturada pelo `expect`, resultando em um erro na execução do teste.
 
-    if (keys.length === 0) {
-        throw new Error("The object is empty.");
-    }
+Quando você usa uma arrow function dentro de `expect`, você está atrasando a execução da função até o momento em que `expect` esteja pronto para capturar e verificar a exceção.
 
-    if (!hasRequiredKeys(prize, keys)) {
-        throw new Error("Missing property.");
-    }
+Aqui está a diferença:
 
+### Chamando a função diretamente (não funciona como esperado):
+```javascript
+// Isso vai lançar a exceção imediatamente e não permitirá que `expect` a capture corretamente
+expect(hasRequiredKeys(fakeKeys, fakeValidationArray)).to.throw("There are no keys.");
+```
 
-function hasRequiredKeys(prize, keys) {
-    const validationArray = [`@${prize}_raffle_enabled`, "@curr_online_count", "@min_online_count", "@qualified_machines_count"];
+Neste caso, a exceção é lançada antes que `expect` possa processá-la, e o teste falha de forma inesperada.
 
-    return validationArray.every(element => keys.includes(element));
-}
-*/
+### Usando uma arrow function (correto):
+```javascript
+// Isso atrasa a execução de `hasRequiredKeys` até que `expect` esteja pronto para capturar a exceção
+expect(() => hasRequiredKeys(fakeKeys, fakeValidationArray)).to.throw("There are no keys.");
+```
+
+Neste caso, a função `hasRequiredKeys` é executada dentro da arrow function, permitindo que `expect` capture e verifique a exceção corretamente.
+
+Não é especificamente sobre o funcionamento das arrow functions, mas sim sobre como exceções são capturadas em JavaScript e como o framework de testes (como Chai) trabalha para verificar se uma função lança uma exceção.
+
+Aqui está o que acontece:
+
+### Lançamento de Exceções em JavaScript:
+- Quando uma função é chamada diretamente e ela lança uma exceção, essa exceção interrompe imediatamente o fluxo de execução.
+- Se você tentar verificar uma exceção usando `expect` em Chai sem encapsular a chamada da função, a exceção será lançada antes de `expect` ter a chance de verificá-la, resultando em uma falha inesperada no teste.
+
+### Uso de Funções (Incluindo Arrow Functions) para Capturar Exceções:
+- Para que o framework de teste consiga capturar e verificar a exceção, a execução da função deve ser atrasada até o momento em que o `expect` esteja pronto para fazer a verificação.
+- Isso é feito passando a função que lança a exceção como argumento para `expect`. Quando `expect` recebe uma função como argumento, ele executa essa função dentro de seu próprio contexto e verifica se a exceção é lançada.
+
+### Arrow Functions vs. Funções Regulares:
+- Tanto arrow functions quanto funções regulares podem ser usadas para encapsular a chamada da função que lança a exceção.
+- A arrow function é apenas uma maneira concisa de escrever essa função anônima. O mesmo comportamento pode ser obtido com uma função regular.
+
+### Exemplos:
+
+**Arrow Function:**
+```javascript
+expect(() => hasRequiredKeys(fakeKeys, fakeValidationArray)).to.throw("There are no keys.");
+```
+
+**Função Regular:**
+```javascript
+expect(function() { hasRequiredKeys(fakeKeys, fakeValidationArray); }).to.throw("There are no keys.");
+```
+
+Ambas as abordagens funcionam da mesma maneira nesse contexto. O importante é encapsular a chamada para que `expect` possa capturar a exceção.
+
+before é chamado antes do beforeEach?
+
+Exception during run: TypeError: ES Modules cannot be spied
 
 ---
 
@@ -320,3 +351,277 @@ callCount
 // o que é middleware
 // machinesData (controlador) x TokenAuthMiddleware (middleware), tudo que é passado para o router não é considerado um middleware?
 // mock x stub - simulação x substituição
+
+calledOnceWith não é adequado para comparar arrays aninhados <-- documentar o método
+secretsManagerClientInstanceStub.send.reset();
+
+---
+
+ao att algo no SO, o driver de vídeo apresentou mal funcionamento
+considerar que se você tem uma placa de vídeo, você pode estar usando o driver errado (estava usando o do SO ao invés do da NVIDIA, próprio)
+
+---
+
+mas nos outros casos, a gente também importava o módulo antes da substituição. É que este módulo exporta um objeto, isso difere de testes para módulos que exportam uma função e depois são executados?
+O ChatGPT disse:
+ChatGPT
+Memória atualizada
+Sim, há uma diferença importante entre testar módulos que exportam objetos e aqueles que exportam funções. Quando você exporta um objeto, as propriedades e métodos desse objeto são avaliados no momento em que o módulo é carregado. Isso significa que, ao importar o módulo, o objeto já foi criado e os métodos já foram atribuídos.
+
+Aqui estão algumas considerações:
+
+Avaliação antecipada: Quando um módulo exporta um objeto, esse objeto é criado imediatamente quando o módulo é importado. Isso inclui a execução de qualquer código relacionado à configuração do objeto, como a criação de clientes Redis, no seu caso. Portanto, se você quiser substituir ou stubar um método (como createClient), precisa garantir que isso seja feito antes que o módulo que o utiliza seja importado.
+
+Stub em funções vs. objetos: Quando você stuba uma função, está substituindo uma referência a essa função antes que ela seja utilizada. No caso de objetos, especialmente aqueles já instanciados ou configurados na importação, o stub precisa ser aplicado de forma que afete o objeto já criado.
+
+Com funções: Você pode stubar diretamente após a importação do módulo.
+Com objetos: Se o objeto já foi instanciado na importação, o stub pode não funcionar conforme esperado, porque a instância já foi criada com os métodos originais.
+Solução:
+
+Uso de esmock: Se você estiver usando esmock, ele é projetado para mockar o módulo antes da importação, então você deve garantir que ele mocka o método ou a propriedade do objeto que deseja testar.
+Redesign do código: Outra abordagem é repensar o design do código, permitindo que a criação do objeto seja mais controlada, talvez exportando uma função que retorne o objeto em vez de exportar o objeto diretamente.
+Esses pontos podem explicar por que seu stub no método createClient não está funcionando como esperado.
+
+Boa GPT, era a questão entre importar um obj x importar funções
+
+---
+
+game-api server.js linha 98
+//setInterval(tasks.offline_machines(models), config.tasks.offline_machines); <F Não quero que as minhas slots sejam marcadas como offlines.
+
+- Módulo x Biblioteca x Framework <--
+- `util` (Biblioteca?)
+- `Array` (Object)
+  + `prototype`
+  + `slice`
+  + `call()`
+- `forEach()`
+- `Array.isArray`
+- `typeof`
+- `push`
+- `util.inspect`
+- `replace`
+  + `/\s\s/g`
+- `join`
+  + `/\n\g`
+- `request.path`
+
++ `redis`
++ `createClient()`
++ `on`
++ `auth`
++ `config`
+
+- `sinon.match`
+  + `sinon.match(func => typeof func === "function")`
+- `property()`
+- `instanceof()` (asserção do Chai)
+
+---
+
+"build": "babel . --out-dir dist --config-file ./babel.config.json",
+
+{
+    "presets": [
+        ["@babel/preset-env", {
+            "targets": {
+                "node": "18.20.3"
+            },
+            "modules": "commonjs" // Isso converte os módulos ES para CommonJS.
+        }]
+    ],
+    "plugins": [
+        "@babel/plugin-syntax-import-meta",
+        "@babel/plugin-transform-modules-commonjs"
+    ],
+    "ignore": [
+        "node_modules/**"
+    ]
+}
+
+---
+
+- pkg
+"pkg": {
+  "scripts": [
+    "./models/*.js"
+  ]
+}
+
+TypeError: Invalid host defined options
+pkg/prelude/bootstrap.js:1926
+      return wrapper.apply(this.exports, args);
+
+- Babel
+babel pwdIn --out-dir pwdOut
+
+- O Babel automaticamente detecta o arquivo de configuração quando você executa seus comandos. Se você tiver um **babel.config.json** ou **.babelrc** na raíz do projeto, não precisará passar o arquivo de configuração explicitamente ao executar o Babel
+- Transpilar o **node_modules** gera um erro
+- 
+
+Por padrão, o Babel só processa e **copia** arquivos que ele transpila, ou seja, arquivos com extensões que ele reconhece, como **.js**, **.mjs**, etc. Isso significa que arquivos como **package.json**, **README.md**, ou outros arquivos que não são transpilados pelo Babel, não serão incluídos no diretório de saída, a menos que você faça isso explicitamente.
+
+Além disso, se um diretório não contiver nenhum arquivo que o Babel transpile, ele também não será criado no diretório de saída.
+
+## Como Incluir Arquivos Adicionais no Diretórito de Saída
+
+Se você precisar copiar arquivos como **package.json**, **README.md**, ou outros, arquivos/diretórios não processados pelo Babel, você pode utilizar uma ferramenta de cópia separada.
+
+Você pode usar uma ferramenta como copyfiles para copiar arquivos e diretórios adicionais. Use a flag `--copy-files` ao rodar o Babel. Essa flag faz com que o Babel copie todos os arquivos que não são transpilados, mas que estão presentes no diretório de entrada, para o diretório de saída.
+
+## Considerações
+
+- **Arquivos ignorados:** mesmo com a flag `--copy-files`, se o Babel estiver ignorando certos arquivos (como especificado pela opção `ignore`), eles não serão copiados
+  + Eles são copiados, só não são transpilados
+- **Diretórios vazios:** diretórios que não contêm arquivos relevantes para o Babel não serão copiados ou criados no diretório de saída
+  + Serão copiados sim
+
+- O Babel não renomeou as strings de importação para remover a extensão **.mjs**
+
+- A flag --copy-files é do Babel
+  + A chave ignore faz os itens listados não serem transpilados, mas como eu específico que eu não quero que certos itens sejam copiados?
+
+const require = createRequire(import.meta.url); -> const _require = (0, _module.createRequire)(import.meta.url);
+
+o que é o algoritmo de compressão Brotli?
+testes unitários para meu script?
+Webpack e Babel são ferramentas que utilizam do código, se está lá, como você espera remover depois?
+
+> pkg@5.8.1
+compression:  Brotli
+> Warning Non-javascript file is specified in 'scripts'.
+  Pkg will probably fail to parse. Specify *.js in glob.
+  /home/luis/APIs/orion-game-api/db/dumps/-- oriongames_dev.cyber_access_token def.sql
+> Warning Non-javascript file is specified in 'scripts'.
+  Pkg will probably fail to parse. Specify *.js in glob.
+  /home/luis/APIs/orion-game-api/db/dumps/authorization_tokens.sql
+> Warning Non-javascript file is specified in 'scripts'.
+  Pkg will probably fail to parse. Specify *.js in glob.
+  /home/luis/APIs/orion-game-api/db/dumps/big_winners.sql
+> Warning Non-javascript file is specified in 'scripts'.
+  Pkg will probably fail to parse. Specify *.js in glob.
+  /home/luis/APIs/orion-game-api/db/dumps/cashier.sql
+> Warning Non-javascript file is specified in 'scripts'.
+  Pkg will probably fail to parse. Specify *.js in glob.
+  /home/luis/APIs/orion-game-api/db/dumps/games.sql
+> Warning Non-javascript file is specified in 'scripts'.
+  Pkg will probably fail to parse. Specify *.js in glob.
+  /home/luis/APIs/orion-game-api/db/dumps/lanhouse_log.sql
+> Warning Non-javascript file is specified in 'scripts'.
+  Pkg will probably fail to parse. Specify *.js in glob.
+  /home/luis/APIs/orion-game-api/db/dumps/machines.sql
+> Warning Non-javascript file is specified in 'scripts'.
+  Pkg will probably fail to parse. Specify *.js in glob.
+  /home/luis/APIs/orion-game-api/db/dumps/raffle_accumulated_prize.sql
+> Warning Non-javascript file is specified in 'scripts'.
+  Pkg will probably fail to parse. Specify *.js in glob.
+  /home/luis/APIs/orion-game-api/db/dumps/raffle_jackpot_prize.sql
+> Warning Non-javascript file is specified in 'scripts'.
+  Pkg will probably fail to parse. Specify *.js in glob.
+  /home/luis/APIs/orion-game-api/db/dumps/remote_queries.sql
+> Warning Non-javascript file is specified in 'scripts'.
+  Pkg will probably fail to parse. Specify *.js in glob.
+  /home/luis/APIs/orion-game-api/db/dumps/settings.sql
+> Warning Non-javascript file is specified in 'scripts'.
+  Pkg will probably fail to parse. Specify *.js in glob.
+  /home/luis/APIs/orion-game-api/db/dumps/wichmann_hill_rand.sql
+> Warning Babel parse has failed: Missing semicolon. (1:36)
+> Warning Babel parse has failed: Missing semicolon. (1:32)
+> Warning Babel parse has failed: Missing semicolon. (1:6)
+> Warning Babel parse has failed: Missing semicolon. (1:6)
+> Warning Babel parse has failed: Missing semicolon. (1:6)
+> Warning Babel parse has failed: Missing semicolon. (1:6)
+> Warning Babel parse has failed: Missing semicolon. (1:6)
+> Warning Babel parse has failed: Missing semicolon. (1:14)
+> Warning Babel parse has failed: Missing semicolon. (1:14)
+> Warning Babel parse has failed: Missing semicolon. (1:6)
+> Warning Babel parse has failed: Missing semicolon. (1:6)
+> Warning Babel parse has failed: Missing semicolon. (1:14)
+> Warning Failed to make bytecode node16-x64 for file /snapshot/orion-game-api/db/dumps/-- oriongames_dev.cyber_access_token def.sql
+> Warning Failed to make bytecode node16-x64 for file /snapshot/orion-game-api/db/dumps/authorization_tokens.sql
+> Warning Failed to make bytecode node16-x64 for file /snapshot/orion-game-api/db/dumps/big_winners.sql
+> Warning Failed to make bytecode node16-x64 for file /snapshot/orion-game-api/db/dumps/cashier.sql
+> Warning Failed to make bytecode node16-x64 for file /snapshot/orion-game-api/db/dumps/games.sql
+> Warning Failed to make bytecode node16-x64 for file /snapshot/orion-game-api/db/dumps/lanhouse_log.sql
+> Warning Failed to make bytecode node16-x64 for file /snapshot/orion-game-api/db/dumps/machines.sql
+> Warning Failed to make bytecode node16-x64 for file /snapshot/orion-game-api/db/dumps/raffle_accumulated_prize.sql
+> Warning Failed to make bytecode node16-x64 for file /snapshot/orion-game-api/db/dumps/raffle_jackpot_prize.sql
+> Warning Failed to make bytecode node16-x64 for file /snapshot/orion-game-api/db/dumps/remote_queries.sql
+> Warning Failed to make bytecode node16-x64 for file /snapshot/orion-game-api/db/dumps/settings.sql
+> Warning Failed to make bytecode node16-x64 for file /snapshot/orion-game-api/db/dumps/wichmann_hill_rand.sql
+
+Sim, o `pkg` tem um mecanismo de otimização para minimizar o tamanho do executável gerado, o que inclui a remoção de arquivos não utilizados. 
+
+### Como Funciona a Otimização no `pkg`
+
+1. **Análise de Código**: O `pkg` analisa o código do seu projeto e os módulos que são utilizados diretamente no código de entrada. Ele tenta incluir apenas os arquivos e dependências que são explicitamente requeridos ou utilizados.
+
+2. **Incluir/Excluir Arquivos**:
+   - **Incluindo Arquivos**: O `pkg` inclui arquivos que são explicitamente referenciados ou necessários para a execução do código. Isso é feito através das configurações no arquivo `pkg.config.json`, onde você pode especificar quais arquivos e diretórios incluir ou excluir.
+   - **Excluindo Arquivos**: Arquivos que não são utilizados diretamente e não são referenciados pelo código de entrada geralmente são excluídos do binário final.
+
+3. **Configurações de Inclusão e Exclusão**: Você pode controlar quais arquivos e pastas são incluídos ou excluídos usando as chaves `assets`, `scripts`, e `targets` no arquivo de configuração do `pkg`:
+
+   ```json
+   {
+     "pkg": {
+       "assets": [
+         "public/**/*"
+       ],
+       "scripts": [
+         "src/**/*.js"
+       ],
+       "targets": [
+         "node14-linux-x64"
+       ]
+     }
+   }
+   ```
+
+   Se você quiser excluir arquivos ou diretórios específicos, você pode usar o parâmetro `--exclude` diretamente no comando `pkg` ou configurar isso no seu arquivo de configuração.
+
+### Exemplo de Configuração de Exclusão
+
+Se você tem um arquivo `pkg.config.json` e deseja excluir arquivos específicos, você pode configurar isso assim:
+
+```json
+{
+  "pkg": {
+    "assets": [
+      "src/**/*"
+    ],
+    "targets": [
+      "node14-linux-x64"
+    ],
+    "exclude": [
+      "old-tests/**/*"
+    ]
+  }
+}
+```
+
+Neste exemplo, qualquer arquivo dentro do diretório `old-tests` será excluído do binário gerado.
+
+### Verificação de Inclusão
+
+Se você não tem certeza se um arquivo está sendo incluído ou não, você pode usar a opção `--debug` com o `pkg` para obter mais informações sobre o que está sendo incluído no binário:
+
+```bash
+pkg . --config pkg.config.json --debug
+```
+
+Isso exibirá informações detalhadas sobre os arquivos que o `pkg` está considerando para inclusão.
+
+// curl http://localhost:8080/game/machines/101 -X GET -H "Content-Type: application/json"
+// curl http://localhost:8080/game/ping -X GET
+// 49191128 - Brotli
+// strings server | grep -o old-tests/play.json
+// fazer testes unitários
+
+- documentar toda essa merda
+- testar a publicação do SEA em um servidor
+- publicar o minor fix
+
+ls ~/.nvm/versions/node/v8.16.0/lib/node_modules/@zoeslots/zoe-game-api/
+
+Postman

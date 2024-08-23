@@ -742,7 +742,7 @@ Basicamente, utilizamos uma condicional e um booleano para lançar um erro no mo
 
 # <a id=""></a>
 
-- sinon.useFakeTimers
+- sinon.useFakeTimers <--
 - Controlando o retorno da invocação uma função que é chamada duas vezes a partir de uma chamada única a outra
 - stub.onCall
 
