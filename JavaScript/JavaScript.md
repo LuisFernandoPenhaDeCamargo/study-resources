@@ -128,6 +128,7 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
 
 ### [15. Bibliotecas](./ferramentas-bibliotecas/bibliotecas/)
 
+- [Sequelize](./ferramentas-bibliotecas/bibliotecas/Sequelize.md)
 - [esmock](./ferramentas-bibliotecas/bibliotecas/esmock.md)
 
 ### 16. Frameworks Populares
@@ -213,3 +214,65 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
 - MDN Web Docs
 - W3Schools
 - Eloquent JavaScript (livro)
+
+## Tópicos que Irei Estudar
+
+- SinonJS: `onCall`
+- ES6
+- JS x quantidade de memória alocada
+- .mjs habilita o strict mode por padrão?
+- "/\s\s/g" (expressão regular)
+- "/\n/g" (expressão regular)
+- `elseif` x `if` seguido de `if`
+- `interface`
+- `typeof`
+- `new`
+- `new` em funções. Exemplo: `new exampleFunction()`
+- `constructor`
+- A "real interação" do `constructor` e o JavaScript
+- `delete` de valores cujo tipo de dado é primitivo em ESM
+- Array
+    + `isArray`
+    + `forEach`
+    + `slice`
+- `Date`
+    + `getMonth`
+    + `getDate`
+    + `getHours`
+    + `getMinutes`
+    + `getSeconds`
+- `Array.prototype.slice.call()`
+- `process`
+- `process.env`
+- `util`
+    + `inspect`
+- `redis`
+    + `createClient`
+    + `on`
+    + `auth`
+    + `config`
+- `have` (provavelmente uma cadeia de asserção)
+- `request.path`
+- `join`
+- `include`
+- `reset`
+- `arguments`
+- `push`
+- `inspect`
+- `replace`
+- Me explique cada detalhe do log abaixo:
+
+```Bash
+<ref *1> [AsyncFunction: getTemporaryCredentials] {
+  default: [Circular *1],
+  getDatabasePassword: [AsyncFunction: getDatabasePassword],
+  esmkTreeId: 'file:///home/luis/APIs/zoe-game-api/services/sensitive_data_getters.mjs?esmk=1'
+}
+```
+
+- O que significa o "`_`" no exemplo:
+  + Qual é o nome deste símbolo?
+
+```JavaScript
+const _ = require("lodash");
+```

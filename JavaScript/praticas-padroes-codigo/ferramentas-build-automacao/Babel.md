@@ -2,14 +2,6 @@
 
 Babel é uma ferramenta amplamente usada no ecossistema JavaScript para transpilação de código. Basicamente, Babel permite que você escreva código JavaScript utilizando as versões mais recentes da linguagem (incluindo recursos que podem não ser suportados por todos os navegadores ou ambientes) e o transforma em uma versão mais antiga e amplamente compatível do JavaScript.
 
-### Sumário
-
-- [`@babel/core`](#core)
-- [`@babel/cli`](#cli)
-- [@babel/preset-env](#preset-env)
-- [Resumindo o Papel de Cada Componente](#resumindo-papel-cada-componente)
-- [**babel.config.json** x **.babelrc**](#babelconfigjson-x-babelrc)
-
 ## Principais Funções
 
 ### 1. Transpilar código
@@ -59,6 +51,14 @@ var greet = function() {
 ```
 
 Babel é essencial para desenvolvedores que querem aproveitar as últimas funcionalidades da linguagem JavaScript sem sacrificar a compatibilidade com diferentes ambientes de execução.
+
+### Sumário
+
+- [`@babel/core`](#core)
+- [`@babel/cli`](#cli)
+- [`@babel/preset-env`](#preset-env)
+- [Resumindo o Papel de Cada Componente](#resumindo-papel-cada-componente)
+- [babel.config.json x .babelrc](#babelconfigjson-x-babelrc)
 
 # <a id="core">`@babel/core`</a>
 

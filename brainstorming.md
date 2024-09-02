@@ -1,82 +1,12 @@
-### 1. JavaScript
-
-JS x quantidade de memória alocada
-elseif x if seguido de if
-
-- `include`
-- `reset`
-- `getMonth`
-- `getDate`
-- `getHours`
-- `getMinutes`
-- `getSeconds`
-- A "real interação" do `constructor` e o JavaScript
-- `new`
-- `new` em funções. Exemplo: `new exampleFunction()`
-- `have` (provavelmente uma cadeia de asserção)
-- `process`
-- `process.env`
-- util
-- `arguments`
-- `isArray`
-- `push`
-- `slice`
-- `forEach`
-- `inspect`
-- `replace`
-- Me explique cada detalhe do log abaixo:
-
-```Bash
-<ref *1> [AsyncFunction: getTemporaryCredentials] {
-  default: [Circular *1],
-  getDatabasePassword: [AsyncFunction: getDatabasePassword],
-  esmkTreeId: 'file:///home/luis/APIs/zoe-game-api/services/sensitive_data_getters.mjs?esmk=1'
-}
-```
-
-- O que significa o "`_`" no exemplo:
-  + Qual é o nome deste símbolo?
-
-```JavaScript
-const _ = require("lodash");
-```
-
-- "/\s\s/g" (expressão regular)
-- "/\n/g" (expressão regular)
-- .mjs habilita o strict mode por padrão?
-- `delete` de valores cujo tipo de dado é primitivo em ESM
-- `interface`
-
-### 2. AWS
-
-- AWS STS (Security Token Service)
-- AWS IAM
-
-### 3. Variados
-
-- Anotar o que deduzimos sobre a tabela users
-- Anotar o que deduzimos sobre a tabela remote_queries
-- Anotar o que deduzimos sobre a tabela remote_commands
-- Docker
-    + Utilizando Docker para implementar CI/CD
-- Funções x Métodos?
-- Parâmetros x Argumentos?
-- Módulos x Bibliotecas x Frameworks?
-- Diretório x Pasta
-- Terminal x Prompt de Comando
-- JSON
-- API Gateway
-- "RESTful"
-- Shebang (Linux)
+- Anotar o que deduzimos sobre a tabela `users`
+- Anotar o que deduzimos sobre a tabela `remote_queries`
+- Anotar o que deduzimos sobre a tabela `remote_commands`
 
 ```Bash
 # Comando utilizado em um teste.
 curl http://localhost:8080/game/bigwinner  -X POST \
 -H "Content-Type: application/json" -d '{"machine_id": 101}'
 ```
-
--> ES6
--> constructor
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create
 
@@ -160,19 +90,6 @@ ES6 x Pkg --> O Pkg não é compatível com o ES6 => Transpilar o código
 ---
 
 teste -> transpile -> compile -> pm2
-
-{
-  "name": "@zoeslots/orion-game-api",
-  "version": "1.0.0-homolog.1",
-  "description": "Game API manages game operations including money in/out, accumulated/jackpot raffle",
-  "author": "Zoe Slots, LLC",
-  "bin": {
-    "orion-game-server": "server"
-  },
-  "files": [
-    "./server"
-  ]
-}
 
 ssh zoe@192.168.1.137 -p 1337 -i ~/Downloads/my-certificate.pem
 
@@ -389,28 +306,7 @@ Boa GPT, era a questão entre importar um obj x importar funções
 game-api server.js linha 98
 //setInterval(tasks.offline_machines(models), config.tasks.offline_machines); <F Não quero que as minhas slots sejam marcadas como offlines.
 
-- Módulo x Biblioteca x Framework <--
-- `util` (Biblioteca?)
-- `Array` (Object)
-  + `prototype`
-  + `slice`
-  + `call()`
-- `forEach()`
-- `Array.isArray`
-- `typeof`
-- `push`
-- `util.inspect`
-- `replace`
-  + `/\s\s/g`
-- `join`
-  + `/\n\g`
-- `request.path`
 
-+ `redis`
-+ `createClient()`
-+ `on`
-+ `auth`
-+ `config`
 
 - `sinon.match`
   + `sinon.match(func => typeof func === "function")`
@@ -624,4 +520,684 @@ Isso exibirá informações detalhadas sobre os arquivos que o `pkg` está consi
 
 ls ~/.nvm/versions/node/v8.16.0/lib/node_modules/@zoeslots/zoe-game-api/
 
-Postman
+no meu banco eu entrei como root, após mudar para o usuário root no SO
+
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'nova_senha';
+
+---
+
+Sim, você pode usar o comando `dd` para gravar uma imagem de disco virtual (como um VDI) em um disco rígido (HD). Aqui está como isso funciona:
+
+### Passos para Gravar um VDI em um HD usando `dd`:
+
+1. **Converter o VDI para um formato raw (opcional):**
+   - Se o arquivo VDI não estiver em formato raw, você pode precisar convertê-lo. Ferramentas como `qemu-img` podem ser usadas para converter o VDI para um formato raw, que é necessário para ser gravado diretamente em um HD.
+
+   ```bash
+   qemu-img convert -O raw input.vdi output.img
+   ```
+
+   - **`input.vdi`**: O arquivo VDI original.
+   - **`output.img`**: O arquivo de saída no formato raw.
+
+2. **Usar o `dd` para gravar a imagem no HD:**
+
+   Após converter o VDI (se necessário), você pode usar o `dd` para gravar a imagem no HD.
+
+   ```bash
+   sudo dd if=output.img of=/dev/sdX bs=4M status=progress
+   ```
+
+   - **`if=output.img`**: O arquivo de imagem de entrada (formato raw ou img).
+   - **`of=/dev/sdX`**: O disco de destino (substitua `sdX` pelo identificador do seu HD).
+   - **`bs=4M`**: Define o tamanho do bloco para 4 MB (pode ser ajustado conforme necessário).
+   - **`status=progress`**: Mostra o progresso da cópia.
+
+3. **Finalizar e verificar:**
+   - Depois que o `dd` concluir a gravação, você pode montar o HD e verificar se a imagem foi gravada corretamente.
+
+### Considerações Importantes:
+
+- **Cuidado com o `of=`**: Certifique-se de especificar corretamente o dispositivo de destino (`of=`) porque `dd` sobrescreverá o conteúdo do disco especificado sem aviso.
+  
+- **Backup**: Faça backups antes de executar operações como esta, pois `dd` é uma ferramenta poderosa que pode sobrescrever dados sem possibilidade de recuperação.
+
+- **Conversão**: Se o VDI já estiver em formato raw, a conversão não será necessária, e você pode gravá-lo diretamente no HD.
+
+Essa abordagem é útil, por exemplo, para migrar uma máquina virtual para um hardware físico, transformando a imagem VDI em um sistema operacional funcionando diretamente no HD.
+
+---
+
+Quando você usa o `dd` para gravar uma imagem de disco (como um VDI convertido para o formato raw) em um disco rígido (HD), o processo copia os dados byte a byte da imagem diretamente para o disco de destino. Isso inclui todas as partições, tabelas de partições, sistemas de arquivos e dados contidos na imagem.
+
+### Como o `dd` Lida com Partições e Sistemas de Arquivos:
+
+1. **Cópia Byte a Byte:**
+   - O `dd` não faz distinção entre dados, tabelas de partições ou metadados. Ele simplesmente copia o conteúdo da imagem de entrada para o disco de saída byte a byte, incluindo qualquer estrutura de partição e sistema de arquivos contidos na imagem.
+
+2. **Partições e Tabelas de Partição:**
+   - Se a imagem (por exemplo, o arquivo raw resultante do VDI) contiver uma tabela de partições (como MBR ou GPT), o `dd` copiará essa tabela para o HD de destino. Isso significa que, após a cópia, o HD terá as mesmas partições que estavam na imagem original.
+   - As partições na imagem serão recriadas no disco de destino exatamente como estavam no disco virtual.
+
+3. **Sistemas de Arquivos:**
+   - Os sistemas de arquivos dentro das partições também são copiados exatamente como estavam na imagem. Isso significa que, se a imagem contiver um sistema de arquivos ext4, NTFS, FAT32, etc., ele será preservado no HD de destino.
+
+4. **Bootloader e MBR/GPT:**
+   - Se a imagem original contiver um bootloader (como GRUB, MBR) ou uma tabela de partição GPT, esses também serão copiados para o HD de destino. Isso permite que o disco de destino seja inicializável, desde que o hardware suporte as configurações da imagem.
+
+### Considerações e Cuidados:
+
+- **Tamanho do Disco**: O HD de destino deve ser igual ou maior que o tamanho da imagem. Se o HD for menor, a cópia não será concluída corretamente, e pode resultar em um sistema quebrado.
+
+- **Espaço não Alocado**: Se o HD for maior que a imagem, o espaço restante no HD ficará não alocado, e você poderá querer redimensionar as partições para utilizar todo o espaço disponível.
+
+- **Sobrescrição Completa**: O `dd` sobrescreverá completamente os dados existentes no HD de destino, incluindo a tabela de partições e todos os dados. Isso significa que qualquer dado previamente no HD será perdido.
+
+- **Alinhamento de Partições**: Como o `dd` faz uma cópia exata, as partições e os dados são colocados exatamente onde estavam na imagem original. Isso pode não ser ideal em todos os casos, especialmente se o alinhamento de partições não for adequado para o disco de destino, mas normalmente funciona bem para a maioria dos cenários.
+
+### Resumindo:
+
+- **Cópia Exata**: `dd` realiza uma cópia exata de tudo na imagem, incluindo partições, sistemas de arquivos, bootloader e dados.
+- **Simples e Poderoso**: É uma ferramenta muito simples, mas poderosa, que faz o trabalho sem "interpretar" ou "ajustar" nada, o que significa que você obtém uma réplica fiel do disco original.
+
+Se você seguir esse procedimento, o HD de destino deve ser uma réplica funcional do disco representado pela imagem VDI, com as partições e sistemas de arquivos intactos e no lugar correto.
+
+---
+
++ Quanto de dinheiro eu vou guardar para o que?
+
+- Definir um tempo para refatorar conhecimento
+  + Só do repositório ou do browser também?
+  + Quais partes do repositório eu começarei refatorando?
+  + Posso utilizar todo o limite do GPT de manhã
+- Quantas vezes no dia eu vou verificar se um servidor possui o erro e corrigí-lo
+
+# Erro `The user specified as a definer ('username'@'host') does not exist`
+
+Prático:
+
+```Bash
+$mariadb -u orion -pBl4ckBox1337 zoeslots
+$node /usr/lib/node_modules/@zoeslots/zoe-data-api/migrate.js
+$mariadb -u root -p260490 zoeslots     # Notebook do trabalho
+$mariadb -u batata -ppassword zoeslots # Notebook do trabalho
+```
+
+```SQL
+CALL raffle_accumulated_prize;
+CALL raffle_jackpot_prize;
+SELECT wichmann_hill_rand();
+DELETE FROM SequelizeMeta WHERE name = '20240320170000-update-accumulated-procedure.js' OR name = '20240320170000-update-jackpot-procedure.js' OR name = '20240320165900-update-wichmann_hill_rand.js';
+DELETE FROM SequelizeMeta WHERE name = '20240320170000-update-accumulated-procedure.js' OR name = '20240320170000-update-jackpot-procedure.js' OR name = '20240320165900-update-wichmann_hill_rand.js' OR name = '20240730170000-update-accumulated-procedure.js' OR name = '20240730170000-update-jackpot-procedure.js';
+SHOW CREATE PROCEDURE raffle_accumulated_prize;
+SHOW CREATE PROCEDURE raffle_jackpot_prize;
+SHOW CREATE FUNCTION wichmann_hill_rand;
+SELECT force_jackpot FROM settings;
+SHOW GRANTS FOR 'orion'@'localhost';
+CREATE USER 'batata'@'localhost' IDENTIFIED BY 'password';    -- Notebook do trabalho
+GRANT USAGE ON *.* TO 'batata'@'localhost';                   -- Notebook do trabalho
+GRANT ALL PRIVILEGES ON `zoeslots`.* TO 'batata'@'localhost'; -- Notebook do trabalho
+SHOW GRANTS FOR 'batata'@'localhost';                         -- Notebook do trabalho
+DROP USER 'batata'@'localhost';                               -- Notebook do trabalho
+```
+
+- Quando você executa a migração, o usuário utilizado na conexão fica como o `DEFINER` das procedures e da função
+- A mensagem de erro pontuava o usuário e o host como `''@''`. Provavelmente a procedure não foi criada por um usuário específico e não está especificada para um host
+- Testar
+  + Rollback no configure_server.sh
+
+---
+
+Para verificar se a palavra "mysql" está presente em algum arquivo ou subdiretório no diretório atual (diretório `x`), você pode usar o comando `grep` com a opção `-r` para buscar recursivamente. Aqui está o comando:
+
+```bash
+grep -r "mysql" .
+```
+
+### Descrição:
+- **`grep`**: Comando de busca em arquivos.
+- **`-r`**: Faz a busca de forma recursiva em todos os subdiretórios.
+- **`"mysql"`**: A palavra que você está buscando.
+- **`.`**: Indica que a busca deve começar no diretório atual.
+
+Este comando irá listar todas as ocorrências da palavra "mysql" em arquivos dentro do diretório atual e seus subdiretórios.
+
+---
+
+Sim, a mensagem `Binary file ./rootfs/usr/local/bin/ZoeCashier matches` indica que o comando `grep` encontrou a palavra "mysql" dentro do arquivo binário `ZoeCashier`.
+
+O `grep` detectou que o binário contém a string "mysql", mas como o arquivo é binário, ele não exibe diretamente a linha onde a palavra foi encontrada, apenas informa que a correspondência existe.
+
+grep -r "source" .
+
+contexto de gravação parece ser diferente do contexto da regravação que parece ser diferente do contexto do zoe-updater
+a cada servidor novo verificar se o force_jackpot está como 104 e se o pacote orion-cashier-updater está instalado
+acho que o problema que está dando com a cashier é por causa do HD utilizado na gravação, como a cashier já existiu nele, um erro está acontecendo
+
+# ---
+
+MainWindow::writeServer(): ParÃ¢metros da gravaÃ§Ã£o do server island:  
+("/dev/sdb", "3861", "3861-Teste-Cachoeira") 
+483+1 records in
+483+1 records out
+32432455680 bytes (32 GB) copied, 1142.86 s, 28.4 MB/s
+mkdir: cannot create directory ‘/mnt/test1’: File exists
+ Mount /dev/mapper
+ Mount /dev/sdb
+Disk /dev/mapper/lvmdsw doesn't contain a valid partition table
+Disk /dev/mapper/gruposw-swap doesn't contain a valid partition table
+Disk /dev/mapper/gruposw-root doesn't contain a valid partition table
+Disk /dev/mapper/lvmdd doesn't contain a valid partition table
+Disk /dev/mapper/dadossw-conteudo doesn't contain a valid partition table
+
+WARNING: GPT (GUID Partition Table) detected on '/dev/sdb'! The util fdisk doesn't support GPT. Use GNU Parted.
+
+Disk /dev/mapper/sda5_crypt doesn't contain a valid partition table
+Disk /dev/mapper/lubuntu--vg-root doesn't contain a valid partition table
+Disk /dev/mapper/lubuntu--vg-swap_1 doesn't contain a valid partition table
+63344640
+
+WARNING: GPT (GUID Partition Table) detected on '/dev/sdb'! The util fdisk doesn't support GPT. Use GNU Parted.
+
+
+Command (m for help): Partition type:
+   p   primary (2 primary, 1 extended, 1 free)
+   l   logical (numbered from 5)
+Select (default p): Selected partition 4
+First sector (1499136-234441647, default 1499136): Value out of range.
+First sector (1499136-234441647, default 1499136): Sector 63344640 is already allocated
+First sector (231116800-234441647, default 231116800): Value out of range.
+First sector (231116800-234441647, default 231116800): First sector (231116800-234441647, default 231116800): First sector (231116800-234441647, default 231116800): 
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100    63  100    15  100    48     22     73 --:--:-- --:--:-- --:--:--    73
+{"status":"OK"}Can't do passphrase verification on non-tty inputs.
+Command successful.
+Writing Zeros
+Formating partition
+mke2fs 1.42.9 (4-Feb-2014)
+Filesystem label=
+OS type: Linux
+Block size=4096 (log=2)
+Fragment size=4096 (log=2)
+Stride=0 blocks, Stripe width=0 blocks
+5242880 inodes, 20971008 blocks
+1048550 blocks (5.00%) reserved for the super user
+First data block=0
+Maximum filesystem blocks=4294967296
+640 block groups
+32768 blocks per group, 32768 fragments per group
+8192 inodes per group
+Superblock backups stored on blocks: 
+	32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632, 2654208, 
+	4096000, 7962624, 11239424, 20480000
+
+Allocating group tables: done                            
+Writing inode tables: done                            
+Creating journal (32768 blocks): done
+Writing superblocks and filesystem accounting information: done   
+
+device-mapper: remove ioctl on data failed: Device or resource busy
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100    47  100    47    0     0     70      0 --:--:-- --:--:-- --:--:--    70
+Processing boot partition
+  Creating boot partition backup...
+  Creating access...
+  Formating unit...
+  Opening unit...
+  Creating physical volume...
+  Creating volume group...
+  Creating logical volume...
+  Formating file system...
+  Activating logical volume...
+  Mounting logical volume...
+  Restoring backup...
+Done
+Installing packages
+  Installing parted package...
+Done
+Removing old kernels
+Done
+Removing zoe-cashier src
+Copying custom software and scripts
+Done
+Updating GRUB
+Done
+Updating Initramfs
+Done
+Installing initialization sequence
+  Installing GRUB package...
+  Shuffling boot...
+  Configuring GRUB...
+  Configuring auto-boot...
+  Configuring Initrd...
+Done
+Removing unnecessary files...
+Removing display-sas from server
+Done
+Cloning server  3861-Teste-Cachoeira
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100    47  100    18  100    29     27     44 --:--:-- --:--:-- --:--:--    44
++ sed -i s/zoe-server-1804/3861-Teste-Cachoeira/g /etc/hosts
++ echo 3861-Teste-Cachoeira
++ curl '' --output 3861-Teste-Cachoeira-full.sql.gz
+curl: (3) <url> malformed
+Configure Server
+Installing packages
++ echo 'UPDATE settings SET server_id = 3861 ;'
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100    78  100    78    0     0    141      0 --:--:-- --:--:-- --:--:--   141
+npm token 
++ echo //registry.npmjs.org/:_authToken=
++ sleep 5
++ mysqld_safe --user=mysql --skip-grant-tables
+240828 13:58:00 mysqld_safe Logging to syslog.
+240828 13:58:00 mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
++ mysql -u orion -pBl4ckBox1337 zoeslots -e 'UPDATE machines SET attempts = 8;'
++ mysql -u orion -pBl4ckBox1337 zoeslots -e 'UPDATE configs SET auth_lock = 1;'
++ mysql -u orion -pBl4ckBox1337 zoeslots -e 'TRUNCATE users;'
++ mysql -u orion -pBl4ckBox1337 zoeslots -e 'ALTER TABLE users MODIFY password VARCHAR(100) NOT NULL;'
++ mysql -u orion -pBl4ckBox1337 zoeslots -e 'INSERT INTO users (name, login, password, status, role) VALUES ('\''Admin'\'', '\''admin'\'', '\''002020'\'', 1, '\''ADMIN'\''), ('\''Cyber'\'', '\''cyber'\'', '\''010203'\'', 1, '\''LANHOUSE'\'');'
++ mysql -u orion -pBl4ckBox1337 zoeslots -e 'UPDATE users SET password=sha1(password);'
++ cat id.sql
++ mysql -u orion -pBl4ckBox1337 zoeslots
++ rm id.sql
+++ npm view @zoeslots/zoe-terminal versions
+++ tail -n 2
+++ sed 's|['\'',\n]||g'
+++ grep -Ev 'beta|alpha|rc'
+++ tr -d '[:space:]'
+++ tr -d '['
+++ tr -d ']'
++ ZOE_TERMINAL_VERSION=2.0.0
+++ npm view @zoeslots/zoe-watchdog versions
+++ grep -Ev 'beta|alpha|rc'
+++ tail -n 2
+++ tr -d '['
+++ sed 's|['\'',\n]||g'
+++ tr -d '[:space:]'
+++ tr -d ']'
++ ZOE_WD_VERSION=0.2.0
++ npm cache clean --force
+npm WARN using --force I sure hope you know what you are doing.
++ npm i -g --unsafe-perm @zoeslots/zoe-data-api@3.2.1-homolog.1
+/usr/bin/orion-data-client -> /usr/lib/node_modules/@zoeslots/zoe-data-api/client.js
+
+> @zoeslots/zoe-data-api@3.2.1-homolog.1 postinstall /usr/lib/node_modules/@zoeslots/zoe-data-api
+> node migrate.js
+
+Executed:
+>> 20191011161400-set-id-to-zero.js
+>> 20191015164200-set-machine-fields-to-zero.js
+>> 20191021162600-add-promotion-columns.js
+>> 20191106143200-add-updater-logs.js
+>> 20200114145000-add-chage-game-enabled-to-settings.js
+>> 20201104141522-add-environment-column.js
+>> 20210125192520-AddTimezoneColumn.js
+>> 20210126152411-modify-total-money-to-decimal.js
+>> 20210217143758-modify-default-total-money.js
+>> 20210225151318-add-new-games-fortunes-diamonds.js
+>> 20210323150337-add-enums-to-machine.js
+>> 20211014114644-add-new-games-jacare.js
+>> 20211126170836-cyber-server_type.js
+>> 20211202151645-authorization_tokens.js
+>> 20211207125929-add-game-jungle.js
+>> 20220103150132-add-new-game-vertical.js
+>> 20220203125028-server_type-to-allow-or-deny.js
+>> 20220214175013-add-new-environment-value.js
+>> 20220418131019-authorization_tokens.js
+>> 20220426132254-authorization-token-drop-id.js
+>> 20220830193936-update-deviation.js
+>> 20221104170410-add-new-games.js
+>> 20221206132554-add-games-84-94.js
+>> 20230117131831-game-kraken-treasure.js
+>> 20230120174728-games-96-99.js
+>> 20230222124352-add-game-23.js
+>> 20230303201821-add-game-28.js
+>> 20230309194954-new-alpha-games.js
+>> 20230425141403-remove-game-100.js
+>> 20230601170742-new-games.js
+>> 20230615134217-new-games.js
+>> 20230927133505-new-games.js
+>> 20230927205810-fix-game-path.js
+>> 20231006132853-new-game.js
+>> 20231006191211-new-games.js
+>> 20231012193115-remove-48-and-49.js
+>> 20240320165900-update-wichmann_hill_rand.js
+>> 20240320170000-update-accumulated-procedure.js
+>> 20240320170000-update-jackpot-procedure.js
+>> 20240423170000-alter-settings-big_winners.js
+>> 20240605191218-new-games.js
+>> 20240730170000-update-accumulated-procedure.js
+>> 20240730170000-update-jackpot-procedure.js
++ @zoeslots/zoe-data-api@3.2.1-homolog.1
+added 97 packages from 336 contributors, removed 3 packages and updated 15 packages in 15.804s
++ npm i -g @zoeslots/zoe-game-api
+npm WARN deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
+npm WARN deprecated axios@0.19.2: Critical security vulnerability fixed in v0.21.1. For more information, see https://github.com/axios/axios/pull/3410
+npm WARN deprecated sequelize@3.35.1: Please update to v6 or higher! A migration guide can be found here: https://sequelize.org/v6/manual/upgrade-to-v6.html
+npm WARN deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm WARN deprecated har-validator@5.1.5: this library is no longer supported
+npm WARN deprecated terraformer-wkt-parser@1.2.1: terraformer-wkt-parser is deprecated and no longer supported. Please use @terraformer/wkt.
+npm WARN deprecated terraformer@1.0.12: terraformer is deprecated and no longer supported. Please use @terraformer/arcgis.
+/usr/bin/orion-game-server -> /usr/lib/node_modules/@zoeslots/zoe-game-api/server.js
++ @zoeslots/zoe-game-api@2.6.3
+added 5 packages from 7 contributors, removed 1 package and updated 109 packages in 19.694s
++ npm i -g --unsafe-perm @zoeslots/zoe-terminal@2.0.0
+npm WARN deprecated axios@0.18.1: Critical security vulnerability fixed in v0.21.1. For more information, see https://github.com/axios/axios/pull/3410
+npm WARN deprecated multer@1.4.4: Multer 1.x is affected by CVE-2022-24434. This is fixed in v1.4.4-lts.1 which drops support for versions of Node.js before 6. Please upgrade to at least Node.js 6 and version 1.4.4-lts.1 of Multer. If you need support for older versions of Node.js, we are open to accepting patches that would fix the CVE on the main 1.x release line, whilst maintaining compatibility with Node.js 0.10.
+npm WARN deprecated uws@8.14.1: New code is available at github.com/uNetworking/uWebSockets.js
+/usr/bin/zoe-terminal-client -> /usr/lib/node_modules/@zoeslots/zoe-terminal/client.js
+/usr/bin/zoe-terminal-server -> /usr/lib/node_modules/@zoeslots/zoe-terminal/server.js
+
+> uws@8.14.1 install /usr/lib/node_modules/@zoeslots/zoe-terminal/node_modules/uws
+> node-gyp rebuild > build_log.txt 2>&1 || exit 0
+
++ @zoeslots/zoe-terminal@2.0.0
+added 17 packages from 9 contributors, removed 3 packages and updated 74 packages in 67.524s
++ npm i -g @zoeslots/zoe-watchdog@0.2.0
+/usr/bin/zoe-watchdog -> /usr/lib/node_modules/@zoeslots/zoe-watchdog/watchdog
++ @zoeslots/zoe-watchdog@0.2.0
+updated 1 package in 5.525s
++ npm i -g @zoeslots/zoe-updater
+/usr/bin/orion-updater -> /usr/lib/node_modules/@zoeslots/zoe-updater/agent.py
++ @zoeslots/zoe-updater@1.5.2
+updated 1 package in 3.861s
++ npm i -g --unsafe-perm @zoeslots/orion-cashier-updater
+/usr/bin/ZoeCashier -> /usr/lib/node_modules/@zoeslots/orion-cashier-updater/ZoeCashier
+
+> @zoeslots/orion-cashier-updater@1.7.0-beta2 postinstall /usr/lib/node_modules/@zoeslots/orion-cashier-updater
+> sh cashier_replacer.sh
+
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! @zoeslots/orion-cashier-updater@1.7.0-beta2 postinstall: `sh cashier_replacer.sh`
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the @zoeslots/orion-cashier-updater@1.7.0-beta2 postinstall script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /root/.npm/_logs/2024-08-28T17_00_20_108Z-debug.log
++ kill 24091
++ sleep 10
+Finished installing
+rm: cannot remove ‘/mnt/test1/home/zoe/.aws/*’: No such file or directory
+Created symlink /etc/systemd/system/multi-user.target.wants/disable-usbhid-module-reboot.service → /etc/systemd/system/disable-usbhid-module-reboot.service.
+Created symlink /etc/systemd/system/network-online.target.wants/network-rules.service → /etc/systemd/system/network-rules.service.
+rm: cannot remove ‘/mnt/test1/root/zoe-cashier’: No such file or directory
+Umount device
+umount: /mnt/test1/dev/pts: not mounted
+File descriptor 3 (/dev/urandom) leaked on vgchange invocation. Parent PID 24731: /bin/bash
+File descriptor 4 (/dev/random) leaked on vgchange invocation. Parent PID 24731: /bin/bash
+  0 logical volume(s) in volume group "lubuntu-vg1" now active
+File descriptor 3 (/dev/urandom) leaked on vgchange invocation. Parent PID 24731: /bin/bash
+File descriptor 4 (/dev/random) leaked on vgchange invocation. Parent PID 24731: /bin/bash
+  0 logical volume(s) in volume group "lubuntu-vg" now active
+Done
+1447
+Server done
+
+# ---
+
+MainWindow::writeServer(): ParÃ¢metros da gravaÃ§Ã£o do server island:  
+("/dev/sdb", "3864", "") 
+483+1 records out
+32432455680 bytes (32 GB) copied, 1183.43 s, 27.4 MB/s
+mkdir: cannot create directory ‘/mnt/test1’: File exists
+ Mount /dev/mapper
+ Mount /dev/sdb
+Disk /dev/mapper/lvmdsw doesn't contain a valid partition table
+Disk /dev/mapper/gruposw-swap doesn't contain a valid partition table
+Disk /dev/mapper/gruposw-root doesn't contain a valid partition table
+Disk /dev/mapper/lvmdd doesn't contain a valid partition table
+Disk /dev/mapper/dadossw-conteudo doesn't contain a valid partition table
+
+WARNING: GPT (GUID Partition Table) detected on '/dev/sdb'! The util fdisk doesn't support GPT. Use GNU Parted.
+
+Disk /dev/mapper/sda5_crypt doesn't contain a valid partition table
+Disk /dev/mapper/lubuntu--vg-root doesn't contain a valid partition table
+Disk /dev/mapper/lubuntu--vg-swap_1 doesn't contain a valid partition table
+63344640
+
+WARNING: GPT (GUID Partition Table) detected on '/dev/sdb'! The util fdisk doesn't support GPT. Use GNU Parted.
+
+
+Command (m for help): Partition type:
+   p   primary (2 primary, 1 extended, 1 free)
+   l   logical (numbered from 5)
+Select (default p): Selected partition 4
+First sector (1499136-234441647, default 1499136): Value out of range.
+First sector (1499136-234441647, default 1499136): Sector 63344640 is already allocated
+First sector (231116800-234441647, default 231116800): Value out of range.
+First sector (231116800-234441647, default 231116800): First sector (231116800-234441647, default 231116800): First sector (231116800-234441647, default 231116800): 
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100    63  100    15  100    48     24     79 --:--:-- --:--:-- --:--:--    79
+{"status":"OK"}Can't do passphrase verification on non-tty inputs.
+Command successful.
+Writing Zeros
+Formating partition
+mke2fs 1.42.9 (4-Feb-2014)
+Filesystem label=
+OS type: Linux
+Block size=4096 (log=2)
+Fragment size=4096 (log=2)
+Stride=0 blocks, Stripe width=0 blocks
+5242880 inodes, 20971008 blocks
+1048550 blocks (5.00%) reserved for the super user
+First data block=0
+Maximum filesystem blocks=4294967296
+640 block groups
+32768 blocks per group, 32768 fragments per group
+8192 inodes per group
+Superblock backups stored on blocks: 
+	32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632, 2654208, 
+	4096000, 7962624, 11239424, 20480000
+
+Allocating group tables: done                            
+Writing inode tables: done                            
+Creating journal (32768 blocks): done
+Writing superblocks and filesystem accounting information: done   
+
+device-mapper: remove ioctl on data failed: Device or resource busy
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100    47  100    47    0     0     71      0 --:--:-- --:--:-- --:--:--    71
+Processing boot partition
+  Creating boot partition backup...
+  Creating access...
+  Formating unit...
+  Opening unit...
+  Creating physical volume...
+  Creating volume group...
+  Creating logical volume...
+  Formating file system...
+  Activating logical volume...
+  Mounting logical volume...
+  Restoring backup...
+Done
+Installing packages
+  Installing parted package...
+Done
+Removing old kernels
+Done
+Removing zoe-cashier src
+Copying custom software and scripts
+Done
+Updating GRUB
+Done
+Updating Initramfs
+Done
+Installing initialization sequence
+  Installing GRUB package...
+  Shuffling boot...
+  Configuring GRUB...
+  Configuring auto-boot...
+  Configuring Initrd...
+Done
+Removing unnecessary files...
+Removing display-sas from server
+Done
+Configure Server
+Installing packages
++ echo 'UPDATE settings SET server_id = 3864 ;'
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100    78  100    78    0     0    141      0 --:--:-- --:--:-- --:--:--   141
+npm token 
++ echo //registry.npmjs.org/:_authToken=
++ sleep 5
++ mysqld_safe --user=mysql --skip-grant-tables
+240828 15:45:50 mysqld_safe Logging to syslog.
+240828 15:45:50 mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
++ mysql -u orion -pBl4ckBox1337 zoeslots -e 'UPDATE machines SET attempts = 8;'
++ mysql -u orion -pBl4ckBox1337 zoeslots -e 'UPDATE configs SET auth_lock = 1;'
++ mysql -u orion -pBl4ckBox1337 zoeslots -e 'TRUNCATE users;'
++ mysql -u orion -pBl4ckBox1337 zoeslots -e 'ALTER TABLE users MODIFY password VARCHAR(100) NOT NULL;'
++ mysql -u orion -pBl4ckBox1337 zoeslots -e 'INSERT INTO users (name, login, password, status, role) VALUES ('\''Admin'\'', '\''admin'\'', '\''002020'\'', 1, '\''ADMIN'\''), ('\''Cyber'\'', '\''cyber'\'', '\''010203'\'', 1, '\''LANHOUSE'\'');'
++ mysql -u orion -pBl4ckBox1337 zoeslots -e 'UPDATE users SET password=sha1(password);'
++ cat id.sql
++ mysql -u orion -pBl4ckBox1337 zoeslots
++ rm id.sql
+++ npm view @zoeslots/zoe-terminal versions
+++ tr -d ']'
+++ tr -d '[:space:]'
+++ sed 's|['\'',\n]||g'
+++ tr -d '['
+++ tail -n 2
+++ grep -Ev 'beta|alpha|rc'
++ ZOE_TERMINAL_VERSION=2.0.0
+++ npm view @zoeslots/zoe-watchdog versions
+++ sed 's|['\'',\n]||g'
+++ tr -d ']'
+++ tr -d '['
+++ tr -d '[:space:]'
+++ tail -n 2
+++ grep -Ev 'beta|alpha|rc'
++ ZOE_WD_VERSION=0.2.0
++ npm cache clean --force
+npm WARN using --force I sure hope you know what you are doing.
++ npm i -g --unsafe-perm @zoeslots/zoe-data-api@3.2.1-homolog.2
+/usr/bin/orion-data-client -> /usr/lib/node_modules/@zoeslots/zoe-data-api/client.js
+
+> @zoeslots/zoe-data-api@3.2.1-homolog.2 postinstall /usr/lib/node_modules/@zoeslots/zoe-data-api
+> node migrate.js
+
+Executed:
+>> 20191011161400-set-id-to-zero.js
+>> 20191015164200-set-machine-fields-to-zero.js
+>> 20191021162600-add-promotion-columns.js
+>> 20191106143200-add-updater-logs.js
+>> 20200114145000-add-chage-game-enabled-to-settings.js
+>> 20201104141522-add-environment-column.js
+>> 20210125192520-AddTimezoneColumn.js
+>> 20210126152411-modify-total-money-to-decimal.js
+>> 20210217143758-modify-default-total-money.js
+>> 20210225151318-add-new-games-fortunes-diamonds.js
+>> 20210323150337-add-enums-to-machine.js
+>> 20211014114644-add-new-games-jacare.js
+>> 20211126170836-cyber-server_type.js
+>> 20211202151645-authorization_tokens.js
+>> 20211207125929-add-game-jungle.js
+>> 20220103150132-add-new-game-vertical.js
+>> 20220203125028-server_type-to-allow-or-deny.js
+>> 20220214175013-add-new-environment-value.js
+>> 20220418131019-authorization_tokens.js
+>> 20220426132254-authorization-token-drop-id.js
+>> 20220830193936-update-deviation.js
+>> 20221104170410-add-new-games.js
+>> 20221206132554-add-games-84-94.js
+>> 20230117131831-game-kraken-treasure.js
+>> 20230120174728-games-96-99.js
+>> 20230222124352-add-game-23.js
+>> 20230303201821-add-game-28.js
+>> 20230309194954-new-alpha-games.js
+>> 20230425141403-remove-game-100.js
+>> 20230601170742-new-games.js
+>> 20230615134217-new-games.js
+>> 20230927133505-new-games.js
+>> 20230927205810-fix-game-path.js
+>> 20231006132853-new-game.js
+>> 20231006191211-new-games.js
+>> 20231012193115-remove-48-and-49.js
+>> 20240320165900-update-wichmann_hill_rand.js
+>> 20240320170000-update-accumulated-procedure.js
+>> 20240320170000-update-jackpot-procedure.js
+>> 20240423170000-alter-settings-big_winners.js
+>> 20240605191218-new-games.js
+>> 20240828170000-fix-accumulated-procedure.js
+>> 20240828170000-fix-jackpot-procedure.js
+>> 20240828170000-fix-wichmann_hill_rand.js
++ @zoeslots/zoe-data-api@3.2.1-homolog.2
+added 97 packages from 336 contributors, removed 3 packages and updated 15 packages in 15.685s
++ npm i -g @zoeslots/zoe-game-api
+npm WARN deprecated axios@0.19.2: Critical security vulnerability fixed in v0.21.1. For more information, see https://github.com/axios/axios/pull/3410
+npm WARN deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
+npm WARN deprecated sequelize@3.35.1: Please update to v6 or higher! A migration guide can be found here: https://sequelize.org/v6/manual/upgrade-to-v6.html
+npm WARN deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm WARN deprecated har-validator@5.1.5: this library is no longer supported
+npm WARN deprecated terraformer-wkt-parser@1.2.1: terraformer-wkt-parser is deprecated and no longer supported. Please use @terraformer/wkt.
+npm WARN deprecated terraformer@1.0.12: terraformer is deprecated and no longer supported. Please use @terraformer/arcgis.
+/usr/bin/orion-game-server -> /usr/lib/node_modules/@zoeslots/zoe-game-api/server.js
++ @zoeslots/zoe-game-api@2.6.3
+added 5 packages from 7 contributors, removed 1 package and updated 109 packages in 19.102s
++ npm i -g --unsafe-perm @zoeslots/zoe-terminal@2.0.0
+npm WARN deprecated axios@0.18.1: Critical security vulnerability fixed in v0.21.1. For more information, see https://github.com/axios/axios/pull/3410
+npm WARN deprecated multer@1.4.4: Multer 1.x is affected by CVE-2022-24434. This is fixed in v1.4.4-lts.1 which drops support for versions of Node.js before 6. Please upgrade to at least Node.js 6 and version 1.4.4-lts.1 of Multer. If you need support for older versions of Node.js, we are open to accepting patches that would fix the CVE on the main 1.x release line, whilst maintaining compatibility with Node.js 0.10.
+npm WARN deprecated uws@8.14.1: New code is available at github.com/uNetworking/uWebSockets.js
+/usr/bin/zoe-terminal-client -> /usr/lib/node_modules/@zoeslots/zoe-terminal/client.js
+/usr/bin/zoe-terminal-server -> /usr/lib/node_modules/@zoeslots/zoe-terminal/server.js
+
+> uws@8.14.1 install /usr/lib/node_modules/@zoeslots/zoe-terminal/node_modules/uws
+> node-gyp rebuild > build_log.txt 2>&1 || exit 0
+
++ @zoeslots/zoe-terminal@2.0.0
+added 17 packages from 9 contributors, removed 3 packages and updated 74 packages in 63.143s
++ npm i -g @zoeslots/zoe-watchdog@0.2.0
+/usr/bin/zoe-watchdog -> /usr/lib/node_modules/@zoeslots/zoe-watchdog/watchdog
++ @zoeslots/zoe-watchdog@0.2.0
+updated 1 package in 5.841s
++ npm i -g @zoeslots/zoe-updater
+/usr/bin/orion-updater -> /usr/lib/node_modules/@zoeslots/zoe-updater/agent.py
++ @zoeslots/zoe-updater@1.5.2
+updated 1 package in 3.402s
++ npm i -g --unsafe-perm @zoeslots/orion-cashier-updater
+/usr/bin/ZoeCashier -> /usr/lib/node_modules/@zoeslots/orion-cashier-updater/ZoeCashier
+
+> @zoeslots/orion-cashier-updater@1.7.0-beta2 postinstall /usr/lib/node_modules/@zoeslots/orion-cashier-updater
+> sh cashier_replacer.sh
+
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! @zoeslots/orion-cashier-updater@1.7.0-beta2 postinstall: `sh cashier_replacer.sh`
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the @zoeslots/orion-cashier-updater@1.7.0-beta2 postinstall script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /root/.npm/_logs/2024-08-28T18_48_05_147Z-debug.log
++ kill 9084
++ sleep 10
+Finished installing
+rm: cannot remove ‘/mnt/test1/home/zoe/.aws/*’: No such file or directory
+Created symlink /etc/systemd/system/multi-user.target.wants/disable-usbhid-module-reboot.service → /etc/systemd/system/disable-usbhid-module-reboot.service.
+Created symlink /etc/systemd/system/network-online.target.wants/network-rules.service → /etc/systemd/system/network-rules.service.
+rm: cannot remove ‘/mnt/test1/root/zoe-cashier’: No such file or directory
+Umount device
+umount: /mnt/test1/dev/pts: not mounted
+File descriptor 3 (/dev/urandom) leaked on vgchange invocation. Parent PID 9725: /bin/bash
+File descriptor 4 (/dev/random) leaked on vgchange invocation. Parent PID 9725: /bin/bash
+  0 logical volume(s) in volume group "lubuntu-vg1" now active
+File descriptor 3 (/dev/urandom) leaked on vgchange invocation. Parent PID 9725: /bin/bash
+File descriptor 4 (/dev/random) leaked on vgchange invocation. Parent PID 9725: /bin/bash
+  0 logical volume(s) in volume group "lubuntu-vg" now active
+Done
+1483
+Server done
+
+#

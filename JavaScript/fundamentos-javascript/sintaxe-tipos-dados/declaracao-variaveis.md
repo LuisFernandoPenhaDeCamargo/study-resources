@@ -67,13 +67,13 @@ const b = 1;
 // b = 3;       // Reatribuição: `TypeError: Assignment to constant variable`
 ```
 
-## Usos Comuns
+# Usos Comuns
 
 - `var`**:** use quando precisar de escopo de função e for necessário redefinir variáveis no mesmo escopo. É menos comum e geralmente substituída por `let` e `const`
 - `let`**:** use quando precisar de escopo de bloco e for necessário reatribuir variáveis
 - `const`**:** use para declarar variáveis que não devem ser reatribuídas e que têm escopo de bloco. É a escolha preferida para declarar variáveis que não devem mudar de valor
 
-## Conclusão
+# Conclusão
 
 Em práticas modernas de JavaScript, `let` e `const` são preferidos sobre `var` devido ao seu escopo mais previsível e a proteção adicional contra erros de redefinição e reatribuição inadvertidas.
 

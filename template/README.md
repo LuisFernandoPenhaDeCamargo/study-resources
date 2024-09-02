@@ -15,5 +15,3 @@ Este diretório especifica as regras para formatar os documentos (arquivos) dest
 - [JavaScript](./JavaScript.md)
 - [Palavras-chaves](./palavras-chaves.md)
 - [Template para Pesquisa (ChatGPT)](./chatgpt.md)
-
-# [[Próximo tópico: Nomenclatura]](./nomenclatura.md)

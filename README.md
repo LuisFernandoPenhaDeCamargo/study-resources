@@ -8,6 +8,8 @@ A ordem dos itens nos sumários segue uma sequência que vai dos assuntos mais b
 - [JavaScript](./JavaScript/JavaScript.md)
 - Python
 - Rust
+- [SQL](./SQL/SQL.md)
+- [Diretório Heterogêneo](./diretorio-heterogeneo/diretorio-heterogeneo.md)
 
 ### Fundamentos da Programação
 
@@ -16,3 +18,15 @@ O título deste tópico é bastante descritivo. Nele, abordaremos desde conceito
 ### JavaScript
 
 Este tópico contém informações sobre o ecossistema JavaScript, incluindo aspectos dessa linguagem de programação, conceitos de programação aplicados a ela, além de bibliotecas, frameworks e ferramentas.
+
+### SQL
+
+<!-- TODO: não sei o que irei pontuar aqui. -->
+
+### AWS
+
+<!-- TODO: não sei o que irei pontuar aqui. -->
+
+### Diretório Heterogêneo
+
+<!-- TODO: não sei o que irei pontuar aqui. -->

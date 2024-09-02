@@ -4,7 +4,7 @@
 - **Diretórios:** o nome dos diretórios deve indicar o caminho relativo para eles e incluir a barra no final
 - **Diretórios e arquivos:** para nomes compostos por mais de uma palavra, usarei um traço para separá-las (em vez de usar a convenção Camel Case)
 
-## Diretórios e Arquivos
+# Diretórios e Arquivos
 
 No Ubuntu, assim como na maioria dos SOs baseados em Unix, não há um padrão estrito para a sintaxe de nomes de diretórios (ou para a sintaxe de nomes de arquivos), mas existem algumas convenções e boas práticas recomendadas para evitar problemas e garantir a compatibilidade. Aqui estão algumas diretrizes importantes:
 
@@ -19,7 +19,7 @@ No Ubuntu, assim como na maioria dos SOs baseados em Unix, não há um padrão e
     - Use extensões apropriadas para indicar o tipo de arquivo, como **.txt**, **.jpg**, **.pdf**, **.sh**, etc.
     - Mantenha a extensão separada do nome principal por um ponto
 
-## Boas Práticas
+# Boas Práticas
 
 - **Use nomes descritivos:** escolha nomes que descrevam claramente o conteúdo do diretório (ou arquivo)
 - **Use separadores consistentes:** se precisar usar separadores, escolha entre hífen ou sublinhado e seja consistente
@@ -27,7 +27,7 @@ No Ubuntu, assim como na maioria dos SOs baseados em Unix, não há um padrão e
 - **Mantenha a simplicidade:** evite nomes excessivamente longos e complexos
 - **Use extensões apropriadas:** sempre inclua a extensão apropriada para o tipo do arquivo
 
-## Conclusão
+# Conclusão
 
 Seguir essas diretrizes ajudará a evitar problemas de compatibilidade e facilitará o trabalho com o terminal e scripts automatizados.
 
