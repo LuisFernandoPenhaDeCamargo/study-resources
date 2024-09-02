@@ -4,37 +4,38 @@
 
 - Os nomes de classes, objetos, funções, métodos, variáveis e o texto de strings nos exemplos devem estar em inglês, se possível
 - Quando a representação "A< >" for utilizada, o texto dentro dela deverá estar em português, se possível, pois é uma explicação sobre um valor que será utilizado nessa posição
-- Se um método for mencionado em um tópico que não se refere ao objeto (ou módulo) associado a ele, também insira o objeto (ou módulo) ao citar o método. Por exemplo:   <--
+- Se um método for mencionado em um tópico que não se refere ao objeto (ou módulo) associado a ele, insira o nome do objeto (ou módulo) ao citar o método. Por exemplo:  
     O método `.readFile` do módulo `fs` seria citado como `fs.readFile` no módulo `util`.
 
 A documentação de um método (ou função), segue a seguinte ordem:
 
-1. **Descrição:** "O método `A< nome do método >` é utilizado para **A< descrição do método >**"  
-    **Descrição de propriedades:** "A propriedade `A< nome da propriedade >`" é uma propriedade do A< ... >". Por exemplo:  
-    - "A propriedade `calledOnce` é uma propriedade do stub do Sinon (`stub.calledOnce`) que verifica ..."
-    - "A propriedade `true` é uma propriedade de asserção do Chai que verifica ..."
+1. **Descrição:** "O método `A< nome do método >` é utilizado para **A< descrição do método >**"
+    - **Descrição de propriedades:** "A propriedade `A< nome da propriedade >`" é uma propriedade do A< ... >". Por exemplo:  
+        + "A propriedade `calledOnce` é uma propriedade do stub do Sinon (`stub.calledOnce`) que verifica ..."
+        + "A propriedade `true` é uma propriedade de asserção do Chai que verifica ..."
 2. **Sintaxe básica:** "`### Sintaxe Básica`"
-    - Se o título do tópico já for a "Sintaxe Básica", não é necessário fornecer este subtópico <--
-3. **Parâmetros:**  
-    Uma lista deles:  
+    - Se o título do tópico já for a "Sintaxe Básica", não é necessário incluir este subtópico novamente
+3. **Parâmetros:** uma lista deles:  
     "- `A< parâmetro 1 >`**:** A< descrição do parâmetro 1 >"  
     "- `A< parâmetro 2 >`**:** A< descrição do parâmetro 2 >"  
     "- `A< ... >`**:** A< descrição dos outros parâmetros >"
-    - Não é necessário pontuar no nome do item o tipo do argumento, caso você vá fornecê-lo no texto que descreve o item  <--
+    - Não é necessário indicar o tipo do argumento no nome do item, caso ele seja especificado na descrição do item
 4. **Retorno:**  
     "- **Retorno:** A< descrição do valor retornado pelo método >"
-    - Se o retorno não foi pontuado inicialmente na pesquisa e eu não tiver a necessidade de saber o valor dele, não irei incluí-lo nas anotações <--
-5. **Principais Características:** `## Principais Características`
-6. **Opções Comuns:** `## Opções Comuns`
+    - Se o retorno não foi pontuado inicialmente na pesquisa e eu não precisar conhecer o valor dele, não o incluirei nas anotações
+5. **Principais Características:** "`## Principais Características`"
+6. **Opções Comuns:** "`## Opções Comuns`"
 7. **Exemplo:** "`## Exemplo`"
-8. **Observações:** `##Observações`
-9. **Exemplo Interessante:** `## Exemplo Interessante`
-10. **Observações Importantes:** `## Observações Importantes`
-11. **Conclusão:** `## Conclusão`
+8. **Observações:** "`##Observações`"
+9. **Exemplo Interessante:** "`## Exemplo Interessante`"
+10. **Observações Importantes:** "`## Observações Importantes`"
+11. **Conclusão/Resumo:** "`## Conclusão`"/"`## Resumo`"
 
 ## Exemplo
 
 ```Markdown
+<!-- Exemplo em Markdown. -->
+
 O método `spy` é utilizado para **monitorar chamadas a outras funções**. Ele permite verificar como uma função foi chamada, quais argumentos foram passados, quantas vezes foi chamada, entre outros detalhes.
 
 ### Sintaxe Básica
@@ -97,24 +98,24 @@ spyObjMethod.restore();
 Fique atento ao fato de que, ao chamarmos a função espionada, utilizamos `spyFunction`, enquanto para chamar o método espionado, utilizamos `obj.myMethod`. Portanto, quando se trata de funções (que não pertencem a um objeto), devemos invocar e inspecionar o espião criado (`spyFunction`). Já quando se trata de métodos (que pertencem a um objeto), devemos invocar o método espionado (`obj.myMethod`) e inspecionar o espião criado (`spyObjMethod`).
 
 Invocar `spyObjMethod` também geraria os mesmos resultados, mas vamos definir como padrão seguir o exemplo acima.
-
-(Exemplo em Markdown)
 ```
+
+[Sobre blocos de código e crases.](./Markdown.md#blocos-codigo-crases)
 
 ## Notação de Colchetes
 
 Os colchetes em notações como
 
 ```JavaScript
-funcao.bind(thisArg[, arg1 [, arg2 [, ...]]]);
+// Exemplo em JavaScript.
 
-// (Exemplo em JavaScript)
+funcao.bind(thisArg[, arg1 [, arg2 [, ...]]]);
 ```
 
 indicam que os parâmetros `arg1`, `arg2`, `...`, são **opcionais**, se você não fornecer esses argumentos, a função ainda funcionará corretamente, apenas sem os agumentos predefinidos.
 
 - A presença de colchetes ao redor dos parâmetros, indica que você pode optar por não passar nenhum desses argumentos, ou pode passar alguns ou todos eles
-- Os colchetes aninhados na notação indicam que, para fornecer um argumento que está mais internamente aninhado, você deve primeiro fornecer todos os argumentos que estão nos níveis mais externos
+- Os colchetes aninhados na notação indicam que, para fornecer um argumento que está mais internamente aninhado, você deve primeiro fornecer todos os argumentos que estão nos níveis mais externos:
     + `thisArg`**:** obrigatório
     + `arg1`**:** opcional, mas só pode ser fornecido se `thisArg` também for fornecido
     + `arg2`**:** opcional, mas só pode ser fornecido se `thisArg` e `arg1` também forem fornecidos
@@ -124,11 +125,9 @@ indicam que os parâmetros `arg1`, `arg2`, `...`, são **opcionais**, se você n
 
 - Para ilustrar a saída (impressão), na linha do log, insira ao seu final a simbologia utilizada para documentação, seguida de `Output:`. Por exemplo:  
     `console.log("Hello, world!"); // Output: Hello, world!` (exemplo em JavaScript)
-- Se no mesmo bloco de código houver mais de uma linha de log, as alinhe (se fizer sentido) de acordo com a coluna da direita
+- Se no mesmo bloco de código houver mais de uma linha de log, alinhe-as, se fizer sentido e se elas pertencerem ao mesmo escopo, de acordo com a coluna da direita
 
-# ---
-
-# Formatação do Código-fonte
+# Formatação do Código-fonte <--
 
 - **Mensagens de erro** seguem o seguinte formato, "`[ $< nome da função ou método/ nome do arquivo > ${error.name} ], ${error.message}`", sendo que o template literal, a técnica de interpolação de expressão, a propriedade `name` e a propriedade `message` do objeto `error`, fazem parte do JavaScript, para outras linguagens siga a mesma ideia, mas utilizando das propriedades da linguagem em questão
 
@@ -179,4 +178,4 @@ export default const myOtherVariable; // Você não pode utilizar as palavras-ch
 
 Normalmente essa situação ocorre quando o código que está comentado é um exemplo que ao ser executado gera um erro, por isso ele está comentado. Mas isso não quer dizer que não queremos facilidade no momento de descomentá-lo para observar o seu comportamento.
 
-[Markdown -->](./Markdown.md)
+# [[Próximo tópico: Markdown]](./Markdown.md)

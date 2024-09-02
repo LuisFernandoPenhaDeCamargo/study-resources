@@ -2,7 +2,6 @@
 
 - A decisão de usar uma abreviação ou não depende da minha dificuldade em lembrar o seu significado
 - **Diretórios:** o nome dos diretórios deve indicar o caminho relativo para eles e incluir a barra no final
-- **Diretórios e arquivos:** para nomes compostos por mais de uma palavra, usarei um traço para separá-las (em vez de usar a convenção Camel Case)
 
 # Diretórios e Arquivos
 
