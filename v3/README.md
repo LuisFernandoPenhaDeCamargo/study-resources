@@ -4,7 +4,6 @@
 
 - [./JavaScript/](#javascript)
 - [./Diretorio-heterogeneo/](#diretorio-heterogeneo)
-- [Template (template.md)](#template)
 - [TODO](#todo)
 
 # <a id="javascript">[./JavaScript/](./JavaScript/)</a>
@@ -47,14 +46,6 @@ Este arquivo pontua o significado de termos e abreviações usados com frequênc
 ### Sumário
 
 - [Abreviações (Siglas e Acrônimos)](./Diretorio-heterogeneo/termos-TI.md#abreviacoes)
-
-# <a id="template">[Template (template.md)](template.md)</a>
-
-Este arquivo trata de como foi formulada a estrutura deste projeto, então é útil entendê-lo para navegar no mesmo. Além de ser um template a se seguir ao adicionar conteúdo.
-
-### Sumário
-
-- [Estrutura dos Arquivos (Formatação do Documento)](template.md#estrutura-arquivos)
 
 # <a id="todo">TODO</a>
 

@@ -1,6 +1,6 @@
 # JavaScript
 
-- **Funções anônimas:** deveram ter um espaço entre a palavra-chave `function` e os parênteses
-- **Importações e exportações:** nos exemplos, irei especificar na extensão do arquivo qual módulo eu utilizo de forma explicita (**.cjs** ou **.mjs**)
+- **Funções anônimas:** não devem ter um espaço entre a palavra-chave `function` e os parênteses
+- **Importações e exportações:** nos exemplos, irei especificar a extensão do arquivo para indicar explicitamente qual módulo estou utilizando (**.cjs** ou **.mjs**)
 
-[Palavras-chaves -->](./palavras-chaves.md)
+# [[Próximo tópico: Palavras-chaves]](./palavras-chaves.md)

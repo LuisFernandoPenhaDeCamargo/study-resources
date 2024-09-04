@@ -1,6 +1,24 @@
-- Anotar o que deduzimos sobre a tabela `users`
-- Anotar o que deduzimos sobre a tabela `remote_queries`
-- Anotar o que deduzimos sobre a tabela `remote_commands`
+`users`
+- O `id` é o `remote_commands.user_id`
+- Aparentemente, `name` faz sentido
+
+`remote_queries`
+- `server_id` é o ID do servidor
+- `query` a ser executada
+- `results` retorno da query
+- `date` data do envio da query
+- `executed` se foi executado
+- `executed_at` o horário em que foi executada
+
+`remote_commands`
+- `server_id` é o ID do servidor
+- `command` a ser executado
+- `stdout` saída do comando
+- `stderr` saída de erro
+- `date` data do envio da query
+- `executed` se foi executado
+- `executed_at` o horário em que foi executad
+- `user_id`
 
 ```Bash
 # Comando utilizado em um teste.
@@ -1200,4 +1218,35 @@ Done
 1483
 Server done
 
-#
+# ---
+
+// - Eu consigo importar módulo CJS com o `import`?
+// - o console.log usa a Array.prototype.includes?
+// - Fazer anotações sobre o arquivo de configuração do Babel
+// - Fazer anotações sobre o arquivo de configuração do pkg
+// - Fazer anotações sobre o package.json no momento da publicação do SEA
+// - Pontuar sobre a dificuldade abaixo e sobre testar scripts que não exportam nada
+// - Substituir o fs.readFileSync, enquanto você utilizar o require, pode quebrar o Node.js:
+//node[10103]: ../src/node_contextify.cc:1144:static void node::contextify::ContextifyContext::CompileFunction(const v8::FunctionCallbackInfo<v8::Value>&): Assertion `args[0]->IsString()' failed.
+// 1: 0xb9c310 node::Abort() [node]
+// 2: 0xb9c38e  [node]
+// 3: 0xb8cf51 node::contextify::ContextifyContext::CompileFunction(v8::FunctionCallbackInfo<v8::Value> const&) [node]
+// 4: 0xdd1e10  [node]
+// 5: 0xdd334f v8::internal::Builtin_HandleApiCall(int, unsigned long*, v8::internal::Isolate*) [node]
+// 6: 0x17126f9  [node]
+//Aborted (core dumped)
+- Depois disso tudo a gente tenta executar automaticamente a game-api através do pm2, testa no servidor do Rod (antes teste também no servidor cachoeira) e pode ir para a data-api
+
+curl http://localhost:8080/game/machines/101 -X GET -H "Content-Type: application/json"
+curl http://localhost:8080/game/ping -X GET
+UPDATE settings SET homolog_version = '{ "orion-cashier-updater": "NULL", "zoe-watchdog": "NULL", "zoe-terminal": "NULL", "zoe-data-api": "NULL", "zoe-game-api": "NULL", "zoe-updater": "NULL" }';
+
+UPDATE settings SET homolog_version = '{ "orion-cashier-updater": "NULL", "zoe-watchdog": "NULL", "zoe-terminal": "NULL", "zoe-data-api": "NULL", "zoe-game-api": "3.0.0-homolog.8", "zoe-updater": "1.6.14-homolog" }';
+
+- Não sei como vai se comportar a instalação da zoe-game-api se não for a primeira instalação do SEA, preciso olhar melhor isso depois
+- Lembre de ver o valor na coluna token (places)
+- A versão 1.5.4 do zoe-updater não estava deixando eu att o zoe-game-api. Ficava dando a mensagem: "Not allowed to update"
+- Tem coisas na conversa com o William
+- Tem coisas sobre os scripts de gravação do servidor na conversa com o Ventura
+- Tem coisas na conversa com o Rod
+- Vou ver a data-api agora? To tireeeeeeeeeeeeeed

@@ -13,6 +13,8 @@ A documentação de um método (ou função), segue a seguinte ordem:
     - **Descrição de propriedades:** "A propriedade `A< nome da propriedade >`" é uma propriedade do A< ... >". Por exemplo:  
         + "A propriedade `calledOnce` é uma propriedade do stub do Sinon (`stub.calledOnce`) que verifica ..."
         + "A propriedade `true` é uma propriedade de asserção do Chai que verifica ..."
+    - **Descrição de Módulos Nativos:** "O `A< nome do módulo >` é um módulo nativo do Node.js que fornece **A< descrição do que o módulo fornece >**". Por exemplo:
+        + "O `url` é um módulo nativo do Node.js que fornece ..."
 2. **Sintaxe básica:** "`### Sintaxe Básica`"
     - Se o título do tópico já for a "Sintaxe Básica", não é necessário incluir este subtópico novamente
 3. **Parâmetros:** uma lista deles:  
@@ -59,7 +61,7 @@ function myFunction(a, b) {
 }
 
 // Criando um spy para a função myFunction.
-const spyFunction = sinon.spy(myFunction);
+const spyFunction  = sinon.spy(myFunction);
 
 // Chamando a função espionada.
 spyFunction(1, 2);
@@ -72,7 +74,7 @@ console.log(spyFunction.callCount);      // Output: 1
 console.log(spyFunction.firstCall.args); // Output: [ 1, 2 ]
 
 // Objeto com método a ser espionado.
-const obj = {
+const obj          = {
     myMethod(a ,b) {
         return a + b;
     }
@@ -127,11 +129,11 @@ indicam que os parâmetros `arg1`, `arg2`, `...`, são **opcionais**, se você n
     `console.log("Hello, world!"); // Output: Hello, world!` (exemplo em JavaScript)
 - Se no mesmo bloco de código houver mais de uma linha de log, alinhe-as, se fizer sentido e se elas pertencerem ao mesmo escopo, de acordo com a coluna da direita
 
-# Formatação do Código-fonte <--
+# Formatação do Código-fonte
 
-- **Mensagens de erro** seguem o seguinte formato, "`[ $< nome da função ou método/ nome do arquivo > ${error.name} ], ${error.message}`", sendo que o template literal, a técnica de interpolação de expressão, a propriedade `name` e a propriedade `message` do objeto `error`, fazem parte do JavaScript, para outras linguagens siga a mesma ideia, mas utilizando das propriedades da linguagem em questão
+**Mensagens de erro** seguem o seguinte formato, "`[ A< nome da função ou método/nome do arquivo > ${error.name} ], ${error.message}`", sendo que o template literal, a técnica de interpolação de expressão, a propriedade `name` e a propriedade `message` do objeto `error`, fazem parte do JavaScript, para outras linguagens siga a mesma ideia, mas utilizando das propriedades da linguagem em questão.
 
-### Espaçamento
+## Espaçamento
 
 - Pule uma linha:
     + Entre a importação de uma depedência externa e a importação de um arquivo do projeto
@@ -140,42 +142,44 @@ indicam que os parâmetros `arg1`, `arg2`, `...`, são **opcionais**, se você n
     + Entre uma impressão e o restante do código
     + Entre um retorno e o restante do código
     + Entre uma resposta (`response`s, em Javascript, por exemplo) e o restante do código
-- Dependências externas, arquivos do projeto, variáveis, expressões, logs e repostas, podem ser agrupados se forem da mesma "categoria". Por exemplo: um bloco de impressões
+- Dependências externas, arquivos do projeto, variáveis, expressões, impressões e respostas podem ser agrupados quando pertencem à mesma categoria. Por exemplo, um bloco de impressões
 
-# Comentários
+## Comentários
 
-- Comentários deverão estar acima da linha de código (ou bloco de código) que está sendo documentada
-- Para comentários de múltiplas linhas, utilize um bloco de documentação, mas não insira nada em sua abertura ou fechamento. Por exemplo:
+- Os comentários devem ser posicionados acima da linha ou do bloco de código que estão documentando
+- Para comentários de múltiplas linhas, utilize um bloco de documentação sem adicionar qualquer texto na abertura ou no fechamento. Por exemplo:
 
 ```JavaScript
 /*
+Exemplo em JavaScript.
 - Primeira linha da documentação
 - Segunda linha da documentação
-(Exemplo em JavaScript)
 */
 ```
 
-- Para comentários de múltiplas linhas que contém código, as linhas que não são código, deverão ser comentadas novamente. O objetivo é obter facilidade ao descomentar a estrutura mais externa para poder executar o que é código. Por exemplo:
+- Para comentários de múltiplas linhas que contêm código, as linhas que não são código devem ser comentadas novamente. Isso facilita a desativação do comentário externo, permitindo a execução do código interno sem problemas. Por exemplo:
 
 ```JavaScript
-// my-module.mjs
-// - Exportando uma função como padrão
+/*
+Exemplo em JavaScript.
+my-module.mjs
+- Exportando uma função como padrão
+*/
 export default function myFunction() {
-    console.log("This is the default export function.");
+    console.log("This is the default export function");
 }
 
-/* 
-// Podemos remover a estrutura acima (a barra seguida de asterisco) e a estrutura abaixo (o asterisco seguido de barra), para assim obter com facilidade um código pronto para ser executado.
-// - Para exportar variáveis (ou objetos) como padrão de um módulo, você precisa declará-las antes de exportá-las. Por exemplo:
+/*
+// Podemos remover a estrutura acima (barra seguida de asterisco) e a estrutura abaixo (asterisco seguido de barra) para obter, de forma prática, um código pronto para execução.
+// - Para exportar variáveis (ou objetos) como padrão de um módulo, é necessário declará-las antes de exportá-las. Por exemplo:
 const myVariable = 42;
 
 export default myVariable;
-// O código acima está correto, o abaixo gera um erro.
-export default const myOtherVariable; // Você não pode utilizar as palavras-chave `var`, `let` e `const` após `default`.
-(Exemplo em JavaScript)
+// O código acima está correto, enquanto o código abaixo gera um erro.
+export default const myOtherVariable; // Não é permitido utilizar as palavras-chave `var`, `let` ou `const` após `default`.
 */
 ```
 
-Normalmente essa situação ocorre quando o código que está comentado é um exemplo que ao ser executado gera um erro, por isso ele está comentado. Mas isso não quer dizer que não queremos facilidade no momento de descomentá-lo para observar o seu comportamento.
+Normalmente, essa situação ocorre quando o código comentado é um exemplo que, ao ser executado, gera um erro, por isso está comentado. No entanto, isso não significa que não desejamos facilitar o processo de descomentá-lo para observar seu comportamento.
 
 # [[Próximo tópico: Markdown]](./Markdown.md)

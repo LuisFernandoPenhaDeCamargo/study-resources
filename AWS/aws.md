@@ -1,7 +1,6 @@
 # AWS
 
-### Sumário
+Abaixo temos uma lista de tópicos que eu irei estudar:
 
-- Abaixo temos uma lista de tópicos que eu irei estudar
-    + AWS STS (Security Token Service)
-    + AWS IAM
+- AWS STS (Security Token Service)
+- AWS IAM

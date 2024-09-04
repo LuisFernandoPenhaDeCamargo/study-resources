@@ -1,3 +1,7 @@
-# Sinon
+# Sinon.JS
 
-[Métodos e Propriedades -->](./metodos-propriedades.md)
+# Observações
+
+Spies, stubs e mocks compartilham **alguns métodos e funcionalidades comuns**.
+
+# [[Próximo tópico: Desenvolvendo Testes para Funções]](../desenvolvendo-testes-funcoes.md)
