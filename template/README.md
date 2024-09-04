@@ -14,4 +14,4 @@ Este diretório especifica as regras para formatar os documentos (arquivos) dest
 - [Markdown](./Markdown.md)
 - [JavaScript](./JavaScript.md)
 - [Palavras-chaves](./palavras-chaves.md)
-- [Template para Pesquisa (ChatGPT)](./chatgpt.md)
+- [Template para Pesquisa (ChatGPT)](./ChatGPT.md)

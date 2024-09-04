@@ -6,4 +6,4 @@
 - `A< >`**:** dentro dos sinais de menor e maior, você insere uma frase descritiva sobre o valor que será utilizado nesta posição, esta estrutura é basicamente um marcador de posição. Por exemplo:  
     "A função `A< nome da função >` é utilizada para **...**", repare que há um espaço entre a frase descritiva e os sinais de menor e maior.
 
-[Template para Pesquisa (ChatGPT)](./ChatGPT.md)
+# [[Template para Pesquisa (ChatGPT)]](./ChatGPT.md)
