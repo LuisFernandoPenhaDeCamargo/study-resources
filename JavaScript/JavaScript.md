@@ -6,8 +6,8 @@
 
 - [JavaScript](./fundamentos-javascript/sintaxe-tipos-dados/JavaScript.md)
 - [Declaração de Variáveis](./fundamentos-javascript/sintaxe-tipos-dados/declaracao-variaveis.md)
-- [Tipos de Dados Primitivos](./fundamentos-javascript/sintaxe-tipos-dados/tipos-dados-primitivos.md) <--
-- [Dinamicamente Tipada](./fundamentos-javascript/sintaxe-tipos-dados/dinamicamente-tipada.md)
+- [Tipos de Dados Primitivos](./fundamentos-javascript/sintaxe-tipos-dados/tipos-dados-primitivos.md)
+- [Dinamicamente Tipada](./fundamentos-javascript/sintaxe-tipos-dados/dinamicamente-tipada.md) <--
 - [Escopo](./fundamentos-javascript/sintaxe-tipos-dados/escopo.md)
 - [Operadores](./fundamentos-javascript/sintaxe-tipos-dados/operadores.md)
 
@@ -144,10 +144,7 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
 - [Mocha](./ferramentas-bibliotecas/testes-automatizados/Mocha.md)
 - [Chai](./ferramentas-bibliotecas/testes-automatizados/Chai.md)
 - [Biblioteca de Assertivas](./ferramentas-bibliotecas/testes-automatizados/biblioteca-assertivas.md)
-- [Sinon](./ferramentas-bibliotecas/testes-automatizados/SinonJS/SinonJS.md)
-    + [Stubs]
-    + [Mocks]
-    + [Métodos e Propriedades](./ferramentas-bibliotecas/testes-automatizados/SinonJS/metodos-propriedades.md)
+- [Sinon.JS](./ferramentas-bibliotecas/testes-automatizados/SinonJS/SinonJS.md)
 - [Desenvolvendo Testes para Funções](./ferramentas-bibliotecas/testes-automatizados/desenvolvendo-testes-funcoes.md)
 - [Dificuldades Encontradas](./ferramentas-bibliotecas/testes-automatizados/dificuldades-encontradas/dificuldades-encontradas.md)
 - [Cucumber](./ferramentas-bibliotecas/testes-automatizados/Cucumber.md)
@@ -217,7 +214,6 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
 
 ## Tópicos que Irei Estudar
 
-- SinonJS: `onCall`
 - ES6
 - JS x quantidade de memória alocada
 - .mjs habilita o strict mode por padrão?
@@ -227,6 +223,7 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
 - `interface`
 - `typeof`
 - `new`
+- `new Obj` x `new Obj()`
 - `new` em funções. Exemplo: `new exampleFunction()`
 - `constructor`
 - A "real interação" do `constructor` e o JavaScript

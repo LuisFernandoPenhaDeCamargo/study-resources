@@ -13,3 +13,5 @@ $sudo dd if=/dev/sdX of=/dev/sdY bs=4M
 - `if`**:** define o arquivo de entrada ou dispositivo de origem (ex.: `/dev/sdX`)
 - `of`**:** define o arquivo de saída ou dispositivo de destino (ex.: `/dev/sdY`)
 - `bs`**:** define o tamanho do bloco (ex.: `4M` para 4 megabytes)
+
+# [[Voltar para: Diretório Heterogêneo]](./diretorio-heterogeneo.md)

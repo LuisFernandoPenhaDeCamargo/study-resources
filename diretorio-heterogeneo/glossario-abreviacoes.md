@@ -1,6 +1,6 @@
 # Glossário de Abreviações
 
-Este documento é um glossário de abreviações (siglas e acrônimos) e de termos utilizados de forma frequente neste repositório.
+Este documento é um glossário de abreviações (siglas e acrônimos) e termos frequentemente utilizados neste repositório.
 
 ### Sumário
 
@@ -16,7 +16,7 @@ Este documento é um glossário de abreviações (siglas e acrônimos) e de term
 
 ## <a id="esm">ESM</a>
 
-ESM é uma forma abreviada de ES Modules (Módulos ES).
+ESM é uma forma abreviada de ES Modules (Módulos ECMAScript).
 
 ## <a id="lts">LTS</a>
 

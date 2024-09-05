@@ -8,7 +8,7 @@ Em JavaScript, os tipos de dados primitivos são os valores básicos e imutávei
 4. `null`
 5. `undefined`
 6. `symbol`
-7. `bigint` (adicionado no [ES]() 2020)
+7. `bigint` (adicionado no [ES]() 2020) <!-- TODO: explicar o ES 2020 e verificar onde eu vou colocar a explicação -->
 
 Aqui estão detalhes sobre cada um deles:
 
@@ -74,12 +74,12 @@ const bigNumber        = BigInt(1234567890123456789012345678901234567890n);
 const anotherBigNumber = 12345678901234567890n;
 ```
 
-## Exemplos
+# Exemplos
 
 ```JavaScript
 // - Usando `symbol`
-let symbol1 = Symbol("sameString");
-let symbol2 = Symbol("sameString");
+let symbol1            = Symbol("sameString");
+let symbol2            = Symbol("sameString");
 
 console.log(symbol1 === symbol2); // Output: false. Cada símbolo é único.
 console.log(symbol1);             // Output: Symbol(sameString)
@@ -89,11 +89,11 @@ console.log(symbol2);             // Output: Symbol(sameString)
 const bigNumber        = 1234567890123456789012345678901234567890n;
 const anotherBigNumber = BigInt("1234567890123456789012345678901234567890");
 
-console.log(bigNumber === anotherBigNumber); // Output: true. Com exceção do caracter "n", o restante do número precisa ser igual para a comparação ser verdadeira.
+console.log(bigNumber === anotherBigNumber); // Output: true. Com exceção do caractere "n", o restante do número precisa ser idêntico para que a comparação seja verdadeira.
 ```
 
-## Conclusão
+# Conclusão
 
 Os tipos de dados primitivos são fundamentais em JavaScript, representando os blocos de construção básicos do gerenciamento de dados. Cada tipo tem suas características e usos específicos, permitindo que os desenvolvedores manipulem e armazenem dados de forma eficiente e eficaz.
 
-[Dinamicamente Tipada -->](./dinamicamente-tipada.md)
+# [[Próximo tópico: Dinamicamente Tipada]](./dinamicamente-tipada.md)

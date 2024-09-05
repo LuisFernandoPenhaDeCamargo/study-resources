@@ -1,39 +1,3 @@
-`users`
-- O `id` é o `remote_commands.user_id`
-- Aparentemente, `name` faz sentido
-
-`remote_queries`
-- `server_id` é o ID do servidor
-- `query` a ser executada
-- `results` retorno da query
-- `date` data do envio da query
-- `executed` se foi executado
-- `executed_at` o horário em que foi executada
-
-`remote_commands`
-- `server_id` é o ID do servidor
-- `command` a ser executado
-- `stdout` saída do comando
-- `stderr` saída de erro
-- `date` data do envio da query
-- `executed` se foi executado
-- `executed_at` o horário em que foi executad
-- `user_id`
-
-```Bash
-# Comando utilizado em um teste.
-curl http://localhost:8080/game/bigwinner  -X POST \
--H "Content-Type: application/json" -d '{"machine_id": 101}'
-```
-
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create
-
-https://developer.mozilla.org/pt-BR/docs/Web/JavaScript
-
-https://github.com/sinonjs/sinon/issues/2578
-
-Revisão ortográfica (aceita sugestões de alteração na estrutura do texto):
-
 Now I see that constructor is a syntax sugar and it's nothing to do with Function.prototype.constructor, therefore stubbing it has no effect.
 
 O que seria sandbox no contexto do JS
@@ -49,21 +13,6 @@ listar os erros que eu encontrei ao utilizar o sinon
 -> aparentemente você não pode manipular o valor de variáveis do módulo que está sendo testado
 
 `import` -> "An import declaration can only be used at the top level of a module." -> solution: esmock no beforeEach
-
----
-
-SinonJS
-
-- `stub.args`
-  + `console.log(stub.args)`
-  + `console.log(stub.args[0])`
-  + `console.log(stub.args[0][0])`
-- `stub.getCall()`
-- `callCount`
-
----
-
-`new Obj` x `new Obj()`
 
 ---
 
@@ -542,86 +491,6 @@ no meu banco eu entrei como root, após mudar para o usuário root no SO
 
 ALTER USER 'root'@'localhost' IDENTIFIED BY 'nova_senha';
 
----
-
-Sim, você pode usar o comando `dd` para gravar uma imagem de disco virtual (como um VDI) em um disco rígido (HD). Aqui está como isso funciona:
-
-### Passos para Gravar um VDI em um HD usando `dd`:
-
-1. **Converter o VDI para um formato raw (opcional):**
-   - Se o arquivo VDI não estiver em formato raw, você pode precisar convertê-lo. Ferramentas como `qemu-img` podem ser usadas para converter o VDI para um formato raw, que é necessário para ser gravado diretamente em um HD.
-
-   ```bash
-   qemu-img convert -O raw input.vdi output.img
-   ```
-
-   - **`input.vdi`**: O arquivo VDI original.
-   - **`output.img`**: O arquivo de saída no formato raw.
-
-2. **Usar o `dd` para gravar a imagem no HD:**
-
-   Após converter o VDI (se necessário), você pode usar o `dd` para gravar a imagem no HD.
-
-   ```bash
-   sudo dd if=output.img of=/dev/sdX bs=4M status=progress
-   ```
-
-   - **`if=output.img`**: O arquivo de imagem de entrada (formato raw ou img).
-   - **`of=/dev/sdX`**: O disco de destino (substitua `sdX` pelo identificador do seu HD).
-   - **`bs=4M`**: Define o tamanho do bloco para 4 MB (pode ser ajustado conforme necessário).
-   - **`status=progress`**: Mostra o progresso da cópia.
-
-3. **Finalizar e verificar:**
-   - Depois que o `dd` concluir a gravação, você pode montar o HD e verificar se a imagem foi gravada corretamente.
-
-### Considerações Importantes:
-
-- **Cuidado com o `of=`**: Certifique-se de especificar corretamente o dispositivo de destino (`of=`) porque `dd` sobrescreverá o conteúdo do disco especificado sem aviso.
-  
-- **Backup**: Faça backups antes de executar operações como esta, pois `dd` é uma ferramenta poderosa que pode sobrescrever dados sem possibilidade de recuperação.
-
-- **Conversão**: Se o VDI já estiver em formato raw, a conversão não será necessária, e você pode gravá-lo diretamente no HD.
-
-Essa abordagem é útil, por exemplo, para migrar uma máquina virtual para um hardware físico, transformando a imagem VDI em um sistema operacional funcionando diretamente no HD.
-
----
-
-Quando você usa o `dd` para gravar uma imagem de disco (como um VDI convertido para o formato raw) em um disco rígido (HD), o processo copia os dados byte a byte da imagem diretamente para o disco de destino. Isso inclui todas as partições, tabelas de partições, sistemas de arquivos e dados contidos na imagem.
-
-### Como o `dd` Lida com Partições e Sistemas de Arquivos:
-
-1. **Cópia Byte a Byte:**
-   - O `dd` não faz distinção entre dados, tabelas de partições ou metadados. Ele simplesmente copia o conteúdo da imagem de entrada para o disco de saída byte a byte, incluindo qualquer estrutura de partição e sistema de arquivos contidos na imagem.
-
-2. **Partições e Tabelas de Partição:**
-   - Se a imagem (por exemplo, o arquivo raw resultante do VDI) contiver uma tabela de partições (como MBR ou GPT), o `dd` copiará essa tabela para o HD de destino. Isso significa que, após a cópia, o HD terá as mesmas partições que estavam na imagem original.
-   - As partições na imagem serão recriadas no disco de destino exatamente como estavam no disco virtual.
-
-3. **Sistemas de Arquivos:**
-   - Os sistemas de arquivos dentro das partições também são copiados exatamente como estavam na imagem. Isso significa que, se a imagem contiver um sistema de arquivos ext4, NTFS, FAT32, etc., ele será preservado no HD de destino.
-
-4. **Bootloader e MBR/GPT:**
-   - Se a imagem original contiver um bootloader (como GRUB, MBR) ou uma tabela de partição GPT, esses também serão copiados para o HD de destino. Isso permite que o disco de destino seja inicializável, desde que o hardware suporte as configurações da imagem.
-
-### Considerações e Cuidados:
-
-- **Tamanho do Disco**: O HD de destino deve ser igual ou maior que o tamanho da imagem. Se o HD for menor, a cópia não será concluída corretamente, e pode resultar em um sistema quebrado.
-
-- **Espaço não Alocado**: Se o HD for maior que a imagem, o espaço restante no HD ficará não alocado, e você poderá querer redimensionar as partições para utilizar todo o espaço disponível.
-
-- **Sobrescrição Completa**: O `dd` sobrescreverá completamente os dados existentes no HD de destino, incluindo a tabela de partições e todos os dados. Isso significa que qualquer dado previamente no HD será perdido.
-
-- **Alinhamento de Partições**: Como o `dd` faz uma cópia exata, as partições e os dados são colocados exatamente onde estavam na imagem original. Isso pode não ser ideal em todos os casos, especialmente se o alinhamento de partições não for adequado para o disco de destino, mas normalmente funciona bem para a maioria dos cenários.
-
-### Resumindo:
-
-- **Cópia Exata**: `dd` realiza uma cópia exata de tudo na imagem, incluindo partições, sistemas de arquivos, bootloader e dados.
-- **Simples e Poderoso**: É uma ferramenta muito simples, mas poderosa, que faz o trabalho sem "interpretar" ou "ajustar" nada, o que significa que você obtém uma réplica fiel do disco original.
-
-Se você seguir esse procedimento, o HD de destino deve ser uma réplica funcional do disco representado pela imagem VDI, com as partições e sistemas de arquivos intactos e no lugar correto.
-
----
-
 + Quanto de dinheiro eu vou guardar para o que?
 
 - Definir um tempo para refatorar conhecimento
@@ -630,39 +499,7 @@ Se você seguir esse procedimento, o HD de destino deve ser uma réplica funcion
   + Posso utilizar todo o limite do GPT de manhã
 - Quantas vezes no dia eu vou verificar se um servidor possui o erro e corrigí-lo
 
-# Erro `The user specified as a definer ('username'@'host') does not exist`
-
-Prático:
-
-```Bash
-$mariadb -u orion -pBl4ckBox1337 zoeslots
-$node /usr/lib/node_modules/@zoeslots/zoe-data-api/migrate.js
-$mariadb -u root -p260490 zoeslots     # Notebook do trabalho
-$mariadb -u batata -ppassword zoeslots # Notebook do trabalho
-```
-
-```SQL
-CALL raffle_accumulated_prize;
-CALL raffle_jackpot_prize;
-SELECT wichmann_hill_rand();
-DELETE FROM SequelizeMeta WHERE name = '20240320170000-update-accumulated-procedure.js' OR name = '20240320170000-update-jackpot-procedure.js' OR name = '20240320165900-update-wichmann_hill_rand.js';
-DELETE FROM SequelizeMeta WHERE name = '20240320170000-update-accumulated-procedure.js' OR name = '20240320170000-update-jackpot-procedure.js' OR name = '20240320165900-update-wichmann_hill_rand.js' OR name = '20240730170000-update-accumulated-procedure.js' OR name = '20240730170000-update-jackpot-procedure.js';
-SHOW CREATE PROCEDURE raffle_accumulated_prize;
-SHOW CREATE PROCEDURE raffle_jackpot_prize;
-SHOW CREATE FUNCTION wichmann_hill_rand;
-SELECT force_jackpot FROM settings;
-SHOW GRANTS FOR 'orion'@'localhost';
-CREATE USER 'batata'@'localhost' IDENTIFIED BY 'password';    -- Notebook do trabalho
-GRANT USAGE ON *.* TO 'batata'@'localhost';                   -- Notebook do trabalho
-GRANT ALL PRIVILEGES ON `zoeslots`.* TO 'batata'@'localhost'; -- Notebook do trabalho
-SHOW GRANTS FOR 'batata'@'localhost';                         -- Notebook do trabalho
-DROP USER 'batata'@'localhost';                               -- Notebook do trabalho
-```
-
 - Quando você executa a migração, o usuário utilizado na conexão fica como o `DEFINER` das procedures e da função
-- A mensagem de erro pontuava o usuário e o host como `''@''`. Provavelmente a procedure não foi criada por um usuário específico e não está especificada para um host
-- Testar
-  + Rollback no configure_server.sh
 
 ---
 
@@ -1250,3 +1087,28 @@ UPDATE settings SET homolog_version = '{ "orion-cashier-updater": "NULL", "zoe-w
 - Tem coisas sobre os scripts de gravação do servidor na conversa com o Ventura
 - Tem coisas na conversa com o Rod
 - Vou ver a data-api agora? To tireeeeeeeeeeeeeed
+
+# Prático
+
+```Bash
+$curl http://localhost:8080/game/bigwinner  -X POST \
+-H "Content-Type: application/json" -d '{"machine_id": 101}'
+
+# ---
+
+$mariadb -u orion -pBl4ckBox1337 zoeslots
+```
+
+```SQL
+CALL raffle_accumulated_prize;
+CALL raffle_jackpot_prize;
+SELECT wichmann_hill_rand();
+SHOW CREATE PROCEDURE raffle_accumulated_prize;
+SHOW CREATE PROCEDURE raffle_jackpot_prize;
+SHOW CREATE FUNCTION wichmann_hill_rand;
+SELECT force_jackpot FROM settings;
+```
+
+```Bash
+$mariadb -u root -p260490 zoeslots # Notebook do trabalho
+```

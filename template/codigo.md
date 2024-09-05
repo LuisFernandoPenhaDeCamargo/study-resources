@@ -60,7 +60,7 @@ function myFunction(a, b) {
     return a + b;
 }
 
-// Criando um spy para a função myFunction.
+// - Criando um spy para a função `myFunction`
 const spyFunction  = sinon.spy(myFunction);
 
 // Chamando a função espionada.
@@ -80,7 +80,7 @@ const obj          = {
     }
 };
 
-// Criando um spy para o método myMethod.
+// - Criando um spy para o método `myMethod`
 const spyObjMethod = sinon.spy(obj, "myMethod");
 
 // Chamando o método espionado.

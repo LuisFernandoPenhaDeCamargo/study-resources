@@ -1,15 +1,17 @@
 # README (SQL)
 
-- Eu não sei como irei estruturar este diretório
-- Abaixo temos uma lista de tópicos que eu irei estudar
-    + Operadores
-        - Verificar se este realmente é o termo para se referir a `=`, por exemplo
-        - Operador de igualdade
-        - `!=`
-        - `>=`
-        - `<=`
-    + O retorno da função `SUBSTRING_INDEX` remove os espaços em branco no começo ou/e ao final da substring?
-    + `LIKE`
+<!-- TODO: não sei como irei estruturar este diretório. -->
+
+Abaixo temos uma lista de tópicos que eu irei estudar:
+
+- O retorno da função `SUBSTRING_INDEX` remove os espaços em branco no começo ou/e ao final da substring?
+- Operadores
+    + Verificar se este realmente é o termo para se referir a `=`, por exemplo
+    + Operador de igualdade
+    + `!=`
+    + `>=`
+    + `<=`
+- `LIKE`
 
 # `DEFINER`
 
@@ -73,7 +75,7 @@ A função `SUBSTRING_INDEX` é utilizada para **extrair uma parte de uma string
 ### Sintaxe Básica
 
 ```SQL
-SUBSTRING(string, delimiter, count);
+SUBSTRING_INDEX(string, delimiter, count);
 ```
 
 - `string`**:** a string de entrada da qual a substring será extraída

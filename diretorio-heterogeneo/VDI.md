@@ -8,7 +8,7 @@ Estar pronto significa que a imagem de disco virtual já vem configurada com o s
 
 # Usos Comuns
 
-Um VDI é frequentemente usado em empresas e organizações que precisam rapidamente fornecer desktops virtuais a muitos usuários. Por exemplo, uma organização pode ter um VDI pronto com todas as ferramentas e configurações de software necessárias para uma equipe específica, como desenvolvedores ou analistas de dados.
+Um VDI é frequentemente usado em empresas e organizações que precisam fornecer rapidamente desktops virtuais a muitos usuários. Por exemplo, uma organização pode ter um VDI pronto com todas as ferramentas e configurações de software necessárias para uma equipe específica, como desenvolvedores ou analistas de dados.
 
 # Benefícios
 
@@ -19,3 +19,5 @@ Um VDI é frequentemente usado em empresas e organizações que precisam rapidam
 # Resumo
 
 Em resumo, um "VDI pronto" é uma solução de disco virtual pré-configurado que facilita a implantação de ambientes de trabalho virtuais de forma rápida e eficiente em uma infraestrutura de VDI.
+
+# [[Voltar para: Diretório Heterogêneo]](./diretorio-heterogeneo.md)
