@@ -9,7 +9,7 @@ Sinon.JS é uma biblioteca para JavaScript que facilita a criação de espiões 
 - [Exemplos](#exemplos)
 - [Observações](#observacoes)
 - [Conclusão](#conclusao)
-- [Métodos e Propriedades](./metodos-propriedades.md)
+- [Métodos e Propriedades](./metodos-propriedades.md) (encontra-se em outro arquivo)
 
 # <a id="principais-funcoes">Principais Funções</a>
 
@@ -72,7 +72,7 @@ myObj.myEmptyMethod("arg1", "arg2");
 mock.verify(); // Verifica se as expectativas foram atendidas, caso contrário, lança um erro.
 ```
 
-# <a id="observacoes">Observações</>
+# <a id="observacoes">Observações</a>
 
 - Você não pode chamar o método `spy`, `stub` ou `mock.expects` na mesma função/método
 - Spies, stubs e mocks compartilham **alguns métodos e funcionalidades comuns**

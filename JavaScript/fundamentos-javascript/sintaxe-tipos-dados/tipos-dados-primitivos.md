@@ -8,7 +8,7 @@ Em JavaScript, os tipos de dados primitivos são os valores básicos e imutávei
 4. `null`
 5. `undefined`
 6. `symbol`
-7. `bigint` (adicionado no [ES]() 2020) <!-- TODO: explicar o ES 2020 e verificar onde eu vou colocar a explicação -->
+7. `bigint` (adicionado no [ES](../../conceitos-intermediarios/modulos/ES6.md#es6-termo-edicao) 2020)
 
 Aqui estão detalhes sobre cada um deles:
 

@@ -67,16 +67,16 @@
 - [`then`/`catch`](./conceitos-intermediarios/programacao-assincrona/then-catch.md)
 - `async`/`await`
 
-### [8. Módulos](./conceitos-intermediarios/modulos/)
-
-Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os módulos ES:
-
-+ O termo para se referir ao CommonJS e ao ES é mesmo "módulos"?
-+ Eu posso dizer que eles possuem versões? Qual é o termo mais adequado?
-+ Quantos existem e quais features cada um adicionou ao Node.js?
+### 8. Módulos
 
 - [O que são módulos?](./conceitos-intermediarios/modulos/modulos.md)
     + [Escopo de Módulo](./conceitos-intermediarios/modulos/modulos.md#escopo-modulo)
+- [Sistema de Módulos](./conceitos-intermediarios/modulos/sistema-modulos.md)
+- [CJS](./conceitos-intermediarios/modulos/CJS.md)
+- [ESM](./conceitos-intermediarios/modulos/ESM.md)
++ [ES6](./conceitos-intermediarios/modulos/ES6.md)
++ [Resumo do ES1 ao ES13](./conceitos-intermediarios/modulos/resumo-es1-es13.md)
++ [ECMA Internacional e o ECMAScript](./conceitos-intermediarios/modulos/ecma-internacional-ecmascript.md)
 - Importações e Exportações nos Módulos CommonJS
 - [Importações e Exportações nos Módulos ES](./conceitos-intermediarios/modulos/importacoes-exportacoes-modulos-es.md)
 - [Módulos CommonJS e Módulos ES no Mesmo Arquivo](./conceitos-intermediarios/modulos/modulos-commonjs-modulos-es-mesmo-arquivo.md)
@@ -180,19 +180,23 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
 
 ## Performance e Segurança
 
-### 22. Otimização de Código
+### 22. Particularidades da Linguagem
+
+- [# JS x Quantidade de Memória Alocada](./performance-segurança/particularidades-linguagem/JS-x-quantidade-memoria-alocada.md)
+
+### 23. Otimização de Código
 
 - Melhores Práticas de Desempenho
 - Profiling e Debugging
 
-### 23. Segurança
+### 24. Segurança
 
 - Prevenção de Vulnerabilidades Comuns (XSS, CSRF, etc.)
 - Práticas de Segurança em Desenvolvimento Web
 
 ## Projetos Práticos
 
-### 24. Projetos de Exemplo
+### 25. Projetos de Exemplo
 
 - Aplicação ToDo List
 - Aplicação CRUD com uma API RESTful
@@ -200,13 +204,13 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
 
 ## Recursos Adicionais
 
-### 25. Comunidade e Fóruns
+### 26. Comunidade e Fóruns
 
 - Stack Overflow
 - GitHub
 - Reddit (r/javascript)
 
-### 26. Documentação e Tutoriais
+### 27. Documentação e Tutoriais
 
 - MDN Web Docs
 - W3Schools
@@ -214,9 +218,8 @@ Devo pontuar aqui o que são os módulos CommonJS e os módulos ES? Sobre os mó
 
 ## Tópicos que Irei Estudar
 
-- ES6
-- JS x quantidade de memória alocada
-- .mjs habilita o strict mode por padrão?
+- O que é o strict mode?
+    + .mjs habilita o strict mode por padrão?
 - "/\s\s/g" (expressão regular)
 - "/\n/g" (expressão regular)
 - `elseif` x `if` seguido de `if`

@@ -8,8 +8,6 @@ considerando que ele é um executável escrito em JS e compilado com o pkg
 pm2 reload -> sinais de término -> src code -> graceful shutdown
            -> já inicia um novo processo
 
-listar os erros que eu encontrei ao utilizar o sinon
-
 -> aparentemente você não pode manipular o valor de variáveis do módulo que está sendo testado
 
 `import` -> "An import declaration can only be used at the top level of a module." -> solution: esmock no beforeEach
