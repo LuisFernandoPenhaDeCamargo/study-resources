@@ -121,7 +121,7 @@ error: failed to push some refs to 'https://github.com/LuisFernandoPenhaDeCamarg
 
 ---
 
-- Planilha ODF (.ods) <-- Deu certo
+- Planilha ODF (.ods) Deu certo <F
 */
 
 ---
@@ -234,7 +234,7 @@ callCount
 // machinesData (controlador) x TokenAuthMiddleware (middleware), tudo que é passado para o router não é considerado um middleware?
 // mock x stub - simulação x substituição
 
-calledOnceWith não é adequado para comparar arrays aninhados <-- documentar o método
+calledOnceWith não é adequado para comparar arrays aninhados documentar o método <F
 secretsManagerClientInstanceStub.send.reset();
 
 ---

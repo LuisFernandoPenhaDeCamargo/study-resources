@@ -1,4 +1,4 @@
-- Palavra-chave: "TODO" <--
+- Palavra-chave: "TODO" <F
 
 # Dificuldades Encontradas
 
@@ -742,7 +742,7 @@ Basicamente, utilizamos uma condicional e um booleano para lançar um erro no mo
 
 # <a id=""></a>
 
-- sinon.useFakeTimers <--
+- sinon.useFakeTimers <F
 
 ```JavaScript
 // default-bar.mjs
