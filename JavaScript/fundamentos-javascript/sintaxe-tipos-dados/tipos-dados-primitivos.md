@@ -96,4 +96,4 @@ console.log(bigNumber === anotherBigNumber); // Output: true. Com exceção do c
 
 Os tipos de dados primitivos são fundamentais em JavaScript, representando os blocos de construção básicos do gerenciamento de dados. Cada tipo tem suas características e usos específicos, permitindo que os desenvolvedores manipulem e armazenem dados de forma eficiente e eficaz.
 
-# [[Próximo tópico: Dinamicamente Tipada]](./dinamicamente-tipada.md)
+# [[Próximo tópico: Escopo]](./escopo.md)

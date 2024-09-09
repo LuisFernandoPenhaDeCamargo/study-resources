@@ -95,4 +95,4 @@ Principais funcionalidade:
 
 Suportado no Node.js a partir de v18.x.
 
-# [[Próximo tópico: ECMA Internacional e o ECMAScript]](./ecma-internacional-ecmascript.md)
+# [[Próximo tópico: `strict mode`]](./strict-mode.md)

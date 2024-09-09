@@ -1,4 +1,4 @@
-Now I see that constructor is a syntax sugar and it's nothing to do with Function.prototype.constructor, therefore stubbing it has no effect.
+Refazer a pergunta em <F <F
 
 O que seria sandbox no contexto do JS
 

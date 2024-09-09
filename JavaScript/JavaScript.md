@@ -7,8 +7,7 @@
 - [JavaScript](./fundamentos-javascript/sintaxe-tipos-dados/JavaScript.md)
 - [Declaração de Variáveis](./fundamentos-javascript/sintaxe-tipos-dados/declaracao-variaveis.md)
 - [Tipos de Dados Primitivos](./fundamentos-javascript/sintaxe-tipos-dados/tipos-dados-primitivos.md)
-- [Dinamicamente Tipada](./fundamentos-javascript/sintaxe-tipos-dados/dinamicamente-tipada.md) <--
-- [Escopo](./fundamentos-javascript/sintaxe-tipos-dados/escopo.md)
+- [Escopo](./fundamentos-javascript/sintaxe-tipos-dados/escopo.md) <!-- <F -->
 - [Operadores](./fundamentos-javascript/sintaxe-tipos-dados/operadores.md)
 
 ### [2. Estruturas de Controle](./fundamentos-javascript/estruturas-controle/)
@@ -74,9 +73,10 @@
 - [Sistema de Módulos](./conceitos-intermediarios/modulos/sistema-modulos.md)
 - [CJS](./conceitos-intermediarios/modulos/CJS.md)
 - [ESM](./conceitos-intermediarios/modulos/ESM.md)
-+ [ES6](./conceitos-intermediarios/modulos/ES6.md)
-+ [Resumo do ES1 ao ES13](./conceitos-intermediarios/modulos/resumo-es1-es13.md)
-+ [ECMA Internacional e o ECMAScript](./conceitos-intermediarios/modulos/ecma-internacional-ecmascript.md)
+- [ES6](./conceitos-intermediarios/modulos/ES6.md)
+- [Resumo do ES1 ao ES13](./conceitos-intermediarios/modulos/resumo-es1-es13.md)
+- [`strict mode`](./conceitos-intermediarios/modulos/strict-mode.md)
+- [ECMA Internacional e o ECMAScript](./conceitos-intermediarios/modulos/ecma-internacional-ecmascript.md)
 - Importações e Exportações nos Módulos CommonJS
 - [Importações e Exportações nos Módulos ES](./conceitos-intermediarios/modulos/importacoes-exportacoes-modulos-es.md)
 - [Módulos CommonJS e Módulos ES no Mesmo Arquivo](./conceitos-intermediarios/modulos/modulos-commonjs-modulos-es-mesmo-arquivo.md)
@@ -111,9 +111,14 @@
 - AJAX com XMLHttpRequest
 - Manipulação de Dados de API
 
+### [14. Expressões Regulares](#14-expressoes-regulares)
+
+- [Expressões Regulares](./tecnicas-avancadas/expressoes-regulares/expressoes-regulares.md)
+- [Exemplos de Expressões Regulares](./tecnicas-avancadas/expressoes-regulares/exemplos-expressoes-regulares.md)
+
 ## [Ferramentas e Bibliotecas](./ferramentas-bibliotecas/Nodejs/)
 
-### [14. Node.js](./ferramentas-bibliotecas/)
+### [15. Node.js](./ferramentas-bibliotecas/)
 
 - Introdução ao Node.js
 - [Módulos Nativos (ou Core)](./ferramentas-bibliotecas/Nodejs/modulos-nativos.md)
@@ -126,19 +131,19 @@
 - NPM (Node Package Manager)
 - Boas Práticas na Hora de Dar Upgrade na Versão do Node.js
 
-### [15. Bibliotecas](./ferramentas-bibliotecas/bibliotecas/)
+### [16. Bibliotecas](./ferramentas-bibliotecas/bibliotecas/)
 
 - [Sequelize](./ferramentas-bibliotecas/bibliotecas/Sequelize.md)
 - [esmock](./ferramentas-bibliotecas/bibliotecas/esmock.md)
 
-### 16. Frameworks Populares
+### 17. Frameworks Populares
 
 - React.js
 - Angular
 - Vue.js
 - jQuery (para manipulação de DOM mais antiga)
 
-### [17. Testes Automatizados](./ferramentas-bibliotecas/testes-automatizados/)
+### [18. Testes Automatizados](./ferramentas-bibliotecas/testes-automatizados/)
 
 - [Testes Unitários](./ferramentas-bibliotecas/testes-automatizados/testes-unitarios.md)
 - [Mocha](./ferramentas-bibliotecas/testes-automatizados/Mocha.md)
@@ -155,23 +160,23 @@
 
 ## [Práticas e Padrões de Código](./praticas-padroes-codigo/)
 
-### 18. Boas Práticas
+### 19. Boas Práticas
 
 - Código Limpo
 - Modularização
 - Comentários e Documentação
 
-### 19. Padrões de Projeto
+### 20. Padrões de Projeto
 
 - Padrões Comuns (Singleton, Factory, Observer, etc.)
 - Aplicação de Padrões em JavaScript
 
-### [20. Metodologias de Desenvolvimento](./praticas-padroes-codigo/metodologias-desenvolvimento.md)
+### [21. Metodologias de Desenvolvimento](./praticas-padroes-codigo/metodologias-desenvolvimento.md)
 
 - [Test-Driven Development (TDD)](./praticas-padroes-codigo/metodologias-desenvolvimento.md#tdd)
 - [Behavior-Driven Development (BDD)](./praticas-padroes-codigo/metodologias-desenvolvimento.md#bdd)
 
-### [21. Ferramentas de Build e Automação](./praticas-padroes-codigo/ferramentas-build-automacao.md)
+### [22. Ferramentas de Build e Automação](./praticas-padroes-codigo/ferramentas-build-automacao.md)
 
 - [Webpack](./praticas-padroes-codigo/ferramentas-build-automacao.md#webpack)
 - Babel
@@ -180,23 +185,23 @@
 
 ## Performance e Segurança
 
-### 22. Particularidades da Linguagem
+### 23. Particularidades da Linguagem
 
-- [# JS x Quantidade de Memória Alocada](./performance-segurança/particularidades-linguagem/JS-x-quantidade-memoria-alocada.md)
+- [JS x Quantidade de Memória Alocada](./performance-segurança/particularidades-linguagem/JS-x-quantidade-memoria-alocada.md)
 
-### 23. Otimização de Código
+### 24. Otimização de Código
 
 - Melhores Práticas de Desempenho
 - Profiling e Debugging
 
-### 24. Segurança
+### 25. Segurança
 
 - Prevenção de Vulnerabilidades Comuns (XSS, CSRF, etc.)
 - Práticas de Segurança em Desenvolvimento Web
 
 ## Projetos Práticos
 
-### 25. Projetos de Exemplo
+### 26. Projetos de Exemplo
 
 - Aplicação ToDo List
 - Aplicação CRUD com uma API RESTful
@@ -204,13 +209,13 @@
 
 ## Recursos Adicionais
 
-### 26. Comunidade e Fóruns
+### 27. Comunidade e Fóruns
 
 - Stack Overflow
 - GitHub
 - Reddit (r/javascript)
 
-### 27. Documentação e Tutoriais
+### 28. Documentação e Tutoriais
 
 - MDN Web Docs
 - W3Schools
@@ -218,10 +223,6 @@
 
 ## Tópicos que Irei Estudar
 
-- O que é o strict mode?
-    + .mjs habilita o strict mode por padrão?
-- "/\s\s/g" (expressão regular)
-- "/\n/g" (expressão regular)
 - `elseif` x `if` seguido de `if`
 - `interface`
 - `typeof`

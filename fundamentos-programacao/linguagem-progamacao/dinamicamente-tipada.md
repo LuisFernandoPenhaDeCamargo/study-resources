@@ -2,7 +2,9 @@
 
 Quando dizemos que uma linguagem de programação é dinamicamente tipada, isso significa que a verificação de tipos ocorre em tempo de execução e não em tempo de compilação. Em outras palavras, você não precisa declarar explicitamente o tipo de uma variável ao defini-la, e o tipo da variável pode mudar durante a execução do programa.
 
-## Principais Características
+# Principais Características
+
+Os códigos abaixo estão escritos em JavaScript.
 
 ### 1. Declaração implícita de tipos
 
@@ -43,7 +45,7 @@ A tipagem dinâmica permite escrever código mais rapidamente e de forma mais co
 
 Como os tipos são verificados em tempo de execução, erros de tipo podem ocorrer durante a execução do programa, tornando-os potencialmente mais difíceis de rastrear e corrigir.
 
-## Vantagens e Desvantagens
+# Vantagens e Desvantagens
 
 - **Vantagens**
     + **Flexibilidade:** permite escrever código de maneira rápida e eficiente sem declarações de tipo explícitas
@@ -52,9 +54,11 @@ Como os tipos são verificados em tempo de execução, erros de tipo podem ocorr
     + **Erros em tempo de execução:** erros de tipo podem surgir durante a execução, o que pode tornar a depuração mais difícil
     + **Menos previsibilidade:** pode ser mais difícil prever o comportamento do código, especialmente em sistemas grandes e complexos
 
-## Exemplo
+# Exemplo
 
 ```JavaScript
+// Exemplo em JavaScript.
+
 let value = 42;            // `value` é inicialmente um número.
 
 console.log(typeof value); // Ouput: number
@@ -77,4 +81,4 @@ printValue("Ten"); // Output: The value is Ten
 
 Em resumo, linguagens dinamicamente tipadas como JavaScript oferecem uma grande flexibilidade e produtividade, mas com o custo potencial de uma maior incidência de erros em tempo de execução e a necessidade de testes rigorosos para garantir a correção de código.
 
-[Escopo -->](./escopo.md)
+# [[Próximo tópico: ]]() <!-- TODO: definir o próximo tópico -->

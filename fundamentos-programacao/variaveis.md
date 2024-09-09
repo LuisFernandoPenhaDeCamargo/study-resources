@@ -12,4 +12,4 @@ var nome = "Vinicius";
 
 Se perguntarmos o valor de `nome`, obteremos `Vinicius`. A palavra-chave `var` é usada para declarar a variável e define como ela irá se comportar. Por exemplo, existem variáveis que, uma vez declaradas, não podem ter seu valor alterado; essas são chamadas de "constantes".
 
-# [[]]()
+# [[Próximo tópico: ]]() <!-- TODO: definir o próximo tópico -->

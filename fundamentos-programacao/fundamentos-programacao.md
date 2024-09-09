@@ -12,7 +12,6 @@ Abaixo temos uma lista de tópicos que eu irei estudar:
     + Linguagem de Programação Compilada
     + Linguagem de Programação Interpretada
     + Linguagem de Programação Dinâmica
-    + Linguagem de Programação Dinamicamente Tipada
     + Linguagem de Script
 - Orientação a Objetos (OOP)
 - Baseada em Prototipagem
@@ -26,5 +25,6 @@ Abaixo temos uma lista de tópicos que eu irei estudar:
 
 - [Variáveis](./variaveis.md)
 - [Linguagem de Programação](./linguagem-progamacao/linguagem-programacao.md)
+- [Dinamicamente Tipada](./linguagem-progamacao/dinamicamente-tipada.md)
 
 # [[Voltar para a página inicial]](../README.md)
