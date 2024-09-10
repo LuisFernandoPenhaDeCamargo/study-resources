@@ -1,5 +1,3 @@
-Refazer a pergunta em <F <F
-
 O que seria sandbox no contexto do JS
 
 npm reload, como ele interaje com um executável?
@@ -1072,40 +1070,9 @@ Server done
 //Aborted (core dumped)
 - Depois disso tudo a gente tenta executar automaticamente a game-api através do pm2, testa no servidor do Rod (antes teste também no servidor cachoeira) e pode ir para a data-api
 
-curl http://localhost:8080/game/machines/101 -X GET -H "Content-Type: application/json"
-curl http://localhost:8080/game/ping -X GET
-UPDATE settings SET homolog_version = '{ "orion-cashier-updater": "NULL", "zoe-watchdog": "NULL", "zoe-terminal": "NULL", "zoe-data-api": "NULL", "zoe-game-api": "NULL", "zoe-updater": "NULL" }';
-
-UPDATE settings SET homolog_version = '{ "orion-cashier-updater": "NULL", "zoe-watchdog": "NULL", "zoe-terminal": "NULL", "zoe-data-api": "NULL", "zoe-game-api": "3.0.0-homolog.8", "zoe-updater": "1.6.14-homolog" }';
-
 - Não sei como vai se comportar a instalação da zoe-game-api se não for a primeira instalação do SEA, preciso olhar melhor isso depois
 - Lembre de ver o valor na coluna token (places)
 - A versão 1.5.4 do zoe-updater não estava deixando eu att o zoe-game-api. Ficava dando a mensagem: "Not allowed to update"
-- Tem coisas na conversa com o William
-- Tem coisas sobre os scripts de gravação do servidor na conversa com o Ventura
-- Tem coisas na conversa com o Rod
-- Vou ver a data-api agora? To tireeeeeeeeeeeeeed
-
-# Prático
-
-```Bash
-$curl http://localhost:8080/game/bigwinner  -X POST \
--H "Content-Type: application/json" -d '{"machine_id": 101}'
-
-# ---
-
-$mariadb -u orion -pBl4ckBox1337 zoeslots
-```
-
-```SQL
-CALL raffle_accumulated_prize;
-CALL raffle_jackpot_prize;
-SELECT wichmann_hill_rand();
-SHOW CREATE PROCEDURE raffle_accumulated_prize;
-SHOW CREATE PROCEDURE raffle_jackpot_prize;
-SHOW CREATE FUNCTION wichmann_hill_rand;
-SELECT force_jackpot FROM settings;
-```
 
 ```Bash
 $mariadb -u root -p260490 zoeslots # Notebook do trabalho

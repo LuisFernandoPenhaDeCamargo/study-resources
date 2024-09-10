@@ -1,5 +1,3 @@
-- Palavra-chave: "TODO" <F
-
 # Dificuldades Encontradas
 
 Contexto:

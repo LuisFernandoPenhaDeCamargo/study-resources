@@ -16,6 +16,6 @@ Para ativar o strict mode, basta adicionar a string `"strict mode";` no início 
 
 # Observações
 
-A extensão **.mjs** (utilizada por ESM) habilita o stric mode automaticamente. Todo código dentro de um ESM opera no strict mode por padrão, sem a necessidade de adicionar explicitamente a linha `"strict mode;`.
+A extensão **.mjs** (utilizada por ESM) habilita o strict mode automaticamente. Todo código dentro de um ESM opera no strict mode por padrão, sem a necessidade de adicionar explicitamente a linha `"strict mode;`.
 
-# [[Próximo tópico: ECMA Internacional e o ECMAScript]](./ecma-internacional-ecmascript.md)
+# [[Próximo tópico: ]]() <!-- TODO: definir o próximo tópico -->

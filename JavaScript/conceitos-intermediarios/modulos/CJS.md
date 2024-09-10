@@ -11,4 +11,4 @@ O CommonJS (CJS) é um sistema de módulos amplamente utilizado em ambientes com
 3. **Escopo:** cada módulo tem seu próprio escopo, o que significa que variáveis e funções definidas em um módulo não são automaticamente acessíveis em outros módulos, a menos que sejam explicitamente exportadas
 4. **Suporte:** o CommonJS foi projetado inicialmente para Node.js, mas não é nativamente suportado em navegadores
 
-# [[Próximo tópico: ESM]](./ESM/ESM.md)
+# [[Próximo tópico: ESM]](./ESM.md)

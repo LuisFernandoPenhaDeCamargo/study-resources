@@ -8,13 +8,14 @@ Em JavaScript, os tipos de dados primitivos são os valores básicos e imutávei
 4. `null`
 5. `undefined`
 6. `symbol`
-7. `bigint` (adicionado no [ES](../../conceitos-intermediarios/modulos/ES6.md#es6-termo-edicao) 2020)
+7. `bigint` (adicionado no [ES](../../conceitos-intermediarios/ecma-internacional-ecmascript/ecma-internacional-ecmascript.md) 2020)
 
 Aqui estão detalhes sobre cada um deles:
 
 ## 1. `string`
 
 ```JavaScript
+// .mjs
 // Representa texto.
 const name     = "Alice";
 const greeting = 'Hello.';
@@ -24,6 +25,7 @@ const message  = `Hello, ${name}.`; // Template Literal.
 ## 2. `number`
 
 ```JavaScript
+// .mjs
 // Representa números, tanto inteiros quanto de ponto flutuante.
 const age         = 25;
 const temperature = - 10.5;
@@ -35,6 +37,7 @@ const infinite    = Infinity; // Representa infinito.
 ## 3. `boolean`
 
 ```JavaScript
+// .mjs
 // Representa um valor lógico: verdadeiro (`true`) ou falso (`false`).
 const isStudent    = true;
 const hasGraduated = false;
@@ -43,6 +46,7 @@ const hasGraduated = false;
 ## 4. `null`
 
 ```JavaScript
+// .mjs
 // Representa a ausência intencional de um valor (um valor nulo).
 const emptyValue = null;
 ```
@@ -50,6 +54,7 @@ const emptyValue = null;
 ## 5. `undefined`
 
 ```JavaScript
+// .mjs
 // Representa uma variável que foi declarada mas ainda não foi atribuída um valor.
 let notAssigned;
 
@@ -59,6 +64,7 @@ console.log(notAssigned); // Output: undefined
 ## 6. `symbol`
 
 ```JavaScript
+// .mjs
 // Representa um valor único, frequentemente usado como identificadores únicos.
 let symbol1 = Symbol();
 let symbol2 = Symbol("description");
@@ -69,6 +75,7 @@ console.log(symbol1 === symbol2); // Output: false. Cada símbolo é único.
 ## 7. `bigint`
 
 ```JavaScript
+// .mjs
 // Representa números inteiros de precisão arbitrária, úteis para trabalhar com números inteiros muito grandes.
 const bigNumber        = BigInt(1234567890123456789012345678901234567890n);
 const anotherBigNumber = 12345678901234567890n;
@@ -77,6 +84,7 @@ const anotherBigNumber = 12345678901234567890n;
 # Exemplos
 
 ```JavaScript
+// .mjs
 // - Usando `symbol`
 let symbol1            = Symbol("sameString");
 let symbol2            = Symbol("sameString");

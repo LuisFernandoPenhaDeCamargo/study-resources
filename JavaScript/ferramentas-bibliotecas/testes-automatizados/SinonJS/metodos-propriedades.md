@@ -142,6 +142,7 @@ const stubInstance = sinon.createStubInstance(Class[, overrides]);
 ## Exemplo
 
 ```JavaScript
+// .mjs
 import sinon from "sinon";
 
 class MyClass {
@@ -351,6 +352,7 @@ sinon.replace(obj, "method", newFunction);
 ## Exemplo
 
 ```JavaScript
+// .mjs
 import sinon from "sinon";
 
 const myObj = {
@@ -441,6 +443,7 @@ A propriedade `args` é uma propriedade do objeto `firstCall`. Ela é um **array
 ## Exemplo
 
 ```JavaScript
+// .mjs
 expect(axiosGetStub.firstCall.args[1].headers.Authorization).to.be.equal("Bearer access-token");
 ```
 

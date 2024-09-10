@@ -6,6 +6,7 @@
 - Quando a representação "A< >" for utilizada, o texto dentro dela deverá estar em português, se possível, pois é uma explicação sobre um valor que será utilizado nessa posição
 - Se um método for mencionado em um tópico que não se refere ao objeto (ou módulo) associado a ele, insira o nome do objeto (ou módulo) ao citar o método. Por exemplo:  
     O método `.readFile` do módulo `fs` seria citado como `fs.readFile` no módulo `util`.
+- Alinhe a documentação das saídas (e os comentários, se fizer sentido) de acordo com a coluna mais à direita dentro do mesmo escopo
 
 A documentação de um método (ou função), segue a seguinte ordem:
 
@@ -143,6 +144,7 @@ indicam que os parâmetros `arg1`, `arg2`, `...`, são **opcionais**, se você n
     + Entre um retorno e o restante do código
     + Entre uma resposta (`response`s, em Javascript, por exemplo) e o restante do código
 - Dependências externas, arquivos do projeto, variáveis, expressões, impressões e respostas podem ser agrupados quando pertencem à mesma categoria. Por exemplo, um bloco de impressões
+- Alinhe as atribuições e os valores das propriedades de acordo com a coluna mais à direita dentro do mesmo escopo
 
 ## Comentários
 

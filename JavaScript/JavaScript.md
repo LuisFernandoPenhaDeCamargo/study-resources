@@ -1,14 +1,16 @@
 # JavaScript
 
+Em documentação, nos casos que eu considerar relevante e em todos os exemplos, você encontrará o seguinte comentário: `// .mjs`. Isso indica o sistema de módulos utilizado, um conceito que será analisado com mais profundidade posteriormente.
+
 ## Fundamentos de JavaScript
 
 ### 1. Sintaxe e Tipos de Dados
 
-- [JavaScript](./fundamentos-javascript/sintaxe-tipos-dados/JavaScript.md)
-- [Declaração de Variáveis](./fundamentos-javascript/sintaxe-tipos-dados/declaracao-variaveis.md)
-- [Tipos de Dados Primitivos](./fundamentos-javascript/sintaxe-tipos-dados/tipos-dados-primitivos.md)
-- [Escopo](./fundamentos-javascript/sintaxe-tipos-dados/escopo.md) <!-- <F -->
-- [Operadores](./fundamentos-javascript/sintaxe-tipos-dados/operadores.md)
+- [JavaScript](./fundamentos-Javascript/sintaxe-tipos-dados/JavaScript.md)
+- [Declaração de Variáveis](./fundamentos-Javascript/sintaxe-tipos-dados/declaracao-variaveis.md)
+- [Tipos de Dados Primitivos](./fundamentos-Javascript/sintaxe-tipos-dados/tipos-dados-primitivos.md)
+- [Escopo](./fundamentos-Javascript/sintaxe-tipos-dados/escopo.md)
+- [Operadores](./fundamentos-Javascript/sintaxe-tipos-dados/operadores.md) <!-- <F -->
 
 ### [2. Estruturas de Controle](./fundamentos-javascript/estruturas-controle/)
 
@@ -66,17 +68,20 @@
 - [`then`/`catch`](./conceitos-intermediarios/programacao-assincrona/then-catch.md)
 - `async`/`await`
 
-### 8. Módulos
+### [8. Ecma Internacional e o ECMAScript](#8-ecma-internacional-ecmascript)
+
+- [ECMA Internacional e o ECMAScript](./conceitos-intermediarios/ecma-internacional-ecmascript/ecma-internacional-ecmascript.md)
+- [Resumo do ES1 ao ES13](./conceitos-intermediarios/ecma-internacional-ecmascript/resumo-es1-es13.md)
+- [ES6](./conceitos-intermediarios/ecma-internacional-ecmascript/ES6.md)
+
+### 9. Módulos
 
 - [O que são módulos?](./conceitos-intermediarios/modulos/modulos.md)
     + [Escopo de Módulo](./conceitos-intermediarios/modulos/modulos.md#escopo-modulo)
 - [Sistema de Módulos](./conceitos-intermediarios/modulos/sistema-modulos.md)
 - [CJS](./conceitos-intermediarios/modulos/CJS.md)
 - [ESM](./conceitos-intermediarios/modulos/ESM.md)
-- [ES6](./conceitos-intermediarios/modulos/ES6.md)
-- [Resumo do ES1 ao ES13](./conceitos-intermediarios/modulos/resumo-es1-es13.md)
 - [`strict mode`](./conceitos-intermediarios/modulos/strict-mode.md)
-- [ECMA Internacional e o ECMAScript](./conceitos-intermediarios/modulos/ecma-internacional-ecmascript.md)
 - Importações e Exportações nos Módulos CommonJS
 - [Importações e Exportações nos Módulos ES](./conceitos-intermediarios/modulos/importacoes-exportacoes-modulos-es.md)
 - [Módulos CommonJS e Módulos ES no Mesmo Arquivo](./conceitos-intermediarios/modulos/modulos-commonjs-modulos-es-mesmo-arquivo.md)
@@ -85,40 +90,41 @@
 
 ## Técnicas Avançadas
 
-### 9. Prototipagem e Herança
+### 10. Prototipagem e Herança
 
 - Prototipagem e Herança Prototípica
+- [`obj.prototype` x Função Construtora](./tecnicas-avancadas/prototipagem-heranca.md/obj-prototype-x-funcao-construtora.md)
 - Classes (ES6)
 - Métodos Estáticos e de Instância
 
-### 10. Manipulação de JSON
+### 11. Manipulação de JSON
 
 - `JSON.parse` e `JSON.stringify`
 
-### 11. Tratamento de Erros
+### 12. Tratamento de Erros
 
 - `try`/`catch`
 - Lançamentos de Erros (`throw`)
 
-### 12. Armazenamento no Navegador
+### 13. Armazenamento no Navegador
 
 - Cookies
 - LocalStorage e SessionStorage
 
-### 13. Trabalhando com APIs
+### 14. Trabalhando com APIs
 
 - Fetch API
 - AJAX com XMLHttpRequest
 - Manipulação de Dados de API
 
-### [14. Expressões Regulares](#14-expressoes-regulares)
+### [15. Expressões Regulares](#15-expressoes-regulares)
 
 - [Expressões Regulares](./tecnicas-avancadas/expressoes-regulares/expressoes-regulares.md)
 - [Exemplos de Expressões Regulares](./tecnicas-avancadas/expressoes-regulares/exemplos-expressoes-regulares.md)
 
 ## [Ferramentas e Bibliotecas](./ferramentas-bibliotecas/Nodejs/)
 
-### [15. Node.js](./ferramentas-bibliotecas/)
+### [16. Node.js](./ferramentas-bibliotecas/)
 
 - Introdução ao Node.js
 - [Módulos Nativos (ou Core)](./ferramentas-bibliotecas/Nodejs/modulos-nativos.md)
@@ -131,19 +137,19 @@
 - NPM (Node Package Manager)
 - Boas Práticas na Hora de Dar Upgrade na Versão do Node.js
 
-### [16. Bibliotecas](./ferramentas-bibliotecas/bibliotecas/)
+### [17. Bibliotecas](./ferramentas-bibliotecas/bibliotecas/)
 
 - [Sequelize](./ferramentas-bibliotecas/bibliotecas/Sequelize.md)
 - [esmock](./ferramentas-bibliotecas/bibliotecas/esmock.md)
 
-### 17. Frameworks Populares
+### 18. Frameworks Populares
 
 - React.js
 - Angular
 - Vue.js
 - jQuery (para manipulação de DOM mais antiga)
 
-### [18. Testes Automatizados](./ferramentas-bibliotecas/testes-automatizados/)
+### [19. Testes Automatizados](./ferramentas-bibliotecas/testes-automatizados/)
 
 - [Testes Unitários](./ferramentas-bibliotecas/testes-automatizados/testes-unitarios.md)
 - [Mocha](./ferramentas-bibliotecas/testes-automatizados/Mocha.md)
@@ -160,23 +166,23 @@
 
 ## [Práticas e Padrões de Código](./praticas-padroes-codigo/)
 
-### 19. Boas Práticas
+### 20. Boas Práticas
 
 - Código Limpo
 - Modularização
 - Comentários e Documentação
 
-### 20. Padrões de Projeto
+### 21. Padrões de Projeto
 
 - Padrões Comuns (Singleton, Factory, Observer, etc.)
 - Aplicação de Padrões em JavaScript
 
-### [21. Metodologias de Desenvolvimento](./praticas-padroes-codigo/metodologias-desenvolvimento.md)
+### [22. Metodologias de Desenvolvimento](./praticas-padroes-codigo/metodologias-desenvolvimento.md)
 
 - [Test-Driven Development (TDD)](./praticas-padroes-codigo/metodologias-desenvolvimento.md#tdd)
 - [Behavior-Driven Development (BDD)](./praticas-padroes-codigo/metodologias-desenvolvimento.md#bdd)
 
-### [22. Ferramentas de Build e Automação](./praticas-padroes-codigo/ferramentas-build-automacao.md)
+### [23. Ferramentas de Build e Automação](./praticas-padroes-codigo/ferramentas-build-automacao.md)
 
 - [Webpack](./praticas-padroes-codigo/ferramentas-build-automacao.md#webpack)
 - Babel
@@ -185,23 +191,23 @@
 
 ## Performance e Segurança
 
-### 23. Particularidades da Linguagem
+### 24. Particularidades da Linguagem
 
 - [JS x Quantidade de Memória Alocada](./performance-segurança/particularidades-linguagem/JS-x-quantidade-memoria-alocada.md)
 
-### 24. Otimização de Código
+### 25. Otimização de Código
 
 - Melhores Práticas de Desempenho
 - Profiling e Debugging
 
-### 25. Segurança
+### 26. Segurança
 
 - Prevenção de Vulnerabilidades Comuns (XSS, CSRF, etc.)
 - Práticas de Segurança em Desenvolvimento Web
 
 ## Projetos Práticos
 
-### 26. Projetos de Exemplo
+### 27. Projetos de Exemplo
 
 - Aplicação ToDo List
 - Aplicação CRUD com uma API RESTful
@@ -209,13 +215,13 @@
 
 ## Recursos Adicionais
 
-### 27. Comunidade e Fóruns
+### 28. Comunidade e Fóruns
 
 - Stack Overflow
 - GitHub
 - Reddit (r/javascript)
 
-### 28. Documentação e Tutoriais
+### 29. Documentação e Tutoriais
 
 - MDN Web Docs
 - W3Schools

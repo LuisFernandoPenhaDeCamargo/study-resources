@@ -12,4 +12,6 @@ Os sistemas de módulos permitem:
 - Reutilizar módulos em diferentes partes da aplicação ou em projetos diferentes
 - Controlar o que é exposto (exportado) e o que é mantido privado dentro de um módulo
 
-Observer que tanto o CJS quanto o ESM são sistemas de módulos com características próprias, diferenciando-se em alguns pontos da sintaxe, funcionalidades disponíveis e aspectos de funcionamento.
+Observe que tanto o CJS quanto o ESM são sistemas de módulos com características próprias, diferenciando-se em alguns pontos da sintaxe, funcionalidades disponíveis e aspectos de funcionamento.
+
+# [[Próximo tópico: CJS]](./CJS.md)

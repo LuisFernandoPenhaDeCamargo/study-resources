@@ -95,4 +95,4 @@ Principais funcionalidade:
 
 Suportado no Node.js a partir de v18.x.
 
-# [[Próximo tópico: `strict mode`]](./strict-mode.md)
+# [[Próximo tópico: ES6]](./ES6.md)
