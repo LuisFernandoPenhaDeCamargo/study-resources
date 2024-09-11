@@ -11,6 +11,8 @@ Abaixo temos uma lista de tópicos que eu irei estudar:
 - Postman
 - Docker
     + Utilizando Docker para implementar CI/CD
+- Interface de rede eth0 x eth1
+    + Qual você utiliza no ssh (eht1) e porque?
 
 ### Sumário
 

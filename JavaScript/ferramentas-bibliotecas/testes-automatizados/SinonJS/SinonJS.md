@@ -39,7 +39,6 @@ Sinon.JS é uma biblioteca para JavaScript que facilita a criação de espiões 
 # <a id="exemplos">Exemplos</a>
 
 ```JavaScript
-// .mjs
 import sinon from "sinon";
 
 const myObj = {

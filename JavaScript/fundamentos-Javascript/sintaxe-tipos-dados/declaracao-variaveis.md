@@ -10,7 +10,6 @@ Em JavaScript, há três formas principais de declarar variáveis: `var`, `let` 
 3. **Reatribuição e redefinição:** variáveis declaradas com `var` podem ser reatribuídas e redefinidas
 
 ```JavaScript
-// .mjs
 function example() {
     console.log(a); // Ouput: undefined. Hoisted.
     var a = 10;
@@ -32,7 +31,6 @@ b = 3;     // Reatribuição permitida: você pode atribuir um novo valor a vari
 3. **Reatribuição e redefinição:** variáveis declaradas com `let` podem ser reatribuídas, mas não redefinidas no mesmo escopo
 
 ```JavaScript
-// .mjs
 function example() {
     // console.log(a); // Hoisting: `ReferenceError: Cannot access 'a' before initialization`
     let a = 10;
@@ -54,7 +52,6 @@ b = 3;        // Reatribuição permitida.
 3. **Reatribuição e redefinição:** variáveis declaradas com `const` não podem ser reatribuídas ou redefinidas. Devem ser inicializadas no momento da declaração
 
 ```JavaScript
-// .mjs
 function example() {
     // console.log(a); // Hoisting: `ReferenceError: Cannot access 'a' before initialization`
     const a = 10;

@@ -14,8 +14,8 @@ Em documentação, nos casos que eu considerar relevante e em todos os exemplos,
 
 ### 2. Estruturas de Controle
 
-- [Condicionais](./fundamentos-Javascript/estruturas-controle/condicionais.md)  <!-- <F -->
-- [Operadores](./fundamentos-Javascript/estruturas-controle/operadores.md)
+- [Condicionais](./fundamentos-Javascript/estruturas-controle/condicionais.md)
+- [Operadores](./fundamentos-Javascript/estruturas-controle/operadores.md) <!-- <F -->
 - Laços de Repetição (`for`, `while`, do...while)
 - Break e Continue
 
@@ -229,7 +229,6 @@ Em documentação, nos casos que eu considerar relevante e em todos os exemplos,
 
 ## Tópicos que Irei Estudar
 
-- `elseif` x `if` seguido de `if`
 - `interface`
 - `typeof`
 - `new`

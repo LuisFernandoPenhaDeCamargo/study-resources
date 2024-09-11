@@ -49,7 +49,6 @@ const spy = sinon.spy([obj, ]method);
 ## Exemplos
 
 ```JavaScript
-// .mjs
 import sinon from "sinon";
 
 // Função que será espionada.
@@ -115,7 +114,6 @@ const stub = sinon.stub([object [, method]]);
 ## Exemplo
 
 ```JavaScript
-// .mjs
 import sinon from "sinon";
 
 const myStub = sinon.stub();
@@ -142,7 +140,6 @@ const stubInstance = sinon.createStubInstance(Class[, overrides]);
 ## Exemplo
 
 ```JavaScript
-// .mjs
 import sinon from "sinon";
 
 class MyClass {
@@ -270,7 +267,6 @@ stub.returnThis();
 ## Exemplo
 
 ```JavaScript
-// .mjs
 import sinon from "sinon";
 
 cost obj = {
@@ -314,7 +310,6 @@ stub.onCall(n).returns(value); // Aqui está sendo utilizado o `returns`, mas po
 ## Exemplo
 
 ```JavaScript
-// .mjs
 import sinon from "sinon";
 
 const obj            = {
@@ -352,7 +347,6 @@ sinon.replace(obj, "method", newFunction);
 ## Exemplo
 
 ```JavaScript
-// .mjs
 import sinon from "sinon";
 
 const myObj = {
@@ -415,7 +409,6 @@ console.log(stub.callCount);
 ## Exemplo
 
 ```JavaScript
-// .mjs
 import sinon from "sinon";
 
 const obj    = {
@@ -443,7 +436,6 @@ A propriedade `args` é uma propriedade do objeto `firstCall`. Ela é um **array
 ## Exemplo
 
 ```JavaScript
-// .mjs
 expect(axiosGetStub.firstCall.args[1].headers.Authorization).to.be.equal("Bearer access-token");
 ```
 
@@ -492,7 +484,6 @@ A< spy/stub >.getCall(n);
 ## Exemplo
 
 ```JavaScript
-// .mjs
 import sinon from "sinon";
 
 const obj         = {

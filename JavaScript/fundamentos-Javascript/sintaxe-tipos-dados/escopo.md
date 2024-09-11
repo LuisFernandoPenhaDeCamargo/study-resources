@@ -10,7 +10,6 @@ Em JavaScript, escopo refere-se ao contexto em que variáveis e funções são a
 - No navegador, variáveis globais se tornam propriedades do objeto `window`
 
 ```JavaScript
-// .mjs
 let globalVar = "I'm global";
 
 function globalFunction() {
@@ -28,7 +27,6 @@ console.log(globalVar);     // Acessível aqui também.
 - Usado por `var`
 
 ```JavaScript
-// .mjs
 function myFunction() {
     var functionVar = "I'm in a function";
 
@@ -46,7 +44,6 @@ console.log(functionVar);     // Erro: functionVar não está definido.
 - Usado por `let` e `const`
 
 ```JavaScript
-// .mjs
 if (true) {
     let blockLet     = "I'm in a block";
     const blockConst = "I'm a constant in a block";
@@ -68,7 +65,6 @@ console.log(blockVar);       // Acessível aqui, pois seu escopo é delimitado p
 - Isso é a base para closures
 
 ```JavaScript
-// .mjs
 function outerFunction() {
     let outerVar = "I'm outside";
 
