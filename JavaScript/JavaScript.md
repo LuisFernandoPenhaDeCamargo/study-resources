@@ -15,33 +15,33 @@ Em documentação, nos casos que eu considerar relevante e em todos os exemplos,
 ### 2. Estruturas de Controle
 
 - [Condicionais](./fundamentos-Javascript/estruturas-controle/condicionais.md)  <!-- <F -->
-- [Operadores](./fundamentos-javascript/estruturas-controle/operadores.md)
+- [Operadores](./fundamentos-Javascript/estruturas-controle/operadores.md)
 - Laços de Repetição (`for`, `while`, do...while)
 - Break e Continue
 
-### [3. Funções](./fundamentos-javascript/funcoes/)
+### 3. Funções
 
 - Declaração de Funções
-- [Operadores](./fundamentos-javascript/operadores.md)
+- [Operadores](./fundamentos-Javascript/operadores.md)
 - Funções Anônimas
-- [Arrow Functions](./fundamentos-javascript/funcoes/arrow-functions.md)
-- [IIFE (Immediately Invoked Function Expressions)](./fundamentos-javascript/funcoes/iife.md)
-- [Funções de Ordem Superior](./fundamentos-javascript/funcoes/funcoes-ordem-superior.md)
+- [Arrow Functions](./fundamentos-Javascript/funcoes/arrow-functions.md)
+- [IIFE (Immediately Invoked Function Expressions)](./fundamentos-Javascript/funcoes/iife.md)
+- [Funções de Ordem Superior](./fundamentos-Javascript/funcoes/funcoes-ordem-superior.md)
 - Parâmetros e Valores de Retorno
 
-### [4. Objetos e Arrays](./fundamentos-javascript/objetos-arrays/)
+### 4. Objetos e Arrays
 
-- [Objetos](./fundamentos-javascript/objetos-arrays/objetos.md)
-    + [Objetos Declarados com `const`](./fundamentos-javascript/objetos-arrays/objetos.md#objetos-declarados-const)
-    + [Comparando dois Objetos](./fundamentos-javascript/objetos-arrays/objetos.md#comparando-objetos)
-- [Operadores](./fundamentos-javascript/objetos-arrays/operadores.md)
+- [Objetos](./fundamentos-Javascript/objetos-arrays/objetos.md)
+    + [Objetos Declarados com `const`](./fundamentos-Javascript/objetos-arrays/objetos.md#objetos-declarados-const)
+    + [Comparando dois Objetos](./fundamentos-Javascript/objetos-arrays/objetos.md#comparando-objetos)
+- [Operadores](./fundamentos-Javascript/objetos-arrays/operadores.md)
 - Objetos Globais
 - Criação e Manipulação de Objetos
-- [Template Literals](./fundamentos-javascript/objetos-arrays/template-literals.md)
-    + [Utilizando a Crase Dentro de um Template Literal](./fundamentos-javascript/objetos-arrays/template-literals.md#utilizando-acento-grave-dentro-template-literal)
-- [Tipos de Objetos](./fundamentos-javascript/objetos-arrays/tipos-objetos/README.md)
-- [Métodos de Objetos](./fundamentos-javascript/objetos-arrays/metodos-objetos/metodos-objetos.md)
-- [Namespaces](./fundamentos-javascript/objetos-arrays/namespaces.md)
+- [Template Literals](./fundamentos-Javascript/objetos-arrays/template-literals.md)
+    + [Utilizando a Crase Dentro de um Template Literal](./fundamentos-Javascript/objetos-arrays/template-literals.md#utilizando-acento-grave-dentro-template-literal)
+- [Tipos de Objetos](./fundamentos-Javascript/objetos-arrays/tipos-objetos/README.md)
+- [Métodos de Objetos](./fundamentos-Javascript/objetos-arrays/metodos-objetos/metodos-objetos.md)
+- [Namespaces](./fundamentos-Javascript/objetos-arrays/namespaces.md)
 - Criação e Manipulação de Arrays
 - Métodos de Array (`map`, `filter`, `reduce`, `forEach`, etc.)
 
