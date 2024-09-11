@@ -20,7 +20,7 @@
 
 ## Fundamentos de JavaScript
 
-### [1. Sintaxe e Tipos de Dados](##1-sintaxe-tipos-dados)
+### 1. Sintaxe e Tipos de Dados
 
 - [JavaScript](./fundamentos-Javascript/sintaxe-tipos-dados/JavaScript.md)
 - [Declaração de Variáveis](./fundamentos-Javascript/sintaxe-tipos-dados/declaracao-variaveis.md)
@@ -45,7 +45,7 @@ Link de "Declaração de Variáveis" para o próximo item, "Tipos de Dados Primi
 
 ## Fundamentos de JavaScript
 
-### [1. Sintaxe e Tipos de Dados](##1-sintaxe-tipos-dados)
+### 1. Sintaxe e Tipos de Dados
 
 - [JavaScript](./fundamentos-Javascript/sintaxe-tipos-dados/JavaScript.md)
 - [Declaração de Variáveis](./fundamentos-Javascript/sintaxe-tipos-dados/declaracao-variaveis.md)
@@ -57,7 +57,7 @@ Link de "Declaração de Variáveis" para o próximo item, "Tipos de Dados Primi
 ../JavaScript/fundamentos-Javascript/sintaxe-tipos-dados/JavaScript.md
 Link de "Operadores" para o tópico inicial, "Sintaxe e Tipos de Dados":
 -->
-# [[Voltar para: JavaScript (Sintaxe e Tipos de Dados)]](../../JavaScript.md#1-sintaxe-tipos-dados)
+# [[Voltar para: JavaScript]](../../JavaScript.md)
 ```
 
 - Ao final de um tópico, adicione um link para retornar "página inicial", conforme o exemplo abaixo:

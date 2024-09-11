@@ -26,4 +26,4 @@ Quano nos referimos ao ES6 ou ES2015 como uma edição do JavaScript, estamos fa
 
 Essas funcionalidades não aparecem todas de uma vez no Node.js ou navegadores. Muitas delas, como as arrow functions, começaram a ser experimentalmente suportadas antes do lançamento oficial do ES6, então você pode encontrá-las em versões mais antigas. No entanto, quando dizemos que algo faz parte do "ES6", significa que foi **padronizado oficialmente** a partir dessa edição, e não que ele só ficou disponível em uma versão específica do Node.js. A padronização é importante para garantir que todos os ambientes implementem as funcionalidades de forma consistente.
 
-# [[Voltar para: JavaScript (Ecma Internacional e o ECMAScript)]](../../JavaScript.md#8-ecma-internacional-ecmascript)
+# [[Voltar para: JavaScript]](../../JavaScript.md)

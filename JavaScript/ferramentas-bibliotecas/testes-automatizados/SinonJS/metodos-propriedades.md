@@ -30,7 +30,7 @@ Ajudam a avaliar o comportamento:
 - [`CalledOnceWith`](#calledoncewith)
 - [`getCall`](#getcall)
 
-+ [Observações](#observações)
++ [Observações](#observacoes)
 
 # <a id="spy">`spy`</a>
 
@@ -517,7 +517,7 @@ const secondCall  = objGreetSpy.getCall(1);
 console.log(secondCall.args[0]); // Output: Bob
 ```
 
-# <a id="observações">Observações</a>
+# <a id="observações">Observacoes</a>
 
 Sempre restaure os stubs após os testes para garantir que o comportamento original seja restaurado e outros testes não seja afetados.
 

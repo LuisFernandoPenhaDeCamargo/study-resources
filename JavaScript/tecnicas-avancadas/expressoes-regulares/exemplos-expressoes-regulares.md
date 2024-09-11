@@ -18,4 +18,4 @@ A expressão regular `/\n/g` busca todas as quebras de linha (novas linhas) em u
 - `\n`**:** representa uma quebra de linha
 - `g`**:** flag global, que faz a busca em toda a string, não parando na primeira ocorrência
 
-# [[Voltar para: JavaScript (Expressões Regulares)]](../../JavaScript.md#15-expressoes-regulares)
+# [[Voltar para: JavaScript]](../../JavaScript.md)

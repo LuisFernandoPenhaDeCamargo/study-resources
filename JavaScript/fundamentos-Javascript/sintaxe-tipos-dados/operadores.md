@@ -15,6 +15,7 @@ Esses operadores são usados para realizar operações matemáticas.
 - `--`**:** decremento
 
 ```JavaScript
+// .mjs
 let a = 10;
 let b = 5;
 
@@ -45,25 +46,26 @@ Esses operadores são usados para atribuir valores a variáveis.
 - `%=`**:** módulo e atribuição
 
 ```JavaScript
+// .mjs
 let x = 10;
 
-x += 5;         // x = x + 5;
+x     += 5;     // x = x + 5;
 
 console.log(x); // Output: 15
 
-x -= 3;         // x = x - 3;
+x     -= 3;     // x = x - 3;
 
 console.log(x); // Output: 12
 
-x *= 2;         // x = x * 2;
+x     *= 2;     // x = x * 2;
 
 console.log(x); // Output: 24
 
-x /= 4;         // x = x / 4;
+x     /= 4;     // x = x / 4;
 
 console.log(x); // Output: 6
 
-x %= 2;         // x = x % 2;
+x     %= 2;     // x = x % 2;
 
 console.log(x); // Output: 0
 ```
@@ -82,6 +84,7 @@ Esses operadores são usado para comparar valores e retornam um valor booleano (
 - `<=`**:** menor ou igual a
 
 ```JavaScript
+// .mjs
 const a = 5;
 const b = "5";
 
@@ -98,6 +101,7 @@ console.log(a <= 5);  // Output: true
 Observando que o JavaScript realiza a coerção de tipo para converter ambos os operandos ao mesmo tipo antes de compará-los, por isso `5` (number) é igual a `"5"` (string). Para comparar o valor e o tipo há as comparações estritas ("===" e "!=="), fique atento ao fato que não existe a versão estrita de `>`, `<`, `>=` e `<=`.
 
 ```JavaScript
+// .mjs
 console.log(5 > "4");   // Ouput: true. "4" é convertido para 4.
 console.log("5" > 4);   // Ouput: true. "5" é convertido para 5.
 console.log(5 > "5");   // Ouput: false. "5" é convertido para 5.
@@ -113,6 +117,7 @@ Esses operadores são usados para combinar expressões booleanas.
 - `!`**:** Não lógico (NOT)
 
 ```JavaScript
+// .mjs
 const a = true;
 const b = false;
 
@@ -127,15 +132,16 @@ console.log(!b);     // Output: true
 - `+`**:** concatenação de strings
 
 ```JavaScript
+// .mjs
 const str1 = "Hello, ";
 const str2 = "world!";
-let str3 = str1 + str2;
+let str3   = str1 + str2;
 
-console.log(str3); // Output: Hello, world!
+console.log(str3);           // Output: Hello, world!
 
 // Coerção de tipos.
-const a = 1;
-const b = "20";
+const a    = 1;
+const b    = "20";
 
 console.log(a + b);          // Output: 120
 console.log(b + a);          // Output: 201
@@ -157,6 +163,7 @@ Esses operadores trabalham a nível de bits.
 - `>>>`**:** deslocamento à direita sem sinal
 
 ```JavaScript
+// .mjs
 const a = 5; // 0101 em binário.
 const b = 3; // 0011 em binário.
 

@@ -10,11 +10,11 @@ Em documentação, nos casos que eu considerar relevante e em todos os exemplos,
 - [Declaração de Variáveis](./fundamentos-Javascript/sintaxe-tipos-dados/declaracao-variaveis.md)
 - [Tipos de Dados Primitivos](./fundamentos-Javascript/sintaxe-tipos-dados/tipos-dados-primitivos.md)
 - [Escopo](./fundamentos-Javascript/sintaxe-tipos-dados/escopo.md)
-- [Operadores](./fundamentos-Javascript/sintaxe-tipos-dados/operadores.md) <!-- <F -->
+- [Operadores](./fundamentos-Javascript/sintaxe-tipos-dados/operadores.md)
 
-### [2. Estruturas de Controle](./fundamentos-javascript/estruturas-controle/)
+### 2. Estruturas de Controle
 
-- [Condicionais](./fundamentos-javascript/estruturas-controle/condicionais.md)
+- [Condicionais](./fundamentos-Javascript/estruturas-controle/condicionais.md)  <!-- <F -->
 - [Operadores](./fundamentos-javascript/estruturas-controle/operadores.md)
 - Laços de Repetição (`for`, `while`, do...while)
 - Break e Continue
@@ -68,7 +68,7 @@ Em documentação, nos casos que eu considerar relevante e em todos os exemplos,
 - [`then`/`catch`](./conceitos-intermediarios/programacao-assincrona/then-catch.md)
 - `async`/`await`
 
-### [8. Ecma Internacional e o ECMAScript](#8-ecma-internacional-ecmascript)
+### 8. Ecma Internacional e o ECMAScript
 
 - [ECMA Internacional e o ECMAScript](./conceitos-intermediarios/ecma-internacional-ecmascript/ecma-internacional-ecmascript.md)
 - [Resumo do ES1 ao ES13](./conceitos-intermediarios/ecma-internacional-ecmascript/resumo-es1-es13.md)
@@ -117,7 +117,7 @@ Em documentação, nos casos que eu considerar relevante e em todos os exemplos,
 - AJAX com XMLHttpRequest
 - Manipulação de Dados de API
 
-### [15. Expressões Regulares](#15-expressoes-regulares)
+### 15. Expressões Regulares
 
 - [Expressões Regulares](./tecnicas-avancadas/expressoes-regulares/expressoes-regulares.md)
 - [Exemplos de Expressões Regulares](./tecnicas-avancadas/expressoes-regulares/exemplos-expressoes-regulares.md)

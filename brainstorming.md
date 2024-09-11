@@ -1077,3 +1077,5 @@ Server done
 ```Bash
 $mariadb -u root -p260490 zoeslots # Notebook do trabalho
 ```
+
+acho que o pm2 está atribuindo ao nome do processo o nome do SEA, será por conta do pm2 save? Era pra ser o nome da chave, não?
