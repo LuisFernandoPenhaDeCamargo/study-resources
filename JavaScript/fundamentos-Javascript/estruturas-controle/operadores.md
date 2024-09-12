@@ -1,6 +1,6 @@
 # Operadores
 
-Para compreender melhor como os operadores abaixo funcionam, antes era necessário entender o conceito de "condicionais", por isso eles foram pontuados aqui.
+Para compreender melhor como os operadores abaixo funcionam, era necessário entender o conceito de "condicionais" previamente, razão pela qual eles foram abordados aqui.
 
 ## Operador Condicional (Ternário)
 
@@ -9,14 +9,14 @@ O operador condicional é o único operador JavaScript que possui três operando
 - `?`**:** operador condicional (ternário)
 
 ```JavaScript
-const age = 18;
+const age     = 18;
 // | condição (`(age >= 18)`) | operador ternário (`?`) | valor de retorno se a condição for verdadeira (`"YES"`) | dois pontos (`:`) | valor de retorno se a condição for falsa (`"No"`)
 const canVote = (age >= 18) ? "Yes" : "No";
 
 console.log(canVote); // Output: Yes
 ```
 
-## Operador de coalescência nula
+## Operador de Coalescência Nula
 
 O operador de coalescência nula é utilizado para fornecer um valor padrão quando uma variável é `null` ou `undefined`. Ele é útil quando você quer garantir que uma variável tenha um valor, mesmo que ela não esteja definida.
 
@@ -38,10 +38,10 @@ let nameDisplayed = name ?? defaultName;
 
 console.log(nameDisplayed); // Output: Visitor
 
-name = "Alice";
-nameDisplayed = name ?? defaultName;
+name              = "Alice";
+nameDisplayed     = name ?? defaultName;
 
 console.log(nameDisplayed); // Output: Alice
 ```
 
-[Laços de Repetição -->](./lacos-repeticao.md)
+# [[Próximo tópico: Laços de Repetição]](./lacos-repeticao.md)

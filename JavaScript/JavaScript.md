@@ -1,7 +1,5 @@
 # JavaScript
 
-Em documentação, nos casos que eu considerar relevante e em todos os exemplos, você encontrará o seguinte comentário: `// .mjs`. Isso indica o sistema de módulos utilizado, um conceito que será analisado com mais profundidade posteriormente.
-
 ## Fundamentos de JavaScript
 
 ### 1. Sintaxe e Tipos de Dados
@@ -15,15 +13,15 @@ Em documentação, nos casos que eu considerar relevante e em todos os exemplos,
 ### 2. Estruturas de Controle
 
 - [Condicionais](./fundamentos-Javascript/estruturas-controle/condicionais.md)
-- [Operadores](./fundamentos-Javascript/estruturas-controle/operadores.md) <!-- <F -->
-- Laços de Repetição (`for`, `while`, do...while)
-- Break e Continue
+- [Operadores](./fundamentos-Javascript/estruturas-controle/operadores.md)
+- [Laços de Repetição](./fundamentos-Javascript/estruturas-controle/lacos-repeticao.md)
+- [`break` e `continue`](./fundamentos-Javascript/estruturas-controle/break-continue.md)
 
 ### 3. Funções
 
-- Declaração de Funções
-- [Operadores](./fundamentos-Javascript/operadores.md)
-- Funções Anônimas
+- [Declaração de Funções](./fundamentos-Javascript/funcoes/declaracao-funcoes.md) <!-- <F -->
+- [Operadores](./fundamentos-Javascript/funcoes/operadores.md)
+- [Funções Anônimas](./fundamentos-Javascript/funcoes/funcoes-anonimas.md)
 - [Arrow Functions](./fundamentos-Javascript/funcoes/arrow-functions.md)
 - [IIFE (Immediately Invoked Function Expressions)](./fundamentos-Javascript/funcoes/iife.md)
 - [Funções de Ordem Superior](./fundamentos-Javascript/funcoes/funcoes-ordem-superior.md)
@@ -229,13 +227,12 @@ Em documentação, nos casos que eu considerar relevante e em todos os exemplos,
 
 ## Tópicos que Irei Estudar
 
-- `interface`
-- `typeof`
 - `new`
 - `new Obj` x `new Obj()`
 - `new` em funções. Exemplo: `new exampleFunction()`
 - `constructor`
 - A "real interação" do `constructor` e o JavaScript
+- `interface`
 - `delete` de valores cujo tipo de dado é primitivo em ESM
 - Array
     + `isArray`

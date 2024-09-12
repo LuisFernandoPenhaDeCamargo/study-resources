@@ -1,6 +1,6 @@
 # Operadores
 
-Para compreender melhor como os operadores abaixo funcionam, é necessário entender o conceito de "função". Por isso, eles foram explicados aqui.
+Para compreender melhor como os operadores abaixo funcionam, era necessário entender o conceito de "funções" previamente, razão pela qual eles foram abordados aqui.
 
 # `typeof`
 

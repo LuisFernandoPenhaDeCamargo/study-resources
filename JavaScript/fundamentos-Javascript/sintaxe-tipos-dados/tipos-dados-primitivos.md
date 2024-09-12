@@ -74,6 +74,8 @@ const bigNumber        = BigInt(1234567890123456789012345678901234567890n);
 const anotherBigNumber = 12345678901234567890n;
 ```
 
+Um valor é considerado um `bigint` se ele possui um `n` ao seu final ou se for inicializado com `BigInt(A< valor >)`.
+
 # Exemplos
 
 ```JavaScript
