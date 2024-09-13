@@ -8,7 +8,7 @@ Em JavaScript, os tipos de dados primitivos são os valores básicos e imutávei
 4. `null`
 5. `undefined`
 6. `symbol`
-7. `bigint` (adicionado no [ES](../../conceitos-intermediarios/ecma-internacional-ecmascript/ecma-internacional-ecmascript.md) 2020)
+7. `bigint`
 
 Aqui estão detalhes sobre cada um deles:
 

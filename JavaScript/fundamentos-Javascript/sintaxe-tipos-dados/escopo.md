@@ -86,9 +86,9 @@ outerFunction();               // Output: I'm outside
 
 # Ferramentas e Abordagens
 
-- **Closures:** funções que lembram o ambiente em que foram criadas. Será analisado com mais profundidade posteriormente
+- **Closures:** funções que lembram o ambiente em que foram criadas
 - **Hoisting:** comportamento de elevação das declarações de funções e variáveis para o topo do seu escopo
-- **Strict Mode:** modo que aplica regras mais restritas, ajudando a evitar erros comuns relacionados ao escopo. Será analisado com mais profundidade posteriormente
+- **Strict Mode:** modo que aplica regras mais restritas, ajudando a evitar erros comuns relacionados ao escopo
 
 Entender o escopo é fundamental para escrever código JavaScript eficiente e livre de bugs.
 

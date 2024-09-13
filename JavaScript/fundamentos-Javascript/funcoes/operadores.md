@@ -45,4 +45,4 @@ console.log(typeof []);            // Output: object. Arrays são considerados o
 console.log(typeof null);          // Output: object. Isso é um comportamento histórico de JavaScript.
 ```
 
-# [[Próximo tópico: Funções Anônimas]](./funcoes-anonimas.md)
+# [[Próximo tópico: Parâmetros e Valores de Retorno]](./parametros-valores-retorno.md)

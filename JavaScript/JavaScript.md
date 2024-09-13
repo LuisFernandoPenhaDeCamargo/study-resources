@@ -19,13 +19,13 @@
 
 ### 3. Funções
 
-- [Declaração de Funções](./fundamentos-Javascript/funcoes/declaracao-funcoes.md) <!-- <F -->
+- [Declaração de Funções](./fundamentos-Javascript/funcoes/declaracao-funcoes.md)
 - [Operadores](./fundamentos-Javascript/funcoes/operadores.md)
-- [Funções Anônimas](./fundamentos-Javascript/funcoes/funcoes-anonimas.md)
+- [Parâmetros e Valores de Retorno](./fundamentos-Javascript/funcoes/parametros-valores-retorno.md)
 - [Arrow Functions](./fundamentos-Javascript/funcoes/arrow-functions.md)
-- [IIFE (Immediately Invoked Function Expressions)](./fundamentos-Javascript/funcoes/iife.md)
+- [Immediately Invoked Function Expressions (IIFE)](./fundamentos-Javascript/funcoes/iife.md)
+- [Funções Anônimas](./fundamentos-Javascript/funcoes/funcoes-anonimas.md) <!-- <F -->
 - [Funções de Ordem Superior](./fundamentos-Javascript/funcoes/funcoes-ordem-superior.md)
-- Parâmetros e Valores de Retorno
 
 ### 4. Objetos e Arrays
 
