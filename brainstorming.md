@@ -1079,3 +1079,6 @@ $mariadb -u root -p260490 zoeslots # Notebook do trabalho
 ```
 
 acho que o pm2 está atribuindo ao nome do processo o nome do SEA, será por conta do pm2 save? Era pra ser o nome da chave, não?
+
+quando a impressão se trata de uma explicação de um bloco específico, não pule linhas
+não gosto de listas dentro de listas, visualmente falado me deixa desconfortável

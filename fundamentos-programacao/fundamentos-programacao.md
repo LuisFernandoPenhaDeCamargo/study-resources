@@ -1,7 +1,9 @@
 # Fundamentos da Programação
 
-Abaixo temos uma lista de tópicos que eu irei estudar:
+<!--
+TODO: abaixo temos uma lista de tópicos que eu irei estudar:
 
+- Tipos comuns de dados
 - Estruturas de Controle
     + Laços de Repetição
 - Funções
@@ -20,6 +22,7 @@ Abaixo temos uma lista de tópicos que eu irei estudar:
 - Conteúdo Dinâmico em páginas web
 - Desenvolvimento Front-end
 - Desenvolvimento Back-end
+-->
 
 ### Sumário
 

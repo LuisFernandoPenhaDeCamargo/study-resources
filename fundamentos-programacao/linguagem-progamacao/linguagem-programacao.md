@@ -1,6 +1,6 @@
 # Linguagem de Programação
 
-Uma linguagem de programação é um conjunto formal de regras e instruções que permite a comunicação entre humanos e computadores. As linguagens de programação são usadas para escrever códigos que instruem o computador a realizar tarefas específicas. Esses códigos são escritos por programadores e depois compilados ou interpretados para serem executados pela máquina.
+Uma linguagem de programação é um conjunto formal de regras e instruções que permite a comunicação entre humanos e computadores. As linguagens de programação são usadas para escrever códigos que instruem o computador a realizar tarefas específicas.
 
 # Principais Características
 
@@ -15,6 +15,4 @@ Uma linguagem de programação é um conjunto formal de regras e instruções qu
 3. **Linguagens de Script:** normalmente interpretadas e usadas para automatizar tarefas. JavaScript, Ruby
 4. **Linguagens Funcionais:** enfatizam o uso de funções e evitam estados e mudanças. Haskell, Lisp
 
-Em resumo, uma linguagem de programação é uma ferramenta fundamental que permite a criação de software, resolvendo problemas e realizando tarefas de maneira eficiente e estruturada.
-
-# [[Próximo tópico: ]]() <!-- TODO: definir o próximo tópico -->
+# [[Próximo tópico: Dinamicamente Tipada]](./dinamicamente-tipada.md)
