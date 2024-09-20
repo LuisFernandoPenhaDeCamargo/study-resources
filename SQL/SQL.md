@@ -1,17 +1,19 @@
 # README (SQL)
 
-<!-- TODO: não sei como irei estruturar este diretório. -->
+<!--
+TODO:
+- Não sei como irei estruturar este diretório.
+- Abaixo temos uma lista de tópicos que eu irei estudar:
 
-Abaixo temos uma lista de tópicos que eu irei estudar:
-
-- O retorno da função `SUBSTRING_INDEX` remove os espaços em branco no começo ou/e ao final da substring?
-- Operadores
-    + Verificar se este realmente é o termo para se referir a `=`, por exemplo
-    + Operador de igualdade
-    + `!=`
-    + `>=`
-    + `<=`
-- `LIKE`
++ O retorno da função `SUBSTRING_INDEX` remove os espaços em branco no começo ou/e ao final da substring?
++ Operadores
+    - Verificar se este realmente é o termo para se referir a `=`, por exemplo
+    - Operador de igualdade
+    - `!=`
+    - `>=`
+    - `<=`
++ `LIKE`
+-->
 
 # `DEFINER`
 
@@ -80,7 +82,7 @@ SUBSTRING_INDEX(string, delimiter, count);
 
 - `string`**:** a string de entrada da qual a substring será extraída
 - `delimiter`**:** o delimitador que define os limites da substring
-- `count`**:** um número inteiro que específica quantas vezes o delimitar deve aparecer na string para definir a substring
+- `count`**:** um número inteiro que específica quantas vezes o delimitador deve aparecer na string para definir a substring
     + Se o valor for positivo, a função retorna a substring até o count-ésimo delimitador a partir da esquerda
     + Se o valor for negativo, a função retorna a substring até o count-ésimo delimitador a partir da direita
 
@@ -89,13 +91,11 @@ SUBSTRING_INDEX(string, delimiter, count);
 ```SQL
 -- - Extraindo a substring a partir da esquerda
 SELECT SUBSTRING_INDEX('a,b,c,d', ',', 2);
--- Ouput: a,b
--- Isso retorna `a,b` porque pega a substring até a segunda ocorrência da vírgula a partir da esquerda.
+-- Ouput: a,b. Isso retorna `a,b` porque pega a substring até a segunda ocorrência da vírgula a partir da esquerda.
 
 -- - Extraindo a substring a partir da direita
 SELECT SUBSTRING_INDEX('a,b,c,d', ',', -2);
--- Output: c,d
--- Isso retorna `c,d` porque pega a substring até a segunda ocorrência da vírgula a partir da direita.
+-- Output: c,d. Isso retorna `c,d` porque pega a substring até a segunda ocorrência da vírgula a partir da direita.
 ```
 
 ## Exemplo Interessante
@@ -110,7 +110,6 @@ SELECT SUBSTRING_INDEX(query, 'force_' , -1) FROM remote_queries;
 -- Output: jackpot` = '108', `jackpot_games_left` = '10';. Seria como ficaria o registro citado acima.
 
 SELECT SUBSTRING_INDEX(SUBSTRING_INDEX(query, 'force_' , -1), '`', 1) FROM remote_queries;
--- Seria o mesmo que fazer:
--- SELECT SUBSTRING_INDEX('jackpot` = '108', `jackpot_games_left` = '10';', '`', 1) FROM remote_queries;
+-- Seria o mesmo que fazer `SELECT SUBSTRING_INDEX('jackpot` = \'108\', `jackpot_games_left` = \'10\';', '`', 1);`. Você está aplicando a função no retorno da outra invocação
 -- Output: jackpot. Seria como ficaria o registro citado acima.
 ```

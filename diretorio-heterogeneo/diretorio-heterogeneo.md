@@ -14,6 +14,9 @@ TODO: abaixo temos uma lista de tópicos que eu irei estudar:
     + Utilizando Docker para implementar CI/CD
 - Interface de rede eth0 x eth1
     + Qual você utiliza no ssh (eht1) e porque?
+- Virtual Desktop Infrastructure (VDI)
+- Utilitários de linha de comando dd no Linux/Unix
+- Utilizando o DD para gravar um VDI em um HD
 -->
 
 ### Sumário
