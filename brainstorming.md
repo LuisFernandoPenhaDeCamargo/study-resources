@@ -1080,5 +1080,59 @@ $mariadb -u root -p260490 zoeslots # Notebook do trabalho
 
 acho que o pm2 está atribuindo ao nome do processo o nome do SEA, será por conta do pm2 save? Era pra ser o nome da chave, não?
 
+- **orion-data-server:**
+    + `/arn/getTempKey/:server_id GET`
+        - Documentar esta rota
+            + `request`**:**
+                - Pontuar que `specificDuration` faz parte da query de requisição, mas não é obrigatório, pois possue um valor default (como eu documento isso?)
+        - `response`**:**
+            + Retorno do `sts.assumeRole()`
+            + `´Failed to get temporary security credentials: ${error}´`
+            + O status é o default para ambos os casos acima   
+    + Migrar para o V3 do AWS SDK
+        - Leia https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/migrating.html
+        - Leia https://github.com/aws/aws-sdk-js-v3/blob/main/UPGRADING.md
+- **zoe-game-api:**
+    + Talvez eu torne as URLs dinâmicas, considerando o valor que se encontra no banco de dados
+    + **V3:**
+        - Testar o retorno do **./helpers/get_server_id.js** `function()`
+        - Testar o retorno do **./services/get_access_token.js** `function()`
+        - Testar o retorno do **./services/get_temporary_key.js** `function()`
+
+- **AWS STS:**
+    + O formato do ID do segredo é `server-$< ID do servidor >`
+- **orion-data-server:**
+    + **Fluxo de execução para a rota que retorna a senha do Banco Local:server.js** -> **./routes/index.js** -> **./middlewares/token_auth_server.js** -> **./routes/arn.js**
+- **zoe-game-api:**
+    + Para conseguir possuir compatibilidade com o V3 da AWS-SDK e com o pkg, iremos dar upgrade na versão do Node.js para a 18.20.3
+    + **Bibliotecas:**
+        - mocha@10.2.0: utilizada em testes unitários
+            + `npm warn deprecated glob@7.2.0`
+            + mocha@10.4.0: utiliza o inflight@1.0.6 e é altamente recomendável não utilizá-lo
+        - chai@5.1.1: utilizada em testes unitários
+    + **Fluxo de execução para se conectar ao banco: server.js** -> **./helpers/get_server_id.js** -> **./services/access_token_service.js** -> **./services/get_temporary_key.js** -> **./models/index.js**
+    + Os dados sensíveis serão armazenados em `process.env`
+- **Servidores:**
+    + V2 é a nova versão dos servidores
+    + **V2:** não possuíram conexão via ssh, a única forma de acessá-los será através do orion-terminal
+    + **V2: /etc/server-id**, possui como conteúdo o ID do servidor, por exemplo, "2278"
+    + **V2:** não iremos mais possuir, inicialmente, conectividade com o Banco de Dados Local, então teremos que obter o ID do servidor do arquivo **/etc/server-id**
+- **Minha máquina:**
+    + Criei o arquivo **/etc/server-id**
+
+- É possível gerar o dump de um banco dando "skip" nas permissões de autenticação?
+    + Conversei isso com o Fernando
+    + O ponto é conseguir obter dados do banco desta forma
+    + Verificar se existe essa falha de segurança
++ Qual é o código de status padrão retornado por um servidor Express?
+- `npm outdated`
+- `npm audit`
+- `npm fund`
+- `git fetch`
+- Atualizar as branchs do meu repositório local
+- Desinstalar uma versão do Node.js instalada pelo NVM
+- Listando as variáveis de ambiente pelo terminal
+- Utilizar o GitHub Actions para criar um pipeline de CI
+
 quando a impressão se trata de uma explicação de um bloco específico, não pule linhas
 não gosto de listas dentro de listas, visualmente falado me deixa desconfortável
