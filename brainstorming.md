@@ -1136,3 +1136,4 @@ acho que o pm2 está atribuindo ao nome do processo o nome do SEA, será por con
 
 quando a impressão se trata de uma explicação de um bloco específico, não pule linhas
 não gosto de listas dentro de listas, visualmente falado me deixa desconfortável
+manter separado o caminho até o arquivo, em que está escrito o exemplo

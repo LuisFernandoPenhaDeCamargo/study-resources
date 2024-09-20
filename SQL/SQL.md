@@ -54,10 +54,6 @@ END;
 - **Execução:** quando essa procedure for executada por qualquer usuário, o MySQL/MariaDB irá verificar se o usuário `admin`@`localhost` tem os privilégios necessários para realizar as operações dentro da procedure
 - **Segurança:** mesmo que um usuário com menos privilégios execute a procedure, ela será executada como se fosse o `admin`@`localhost`, permitindo a execução de operações que o usuário invocador normalmente não poderia realizar
 
-## Resumo
-
-O `DEFINER` é uma cláusula crucial para o gerenciamento de segurança e permissões em objetos armazenados no MySQL/MariaDB, garantindo que esses objetos sejam executados no contexto de um usuário específico, independentemente de quem os invocou.
-
 ## Dificuldades Encontradas
 
 - [`ERROR 1449 (HY000): The user specified as a definer ('username'@'host') does not exist`](#definer-error)
@@ -69,6 +65,10 @@ O erro `ERROR 1449 (HY000): The user specified as a definer ('username'@'host') 
 Se o usuário e o hostname não fizeram parte da função de erro (`''@''`), isso indica que os valores estão sendo tratados como nulos ou vazios. Ou seja, o MariaDB está tentando executar a operação como se o `DEFINER` fosse um usuário com nome vazio e host vazio, o que não é válido e resulta no erro acima.
 
 Isso pode ocorrer ao definir a procedure, trigger, view ou event quando o `DEFINER` é especificado incorretamente ou omitido, resultando em valores nulos. Também pode acontecer durante a migração do banco de dados ou importação de um dump, se o `DEFINER` não for transferido corretamente, especialmente se o usuário ou host não existir no novo ambiente.
+
+## Resumo
+
+O `DEFINER` é uma cláusula crucial para o gerenciamento de segurança e permissões em objetos armazenados no MySQL/MariaDB, garantindo que esses objetos sejam executados no contexto de um usuário específico, independentemente de quem os invocou.
 
 # `SUBSTRING_INDEX`
 

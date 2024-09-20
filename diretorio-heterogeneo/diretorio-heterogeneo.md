@@ -22,8 +22,5 @@ TODO: abaixo temos uma lista de tópicos que eu irei estudar:
 ### Sumário
 
 - [Glossário de Abreviações](./glossario-abreviacoes.md)
-- ["VDI pronto"](./VDI.md)
-- ["só é feito DD pro HD"](./DD-HD.md)
-- [`dd` de uma VDI para um HD](dd-VID-HD.md)
 
 # [[Voltar para a página inicial]](../README.md)
