@@ -1,93 +1,60 @@
 # Declaração de Variáveis
 
-Em JavaScript, há três formas principais de declarar variáveis: `var`, `let` e `const`. Cada uma tem suas próprias características e usos específicos, vamos analisar cada uma delas em detalhes:
+Em JavaScript, variáveis são declaradas para armazenar dados que podem ser usados e manipulados ao longo do código. Existem três palavras-chave para declarar variáveis: `var`, `let` e `const`, cada uma com regras específicas.
 
-## `var`
-
-1. **Escopo de função:** variáveis declaradas com `var` são limitadas ao escopo da função mais próxima. Se declaradas fora de uma função, têm escopo global  
-    Veremos mais à frente a definição de escopo no tópico [Escopo](./escopo.md) (aqui está o link, caso ajude alternar entre ambos os conceitos).
-2. **Hoisting:** variáveis declaradas com `var` são "içadas" (hoisted) ao topo do escopo, o que significa que podem ser usadas antes de serem declaradas, mas o valor inicial será `undefined`
-3. **Reatribuição e redefinição:** variáveis declaradas com `var` podem ser reatribuídas e redefinidas
+### Sintaxe Básica
 
 ```JavaScript
-function example() {
-    console.log(a); // Ouput: undefined. Hoisted.
-    var a = 10;
-    console.log(a); // Ouput: 10
-}
-
-example();
-
-var b = 1;
-var b = 2; // Redefinição permitida: você pode declarar uma nova variável com um identificador já existente. Observe que o `b`, que possuía o valor igual a 1, não existe mais.
-
-b = 3;     // Reatribuição permitida: você pode atribuir um novo valor a variável
+var variableName;
+let variableName;
+const variableName = value;
 ```
 
-## `let`
+- `variableName`**:** o nome da variável, que será usado para referenciar o valor
+- `value`**:** o valor atribuído à variável no momento da sua declaração, obrigatório para `const`
 
-1. **Escopo de bloco:** variáveis declaradas com `let` são limitadas ao bloco de código (`{}`) em que são definidas
-2. **Hoisting:** variáveis declaradas com `let` são içadas ao topo do bloco, mas não podem ser usadas antes de serem declaradas, resultando em um erro de referência se acessadas antes da declaração
-3. **Reatribuição e redefinição:** variáveis declaradas com `let` podem ser reatribuídas, mas não redefinidas no mesmo escopo
+### 1. Hoisting
+
+- `var`**:** é elevada ao topo do escopo, mas não inicializada
+- `let`**:** não pode ser usada antes de ser declarada
+- `const`**:** não pode ser usada antes de ser declarada
+
+### 2. Escopo
+
+- `var`**:** escopo de função ou global
+- `let`**:** escopo de bloco
+- `const`**:** escopo de bloco
+
+### 3. Reatribuição e Redefinição
+
+- `var`**:** pode ser redeclarada e ter seu valor alterado
+- `let`**:** não pode ser redeclarada no mesmo escopo, mas pode ter seu valor alterado
+- `const`**:** não pode ser redeclarada nem ter seu valor alterado (imutável)
+
+# Exemplo
 
 ```JavaScript
-function example() {
-    // console.log(a); // Hoisting: `ReferenceError: Cannot access 'a' before initialization`
-    let a = 10;
-    console.log(a);    // Output: 10
+console.log(x);    // Output: undefined. É elevada ao topo do escopo, mas não inicializada
+// console.log(y); // Output: ReferenceError: y is not defined. Não pode ser usada antes de ser declarada
+// console.log(z); // Output: ReferenceError: z is not defined. Não pode ser usada antes de ser declarada
+
+{
+    var x   = 5;
+    let y   = 10;
+    const z = 15;
+
+    var x   = 20;
+    // let y   = 25; // Output: SyntaxError: Identifier 'y' has already been declared. Não pode ser redeclarada no mesmo escopo.
+    // const z = 30; // Output: SyntaxError: Identifier 'z' has already been declared. Não pode ser redeclarada no mesmo escopo.
+
+    x = 35;
+    y = 40;
+    // z = 45; // Output: TypeError: Assignment to constant variable. Não pode ter o seu valor alterado (imutável).
 }
 
-example();
-
-let b = 1;
-// let b = 2; // Redefinição: `SyntaxError: Identifier 'b' has already been declared`
-
-b = 3;        // Reatribuição permitida.
+console.log(x);    // Output: 35. Escopo de função ou global.
+// console.log(y); // Output: ReferenceError: y is not defined. Escopo de bloco.
+// console.log(z); // Output: ReferenceError: z is not defined. Escopo de bloco.
 ```
-
-## `const`
-
-1. **Escopo de bloco:** assim como `let`, variáveis declaradas com `const` são limitadas ao bloco em que são definidas
-2. **Hoisting:** variáveis declaradas com `const` são içadas ao topo do bloco, mas não podem ser usadas antes de declaradas, resultando em um erro de referência se acessadas antes da declaração
-3. **Reatribuição e redefinição:** variáveis declaradas com `const` não podem ser reatribuídas ou redefinidas. Devem ser inicializadas no momento da declaração
-
-```JavaScript
-function example() {
-    // console.log(a); // Hoisting: `ReferenceError: Cannot access 'a' before initialization`
-    const a = 10;
-    console.log(a);    // Ouput: 10
-}
-
-example();
-
-// const b;     // `SyntaxError: Missing initializer in const declaration`
-const b = 1;
-// const b = 2; // Redefinição: `SyntaxError: Identifier 'b' has already been declared`
-
-// b = 3;       // Reatribuição: `TypeError: Assignment to constant variable`
-```
-
-# Usos Comuns
-
-- `var`**:** use quando precisar de escopo de função e for necessário redefinir variáveis no mesmo escopo. É menos comum e geralmente substituída por `let` e `const`
-- `let`**:** use quando precisar de escopo de bloco e for necessário reatribuir variáveis
-- `const`**:** use para declarar variáveis que não devem ser reatribuídas e que têm escopo de bloco. É a escolha preferida para declarar variáveis que não devem mudar de valor
-
-# Conclusão
-
-Em práticas modernas de JavaScript, `let` e `const` são preferidos sobre `var` devido ao seu escopo mais previsível e a proteção adicional contra erros de redefinição e reatribuição inadvertidas.
 
 # [[Próximo tópico: Tipos de Dados Primitivos]](./tipos-dados-primitivos.md)
-
-<!--
-- `this`
-- Variáveis
-- Classes
-- Objetos
-- Linguagem de Programação
-- Linguagem de Programação de alto nível
-- Linguagem de Programação interpretada
-- Linguagem de Programação dinamicamente tipada
-- Node.js
-- JS é compilada antes de executada (pelo motor)
--->
