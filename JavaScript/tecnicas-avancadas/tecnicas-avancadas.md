@@ -2,9 +2,12 @@
 
 ### 10. Prototipagem e Herança
 
+- [Operadores](./prototipagem-heranca.md/operadores.md)
 - Prototipagem e Herança Prototípica
+- Classes
+- `constructor`
+- Funções Construtoras
 - `obj.prototype` x Função Construtora
-- Classes (ES6)
 - Métodos Estáticos e de Instância
 
 ### 11. Manipulação de JSON

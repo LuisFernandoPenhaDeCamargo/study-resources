@@ -1,7 +1,6 @@
 # JavaScript
 
 <!--
-- `new`
 - `new Obj` x `new Obj()`
 - `new` em funções. Exemplo: `new exampleFunction()`
 - `constructor`

@@ -80,7 +80,10 @@ Em práticas modernas de JavaScript, `let` e `const` são preferidos sobre `var`
 # [[Próximo tópico: Tipos de Dados Primitivos]](./tipos-dados-primitivos.md)
 
 <!--
+- `this`
 - Variáveis
+- Classes
+- Objetos
 - Linguagem de Programação
 - Linguagem de Programação de alto nível
 - Linguagem de Programação interpretada
