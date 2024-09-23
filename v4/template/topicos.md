@@ -1,25 +1,20 @@
 # Tópicos
 
-- Tópicos seguem as regras gramaticais de títulos
-    + Atente-se ao fato de que listas (enumeradas ou não) são uma coisa; tópicos são outra
+- Tópicos seguem as regras gramaticais de títulos. Atente-se ao fato de que listas (enumeradas ou não) são uma coisa, e tópicos são outra
 - Se for necessário, coloque o nome dos "Tópicos Comuns" no plural
 - Sobre tópicos aninhados: quando um tópico estiver dentro de outro, mas você for colocá-lo em outro arquivo, isso deve ser pontuado e automaticamente o tópico "pai" deverá conter a seção "Sumário". Por exemplo:
 
-```Markdown
-<!--
-A estrutura apresentada neste exemplo não existe mais.
-../JavaScript/JavaScript.md
--->
-- [ESM](./conceitos-intermediarios/modulos/ESM/ESM.md)
-    + [ES6](./conceitos-intermediarios/modulos/ESM/ES6.md)
+```plaintext
+- Tópico pai
+    + Tópico filho
 
-<!-- ../JavaScript/conceitos-intermediarios/modulos/ESM/ESM.md -->
+No tópico pai:
+
 ### Sumário
 
-- [Principais Características](#principais-caracteristicas)
-- [Benefícios](#beneficios)
-- [Observações](#observacoes)
-- [ES6](./ES6.md) (encontra-se em outro arquivo)
+- Tópico 1
+- Tópico 2
+- Tópico filho (encontra-se em outro arquivo)
 ```
 
 - Observe que a lista abaixo segue a ordem na qual os itens devem aparecer dentro de um documento

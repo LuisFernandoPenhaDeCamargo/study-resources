@@ -1135,5 +1135,16 @@ acho que o pm2 está atribuindo ao nome do processo o nome do SEA, será por con
 - Utilizar o GitHub Actions para criar um pipeline de CI
 
 quando a impressão se trata de uma explicação de um bloco específico, não pule linhas
-não gosto de listas dentro de listas, visualmente falado me deixa desconfortável
 manter separado o caminho até o arquivo, em que está escrito o exemplo
+
+Estou irritado, quero fazer um V4.
+
+# <--
+
+## <--
+
+### <--
+
+# <--
+
+TODO: abaixo temos uma lista de tópicos que eu irei estudar:

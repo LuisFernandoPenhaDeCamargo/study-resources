@@ -28,6 +28,6 @@ TODO: abaixo temos uma lista de tópicos que eu irei estudar:
 
 - [Variáveis](./variaveis.md)
 - [Linguagem de Programação](./linguagem-progamacao/linguagem-programacao.md)
-- [Dinamicamente Tipada](./linguagem-progamacao/dinamicamente-tipada.md)
+    + [Dinamicamente Tipada](./linguagem-progamacao/dinamicamente-tipada.md) (encontra-se em outro arquivo)
 
 # [[Voltar para a página inicial]](../README.md)

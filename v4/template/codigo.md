@@ -4,8 +4,7 @@
 
 - Os nomes de classes, objetos, funções, métodos, variáveis e o texto de strings nos exemplos devem estar em inglês, se possível
 - Quando a representação "A< >" for utilizada, o texto dentro dela deverá estar em português, se possível, pois é uma explicação sobre um valor que será utilizado nessa posição
-- Se um método for mencionado em um tópico que não se refere ao objeto (ou módulo) associado a ele, insira o nome do objeto (ou módulo) ao citar o método. Por exemplo:  
-    O método `.readFile` do módulo `fs` seria citado como `fs.readFile` no módulo `util`.
+- Se um método for mencionado em um tópico que não se refere ao objeto (ou módulo) associado a ele, insira o nome do objeto (ou módulo) ao citar o método. Por exemplo, o método `.readFile` do módulo `fs` seria citado como `fs.readFile` em um tópico sobre o módulo `util`.
 - Alinhe a documentação das saídas (e os comentários, se fizer sentido) de acordo com a coluna mais à direita dentro do mesmo escopo
 
 A documentação de um método (ou função), segue a seguinte ordem:
@@ -30,6 +29,7 @@ A documentação de um método (ou função), segue a seguinte ordem:
 6. **Opções Comuns:** "`## Opções Comuns`"
 7. **Exemplo:** "`## Exemplo`"
 8. **Observações:** "`##Observações`"
+9. **Dificuldades Encontradas:** "`## Dificuldades Encontradas`"
 9. **Exemplo Interessante:** "`## Exemplo Interessante`"
 10. **Observações Importantes:** "`## Observações Importantes`"
 11. **Conclusão/Resumo:** "`## Conclusão`"/"`## Resumo`"
@@ -47,7 +47,7 @@ O método `spy` é utilizado para **monitorar chamadas a outras funções**. Ele
 const spy = sinon.spy([object, ]method);
 ´´´
 
-- `object`**:** o objeto que contém o método a ser espionado. Se não for fornecdio, o `spy` será aplicado diretamente à função fornecida
+- `object`**:** o objeto que contém o método a ser espionado. Se não for fornecido, o `spy` será aplicado diretamente à função fornecida
 - `method`**:** a função ou método a ser espionado
 - **Retorno:** uma função `spy` que pode ser usada para verificar chamadas, argumentos e outros detalhes sobre a função original. **O** `spy` **substitui o método original durante o teste, mas mantém a funcionalidade da função**
 

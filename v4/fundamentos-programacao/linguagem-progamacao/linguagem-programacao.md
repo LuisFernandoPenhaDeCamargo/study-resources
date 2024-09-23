@@ -2,6 +2,12 @@
 
 Uma linguagem de programação é um conjunto formal de regras e instruções que permite a comunicação entre humanos e computadores. As linguagens de programação são usadas para escrever códigos que instruem o computador a realizar tarefas específicas.
 
+### Sumário
+
+- []()
+- []()
+- []()
+
 # Principais Características
 
 1. **Sintaxe:** regras que definem a estrutura e a composição dos programas. Exemplo: como declarar variáveis, escrever loops, definir funções, etc

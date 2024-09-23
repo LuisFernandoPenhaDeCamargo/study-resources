@@ -11,3 +11,5 @@ A< nome da função ou método >:
 - Retorno: o valor ou objeto retornado pela função ou método
 - Exemplo Simples: um exemplo simples demonstrando o uso da função ou método (exemplos mais complexos serão fornecidos mediante solicitação)
 ```
+
+# [[Voltar para: README (Template)]](./README.md)
