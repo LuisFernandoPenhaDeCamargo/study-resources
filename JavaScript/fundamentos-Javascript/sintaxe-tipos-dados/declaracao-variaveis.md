@@ -78,3 +78,13 @@ const b = 1;
 Em práticas modernas de JavaScript, `let` e `const` são preferidos sobre `var` devido ao seu escopo mais previsível e a proteção adicional contra erros de redefinição e reatribuição inadvertidas.
 
 # [[Próximo tópico: Tipos de Dados Primitivos]](./tipos-dados-primitivos.md)
+
+<!--
+- Variáveis
+- Linguagem de Programação
+- Linguagem de Programação de alto nível
+- Linguagem de Programação interpretada
+- Linguagem de Programação dinamicamente tipada
+- Node.js
+- JS é compilada antes de executada (pelo motor)
+-->

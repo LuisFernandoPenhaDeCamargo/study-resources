@@ -1,8 +1,6 @@
 # JavaScript
 
 <!--
-TODO: tópicos que vou estudar:
-
 - `new`
 - `new Obj` x `new Obj()`
 - `new` em funções. Exemplo: `new exampleFunction()`
@@ -62,12 +60,12 @@ const _ = require("lodash");
 - [Fundamentos de JavaScript](./fundamentos-Javascript/fundamentos-Javascript.md)
 <!--
 - [Conceitos Intermediários](./conceitos-intermediarios/conceitos-intermediarios.md)
-- [Técnicas Avançadas](#tecnicas-avancadas)
-- [Ferramentas e Bibliotecas](#ferramentas-bibliotecas)
-- [Práticas e Padrões de Código](#praticas-padroes-codigo)
-- [Performance e Segurança](#performance-seguranca)
-- [Projetos Práticos](#projetos-praticos)
-- [Recursos Adicionais](#recursos-adicionais)
+- [Técnicas Avançadas](./tecnicas-avancadas/tecnicas-avancadas.md)
+- [Ferramentas e Bibliotecas](./ferramentas-bibliotecas/ferramentas-bibliotecas.md)
+- [Práticas e Padrões de Código](./praticas-padroes-codigo/praticas-padroes-codigo.md)
+- [Performance e Segurança](./performance-segurança/performance-segurança.md)
+- [Projetos Práticos](./projetos-praticos/projetos-praticos.md)
+- [Recursos Adicionais](./recursos-adicionais/recursos-adicionais.md)
 -->
 
 # [[Voltar para a página inicial]](../README.md)

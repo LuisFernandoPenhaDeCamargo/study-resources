@@ -1,10 +1,10 @@
 # Fundamentos de JavaScript
 
-<!--
 ### 1. Sintaxe e Tipos de Dados
 
-- [JavaScript](./fundamentos-Javascript/sintaxe-tipos-dados/JavaScript.md)
-- [Declaração de Variáveis](./fundamentos-Javascript/sintaxe-tipos-dados/declaracao-variaveis.md)
+- [JavaScript](./sintaxe-tipos-dados/JavaScript.md)
+- [Declaração de Variáveis](./sintaxe-tipos-dados/declaracao-variaveis.md)
+<!--
 - [Tipos de Dados Primitivos](./fundamentos-Javascript/sintaxe-tipos-dados/tipos-dados-primitivos.md)
 - [Escopo](./fundamentos-Javascript/sintaxe-tipos-dados/escopo.md)
 - [Operadores](./fundamentos-Javascript/sintaxe-tipos-dados/operadores.md)

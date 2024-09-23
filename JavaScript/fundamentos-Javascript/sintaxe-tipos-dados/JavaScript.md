@@ -1,31 +1,11 @@
 # JavaScript
 
-JavaScript é uma linguagem de programação de alto nível, dinâmica e interpretada, amplamente utilizada para criar e controlar conteúdo dinâmico em páginas web. Foi criada por Brendan Eich em 1995 enquanto trabalhava na Netscape Communications Corporation.
+JavaScript é uma linguagem de programação de alto nível, dinâmica e interpretada, amplamente utilizada tanto no desenvolvimento front-end quanto back-end. Criada em 1995 por Brendan Eich, a linguagem permite a criação de aplicações interativas e dinâmicas, sendo essencial no desenvolvimento web moderno.
 
 # Principais Características
 
-1. **Orientada a objetos:** JavaScript suporta a criação de objetos e protótipos, permitindo a reutilização de código e a construção de programas complexos
-2. **Baseada em prototipagem:** JavaScript também utiliza protótipos para herança. Isso significa que objetos podem herdar propriedades e métodos de outros objetos
-3. **Dinamicamente tipada:** variáveis em JavaScript não possuem tipos fixos e os tipos são determinados em tempo de execução
-4. **Linguagem de script:** JavaScript é executado em um ambiente de tempo de execução, principalmente nos navegadores web, mas também em servidores através do Node.js
-5. **Event-driven e assíncrono:** JavaScript é altamente adequado para programação assíncrona, utilizando eventos, callbacks, promessas e `async`/`await` para gerenciar operações não bloqueantes
+- **Linguagem interpretada:** JavaScript é executado diretamente em um ambiente como um navegador ou servidor (Node.js), sem a necessidade de compilação
+- **Linguagem dinamicamente tipada:** não é necessário declarar o tipo de uma variável no momento da criação
+- **Baseada em eventos:** a linguagem é amplamente usada para manipulação de eventos, como cliques de usuário e alterações na interface
 
-# Usos Comuns
-
-1. **Desenvolvimento Front-end:** JavaScript é essencial para criar interatividade em páginas web, manipulando o DOM, validando formulários, criando animações e fazendo requisições assíncronas (AJAX) para atualizar partes da página sem recarregar
-2. **Desenvolvimento Back-end:** com o advento do Node.js, JavaScript também se tornou uma escolha popular para desenvolvimento de servidores, permitindo a criação de aplicações de ponta a ponta com a mesma linguagem
-3. **Aplicações móveis e desktop:** frameworks como React Native e Electron permitem o desenvolvimento de aplicativos móveis e desktop usando JavaScript
-4. **Ferramentas de automação:** JavaScript é usado em diversas ferramentas de automação e scripts de build, como Gulp, Webpack e outros
-
-# Ecossistema
-
-- **React:** biblioteca para construção de interfaces de usuário
-- **Angular:** framework de front-end desenvolvido pela Google
-- **Vue.js:** framework progressivo para construção de interfaces de usuário
-- **Node.js:** ambiente de execução JavaScript no lado do servidor
-
-# Conclusão
-
-JavaScript é uma linguagem de programação versátil e poderosa que desempenha um papel crucial no desenvolvimento web moderno. Seu uso se estende desde simples scripts de front-end até complexas aplicações back-end, tornando-se uma das linguagens mais populares e amplamente utilizadas na indústria de tecnologia.
-
-# [[Próximo tópico: Variáveis]](./declaracao-variaveis.md)
+# [[Próximo tópico: Declaração de Variáveis]](./declaracao-variaveis.md)
