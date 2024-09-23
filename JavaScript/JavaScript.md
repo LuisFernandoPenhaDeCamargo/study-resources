@@ -68,6 +68,8 @@ const _ = require("lodash");
 - [Projetos Práticos](#projetos-praticos)
 - [Recursos Adicionais](#recursos-adicionais)
 
+# [[Voltar para a página inicial]](../README.md)
+
 # <a id="conceitos-intermediarios">Conceitos Intermediários</a>
 
 ### 5. Manipulação do DOM

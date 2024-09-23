@@ -1,5 +1,6 @@
 # Fundamentos de JavaScript
 
+<!--
 ### 1. Sintaxe e Tipos de Dados
 
 - [JavaScript](./fundamentos-Javascript/sintaxe-tipos-dados/JavaScript.md)
@@ -22,7 +23,7 @@
 - [Parâmetros e Valores de Retorno](./fundamentos-Javascript/funcoes/parametros-valores-retorno.md)
 - [Arrow Functions](./fundamentos-Javascript/funcoes/arrow-functions.md)
 - [Immediately Invoked Function Expressions (IIFE)](./fundamentos-Javascript/funcoes/iife.md)
-- [Funções Anônimas](./fundamentos-Javascript/funcoes/funcoes-anonimas.md) <!-- <F -->
+- [Funções Anônimas](./fundamentos-Javascript/funcoes/funcoes-anonimas.md)
 - [Funções de Ordem Superior](./fundamentos-Javascript/funcoes/funcoes-ordem-superior.md)
 
 ### 4. Objetos e Arrays
@@ -40,3 +41,4 @@
 - [Namespaces](./fundamentos-Javascript/objetos-arrays/namespaces.md)
 - Criação e Manipulação de Arrays
 - Métodos de Array (`map`, `filter`, `reduce`, `forEach`, etc.)
+-->
