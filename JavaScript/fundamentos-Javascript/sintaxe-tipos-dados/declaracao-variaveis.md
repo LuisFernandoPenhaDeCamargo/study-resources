@@ -31,30 +31,52 @@ const variableName = value;
 - `let`**:** não pode ser redeclarada no mesmo escopo, mas pode ter seu valor alterado
 - `const`**:** não pode ser redeclarada nem ter seu valor alterado (imutável)
 
-# Exemplo
+# Exemplos
+
+### 1. Hoisting
 
 ```JavaScript
 console.log(x);    // Output: undefined. É elevada ao topo do escopo, mas não inicializada
-// console.log(y); // Output: ReferenceError: y is not defined. Não pode ser usada antes de ser declarada
-// console.log(z); // Output: ReferenceError: z is not defined. Não pode ser usada antes de ser declarada
+// console.log(y); // Output: ReferenceError: Cannot access 'y' before initialization. Não pode ser usada antes de ser declarada
+// console.log(z); // Output: ReferenceError: Cannot access 'z' before initialization. Não pode ser usada antes de ser declarada
 
+var x   = 5;
+let y   = 10;
+const z = 15;
+
+console.log(x); // Output: 5
+console.log(y); // Output: 10
+console.log(z); // Output: 15
+```
+
+### 2. Escopo
+
+```JavaScript
 {
     var x   = 5;
     let y   = 10;
     const z = 15;
-
-    var x   = 20;
-    // let y   = 25; // Output: SyntaxError: Identifier 'y' has already been declared. Não pode ser redeclarada no mesmo escopo.
-    // const z = 30; // Output: SyntaxError: Identifier 'z' has already been declared. Não pode ser redeclarada no mesmo escopo.
-
-    x = 35;
-    y = 40;
-    // z = 45; // Output: TypeError: Assignment to constant variable. Não pode ter o seu valor alterado (imutável).
 }
 
 console.log(x);    // Output: 35. Escopo de função ou global.
 // console.log(y); // Output: ReferenceError: y is not defined. Escopo de bloco.
 // console.log(z); // Output: ReferenceError: z is not defined. Escopo de bloco.
+```
+
+### 3. Reatribuição e Redefinição
+
+```JavaScript
+var x   = 5;
+let y   = 10;
+const z = 15;
+
+var x   = 20;
+// let y   = 25; // Output: SyntaxError: Identifier 'y' has already been declared. Não pode ser redeclarada no mesmo escopo.
+// const z = 30; // Output: SyntaxError: Identifier 'z' has already been declared. Não pode ser redeclarada no mesmo escopo.
+
+x = 35;
+y = 40;
+// z = 45; // Output: TypeError: Assignment to constant variable. Não pode ter o seu valor alterado (imutável).
 ```
 
 # [[Próximo tópico: Tipos de Dados Primitivos]](./tipos-dados-primitivos.md)
