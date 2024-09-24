@@ -3,9 +3,11 @@
 # [[Próximo tópico: NaN]](./NaN.md)
 
 <!--
+- setInterval
 - Template Literal
 - NaN
 - Infinity
+- Comportamento das variáveis de ambiente (process.env) em relação a valores falsy
 - Variáveis
 - Classes
 - Objetos
@@ -16,3 +18,8 @@
 - Node.js
 - JS é compilada antes de executada (pelo motor)
 -->
+
+// - axios
+// - axios.interceptors
+// - axios.interceptors.request
+// - axios.interceptors.request.use

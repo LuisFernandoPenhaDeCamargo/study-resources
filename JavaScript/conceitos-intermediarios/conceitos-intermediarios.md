@@ -20,6 +20,7 @@
 - Promises
 - `then`/`catch`
 - `async`/`await`
+- [Tipos de Objetos Nativos](./programacao-assincrona/tipos-objetos-nativos/tipos-objetos-nativos.md)
 
 ### 8. Ecma Internacional e o ECMAScript
 
