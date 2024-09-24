@@ -52,18 +52,4 @@ const person = {
 person.greet(); // Output: TypeError: Cannot read properties of undefined (reading 'name'). Modo estrito.
 ```
 
-### 4. Função de flecha herdando o contexto de onde é invocada <F
-
-```JavaScript
-const person = {
-    name: "Bob",
-    greet: () => {
-        console.log(this.name);
-    },
-};
-const name   = ""; <F Sugestão de nome começado com C.
-
-person.greet(); // Output: <F Pontuar o output.
-```
-
 # [[Próximo tópico: Prototipagem e Herança Prototípica]](./prototipagem-heranca-prototipica.md)

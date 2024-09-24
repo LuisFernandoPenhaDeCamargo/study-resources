@@ -1,114 +1,108 @@
 # Tipos de Dados Primitivos
 
-Em JavaScript, os tipos de dados primitivos são os valores básicos e imutáveis que representam os dados mais simples. Existem sete tipos de dados primitivos:
+Os tipos de dados primitivos em JavaScript são valores básicos e imutáveis que representam os dados mais simples. Existem sete tipos de dados primitivos:
 
-1. `string`
-2. `number`
-3. `boolean`
-4. `null`
-5. `undefined`
-6. `symbol`
-7. `bigint`
+1. String
+2. Number
+3. Boolean
+4. Null
+5. Undefined
+6. Symbol
+7. BigInt
 
 Aqui estão detalhes sobre cada um deles:
 
-## 1. `string`
+### 1. String
+
+Representa uma sequência de caracteres.
 
 ```JavaScript
-// Representa texto.
-const name     = "Alice";
-const greeting = 'Hello.';
-const message  = `Hello, ${name}.`; // Template Literal.
+const name     = 'Alice';
+const greeting = "Hello";
+const message  = `Hello, ${name}`; // Template Literal.
 ```
 
-## 2. `number`
+### 2. Number
+
+Representa números, incluindo inteiros e decimais.
 
 ```JavaScript
-// Representa números, tanto inteiros quanto de ponto flutuante.
 const age         = 25;
-const temperature = - 10.5;
-const sum         = 1 + 2;
+const price       = 19.99;
+const temperature = - 10;
 const notANumber  = NaN;      // Representa "Not-A-Number".
 const infinite    = Infinity; // Representa infinito.
 ```
 
-## 3. `boolean`
+### 3. Boolean
+
+Representa dois valores possíveis: `true` ou `false`.
 
 ```JavaScript
-// Representa um valor lógico: verdadeiro (`true`) ou falso (`false`).
 const isStudent    = true;
 const hasGraduated = false;
 ```
 
-## 4. `null`
+### 4. Null
+
+Representa a ausência intencional de qualquer valor, ou um valor nulo.
 
 ```JavaScript
-// Representa a ausência intencional de um valor (um valor nulo).
 const emptyValue = null;
 ```
 
-## 5. `undefined`
+### 5. Undefined
+
+Representa uma variável que foi declarada mas não recebeu nenhum valor.
 
 ```JavaScript
-// Representa uma variável que foi declarada mas ainda não foi atribuída um valor.
 let notAssigned;
 
 console.log(notAssigned); // Output: undefined
 ```
 
-## 6. `symbol`
+### 6. Symbol
+
+Representa um valor único e imutável, frequentemente usado para criar identificadores únicos.
 
 ```JavaScript
-// Representa um valor único, frequentemente usado como identificadores únicos.
-let symbol1 = Symbol();
-let symbol2 = Symbol("description");
-
-console.log(symbol1 === symbol2); // Output: false. Cada símbolo é único.
+const symbol = Symbol('description');
 ```
 
-## 7. `bigint`
+### 7. BigInt
+
+Representa números inteiros de precisão arbitrária, sendo útil para trabalhar com números muito grandes, que excedem o limite permitido para o tipo Number. 
 
 ```JavaScript
-// Representa números inteiros de precisão arbitrária, úteis para trabalhar com números inteiros muito grandes.
-const bigNumber        = BigInt(1234567890123456789012345678901234567890n);
+const bigNumber        = BigInt(1234567890123456789012345678901234567890);
 const anotherBigNumber = 12345678901234567890n;
 ```
 
-Um valor é considerado um `bigint` se ele possui um `n` ao seu final ou se for inicializado com `BigInt(A< valor >)`.
+- Um valor é considerado um BigInt se possui um `n` ao seu final ou se for inicializado com `BigInt(A< valor >)`
+- Se for inicializado com `BigInt(A< valor >)`, você pode optar por adicionar um `n` ao final ou não
 
 # Exemplos
 
+### 1. Symbol
+
 ```JavaScript
-// - Usando `symbol`
-let symbol1            = Symbol("sameString");
-let symbol2            = Symbol("sameString");
+const symbol1 = Symbol('sameDescription');
+const symbol2 = Symbol('sameDescription');
 
+console.log(symbol1);             // Output: Symbol(sameDescription)
+console.log(symbol2);             // Output: Symbol(sameDescription)
 console.log(symbol1 === symbol2); // Output: false. Cada símbolo é único.
-console.log(symbol1);             // Output: Symbol(sameString)
-console.log(symbol2);             // Output: Symbol(sameString)
-
-// - Usando `bigint`
-const bigNumber        = 1234567890123456789012345678901234567890n;
-const anotherBigNumber = BigInt("1234567890123456789012345678901234567890");
-
-console.log(bigNumber === anotherBigNumber); // Output: true. Com exceção do caractere "n", o restante do número precisa ser idêntico para que a comparação seja verdadeira.
 ```
 
-# Conclusão
+### 2. BigInt
 
-Os tipos de dados primitivos são fundamentais em JavaScript, representando os blocos de construção básicos do gerenciamento de dados. Cada tipo tem suas características e usos específicos, permitindo que os desenvolvedores manipulem e armazenem dados de forma eficiente e eficaz.
+```JavaScript
+const bigNumber        = 1234567890123456789012345678901234567890n;
+const anotherBigNumber = BigInt('1234567890123456789012345678901234567890');
 
-# [[Próximo tópico: Escopo]](./escopo.md)
+console.log(bigNumber);                      // Output: 1234567890123456789012345678901234567890n
+console.log(anotherBigNumber);               // Output: 1234567890123456789012345678901234567890n
+console.log(bigNumber === anotherBigNumber); // Output: true
+```
 
-<!--
-- `this`
-- Variáveis
-- Classes
-- Objetos
-- Linguagem de Programação
-- Linguagem de Programação de alto nível
-- Linguagem de Programação interpretada
-- Linguagem de Programação dinamicamente tipada
-- Node.js
-- JS é compilada antes de executada (pelo motor)
--->
+# [[Próximo tópico: Aspas Simples x Aspas Duplas]](./aspas-simples-x-aspas-duplas.md)

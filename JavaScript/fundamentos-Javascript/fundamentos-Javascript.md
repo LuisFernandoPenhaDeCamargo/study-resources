@@ -4,8 +4,12 @@
 
 - [JavaScript](./sintaxe-tipos-dados/JavaScript.md)
 - [Declaração de Variáveis](./sintaxe-tipos-dados/declaracao-variaveis.md)
+- [Tipos de Dados Primitivos](./sintaxe-tipos-dados/tipos-dados-primitivos.md)
+- [Aspas Simples x Aspas Duplas](./sintaxe-tipos-dados/aspas-simples-x-aspas-duplas.md)
+- [Template Literal](./sintaxe-tipos-dados/template-literal.md)
+- [NaN](./sintaxe-tipos-dados/NaN.md)
+- [Infinity](./sintaxe-tipos-dados/Infinity.md)
 <!--
-- [Tipos de Dados Primitivos](./fundamentos-Javascript/sintaxe-tipos-dados/tipos-dados-primitivos.md)
 - [Escopo](./fundamentos-Javascript/sintaxe-tipos-dados/escopo.md)
 - [Operadores](./fundamentos-Javascript/sintaxe-tipos-dados/operadores.md)
 
