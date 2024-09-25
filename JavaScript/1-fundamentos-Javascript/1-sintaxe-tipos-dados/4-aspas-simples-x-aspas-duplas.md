@@ -43,4 +43,4 @@ const text2 = 'I\'m learning JavaScript!';
 
 Embora aspas duplas e simples sejam intercambiáveis na maioria dos casos, é importante ser consistente com o estilo escolhido e considerar a necessidade de escape ao incluir aspas dentro das strings.
 
-# [[Próximo tópico: Template Literal]](./template-literal.md)
+# [[Voltar para: Fundamentos de JavaScript]](../fundamentos-Javascript.md)

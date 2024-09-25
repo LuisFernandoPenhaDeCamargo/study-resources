@@ -8,4 +8,4 @@ JavaScript é uma linguagem de programação de alto nível, dinâmica e interpr
 - **Linguagem dinamicamente tipada:** não é necessário declarar o tipo de uma variável no momento da criação
 - **Baseada em eventos:** a linguagem é amplamente usada para manipulação de eventos, como cliques de usuário e alterações na interface
 
-# [[Próximo tópico: Declaração de Variáveis]](./declaracao-variaveis.md)
+# [[Próximo tópico: Declaração de Variáveis]](./2-declaracao-variaveis.md)

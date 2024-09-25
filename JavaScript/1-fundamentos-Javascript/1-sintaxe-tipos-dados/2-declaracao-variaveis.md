@@ -79,4 +79,4 @@ y = 40;
 // z = 45; // Output: TypeError: Assignment to constant variable. Não pode ter o seu valor alterado (imutável).
 ```
 
-# [[Próximo tópico: Tipos de Dados Primitivos]](./tipos-dados-primitivos.md)
+# [[Próximo tópico: Tipos de Dados Primitivos]](./3-tipos-dados-primitivos.md)
