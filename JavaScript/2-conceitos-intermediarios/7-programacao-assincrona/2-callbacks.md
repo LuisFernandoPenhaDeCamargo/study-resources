@@ -43,4 +43,4 @@ Processing data...
 */
 ```
 
-# [[Próximo tópico: Tipos de Objetos Nativos]](./tipos-objetos-nativos/tipos-objetos-nativos.md)
+# [[Próximo tópico: Promises]](./3-promises.md)

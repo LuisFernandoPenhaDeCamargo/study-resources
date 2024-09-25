@@ -1,25 +1,9 @@
 # Assincronicidade
 
-# [[Próximo tópico: Callbacks]](./2-callbacks.md)
+Assincronicidade em programação refere-se à capacidade de executar operações que levam tempo para serem concluídas (como requisições de rede ou leitura de arquivos) sem bloquear a execução do restante do código. No JavaScript, isso é alcançado por meio de callbacks, promises e `async`/`await`, permitindo que o código seja mais eficiente e responsivo.
 
-<!--
-- Promises
-- Callbacks x Promessas
-- axios
-- axios.interceptors
-- axios.interceptors.request
-- axios.interceptors.request.use
-- Template Literal
-- NaN
-- Infinity
-- Comportamento das variáveis de ambiente (process.env) em relação a valores falsy
-- Variáveis
-- Classes
-- Objetos
-- Linguagem de Programação
-- Linguagem de Programação de alto nível
-- Linguagem de Programação interpretada
-- Linguagem de Programação dinamicamente tipada
-- Node.js
-- JS é compilada antes de executada (pelo motor)
--->
+- **Callbacks:** funções que são passadas como argumentos e executadas após uma operação assíncrona ser concluída
+- **Promises:** um objeto que representa a eventual conclusão ou falha de uma operação assíncrona
+- `async`**/**`await`**:** sintaxe mais recente e legível para trabalhar com operações assíncronas, que usa promises "por trás dos panos"
+
+# [[Próximo tópico: Callbacks]](./2-callbacks.md)

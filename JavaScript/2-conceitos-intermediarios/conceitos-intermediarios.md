@@ -19,9 +19,9 @@
 
 - [Assincronicidade](./7-programacao-assincrona/1-assincronicidade.md)
 - [Callbacks](./7-programacao-assincrona/2-callbacks.md)
+- [Promises](./7-programacao-assincrona/3-promises.md)
 
 <!--
-- Promises
 - Callbacks x Promessas
 - `then`/`catch`
 - `async`/`await`
