@@ -1,3 +1,0 @@
-# Prototipagem e Herança Prototípica
-
-# [[]]()

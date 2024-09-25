@@ -52,4 +52,4 @@ const person = {
 person.greet(); // Output: TypeError: Cannot read properties of undefined (reading 'name'). Modo estrito.
 ```
 
-# [[Próximo tópico: Prototipagem e Herança Prototípica]](./prototipagem-heranca-prototipica.md)
+# [[Voltar para: Técnicas Avançadas]](../tecnicas-avancadas.md)
