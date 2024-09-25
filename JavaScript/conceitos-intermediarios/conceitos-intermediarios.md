@@ -19,12 +19,13 @@
 
 <!--
 - Assincronicidade
-- Callbacks
 - Promises
+- Callbacks x Promesas
 - `then`/`catch`
 - `async`/`await`
 -->
 
+- [Callbacks](./programacao-assincrona/callbacks.md)
 - [Tipos de Objetos Nativos](./programacao-assincrona/tipos-objetos-nativos/tipos-objetos-nativos.md)
 
 <!--

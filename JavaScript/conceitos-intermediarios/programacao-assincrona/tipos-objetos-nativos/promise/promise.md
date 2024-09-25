@@ -15,8 +15,7 @@ const promise = new Promise(function(resolve, reject) {
 });
 ```
 
-<F declarar uma função que recebe um função como argumento e essa função argumento recebe duas funções como argumento, é isso?
-
+- `function(resolve, reject)`**:** função executora (executor function), que recebe dois argumentos (`resolve` e `reject`)
 - `resolve`**:** função a ser chamada quando a operação for bem-sucedida. Recebe o valor da operação
 - `reject`**:** função a ser chamada quando a operação falhar. Recebe o erro da operação
 
@@ -55,6 +54,58 @@ promise
 ```
 
 As Promises são amplamente utilizadas para lidar com operações assíncronas, como requisições HTTP e temporizadores, permitindo um código mais claro e legível comparado ao uso de callbacks.
+
+# Observações Importantes
+
+O construtor de uma Promise aceita uma função, que por sua vez, recebe duas funções como argumentos: `resolve` e `reject`. É basicamente uma função de ordem superior (uma função que recebe outras funções como argumentos).
+
+Para ilustrar o conceito de maneira simples, abaixo temos uma função que recebe outra função como argumento, e essa função de callback recebe dois argumentos que também são funções.
+
+```JavaScript
+function exampleFunction(callback) {
+    const func1 = () => console.log('This is function 1');
+    const func2 = () => console.log('This is function 2');
+
+    // Chama a função de callback passando func1 e func2 como argumentos.
+    callback(func1, func2);
+}
+
+// Função que será passada como argumento.
+function argFunc(f1, f2) {
+    console.log('Callback function');
+
+    console.log('f1:', f1);
+    f1(); // Chama a primeira função.
+
+    console.log('f2:', f2);
+    f2(); // Chama a segunda função.
+}
+
+// argFunc();
+/*
+Output:
+Callback function
+f1: undefined
+TypeError: f1 is not a function
+*/
+
+exampleFunction(argFunc);
+/*
+Output:
+Callback function
+f1: [Function: func1]
+This is function 1
+f2: [Function: func2]
+This is function 2
+*/
+```
+
+- `exampleFunction` recebe uma função de callback como argumento
+- Dentro de `exampleFunction`, definimos duas funções (`func1` e `func2`)
+- A função `callback` é chamada com `func1` e `func2` como argumentos
+- No final, a função passada como callback executa `f1()` e `f2()`, que são as funções `func1` e `func2`
+
+Esse é o conceito básico que o construtor de Promise segue. No caso da Promise, o callback que você passa para o construtor recebe `resolve` e `reject` como argumentos, que são funções que você usa para resolver ou rejeitar a promessa.
 
 # Métodos
 
