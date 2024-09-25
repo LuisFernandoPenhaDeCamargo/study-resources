@@ -57,7 +57,7 @@ const _ = require("lodash");
 ### Sumário
 
 - [Fundamentos de JavaScript](./1-fundamentos-Javascript/fundamentos-Javascript.md)
-- [Conceitos Intermediários](./conceitos-intermediarios/conceitos-intermediarios.md)
+- [Conceitos Intermediários](./2-conceitos-intermediarios/conceitos-intermediarios.md)
 - [Técnicas Avançadas](./tecnicas-avancadas/tecnicas-avancadas.md)
 <!--
 - [Ferramentas e Bibliotecas](./ferramentas-bibliotecas/ferramentas-bibliotecas.md)

@@ -19,14 +19,18 @@
 
 <!--
 - Assincronicidade
+-->
+
+- [Callbacks](./7-programacao-assincrona/2-callbacks.md)
+
+<!--
 - Promises
 - Callbacks x Promesas
 - `then`/`catch`
 - `async`/`await`
 -->
 
-- [Callbacks](./programacao-assincrona/callbacks.md)
-- [Tipos de Objetos Nativos](./programacao-assincrona/tipos-objetos-nativos/tipos-objetos-nativos.md)
+- [Tipos de Objetos Nativos](./7-programacao-assincrona/tipos-objetos-nativos/tipos-objetos-nativos.md)
 
 <!--
 ### 8. Ecma Internacional e o ECMAScript

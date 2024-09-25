@@ -31,4 +31,4 @@ errorPromise.catch(error => console.log(error)); // Output: Operation failed
 
 `reject` é uma forma direta de rejeitar uma promessa quando já se sabe que uma operação falhará.
 
-# [[Voltar para: Promise]](./promise.md)
+# [[Voltar para: Promise]](1-promise.md)

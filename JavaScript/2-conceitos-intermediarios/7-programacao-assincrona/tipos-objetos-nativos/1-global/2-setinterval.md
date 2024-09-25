@@ -29,4 +29,4 @@ setTimeout(() => clearInterval(intervalID), 10000);
 
 Neste exemplo, a função `sayHello` será chamada a cada 2 segundos, e após 10 segundos, o intervalo será cancelado com `clearInterval`.
 
-# [[Voltar para: `global`]](./global.md)
+# [[Voltar para: `global`]](./1-global.md)

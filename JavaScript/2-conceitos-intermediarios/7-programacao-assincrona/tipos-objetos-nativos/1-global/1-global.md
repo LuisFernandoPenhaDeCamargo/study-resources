@@ -4,6 +4,6 @@ Em **Node.js**, `global` é o objeto que representa o escopo global do ambiente,
 
 # Métodos
 
-- [setInterval](./setinterval.md)
+- [setInterval](./2-setinterval.md)
 
 # [[Voltar para: Tipos de Objetos Nativos]](../tipos-objetos-nativos.md)

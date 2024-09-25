@@ -109,6 +109,6 @@ Esse é o conceito básico que o construtor de Promise segue. No caso da Promise
 
 # Métodos
 
-- [reject](./reject.md)
+- [reject](./2-reject.md)
 
 # [[Voltar para: Tipos de Objetos Nativos]](../tipos-objetos-nativos.md)
