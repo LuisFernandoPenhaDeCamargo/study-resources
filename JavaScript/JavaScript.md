@@ -56,13 +56,13 @@ const _ = require("lodash");
 
 ### Sumário
 
-- [Fundamentos de JavaScript](./1-fundamentos-Javascript/fundamentos-Javascript.md)
-- [Conceitos Intermediários](./2-conceitos-intermediarios/conceitos-intermediarios.md)
-- [Técnicas Avançadas](./3-tecnicas-avancadas/tecnicas-avancadas.md)
-- [Ferramentas e Bibliotecas](./4-ferramentas-bibliotecas/ferramentas-bibliotecas.md)
-- [Práticas e Padrões de Código](./praticas-padroes-codigo/praticas-padroes-codigo.md)
-- [Performance e Segurança](./performance-segurança/performance-segurança.md)
-- [Projetos Práticos](./projetos-praticos/projetos-praticos.md)
-- [Recursos Adicionais](./recursos-adicionais/recursos-adicionais.md)
+1. [Fundamentos de JavaScript](./1-fundamentos-Javascript/fundamentos-Javascript.md)
+2. [Conceitos Intermediários](./2-conceitos-intermediarios/conceitos-intermediarios.md)
+3. [Técnicas Avançadas](./3-tecnicas-avancadas/tecnicas-avancadas.md)
+4. [Ferramentas e Bibliotecas](./4-ferramentas-bibliotecas/ferramentas-bibliotecas.md)
+5. [Práticas e Padrões de Código](./5-praticas-padroes-codigo/praticas-padroes-codigo.md)
+6. [Performance e Segurança](./performance-segurança/performance-segurança.md)
+7. [Projetos Práticos](./projetos-praticos/projetos-praticos.md)
+8. [Recursos Adicionais](./recursos-adicionais/recursos-adicionais.md)
 
 # [[Voltar para a página inicial]](../README.md)

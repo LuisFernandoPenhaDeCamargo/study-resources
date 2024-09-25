@@ -1,5 +1,6 @@
 # Práticas e Padrões de Código
 
+<!--
 ### 20. Boas Práticas
 
 - Código Limpo
@@ -22,5 +23,6 @@
 - Babel
 - ESLint
 - Prettier
+-->
 
 # [[Voltar para: JavaScript]](../JavaScript.md)
