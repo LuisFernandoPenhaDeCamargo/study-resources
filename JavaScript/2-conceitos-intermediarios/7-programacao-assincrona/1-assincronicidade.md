@@ -10,7 +10,7 @@ Operações assíncronas são aquelas que não ocorrem de forma imediata e que p
 
 - **Requisições HTTP:** ao buscar dados de uma API, a resposta pode demorar, mas o programa não precisa esperar o término da requisição para continuar com outras tarefas
 - **Leitura e escrita de arquivos:** operações de E/S (Entrada/Saída) geralmente são assíncronas para não interromper a execução de outras partes do código enquanto o sistema acessa o disco rígido
-- **:Temporizadores** funções como `setTimeout` e `setInterval` também são operações assíncronas. Elas permitem que o código agende uma ação para acontecer após um certo período, sem pausar o fluxo principal do código
+- **Temporizadores:** funções como `setTimeout` e `setInterval` também são operações assíncronas. Elas permitem que o código agende uma ação para acontecer após um certo período, sem pausar o fluxo principal do código
 
 # Benefícios
 
@@ -45,25 +45,6 @@ Asynchronous operation completed
 */
 ```
 
-# [[Próximo tópico: Callbacks]](./2-callbacks.md)
+No exemplo acima, o `setTimeout` não bloqueia o fluxo principal. O JavaScript continua a exeutar o código enquanto a função temporizada aguarda os 2 segundos. Após esse tempo, a callback passada ao `setTimeout` é executada.
 
-<!--
-- Callbacks x Promessas
-- axios
-- axios.interceptors
-- axios.interceptors.request
-- axios.interceptors.request.use
-- Template Literal
-- NaN
-- Infinity
-- Comportamento das variáveis de ambiente (process.env) em relação a valores falsy
-- Variáveis
-- Classes
-- Objetos
-- Linguagem de Programação
-- Linguagem de Programação de alto nível
-- Linguagem de Programação interpretada
-- Linguagem de Programação dinamicamente tipada
-- Node.js
-- JS é compilada antes de executada (pelo motor)
--->
+# [[Próximo tópico: Callbacks]](./2-callbacks.md)

@@ -23,4 +23,4 @@ Promises são um conceito fundamental em programação assíncrona em JavaScript
 
 Esse conceito de Promise foi criado para padronizar o controle de operações assíncronas, especialmente com a introdução de APIs modernas no JavaScript.
 
-# [[Próximo tópico: Tipos de Objetos Nativos]](./tipos-objetos-nativos/tipos-objetos-nativos.md)
+# [[Próximo tópico: Callbacks x Promessas]](./4-callbacks-x-promessas.md)
