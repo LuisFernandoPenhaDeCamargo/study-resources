@@ -3,6 +3,8 @@
 ### 10. Prototipagem e Herança
 
 - [`this`](./prototipagem-heranca/this.md)
+
+<!--
 - [Prototipagem e Herança Prototípica](./prototipagem-heranca/prototipagem-heranca-prototipica.md)
 - Classes
 - `constructor`
@@ -35,5 +37,6 @@
 
 - Expressões Regulares
 - Exemplos de Expressões Regulares
+-->
 
 # [[Voltar para: JavaScript]](../JavaScript.md)

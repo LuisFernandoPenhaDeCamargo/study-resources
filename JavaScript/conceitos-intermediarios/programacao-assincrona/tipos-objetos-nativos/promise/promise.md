@@ -15,6 +15,8 @@ const promise = new Promise(function(resolve, reject) {
 });
 ```
 
+<F declarar uma função que recebe um função como argumento e essa função argumento recebe duas funções como argumento, é isso?
+
 - `resolve`**:** função a ser chamada quando a operação for bem-sucedida. Recebe o valor da operação
 - `reject`**:** função a ser chamada quando a operação falhar. Recebe o erro da operação
 
@@ -33,6 +35,23 @@ const promise = new Promise(function(resolve, reject) {
 # Exemplo
 
 ```JavaScript
+const promise = new Promise(function(resolve, reject) {
+    let success = true;
+
+    if (success) {
+        resolve("Successful operation");
+    } else {
+        reject("Operation error");
+    }
+});
+
+promise
+    .then(function(value) {
+        console.log(value);   // Output: Successful operation
+    })
+    .catch(function(error) {
+        console.error(error); // Tratamento de erro.
+    });
 ```
 
 As Promises são amplamente utilizadas para lidar com operações assíncronas, como requisições HTTP e temporizadores, permitindo um código mais claro e legível comparado ao uso de callbacks.
@@ -41,4 +60,4 @@ As Promises são amplamente utilizadas para lidar com operações assíncronas, 
 
 - [reject](./reject.md)
 
-# [[Voltar para: Tipos de Objetos Nativos]](./tipos-objetos-nativos.md)
+# [[Voltar para: Tipos de Objetos Nativos]](../tipos-objetos-nativos.md)

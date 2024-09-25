@@ -19,6 +19,8 @@
 - JS é compilada antes de executada (pelo motor)
 -->
 
+- O método construtor da Promise aceita quais argumentos?
+
 // - axios
 // - axios.interceptors
 // - axios.interceptors.request

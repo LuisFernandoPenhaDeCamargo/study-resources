@@ -1,5 +1,6 @@
 # Conceitos Intermediários
 
+<!--
 ### 5. Manipulação do DOM
 
 - Seleção de Elementos (getElementById, querySelector, etc.)
@@ -12,16 +13,21 @@
 - Tipos de Eventos (click, submit, keydown, etc.)
 - Adicionar e Remover Event Listeners
 - Delegação de Eventos
+-->
 
 ### 7. Programação Assíncrona
 
+<!--
 - Assincronicidade
 - Callbacks
 - Promises
 - `then`/`catch`
 - `async`/`await`
+-->
+
 - [Tipos de Objetos Nativos](./programacao-assincrona/tipos-objetos-nativos/tipos-objetos-nativos.md)
 
+<!--
 ### 8. Ecma Internacional e o ECMAScript
 
 - ECMA Internacional e o ECMAScript
@@ -37,5 +43,6 @@
 - `strict mode`
 - Como e onde vou pontuar sobre as palavras-chaves utilizadas na importação/exportação?
 - Como e onde vou pontuar sobre a utilização de módulos que usam sistemas de carregamento distintos no mesmo módulo?
+-->
 
 # [[Voltar para: JavaScript]](../JavaScript.md)
