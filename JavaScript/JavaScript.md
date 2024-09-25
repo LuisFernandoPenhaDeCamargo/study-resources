@@ -58,8 +58,8 @@ const _ = require("lodash");
 
 - [Fundamentos de JavaScript](./fundamentos-Javascript/fundamentos-Javascript.md)
 - [Conceitos Intermediários](./conceitos-intermediarios/conceitos-intermediarios.md)
-<!--
 - [Técnicas Avançadas](./tecnicas-avancadas/tecnicas-avancadas.md)
+<!--
 - [Ferramentas e Bibliotecas](./ferramentas-bibliotecas/ferramentas-bibliotecas.md)
 - [Práticas e Padrões de Código](./praticas-padroes-codigo/praticas-padroes-codigo.md)
 - [Performance e Segurança](./performance-segurança/performance-segurança.md)
