@@ -1,5 +1,6 @@
 # Recursos Adicionais
 
+<!--
 ### 28. Comunidade e Fóruns
 
 - Stack Overflow
@@ -11,5 +12,6 @@
 - MDN Web Docs
 - W3Schools
 - Eloquent JavaScript (livro)
+-->
 
 # [[Voltar para: JavaScript]](../JavaScript.md)
