@@ -61,7 +61,7 @@ const _ = require("lodash");
 3. [Técnicas Avançadas](./3-tecnicas-avancadas/tecnicas-avancadas.md)
 4. [Ferramentas e Bibliotecas](./4-ferramentas-bibliotecas/ferramentas-bibliotecas.md)
 5. [Práticas e Padrões de Código](./5-praticas-padroes-codigo/praticas-padroes-codigo.md)
-6. [Performance e Segurança](./performance-segurança/performance-segurança.md)
+6. [Performance e Segurança](./6-performance-segurança/performance-segurança.md)
 7. [Projetos Práticos](./projetos-praticos/projetos-praticos.md)
 8. [Recursos Adicionais](./recursos-adicionais/recursos-adicionais.md)
 

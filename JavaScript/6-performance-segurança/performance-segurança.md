@@ -1,5 +1,6 @@
 # Performance e Segurança
 
+<!--
 ### 24. Particularidades da Linguagem
 
 - JS x Quantidade de Memória Alocada
@@ -13,5 +14,6 @@
 
 - Prevenção de Vulnerabilidades Comuns (XSS, CSRF, etc.)
 - Práticas de Segurança em Desenvolvimento Web
+-->
 
 # [[Voltar para: JavaScript]](../JavaScript.md)
