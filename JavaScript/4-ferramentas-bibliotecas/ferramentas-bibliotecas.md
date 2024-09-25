@@ -1,5 +1,6 @@
 # Ferramentas e Bibliotecas
 
+<!--
 ### 16. Node.js
 
 - Introdução ao Node.js
@@ -39,5 +40,6 @@
 - Cypress
 - Testes de Integração
 - Testes de Regressão
+-->
 
 # [[Voltar para: JavaScript]](../JavaScript.md)
