@@ -20,7 +20,7 @@ this;
 
 ```JavaScript
 const person = {
-    name:  "Alice",
+    name:  'Alice',
     greet: function() {
         console.log(this.name);
     },
@@ -43,7 +43,7 @@ showThis(); // Output: undefined. Modo estrito.
 
 ```JavaScript
 const person = {
-    name: "Bob",
+    name:  'Bob',
     greet: () => {
         console.log(this.name);
     },

@@ -10,7 +10,7 @@ const promise = new Promise(function(resolve, reject) {
     if (/* operação bem-sucedida */) {
         resolve(value); // Operação concluída com sucesso.
     } else {
-        reject(error);   // Operação falhou.
+        reject(error);  // Operação falhou.
     }
 });
 ```
@@ -38,9 +38,9 @@ const promise = new Promise(function(resolve, reject) {
     let success = true;
 
     if (success) {
-        resolve("Successful operation");
+        resolve('Successful operation');
     } else {
-        reject("Operation error");
+        reject('Operation error');
     }
 });
 

@@ -1,12 +1,14 @@
 # Tipos de Objetos Nativos
 
+- [`global`](./global/global.md)
+
 ### Sumário
 
 # [[Voltar para: Fundamentos de JavaScript]](../../fundamentos-Javascript.md)
 
 <!--
-- setInterval
-- callaback
+- `global`
+- Callbacks
 - axios
 - axios.interceptors
 - axios.interceptors.request
