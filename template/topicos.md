@@ -3,6 +3,7 @@
 Subtópicos recorrentes:
 
 - Principais Características
+- Benefícios
 - Observações Importantes
 - Métodos
 
