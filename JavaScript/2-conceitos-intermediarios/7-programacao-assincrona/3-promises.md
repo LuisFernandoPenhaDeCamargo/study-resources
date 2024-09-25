@@ -15,12 +15,19 @@ Promises são um conceito fundamental em programação assíncrona em JavaScript
 3. Quando a operação assíncrona termina, a Promise é resolvida (com sucesso) ou rejeitada (com erro)
 4. Métodos como `then` e `catch` são usados para lidar com o resultado da operação
 
-# Benefícios
+# Vantagens e Desvantagens
 
-- Elimina o uso excessivo de callbacks, evitando o famoso "callback hell"
-- Torna o código assíncrono mais legível e fácil de manter
-- Promove uma melhor separação de responsabilidade ao lidar com sucesso e erro de forma distinta
+### Vantagens
+
+- **Encadeamento limpo:** Promises permitem encadear operações assíncronas de forma linear, sem o aninhamento profundo das callbacks
+- **Maneja de erros centralizado:** com Promises, os erros podem ser tratados de forma centralizada com o método `catch`, evitando a necessidade de tratar erros em cada nível do aninhamento. Promovendo assim uma melhor separação de responsabilidade ao lidar com sucesso e erro de forma distinta <F Revisão
+- **Legibilidade:** o código fica mais legível e próximo de uma sequência lógica, facilitando a compreensão
+
+### Desvantagens
+
+- **Curva de aprendizado:** embora mais legíveis, Promises podem parecer confusas no início, especialmente devido ao uso de encadeamentos
+- **Necessidade de refatoração:** para utilizar Promises em APIs legadas baseadas em callbacks, pode ser necessário envolvê-las em Promises manualmente (via `new Promise` ou `util.promisify`)
 
 Esse conceito de Promise foi criado para padronizar o controle de operações assíncronas, especialmente com a introdução de APIs modernas no JavaScript.
 
-# [[Próximo tópico: Callbacks x Promessas]](./4-callbacks-x-promessas.md)
+# [[Próximo tópico: `then`/`catch`]](./4-then-catch.md)

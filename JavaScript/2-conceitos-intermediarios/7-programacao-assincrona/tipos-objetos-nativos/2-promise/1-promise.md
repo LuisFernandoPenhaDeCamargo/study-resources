@@ -31,7 +31,9 @@ const promise = new Promise(function(resolve, reject) {
 2. Um erro rejeitado, passado com `reject`
 3. Continuar pendente se nem `resolve` ou `reject` forem chamados
 
-# Exemplo
+# Exemplos
+
+### 1. Exemplo básico
 
 ```JavaScript
 const promise = new Promise(function(resolve, reject) {
@@ -54,6 +56,18 @@ promise
 ```
 
 As Promises são amplamente utilizadas para lidar com operações assíncronas, como requisições HTTP e temporizadores, permitindo um código mais claro e legível comparado ao uso de callbacks.
+
+### 2. Exemplo de encadeamento com `then`
+
+```JavaScript
+// Exemplo não executável.
+
+asyncOperation1()
+    .then(result1 => asyncOperation2(result1))
+    .then(result2 => asyncOperation3(result3))
+    .then(result3 => console.log("Final result:", result3))
+    .catch(error => console.error("Error:", error));
+```
 
 # Observações Importantes
 

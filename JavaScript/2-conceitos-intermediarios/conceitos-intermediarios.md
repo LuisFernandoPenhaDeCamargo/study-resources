@@ -20,13 +20,13 @@
 - [Assincronicidade](./7-programacao-assincrona/1-assincronicidade.md)
 - [Callbacks](./7-programacao-assincrona/2-callbacks.md)
 - [Promises](./7-programacao-assincrona/3-promises.md)
-- [Callbacks x Promessas](./7-programacao-assincrona/4-callbacks-x-promessas.md)
 
 <!--
 - `then`/`catch`
 - `async`/`await`
 -->
 
+- [Callbacks x Promessas](./7-programacao-assincrona/4-callbacks-x-promessas.md)
 - [Tipos de Objetos Nativos](./7-programacao-assincrona/tipos-objetos-nativos/tipos-objetos-nativos.md)
 
 <!--

@@ -3,8 +3,9 @@
 Subtópicos recorrentes:
 
 - Principais Características
-- Benefícios
+- Vantagens e Desvantagens/Benefícios
 - Observações Importantes
+- Conclusão
 - Métodos
 
 # [[Próximo tópico: Exemplos]](./exemplos.md)
