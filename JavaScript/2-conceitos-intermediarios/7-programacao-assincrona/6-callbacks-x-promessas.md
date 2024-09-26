@@ -21,7 +21,7 @@ Promises são objetos que representam o eventual resultado de uma operação ass
 
 # Exemplos
 
-### Exemplo comparativo
+### 1. Exemplo comparativo
 
 Callback:
 
@@ -57,7 +57,7 @@ fetchData()
     .catch(error => console.error("Error: error"));
 ```
 
-### Exemplo com encadeamento
+### 2. Exemplo com encadeamento
 
 Callback:
 
@@ -88,28 +88,10 @@ asyncOperation1()
 
 # Conclusão
 
+Callbacks e Promises são ferramentas usadas para lidar com operações assíncronas. Callbacks são possíveis porque, em JavaScript, as funções são objetos de primeira classe, ou seja, podem ser passadas como argumentos para outras funções. Já Promises foram implementadas como um objeto, com o propósito de melhorar a maneira como lidamos com a execução assíncronas.
+
+Para tratar a resolução ou rejeição de uma operação assíncrona, as Promises utilizam os métodos `then` e `catch`, mantendo o comportamento assíncrono, onde o código fornecido como argumento é executado apenas após a operação ser resolvida ou rejeitada. Alternativamente, com `async` e `await`, podemos forçar o fluxo do código a aguardar a resolução ou rejeição da Promise, proporcionando uma aparência de execução síncrona para operações assíncronas.
+
 Enquanto callbacks ainda têm seu lugar em certos cenários, as promessas são a abordagem mais moderna e recomendada para lidar com operações assíncronas em JavaScript. Elas tornam o código mais legível, fácil de depurar e escalável. Além disso, a introdução de `async`/`await` em versões mais recentes do JavaScript facilitou ainda mais o uso de Promises, aproximando o código assíncrono do estilo síncrono.
 
 # [[Próximo tópico: Tipos de Objetos Nativos]](./tipos-objetos-nativos/tipos-objetos-nativos.md)
-
-<!--
-- Então callbacks e promessas são ferramentas utilizadas para lidar com operações assíncronas. Sendo que callbacks são possíveis porque em JavaScript as funções são objetos de ordem superior, ou seja, você pode passar funções como argumento para outras funções, enquanto promessas foram implementadas através de um objeto.
-Enquanto isso as estruturas criadas para tratar da resolução ou rejeição da ação são: `then`/`catch` e `async`/`await`. Sendo que `then`/`catch` mantém o aspecto assíncrono da operação, com o código passado como argumento a eles sendo executado somente quando resolvido/rejeitado e, `async`/`await` força o fluxo do código esperar a resolução/rejeição da ação, tornando a operação assíncrona, síncrona <F Primeira pergunta do dia
-- axios
-- axios.interceptors
-- axios.interceptors.request
-- axios.interceptors.request.use
-- Template Literal
-- NaN
-- Infinity
-- Comportamento das variáveis de ambiente (process.env) em relação a valores falsy
-- Variáveis
-- Classes
-- Objetos
-- Linguagem de Programação
-- Linguagem de Programação de alto nível
-- Linguagem de Programação interpretada
-- Linguagem de Programação dinamicamente tipada
-- Node.js
-- JS é compilada antes de executada (pelo motor)
--->

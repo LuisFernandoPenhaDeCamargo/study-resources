@@ -20,7 +20,7 @@ Promises são um conceito fundamental em programação assíncrona em JavaScript
 ### Vantagens
 
 - **Encadeamento limpo:** Promises permitem encadear operações assíncronas de forma linear, sem o aninhamento profundo das callbacks
-- **Maneja de erros centralizado:** com Promises, os erros podem ser tratados de forma centralizada com o método `catch`, evitando a necessidade de tratar erros em cada nível do aninhamento. Promovendo assim uma melhor separação de responsabilidade ao lidar com sucesso e erro de forma distinta <F Revisão
+- **Maneja de erros centralizado:** com Promises, os erros podem ser tratados de forma centralizada com o método `catch`, evitando a necessidade de tratar erros em cada nível do aninhamento, promovendo assim uma melhor separação de responsabilidades ao lidar com sucesso e erro de forma distinta
 - **Legibilidade:** o código fica mais legível e próximo de uma sequência lógica, facilitando a compreensão
 
 ### Desvantagens

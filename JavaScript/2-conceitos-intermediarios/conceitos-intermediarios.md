@@ -26,7 +26,7 @@
 - `async`/`await`
 -->
 
-- [Callbacks x Promessas](./7-programacao-assincrona/4-callbacks-x-promessas.md)
+- [Callbacks x Promessas](./7-programacao-assincrona/6-callbacks-x-promessas.md)
 - [Tipos de Objetos Nativos](./7-programacao-assincrona/tipos-objetos-nativos/tipos-objetos-nativos.md)
 
 <!--
