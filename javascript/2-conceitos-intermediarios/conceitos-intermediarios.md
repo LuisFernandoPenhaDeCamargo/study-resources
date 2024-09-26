@@ -47,4 +47,4 @@
 - Como e onde vou pontuar sobre a utilização de módulos que usam sistemas de carregamento distintos no mesmo módulo?
 -->
 
-# [[Voltar para: JavaScript]](../JavaScript.md)
+# [[Voltar para: JavaScript]](../javaScript.md)

@@ -39,4 +39,4 @@
 - Exemplos de Expressões Regulares
 -->
 
-# [[Voltar para: JavaScript]](../JavaScript.md)
+# [[Voltar para: JavaScript]](../javaScript.md)

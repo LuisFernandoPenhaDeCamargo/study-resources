@@ -46,4 +46,4 @@
 - Testes de Regressão
 -->
 
-# [[Voltar para: JavaScript]](../JavaScript.md)
+# [[Voltar para: JavaScript]](../javaScript.md)

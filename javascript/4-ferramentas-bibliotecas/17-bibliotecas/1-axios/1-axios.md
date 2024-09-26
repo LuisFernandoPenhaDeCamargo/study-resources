@@ -4,7 +4,7 @@
 
 # Métodos e Propriedades
 
-- `axios.interceptors`
+- `axios.interceptors` <F Pergunta
 - `axios.interceptors.request`
 - `axios.interceptors.request.use`
 
