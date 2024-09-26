@@ -2,7 +2,7 @@
 
 ### 1. Sintaxe e Tipos de Dados
 
-- [JavaScript](./1-sintaxe-tipos-dados/1-JavaScript.md)
+- [JavaScript](./1-sintaxe-tipos-dados/1-javascript.md)
 - [Declaração de Variáveis](./1-sintaxe-tipos-dados/2-declaracao-variaveis.md)
 - [Tipos de Dados Primitivos](./1-sintaxe-tipos-dados/3-tipos-dados-primitivos.md)
 - [Aspas Simples x Aspas Duplas](./1-sintaxe-tipos-dados/4-aspas-simples-x-aspas-duplas.md)

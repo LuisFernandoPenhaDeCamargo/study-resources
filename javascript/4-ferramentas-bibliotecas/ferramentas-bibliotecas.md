@@ -17,11 +17,11 @@
 
 ### 17. Bibliotecas
 
-- [axios](./17-bibliotecas/1-axios/1-axios.md)
+- [`axios`](./17-bibliotecas/1-axios/1-axios.md)
 
 <!--
 - Sequelize
-- esmock
+- `esmock`
 
 ### 18. Frameworks Populares
 

@@ -6,6 +6,6 @@ Subtópicos recorrentes:
 - Vantagens e Desvantagens/Benefícios
 - Observações Importantes
 - Conclusão
-- Métodos
+- Métodos/Métodos e Propriedades
 
-# [[Próximo tópico: Exemplos]](./exemplos.md)
+# [[Próximo tópico: Links de Referência]](./4-links-referencia.md)

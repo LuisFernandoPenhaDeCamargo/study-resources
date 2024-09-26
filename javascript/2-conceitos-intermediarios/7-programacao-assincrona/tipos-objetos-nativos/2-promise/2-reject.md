@@ -1,4 +1,4 @@
-# `reject`
+# `Promise.reject`
 
 O método `reject` é utilizado para **retornar uma promessa que já foi rejeitada com o motivo (ou erro) fornecido**. Ele é útil para criar promessas rejeitadas imediatamente, sem necessidade de passar pelo processo assíncrono.
 
