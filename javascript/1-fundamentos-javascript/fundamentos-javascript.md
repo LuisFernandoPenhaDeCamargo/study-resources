@@ -54,4 +54,4 @@
 - Métodos de Array (`map`, `filter`, `reduce`, `forEach`, etc.)
 -->
 
-# [[Voltar para: JavaScript]](../javaScript.md)
+# [[Voltar para: JavaScript]](../javascript.md)
