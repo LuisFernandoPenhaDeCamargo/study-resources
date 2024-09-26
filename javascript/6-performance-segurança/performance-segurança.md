@@ -16,4 +16,4 @@
 - Práticas de Segurança em Desenvolvimento Web
 -->
 
-# [[Voltar para: JavaScript]](../JavaScript.md)
+# [[Voltar para: JavaScript]](../javaScript.md)

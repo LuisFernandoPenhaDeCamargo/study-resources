@@ -12,4 +12,4 @@
 - W3Schools
 - Eloquent JavaScript (livro)
 
-# [[Voltar para: JavaScript]](../JavaScript.md)
+# [[Voltar para: JavaScript]](../javaScript.md)

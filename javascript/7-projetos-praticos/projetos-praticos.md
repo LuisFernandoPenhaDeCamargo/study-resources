@@ -6,4 +6,4 @@
 - Aplicação CRUD com uma API RESTful
 - Jogo Simples (ex.: Jogo da Velha)
 
-# [[Voltar para: JavaScript]](../JavaScript.md)
+# [[Voltar para: JavaScript]](../javaScript.md)
