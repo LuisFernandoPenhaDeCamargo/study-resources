@@ -1,6 +1,6 @@
 # Diretórios e Arquivos
 
-- **Métodos e propriedades de objetos:** utilize apenas o nome do método como nome do arquivo
+- **Métodos e propriedades de objetos:** utilize apenas o nome do método ou propriedade como nome do arquivo, exceto quando o encadeamento de métodos ou propriedades for necessário para esclarecer sobre o que se trata
 
 ### Diretórios e Arquivos
 

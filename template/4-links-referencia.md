@@ -1,6 +1,6 @@
 # Links de Referência
 
-- **Métodos e propriedades de objetos:** utilize apenas o nome do método ou propriedade no link de referência
+- **Métodos e propriedades de objetos:** utilize apenas o nome do método ou propriedade no link de referência, exceto quando o encadeamento de métodos ou propriedades for necessário para esclarecer sobre o que se trata
 
 Template de links de referência específicos:
 
