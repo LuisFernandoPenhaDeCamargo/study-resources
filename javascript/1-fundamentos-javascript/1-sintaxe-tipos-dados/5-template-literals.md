@@ -35,8 +35,7 @@ Template Literals permitem a criação de strings que podem se estender por vár
 const poem = `Roses are red,
 Violets are blue,
 JavaScript is amazing,
-And you should learn too!
-`;
+And you should learn too!`;
 
 console.log(poem);
 /*
@@ -64,7 +63,7 @@ console.log(str); // Output: This is a backtick: ` and this is a dollar sign: $
 const product = 'Laptop';
 const price   =  1999.99;
 
-consoloe.log(`The price of ${product} is \$${price}`); // Output: The price of Laptop is $1999.99
+console.log(`The price of ${product} is \$${price}`); // Output: The price of Laptop is $1999.99
 ```
 
-# [[Voltar para: Fundamentos de JavaScript]](../fundamentos-javascript.md)
+# [[Próximo tópico: NaN]](./6-nan.md)

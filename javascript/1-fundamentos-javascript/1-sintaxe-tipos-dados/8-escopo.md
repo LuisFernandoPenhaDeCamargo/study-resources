@@ -1,82 +1,58 @@
 # Escopo
 
-Em JavaScript, escopo refere-se ao contexto em que variáveis e funções são acessíveis e podem ser referenciadas. Existem diferentes tipos de escopo em JavaScript:
+Em JavaScript, escopo define a acessibilidade de variáveis e funções em diferentes partes do código. O escopo pode ser global ou local (de função ou de bloco). Vamos detalhar:
 
-# Tipos de Escopo
+### 1. Escopo global
 
-### 1. Escopo Global
-
-- Variáveis e funções declaradas fora de qualquer função ou bloco são acessíveis em qualquer parte do código
-- No navegador, variáveis globais se tornam propriedades do objeto `window`
+Variáveis e funções declaradas fora de qualquer função ou bloco pertencem ao escopo global e podem ser acessadas de qualquer parte do código.
 
 ```JavaScript
-let globalVar = "I'm global";
+const message = 'Global Scope'; // Escopo global.
 
-function globalFunction() {
-    console.log(globalVar); // Acessível aqui.
+function displayMessage() {
+    console.log(message); // Pode acessar a variável global.
 }
 
-globalFunction();           // Output: I'm global
-
-console.log(globalVar);     // Acessível aqui também.
+displayMessage(); // Output: Global Scope
 ```
 
-### 2. Escopo de Função
+### 2. Escopo de função
 
-- Variáveis declaradas dentro de uma função só são acessíveis dentro dessa função
-- Usado por `var`
+Variáveis declaradas dentro de uma função têm escopo local e só podem ser acessadas dentro daquela função.
 
 ```JavaScript
-function myFunction() {
-    var functionVar = "I'm in a function";
+function greet() {
+    const message = 'Hello'; // Escopo local (da função).
 
-    console.log(functionVar); // Acessível aqui.
+    console.log(message);
 }
 
-myFunction();                 // Output: I'm in a function
+greet();                 // Output: Hello
 
-console.log(functionVar);     // Erro: functionVar não está definido.
+// console.log(message); // Output: ReferenceError: message is not defined
 ```
 
-### 3. Escopo de Bloco
+### 3. Escopo de bloco
 
-- Variáveis declaradas dentro de um bloco `{}` (como em loops, condicionais, etc.) só são acessíveis dentro desse bloco
-- Usado por `let` e `const`
+Com o uso de `let` e `const`, variáveis podem ter escopo de bloco, sendo limitadas ao bloco `{}` em que foram declaradas, como em loops ou condicionais.
 
 ```JavaScript
 if (true) {
-    let blockLet     = "I'm in a block";
-    const blockConst = "I'm a constant in a block";
-    var blockVar     = "I'm in a block and I'm acessible outside of it too"
+    const message = 'Block Scope'; // Escopo de bloco.
+    var blockVar  = "I'm in a block and I'm acessible outside of it too";
 
-    console.log(blockLet);   // Acessível aqui.
-    console.log(blockConst); // Acessível aqui.
-    console.log(blockVar);   // Acessível aqui.
+    console.log(message);  // Output: Block Scope
+    console.log(blockVar); // Output: I'm in a block and I'm acessible outside of it too
 }
 
-console.log(blockLet);       // Erro: blockLet não está definido.
-console.log(blockConst);     // Erro: blockConst não está definido.
-console.log(blockVar);       // Acessível aqui, pois seu escopo é delimitado pelo Escopo de Função ou pelo Escopo Global.
+// console.log(message);  // Output: ReferenceError: message is not defined
+console.log(blockVar);    // Output: I'm in a block and I'm acessible outside of it too. Acessível aqui, pois seu escopo é delimitado pelo escopo global ou pelo escopo de função.
 ```
 
-### 4. Escopo Lexical
+### Regras de escopo
 
-- Funções internas podem acessar variáveis do escopo externo em que foram definidas
-- Isso é a base para closures
-
-```JavaScript
-function outerFunction() {
-    let outerVar = "I'm outside";
-
-    function innerFunction() {
-        console.log(outerVar); // Acessível aqui.
-    }
-
-    innerFunction();
-}
-
-outerFunction();               // Output: I'm outside
-```
+- Variáveis no escopo mais interno podem acessar variáveis no escopo externo (chain de escopos)
+- Escopos internos não podem ser acessados externamento
 
 # Principais Funções
 
@@ -92,4 +68,4 @@ outerFunction();               // Output: I'm outside
 
 Entender o escopo é fundamental para escrever código JavaScript eficiente e livre de bugs.
 
-# [[Próximo tópico: Operadores]](./operadores.md)
+# [[Voltar para: Fundamentos de JavaScript]](../fundamentos-javascript.md)

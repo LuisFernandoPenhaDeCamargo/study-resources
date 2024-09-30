@@ -7,11 +7,11 @@
 - [Tipos de Dados Primitivos](./1-sintaxe-tipos-dados/3-tipos-dados-primitivos.md)
 - [Aspas Simples x Aspas Duplas](./1-sintaxe-tipos-dados/4-aspas-simples-x-aspas-duplas.md)
 - [Template Literals](./1-sintaxe-tipos-dados/5-template-literals.md)
+- [NaN (Not-a-Number)](./1-sintaxe-tipos-dados/6-nan.md)
+- [Infinity](./1-sintaxe-tipos-dados/7-infinity.md)
+- [Escopo](./1-sintaxe-tipos-dados/8-escopo.md)
 
 <!--
-- NaN
-- Infinity
-- Escopo
 - Operadores
 
 ### 2. Estruturas de Controle
@@ -47,7 +47,6 @@
 
 <!--
 - Template Literals
-+ Utilizando a Crase Dentro de um Template Literal
 - Tipos de Objetos
 - Métodos de Objetos
 - Namespaces
@@ -58,9 +57,8 @@
 # [[Voltar para: JavaScript]](../javascript.md)
 
 <!--
-- Template Literal
-- NaN
-- Infinity
+- process
+- process.env
 - Comportamento das variáveis de ambiente (process.env) em relação a valores falsy
 - Variáveis
 - Classes
