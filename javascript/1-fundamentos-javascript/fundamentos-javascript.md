@@ -6,8 +6,9 @@
 - [Declaração de Variáveis](./1-sintaxe-tipos-dados/2-declaracao-variaveis.md)
 - [Tipos de Dados Primitivos](./1-sintaxe-tipos-dados/3-tipos-dados-primitivos.md)
 - [Aspas Simples x Aspas Duplas](./1-sintaxe-tipos-dados/4-aspas-simples-x-aspas-duplas.md)
+- [Template Literals](./1-sintaxe-tipos-dados/5-template-literals.md)
+
 <!--
-- Template Literal
 - NaN
 - Infinity
 - Escopo
