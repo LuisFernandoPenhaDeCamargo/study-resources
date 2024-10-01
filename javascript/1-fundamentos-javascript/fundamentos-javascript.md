@@ -57,8 +57,6 @@
 # [[Voltar para: JavaScript]](../javascript.md)
 
 <!--
-- process
-- process.env
 - Comportamento das variáveis de ambiente (process.env) em relação a valores falsy
 - Variáveis
 - Classes

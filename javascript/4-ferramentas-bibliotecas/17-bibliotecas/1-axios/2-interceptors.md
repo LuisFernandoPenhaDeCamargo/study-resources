@@ -7,7 +7,7 @@ O `interceptors` possui dois tipos principais:
 1. `axios.interceptors.request`**:** intercepta a requisição antes de ser enviada
 2. `axios.interceptors.response`**:** intercepta a resposta depois de ser recebida
 
-# Casos de Uso Comuns
+# Usos Comuns
 
 1. **Autenticação:** adicionar tokens de autenticação automaticamente nas requisições
 2. **Log de requisições/respostas:** inspecionar ou registrar detalhes das requisições e respostas

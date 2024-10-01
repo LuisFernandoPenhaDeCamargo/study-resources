@@ -1,8 +1,8 @@
 # Ferramentas e Bibliotecas
 
-<!--
 ### 16. Node.js
 
+<!--
 - Introdução ao Node.js
 - Módulos Nativos (ou Core)
 - Módulos Internos
@@ -12,6 +12,11 @@
 - Módulos Nativos x Módulos Internos
 - Erros Enfrentados
 - NPM (Node Package Manager)
+-->
+
+- [Tipos de Objetos Nativos](./16-Nodejs/tipos-objetos-nativos/tipos-objetos-nativos.md)
+
+<!--
 - Boas Práticas na Hora de Dar Upgrade na Versão do Node.js
 -->
 

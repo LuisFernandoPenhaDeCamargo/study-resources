@@ -3,7 +3,7 @@
 Subtópicos recorrentes:
 
 - Principais Características
-- Casos de Uso Comuns
+- Usos Comuns
 - Vantagens e Desvantagens/Benefícios
 - Observações Importantes
 - Conclusão

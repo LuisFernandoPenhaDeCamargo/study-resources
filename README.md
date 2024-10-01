@@ -3,7 +3,7 @@ O objetivo deste repositório é fornecer anotações sobre conceitos e ferramen
 ### Sumário
 
 <!-- TODO: - [Fundamentos da Programação]() -->
-- [JavaScript](./javascript/javaScript.md)
+- [JavaScript](./javascript/javascript.md)
 <!--
 - [Python]()
 - [Rust]()
