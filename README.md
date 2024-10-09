@@ -8,7 +8,6 @@ O objetivo deste repositório é fornecer anotações sobre conceitos e ferramen
 - Python
 - Rust
 - SQL
-- Diretório Heterogêneo
 -->
 
 ### JavaScript
@@ -26,7 +25,7 @@ O padrão é desenvolver.
 
 - 09h às 12h: estudar
 - 13h às 17h: desenvolver
-- 17h às 17h40min: estudar
+- 17h às 17h40min: estudar (o Takeshi já deve ter ido embora) <F revisão
 
 # TODO
 
@@ -38,5 +37,17 @@ O padrão é desenvolver.
 - Drive
 - Notion
 - Chrome
+-->
 
+<!--
+<F revisão deste bloco de comentário
+# Anotações
+
+# JavaScript
+
+- O JavaScript tornou as aplicações modernas possíveis, fazendo com que você não tenha que recarregar a página inteira quando for necessário realizar interações diretas com a aplicação
+- Os termos ECMAScript e JavaScript podem ser usados como sinônimos, pois são dois nomes para a mesma linguagem
+- A versão 4 foi abandonada em 2008, pois tentava mudar de forma radical uma linguagem viva e amplamente usada
+
+Navegadores web não são as únicas plataformas nas quais o JavaScript é usado. Alguns bancos de dados, como MongoDB e CouchDB, usam o JavaScript como sua linguagem de script e consulta. Muitas plataformas para desktop, tanto quanto as de programação no servidor, sendo o mais notável o projeto Node.js, estão fornecendo um poderoso ambiente para programar JavaScript fora do navegador.
 -->
