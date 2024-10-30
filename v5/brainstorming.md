@@ -16,13 +16,6 @@ DDL (Data Definition Language)
 
 + Docker
 
-- Testando módulos que não exportam nada, mas invocam uma função. Isso teria um nome?
-
-+ should call these methods n times per function call
-+ Caso de sucesso para a função
-
-- objetoMetodoSpy
-
 + return 'fee5d4acdd915f9032b7d6a850f262deedef8532debf24a8cfbb836d3836c52323033d426437df25191a2e6192e330aa41c1a69772575362b7e7201277ae367d'; // <F Apagar.
 
 #
