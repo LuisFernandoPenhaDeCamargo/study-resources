@@ -1,5 +1,17 @@
 # Links de Referência
 
+- **Métodos e propriedades de objetos:** utilize apenas o nome do método ou propriedade no link de referência, exceto quando o encadeamento de métodos ou propriedades for necessário para esclarecer sobre o que se trata
+
+Template de links de referência específicos:
+
+- `# [[Próximo tópico: A< nome do tópico >]](A< link de referência para o tópico >.md)`
+- `# [[Voltar para: A< nome do tópico pai >]](A< link de referência para o tópico pai >.md)`
+- `# [[Voltar para a página inicial]](../README.md)`
+
+# [[Próximo tópico: ]]()
+
+# Links de Referência
+
 Links de referência não devem incluir o conteúdo entre parênteses do tópico (ou utilizar somente ele). Por exemplo:
 
 O link de referência do tópico "Nome do Item (palavra ou frase)" seria "nome-item" ou "palavra-frase".
@@ -62,5 +74,3 @@ Ao final de um tópico, adicione um link para retornar a "página inicial", conf
 ```plaintext
 # [[Voltar para a página inicial]](../README.md)
 ```
-
-# [[Próximo tópico: Listas]](./listas.md)

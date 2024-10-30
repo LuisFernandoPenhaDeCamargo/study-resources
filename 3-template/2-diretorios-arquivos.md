@@ -5,6 +5,7 @@
 - **Numeração para organização:** use numeração sequencial (ex: **1-introducao**) apenas se a ordem dos arquivos for essencial
 - **Letras minúsculas e separadores:** utilize letras minúsculas e o caractere hífen (`-`) como separador. Não utilize espaços e caracteres especiais para facilitar a portabilidade
 - **Sem acentos:** não utilize acentuação nos nomes para manter a compatibilidade com diferentes sistemas
+- O nome do diretório ou arquivo deve corresponder ao nome do tópico principal, sem incluir preposições
 
 ## Métodos/Funções e Propriedades de Objetos
 
