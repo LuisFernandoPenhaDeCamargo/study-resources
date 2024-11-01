@@ -7,4 +7,4 @@
 - Comentários devem ser alinhados à direita, se isso facilitar o entendimento. Neste caso, não considere o escopo
 - As saídas devem ser alinhadas à direita. O escopo deve ser desconsiderado apenas se isso facilitar o entendimento
 
-# [[Próximo tópico: Documentação]](./7-documentacao.md)
+# [[Próximo tópico: ]]()

@@ -5,3 +5,6 @@ Este documento apresenta um sumário de arquivos que servem como modelo para a e
 - [Diretórios e Arquivos](./2-diretorios-arquivos.md)
 - [Títulos](./3-titulos.md)
 - [Tópicos](./4-topicos.md)
+- [Links de Referência](./5-links-referencia.md)
+- [Listas](./6-listas.md)
+- [Exemplos](./7-exemplos.md)

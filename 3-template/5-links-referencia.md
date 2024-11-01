@@ -1,33 +1,40 @@
 # Links de Referência
 
-# Simplicidade e Concisão dos Links
+Este documento estabelece as diretrizes para a criação e a formatação de links de referência no repositório, visando clareza, concisão e navegação eficiente.
 
-- **Use nomes descritivos e curtos:** para manter o link claro, opte por nomes que identifiquem o conteúdo diretamente sem incluir detalhes ou variações desnecessárias. Isso facilita a leitura e torna o link mais intuitivo
-- **Omitir parâmetros e detalhes opcionais:** parâmetros ou dados específicos, podem ser ignorados, a menos que sejam essenciais para o entendimento do link. Isso evita URLs longos e difíceis de interpretar
+## Simplicidade e Concisão dos Links
 
-# Consistência na Formatação dos Links
+- **Use nomes descritivos e curtos:** opte por nomes que identifiquem o conteúdo diretamente, evitando variações desnecessárias para facilitar a leitura e tornar o link mais intuitivo
+- **Omitir parâmetros e detalhes opcionais:** ignore parâmetros ou dados específicos que não sejam essenciais para o entendimento do link, evitando URLs longas e difíceis de interpretar
 
-- **Elimine preposições e artigos:** ao criar links, remova palavras de ligação que não agregam ao entendimento, como "de", "para" e "a". Exemplo: use `nome-item` em vez de `nome-do-item`
-- **Utilize traços para espaços e separadores:** substitua espaços e pontuações por traços, o que melhora a legibilidade e cria uma URL limpa e sem caracteres especiais
+## Consistência na Formatação dos Links
 
-# Estrutura e Navegação Lógica
+- **Elimine preposições e artigos:** ao criar links, remova palavras que não agregam ao entendimento, como "de", "para" e "a". Exemplo: use `nome-item` em vez de `nome-do-item`
+- **Utilize traços para espaços e separadores:** substitua espaços e pontuações por traços para melhorar a legibilidade e criar URLs limpas
 
-- **Links de próximo/anterior e retorno à página inicial:** adicione links de navegação entre tópicos e para o índice ou página inicial. Isso ajuda na naveação fluída e permite ao leitor seguir uma sequência lógica sem precisar navegar manualmente
-- **Sumários para navegação:** no ínicio ou em seções centrais, inclua um sumário que liste os tópicos com links, o que permite ao leitor pular para a seção desejada facilmente
+## Organização de Links para Títulos Complexos
 
-# Organização de Links para Títulos Complexos
+- **Escolha uma frase em títulos compostos:** para títulos com várias partes, escolha uma parte representativa para o link, evitando redundâncias
+- **Padronize para evitar confusão:** estabeleça um padrão para abreviações ou simplificações no nome dos links e documente-o, garantindo consistência entre contribuições
 
-- **Escolha uma frase em títulos compostos:** quando um título possui várias partes, escolha apenas uma parte representativa para o link, evitando termos redundantes
-- **Padronize para evitar confusão:** defina e siga um padrão para as abreviações ou simplificações no nome do link, documentando-o no repositório para que todas as contribuições sigam o mesmo estilo
+## Nomeação de Métodos/Funções e Propriedades de Objetos
+
+- **Nomeação direta:** use apenas o nome do método, função ou propriedade
+- **Encadeamento:** em casos de encadeamento, inclua todas as propriedades no link, separando-as com underline (_). Exemplo: `objeto_propriedade_subpropriedade`
+
+## Estrutura e Navegação Lógica
+
+- **Links de próximo/anterior e retorno à página inicial:** adicione links de navegação entre tópicos e para o índice ou página inicial, facilitando a navegação fluida e permitindo ao leitor seguir uma sequência lógica
+- **Sumários para navegação:** inclua um sumário que liste os tópicos com links no início ou em seções centrais, permitindo que o leitor pule para a seção desejada
 
 # Exemplos
 
 ### 1. Estrutura padronizada para navegação
 
 ```Markdown
-# [[Próximo tópico: A< nome do tópico >]](A< link de referência para o tópico >)
+# [[Próximo tópico: A < nome do tópico >]](A< link de referência para o tópico >)
 # [[Voltar para: A< nome do tópico pai >]](A< link de referência para o tópico pai >)
-# [[Voltar para a página inicial]](A< link de referência para o README.md >)
+# [[Voltar para a pagína inicial]](A< link de referência para o README.md >)
 ```
 
-# [[Próximo tópico: ]]()
+# [[Próximo tópico: Listas]]()

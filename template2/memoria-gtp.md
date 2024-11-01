@@ -1,7 +1,5 @@
 Aqui está tudo o que foi armazenado até o momento na minha memória para você salvar:
 
-1. [2024-07-24]. O usuário está criando um repositório de tecnologia com sumários que seguem uma ordem dos mais básicos aos mais complexos e busca sugestões sobre termos e referências.
-
 2. [2024-07-24]. O usuário está trabalhando em testes unitários para funções JavaScript utilizando Mocha, Sinon, Chai e esmock, e quer entender como mockar, stubar e spyar métodos corretamente, especialmente em módulos ES (ESM).
 
 3. [2024-07-25]. Modelo de resposta para funções/métodos:

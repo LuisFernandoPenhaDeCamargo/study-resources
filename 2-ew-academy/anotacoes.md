@@ -68,7 +68,7 @@ mais testes unitários, por eles serem mais baratos e granulares, o troféu fala
 
 # Dominando Conceitos de Testes (Mocks, Stubs, Spies...)
 
-# Mocks
+# Entendendo Mocks
 
 - Mock significa imitar ou simular algo
 - Um simulado ou teste prático que imita um exame real por exemplo é um "Mock Exame"
@@ -77,5 +77,37 @@ mais testes unitários, por eles serem mais baratos e granulares, o troféu fala
 - Mocking é uma técnica usada para isolar uma função que tá sendo testada, substituindo qualquer iteração externa por versões simuladas. Isso é feito para garantir que o teste se concentre apenas na lógica da unidade de código em questão, ou seja, na função em questão, sem depender se é afetada pelas dependências externas do sistema como internet, disponibilidade do sistema operacional, disco ou memória
 - Testes unitários devem ser 100% offline e não devem ter qualquer iteração externa
 - Em testes unitários você parte do princípio que qualquer iteração externa ao seu código funciona, então você não bate em APIs ou banco de dados externos
+- 3 A's (AAA) quando se trata de testes unitários
+    + Arrange = Preparar
+    + Act     = Executar
+    + Assert  = Validar
+- Mocks são simulações de funções que você pode fazer ao testar comportamento
+- Os Mocks nos ajudam a isolar os nossos testes e evitar retrabalho a medida que você precisa avançar em próximos passos, em resumo, eles são formas de falar "olha, daqui para trás já foi validado por outros testes, eu vou usar apenas o necessário para testar essa etapa atual"
 
-00:07
+# Entendendo Stubs
+
+- Mocks servem para simular cenários e uma das especialidades de Mocks são Stubs
+- Stubs são usados para simular cenários de conexões externas seguindo a linha de que testes unitários devem ser 100% offline
+- Com Stubs, simulamos por exemplo, os possíveis estados de uma API
+
+# Entendendo Spies
+
+Spies também fazem parte do mundo de Mocks e são usados para inspencionar quantas vezes uma função foi chamada, assim como conferir se os parâmetros estão corretos nessas chamadas.
+
+Observe o cenário no qual você utiliza a biblioteca `crypto` e `fs` do Node.js para criar uma hash e escrever dados em um arquivo. Considerando isto, uma grande sacada é partir do princípio que o sistema operacional possui CPU disponível para criar o hash da senha, assim como possue armazenamento suficiente para salvar o arquivo em disco.
+
+A ideia (estamos realizando testes unitários) é que o código é responsável apenas por garantir que os parâmetros serão enviados corretamente para essas funções. Em testes de integração ou E2E, por exemplo, você utiliza conexões externas normalmente e válida que o arquivo foi armazenado corretamente na pasta específica.
+
+Mocks ajudam a aumentar a velocidade da execução da bateria de testes porque você trabalha com todas as chamadas de forma estática, você ganha a liberdade de implementar cenários onde o sistema poderia retornar um erro se faltasse disco e verificar como o seu código se comportaria em um erro, mas não necessariamente você precisa enviar a chamada original.
+
+Uma boa definição para entender quando usar Mocks é quando você paga por uso de escrita ou leitura de banco de dados, ou quando você paga por requisições de APIs, ou precisa acessar 3 ou 4 APIs para chegar em um resultado. Uma vez que esses dados estão fixos você isola a complexidade da lógica do seu código, faz os tratamentos de erros adequados e a sua validação acontece de forma instantânea.
+
+---
+
+1 L
+
+03:48
+
+- Testar a propriedade `name` da funções
+    + Há funções que não possuem a propriedade `name`
+- Qual a diferença de importar, por exemplo, `crypto` ou `node:crypto`?
