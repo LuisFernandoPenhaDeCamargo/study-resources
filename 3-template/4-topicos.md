@@ -1,6 +1,6 @@
 # Tópicos
 
-- Os tópicos e subtópicos seguem as regras gramaticais dos títulos. Lembre-se de que listas (enumeradas ou não) e tópicos (ou subtópicos) são elementos distintos
+Os tópicos e subtópicos seguem as regras gramaticais de títulos. Lembre-se de que listas (enumeradas ou não) e tópicos (ou subtópicos) são elementos distintos.
 
 # Subtópicos Recorrentes
 
