@@ -102,12 +102,103 @@ Mocks ajudam a aumentar a velocidade da execução da bateria de testes porque v
 
 Uma boa definição para entender quando usar Mocks é quando você paga por uso de escrita ou leitura de banco de dados, ou quando você paga por requisições de APIs, ou precisa acessar 3 ou 4 APIs para chegar em um resultado. Uma vez que esses dados estão fixos você isola a complexidade da lógica do seu código, faz os tratamentos de erros adequados e a sua validação acontece de forma instantânea.
 
+Verificar a quantidade de vezes que algo foi chamado é uma prática para loops, por exemplo, para garantir que a quantidade de vocês que você chamou é igual a quantidade de vezes que você gostaria de chamar.
+
+# Entendendo FakeTimers
+
+- Com fake timers você pode simular como o tempo está passando na máquina sem necessariamente aguardar por este tempo
+- Naturalmente, se um teste unitário demora 10s para ser executado, você pode pressupor que algo está errado. Testes unitários não devem depender do relógio, ambiente ou qualquer iteração externa
+
+# Entendendo Code Coverage
+
+O Code Coverage mostra o que você não testou no seu código existente mas não te fala sobre possíveis erros ou validações que a sua aplicação esteja pendente de fazer.
+
+# Entendendo Testes End to End
+
 ---
 
-1 L
+1,5 L
 
-03:48
+01:01
 
+- O Mocha permite dar skips em testes (`it.skip`, por exemplo)
+- O Mocha possui a função de Code Coverage?
+    + Tá, Code Coverage é legal
+    + Code Coverage não cobre erros (dur)
+    + Mas teste a métrica gerada em caso de erro, pra verificar se a métrica mudou
+- O Chai possui um "expect any" para eu validar o tipo mas não o valor? Seria algo tipo `.instaceOf`?
+    + `instanceOf`
+- Como ativar o modo debbuging?
+- Extesão de linter (JS)
+- O que a sintaxe `@type {import('jest').Config}` pontua?
 - Testar a propriedade `name` da funções
     + Há funções que não possuem a propriedade `name`
 - Qual a diferença de importar, por exemplo, `crypto` ou `node:crypto`?
+- Especificadores de formato (`%s`, por exemplo)
+
+Claro! Vamos usar a sintaxe `@type {import('module').Type}` em um exemplo simples, sem usar o Jest, para que você possa ver como funciona.
+
+### Exemplo Simples com um Módulo Personalizado
+
+Suponha que você tenha um módulo chamado `math.js` que exporta uma função para somar dois números. Você pode usar a anotação de tipo para definir o tipo da função que você está importando.
+
+#### 1. Módulo `math.js`
+
+```javascript
+// math.js
+/**
+ * Soma dois números.
+ * @param {number} a - O primeiro número.
+ * @param {number} b - O segundo número.
+ * @returns {number} A soma dos dois números.
+ */
+function sum(a, b) {
+  return a + b;
+}
+
+module.exports = sum;
+```
+
+#### 2. Arquivo Principal `index.js`
+
+Agora, no seu arquivo principal, você pode usar a anotação de tipo para garantir que a função `sum` seja corretamente importada.
+
+```javascript
+// @type {import('./math').sum} // Especifica que 'add' deve ser do tipo da função 'sum' importada
+
+// Importa a função de soma do módulo math
+const sum = require('./math');
+
+/**
+ * Usa a função de soma para calcular a soma de dois números.
+ * @param {number} x - O primeiro número.
+ * @param {number} y - O segundo número.
+ * @returns {number} A soma de x e y.
+ */
+function calculateSum(x, y) {
+  return sum(x, y); // Chama a função sum
+}
+
+// Executa a função e imprime o resultado
+console.log(calculateSum(5, 10)); // Saída: 15
+```
+
+### Explicação do Exemplo
+
+1. **Módulo `math.js`**:
+   - Define uma função `sum` que recebe dois números e retorna a soma deles. A documentação em JSDoc especifica o tipo dos parâmetros e o tipo de retorno.
+
+2. **Anotação de Tipo no `index.js`**:
+   - A linha `// @type {import('./math').sum}` informa ao sistema de tipos (ou ao editor) que a variável `sum` deve ser do tipo da função exportada pelo módulo `math.js`. Isso ajuda a garantir que você está usando a função corretamente.
+
+3. **Uso da Função**:
+   - A função `calculateSum` utiliza a função `sum`, e você pode chamar `calculateSum(5, 10)` para calcular a soma de 5 e 10, imprimindo o resultado no console.
+
+### Vantagens
+
+- **Validação de Tipos**: A anotação de tipo permite que seu editor verifique se você está usando a função corretamente e se os tipos dos parâmetros estão corretos.
+- **Autocompletar**: Quando você escreve `sum(`, o editor pode fornecer sugestões e informações sobre a função.
+
+### Conclusão
+
+Esse exemplo simples mostra como usar a sintaxe `@type {import('./module').Type}` em um contexto que não envolve Jest, permitindo que você veja como as anotações de tipo podem ajudar na validação e compreensão do código. Se precisar de mais esclarecimentos ou de outros exemplos, estou à disposição!

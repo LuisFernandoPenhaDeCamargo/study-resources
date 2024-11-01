@@ -8,3 +8,4 @@ Este documento apresenta um sumário de arquivos que servem como modelo para a e
 - [Links de Referência](./5-links-referencia.md)
 - [Listas](./6-listas.md)
 - [Exemplos](./7-exemplos.md)
+- [Negrito](./8-negrito.md)
