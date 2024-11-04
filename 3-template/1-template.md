@@ -11,3 +11,4 @@ Este documento apresenta um sumário de arquivos que servem como modelo para a e
 - [Negrito](./8-negrito.md)
 - [Código](./9-codigo.md)
 - [Markdown](./10-markdown.md)
+- [JavaScript](./11-javascript.md)

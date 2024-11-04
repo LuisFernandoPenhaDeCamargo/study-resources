@@ -7,6 +7,20 @@ Não revisei a ortografia de nenhum conteúdo neste diretório. <F
 - Produto minimamente viável - MVP. O propósito é validar uma ideia e depois recomeçar o projeto de forma correta, considerando arquitetura, aplicação de boas práticas, 
 escalabilidade, etc
 
+## TAJS
+
+### 1. Não tocar no código enquanto você não estiver 100% satisfeito que entendeu o problema e o passo a passo para a solução
+
+Garantindo que você entendeu 100% do que precisa ser feito:
+
+- Entrada
+- Processamento
+- Saída
+
+### 2. Valide o que você entregou de forma automatizada
+
+### 3. Prepare o setup ferramental (testes e debbuging) no momento da criação do projeto
+
 ---
 
 # Introdução aos Testes Automatizados em JavaScript
@@ -115,9 +129,22 @@ O Code Coverage mostra o que você não testou no seu código existente mas não
 
 # Entendendo Testes End to End
 
+- Testes End to End ou Ponta a Ponta, são testes que validam a aplicação do ponto de vista do usuário
+- Contexto: Web API
+- Validar que o servidor está no ar e que faça requisições contra as rotas criadas
+
+# Práticas de Testes Automatizados - Test Driven Development e Behavior Driven Development
+
+# Test-Driven Development ou TDD
+
+- Você escreve a estrutura inicial do código
+- Escreve o que espera de entrada e de saída
+- Então pensa no processamento
+- TDD diz que a sua funcionalidade deve ser construída junto aos testes, não antes ou depois
+
 ---
 
-1,5 L
+0,9 L
 
 01:01
 
@@ -129,12 +156,21 @@ O Code Coverage mostra o que você não testou no seu código existente mas não
 - O Chai possui um "expect any" para eu validar o tipo mas não o valor? Seria algo tipo `.instaceOf`?
     + `instanceOf`
 - Como ativar o modo debbuging?
+   + Tá, debbuger é legal
+   + debbuger é BEM legal
 - Extesão de linter (JS)
 - O que a sintaxe `@type {import('jest').Config}` pontua?
 - Testar a propriedade `name` da funções
     + Há funções que não possuem a propriedade `name`
 - Qual a diferença de importar, por exemplo, `crypto` ou `node:crypto`?
 - Especificadores de formato (`%s`, por exemplo)
+- Arquiteturas comuns em projetos Node.js
+- O Mocha possui o `it.todo`?
+- `node:http/"http/2"/https` x Express
+- `fetch`???
+- Estudar mais E2E
+
+#
 
 Claro! Vamos usar a sintaxe `@type {import('module').Type}` em um exemplo simples, sem usar o Jest, para que você possa ver como funciona.
 
@@ -202,3 +238,5 @@ console.log(calculateSum(5, 10)); // Saída: 15
 ### Conclusão
 
 Esse exemplo simples mostra como usar a sintaxe `@type {import('./module').Type}` em um contexto que não envolve Jest, permitindo que você veja como as anotações de tipo podem ajudar na validação e compreensão do código. Se precisar de mais esclarecimentos ou de outros exemplos, estou à disposição!
+
+#
