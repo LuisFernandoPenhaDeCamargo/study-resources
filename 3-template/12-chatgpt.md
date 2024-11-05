@@ -12,4 +12,4 @@ A< nome da função ou método >:
 - Exemplo Simples: um exemplo simples demonstrando o uso da função ou método (exemplos mais complexos serão fornecidos mediante solicitação)
 ```
 
-# [[Voltar para: README (Template)]](./README.md)
+# [[Voltar para: Template]](./README.md)

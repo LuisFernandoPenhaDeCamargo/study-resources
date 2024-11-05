@@ -6,6 +6,7 @@ Não revisei a ortografia de nenhum conteúdo neste diretório. <F
 - A importância de testes na prevênção de retrabalho
 - Produto minimamente viável - MVP. O propósito é validar uma ideia e depois recomeçar o projeto de forma correta, considerando arquitetura, aplicação de boas práticas, 
 escalabilidade, etc
+- Ao utilizar datas em testes, sempre as simule, para não depender do horário do sistema
 
 ## TAJS
 
@@ -142,11 +143,18 @@ O Code Coverage mostra o que você não testou no seu código existente mas não
 - Então pensa no processamento
 - TDD diz que a sua funcionalidade deve ser construída junto aos testes, não antes ou depois
 
+# Behavior-Driven Development ou BDD
+
+- Ajuda a escrever os testes baseando-os em especificações de negócio
+- Gherkin style, para a escrita dos casos de uso
+
+# Behavior-Driven Development na Prática com Cucumber.js
+
+
+
 ---
 
-0,9 L
-
-01:01
+0,5 L
 
 - O Mocha permite dar skips em testes (`it.skip`, por exemplo)
 - O Mocha possui a função de Code Coverage?
@@ -169,6 +177,15 @@ O Code Coverage mostra o que você não testou no seu código existente mas não
 - `node:http/"http/2"/https` x Express
 - `fetch`???
 - Estudar mais E2E
+- O que são testes de contrato?
+- Arquitetura de software x design patterns
+- o que é o npx mesmo?
+- qual biblioteca tu usa pra executar outra sem que ter que instalá-la?
+- .vscode (tá faltando contexto nos itens abaixo, mas é mais sobre a configuração. Qualquer coisa eu caço no curso do ew pra ver sobre o que se trata)
+  + launch.json
+  + tasks.json
+- o que é a flag `--watch` mesmo? (`node --watch`)
+  + `--inspect-brk`
 
 #
 
