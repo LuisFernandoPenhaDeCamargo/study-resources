@@ -1,5 +1,3 @@
-Aqui está tudo o que foi armazenado até o momento na minha memória para você salvar:
-
 2. [2024-07-24]. O usuário está trabalhando em testes unitários para funções JavaScript utilizando Mocha, Sinon, Chai e esmock, e quer entender como mockar, stubar e spyar métodos corretamente, especialmente em módulos ES (ESM).
 
 3. [2024-07-25]. Modelo de resposta para funções/métodos:
@@ -29,17 +27,4 @@ Aqui está tudo o que foi armazenado até o momento na minha memória para você
 
 14. [2024-09-18]. O usuário está lidando com migrações de banco de dados no módulo Umzug e utilizando SequelizeStorage para armazenar o estado das migrações. Ele também está interessado em sugerir e criar testes unitários para o módulo que executa e registra as migrações no banco.
 
-15. [2024-09-20]. O usuário possui regras de estilização de código que incluem:
-    1. Agrupamento dos blocos de código em importações, declarações, expressões e impressões.
-    2. Separação das importações em blocos:
-        - Bloco para criar `require` e importações de módulos legados.
-        - Dependências externas.
-        - Módulos nativos.
-        - Módulos próprios.
-    3. Pulo de linha entre diferentes tipos de blocos e entre declarações de classe e funções.
-    4. As importações e declarações aparecem na ordem em que são utilizadas, com todas as importações no começo do módulo.
-    5. Distribuição de elementos em arrays ou propriedades de objetos em várias linhas, alinhando os valores (para objetos) considerando a coluna da direita, além de alinhar atribuições.
-
 16. [2024-09-30]. O usuário prefere que o nome de classes, objetos, funções, métodos, variáveis e o texto de strings, em exemplos de código, estejam em inglês, conforme seu estilo de código. Fora dos blocos de código, a terminologia deve permanecer em português (por exemplo, "parâmetros" ao invés de "parameters"). O usuário também prefere que o texto em strings nos exemplos esteja em inglês, enquanto a explicação permanece em português.
-
-Isso é tudo que está armazenado.

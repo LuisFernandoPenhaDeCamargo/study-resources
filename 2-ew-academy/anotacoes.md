@@ -154,6 +154,8 @@ O Code Coverage mostra o que você não testou no seu código existente mas não
 
 ---
 
+14:51
+
 0,5 L
 
 - O Mocha permite dar skips em testes (`it.skip`, por exemplo)

@@ -14,3 +14,5 @@ Este documento apresenta um sumário de arquivos que servem como modelo para a e
 - [JavaScript](./11-javascript.md)
 - [Palavras-chaves](./12-palavras-chaves.md)
 - [Template para Pesquisa (ChatGPT)](./13-chatgpt.md)
+
+# [[Voltar para: README]](../README.md)
