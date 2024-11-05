@@ -148,15 +148,17 @@ O Code Coverage mostra o que você não testou no seu código existente mas não
 - Ajuda a escrever os testes baseando-os em especificações de negócio
 - Gherkin style, para a escrita dos casos de uso
 
-# Behavior-Driven Development na Prática com Cucumber.js
+# Bônus - TDD para Não Praticantes: Como Pensar, o que Evitar e Mais
 
-
+https://github.com/ErickWendel/lives-aquecimento03-javascript-expert?_gl=1*1j5zgld*_ga*NjE1OTIwMDQ0LjE3MjMxMzI5MDE.*_ga_37GXT4VGQK*MTczMDgxNzE4Ny4yNS4xLjE3MzA4MTcxODcuMC4wLjA.
 
 ---
 
 14:51
 
-0,5 L
+32:00
+
+1,5 L
 
 - O Mocha permite dar skips em testes (`it.skip`, por exemplo)
 - O Mocha possui a função de Code Coverage?
@@ -180,6 +182,8 @@ O Code Coverage mostra o que você não testou no seu código existente mas não
 - `fetch`???
 - Estudar mais E2E
 - O que são testes de contrato?
+- O que são testes de stress?
+- O que são testes de carga?
 - Arquitetura de software x design patterns
 - o que é o npx mesmo?
 - qual biblioteca tu usa pra executar outra sem que ter que instalá-la?
@@ -188,6 +192,10 @@ O Code Coverage mostra o que você não testou no seu código existente mas não
   + tasks.json
 - o que é a flag `--watch` mesmo? (`node --watch`)
   + `--inspect-brk`
+- SINON TEM FAKESERVER?
+- Cucumber.js
+- Boundary tests
+- Live reload
 
 #
 
@@ -257,5 +265,76 @@ console.log(calculateSum(5, 10)); // Saída: 15
 ### Conclusão
 
 Esse exemplo simples mostra como usar a sintaxe `@type {import('./module').Type}` em um contexto que não envolve Jest, permitindo que você veja como as anotações de tipo podem ajudar na validação e compreensão do código. Se precisar de mais esclarecimentos ou de outros exemplos, estou à disposição!
+
+# Debugger
+
+Para utilizar o modo de depuração no Visual Studio Code (VS Code) com JavaScript (Node.js), siga estas etapas:
+
+### 1. Preparar o ambiente
+
+- Cerifique-se de que você tem o Node.js instalado em seu sistema
+- Abra o Visual Studio Code e carregue o seu projeto JavaScript
+
+### 2. Configurar o arquivo launch.json
+
+- No VS Code, clique no ícone de Executar e Depurar (ou pressiona `Ctrl + Shift + D`)
+- Clique no link "criar um arquivo **launch.json**" ou no ícone de engrenagem para criar uma nova configuração de depuração
+- Selecione "Node.js" quando solicitado
+- O VS Code criará um arquivo **launch.json** na pasta **.vscode** do seu projeto. Você pode personalizar as configurações, mas a configuração padrão geralmente é suficiente para começar
+
+Aqui está um exemplo básico do que o **launch.json** pode conter:
+
+```JSON
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Program",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/yourJSFile.js"
+    }
+  ]
+}
+```
+
+Substitua **yourJSFile.js** pelo nome do arquivo que você deseja depurar.
+
+### 3. Definir pontos de interrupção
+
+- Abra o arquivo JavaScript que você deseja depurar
+- Clique na margem esquerda, ao do número da linha, para definir um ponto de interrupção. Um ponto vermelho aparecerá indicando que a execução do programa irá parar ali
+
+### 4. Iniciar a depuração
+
+- Com o arquivo aberto e os pontos de interrupção definidos, volte para a aba de Executar e Depurar
+- Clique no botão verde de Iniciar Depuração (ou pressione F5)
+- O seu programa será executado até o primeiro ponto de interrupção
+
+### 5. Navegar no modo de depuração
+
+- **Continuar (F5):** continua a execução até o próximo ponto de interrupção
+- **Passo a passo (F10):** executa a próxima linha, mas não entra em funções
+- **Entrar (F11):** entra na próxima função para depurar
+- **Sair (Shift + F11):** sai da função atual
+
+### 6. Inspecionar variáveis
+
+- Na aba de depuração, você verá uma seção para variáveis, onde poderá inspecionar o valor das variáveis atuais e seu estado
+- Você também pode adicioanr expressões à seção de Watch para monitorar variáveis específicas
+
+### 7. Utilizar o console de depuração
+
+Use o console na parte inferior da tela para avaliar expressões ou modificar variáveis durante a depuração.
+
+### 8. Parar a depuração
+
+Quando terminar, você pode parar a execução clicando no ícone de parar (quadrado vermelho) na barra de depuração.
+
+### Dicas finais
+
+- **Instale extensões:** o VS Code tem várias extensões que podem melhorar a experiência de depuração, como o "Debbuger for Chrome" se você estiver trabalhando com aplicações web
+- Explore a documentação do VS Code para detalhes adicionais sobre configurações avançadas de depuração
 
 #
