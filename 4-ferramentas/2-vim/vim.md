@@ -8,3 +8,5 @@ O Vim (um acrônimo para Vi IMproved) é um editor de texto altamente configurá
 - Baixo consumo de recursos, ideal para sistemas com pouca capacidade de processamento ou memória
 
 O Vim tem uma curva de aprendizado mais acentuada, mas é muito poderoso e rápido para edição de texto quando o usuário se familiariza com seus comandos.
+
+# [[Voltar para: README]](../../README.md)

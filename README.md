@@ -2,7 +2,7 @@ O objetivo deste repositório é fornecer anotações sobre conceitos e ferramen
 
 ### Sumário
 
-- [Ferramentas](./4-ferramentas/)
+- [Ferramentas](./4-ferramentas/ferramentas.md)
 - [Template](./1-template/1-template.md)
 
 # Ferramentas
