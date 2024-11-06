@@ -2,7 +2,12 @@ O objetivo deste repositório é fornecer anotações sobre conceitos e ferramen
 
 ### Sumário
 
+- [Ferramentas](./4-ferramentas/)
 - [Template](./1-template/1-template.md)
+
+# Ferramentas
+
+Este diretório contém anotações sobre ferramentas amplamente utilizadas na área de desenvolvimento, como Visual Studio Code e Vim. Cada tópico oferece informações úteis para facilitar o uso e a exploração dessas ferramentas.
 
 # Template
 
