@@ -9,19 +9,34 @@
 - Adicionando um linter (JS) ao VS Code
 - Code Coverage
 - O Mocha permite pular testes? (`it.skip`)
+- O Mocha possui a funcionalidade "todo"? (`it.todo`)
 - O Mocha possue a funcionalidade de Code Coverage?
     + Istambul parece ser a ferramenta mais utilizada para este fim
+- Sinon.JS possui a funcionalidade FakeServers?
+- Arquiteturas comuns em projetos Node.js
+- Sobre o que a flag `--watch` se trata? (`node --watch`)
+- Sobre o que a flag `--inspect-brk` se trata? (`node --inspect-brk`)
+- Qual a diferença entre importar, por exemplo, `crypto` ou `node:crypto`
+- `node:http`, ou `node:http/2` ou `node:https` x Express
+- Funções tem a propriedade name? (`func.name`)?
+    + Aparentemente, nem todas
+- `fetch`?
+- O que a sintaxe `@type {import('jest').Config}` pontua? (o foco é a sintaxe e não o Jest em si)
+- Especificadores de formato, `%s`, por exemplo
+- O que é o npx?
+- Existe um pacote npm que você utiliza quando quer utilizar outro pacote mas não quer instalá-lo, qual é mesmo?
 - E2E
 - O que são Testes de Contrato?
 - O que são Testes de Stress?
 - O que são Testes de Carga?
 - Sobre o que se trata "Boundary Tests"
+- Cucumber
+- Arquitetura de software x design patterns
 
 # Estudar (Tópicos)
 
 1. JS
     + Tópicos próprios
-        + Arquiteturas
     + Eloquent JavaScript
     + Rocketseat
     + W3Schools

@@ -2,7 +2,7 @@ O objetivo deste repositório é fornecer anotações sobre conceitos e ferramen
 
 ### Sumário
 
-- [Template](./1-template/)
+- [Template](./1-template/1-template.md)
 
 # Template
 
