@@ -4,14 +4,13 @@
 
 ## JavaScript
 
-- Sobre o que se trata o arquivo tasks.json dentro do diretório .vscode?
-- O que é Live reload no contexto do VS Code?
-- Adicionando um linter (JS) ao VS Code
-- Code Coverage
-- O Mocha permite pular testes? (`it.skip`)
-- O Mocha possui a funcionalidade "todo"? (`it.todo`)
 - O Mocha possue a funcionalidade de Code Coverage?
     + Istambul parece ser a ferramenta mais utilizada para este fim
+- Code Coverage
+- O que é Live reload no contexto do VS Code?
+- Adicionando um linter (JS) ao VS Code
+- O Mocha permite pular testes? (`it.skip`)
+- O Mocha possui a funcionalidade "todo"? (`it.todo`)
 - Sinon.JS possui a funcionalidade FakeServers?
 - Arquiteturas comuns em projetos Node.js
 - Sobre o que a flag `--watch` se trata? (`node --watch`)

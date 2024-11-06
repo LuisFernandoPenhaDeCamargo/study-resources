@@ -92,7 +92,7 @@ Você pode rodar expressões JavaScript ou comandos diretamente no Debug Console
 - Qualquer saída no `console.log`, `console.error`, ou similar é exibida aqui, permitindo que você veja as mensagens de log enquanto o código é executado
 - Durante a depuração, o Debug Console também exibe mensagens de erros, exceções e logs, ajudando a identificar pontos problemáticos no código
 
-## Não aparecimento dos consoles
+## Não Aparecimento dos Consoles
 
 Se os consoles (como o Debug Console, Terminal, e Output) não estão aparecendo automaticamente ao iniciar a depuração com `F5`, você pode forçá-los a aparecer manualmente ou ajustar as configurações para que eles sejam exibidos automaticamente. Aqui estão algumas opções:
 
@@ -131,4 +131,4 @@ Em alguns casos, o VS Code pode estar configurado para não abrir o Debug Consol
 
 A mensagem indica que o Debug Console está aguardando o início de uma sessão de depuração para avaliar ou executar expressões do seu código. Em outras palavras, você precisa estar em uma sessão ativa de depuração para que o console possa executar e avaliar comandos e variáveis em tempo real.
 
-# [[Próximo tópico: Extensões Utilizadas]](./3-extensoes-utilizadas.md)
+# [[Próximo tópico: tasks.json]](./4-tasks-json.md)

@@ -11,7 +11,9 @@ O VS Code se destaca pela flexibilidade e pela grande quantidade de plugins disp
 
 ### Sumário
 
-- [Modo Depuração (JavaScript)](./2-modo-depuracao-javascript.md)
-- [Extensões Utilizadas](./3-extensoes-utilizadas.md)
+- [Atalhos](./2-atalhos.md)
+- [Modo Depuração (JavaScript)](./3-modo-depuracao-javascript.md)
+- [tasks.json](./4-tasks-json.md)
+- [Extensões Utilizadas](./5-extensoes-utilizadas.md)
 
 # [[Voltar para: README]](../README.md)
