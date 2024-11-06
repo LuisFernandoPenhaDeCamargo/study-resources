@@ -16,4 +16,4 @@ O VS Code se destaca pela flexibilidade e pela grande quantidade de plugins disp
 - [tasks.json](./4-tasks-json.md)
 - [Extensões Utilizadas](./5-extensoes-utilizadas.md)
 
-# [[Voltar para: README]](../../README.md)
+# [[Voltar para: Ferramentas]](../ferramentas.md)
