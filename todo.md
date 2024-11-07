@@ -4,8 +4,6 @@
 
 ## JavaScript
 
-- O que é o npx?
-- c8 x nyc
 - Code Coverage
 - O que é Live reload no contexto do VS Code?
 - Adicionando um linter (JS) ao VS Code
