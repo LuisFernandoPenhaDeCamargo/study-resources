@@ -2,7 +2,7 @@ O objetivo deste repositório é fornecer anotações sobre conceitos e ferramen
 
 ### Sumário
 
-- [JavaScript](./2-javascript/javascript.md)
+- [JavaScript](./2-javascript/sumario-javascript.md)
 - [Ferramentas](./4-ferramentas/ferramentas.md)
 - [Template](./1-template/1-template.md)
 
