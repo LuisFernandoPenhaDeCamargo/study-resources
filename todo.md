@@ -11,6 +11,7 @@
 - O Mocha possui a funcionalidade "todo"? (`it.todo`)
 - Sinon.JS possui a funcionalidade FakeServers?
 - Arquiteturas comuns em projetos Node.js
+- Quando você commita e há um diretório vazio no commit, ele não é adicionado ao GitHub?
 - Sobre o que a flag `--watch` se trata? (`node --watch`)
 - Sobre o que a flag `--inspect-brk` se trata? (`node --inspect-brk`)
 - Qual a diferença entre importar, por exemplo, `crypto` ou `node:crypto`
@@ -20,7 +21,6 @@
 - `fetch`?
 - O que a sintaxe `@type {import('jest').Config}` pontua? (o foco é a sintaxe e não o Jest em si)
 - Especificadores de formato, `%s`, por exemplo
-- Existe um pacote npm que você utiliza quando quer utilizar outro pacote mas não quer instalá-lo, qual é mesmo?
 - E2E
 - O que são Testes de Contrato?
 - O que são Testes de Stress?
