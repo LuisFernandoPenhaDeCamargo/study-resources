@@ -4,7 +4,8 @@ Este diretório contém anotações sobre ferramentas amplamente utilizadas na �
 
 ### Sumário
 
-- [Visual Studio Code](./1-vs-code/1-vs-code.md)
-- [Vim](./2-vim/vim.md)
+- [Fundamentos](./1-fundamentos/1-fundamentos.md)
+- [Visual Studio Code](./2-vs-code/1-vs-code.md)
+- [Vim](./3-vim/vim.md)
 
 # [[Voltar para: README]](../README.md)

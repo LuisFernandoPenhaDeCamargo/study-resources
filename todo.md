@@ -4,8 +4,16 @@
 
 ## JavaScript
 
+- Eu consigo configurar o Nodemon para modificar a saída abaixo?
+
+```Bash
+\x1b[32m[nodemon] restarting due to changes...\x1b[39m
+log.js:34
+\x1b[32m[nodemon] starting `node ./client.js`\x1b[39m
+```
+
+- Explicação das chaves do array `configurations` (fornecer o meu arquivo de configuração)
 - Code Coverage
-- O que é Live reload no contexto do VS Code?
 - Adicionando um linter (JS) ao VS Code
 - O Mocha permite pular testes? (`it.skip`)
 - O Mocha possui a funcionalidade "todo"? (`it.todo`)

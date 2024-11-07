@@ -5,6 +5,6 @@ Este documento reúne anotações pessoais sobre ferramentas do ecossistema Java
 ### Sumário
 
 - [npx](./2-npx.md)
-- [c8 x nyc](./3-c8-x-nyc.md)
+- [c8 x NYC](./3-c8-x-nyc.md)
 
 # [[Voltar para: JavaScript]](../javascript.md)

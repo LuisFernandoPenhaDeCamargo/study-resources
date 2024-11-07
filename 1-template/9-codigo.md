@@ -14,8 +14,8 @@ Este documento apresenta diretrizes para documentação e formatação de códig
 ## Estrutura de Documentação de Métodos e Funções
 
 1. **Descrição:** use o formato "O método `A< nome do método >` é utilizado para **A< descrição do método >**"
-    - Para **propriedades**: "A propriedade `A< nome da propriedade >` é uma propriedade..."
-    - Para **módulos nativos**: "O `A< nome do módulo >` é um módulo nativo que fornece **A< descrição do módulo >**"
+    - **Para propriedades:** "A propriedade `A< nome da propriedade >` é uma propriedade..."
+    - **Para módulos nativos:** "O `A< nome do módulo >` é um módulo nativo que fornece **A< descrição do módulo >**"
 2. **Sintaxe Básica:** inclua uma seção para sintaxe básica, exceto quando o título já indique isso
 3. **Parâmetros:** "`A< parâmetro >`**:** A< descrição >"
 4. **Retorno:** detalhe o valor retornado, quando aplicável. "**Retorno:** A< descrição >"
