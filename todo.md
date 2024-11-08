@@ -7,7 +7,6 @@
 + Lembre de verificar se **.vscode** está presente no SEA
 + Mover os arquivos de configuração da Data-API para **src/config**
 
-- Adicionando um linter (JS) ao VS Code
 - Configuração do terminal integrado x Debug Console (Nodemon)
 - O Mocha permite pular testes? (`it.skip`)
 - O Mocha possui a funcionalidade "todo"? (`it.todo`)
