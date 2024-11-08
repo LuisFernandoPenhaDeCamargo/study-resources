@@ -157,8 +157,6 @@ https://github.com/ErickWendel/lives-aquecimento03-javascript-expert?_gl=1*1j5zg
 
 ---
 
-15:15
+1,0 L
 
-1 L
-
-32:00
+36:00

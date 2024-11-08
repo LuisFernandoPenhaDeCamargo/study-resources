@@ -4,17 +4,11 @@
 
 ## JavaScript
 
-- Eu consigo configurar o Nodemon para modificar a saída abaixo?
++ Lembre de verificar se **.vscode** está presente no SEA
++ Mover os arquivos de configuração da Data-API para **src/config**
 
-```Bash
-\x1b[32m[nodemon] restarting due to changes...\x1b[39m
-log.js:34
-\x1b[32m[nodemon] starting `node ./client.js`\x1b[39m
-```
-
-- Explicação das chaves do array `configurations` (fornecer o meu arquivo de configuração)
-- Code Coverage
 - Adicionando um linter (JS) ao VS Code
+- Configuração do terminal integrado x Debug Console (Nodemon)
 - O Mocha permite pular testes? (`it.skip`)
 - O Mocha possui a funcionalidade "todo"? (`it.todo`)
 - Sinon.JS possui a funcionalidade FakeServers?
@@ -36,6 +30,7 @@ log.js:34
 - Sobre o que se trata "Boundary Tests"
 - Cucumber
 - Arquitetura de software x design patterns
+- Droplet (DO) x EC2 (AWS)
 
 # Estudar (Tópicos)
 

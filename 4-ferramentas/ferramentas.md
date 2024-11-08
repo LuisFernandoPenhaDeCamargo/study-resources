@@ -8,4 +8,4 @@ Este diretório contém anotações sobre ferramentas amplamente utilizadas na �
 - [Visual Studio Code](./2-vs-code/1-vs-code.md)
 - [Vim](./3-vim/vim.md)
 
-# [[Voltar para: README]](../README.md)
+# [[Voltar para a pagína inicial]](../README.md)
