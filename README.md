@@ -3,12 +3,17 @@ O objetivo deste repositório é fornecer anotações sobre conceitos e ferramen
 ### Sumário
 
 - [JavaScript](./2-javascript/sumario-javascript.md)
+- [Testes Automatizados](./3-testes-automatizados/1-testes-automatizados.md)
 - [Ferramentas](./4-ferramentas/ferramentas.md)
 - [Template](./1-template/1-template.md)
 
 # JavaScript
 
 Este diretório reúne anotações sobre conceitos fundamentais e avançados de JavaScript, além de anotações sobre bibliotecas, ferramentas e outros tópicos relacionados ao seu ecossistema. Inclui também resumos de livros e de materiais de referência, como guias e documentações.
+
+# Testes Automatizados
+
+Este diretório contém tópicos essenciais sobre Testes Automatizados. Aqui, são discutidos conceitos como Code Coverage, abordagens para aumentar a confiabilidade do código, e técnicas para detecção de falhas e manutenção de qualidade. O objetivo é oferecer uma base para entender e implementar testes eficientes no desenvolvimento de software.
 
 # Ferramentas
 
