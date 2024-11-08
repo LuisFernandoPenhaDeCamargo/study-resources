@@ -4,10 +4,11 @@
 
 ## JavaScript
 
-+ Lembre de verificar se **.vscode** está presente no SEA
-+ Mover os arquivos de configuração da Data-API para **src/config**
++ Verificar se consigo mover migrate.mjs para services
 + Adicionar o linter, verificar sobre o que se trata as suas configurações e configurá-lo
 
+- Informar o template de documentação
+- O Mocha permite pular testes? (`it.skip`)
 - O Mocha possui a funcionalidade "todo"? (`it.todo`)
 - Sinon.JS possui a funcionalidade FakeServers?
 - Arquiteturas comuns em projetos Node.js
