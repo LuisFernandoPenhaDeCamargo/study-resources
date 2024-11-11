@@ -7,9 +7,6 @@
 + Verificar se consigo mover migrate.mjs para services
 + Adicionar o linter, verificar sobre o que se trata as suas configurações e configurá-lo
 
-- Informar o template de documentação
-- O Mocha permite pular testes? (`it.skip`)
-- O Mocha possui a funcionalidade "todo"? (`it.todo`)
 - Sinon.JS possui a funcionalidade FakeServers?
 - Arquiteturas comuns em projetos Node.js
 - Quando você commita e há um diretório vazio no commit, ele não é adicionado ao GitHub?

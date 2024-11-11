@@ -2,6 +2,7 @@
 
 ### Sumário
 
-- [`it.skip`](./2-it-skips.md)
+- [`it.todo`](./2-it-todo.md)
+- [`it.skip`](./3-it-skip.md)
 
 # [[Voltar para: Frameworks]](../frameworks.md)

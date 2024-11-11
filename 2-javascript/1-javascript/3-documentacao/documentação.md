@@ -4,6 +4,6 @@ Este diretório é dedicado à documentação de recursos do ecossistema JavaScr
 
 ### Sumário
 
-- [Frameworks](./1-frameworks/frameworks.md)
+- [Frameworks](./2-frameworks/frameworks.md)
 
 # [[Voltar para: JavaScript]](../javascript.md)

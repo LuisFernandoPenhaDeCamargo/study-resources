@@ -6,11 +6,11 @@ Este documento detalha preferências e atividades antigas, com foco na organiza�
 
 ### 1. Estrutura de respostas para métodos/funções
 
-- **Descrição:** breve descrição do método ou função
-- **Sintaxe Básica:** a sintaxe básica para o uso do método ou função
-- **Parâmetros:** detalhes dos parâmetros que o método ou função aceita
-- **Retorno:** o valor retornado pelo método ou função
-- **Exemplo simples:** um exemplo simples demonstrando o uso do método ou função. Exemplos mais complexos são fornecidos mediante solicitação
+- **Descrição:** breve descrição do método, função ou propriedade
+- **Sintaxe Básica:** a estrutura básica para o uso do método, função ou propriedade
+- **Parâmetros:** detalhes dos parâmetros que o método ou função aceita, incluindo tipo e descrição
+- **Retorno:** o valor retornado pelo método ou função, especificando o tipo e o significado
+- **Exemplo simples:** um exemplo simples demonstrando o uso do método, função ou função. Exemplos mais complexos podem ser fornecidos mediante solicitação
 
 ### 2. Estilo de código e nomenclatura
 
