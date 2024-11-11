@@ -7,6 +7,12 @@
 + Verificar se consigo mover migrate.mjs para services
 + Adicionar o linter, verificar sobre o que se trata as suas configurações e configurá-lo
 
+- O que é MVC?
+- O que é Arquiteturas de Software?
+- O que é Padrões de Projeto?
+- Padrões de Projeto comuns no contexto do Node.js
+- O que é Metodologias de Desenvolvimento?
+- Metodologias de Desenvolvimento comuns no contexto do Node.js
 - Problemas encontrados quando se trabalha com Fake Servers e o Node.js
     + Sinon.JS `createFakeServer`
     + XMLHttpRequest
