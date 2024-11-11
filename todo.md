@@ -7,7 +7,6 @@
 + Verificar se consigo mover migrate.mjs para services
 + Adicionar o linter, verificar sobre o que se trata as suas configurações e configurá-lo
 
-- Sinon.JS possui a funcionalidade FakeServers?
 - Arquiteturas comuns em projetos Node.js
 - Quando você commita e há um diretório vazio no commit, ele não é adicionado ao GitHub?
 - Sobre o que a flag `--watch` se trata? (`node --watch`)
