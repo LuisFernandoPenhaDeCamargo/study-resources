@@ -7,7 +7,11 @@
 + Verificar se consigo mover migrate.mjs para services
 + Adicionar o linter, verificar sobre o que se trata as suas configurações e configurá-lo
 
-- Arquiteturas comuns em projetos Node.js
+- Problemas encontrados quando se trabalha com Fake Servers e o Node.js
+    + Sinon.JS `createFakeServer`
+    + XMLHttpRequest
+    + Conexão recusada `ECONNREFUSED`
+- `nock`
 - Quando você commita e há um diretório vazio no commit, ele não é adicionado ao GitHub?
 - Sobre o que a flag `--watch` se trata? (`node --watch`)
 - Sobre o que a flag `--inspect-brk` se trata? (`node --inspect-brk`)
