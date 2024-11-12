@@ -1,6 +1,4 @@
-# Arquiteturas de Software
-
-
+# Arquiteturas de Software (Node.js)
 
 Em projetos Node.js, existem algumas arquiteturas comuns e padrões de design que são frequentemente utilizados para garantir escalabilidade, manutenção e eficiência. Abaixo estão algumas das mais populares:
 
@@ -19,7 +17,7 @@ Em uma arquitetura monolítica, todo o código-fonte e as funcionalidades do sis
 - Tornam-se difícieis de manter à medida que o código cresce, especialmente em equipes maiores
 - Mudanças em uma parte do sistema podem afetar o restante da aplicação
 
-# 1. Arquitetura de Microserviços
+# 2. Arquitetura de Microserviços
 
 A arquitetura de microserviços divide a aplicação em pequenos serviços independentes, que se comunicam entre si via APIs (geralmente REST ou gRPC). Cada microserviço pode ser desenvolvido, testado, implantado e escalado de forma independente,
 
@@ -107,7 +105,7 @@ Também conhecida como arquitetura de "Ports and Adapters", a ideia principal de
 
 # 8. Arquitetura Clean (Clean Architecture)
 
-A Clean Architecture organiza o código em camadas, mas em ênfase na independência de frameworks, banco de dados, UI e outras dependências externas. O principal objetivo pe manter o domínio de negócios isolado das implementações externas.
+A Clean Architecture organiza o código em camadas, mas em ênfase na independência de frameworks, banco de dados, UI e outras dependências externas. O principal objetivo é manter o domínio de negócios isolado das implementações externas.
 
 ### Vantagens
 
@@ -133,4 +131,4 @@ Usada principalmente para processamentos de dados e integração de sistemas, es
 
 Cada arquitetura tem sua aplicabilidade dependendo do tipo de aplicação, do tamanho da equipe e dos requisitos do projeto. A escolha de uma arquitetura deve ser feita considerando a escalabilidade, manutenção e complexidade do projeto.
 
-# [[Voltar para: Práticas e Padrões de Código]](./1-praticas-padroes-codigo.md)
+# [[Voltar para: Práticas e Padrões de Código]](../1-praticas-padroes-codigo.md)
