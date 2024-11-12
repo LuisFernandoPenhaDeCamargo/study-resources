@@ -38,4 +38,4 @@ Cada objeto dentro de `configurations` descreve uma configuração específica.
 
 O **launch.json** é essencial para personalizar e automatizar o processo de depuração no VS Code, ajudando a tornar o ciclo de desenvolvimento e correção de erros mais rápido e eficiente.
 
-# [[Próximo tópico: Terminal Integrado x Debug Console (Configuração)]](./5-terminal-integrado-x-debug-console-configuracao.md)
+# [[Voltar para: Visual Studio Code]](./1-vs-code.md)

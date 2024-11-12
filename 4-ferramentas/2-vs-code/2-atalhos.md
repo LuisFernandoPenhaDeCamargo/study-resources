@@ -7,4 +7,4 @@
 - `Ctrl + Shift + D`**:** abre o Run and Debug
 - `Ctrl + Shift + Y`**:** abre o Debug Console
 
-# [[Próximo tópico: Modo Depuração (JavaScript)]](./3-modo-depuracao-javascript.md)
+# [[Voltar para: Visual Studio Code]](./1-vs-code.md)

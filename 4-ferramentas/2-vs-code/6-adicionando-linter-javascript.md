@@ -86,4 +86,4 @@ A instalação do ESLint como uma dependência no projeto e o uso da extensão n
 
 Instalar o ESLint como dependência garante a consistência de integração do linter em vários ambientes. A extensão no VS Code, por outro lado, é uma ferramenta conveniente para obter feedback imediato enquanto você trabalha. Juntas, essas duas abordagens maximizam a eficiência e a qualidade do código.
 
-# [[Próximo tópico: tasks.json]](./7-tasks-json.md)
+# [[Voltar para: Visual Studio Code]](./1-vs-code.md)
