@@ -2,9 +2,9 @@
 
 Este documento organiza os conceitos de boas práticas, padrões de projeto, metodologias de desenvolvimento, arquiteturas de software e ferramentas de build e automação.
 
+<!--
 ### Boas Práticas
 
-<!--
 - [Código Limpo]()
 - [Modularização]()
 - [Comentários e Documentação]()
@@ -28,13 +28,13 @@ Este documento organiza os conceitos de boas práticas, padrões de projeto, met
 
 ### Arquiteturas de Software
 
-- [O que é Arquitetura de Software?](./4-arquieturas-software/1-arquitetura-software.md)
+- [O que é Arquitetura de Software?](./4-arquiteturas-software/1-arquitetura-software.md)
 - [Arquiteturas de Software (Node.js)](./4-arquiteturas-software/2-arquiteturas-software-node-js.md)
 - [Padrões de Projeto x Metodologias de Desenvolvimento x Arquiteturas de Software](./4-arquiteturas-software/3-padroes-projeto-x-metodologias-desenvolvimento-x-arquiteturas-software.md)
 
+<!--
 ### Ferramentas de Build e Automação
 
-<!--
 - Webpack
 - Babel
 - ESLint
