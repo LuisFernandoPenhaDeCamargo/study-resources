@@ -17,4 +17,4 @@ Marcador de posição. Dentro dos colchetes angulares, insera uma frase descriti
 
 Indica uma tarefa a ser realizada.
 
-# [[Próximo tópico: Template para Pesquisa (ChatGPT)]](./13-chatgpt.md)
+# [[Voltar para: Template]](./1-template.md)
