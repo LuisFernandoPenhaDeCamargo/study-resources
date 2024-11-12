@@ -67,4 +67,4 @@ $npx create-react-app my-app
 
 Aqui, o npx baixará o `create-react-app` se ele ainda não estiver instalado, executará o comando, e em seguida, removerá o pacote do cache. Isso é útil para rodar pacotes pontualmente, especialmente ferramentas CLI (Command-Line Interface).
 
-# [[Próximo tópico: c8 x NYC]](./3-c8-x-nyc.md)
+# [[Voltar para: Ferramentas]](./1-ferramentas.md)
