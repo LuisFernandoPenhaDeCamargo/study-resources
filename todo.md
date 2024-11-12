@@ -7,13 +7,6 @@
 + Verificar se consigo mover migrate.mjs para services
 + Adicionar o linter, verificar sobre o que se trata as suas configurações e configurá-lo
 
-- `Ctrl + Shift + P`
-- "Open Settings (JSON)"
-- "Preferences: Open Settings (JSON)"
-- `Ctrl + ,`
-- `Ctrl + K`
-- `Ctrl + S`
-- **keybindings.json**
 - O que é MVC?
 - O que é Padrões de Projeto?
 - Padrões de Projeto comuns no contexto do Node.js

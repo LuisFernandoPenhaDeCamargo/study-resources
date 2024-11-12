@@ -12,11 +12,13 @@ O VS Code se destaca pela flexibilidade e pela grande quantidade de plugins disp
 ### Sumário
 
 - [Atalhos](./2-atalhos.md)
-- [Modo Depuração (JavaScript)](./3-modo-depuracao-javascript.md)
-- [launch.json](./4-launch-json.md)
-- [Terminal Integrado x Debug Console (Configuração)](./5-terminal-integrado-x-debug-console-configuracao.md)
-- [Adicionando um Linter (JavaScript)](./6-adicionando-linter-javascript.md)
-- [tasks.json](./7-tasks-json.md)
-- [Extensões Utilizadas](./8-extensoes-utilizadas.md)
+- [settings.json](./3-settings-json.md)
+- [keybindings.json](./4-keybindings-json.md)
+- [Modo Depuração (JavaScript)](./5-modo-depuracao-javascript.md)
+- [launch.json](./6-launch-json.md)
+- [Terminal Integrado x Debug Console (Configuração)](./7-terminal-integrado-x-debug-console-configuracao.md)
+- [Adicionando um Linter (JavaScript)](./8-adicionando-linter-javascript.md)
+- [tasks.json](./9-tasks-json.md)
+- [Extensões Utilizadas](./10-extensoes-utilizadas.md)
 
 # [[Voltar para: Ferramentas]](../ferramentas.md)
