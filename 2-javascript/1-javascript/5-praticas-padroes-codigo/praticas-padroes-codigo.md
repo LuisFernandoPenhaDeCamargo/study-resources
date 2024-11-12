@@ -29,8 +29,9 @@ Este documento organiza os conceitos de boas práticas, padrões de projeto, met
 ### Arquiteturas de Software
 
 - [O que é Arquitetura de Software?](./4-arquiteturas-software/1-arquitetura-software.md)
-- [Arquiteturas de Software (Node.js)](./4-arquiteturas-software/2-arquiteturas-software-node-js.md)
-- [Padrões de Projeto x Metodologias de Desenvolvimento x Arquiteturas de Software](./4-arquiteturas-software/3-padroes-projeto-x-metodologias-desenvolvimento-x-arquiteturas-software.md)
+- [Padrões de Projeto x Metodologias de Desenvolvimento x Arquiteturas de Software](./4-arquiteturas-software/2-padroes-projeto-x-metodologias-desenvolvimento-x-arquiteturas-software.md)
+- [Arquiteturas de Software (Node.js)](./4-arquiteturas-software/3-arquiteturas-software-node-js.md)
+- [MVC](./4-arquiteturas-software/4-mvc.md)
 
 <!--
 ### Ferramentas de Build e Automação
