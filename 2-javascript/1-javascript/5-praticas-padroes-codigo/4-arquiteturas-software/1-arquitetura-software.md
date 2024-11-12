@@ -13,4 +13,4 @@ Arquitetura de Software é o conjunto de decisões estruturais fundamentais que 
 
 Uma boa arquitetura de software facilita a evolução do sistema, o reuso de componentes, e a redução de custos de manutenção. Ela permite que o software seja mais adaptável a mudanças e escalável, além de ajudar a equipe de desenvolvimento a entender e colaborar no sistema com maior clareza.
 
-# [[Voltar para: Práticas e Padrões de Código]](../1-praticas-padroes-codigo.md)
+# [[Voltar para: Práticas e Padrões de Código]](../praticas-padroes-codigo.md)

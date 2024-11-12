@@ -131,4 +131,4 @@ Usada principalmente para processamentos de dados e integração de sistemas, es
 
 Cada arquitetura tem sua aplicabilidade dependendo do tipo de aplicação, do tamanho da equipe e dos requisitos do projeto. A escolha de uma arquitetura deve ser feita considerando a escalabilidade, manutenção e complexidade do projeto.
 
-# [[Voltar para: Práticas e Padrões de Código]](../1-praticas-padroes-codigo.md)
+# [[Voltar para: Práticas e Padrões de Código]](../praticas-padroes-codigo.md)
