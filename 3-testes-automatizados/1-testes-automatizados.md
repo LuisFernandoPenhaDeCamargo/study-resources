@@ -6,4 +6,4 @@ Este diretório contém tópicos essenciais sobre Testes Automatizados. Aqui, s�
 
 - [Code Coverage](./2-code-coverage.md)
 
-# [[Voltar para a pagína inicial]](../README.md)
+# [[Voltar para a página inicial]](../README.md)

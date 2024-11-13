@@ -18,4 +18,4 @@ Este documento apresenta um sumário de arquivos que servem como modelo para a e
 - [Template para Pesquisa (ChatGPT)](./13-chatgpt.md)
 - [Memória de Preferências e Atividades (ChatGPT)](./14-memoria-preferencias-atividades.md)
 
-# [[Voltar para a pagína inicial]](../README.md)
+# [[Voltar para a página inicial]](../README.md)

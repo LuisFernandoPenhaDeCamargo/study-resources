@@ -5,4 +5,4 @@ Este diretório reúne anotações sobre conceitos fundamentais e avançados de 
 - [JavaScript](./1-javascript/javascript.md)
 - [Eloquent JavaScript (4th Edition)]()
 
-# [[Voltar para a pagína inicial]](../README.md)
+# [[Voltar para a página inicial]](../README.md)

@@ -5,6 +5,7 @@ O objetivo deste repositório é fornecer anotações sobre conceitos e ferramen
 - [JavaScript](./2-javascript/sumario-javascript.md)
 - [Testes Automatizados](./3-testes-automatizados/1-testes-automatizados.md)
 - [Ferramentas](./4-ferramentas/ferramentas.md)
+- [Repositórios Remotos](./5-repositorios-remotos/repositorios-remotos.md)
 - [Template](./1-template/1-template.md)
 
 # JavaScript
@@ -18,6 +19,10 @@ Este diretório contém tópicos essenciais sobre Testes Automatizados. Aqui, s�
 # Ferramentas
 
 Este diretório contém anotações sobre ferramentas amplamente utilizadas na área de desenvolvimento, como Visual Studio Code, Vim e outras. Cada tópico oferece informações úteis para facilitar o uso e a exploração dessas ferramentas.
+
+# Repositórios Remotos
+
+Este diretório apresenta conceitos sobre repositórios remotos, como o GitHub, abordando tópicos como configuração, comandos e boas práticas, fornecendo uma referência para o seu uso.
 
 # Template
 

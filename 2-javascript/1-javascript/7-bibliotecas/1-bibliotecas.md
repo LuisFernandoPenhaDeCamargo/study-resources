@@ -5,5 +5,6 @@ Este documento reúne anotações pessoais sobre bibliotecas do ecossistema Java
 ### Sumário
 
 - [Sinon.JS](./2-sinon-js.md)
+- [Nock](./3-nock.md)
 
 # [[Voltar para: JavaScript]](../javascript.md)

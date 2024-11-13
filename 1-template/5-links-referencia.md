@@ -34,7 +34,7 @@ Este documento estabelece as diretrizes para a criação e a formatação de lin
 ```Markdown
 # [[Próximo tópico: A < nome do tópico >]](A< link de referência para o tópico >)
 # [[Voltar para: A< nome do tópico pai >]](A< link de referência para o tópico pai >)
-# [[Voltar para a pagína inicial]](A< link de referência para o README.md >)
+# [[Voltar para a página inicial]](A< link de referência para o README.md >)
 ```
 
 # [[Voltar para: Template]](./1-template.md)
