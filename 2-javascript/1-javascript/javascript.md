@@ -6,7 +6,8 @@ Este diretório reúne anotações sobre conceitos fundamentais e avançados de 
 
 - [Práticas e Padrões de Código](./5-praticas-padroes-codigo/praticas-padroes-codigo.md)
 - [Frameworks](./6-frameworks/1-frameworks.md)
-- [Ferramentas](./7-ferramentas/1-ferramentas.md)
-- [Documentação](./8-documentacao/documentacao.md)
+- [Bibliotecas](./7-bibliotecas/1-bibliotecas.md)
+- [Ferramentas](./8-ferramentas/)
+- [Documentação](./9-documentacao/)
 
 # [[Voltar para: Sumário de JavaScript]](../sumario-javascript.md)

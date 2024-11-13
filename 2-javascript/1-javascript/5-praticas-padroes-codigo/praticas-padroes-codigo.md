@@ -13,14 +13,13 @@ Este documento organiza os conceitos de boas práticas, padrões de projeto, met
 ### Padrões de Projeto
 
 - [O que são Padrões de Projeto?](./2-padroes-projeto/1-padroes-projeto.md)
-<!--
-- [Padrões Comuns (Singletonm Factory, Observer, etc.)]()
-- [Aplicação de Padrões em JavaScript]()
--->
+- [Padrões de Projeto (Node.js)](./2-padroes-projeto/2-padroes-projeto-node-js.md)
+- [Combinação de Padrões de Projeto](./2-padroes-projeto/3-combinacao-padroes-projeto.md)
 
 ### Metodologias de Desenvolvimento
 
 - [O que são Metodologias de Desenvolvimento?](./3-metodologias-desenvolvimento/3-metodologias-desenvolvimento.md)
+- [Metodologias de Desenvolvimento (Node.js)](./3-metodologias-desenvolvimento/2-metodologias-desenvolvimento-node-js.md)
 <!--
 - Test-Driven Development (TDD)
 - Behavior-Driven Development (BDD)
