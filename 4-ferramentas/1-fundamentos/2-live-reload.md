@@ -4,4 +4,4 @@ Live reload é uma funcionalidade que permite que as mudanças feitas no código
 
 Essa função é comumente usada em conjunto com ferramentas como Nodemon (para reiniciar automaticamente o servidor quando arquivos backend são alterados) e Browsersync ou extensões de desenvolvimento frontend que atualizam a página sempre que há mudanças no código.
 
-# [[Voltar para: Fundamentos]](./1-fundamentos.md)
+# [[ Voltar para: Fundamentos ]](./1-fundamentos.md)

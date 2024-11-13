@@ -21,4 +21,4 @@ A< nome do método, função ou propriedade >:
 
 Este template fornece uma estrutura direta, com pontos essenciais para o entendimento básico do método, função ou propriedade pesquisada. Para exemplos mais complexos ou detalhamentos adicionais, especifique na consulta.
 
-# [[Voltar para: Template]](./1-template.md)
+# [[ Voltar para: Template ]](./1-template.md)

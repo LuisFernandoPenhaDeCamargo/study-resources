@@ -55,4 +55,4 @@ Para executar uma tarefa configurada no **tasks.json**, basta:
 
 O **tasks.json** é particulamente útil em projetos com compilação e scripts recorrentes, permitindo um fluxo de trabalho mais rápido e integrado dentro do VS Code.
 
-# [[Voltar para: Visual Studio Code]](./1-vs-code.md)
+# [[ Voltar para: Visual Studio Code ]](./1-vs-code.md)

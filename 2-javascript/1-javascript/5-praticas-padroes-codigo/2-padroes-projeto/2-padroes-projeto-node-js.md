@@ -179,4 +179,4 @@ class EmailServiceFacade {
 
 Estes padrões de projeto são amplamente utilizados no desenvolvimento Node.js para melhorar a organização, a escalabilidade e a modularidade de aplicações. Cada padrão é aplicável a uma situação específica, proporcionando soluções robustas e flexíveis para diferentes desafios do desenvolvimento de software.
 
-# [[Voltar para: Práticas e Padrões de Código]](../praticas-padroes-codigo.md)
+# [[ Voltar para: Práticas e Padrões de Código ]](../praticas-padroes-codigo.md)

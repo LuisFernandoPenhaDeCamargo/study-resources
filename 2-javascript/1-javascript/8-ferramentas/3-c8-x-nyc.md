@@ -43,4 +43,4 @@ A escolha entre NYC e c8 depende do tipo de projeto e das necessidades específi
 
 Em projetos que utilizam tanto CJS quanto ESM, NYC pode não funcionar corretamente. Por outro lado, o c8 se mostrou funcional sem necessidade de configuração adicional. Além disso, c8 funcionou de forma adequada em conjunto com Mocha, SinonJS, Chai e esmock.
 
-# [[Voltar para: Ferramentas]](./1-ferramentas.md)
+# [[ Voltar para: Ferramentas ]](./1-ferramentas.md)

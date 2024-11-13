@@ -10,4 +10,4 @@
 - **Terminal integrado:** ideal para ver logs ao vivo com cores e formatação completa, além de interagir diretamente com a aplicação quando necessário
 - **Debug Console:** útil para quem precisa de um ambiente mais focado apenas em mensagens de depuração, sem interações ou detalhes adicionais
 
-# [[Voltar para: Visual Studio Code]](./1-vs-code.md)
+# [[ Voltar para: Visual Studio Code ]](./1-vs-code.md)

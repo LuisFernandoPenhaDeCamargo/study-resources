@@ -12,4 +12,4 @@ As metodologias de desenvolvimento mais conhecidas incluem:
 
 Cada metodologia oferece vantagens e pode ser adaptada de acordo com o tipo de projeto, a equipe e os objetivos do produto, contribuindo para o sucesso e a sustenbilidade do desenvolvimento de software.
 
-# [[Voltar para: Práticas e Padrões de Código]](../praticas-padroes-codigo.md)
+# [[ Voltar para: Práticas e Padrões de Código ]](../praticas-padroes-codigo.md)

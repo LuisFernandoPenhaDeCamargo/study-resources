@@ -6,4 +6,4 @@ Este diretório apresenta conceitos sobre repositórios remotos, como o GitHub, 
 
 - [GitHub](./1-github/1-github.md)
 
-# [[Voltar para a página inicial]](../README.md)
+# [[ Voltar para a página inicial ]](../README.md)

@@ -7,4 +7,4 @@ Este diretório é dedicado à documentação de recursos do ecossistema JavaScr
 - [Bibliotecas](./1-bibliotecas/bibliotecas.md)
 - [Frameworks](./2-frameworks/frameworks.md)
 
-# [[Voltar para: JavaScript]](../javascript.md)
+# [[ Voltar para: JavaScript ]](../javascript.md)

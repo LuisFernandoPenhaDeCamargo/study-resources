@@ -37,4 +37,4 @@ No fluxo de uma aplicação MVC, o processo geralmente acontece assim:
 - **Web frameworks:** como Ruby on Rails, ASP.NET MVC, Django e frameworks JavaScript como Angular e Backbone.js seguem o padrão MVC
 - É ideial para aplicações que precisam gerenciar e exibir uma grande quantidade de dados, pois facilita a atualização e a sincronização entre o modelo de dados e a interface visual
 
-# [[Voltar para: Práticas e Padrões de Código]](../praticas-padroes-codigo.md)
+# [[ Voltar para: Práticas e Padrões de Código ]](../praticas-padroes-codigo.md)

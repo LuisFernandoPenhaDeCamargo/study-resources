@@ -52,4 +52,4 @@ Ao rodar `npm test`, o c8 executa os testes com Mocha e gera uma relatório de c
 
 Code Coverage é, assim, uma ferramenta essencial para garantir confiabilidade e a manutenção do código ao longo do ciclo de vida do desenvolvimento.
 
-# [[Voltar para: Testes Automatizados]](./1-testes-automatizados.md)
+# [[ Voltar para: Testes Automatizados ]](./1-testes-automatizados.md)

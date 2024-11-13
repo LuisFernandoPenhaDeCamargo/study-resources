@@ -13,4 +13,4 @@
 - `Ctrl + K`**:** permite combinar com outras teclas para executar comandos adicionais (por exemplo, `Ctrl + K` seguido de `Ctrl + S`)
     + `Ctrl + S`**:** abre a página de atalhos do VS Code
 
-# [[Voltar para: Visual Studio Code]](./1-vs-code.md)
+# [[ Voltar para: Visual Studio Code ]](./1-vs-code.md)

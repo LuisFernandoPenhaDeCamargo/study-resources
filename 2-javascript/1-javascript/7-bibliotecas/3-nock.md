@@ -41,4 +41,4 @@ fetchData().then(data => {
 
 Esses recursos permitem criar testes robustos para funções que dependem de APIs externas, sem a necessidade de uma conexão com a internet.
 
-# [[Voltar para: Bibliotecas]](./1-bibliotecas.md)
+# [[ Voltar para: Bibliotecas ]](./1-bibliotecas.md)

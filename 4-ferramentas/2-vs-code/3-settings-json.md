@@ -16,4 +16,4 @@ Você pode acessar e editar o **settings.json** diretamente no VS Code de duas m
 
 Alterações feitas no **settings.json** têm efeito imediato no editor e permitem um nível avançado de personalização para melhor adaptar o VS Code ao seu fluxo de trabalho.
 
-# [[Voltar para: Visual Studio Code]](./1-vs-code.md)
+# [[ Voltar para: Visual Studio Code ]](./1-vs-code.md)

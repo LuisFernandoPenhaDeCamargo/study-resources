@@ -33,4 +33,4 @@ No **keybindings.json**, os atalhos são definidios em formato de lista, onde ca
 
 O **keybindings.json** permite um alto nível de personalização e pode ser facilmente ajustado para melhorar sua produtividade no VS Code.
 
-# [[Voltar para: Visual Studio Code]](./1-vs-code.md)
+# [[ Voltar para: Visual Studio Code ]](./1-vs-code.md)

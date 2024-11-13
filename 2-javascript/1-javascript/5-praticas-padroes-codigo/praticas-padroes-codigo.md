@@ -41,4 +41,4 @@ Este documento organiza os conceitos de boas práticas, padrões de projeto, met
 - Prettir
 -->
 
-# [[Voltar para: JavaScript]](../javascript.md)
+# [[ Voltar para: JavaScript ]](../javascript.md)

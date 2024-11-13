@@ -10,4 +10,4 @@ Este diretório reúne anotações sobre conceitos fundamentais e avançados de 
 - [Ferramentas](./8-ferramentas/1-ferramentas.md)
 - [Documentação](./9-documentacao/documentacao.md)
 
-# [[Voltar para: Sumário de JavaScript]](../sumario-javascript.md)
+# [[ Voltar para: Sumário de JavaScript ]](../sumario-javascript.md)

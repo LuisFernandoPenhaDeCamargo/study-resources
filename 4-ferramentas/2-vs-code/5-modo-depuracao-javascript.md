@@ -131,4 +131,4 @@ Em alguns casos, o VS Code pode estar configurado para não abrir o Debug Consol
 
 A mensagem indica que o Debug Console está aguardando o início de uma sessão de depuração para avaliar ou executar expressões do seu código. Em outras palavras, você precisa estar em uma sessão ativa de depuração para que o console possa executar e avaliar comandos e variáveis em tempo real.
 
-# [[Voltar para: Visual Studio Code]](./1-vs-code.md)
+# [[ Voltar para: Visual Studio Code ]](./1-vs-code.md)

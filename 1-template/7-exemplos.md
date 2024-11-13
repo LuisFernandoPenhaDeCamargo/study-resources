@@ -9,4 +9,4 @@ Este documento define as diretrizes para a apresentação de exemplos de código
 - Comentários devem ser alinhados à direita, caso isso facilite o entendimento. Neste caso não considere o escopo
 - As saídas devem ser alinhadas à direita. O escopo deve ser desconsiderado apenas se isso facilitar o entendimento
 
-# [[Voltar para: Template]](./1-template.md)
+# [[ Voltar para: Template ]](./1-template.md)

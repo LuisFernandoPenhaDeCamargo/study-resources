@@ -10,4 +10,4 @@ No contexto do Node.js, as metodologias de desenvolvimento mais comuns são aque
 
 Essas metodologias são flexíveis e podem ser combinadas conforme a necessidade do projeto e o perfil da equipe. No ecossistema Node.js, a capacidade de integração rápida com outras ferramentas e sua natureza assíncrona e modular o tornam especialmente adequado para metodologias que priorizam entregas rápidas, colaboração e ciclos de desenvolvimento contínuos.
 
-# [[Voltar para: Práticas e Padrões de Código]](../praticas-padroes-codigo.md)
+# [[ Voltar para: Práticas e Padrões de Código ]](../praticas-padroes-codigo.md)

@@ -77,4 +77,4 @@ Em um sistema Node.js que utiliza microserviços, você pode adotar a metodologi
 
 Esses três conceitos - padrões de projeto, metodologias de desenvolvimento, e arquiteturas de software - são interdependentes, mas cada uma aborda uma parte diferente do ciclo de vida do software. Juntos, eles ajudam as equipes a criar sistemas mais escaláveis, de fácil manutenção e mais eficientes, garantindo uma boa experiência tanto para os desenvolvedores quanto para os usuários finais.
 
-# [[Voltar para: Práticas e Padrões de Código]](../praticas-padroes-codigo.md)
+# [[ Voltar para: Práticas e Padrões de Código ]](../praticas-padroes-codigo.md)

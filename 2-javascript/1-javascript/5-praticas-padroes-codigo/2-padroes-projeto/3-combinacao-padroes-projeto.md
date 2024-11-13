@@ -23,4 +23,4 @@ Em uma aplicação Node.js típica com Express e MongoDB, você pode ver os segu
 
 A combinação de padrões diferentes permite um arquitetura sólida e flexível, pronta para crescer em complexidade e escala sem comprometer a manutenibilidade.
 
-# [[Voltar para: Práticas e Padrões de Código]](../praticas-padroes-codigo.md)
+# [[ Voltar para: Práticas e Padrões de Código ]](../praticas-padroes-codigo.md)

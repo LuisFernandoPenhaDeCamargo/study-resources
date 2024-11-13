@@ -43,4 +43,4 @@ Envolvem a interação e a comunicação entre objetos, focando em como as respo
 
 Os padrões de projeto foram popularizados por livros como o "Design Patterns: Elements of Reusable Object-Oriented Software" do Gang of Four (GoF), e atualmente são aplicados em várias linguagens e frameworks, auxiliando desenvolvedoresna criação de soluções mais elegantes e robustas.
 
-# [[Voltar para: Práticas e Padrões de Código]](../praticas-padroes-codigo.md)
+# [[ Voltar para: Práticas e Padrões de Código ]](../praticas-padroes-codigo.md)
