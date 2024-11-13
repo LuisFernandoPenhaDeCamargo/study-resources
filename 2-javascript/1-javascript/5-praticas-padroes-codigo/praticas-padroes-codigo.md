@@ -18,7 +18,7 @@ Este documento organiza os conceitos de boas práticas, padrões de projeto, met
 
 ### Metodologias de Desenvolvimento
 
-- [O que são Metodologias de Desenvolvimento?](./3-metodologias-desenvolvimento/3-metodologias-desenvolvimento.md)
+- [O que são Metodologias de Desenvolvimento?](./3-metodologias-desenvolvimento/1-metodologias-desenvolvimento.md)
 - [Metodologias de Desenvolvimento (Node.js)](./3-metodologias-desenvolvimento/2-metodologias-desenvolvimento-node-js.md)
 <!--
 - Test-Driven Development (TDD)
