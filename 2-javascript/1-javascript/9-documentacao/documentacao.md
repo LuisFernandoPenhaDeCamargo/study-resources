@@ -4,7 +4,11 @@ Este diretório é dedicado à documentação de recursos do ecossistema JavaScr
 
 ### Sumário
 
-- [Bibliotecas](./1-bibliotecas/bibliotecas.md)
-- [Frameworks](./2-frameworks/frameworks.md)
+<!--
+- [Módulos Nativos (Core)]()
+-->
+- [Módulos Internos](./2-modulos-internos/1-modulos-internos.md)
+- [Frameworks](./3-frameworks/frameworks.md)
+- [Bibliotecas](./4-bibliotecas/bibliotecas.md)
 
 # [[ Voltar para: JavaScript ]](../javascript.md)

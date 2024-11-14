@@ -4,6 +4,7 @@ Este diretório reúne anotações sobre conceitos fundamentais e avançados de 
 
 ### Sumário
 
+- [Node.js](./4-node-js/1-node-js.md)
 - [Práticas e Padrões de Código](./5-praticas-padroes-codigo/praticas-padroes-codigo.md)
 - [Frameworks](./6-frameworks/1-frameworks.md)
 - [Bibliotecas](./7-bibliotecas/1-bibliotecas.md)

@@ -151,10 +151,10 @@ O Code Coverage mostra o que você não testou no seu código existente mas não
 - Ajuda a escrever os testes baseando-os em especificações de negócio
 - Gherkin style, para a escrita dos casos de uso
 
-# Bônus - TDD para Não Praticantes: Como Pensar, o que Evitar e Mais
+# Bônus - Trabalhando com Test Driven Development na Vida Real
 
-https://github.com/ErickWendel/lives-aquecimento03-javascript-expert?_gl=1*1j5zgld*_ga*NjE1OTIwMDQ0LjE3MjMxMzI5MDE.*_ga_37GXT4VGQK*MTczMDgxNzE4Ny4yNS4xLjE3MzA4MTcxODcuMC4wLjA.
+
 
 ---
 
-50:00
+2:00

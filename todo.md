@@ -7,7 +7,6 @@
 + Verificar se consigo mover migrate.mjs para services
 + Adicionar o linter, verificar sobre o que se trata as suas configurações e configurá-lo
 
-- Pedir uma sugestão de título para o tópico acima
 - Sobre o que a flag `--watch` se trata? (`node --watch`)
 - Sobre o que a flag `--inspect-brk` se trata? (`node --inspect-brk`)
 - Qual a diferença entre importar, por exemplo, `crypto` ou `node:crypto`
@@ -22,6 +21,8 @@
 - O que são Testes de Stress?
 - O que são Testes de Carga?
 - Sobre o que se trata "Boundary Tests"
+- Quais são os "testes de segurança" existentes?
+- O que são Testes de Intrusão?
 - Cucumber
 - Arquitetura de software x design patterns
 - Droplet (DO) x EC2 (AWS)

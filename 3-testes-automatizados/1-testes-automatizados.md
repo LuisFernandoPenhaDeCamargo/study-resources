@@ -4,6 +4,14 @@ Este diretório contém tópicos essenciais sobre Testes Automatizados. Aqui, s�
 
 ### Sumário
 
+<!--
+- Testes Unitários
+- Testes de Integração
+- Testes de Regressão
+- Bibliotecas de Assertivas
+- Desenvolvendo Testes Unitários
+- Dificuldades Encontradas
+-->
 - [Code Coverage](./2-code-coverage.md)
 
 # [[ Voltar para a página inicial ]](../README.md)

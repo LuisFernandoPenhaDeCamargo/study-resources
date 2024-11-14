@@ -5,5 +5,14 @@ Este documento reúne anotações pessoais sobre frameworks do ecossistema JavaS
 ### Sumário
 
 - [Mocha](./2-mocha.md)
+<!--
+- Jest
+- Cucumber
+- Cypress
+- React.js
+- Angular
+- Vue.js
+- jQuery (para manipulação de DOM mais antiga)
+-->
 
 # [[ Voltar para: JavaScript ]](../javascript.md)

@@ -4,7 +4,15 @@ Este documento reúne anotações pessoais sobre bibliotecas do ecossistema Java
 
 ### Sumário
 
+<!--
+- axios
+- Sequelize
+- Chai
+-->
 - [Sinon.JS](./2-sinon-js.md)
+<!--
+- esmock
+-->
 - [Nock](./3-nock.md)
 
 # [[ Voltar para: JavaScript ]](../javascript.md)
