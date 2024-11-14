@@ -11,15 +11,15 @@ Se você precisa que um diretório vazio esteja presente no repositório, uma pr
 1. **Crie o arquivo:** dentro do diretório vazio, crie o arquivo **.gitkeep**
 
 ```Bash
-$touch directory/path/.gitkeep
+$ touch directory/path/.gitkeep
 ```
 
 2. **Commit e push:** em seguida, adicione o arquivo ao commit e faça o push
 
 ```Bash
-$git add directory/path/.gitkeep
-$git commit -m 'keeping empty directory with .gitkeep'
-$git push origin main
+$ git add directory/path/.gitkeep
+$ git commit -m 'keeping empty directory with .gitkeep'
+$ git push origin main
 ```
 
 Assim, o diretório será adicionado ao repositório e ficará visível no GitHub.

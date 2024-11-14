@@ -7,8 +7,10 @@
 + Verificar se consigo mover migrate.mjs para services
 + Adicionar o linter, verificar sobre o que se trata as suas configurações e configurá-lo
 
-- Sobre o que a flag `--watch` se trata? (`node --watch`)
-- Sobre o que a flag `--inspect-brk` se trata? (`node --inspect-brk`)
+- Flag `--parallel` (Mocha)
+- Flag `--exit` (Mocha)
+- Flag `--watch` (Mocha)
+- `!!` exclamação seguida de exclamação transforma o valor em booleano
 - Qual a diferença entre importar, por exemplo, `crypto` ou `node:crypto`
 - `node:http`, ou `node:http/2` ou `node:https` x Express
 - Funções tem a propriedade name? (`func.name`)?

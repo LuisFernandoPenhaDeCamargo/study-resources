@@ -14,13 +14,13 @@ O npx é uma ferramenta que vem junto com o Node.js (inclusa no npm CLI a partir
 Com npx, você pode executar um pacote diretamente sem precisar instalá-lo globalmente, ideal para ferramentas que você só precisa executar ocasionalmente.
 
 ```Bash
-$npx A< nome do pacote >
+$ npx A< nome do pacote >
 ```
 
 Por exemplo, para rodar o ESLint apenas uma vez, você pode usar:
 
 ```Bash
-$npx eslint file.js
+$ npx eslint file.js
 ```
 
 ### 2. Executar a versão local de um pacote
@@ -36,7 +36,7 @@ Em vez de navegar até **node_modules/.bin** para rodar ferramentas locais, voc�
 ### 1. Exemplo com npx
 
 ```Bash
-$npx mocha
+$ npx mocha
 ```
 
 O npx localiza o pacote e o executa, facilitando o uso de ferramentas sem poluir o ambiente global.
@@ -62,7 +62,7 @@ O npx armazena temporariamente pacotes no cache do npm, evitando o download repe
 Para rodar o pacote `create-react-app` sem instalá-lo permanentemente:
 
 ```Bash
-$npx create-react-app my-app
+$ npx create-react-app my-app
 ```
 
 Aqui, o npx baixará o `create-react-app` se ele ainda não estiver instalado, executará o comando, e em seguida, removerá o pacote do cache. Isso é útil para rodar pacotes pontualmente, especialmente ferramentas CLI (Command-Line Interface).

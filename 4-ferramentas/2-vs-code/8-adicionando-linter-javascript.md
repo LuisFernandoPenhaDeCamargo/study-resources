@@ -13,7 +13,7 @@ A integração de um linter no VS Code permite verificar automaticamente o estil
 No terminal do projeto, execute:
 
 ```Bash
-$npm install eslint --save-dev
+$ npm install eslint --save-dev
 ```
 
 ### 2. Inicie o ESLint
@@ -21,7 +21,7 @@ $npm install eslint --save-dev
 Gere um arquivo de configuração **.eslintrc** que define as regras e estilos do projeto. Execute:
 
 ```Bash
-$npx eslint --init
+$ npx eslint --init
 ```
 
 Siga as instruções para definir as configurações desejadas, como o ambiente do projeto (Node.js, navegador, etc.) e o estilo do código (ex: Airbnb, Google, etc.).
@@ -56,7 +56,7 @@ No **settings.json** do VS Code (localizado em **.vscode/settings.json**), adici
 Para verificar todos os arquivos do projeto, execute no terminal:
 
 ```Bash
-$npx eslint . --ext .js, .jsx, .ts, .tsx
+$ npx eslint . --ext .js, .jsx, .ts, .tsx
 ```
 
 # Vantagens

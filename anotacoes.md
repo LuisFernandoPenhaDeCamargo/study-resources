@@ -153,8 +153,8 @@ O Code Coverage mostra o que você não testou no seu código existente mas não
 
 # Bônus - Trabalhando com Test Driven Development na Vida Real
 
-
+É uma boa aula para eu utilizar na hora de refazer as aplicações.
 
 ---
 
-2:00
+25

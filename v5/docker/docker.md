@@ -38,13 +38,13 @@ Para começar, podemos rodar um container bem simples com uma imagem oficial do 
 1. **Baixe a imagem do Nginx (um servidor web leve):**
 
 ```Bash
-$docker pull nginx
+$ docker pull nginx
 ```
 
 2. **Rode o container:**
 
 ```Bash
-$docker run -d -p 8080:80 nginx
+$ docker run -d -p 8080:80 nginx
 ```
 
 Esse comando cria um container e mapeia a porta 8080 do seu sistema para a porta 80 do container (onde o Nginx está rodando). Se você acessar `http://localhost:8080` no navegador, verá o Nginx rodando.

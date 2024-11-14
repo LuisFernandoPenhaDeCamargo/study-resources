@@ -32,13 +32,4 @@ Este documento organiza os conceitos de boas práticas, padrões de projeto, met
 - [Arquiteturas de Software (Node.js)](./4-arquiteturas-software/3-arquiteturas-software-node-js.md)
 - [MVC](./4-arquiteturas-software/4-mvc.md)
 
-<!--
-### Ferramentas de Build e Automação
-
-- Webpack
-- Babel
-- ESLint
-- Prettir
--->
-
 # [[ Voltar para: JavaScript ]](../javascript.md)

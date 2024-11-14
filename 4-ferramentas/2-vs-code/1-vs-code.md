@@ -19,6 +19,7 @@ O VS Code se destaca pela flexibilidade e pela grande quantidade de plugins disp
 - [Terminal Integrado x Debug Console (Configuração)](./7-terminal-integrado-x-debug-console-configuracao.md)
 - [Adicionando um Linter (JavaScript)](./8-adicionando-linter-javascript.md)
 - [tasks.json](./9-tasks-json.md)
-- [Extensões Utilizadas](./10-extensoes-utilizadas.md)
+- ["files to exclude"](./10-files-exclude.md)
+- [Extensões Utilizadas](./11-extensoes-utilizadas.md)
 
 # [[ Voltar para: Ferramentas ]](../ferramentas.md)

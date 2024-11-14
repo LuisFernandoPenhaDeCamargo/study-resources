@@ -7,4 +7,13 @@ Este documento reúne anotações pessoais sobre ferramentas do ecossistema Java
 - [npx](./2-npx.md)
 - [c8 x NYC](./3-c8-x-nyc.md)
 
+<!--
+Ferramentas de Build e Automação
+
+- Webpack
+- Babel
+- ESLint
+- Prettir
+-->
+
 # [[ Voltar para: JavaScript ]](../javascript.md)
