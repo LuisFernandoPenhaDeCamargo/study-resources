@@ -4,7 +4,7 @@ Este documento reúne anotações pessoais sobre frameworks do ecossistema JavaS
 
 ### Sumário
 
-- [Mocha](./2-mocha.md)
+- [Mocha]()
 <!--
 - Jest
 - Cucumber
