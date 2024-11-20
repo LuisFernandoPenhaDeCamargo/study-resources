@@ -1,9 +1,48 @@
 # Listas
 
-Este documento define as diretrizes para o uso de listas, assegurando uma formatação simples, odernada e visualmente organizada.
+Este documento define as diretrizes para o uso de listas, assegurando uma formatação simples, ordenada e visualmente organizada.
 
-- Não utilizar pontuação ao final dos itens
-- Se a ordem dos itens não precisar seguir um significado específico, ordene-os alfabeticamente
-- Evitar listas dentro de listas; em vez disso, utilize a estrutura `###`, onde cada item se torna uma seção e contém a lista mais interna
+### Evite pontuação ao final dos itens
 
-# [[ Voltar para: Template ]](./1-template.md)
+Itens em listas geralmente não precisam de ponto final.
+
+Correto:
+
+- Item 1
+- Item 2
+
+Incorreto:
+
+- Item 1.
+- Item 2.
+
+### Ordenação alfabética (se aplicável)
+
+Quando os itens não seguem uma ordem lógica ou cronológica, organize-os alfabeticamente para facilitar a leitura e a consulta.
+
+### Evite listas aninhadas
+
+Não utilize listas dentro de listas para evitar confusão visual. Caso seja necessário detalhar um item, utilize subtítulos (`###`) em vez de criar listas aninhadas.
+
+Correto:
+
+```Markdown
+### Item 1
+
+Detalhamento item 1.
+
+### Item 2
+
+Detalhamento item 2.
+```
+
+Incorreto:
+
+```Markdown
+- Item 1
+    + Detalhamento item 1
+- Item 2
+    + Detalhamento item 2
+```
+
+# [[ Voltar para: Template ]](../template.md)

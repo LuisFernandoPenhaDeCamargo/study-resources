@@ -12,23 +12,23 @@ Este documenta apresenta um sumário de arquivos que servem como modelo para est
     Diretrizes para a formatação de títulos, especificando o uso hierárquico de diferentes níveis para garantir uma estrutura clara, consistente e navegável ns documentos.
 - [Tópicos](./1-organizacao-estrutura/3-topicos.md)  
     Diretrizes para organização e apresentação de tópicos e subtópicos, com foco em manter uma estrutura lógica, padronizada e de fácil navegação.
-- [Links de Referência]()  
-    Regras para formatação e organização de links, sejam eles internos ao repositório ou externos.
-- [Listas]()  
-    Padrões de criação de listas ordenadas e não ordenadas, incluindo exemplos de boas práticas.
+- [Links de Referência](./1-organizacao-estrutura/4-links-referencia.md)  
+    Diretrizes para organizar e formatar links de referência, com foco em clareza, consistência e navegação eficiente, incluindo regras para links internos, externos e navegação entre tópicos do repositório.
+- [Listas](./1-organizacao-estrutura/5-listas.md)  
+    Padrões e boas práticas para criar listas ordenadas e não ordenadas, com exemplos para organização e clareza visual.
 
 ### 2. Estilo de conteúdo e escrita
 
-- [Negrito]()  
-    Diretrizes sobre o uso de negrito para destacar informações importantes sem exagero.
-- [Markdown]()  
-    Padrões gerais para uso de Markdown no respositório, cobrindo formatação básica e avançada.
-- [Palavras-chave]()  
-    Regras para definição de termos técnicos e categorização de conteúdos, melhorando a organização e buscas.
+- [Negrito](./2-estilo-conteudo-escrita/1-negrito.md)  
+    Diretrizes sobre o uso de negrito para destacar informações importantes sem comprometer a legibilidade.
+- [Markdown](./2-estilo-conteudo-escrita/2-markdown.md)  
+    Padrões e boas práticas para uso de Markdown.
+- [Palavras-chave](./2-estilo-conteudo-escrita/3-palavras-chave.md)  
+    Padronização de palavras-chave para marcações específicas em documentos, indicando flags, marcadores de posição e tarefas pendentes.
 
 ### 3. Exemplos e código
 
-- [Exemplos]()  
+- [Exemplos](./3-exemplos-codigo/1-exemplos.md)  
     Instruções para incluir exemplos claros e objetivos no conteúdo, com foco em facilitar o entendimento.
 - [Código]()  
     Regras de formatação para blocos de código, com específicação de linguagem e estilo consistente.

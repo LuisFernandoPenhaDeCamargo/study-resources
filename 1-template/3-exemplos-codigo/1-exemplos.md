@@ -1,12 +1,29 @@
 # Exemplos
 
-Este documento define as diretrizes para a apresentação de exemplos de código, com foco na clareza e organização.
+Este documento define as diretrizes para a apresentação de exemplos, com foco em clareza, organização e a diferenciação entre exemplos gerais e de código.
 
-- O subtópico "Exemplos" deve apresentar seus exemplos pontuados como uma lista enumerada
-- Para exemplos que geram erros, inclua a mensagem de erro como uma saída
-- Linhas que geram um erro devem ser comentadas; comente o código e o erro gerado separadamente para facilitar o teste, permitindo que apenas o código seja descomentado
-- Quando o exemplo não for executável, inclua o aviso "Exemplo não executável". Pule uma linha entre este aviso e o restante do exemplo
-- Comentários devem ser alinhados à direita, caso isso facilite o entendimento. Neste caso não considere o escopo
-- As saídas devem ser alinhadas à direita. O escopo deve ser desconsiderado apenas se isso facilitar o entendimento
+### Diretrizes gerais
 
-# [[ Voltar para: Template ]](./1-template.md)
+- O subtópico "Exemplos" deve apresentar exemplos de forma objetiva e organizada
+- Evite excesso de detalhes e garanta que os exemplos sejam representativos do conteúdo discutido
+
+### Organização
+
+O subtópico "Exemplos" deve apresentar exemplos como uma lista enumerada, para facilitar a navegação.
+
+### Exemplos que geram erros
+
+- Para exemplos que que resultam em erro, inclua a mensagem de erro como uma saída. facilitando a compreensão do que está acontecendo
+- Linhas que geram um erro devem ser comentadas; comente o código e o erro gerado separadamente, permitindo que apenas o código seja descomentado na hora de executá-lo
+
+### Exemplos não executáveis
+
+Quando um exemplo não for executável, insira a mensagem "Exemplo não executável" no ínicio do exemplo, deixando uma linha em branco entre esse aviso e o código subsequente.
+
+### Comentários e saídas
+
+- Você alinha comentários e saídas que pertencem ao mesmo escopo
+- Comentários devem ser alinhados à direita, caso isso facilite o entendimento; neste caso, não considere o escopo
+- As saídas do código também devem ser alinhadas à direita. O escopo deve ser desconsiderado apenas se isso facilitar o entendimento
+
+# [[ Voltar para: Template ]](../template.md)
