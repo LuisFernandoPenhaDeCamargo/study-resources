@@ -1,15 +1,17 @@
 # Tópicos
 
-Este documento apresenta as diretrizes para organizar e nomear tópicos e subtópicos no repositório, garantindo uma estrutura lógica, uniforme e de fácil compreensão.
+Este documento apresenta diretrizes para organizar e nomear tópicos e subtópicos, garantindo uma estrutura lógica e de fácil navegação no repositório.
+
+# Nomeação
 
 Os tópicos e subtópicos seguem as regras gramaticais de títulos. Lembre-se de que listas (enumeradas ou não) e tópicos (ou subtópicos) são elementos distintos.
 
-## Nomeação de Métodos/Funções e Propriedades de Objetos
+## Funções, Metódos e Propriedades
 
-- **Nomeação direta:** use apenas o nome do método, função ou propriedade
+- **Nomeação direta:** use apenas o nome da função, método ou propriedade
 - **Encadeamento:** em casos de encadeamento, inclua todas as propriedades no nome. Exemplo: objeto.propriedade.subpropriedade
 
-## Subtópicos Recorrentes
+# Subtópicos Recorrentes
 
 A lista a seguir define a ordem na qual os itens devem ser apresentados dentro de cada tópico:
 
@@ -18,14 +20,11 @@ A lista a seguir define a ordem na qual os itens devem ser apresentados dentro d
 - Sistema Hierárquico de Arquivos
 - Arquivos Relacionados
 - Ferramentas e Abordagens
-- Principais Funções
-- Usos Comuns
-- Vantagens/Vantagens e Desvantagens
+- Principais Funções e Usos Comuns
+- Vantages e Desvantagens
 - Exemplos
-- Observações
-- Dificuldades Encontradas
-- Exemplos Interessantes
+- Dificuldades e Soluções Encontradas
 - Observações Importantes
 - Conclusão/Resumo
 
-# [[ Voltar para: Template ]](./1-template.md)
+# [[ Voltar para: Template ]](../template.md)
