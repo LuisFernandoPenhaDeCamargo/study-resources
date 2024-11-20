@@ -34,5 +34,6 @@ Estrutura padronizada para navegação.
 ```Markdown
 # [[ Voltar para: A< nome do tópico pai > ]](A< link de referência para o tópico pai >)
 # [[ Voltar para a página inicial ]](A< link de referência para o README.md >)
+```
 
 # [[ Voltar para: Template ]](../template.md)
