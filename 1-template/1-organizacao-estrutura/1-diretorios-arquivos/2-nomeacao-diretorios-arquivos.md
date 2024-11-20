@@ -23,4 +23,4 @@ Diretrizes específicas para nomear diretórios e arquivos, garantindo consistê
 - **Nomeação direta:** nomeie o arquivo apenas com o nome do método, função ou propriedade
 - **Encadeamento:** em casos de encadeamento, inclua todas as propriedades no nome do arquivo, separando-as com o caractere underline (_). Exemplo: **objeto_propriedade_subpropriedade.md**
 
-# [[ Voltar para: Diretórios e Arquivos ]](./1-1-diretorios-arquivos.md)
+# [[ Voltar para: Diretórios e Arquivos ]](./1-diretorios-arquivos.md)

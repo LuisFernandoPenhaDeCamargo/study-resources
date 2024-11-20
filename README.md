@@ -12,5 +12,5 @@ Este repositório tem como objetivo centralizar conteúdos relacionados à área
     <!-- <F Descrição a ser criada após reunir mais tópicos nesta seção para uma sugestão mais precisa. -->
 - [Documentação](./5-documentacao/)  
     Material técnico resumido sobre comandos, métodos e APIs, organizado por linguagem ou ferramenta para consultas rápidas.
-- [Template](./1-template/)  
+- [Template](./1-template/template.md)  
     Estrutura base para contribuir com novos conteúdos no repositório, garantindo padronização e clareza.
