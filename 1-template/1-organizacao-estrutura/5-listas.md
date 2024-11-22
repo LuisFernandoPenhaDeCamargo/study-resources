@@ -29,11 +29,15 @@ Correto:
 ```Markdown
 ### Item 1
 
-Detalhamento item 1.
+- Detalhamento item 1
+- Outro detalhamento do item 1
+- Mais um detalhamento do item 1
 
 ### Item 2
 
-Detalhamento item 2.
+- Detalhamento item 2
+- Outro detalhamento do item 2
+- Mais um detalhamento do item 2
 ```
 
 Incorreto:
@@ -41,8 +45,12 @@ Incorreto:
 ```Markdown
 - Item 1
     + Detalhamento item 1
+    + Outro detalhamento do item 1
+    + Mais um detalhamento do item 1
 - Item 2
     + Detalhamento item 2
+    + Outro detalhamento do item 2
+    + Mais um detalhamento do item 2
 ```
 
 # [[ Voltar para: Template ]](../template.md)

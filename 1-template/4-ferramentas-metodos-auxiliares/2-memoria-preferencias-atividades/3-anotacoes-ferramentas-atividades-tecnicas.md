@@ -1,27 +1,8 @@
-# Memória de Preferências e Atividades (ChatGPT)
-
-Este documento detalha preferências e atividades antigas, com foco na organização de respostas, estruturação de exemplos e contextos de uso.
-
-# Preferências Gerais para Respostas
-
-### 1. Estrutura de respostas para métodos/funções
-
-- **Descrição:** breve descrição do método, função ou propriedade
-- **Sintaxe Básica:** a estrutura básica para o uso do método, função ou propriedade
-- **Parâmetros:** detalhes dos parâmetros que o método ou função aceita, incluindo tipo e descrição
-- **Retorno:** o valor retornado pelo método ou função, especificando o tipo e o significado
-- **Exemplo simples:** um exemplo simples demonstrando o uso do método, função ou função. Exemplos mais complexos podem ser fornecidos mediante solicitação
-
-### 2. Estilo de código e nomenclatura
-
-- **Idioma e convenções:**
-    + **No código:** nomes de classes, objetos, métodos, funções, variáveis e strings devem estar em inglês
-    + **Na explicação:** o texto descritivo e a terminologia técnica geral devem permanecer em português
-- **Preferências para strings:** nos exemplos de código, o texto das strings deve estar em inglês para manter o estilo de código, enquanto a explicação permanece em português
-
 # Anotações sobre Ferramentas e Atividades Técnicas
 
-## Ambiente de Testes Unitários com JavaScript
+Este documento contém o histórico sobre ferramentas, técnicas e atividades técnicas específicas.
+
+# Ambiente de Testes Unitários com JavaScript
 
 ### 1. Ferramentas utilizadas
 
@@ -44,9 +25,9 @@ Testando scripts executados diretamente: o usuário possui scripts sem exportaç
 
 ### 5. Substituição de módulos em testes unitários
 
-Uso de esmock para substituir módulos: para evitar conflitos causados pela substituição global de métodos, como `fs.readFileSync` (o que interfere com o funcionamento normal do Node.js), o usuário considera o esmock para substituir o módulo File System diretamente durante os testes unitários.
+Uso de esmock para substituir módulos: para evitar conflitos causados pela substituição global de métodos, como `fs.readFileSync` (o que interfere com o funcionamento normal do Node.js), o usuário considera o esmock para substituir o módulo File System diretamente no módulo que está sendo testado. TODO: Revisão.
 
-## Outros Interesses Técnicos
+# Outros Interesses Técnicos
 
 ### 1. Comparação de alocação de memória entre JavaScript e outras linguagens
 
@@ -60,8 +41,4 @@ Exploração do `constructor` no contexto de herança: o usuário explora o func
 
 Uso e testes para migrações: ao lidar com migrações de banco de dados, o usuário utiliza o módulo Umzug com `SequelizeStorage` para armazenar o estado das migrações. Ele está interessado em sugerir e criar testes unitários para o módulo que executa e registra as migrações no banco.
 
-# Ferramentas de Hardware Utilizadas
-
-1. O usuário utiliza um tablet Samsung, modelo SM-T225
-
-# [[ Voltar para: Template ]](./1-template.md)
+# [[ Voltar para: Memória de Preferências e Atividades (ChatGPT) ]](./1-memoria-preferencias-atividades.md)

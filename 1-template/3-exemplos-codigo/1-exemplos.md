@@ -22,8 +22,7 @@ Quando um exemplo não for executável, insira a mensagem "Exemplo não executá
 
 ### Comentários e saídas
 
-- Você alinha comentários e saídas que pertencem ao mesmo escopo
-- Comentários devem ser alinhados à direita, caso isso facilite o entendimento; neste caso, não considere o escopo
-- As saídas do código também devem ser alinhadas à direita. O escopo deve ser desconsiderado apenas se isso facilitar o entendimento
+- Insira comentários e saídas no mesmo nível da linha de código (se possível), com uma linha de espaço entre o código e o comentário ou saída
+- Alinhe comentários e saídas à direta, caso isso facilite a compreensão. Respeite o escopo correspondente sempre que possível, mas desconsidere-o se isso melhorar o entendimento
 
 # [[ Voltar para: Template ]](../template.md)

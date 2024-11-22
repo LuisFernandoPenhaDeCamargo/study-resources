@@ -9,7 +9,7 @@ Os tópicos e subtópicos seguem as regras gramaticais de títulos. Lembre-se de
 ## Funções, Metódos e Propriedades
 
 - **Nomeação direta:** use apenas o nome da função, método ou propriedade
-- **Encadeamento:** em casos de encadeamento, inclua todas as propriedades no nome. Exemplo: objeto.propriedade.subpropriedade
+- **Encadeamento:** em casos de encadeamento, inclua todas as propriedades no nome. Exemplo: `objeto.propriedade.subpropriedade`
 
 # Subtópicos Recorrentes
 

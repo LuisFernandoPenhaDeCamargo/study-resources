@@ -155,6 +155,10 @@ O Code Coverage mostra o que você não testou no seu código existente mas não
 
 É uma boa aula para eu utilizar na hora de refazer as aplicações.
 
+- Acho TODO: recriar o projeto
+- `Reflect` - respeita o ciclo de vida do objeto, evitando a perca de performance
+- `Reflect.deleteProperty`
+
 ---
 
-49
+1:32

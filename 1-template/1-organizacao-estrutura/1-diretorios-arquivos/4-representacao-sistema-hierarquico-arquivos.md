@@ -1,6 +1,6 @@
-# Representação do Sistema Hierárquico de Arquivo
+# Representação do Sistema Hierárquico de Arquivos
 
-Utilize o formato de árvore expandida (comando `tree`) para representar a estrutura de diretórios e arquivos do projeto. Este forma oferece uma visualização hierárquica detalhada, onde cada nível é claramente separado, facilitando a leitura e compreensão da organização do projeto.
+Este documento apresenta diretrizes para a representação da estrutura hierárquica de arquivos e diretórios, utilizando o formato de árvore expandida. O objetivo é oferecer uma visualização clara e detalhada, com níveis claramente separados, facilitando a leitura e compreensão da organização do sistema.
 
 # Exemplos
 
