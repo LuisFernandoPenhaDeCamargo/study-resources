@@ -6,7 +6,7 @@ Este repositório tem como objetivo centralizar conteúdos relacionados à área
 
 - [Fundamentos de Tecnologia (Conceitos Gerais)](./2-fundamentos-tecnologia/)  
     Base teórica para compreender temas fundamentais da computação.
-- [Tecnologias e Ferramentas (Práticas Específicas)](./3-tecnologias-ferramentas/)
+- [Tecnologias e Ferramentas (Práticas Específicas)](./3-tecnologias-ferramentas/tecnologias-ferramentas.md)
     <!-- TODO: Descrição a ser criada após reunir mais tópicos nesta seção para uma sugestão mais precisa. -->
 - [Práticas de Desenvolvimento](./4-praticas-desenvolvimento/)
     <!-- TODO: Descrição a ser criada após reunir mais tópicos nesta seção para uma sugestão mais precisa. -->
