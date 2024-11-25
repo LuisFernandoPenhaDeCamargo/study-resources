@@ -1,5 +1,3 @@
-Não revisei a ortografia de nenhum conteúdo neste diretório. <F
-
 # Anotações Soltas
 
 - A importância de configurar o ambiente: debugging, live reload e testes
@@ -158,7 +156,16 @@ O Code Coverage mostra o que você não testou no seu código existente mas não
 - Acho TODO: recriar o projeto
 - `Reflect` - respeita o ciclo de vida do objeto, evitando a perca de performance
 - `Reflect.deleteProperty`
+- Injeção de Dependências pode ser considerado um padrão de desenvolvimento?
+- DDD (Domain-Driven Development)
+- Padrão de Projeto Circuit Breaker
+  + Estratégias e tratativas para quando um serviço externo ao seu código falhar
+  + Ferramentas de Health Check
+
+#
+
+
 
 ---
 
-1:32
+37

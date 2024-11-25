@@ -1,4 +1,4 @@
-# Visual Studio Code
+# VS Code
 
 O Visual Studio Code (VS Code) é um editor de código-fonte gratuito e multiplataforma, desenvolvido pela Microsoft, voltado para desenvolvimento de software. Ele é amplamente utilizado por programadores, oferecendo uma vasta gama de recursos como:
 
@@ -9,17 +9,11 @@ O Visual Studio Code (VS Code) é um editor de código-fonte gratuito e multipla
 
 O VS Code se destaca pela flexibilidade e pela grande quantidade de plugins disponíveis em seu marketplace, o que permite configurar o ambiente de acordo com as necessidades específicas de cada projeto.
 
-### Sumário
+## Sumário
 
-- [Atalhos](./2-atalhos.md)
-- [settings.json](./3-settings-json.md)
-- [keybindings.json](./4-keybindings-json.md)
-- [Modo Depuração (JavaScript)](./5-modo-depuracao-javascript.md)
-- [launch.json](./6-launch-json.md)
-- [Terminal Integrado x Debug Console (Configuração)](./7-terminal-integrado-x-debug-console-configuracao.md)
-- [Adicionando um Linter (JavaScript)](./8-adicionando-linter-javascript.md)
-- [tasks.json](./9-tasks-json.md)
-- ["files to exclude"](./10-files-exclude.md)
-- [Extensões Utilizadas](./11-extensoes-utilizadas.md)
+- [Configurações de Ambiente](./1-configuracoes-ambiente/1-configuracoes-ambiente.md)
+- [Ferramentas e Recursos de Desenvolvimento](./2-ferramentas-recursos-desenvolvimento/1-ferramentas-recursos-desenvolvimento.md)
+- [Interface e Navegação](./3-interface-navegacao/1-interface-navegacao.md)
+- [Extensões Utilizadas](./4-extensoes-utilizadas.md)
 
-# [[ Voltar para: Ferramentas ]](../ferramentas.md)
+# [[ Voltar para: Editores de Texto ]](../editores-texto.md)

@@ -25,7 +25,7 @@ Testando scripts executados diretamente: o usuário possui scripts sem exportaç
 
 ### 5. Substituição de módulos em testes unitários
 
-Uso de esmock para substituir módulos: para evitar conflitos causados pela substituição global de métodos, como `fs.readFileSync` (o que interfere com o funcionamento normal do Node.js), o usuário considera o esmock para substituir o módulo File System diretamente no módulo que está sendo testado. TODO: Revisão.
+Uso de esmock para substituir módulos: para evitar conflitos causados pela substituição global de métodos, como `fs.readFileSync` (cuja substituição interfere no funcionamento normal do Node.js), o usuário considera o esmock para substituir o módulo File System diretamente no módulo que está sendo testado.
 
 # Outros Interesses Técnicos
 
