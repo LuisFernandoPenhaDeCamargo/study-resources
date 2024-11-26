@@ -5,7 +5,8 @@
 ## Sumário
 
 - [Editores de Texto](./1-editores-texto/editores-texto.md)
-- [Repositórios Remotos](./2-repositorios-remotos/repositorios-remotos.md)
-- [Cursos](./3-cursos/cursos.md)
+- [Linguagens de Programação](./2-linguagens-programacao/linguagens-programacao.md)
+- [Repositórios Remotos](./3-repositorios-remotos/repositorios-remotos.md)
+- [Cursos](./4-cursos/cursos.md)
 
 # [[ Voltar para a página inicial ]](../README.md)

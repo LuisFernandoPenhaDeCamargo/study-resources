@@ -26,4 +26,6 @@ Code Coverage (ou Cobertura de Código) é uma métrica que indica a porcentagem
 
 Relatórios de cobertura podem ser gerados em diversos formatos, como HTML, texto ou JSON. O formato HTML, por exemplo, permite visualizar a cobertura diretamento no navegador, destacando linhas de código testadas ou não, facilitando a análise e a revisão dos testes.
 
+Code Coverage é, assim, uma ferramenta essencial para garantir confiabilidade e a manutenção do código ao longo do ciclo de vida do desenvolvimento.
+
 # [[ Voltar para: Testes Automatizados ]](./1-testes-automatizados.md)

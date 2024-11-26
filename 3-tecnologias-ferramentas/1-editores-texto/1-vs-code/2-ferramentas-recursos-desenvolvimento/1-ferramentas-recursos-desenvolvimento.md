@@ -1,6 +1,6 @@
 # Ferramentas e Recursos de Desenvolvimento
 
-
+Ferramentas e Recursos de Desenvolvimento explora funcionalidades e utilitários do VS Code que oferecem suporte ao processo de criação e manutenção de software. Ele reúne tópicos que ajudam a otimizar fluxos de trabalho, aumentar a produtividade e aprimorar a experiência de desenvolvimento.
 
 ## Sumário
 
