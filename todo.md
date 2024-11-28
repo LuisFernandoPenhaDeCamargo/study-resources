@@ -1,10 +1,22 @@
 # TODO
 
+- Conseguir executar a BlackBox a partir do contêiner
+- Aplicar na rota da BlackBox o middleware responsável pelo CORS
+    + 'Access-Control-Allow-Origin: https://orion.magicis.com.br:3030/'
+    + 'Access-Control-Allow-Origin: https://orion.magicis.com.br:3020/'
+    + 'Access-Control-Allow-Methods: POST'
+- Fazer um script que seja executado pelo navegador e faça uma requisição para o Data-Server
 - Consigo mover **/migrate.js** (Data-API) para **/services**?
 - Adicionar o linter, verificar sobre o que se trata as configurações e configurá-lo
 
 # Estudar (Itens Específicos)
 
+- Quando você insere uma URL no navegador, você obtém o código daquela URL e ele é executado localmente? Aonde o código fica salvo? Somente no processo?
+- Como o código foi obtido através de um domínio, se este código faz uma requisição para outro domínio, o navegador percebe isso e é ai que é aplicado o CORS?
+- O que é o CORS?
+- O que é Preflight?
+- O que é DNS?
+- O que é um domínio?
 - Droplet (DO) x EC2 (AWS)
 - Sobre o que se trata "Boundary Tests"
 - O que são Testes E2E?

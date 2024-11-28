@@ -4,7 +4,7 @@ Ferramentas e Recursos de Desenvolvimento explora funcionalidades e utilitários
 
 ## Sumário
 
-- [Modo Depuração (JavaScript)](./2-modo-depuração-javascript.md)
+- [Modo Depuração (JavaScript)](./2-modo-depuração-javascript/1-modo-depuração-javascript.md)
 - [Adicionando um Linter (JavaScript)](./3-adicionando-linter-javascript.md)
 - [tasks.json](./4-tasks-json.md)
 

@@ -1,6 +1,6 @@
 # Sumário de JavaScript
 
-TODO: revisão: Este documento lista materiais relacionados a JavaScript. Eles estão separados por fonte de origem do conteúdo, sendo que "JavaScript" se trata de um material desenvolvido diretamente por mim.
+Este documento reúne materiais relacionados a JavaScript, organizado por fonte de origem. O tópico "JavaScript" refere-se a conteúdo desenvolvido diretamente por mim.
 
 ## Sumário
 
