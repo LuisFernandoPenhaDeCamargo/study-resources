@@ -14,8 +14,7 @@ Você pode rodar expressões JavaScript ou comandos diretamente no Debug Console
 
 ### 3. Exibição de saídas e logs
 
-TODO: Como eu posso pontuar na frase a seguir que estamos nos referindo a métodos JavaScript?
-- Qualquer saída no `console.log`, `console.error`, ou similar é exibida aqui, permitindo que você veja as mensagens de log enquanto o código é executado
+- Qualquer saída nos métodos JavaScript como `console.log`, `console.error`, ou similares é exibida aqui, permitindo que você veja as mensagens de log enquanto o código é executado
 - Durante a depuração, o Debug Console também exibe mensagens de erros, exceções e logs, ajudando a identificar pontos problemáticos no código
 
 ## Sumário

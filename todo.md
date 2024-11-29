@@ -11,6 +11,9 @@
 
 # Estudar (Itens Específicos)
 
+- O que seria acessar arquivos de host no contêiner?
+- Você consegue inserir, substituir e remover arquivos de um contêiner?
+- Você consegue ler informações de arquivos dentro de contêiners?
 - Quando você insere uma URL no navegador, você obtém o código daquela URL e ele é executado localmente? Aonde o código fica salvo? Somente no processo?
 - Como o código foi obtido através de um domínio, se este código faz uma requisição para outro domínio, o navegador percebe isso e é ai que é aplicado o CORS?
 - O que é o CORS?
@@ -26,6 +29,8 @@
 - Quais são os "testes de segurança" existentes?
 - O que são Testes de Intrusão?
 - O que são Sistemas Embarcados?
+- web3 é o mesmo que Blockchain?
+- O que é Blockchain?
 
 ## JavaScript
 

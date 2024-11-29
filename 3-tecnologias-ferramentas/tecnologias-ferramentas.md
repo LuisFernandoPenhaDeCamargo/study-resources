@@ -7,6 +7,7 @@
 - [Editores de Texto](./1-editores-texto/editores-texto.md)
 - [Linguagens de Programação](./2-linguagens-programacao/linguagens-programacao.md)
 - [Repositórios Remotos](./3-repositorios-remotos/repositorios-remotos.md)
-- [Cursos](./4-cursos/cursos.md)
+- [Containers](./4-containers/containers.md)
+- [Cursos](./5-cursos/cursos.md)
 
 # [[ Voltar para a página inicial ]](../README.md)

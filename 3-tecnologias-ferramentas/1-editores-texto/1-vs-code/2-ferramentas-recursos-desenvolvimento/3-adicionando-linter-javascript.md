@@ -2,9 +2,12 @@
 
 Para adicionar um linter JavaScript ao VS Code, uma boa prática é integrar ESLint, que ajuda a identificar e corrigir erros de estilo e possíveis problemas no código. Abaixo estão as etapas para configurar o ESLint, juntamente com uma breve explicação sobre a importância e o uso do linter no VS Code.
 
-# Adicionando um Linter TODO: parei aqui
+## Sumário
 
-# Adicionando um Linter
+- [Adicionando um Linter](#adicionando-linter)
+- [Vantagens](#vantagens)
+
+# <a id="adicionando-linter">Adicionando um Linter</a>
 
 A integração de um linter no VS Code permite verificar automaticamente o estilo e a qualidade do código, ajudando a identificar erros e promover um código mais consistente. O ESLint é uma das ferramentas mais utilizadas para JavaScript.
 
@@ -61,7 +64,9 @@ Para verificar todos os arquivos do projeto, execute no terminal:
 $ npx eslint . --ext .js, .jsx, .ts, .tsx
 ```
 
-# Vantagens
+# <a id="vantagens">Vantagens</a>
+
+TODO: parei aqui.
 
 1. **Consistência no código:** ajuda a garantir um estilo uniforme, especialmente em equipes de desenvolvimento
 2. **Identificação de erros:** detecta rapidamente erros de sintaxe e problemas potenciais de lógica
