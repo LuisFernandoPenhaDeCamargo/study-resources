@@ -1,16 +1,20 @@
-# Objetivo
+TODO: Revisar este documento.
 
-Este repositório tem como objetivo centralizar conteúdos relacionados à área de tecnologia. Ele serve como material de referência para auxiliar no aprendizado ou como uma fonte de consulta rápida.
+# Tech Compass
 
-## Sumário
+<!-- TODO: Renomear o repositório para "Tech Compass". --->
 
-- [Fundamentos de Tecnologia (Conceitos Gerais)](./2-fundamentos-tecnologia/fundamentos-tecnologia.md)  
-    Base teórica para compreender temas fundamentais da computação.
-- [Tecnologias e Ferramentas (Práticas Específicas)](./3-tecnologias-ferramentas/tecnologias-ferramentas.md)
-    <!-- TODO: Descrição a ser criada após reunir mais tópicos nesta seção para uma sugestão mais precisa. -->
-- [Práticas de Desenvolvimento](./4-praticas-desenvolvimento/praticas-desenvolvimento.md)
-    <!-- TODO: Descrição a ser criada após reunir mais tópicos nesta seção para uma sugestão mais precisa. -->
-- [Documentação](./5-documentacao/documentacao.md)  
-    Material técnico resumido sobre comandos, métodos e APIs, organizado por linguagem ou ferramenta para consultas rápidas.
-- [Template](./1-template/template.md)  
-    Estrutura base para contribuir com novos conteúdos no repositório, garantindo padronização e clareza.
+Este repositório foi criado para ser um material de referência estruturado, organizado em áreas que facilitam tanto consultas rápidas quanto um aprendizado contínuo e prático. Seu objetivo é proporcionar uma base sólida para revisitar conceitos tecnológicos conhecidos e aprofundar o entendimento conforme necessário.
+
+## Como Navegar no Repositório
+
+1. Comece pela seção de interesse usando os links abaixo.
+2. Cada seção possui um arquivo índice com descrições e links para os tópicos.
+
+## Estrutura do Repositório
+
+## Contribuição
+
+Este repositório é voltado para estudos pessoais e aprendizado. Sugestões e melhorias são sempre bem-vindas!
+
+TODO: Gostaria de pontuar um link para o "Guia de Contribuição", como você faria isso?

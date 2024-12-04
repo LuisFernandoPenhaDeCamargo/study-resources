@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test CORS</title>
+</head>
+<body>
+  <h1>Testando CORS</h1>
+  <button id="testButton">Testar CORS</button>
+  <pre id="output"></pre>
+
+  <script>
+    // URL da sua API
+    const url = 'https://api-test.orionapps.net:443/v2/black_box';
+
+    // Dados que você deseja enviar com o POST
+    const data = {
+        param1: 'valor1',
+        param2: 'valor2',
+    };
+
+    // Função para testar o CORS
+    async function testCORS() {
+    console.log('Iniciando teste de CORS...');
+    console.log('URL da API:', url);
+    console.log('Dados enviados:', data);
+
+    try {
+        const response = await fetch(url, {
+            method: 'POST', // Método HTTP
+            headers: {
+                'Content-Type': 'application/json', // Tipo de conteúdo
+                'Authorization': 'BlackBoxFakePassword'
+            },
+            body: JSON.stringify(data), // Corpo da requisição
+        });
+
+        console.log('Requisição enviada. Aguardando resposta...');
+
+        console.log(response)
+
+        // Verificando o status da resposta
+        if (response.ok) {
+            console.log('CORS está funcionando corretamente!');
+            const responseData = await response.json();
+            console.log('Resposta da API:', responseData);
+        } else {
+            console.error('Erro ao fazer a requisição CORS:', response.statusText);
+            console.error('Status:', response.status);
+        }
+    } catch (error) {
+        console.error('Erro ao fazer a requisição:', error.message);
+        console.error('Possíveis causas: navegador bloqueou CORS ou servidor está inacessível.');
+    }
+}
+
+// Executar a função para testar
+testCORS();
+  </script>
+</body>
+</html>
+
+/*
+Na implementação que você mostrou, não há um problema em capturar e responder a erros através do `stderr` antes de o processo fechar, mas a maneira como isso está configurado pode criar um comportamento inesperado:
+
+1. **Erros capturados pelo `stderr`**: Se um erro ocorrer e você responder imediatamente dentro do `process.stderr.on('data')`, o processo ainda pode estar rodando, mas você já teria enviado uma resposta para o cliente (o que finaliza a interação HTTP). O `process.on('close')` ainda seria executado depois disso, mas já teria sido respondido, o que pode gerar comportamento indesejado (como tentar enviar uma resposta após já ter enviado outra).
+   
+2. **Dúvida sobre o `code` no `process.on('close')`**: 
+   - O código de sucesso padrão é **`0`**, como mencionado antes. 
+   - O `code` será diferente de `0` para indicar falhas (por exemplo, problemas de execução ou terminação anormal do processo).
+   - Mesmo que erros sejam tratados em `stderr`, o processo pode finalizar com sucesso (código `0`), então o uso de `close` ainda pode ser necessário.
+
+### Sugestão de Ajustes:
+
+1. **Ajuste na Resposta em Caso de Erro**: Evite finalizar a resposta no primeiro erro capturado em `stderr`. Você pode acumular os erros e responder apenas após o `process.on('close')`, garantindo que o processo tenha terminado.
+
+2. **Tratamento Condicional no `close`**: No `process.on('close')`, se o código de saída for diferente de `0`, retorne uma mensagem de erro ao cliente.
+
+Aqui está uma versão melhorada:
+
+```js
+const { spawn } = require('child_process');
+
+module.exports = class BlackBox {
+    static play(request, response) {
+        try {
+            const command   = '/home/orion-data-server/lfernando/BlackBox';
+            const args      = [request.body.playerID, request.body.gameID, request.body.commandID, request.body.auxOne, request.body.auxTwo].map(String);
+            let contentType = '';
+            let xmlData     = '';
+            let errorOutput = ''; // Armazena as mensagens de erro
+
+            const process   = spawn(command, args, { shell: true });
+
+            // Captura o stdout
+            process.stdout.on('data', data => {
+                const output = data.toString();
+
+                if (output.startsWith('Content-Type:')) {
+                    contentType = output.trim();
+                } else {
+                    xmlData += output;
+                }
+            });
+
+            // Captura o stderr
+            process.stderr.on('data', data => {
+                errorOutput += data.toString(); // Armazena os erros em vez de responder imediatamente
+            });
+
+            // Quando o processo termina
+            process.on('close', code => {
+                if (code !== 0 || errorOutput) {
+                    console.error(`[ Black Box ] Erro no processo: ${errorOutput}`);
+                    return response.status(400).json({ message: errorOutput || `Processo falhou com código: ${code}` });
+                }
+
+                // Sucesso, responde com o XML
+                console.log(`[ Black Box ] Processo finalizado com sucesso. Código: ${code}`);
+
+                response.set('Content-Type', contentType.split(':')[1]);
+                response.status(200).send(xmlData);
+            });
+        } catch (error) {
+            console.error(`[ routes/black_box ${error.name} ], ${error.message}`);
+
+            response.status(500).json({ message: 'Internal Server Error' });
+        }
+    }
+}
+```
+
+### Diferenças:
+- Agora, **não finaliza a resposta imediatamente no `stderr`**. Isso permite que o processo termine completamente antes de tomar uma decisão sobre o que responder.
+- O `stderr` é acumulado em `errorOutput`, e no evento `close`, você verifica se o código de saída foi diferente de `0` ou se houve alguma mensagem de erro no `stderr`.
+- Se o processo foi bem-sucedido (código `0` e sem erros), ele responde com o XML.
+
+Dessa forma, você evita conflitos e garante que o processo esteja totalmente finalizado antes de enviar a resposta.
+*/
+
+/*
+Sim, se você fizer algo como `data => return response.status(400).json({ message: data.toString(), })` dentro do `process.stderr.on('data')`, a função será encerrada **imediatamente** após o erro ser capturado, e a resposta será enviada ao cliente. No entanto, o **processo** (`spawn`) continuará em execução até ser concluído, mesmo que a resposta HTTP já tenha sido enviada. O Node.js não "mata" o processo automaticamente quando você envia uma resposta.
+
+### O que acontece com o processo em execução?
+Mesmo que você finalize a função enviando a resposta no caso de erro, o processo que foi criado com o `spawn` continuará rodando até que ele termine, seja com sucesso ou com falha. O evento `close` será disparado quando o processo finalmente for encerrado, mas isso ocorrerá **depois** da resposta HTTP já ter sido enviada. Como a resposta já foi enviada, a tentativa de fazer mais alguma coisa, como enviar uma nova resposta dentro do `close`, causaria erros.
+
+### Problemas Potenciais
+1. **Processamento Assíncrono Fora de Controle**: Se o processo ainda estiver em execução e gerando mais dados, você não conseguirá tratá-los corretamente, pois já encerrou a resposta.
+   
+2. **Evitando Respostas Duplicadas**: Quando você envia uma resposta dentro do `stderr.on('data')`, se o processo continuar, o `close` será eventualmente chamado, mas você não poderá enviar outra resposta porque já foi enviada uma anteriormente.
+
+### Como Tratar?
+Se você precisa garantir que a resposta só seja enviada **depois que o processo inteiro terminar**, o ideal é **esperar pelo término do processo** no `close` e só então decidir o que fazer. Como mostrei na resposta anterior, a abordagem correta é acumular os erros e somente enviar a resposta no final, no evento `close`. Isso garante que o processo termine antes de enviar qualquer resposta ao cliente.
+
+### Se você realmente precisa encerrar a função no erro
+Se você quer manter a abordagem de encerrar a função assim que houver um erro, mas também quer garantir que o processo não continue rodando indefinidamente, você pode "matar" o processo chamando `process.kill()` assim que ocorrer o erro:
+
+```js
+process.stderr.on('data', data => {
+    response.status(400).json({ message: data.toString() });
+    process.kill(); // Encerra o processo imediatamente
+});
+```
+
+Isso vai forçar o processo a ser interrompido assim que o erro for detectado e a resposta for enviada.
+*/
+
+Response | Data: {"message":"docker: permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Head \"http://%2Fvar%2Frun%2Fdocker.sock/_ping\": dial unix /var/run/docker.sock: connect: permission denied.\nSee 'docker run --help'.\n"}
