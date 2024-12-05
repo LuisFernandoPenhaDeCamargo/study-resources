@@ -2,10 +2,10 @@
 
 Obrigado por contribuir com o Tech Compass! Este documento contém diretrizes e recursos para ajudá-lo a criar conteúdo de forma consistente e alinhada com os objetivos do repositório.
 
+## Como Contribuir
+
 > **Nota:** Antes de começar a elaborar novos conteúdos para o repositório, visualize o objetivo do tópico ou seção que deseja adicionar. 
 Isso ajudará você a entender como ele contribuirá para o aprendizado ou para consultas rápidas, garantindo clareza no que será elaborado.
-
-## Como Contribuir
 
 <!--
 TODO: Elaborar o conteúdo desta seção. Exemplo de conteúdo para a seção:
