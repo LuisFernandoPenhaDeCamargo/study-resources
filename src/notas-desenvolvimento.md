@@ -1,5 +1,7 @@
 # Notas em Desenvolvimento
 
+Este documento reúne ideias, insights e anotações preliminares que ainda serão analisadas, refinadas e desenvolvidas. Seu objetivo é servir como um espaço para registro inicial de informações e reflexões, que futuramente poderão ser incorporadas às seções organizadas do repositório.
+
 ## Curriculum Vitae
 
 PIRATE KING - 17/09/2022
