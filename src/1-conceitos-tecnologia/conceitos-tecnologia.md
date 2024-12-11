@@ -1,7 +1,6 @@
 # Conceitos de Tecnologia
 
 <!--
-TODO: Revisão: Desenvolver a descrição detalhada para este documento e o conteúdo específico desta seção. Exemplo de conteúdo para a seção:
 TODO: Desenvolver a descrição detalhada para este documento e o conteúdo específico desta seção. Exemplo de conteúdo para a seção:
 
 ## Sumário

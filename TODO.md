@@ -14,7 +14,7 @@ Este documento lista tópicos a serem estudados ou desenvolvidos.
 - O que é Preflight?
 - O que é DNS?
 - O que é um domínio?
-- Droplet (DO) x EC2 (AWS)
+- Droplet (DO) vs EC2 (AWS)
 - O que são Sistemas Embarcados?
 - web3 é o mesmo que Blockchain?
 - O que é Blockchain?
@@ -93,7 +93,7 @@ docker: permission denied while trying to connect to the Docker daemon socket at
 - `fetch`
 - Especificadores de formato (`%`, por exemplo)
 - O que a sintaxe `@type {import('jest').Config}` pontua? (o foco é a sintaxe e não o Jest)
-- `node:http` x `node:http/2` x `node:https` x Express
+- `node:http` vs `node:http/2` vs `node:https` vs Express
 - Eloquent JavaScript
 - Rocketseat
 - W3Schools

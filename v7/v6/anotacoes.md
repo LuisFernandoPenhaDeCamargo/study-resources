@@ -1,3 +1,71 @@
+curl http://localhost:8080/game/accumulated_reset -X POST \
+-H "Content-Type: application/json" -d '{"machine_id": 101}'
+
+https://support.discord.com/hc/pt-br/articles/214925018-O-que-aconteceu-com-meu-Microfone-Diversos-Problemas-de-%C3%81udio
+
+https://support.discord.com/hc/pt-br/articles/360045138471-Guia-de-Solu%C3%A7%C3%A3o-de-Problema-de-Voz-e-V%C3%ADdeo-no-Discord?utm_campaign=2020-06_help-voice-video&utm_content=--t%3Apm&utm_medium=blog&utm_source=discord
+
+https://www.youtube.com/watch?v=CFRhGnuXG-4
+
+package.json
+package-lock.json
+npm-shrinkwrap.json
+
+sudo -E npm install -g @zoeslots/zoe-game-api
+
+mudar de deskpot sem que as aplicações abertas me sigam, o tilix e o vs code estão seguindo :'(
+
+- https://pm2.keymetrics.io/docs/usage/quick-start/
+
+- O que seriam funções estritas e funções não estritas?
+- O que são palavras-chaves?
+- O que é uma função?
+- O que é um método?
+- Método x função
+- O que é uma propriedade?
+- `extends`
+- `super`
+- É obrigatória a existência da chave "`scripts`" no seu **package.json**?
+    + Além de pesquisar, testar isso na hora de publicar um pacote
+    + A chave `scripts` não é obrigatória
+
+- POO
+    + Herança
+    + Encapsulamento
+    + Polimorfismo
+- `SELECT * FROM $< tabela >\G;` o que o `\G` significa?
+- Para inserir um dump em um banco, ele já precisa existir?
+    + `mariadb -e "CREATE DATABASE $< nome do banco de dados >;"`
+    + `mariadb $< nome do banco de dados > < $< dump >`
+
+- No final das contas, seja interpretada ou compilada, a CPU lê código de máquina, o que acaba por se tornar um processo
+- WSS é um protocolo, assim como o HTTPS e o HTTP
+
+- Todo binário não é um executável?
+- **PirateSoftware (Streamer):** habilitar a verificação de dois fatores ("Two Factor") sempre que possível nos seus programas
+    + Como este tipo de verificação funciona?
+    + Quais as vantagens que ela trás?
+- git flow, trunk based (dois formatos de fluxo)
+- Redirecionamento de DNS
+- Certificados (utilizados em ssh, websockets)
+- No contexto de APIs, testes de estresse (teste de volumetria, "quanto ele aguenta"), testes automatizados
+- Criar do zero uma instância no EC2
+    + Colocar o nginx para rodar junto com a API em Node.js
+    + Instalar https na instância
+    + Ativar a atualização do certificado ssl de forma automâtica
+- Talves eu queria um linter para JS
+
+- Criar um pipeline de deploy
+- Criar um serviço que abre as aplicações que eu uso assim que eu início o sistema
+- Criar um script que realiza commits antes de desligar a minha máquina
+- Criar uma aplicação e executá-la com o Docker
+- Criar um banco na RDS em que a autenticação seja feita com um usuário IAM (https://repost.aws/knowledge-center/users-connect-rds-iam)
+- Criar um volume criptografado com o LUKS
+
+"mysql -u orion -pBl4ckBox1337 zoeslots --disable-column-names -B -e '{query}'"
+
+nobody --- me fode
+
 # Anotações Soltas
 
 - A importância de configurar o ambiente: debugging, live reload e testes
@@ -162,9 +230,22 @@ O Code Coverage mostra o que você não testou no seu código existente mas não
   + Estratégias e tratativas para quando um serviço externo ao seu código falhar
   + Ferramentas de Health Check
 
-#
+# Testes Automatizados em Navegadores (Frontend)
 
+# Testando Aplicações Frontend sem Frameworks
 
+- Em Node.js temos APIs de SOs.
+- Em aplicações Web APIs de renderização de elementos HTML.
+- **View (**`view.js`**):** tudo que tem comunicação com a DOM API (`document`)
+- **Service (**`service.js`**):** tudo que tem interação externa (como um banco de dados)
+- **Controller (**`controller.js`**):** quem faz o link, quem junta todo mundo para carregar os itens, fazer a atualização dos itens
+- **Index (**`index.js`**):** entrypoint
+
+# Criando Testes E2E em Aplicações Frontend
+
+- Faça um projeto e use
+  + Cypress é legal pa carai
+  + Cucumber é legal pa carai
 
 ---
 
