@@ -66,10 +66,6 @@ docker: permission denied while trying to connect to the Docker daemon socket at
 - `docker images`
 - `docker rmi`
 - `docker commit`
-- https://docs.docker.com/get-started/docker-overview/
-- https://docs.docker.com/guides/
-- https://docs.docker.com/guides/nodejs/
-- https://labs.play-with-docker.com/ (Ambiente de execução)
 
 ### Testes Automatizados
 
