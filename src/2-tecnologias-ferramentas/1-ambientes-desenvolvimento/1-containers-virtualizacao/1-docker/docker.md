@@ -2,7 +2,9 @@
 
 ## Sumário
 
-1. [Conceitos Fundamentais](./1-conceitos-fundamentais/conceitos-fundamentais.md)
+1️⃣ [Conceitos Fundamentais](./1-conceitos-fundamentais/conceitos-fundamentais.md)  
+2️⃣ [Instalação e Configuração](./2-instalacao-configuracao/instalacao-configuracao.md)  
+
 2. [Instalação e Configuração](./2-instalacao-configuracao/instalacao-configuracao.md)
 3. [Imagens Docker](./3-imagens-docker/imagens-docker.md)
 4. [Dockerfile (Criação de Imagens)](./4-dockerfile/dockerfile-criacao-imagens.md)

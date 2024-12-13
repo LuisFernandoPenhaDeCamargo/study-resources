@@ -1,3 +1,103 @@
+terminate called after throwing an instance of 'mysqlpp::ConectionFailed'
+Unknown MySQL server host <nome do servidor>
+
+5️⃣ Como Funciona a Execução de Contêineres
+
+Onde deve ficar? → Mover para a seção de "Execução de Contêineres" (nova subseção sugerida)
+Justificativa: Esse tópico já se aproxima de um processo prático, quase operacional, e não é um "conceito fundamental" no mesmo nível que "O que é Docker" ou "Arquitetura Docker". Ele detalha o fluxo de execução de contêineres e, por isso, poderia ser parte de uma subseção prática dentro de Execução de Contêineres.
+Nova localização sugerida:
+css
+Copiar código
+└── 3-imagens-docker
+└── 4-dockerfile
+└── 5-rede-docker
+└── 6-volumes-persistencia-dados
+└── 7-execucao-conteineres 
+    └── 1-como-funciona-a-execucao-de-conteineres.md
+Ação: Mover para a subseção 7 - Execução de Contêineres.
+
+6️⃣ Ciclo de Vida de um Contêiner (Criação, Execução, Pausa, Reinício, Remoção)
+
+Onde deve ficar? → Mover para a seção de "Execução de Contêineres"
+Justificativa: O ciclo de vida é parte essencial do processo de execução. Logo, faz mais sentido mover esse tópico para uma subseção específica chamada "Execução de Contêineres". Isso permitiria uma abordagem prática e detalhada.
+Nova localização sugerida:
+markdown
+Copiar código
+└── 7-execucao-conteineres
+    └── 2-ciclo-vida-conteiner.md
+Ação: Mover para a subseção 7 - Execução de Contêineres.
+
+
+Excelente reflexão! Vamos analisar a seção de Conceitos Fundamentais no contexto de todo o repositório. O objetivo é garantir que não haja redundância e que cada seção tenha seu propósito bem definido. Vou avaliar cada tópico e sugerir se ele deve permanecer em Conceitos Fundamentais ou se faz mais sentido movê-lo para outra seção.
+
+🧐 Análise Crítica Tópico a Tópico
+1️⃣ O que é Docker e para que Serve?
+
+Onde deve ficar? → Mantido em Conceitos Fundamentais
+Justificativa: Esse é o ponto de partida para qualquer aprendizado sobre Docker. Não faz sentido mover para outra seção. Aqui é o lugar correto.
+Ação: Manter no lugar atual.
+2️⃣ Arquitetura Docker (Docker Engine, Daemon, CLI e Docker Desktop)
+
+Onde deve ficar? → Mantido em Conceitos Fundamentais
+Justificativa: A arquitetura é um conceito básico que ajuda a entender o funcionamento do Docker. Não faz sentido realocar isso para outra seção, já que é essencial para entender outras seções, como execução de contêineres e rede Docker.
+Ação: Manter no lugar atual.
+3️⃣ O que são Imagens e Contêineres (Conceito Geral)
+
+Onde deve ficar? → Mantido em Conceitos Fundamentais
+Justificativa: O conceito de imagens e contêineres é o cerne do Docker. Apesar de haver uma seção dedicada a Imagens Docker e outras seções relacionadas a contêineres, aqui o foco é o conceito geral. Na seção "Imagens Docker", você abordará comandos, práticas e o uso de imagens, mas aqui você estabelece o ponto de partida conceitual.
+Ação: Manter no lugar atual.
+Observação: No entanto, você pode adicionar uma referência cruzada (link) para a seção de Imagens Docker para que o leitor saiba onde aprofundar o tema.
+4️⃣ Diferença entre Contêineres e Máquinas Virtuais (VMs)
+
+Onde deve ficar? → Mantido em Conceitos Fundamentais
+Justificativa: Essa comparação é uma dúvida recorrente para quem está começando com Docker. Colocá-la em outra seção (como "Execução de Contêineres") criaria confusão, pois trata de conceitos gerais, e não de execução prática.
+Ação: Manter no lugar atual.
+5️⃣ Como Funciona a Execução de Contêineres
+
+Onde deve ficar? → Mover para a seção de "Execução de Contêineres" (nova subseção sugerida)
+Justificativa: Esse tópico já se aproxima de um processo prático, quase operacional, e não é um "conceito fundamental" no mesmo nível que "O que é Docker" ou "Arquitetura Docker". Ele detalha o fluxo de execução de contêineres e, por isso, poderia ser parte de uma subseção prática dentro de Execução de Contêineres.
+Nova localização sugerida:
+css
+Copiar código
+└── 3-imagens-docker
+└── 4-dockerfile
+└── 5-rede-docker
+└── 6-volumes-persistencia-dados
+└── 7-execucao-conteineres 
+    └── 1-como-funciona-a-execucao-de-conteineres.md
+Ação: Mover para a subseção 7 - Execução de Contêineres.
+6️⃣ Ciclo de Vida de um Contêiner (Criação, Execução, Pausa, Reinício, Remoção)
+
+Onde deve ficar? → Mover para a seção de "Execução de Contêineres"
+Justificativa: O ciclo de vida é parte essencial do processo de execução. Logo, faz mais sentido mover esse tópico para uma subseção específica chamada "Execução de Contêineres". Isso permitiria uma abordagem prática e detalhada.
+Nova localização sugerida:
+markdown
+Copiar código
+└── 7-execucao-conteineres
+    └── 2-ciclo-vida-conteiner.md
+Ação: Mover para a subseção 7 - Execução de Contêineres.
+7️⃣ Camadas de Imagens Docker (Copy-on-Write)
+
+Onde deve ficar? → Mover para a seção "Imagens Docker"
+Justificativa: Esse tópico fala diretamente sobre imagens Docker, que têm uma seção própria. Como Copy-on-Write (CoW) é um comportamento intrínseco das imagens Docker, ele faz mais sentido dentro da seção Imagens Docker, possivelmente como uma subseção isolada.
+Nova localização sugerida:
+arduino
+Copiar código
+└── 3-imagens-docker
+    └── 1-camadas-imagens-copy-on-write.md
+Ação: Mover para a seção 3 - Imagens Docker.
+
+8️⃣ Contêiner Efêmero vs Contêiner Persistente
+
+Onde deve ficar? → Mover para a seção "Volumes e Persistência de Dados"
+Justificativa: O conceito de efemeridade vs persistência se conecta diretamente com a necessidade de criar volumes. Faz sentido contextualizar isso dentro da seção Volumes e Persistência de Dados, já que a persistência dos dados é exatamente o que resolve o problema de "contêineres efêmeros".
+Nova localização sugerida:
+markdown
+Copiar código
+└── 6-volumes-persistencia-dados
+    └── 1-efemero-vs-persistente.md
+Ação: Mover para a seção 6 - Volumes e Persistência de Dados.
+
 # TODO
 
 Este documento lista tópicos a serem estudados ou desenvolvidos.
