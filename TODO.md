@@ -1,6 +1,3 @@
-terminate called after throwing an instance of 'mysqlpp::ConectionFailed'
-Unknown MySQL server host <nome do servidor>
-
 5️⃣ Como Funciona a Execução de Contêineres
 
 Onde deve ficar? → Mover para a seção de "Execução de Contêineres" (nova subseção sugerida)
