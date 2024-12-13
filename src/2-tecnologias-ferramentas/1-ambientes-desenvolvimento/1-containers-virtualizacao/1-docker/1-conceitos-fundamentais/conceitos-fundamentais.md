@@ -2,14 +2,10 @@
 
 ## Sumário
 
-- O que é Docker e para que Serve?
-- Diferença entre Contêineres e Máquinas Virtuais (VMs)
-- O que são Imagens e Contêineres (Conceito Geral)
-- Como Funciona a Execução de Contêineres
-- Arquitetura Docker (Docker Engine, Daemon, CLI e Docker Desktop)
-- Camadas de Imagens Docker (Copy-on-Write)
-- Ciclo de Vida de um Contêiner (Criação, Execução, Pausa, Reinício, Remoção)
-- Contêiner Efêmero vs Contêiner Persistente
-- Docker vs Outras Ferramentas de Conteinerização
+1. O que é Docker e para que Serve?
+2. Arquitetura Docker (Docker Engine, Daemon, CLI e Docker Desktop)
+3. O que são Imagens e Contêineres (Conceito Geral)
+4. Diferença entre Contêineres e Máquinas Virtuais (VMs)
+5. Docker vs Outras Ferramentas de Conteinerização
 
 ## [[ Voltar para: Docker ]](../docker.md)
