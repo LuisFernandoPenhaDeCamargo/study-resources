@@ -1,9 +1,11 @@
 # Docker
 
-## Sumário
+---
 
-|Seção |                                                                                                   |
-|:----:|---------------------------------------------------------------------------------------------------|
+### Sumário
+
+|Índice|Seção                                                                                              |
+|-----:|:--------------------------------------------------------------------------------------------------|
 |    1️⃣|[Conceitos Fundamentais](./1-conceitos-fundamentais/conceitos-fundamentais.md)                     |
 |    2️⃣|[Instalação e Configuração](./2-instalacao-configuracao/instalacao-configuracao.md)                |
 |    3️⃣|[Imagens Docker](./3-imagens-docker/imagens-docker.md)                                             |
