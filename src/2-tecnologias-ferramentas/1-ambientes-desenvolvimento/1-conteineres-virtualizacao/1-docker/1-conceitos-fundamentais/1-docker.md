@@ -67,56 +67,25 @@ O Docker tem várias aplicações práticas no desenvolvimento, entrega e opera�
 
 Para entender melhor o Docker, é importante conhecer alguns conceitos fundamentais:
 
-|Conceito|Descrição|
-|---|---|
-|Contêiner|Unidade de software
-|Imagem|
-|Dockerfile|
-|Docker Hub|
-|Volume|
-|Rede|
-|Orquestração|
+| Conceito     | Descrição                                                                     |
+|:-------------|:------------------------------------------------------------------------------|
+| Contêiner    | Unidade de software que contém a aplicação e todas as suas dependências       |
+| Imagem       | Modelo imutável para criar contêineres (base de onde o contêiner é criado)    |
+| Dockerfile   | Arquivo de script que define as instruções para criar uma imagem Docker       |
+| Docker Hub   | Repositório público onde imagens Docker são armazenadas e compartilhadas      |
+| Volume       | Área de armazenamento persistente para salvar dados fora do contêiner         |
+| Rede         | Sistema de comunicação entre contêineres e o host                             |
+| Orquestração | Ferramentas para gerenciar vários contêineres, como Docker Swarm e Kubernetes |
 
-| **Conceito**    | **Descrição** |
-|-----------------|----------------|
-| **Container**    | Unidade de software que contém a aplicação e todas as suas dependências. |
-| **Imagem**       | Modelo imutável para criar containers (base de onde o container é criado). |
-| **Dockerfile**   | Arquivo de script que define as instruções para criar uma imagem Docker. |
-| **Docker Hub**   | Repositório público onde imagens Docker são armazenadas e compartilhadas. |
-| **Volume**       | Área de armazenamento persistente para salvar dados fora do container. |
-| **Rede**         | Sistema de comunicação entre containers e o host. |
-| **Orquestração** | Ferramentas para gerenciar vários containers, como Docker Swarm e Kubernetes. |
+## 🚀 Vantagens do Docker
 
-### 🚀 **Vantagens do Docker**
-- **Portabilidade**: "Funciona na minha máquina e no servidor".
-- **Isolamento**: Cada aplicação fica isolada em um container.
-- **Eficiência**: Menos consumo de memória e recursos do que máquinas virtuais.
-- **Desempenho**: Containers iniciam em milissegundos.
-- **Escalabilidade**: Fácil de escalar horizontalmente.
+- **Portabilidade:** Contêineres funcionam de forma idêntica em qualquer ambiente que tenha o Docker instalado, garantindo compatibilidade entre desenvolvimento e produção
+- **Isolamento:** Cada contêiner mantém sua própria aplicação e dependências separadas, evitando conflitos entre diferentes projetos
+- **Eficiência de recursos:** Contêineres utilizam o sistema operacional de forma compartilhada, ocupando menos memória e iniciando mais rápido do que VMs
+- **Escabilidade:** Facilita a criação de várias cópias de contêineres, permitindo expandir a capacidade do aplicativo de forma rápida e eficiente
 
----
+## 📚 Resumo
 
-### 🔍 **Diferença entre Docker e Máquinas Virtuais (VMs)**
-| **Critério**          | **Docker (Containers)**      | **Máquinas Virtuais (VMs)**     |
-|----------------------|-----------------------------|-----------------------------------|
-| **Isolamento**        | Compartilha o kernel do SO   | Possui sistema operacional próprio|
-| **Desempenho**        | Leve e rápido                | Pesado e lento                    |
-| **Portabilidade**     | Altamente portátil           | Precisa reconfigurar o ambiente   |
-| **Tamanho da Imagem** | Menor (MBs)                  | Maior (GBs)                       |
-| **Tempo de Inicialização** | Milissegundos           | Minutos                           |
-| **Uso de Recursos**   | Usa menos CPU e memória      | Consome mais recursos             |
-
----
-
-### 📚 **Resumo**
-O Docker é uma ferramenta poderosa para **desenvolvimento, teste, implantação e escalabilidade** de aplicativos. Ele garante que o software **funcione de forma consistente** em qualquer lugar, **otimiza o uso de recursos** e **acelera o processo de entrega contínua** (CI/CD). Graças ao conceito de **containers leves e portáteis**, Docker se tornou um dos pilares fundamentais na área de DevOps e Cloud Computing.
-
----
-
-**Vantagens**  
-- **Portabilidade**: Os contêineres funcionam da mesma forma em qualquer ambiente compatível com Docker.  
-- **Eficiência de Recursos**: Contêineres compartilham o kernel do sistema operacional, sendo mais leves e rápidos que VMs.  
-- **Rapidez no Ciclo de Desenvolvimento**: A criação, execução e reinicialização de contêineres é mais rápida do que máquinas virtuais.  
-- **Escalabilidade**: Permite a escalabilidade de aplicativos com a criação de múltiplas réplicas de contêineres.  
+O Docker é uma ferramenta poderosa para **desenvolvimento, teste, implantação e escalabilidade** de aplicativos. Ele garante que o software **funcione de forma consistente** em qualquer lugar, **otimiza o uso de recursos** e **acelera o processo de entrega contínua** (CI/CD). Graças ao conceito de **conteinêres leves e portáteis**, Docker se tornou um dos pilares fundamentais na área de DevOps e Cloud Computing.
 
 ## [[ Voltar para: Conceitos Fundamentais ]](./conceitos-fundamentais.md)
