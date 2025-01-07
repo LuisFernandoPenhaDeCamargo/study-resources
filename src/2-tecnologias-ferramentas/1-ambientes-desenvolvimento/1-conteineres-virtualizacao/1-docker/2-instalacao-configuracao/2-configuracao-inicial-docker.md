@@ -92,6 +92,19 @@ Por padrão, o Docker armazena dados em **/var/lib/docker**. Se você desejar al
 - Pare o serivço Docker:  
 
   ```Bash
+  $ sudo systemctl stop docker
+  ```
+
+- Mova os dados para o novo diretório  
+
+  ```Bash
+  $ sudo mv /var/lib/docker /novo/caminho/docker
+  ```
+
+- Configure o novo diretório editando o arquivo de configuração:
+
+  ```Bash
+  $ sudo nano /etc/docker/daemon.json
   ```
 
 ## [[ Voltar para: Instalação e Configuração ]](./instalacao-configuracao.md)
