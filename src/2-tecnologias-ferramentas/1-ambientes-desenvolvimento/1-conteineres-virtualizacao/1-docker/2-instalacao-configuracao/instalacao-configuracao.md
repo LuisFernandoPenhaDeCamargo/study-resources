@@ -1,9 +1,11 @@
-# Instalação e Configuração
+# 2️⃣ Instalação e Configuração
+
+> **Nota:** Os tópicos a seguir abordam a instalação e configuração do Docker em sistemas operacionais baseados em Linux que utilizam systemd como sistema de inicialização e gerenciamento de serviços. Se você estiver usando um sistema diferente, como macOS, Windows, ou distribuições Linux com outro gerenciador de serviços (ex: init.d), ajustes específicos podem ser necessários.
 
 ## Sumário
 
-- Como Instalar o Docker (Windows, Linux, macOS)
-- Configuração Inicial do Docker (Permissões de Usuário, Grupos, etc.)
+- [Como Instalar o Docker (Linux)](./1-como-instalar-docker.md)
+- [Configuração Inicial do Docker (Permissões de Usuário, Grupos, etc.)](./2-configuracao-inicial-docker.md)
 - Compreensão do Arquivo de Configuração **daemon.json**
 
 ## [ Voltar para: Docker ](../docker.md)
@@ -90,6 +92,7 @@ em itens, letras maiúsculas após os dois pontos
 os dois pontos também devem estar em negrito
 só tem um #, então quando o tópico for do ##, usar ###
 em tabelas, formate o espaçamento no markdown para que seja fácil de ler
+rolê do negrito em nomes de arquivos e diretórios
 
 
 
