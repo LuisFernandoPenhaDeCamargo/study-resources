@@ -6,7 +6,7 @@
 
 - [Como Instalar o Docker (Linux)](./1-como-instalar-docker.md)
 - [Configuração Inicial do Docker (Permissões de Usuário, Grupos, etc.)](./2-configuracao-inicial-docker.md)
-- Compreensão do Arquivo de Configuração **daemon.json**
+- [Compreensão do Arquivo de Configuração **daemon.json**](./3-compreensao-arquivo-configuracao-daemon-json.md)
 
 ## [ Voltar para: Docker ](../docker.md)
 
@@ -94,7 +94,7 @@ só tem um #, então quando o tópico for do ##, usar ###
 em tabelas, formate o espaçamento no markdown para que seja fácil de ler
 rolê do negrito em nomes de arquivos e diretórios
 
-
+markdown - bloco de código aceita indentação sob lista feita com traço, com numeração nop
 
 **🧠 Modelo Utilizado: GPT-4-turbo**
 

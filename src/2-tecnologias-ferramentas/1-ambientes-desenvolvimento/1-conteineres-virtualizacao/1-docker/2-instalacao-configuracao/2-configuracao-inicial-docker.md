@@ -89,86 +89,42 @@ $ sudo systemctl restart docker
 
 Por padrão, o Docker armazena dados em **/var/lib/docker**. Se você desejar alterar essa localização (ex: para outro disco ou partição):
 
-- Pare o serivço Docker:  
-
+- Pare o serivço Docker:
   ```Bash
   $ sudo systemctl stop docker
   ```
-
-- Mova os dados para o novo diretório  
-
+- Mova os dados para o novo diretório
   ```Bash
   $ sudo mv /var/lib/docker /novo/caminho/docker
   ```
-
 - Configure o novo diretório editando o arquivo de configuração:
-
   ```Bash
   $ sudo nano /etc/docker/daemon.json
   ```
-
-## [[ Voltar para: Instalação e Configuração ]](./instalacao-configuracao.md)
-
-Por padrão, o Docker armazena dados em `/var/lib/docker`. Se você desejar alterar essa localização (ex.: para outro disco ou partição):  
-
-- Pare o serviço Docker:  
-
-  ```bash
-  sudo systemctl stop docker
-  ```  
-
-- Mova os dados para o novo diretório:  
-
-  ```bash
-  sudo mv /var/lib/docker /novo/caminho/docker
-  ```  
-
-- Configure o novo diretório editando o arquivo de configuração:  
-
-  ```bash
-  sudo nano /etc/docker/daemon.json
-  ```  
-
-  Adicione:  
-
-  ```json
+- Adicione:
+  ```JSON
   {
     "data-root": "/novo/caminho/docker"
   }
-  ```  
+  ```
+- Reinicie o serviço:
+  ```Bash
+  $ sudo systemctl start docker
+  ```
 
-- Reinicie o serviço:  
+## 🔐 Configurações de Segurança
 
-  ```bash
-  sudo systemctl start docker
-  ```  
+1. **Limitar acesso ao Docker API Socket:** O socket padrão **/var/run/docker.sock** concede acesso total ao Docker. Use permissões adequadas para limitar o acesso
+2. **Habilitar logs:** Configure o Docker para registrar logs detalhados. Isso ajuda no monitoramento e na resolução de problemas
+3. **Ativar AppArmor ou SELinux:** Proteja os contêineres usando políticas de segurança adicionais, como AppArmor ou SELinux, dependendo da sua distribuição Linux
 
----
+## 📚 Resumo
 
-## 🔐 Configurações de Segurança  
+1. **Ative e configure o serviço Docker:** Verifique se ele inicia automaticamente
+2. **Permissões:** Adicione o usuário ao grupo `docker` para facilitar o uso
+3. **Proxy e diretórios:** Ajuste conforme a infraestrutura
+4. **Segurança:** Limite acessos e habilite medidas de proteção
 
-1. **Limitar acesso ao Docker API Socket:**  
-   O socket padrão `/var/run/docker.sock` concede acesso total ao Docker. Use permissões adequadas para limitar o acesso.  
+Essas configurações garantem um ambiente funcional, seguro e otimizado para o uso do Docker.
 
-2. **Habilitar Logs:**  
-   Configure o Docker para registrar logs detalhados. Isso ajuda no monitoramento e na resolução de problemas.  
-
-3. **Ativar AppArmor ou SELinux:**  
-   Proteja os contêineres usando políticas de segurança adicionais, como AppArmor ou SELinux, dependendo da sua distribuição Linux.  
-
----
-
-## 📚 Resumo  
-
-1. **Ative e configure o serviço Docker:** Verifique se ele inicia automaticamente.  
-2. **Permissões:** Adicione o usuário ao grupo `docker` para facilitar o uso.  
-3. **Proxy e diretórios:** Ajuste conforme a infraestrutura.  
-4. **Segurança:** Limite acessos e habilite medidas de proteção.  
-
-Essas configurações garantem um ambiente funcional, seguro e otimizado para o uso do Docker.  
-
-## [[ Voltar para: Instalação e Configuração ]](./instalacao-configuracao.md)  
-
----  
-
-Ficou claro ou deseja incluir mais detalhes, como troubleshooting ou práticas específicas de segurança? 😊
+## [[ Voltar para: Instalação e Configuração ]](./instalacao-configuracao.md)
