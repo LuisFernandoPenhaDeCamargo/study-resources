@@ -1,3 +1,43 @@
+3859
+
+apt x dpkg x snap
+
+```Bash
+# Verificação de sucesso ou falha baseado na saída do comando.
+
+$ sudo apt update && sudo apt upgrade -y
+$ sudo apt autoremove
+$ wget https://dl.google.com/Linux/direct/google-chrome-stable_current_amd64.deb
+$ sudo dpkg -i google-chrome-stable_current_amd64.deb
+$ sudo apt install -fy
+
+$ sudo snap install multipass
+
+# Especificar a imagem 24.04 (pessoal)
+# Especificar a imagem 18.04 (servidores)
+```
+
+apt
+---
+update
+upgrade
+   -y
+autoremove
+
+dpkg
+---
+-i
+
+snap
+---
+install
+   install <ferramente> --classic
+
+wget
+
+entender melhor as permissões ao usar chmod +x
+da prox lembra de salvar suas extensões do VS Code, mané
+
 # Formatando o role
 
 Vou testar se o pendrive é bootável
@@ -363,6 +403,126 @@ E: Unmet dependencies. Try 'apt --fix-broken install' with no packages (or speci
 apt --fix-broken install
 
 [3859][ERROR] upload failed: ../../../home/zoe/dumps/3859_2025-01-16_dump.sql.gz to s3://orion-island-dumps/3859_2025-01-16_dump.sql.gz An error occurred (AccessDenied) when calling the CreateMultipartUpload operation: User: arn:aws:iam::017881044583:user/place-3859 is not authorized to perform: s3:PutObject on resource: "arn:aws:s3:::orion-island-dumps/3859_2025-01-16_dump.sql.gz" because no identity-based policy allows the s3:PutObject action.
+
+**Versão do modelo:** ChatGPT Jan 2025  
+
+As ferramentas **`apt`**, **`dpkg`** e **`snap`** são utilizadas para instalar, gerenciar e remover pacotes no Ubuntu, mas possuem funções e características diferentes.  
+
+---
+
+### 🛠️ **1. `apt` (Advanced Package Tool)**  
+O **`apt`** é um **gerenciador de pacotes avançado** que facilita a instalação e manutenção de software a partir dos repositórios oficiais ou personalizados do sistema.
+
+- **Características principais:**
+  - Trabalha como uma interface para o **`dpkg`**, adicionando funcionalidades como resolução automática de dependências.
+  - Permite buscar, instalar, atualizar e remover pacotes diretamente dos repositórios configurados.
+  - Suporta repositórios PPA (Personal Package Archives).
+
+- **Comandos comuns:**
+  - Atualizar lista de pacotes:  
+    ```bash
+    sudo apt update
+    ```
+  - Instalar um pacote:  
+    ```bash
+    sudo apt install <pacote>
+    ```
+  - Atualizar pacotes instalados:  
+    ```bash
+    sudo apt upgrade
+    ```
+  - Remover um pacote:  
+    ```bash
+    sudo apt remove <pacote>
+    ```
+
+- **Exemplo de uso:**  
+  ```bash
+  sudo apt install vim
+  ```
+
+---
+
+### 🧩 **2. `dpkg` (Debian Package Manager)**  
+O **`dpkg`** é o **gerenciador de pacotes de baixo nível** do sistema, responsável por manipular diretamente pacotes `.deb` no Ubuntu e Debian.
+
+- **Características principais:**
+  - Não gerencia dependências automaticamente (diferente do `apt`).
+  - É usado principalmente para instalar pacotes locais `.deb`.
+  - É útil para administração manual e resolução de problemas em pacotes.
+
+- **Comandos comuns:**
+  - Instalar um pacote `.deb`:  
+    ```bash
+    sudo dpkg -i <arquivo.deb>
+    ```
+  - Remover um pacote:  
+    ```bash
+    sudo dpkg -r <pacote>
+    ```
+  - Listar pacotes instalados:  
+    ```bash
+    dpkg -l
+    ```
+
+- **Exemplo de uso:**  
+  ```bash
+  sudo dpkg -i google-chrome-stable_current_amd64.deb
+  ```
+
+---
+
+### 📦 **3. `snap` (Snapcraft)**  
+O **`snap`** é um **sistema de pacotes universal**, criado pela Canonical, que funciona de forma independente dos repositórios tradicionais do sistema.
+
+- **Características principais:**
+  - Pacotes **autossuficientes**, contendo todas as dependências necessárias.
+  - Funciona em diferentes distribuições Linux (Ubuntu, Fedora, Arch, etc.).
+  - Suporte a versões paralelas (você pode instalar várias versões de um mesmo pacote).
+  - Segurança aprimorada por rodar os aplicativos em **sandbox**.
+
+- **Comandos comuns:**
+  - Instalar um pacote snap:  
+    ```bash
+    sudo snap install <pacote>
+    ```
+  - Atualizar pacotes snap:  
+    ```bash
+    sudo snap refresh
+    ```
+  - Listar pacotes instalados:  
+    ```bash
+    snap list
+    ```
+  - Remover um pacote snap:  
+    ```bash
+    sudo snap remove <pacote>
+    ```
+
+- **Exemplo de uso:**  
+  ```bash
+  sudo snap install vlc
+  ```
+
+---
+
+### ⚡ **Diferenças principais**  
+
+| Aspecto               | `apt`                      | `dpkg`                 | `snap`                       |
+|-----------------------|----------------------------|------------------------|-----------------------------|
+| **Gerenciamento**     | Gerencia dependências      | Manual, sem dependências | Inclui dependências no pacote |
+| **Repositórios**      | Usa repositórios APT       | Não usa repositórios   | Usa o Snap Store             |
+| **Sistema de pacotes**| `.deb`                    | `.deb`                 | Pacotes **snap**             |
+| **Uso principal**     | Instalar pacotes com repositórios | Manipular pacotes locais | Pacotes universais e isolados |
+
+---
+
+### ✅ **Quando usar cada um?**
+- **`apt`**: Para instalar e atualizar software diretamente dos repositórios oficiais.  
+- **`dpkg`**: Para instalar ou manipular pacotes `.deb` locais, especialmente em casos específicos.  
+- **`snap`**: Para aplicativos universais que não dependem do sistema operacional ou repositórios locais.  
+
+Se precisar de mais detalhes, é só avisar! 😊
 
 MEGAFLAG
 
