@@ -1,3 +1,15 @@
+# Formatando o role
+
+Vou testar se o pendrive é bootável
+Startup Disk Creator (ferramenta para criar um pendrive bootável em uma máquia com Linux)
+Acesso ao menu de boot normalmente é feito através do f2, f12 ou esc
+sudo apt update && sudo apt upgrade -y
+ISO do Ubuntu
+International Organization for Standardization (Organização Internacional de Padronização)
+Um arquivo ISO é uma imagem de disco, ou seja, uma cópia fiel de um disco óptico (CD/DVD), contendo todos os arquivos e estrutura do sistema
+
+# ---
+
 https://calculator.aws/#/createCalculator/S3
 https://aws.amazon.com/pt/s3/pricing/
 https://aws.amazon.com/pt/s3/storage-classes/
