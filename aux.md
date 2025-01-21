@@ -1,52 +1,10 @@
 3859
 
-apt x dpkg x snap
-
 ```Bash
 # Verificação de sucesso ou falha baseado na saída do comando.
-
-$ sudo apt update && sudo apt upgrade -y
-$ sudo apt autoremove
-$ wget https://dl.google.com/Linux/direct/google-chrome-stable_current_amd64.deb
-$ sudo dpkg -i google-chrome-stable_current_amd64.deb
-$ sudo apt install -fy
-
-$ sudo snap install multipass
-
 # Especificar a imagem 24.04 (pessoal)
 # Especificar a imagem 18.04 (servidores)
 ```
-
-apt
----
-update
-upgrade
-   -y
-autoremove
-
-dpkg
----
--i
-
-snap
----
-install
-   install <ferramente> --classic
-
-wget
-
-entender melhor as permissões ao usar chmod +x
-da prox lembra de salvar suas extensões do VS Code, mané
-
-# Formatando o role
-
-Vou testar se o pendrive é bootável
-Startup Disk Creator (ferramenta para criar um pendrive bootável em uma máquia com Linux)
-Acesso ao menu de boot normalmente é feito através do f2, f12 ou esc
-sudo apt update && sudo apt upgrade -y
-ISO do Ubuntu
-International Organization for Standardization (Organização Internacional de Padronização)
-Um arquivo ISO é uma imagem de disco, ou seja, uma cópia fiel de um disco óptico (CD/DVD), contendo todos os arquivos e estrutura do sistema
 
 # ---
 
@@ -543,3 +501,644 @@ updater: anotacoes game lib
 2634 5277122 73656
 2639 15238758 832034
 3799 1000719 65151
+
+Configurar múltiplos sistemas operacionais no Acer Nitro 5 com **Windows 10**, **Ubuntu 24.04**, e **Arch Linux** é possível e prático, especialmente utilizando um gerenciador de boot como o **GRUB**. Aqui está um guia para ajudar:
+
+---
+
+### ⚠️ **Considerações Antes de Começar**:
+1. **Backup**: Faça backup dos seus dados antes de qualquer alteração nas partições do disco.
+2. **Tabela de Partição GPT**: Certifique-se de que o disco utiliza GPT e o modo de inicialização UEFI está habilitado. O Acer Nitro 5 normalmente é configurado para UEFI.
+3. **Ordem de Instalação Recomendada**:
+   - Instale o **Windows 10** primeiro (se ainda não estiver instalado).
+   - Em seguida, instale o **Ubuntu** e configure o GRUB.
+   - Por último, instale o **Arch Linux** e configure-o no GRUB já existente.
+
+---
+
+### 🛠️ **Passo a Passo para Configurar Múltiplos Boots**:
+
+#### 1. **Instalar o Windows 10**
+   - Use um pendrive bootável com a ISO do Windows 10.
+   - Durante a instalação, crie uma partição para o Windows (exemplo: 100 GB para o sistema e mais para dados, conforme necessário).
+   - O instalador do Windows automaticamente criará partições para o boot e o sistema.
+
+#### 2. **Instalar o Ubuntu 24.04**
+   - Crie um pendrive bootável com o Ubuntu (já feito com o **Startup Disk Creator** ou outro método).
+   - No instalador do Ubuntu:
+     - Escolha a opção "Instalar ao lado do Windows 10" (se o Windows já está instalado).
+     - Configure as partições manualmente se preferir:
+       - **/boot/efi**: 500 MB (pode usar a partição EFI criada pelo Windows).
+       - **/ (root)**: Pelo menos 20 GB.
+       - **/home**: Partição separada para seus arquivos pessoais (opcional, mas recomendado).
+       - **Swap**: Opcional, mas útil se você não tiver muita RAM.
+   - O Ubuntu configurará automaticamente o GRUB e detectará o Windows.
+
+#### 3. **Instalar o Arch Linux**
+   - Crie um pendrive bootável com o Arch Linux.
+   - Siga as instruções de instalação do Arch (é necessário mais conhecimento técnico). Durante o particionamento:
+     - Use a mesma partição **/boot/efi** (não formate).
+     - Crie uma partição **/ (root)** para o Arch (mínimo de 20 GB).
+     - Crie outras partições, como **/home**, se necessário.
+   - Instale o **GRUB** no Arch Linux, mas não substitua a configuração existente do GRUB no Ubuntu. Em vez disso, edite o GRUB do Ubuntu para incluir o Arch Linux (ou atualize o GRUB no Ubuntu).
+
+---
+
+### 🛠️ **Configuração do GRUB**:
+Após instalar os três sistemas, atualize o GRUB no Ubuntu para reconhecer todos os sistemas operacionais:
+
+1. **Inicie no Ubuntu**.
+2. Abra um terminal e atualize o GRUB:
+   ```bash
+   sudo update-grub
+   ```
+3. O GRUB deve detectar o Windows e o Arch Linux automaticamente. Se não detectar, adicione manualmente entradas no arquivo `/etc/grub.d/40_custom`.
+
+---
+
+### 🎯 **Dicas Importantes**:
+- **UEFI vs Legacy**: Certifique-se de que todos os sistemas estão instalados em modo **UEFI** para evitar problemas de boot.
+- **Particionamento**:
+  - Reserve espaço suficiente para cada sistema operacional.
+  - Utilize ferramentas como o **GParted** no Ubuntu para gerenciar partições.
+- **Manutenção do GRUB**:
+  - Sempre atualize o GRUB após instalar ou remover sistemas operacionais:
+    ```bash
+    sudo update-grub
+    ```
+  - O GRUB do Ubuntu é geralmente o mais fácil de gerenciar, então use-o como o gerenciador principal.
+
+---
+
+### ✅ **Resultado Final**:
+Após a configuração:
+1. Na inicialização, o GRUB exibirá as opções:
+   - **Windows 10**
+   - **Ubuntu 24.04**
+   - **Arch Linux**
+2. Selecione o sistema operacional desejado para iniciar.
+
+Se precisar de mais ajuda com algum dos passos, como instalação do Arch ou configuração do GRUB, estou à disposição! 😊
+
+# Guia de Formatação do Sistema Operacional
+
+O propósito deste guia é ajudar a solucionar os problemas encontrados ao formatar o seu Sistema Operacional para que ele possa realizar um **dual boot do Windows 11 e do Ubuntu**.
+
+O maior problema foi que ao tentar instalar o Ubuntu, o Windows já estava instalado, ele não aceita que o **Modo Sata** funcione com **Raid**. É importante pontuar que a marca do notebook é Dell e o modelo é o Acer Nitro 5. Processador Intel.
+
+**Visão Geral**
+
+A tecnologia de nome **Intel Rapid Storage Technology (RST)** é uma solução implementada em chips da Intel, em plataformas que suportam a RST e tem ela habilitada na BIOs do computador. Esta tecnologia permite que usuários agrupem e gerenciem vários discos rígidos como um único volume, essa funcionalidade é conhecida como **Redundant Array of Independent Disks (RAID)**.
+
+No caso do notebook em questão, o modo sata dele estava configurado como **"entrar na Bios para verificar"**, para conseguirmos instalar o Ubuntu, nos tivemos que mudar o modo sata para **AHCI**.
+
+Atualmente, se quisermos utilizar o Ubuntu, temos que configurar o modo sata como AHCI. Se quisermos utilizar o Windows, temos que configurar o modo sata como . Futuramente quero configurar o sistema de uma forma que eu não precise ficar alterando o modo sata.
+
+### Sumário
+
+- [Acessando a BIOs](#acessando-bios)
+- [Acessando o "qual é o nome deste modo"](#)
+- [Problema para Desativar o Modo de Segurança](#problema-desativar-modo-segurança)
+- [Problema para Realizar o Boot de Um HD Externo](#problema-realizar-boot-hd-externo)
+- [Problema ao Mudar o Modo Sata](#problema-mudar-modo-sata)
+- [Ubuntu](#ubuntu)
+    - [Configuração do Teclado](#configuração-teclado)
+    - [Configuração do Idioma do Google Chrome](#configuração-idioma-google-chrome)
+    - ["Static Noise When Not Playing Sounds"](#static-noise-when-not-playing-sounds)
+    - [Programas Instalados](#programas-instalados)
+
+## <a id="acessando-bios"></a>Acessando a BIOs
+
+Aperte `F2` antes da inicialização do Sistema Operacional.
+
+## <a id=""></a>Acessando o "qual é o nome deste modo"
+
+## <a id="problema-desativar-modo-segurança"></a>Problema para Desativar o Modo de Segurança
+
+## <a id="problema-realizar-boot-hd-externo"></a>Problema para Realizar o Boot de Um HD Externo
+
+## <a id="problema-mudar-modo-sata"></a>Problema ao Mudar o Modo Sata
+
+Na Bios, aperte as teclas `Ctrl + S` para que a opção de configuração do modo sata apareça.
+
+## <a id = "ubuntu"></a>Ubuntu
+
+### <a id="configuração-teclado"></a>Configuração do Teclado
+
+O formato "ABNT2" no Windows, é o equivalente ao "Português (Brasil)" no Ubuntu.
+
+### <a id="configuração-idioma-google-chrome"></a>Configuração do Idioma do Google Chrome
+
+O Chrome utiliza o idioma do Ubuntu como o idioma da sua configuração. Se você quiser que a configuração do Chrome apareça em português, você deve configurar o seu Sistema Operacional para utilizar o idioma em portuguẽs.
+
+Para instala-lo, você utiliza o comando `sudo apt install language-pack-pt`.
+
+### <a id = "#static-noise-when-not-playing-sounds"></a>"Static Noise When Not Playing Sounds"
+
+No meu caso, quando o fone de ouvido estava conectado, mas não havia nenhum áudio sendo reproduzido, um som de estática ficava sendo emitido. Neste caso era por conta de uma configuração de economia de energia da distribuição Linux em questão.
+
+Em algumas distribuições, o modo de economia de energia é habilitado em todos os periféricos por padrão para conservar a bateria do notebook e de outros sistemas dependentes de bateria. Enquanto isso não afeta o desempenho do sistema, pode haver efeitos colaterais, um bom exemplo é o mal funcionamento do dispositivo de áudio.
+
+**"Disable Power Saving Mode in snd_hda_intel"**
+
+Para verificar se a economia de energia está habilitada, verifique a saída do comando
+
+```bash
+cat /sys/module/snd_hda_intel/parameters/power_save
+```
+
+Se a saída for `1`, o modo de economia de energia está habilitado e deve ser desativado. Para fazer isso você deve executar o comando
+
+```bash
+echo 0 > /sys/module/snd_hda_intel/parameters/power_save
+```
+
+Observe que você provavelmente precisará de permissões de super usuário para executar o comando acima.
+
+### <a id="programas-instalados"></a>Programas Instalados
+
+Aqui eu estou mantendo uma lista dos programas que eu utilizo e a ordem na qual eu os instalei, do primeio ao último. Antes de mais nada eu atualizei o `apt` (`sudo apt update`).
+
+- `wget`
+- **Google Chrome:** utilize o `wget` para obter o **.deb** e o instale com `dpkg`
+- **Git:** `sudo apt install git`
+- **VS Code:** foi um processo um pouco mais extenso, o pesquise no GPT
+- **Discord:** `sudo snap install discord`
+- **Rust:** ocorreu um erro ao tentar instalá-lo no Ubuntu 22.04 (jammy). Tivemos que instalar o `curl` pelo `apt` para conseguir instala-lo (também foi necessário especificar o pwd do curl "`/usr/bin/curl comando`")
+    + `gcc`**:** instale o compilador C, se necessário
+
+Sim, conflitos entre sistemas operacionais podem ocorrer, especialmente em situações específicas como o uso de configurações de disco que não são compatíveis com todos os sistemas, como **RAID**. Abaixo, explico os possíveis problemas e como evitá-los:
+
+---
+
+### ⚠️ **Principais Causas de Conflitos**:
+1. **Configurações de RAID no Windows**:
+   - Por padrão, o Windows pode configurar o armazenamento em RAID (Redundant Array of Independent Disks) ao invés de AHCI (Advanced Host Controller Interface). Muitas distribuições Linux, incluindo Ubuntu, não reconhecem discos configurados em RAID sem drivers adicionais.
+   - Solução: Configure o armazenamento no BIOS/UEFI como **AHCI** antes de instalar o Linux.
+
+2. **Partição EFI compartilhada**:
+   - Todos os sistemas UEFI compartilham a mesma partição EFI para armazenar os arquivos de boot. Conflitos podem ocorrer se um sistema sobrescrever os arquivos de outro.
+   - Solução: Sempre atualize o GRUB no sistema Linux principal (geralmente Ubuntu) após instalar outros sistemas.
+
+3. **Fast Boot e Secure Boot**:
+   - O **Fast Boot** (Inicialização Rápida) do Windows pode bloquear o acesso aos discos por outros sistemas operacionais.
+   - O **Secure Boot** (Inicialização Segura) pode impedir que Linux funcione corretamente.
+   - Solução:
+     - Desative o **Fast Boot** no Windows.
+     - Desative ou configure o **Secure Boot** no BIOS/UEFI para permitir a inicialização de distribuições Linux.
+
+4. **Gerenciadores de Boot**:
+   - O Windows tem seu próprio gerenciador de boot que pode sobrescrever o GRUB se o Windows for atualizado.
+   - Solução: Reinstale ou atualize o GRUB após atualizações importantes no Windows.
+
+---
+
+### 🛠️ **Como Evitar Problemas no Acer Nitro 5**:
+1. **Configuração do BIOS/UEFI**:
+   - Acesse o BIOS pressionando **F2** ou **Del** durante a inicialização.
+   - Configure:
+     - **SATA Mode**: **AHCI** (não RAID).
+     - **Secure Boot**: Desativado (ou configurado para aceitar assinaturas de Linux).
+     - **UEFI Boot**: Habilitado.
+   - Salve as alterações e reinicie.
+
+2. **Instalação do Windows**:
+   - Instale o Windows primeiro em uma partição separada.
+   - Certifique-se de deixar espaço livre para os outros sistemas.
+
+3. **Instalação do Ubuntu e Arch**:
+   - Use a partição **/boot/efi** já criada pelo Windows (não formate).
+   - Sempre atualize o GRUB após instalar qualquer sistema Linux:
+     ```bash
+     sudo update-grub
+     ```
+
+4. **Gerenciamento de RAID (se necessário)**:
+   - Caso precise usar RAID, pode ser necessário instalar drivers específicos no Ubuntu:
+     ```bash
+     sudo apt install mdadm
+     ```
+   - O Arch Linux também suporta RAID, mas a configuração é manual e complexa.
+
+---
+
+### 💡 **Testando e Corrigindo Problemas**:
+- **Verifique o modo SATA**: Se o Linux não detecta o disco, verifique se está configurado como **RAID**.
+- **Corrigindo GRUB**: Se o GRUB for sobrescrito pelo Windows:
+  1. Inicie com um pendrive Linux.
+  2. Reinstale o GRUB:
+     ```bash
+     sudo mount /dev/sdXn /mnt  # Substitua por sua partição Linux
+     sudo grub-install --efi-directory=/mnt/boot/efi
+     sudo update-grub
+     ```
+
+---
+
+### 🚨 **Dicas Finais**:
+- **Teste em um Ambiente Virtual**: Antes de fazer alterações definitivas, experimente configurar múltiplos sistemas em uma máquina virtual.
+- **Documente suas Partições**: Anote os pontos de montagem e tamanhos para evitar sobrescritas acidentais.
+
+Se precisar de ajuda com a configuração específica do BIOS ou no GRUB, é só avisar! 😊
+
+O **Windows** não obriga o uso de **RAID**, mas alguns laptops e desktops modernos vêm configurados de fábrica no modo RAID. Isso é especialmente comum em máquinas que utilizam tecnologias como Intel RST (Rapid Storage Technology). Felizmente, você pode mudar para **AHCI** sem precisar reinstalar o Windows, embora seja necessário tomar alguns cuidados.
+
+---
+
+### ✅ **Como Verificar e Alterar RAID para AHCI no Windows**:
+
+#### 1. **Verificar o Modo Atual do Disco no Ubuntu (ou Windows)**:
+   No Ubuntu, execute o seguinte comando no terminal:
+   ```bash
+   sudo lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT
+   ```
+   Ou verifique o modo no **BIOS/UEFI**:
+   - Acesse o BIOS pressionando **F2** ou **Del** ao iniciar o computador.
+   - Encontre a configuração do disco (geralmente na aba "SATA Configuration" ou "Storage Configuration").
+   - Verifique se o modo está configurado como **RAID**, **AHCI** ou **IDE**.
+
+#### 2. **Alterar para AHCI no Windows** (se necessário):
+   - Antes de mudar no BIOS, habilite o driver AHCI no Windows:
+     1. Pressione **Win + R** e digite `msconfig`.
+     2. Vá para a aba **Inicialização** e marque a opção **Inicialização segura**.
+     3. Clique em **OK** e reinicie o computador.
+   - Entre no BIOS e altere o modo de RAID para **AHCI**.
+   - Inicie novamente o Windows. Ele reconhecerá o novo modo e instalará os drivers AHCI automaticamente.
+   - Desative a **Inicialização segura** em `msconfig` após o sucesso.
+
+---
+
+### 🛠️ **Testando o Modo AHCI/RAID em uma VM no Ubuntu 24**:
+
+No Ubuntu, você pode usar ferramentas como **VirtualBox** ou **QEMU/KVM** para simular modos de disco diferentes (AHCI, RAID, etc.).
+
+#### **Usando VirtualBox**:
+1. **Instale o VirtualBox**:
+   ```bash
+   sudo apt update
+   sudo apt install virtualbox
+   ```
+2. **Crie uma Nova Máquina Virtual**:
+   - Escolha **Windows 10** como sistema operacional.
+   - Configure um disco virtual (exemplo: 50 GB, dinâmico).
+3. **Configurar o Modo de Disco**:
+   - Acesse as configurações da máquina virtual:
+     - Vá para **Configurações > Armazenamento > Controlador SATA**.
+     - O controlador SATA simula o modo AHCI por padrão.
+   - Para simular RAID:
+     - Adicione discos adicionais e use o gerenciador de RAID do Windows ou de uma ferramenta como o **mdadm** no Linux.
+
+4. **Inicie a Máquina Virtual**:
+   - Instale o Windows e veja como ele reconhece o disco.
+   - Teste alterando o modo do controlador SATA no VirtualBox.
+
+#### **Usando QEMU/KVM**:
+1. **Instale QEMU/KVM**:
+   ```bash
+   sudo apt update
+   sudo apt install qemu qemu-kvm virt-manager
+   ```
+2. **Crie uma Máquina Virtual**:
+   - Use o **Virt-Manager** para configurar a máquina virtual.
+   - Escolha o disco virtual e configure o controlador como **SATA** (AHCI) ou outro.
+
+3. **Teste RAID**:
+   - Adicione discos virtuais adicionais e configure RAID com ferramentas do sistema operacional.
+
+---
+
+### ⚠️ **Cuidados ao Testar e Migrar**:
+- **RAID vs AHCI**: Certifique-se de que todos os sistemas (Windows, Linux) são compatíveis com o modo escolhido.
+- **Backup**: Sempre faça backup antes de alterar modos de disco.
+- **Desempenho**: Para uso geral, **AHCI** é mais adequado. RAID é útil apenas em configurações com múltiplos discos para redundância ou desempenho.
+
+Se precisar de ajuda com os comandos ou configuração de VMs, posso detalhar! 😊
+
+Ventoy para criar pendrives multiboot
+
+Infelizmente, não é possível simplesmente adicionar múltiplas ISOs (como Ubuntu e Arch Linux) a um pendrive criado com ferramentas como o **Startup Disk Creator**, pois esse tipo de ferramenta formata o pendrive para ser bootável com apenas uma ISO por vez. No entanto, você pode criar um **pendrive multiboot** para incluir várias ISOs no mesmo dispositivo, permitindo escolher qual sistema operacional instalar no boot.
+
+---
+
+### 🔧 **Como criar um pendrive multiboot**:
+
+1. **Ferramentas para Multiboot**:  
+   Utilize ferramentas específicas para criar pendrives com várias ISOs, como:
+   - **Ventoy**: Uma das melhores ferramentas para multiboot. Com o Ventoy, você pode simplesmente copiar as ISOs diretamente para o pendrive.
+   - **YUMI (Your Universal Multiboot Installer)**: Outra opção popular para criar pendrives multiboot.
+   - **MultiBootUSB**: Uma ferramenta menos conhecida, mas funcional.
+
+2. **Instalando o Ventoy**:
+   O Ventoy é altamente recomendado pela facilidade de uso. Aqui está como configurá-lo:
+
+   **No Linux (Ubuntu ou derivados):**
+   ```bash
+   sudo apt install wget
+   wget https://github.com/ventoy/Ventoy/releases/download/v1.0.xx/ventoy-x.x.x-linux.tar.gz
+   tar -xzvf ventoy-x.x.x-linux.tar.gz
+   cd ventoy-x.x.x
+   sudo ./VentoyGUI.x86_64
+   ```
+   **No Windows:**
+   - Baixe o Ventoy no [site oficial](https://www.ventoy.net/en/index.html).
+   - Execute o programa e instale no pendrive.
+
+3. **Preparando o Pendrive**:
+   - Após instalar o Ventoy no pendrive, basta **copiar diretamente as ISOs** (como `ubuntu-24.04.iso` e `archlinux.iso`) para o pendrive.
+   - Não é necessário formatar ou fazer configurações adicionais.
+
+4. **No Boot**:
+   - Reinicie o computador e selecione o pendrive como dispositivo de boot.
+   - O Ventoy exibirá um menu com as ISOs disponíveis. Escolha a ISO desejada para iniciar a instalação.
+
+---
+
+### ✅ **Vantagens do Ventoy**:
+- **Suporte a múltiplas ISOs**: Não precisa recriar o pendrive para adicionar novas ISOs.
+- **Fácil de usar**: Basta copiar as ISOs diretamente.
+- **Compatibilidade ampla**: Funciona com quase todos os sistemas operacionais populares.
+
+Se precisar de ajuda com o processo ou encontrar dificuldades, é só avisar! 😊
+
+sobre o Ventoy:
+
+$ wget https://github.com/ventoy/Ventoy/releases/download/v1.0.xx/ventoy-x.x.x-linux.tar.gz
+--2025-01-21 14:00:22--  https://github.com/ventoy/Ventoy/releases/download/v1.0.xx/ventoy-x.x.x-linux.tar.gz
+Resolvendo github.com (github.com)... 20.201.28.151
+Conectando-se a github.com (github.com)|20.201.28.151|:443... conectado.
+A requisição HTTP foi enviada, aguardando resposta... 404 Not Found
+2025-01-21 14:00:22 ERRO 404: Not Found.
+
+O erro `404 Not Found` indica que o arquivo ou URL que você tentou acessar não existe mais ou foi movido. No caso do Ventoy, o link genérico com `v1.0.xx` não aponta para uma versão específica, então o arquivo correto não pode ser encontrado.
+
+### ✅ **Como Resolver**:
+Você precisa baixar a versão mais recente do Ventoy com o número exato da versão. Aqui está o que fazer:
+
+---
+
+### 1. **Verifique a Página Oficial do Ventoy**:
+- Acesse o repositório oficial do Ventoy no GitHub:  
+  [https://github.com/ventoy/Ventoy/releases](https://github.com/ventoy/Ventoy/releases)
+- Encontre a versão mais recente disponível.
+
+---
+
+### 2. **Baixe o Arquivo Corretamente**:
+Substitua o `v1.0.xx` pelo número da versão mais recente. Por exemplo, se a versão atual for `1.0.99`, você usaria:
+
+```bash
+wget https://github.com/ventoy/Ventoy/releases/download/v1.0.99/ventoy-1.0.99-linux.tar.gz
+```
+
+---
+
+### 3. **Extraia o Arquivo e Instale**:
+Após baixar o arquivo, use os seguintes comandos:
+```bash
+# Extraia o arquivo tar.gz
+tar -xzf ventoy-1.0.99-linux.tar.gz
+
+# Navegue até o diretório extraído
+cd ventoy-1.0.99
+
+# Execute o script de instalação (substitua '/dev/sdX' pelo seu pendrive)
+sudo ./Ventoy2Disk.sh -i /dev/sdX
+```
+
+---
+
+### 4. **Identifique o Nome do Pendrive**:
+Certifique-se de identificar o nome correto do seu pendrive antes de executar o script. Use o comando:
+```bash
+lsblk
+```
+O pendrive geralmente aparece como algo como `/dev/sdb` ou `/dev/sdc`. **Certifique-se de escolher o dispositivo correto, pois todos os dados serão apagados!**
+
+Se precisar de ajuda para identificar o pendrive ou entender o processo, estou aqui! 😊
+
+/dev/sdb is already mounted, please umount it first!
+
+O erro indica que o pendrive que você está tentando usar já está montado no sistema. Para prosseguir com a instalação do Ventoy, você precisa desmontá-lo primeiro.
+
+---
+
+### ✅ **Passos para Resolver o Erro**:
+
+1. **Verifique as Partições Montadas**:
+   Use o comando abaixo para ver quais partições estão montadas:
+   ```bash
+   lsblk
+   ```
+   Procure o dispositivo `/dev/sdb` e suas partições, como `/dev/sdb1`, que estará listado junto com o ponto de montagem (como `/media/username/pendrive`).
+
+2. **Desmonte o Pendrive**:
+   Use o comando `umount` para desmontar as partições montadas:
+   ```bash
+   sudo umount /dev/sdb1
+   ```
+   Se houver mais de uma partição montada no pendrive, desmonte-as também:
+   ```bash
+   sudo umount /dev/sdb2
+   ```
+
+3. **Confirme que Está Desmontado**:
+   Verifique novamente com `lsblk` se o pendrive não está mais montado (a coluna "MOUNTPOINT" deve estar vazia para `/dev/sdb`).
+
+4. **Reexecute o Script do Ventoy**:
+   Agora, você pode executar o script do Ventoy normalmente:
+   ```bash
+   sudo ./Ventoy2Disk.sh -i /dev/sdb
+   ```
+
+---
+
+### ⚠️ **Dicas de Segurança**:
+- Certifique-se de que `/dev/sdb` é realmente o seu pendrive, para evitar apagar acidentalmente o disco errado.
+- Se o sistema continuar montando automaticamente o pendrive, você pode desativar a montagem automática temporariamente nas configurações do sistema ou usar o seguinte comando antes de conectar o dispositivo:
+  ```bash
+  sudo systemctl stop udisks2
+  ```
+  Após terminar o processo, ative novamente:
+  ```bash
+  sudo systemctl start udisks2
+  ```
+
+Se precisar de mais assistência, posso ajudar em qualquer etapa! 😊
+
+Para instalar o VirtualBox no Ubuntu 24.04 e configurá-lo para testar a instalação de múltiplos sistemas operacionais, siga os passos abaixo:
+
+---
+
+### 🛠️ **Passo 1: Adicionar o Repositório do VirtualBox**
+
+1. **Atualize os pacotes do sistema:**
+   ```bash
+   sudo apt update && sudo apt upgrade -y
+   ```
+
+2. **Adicione a chave GPG para autenticar os pacotes:**
+   ```bash
+   wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo gpg --dearmor -o /usr/share/keyrings/virtualbox.gpg
+   ```
+
+3. **Adicione o repositório do VirtualBox:**
+   ```bash
+   echo "deb [signed-by=/usr/share/keyrings/virtualbox.gpg] https://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
+   ```
+
+---
+
+### 🛠️ **Passo 2: Instalar o VirtualBox**
+
+1. **Atualize a lista de pacotes:**
+   ```bash
+   sudo apt update
+   ```
+
+2. **Instale a versão mais recente do VirtualBox:**
+   ```bash
+   sudo apt install virtualbox-7.0 -y
+   ```
+
+3. **Verifique a instalação:**
+   Execute o comando abaixo para verificar a versão instalada:
+   ```bash
+   vboxmanage --version
+   ```
+
+---
+
+### 🛠️ **Passo 3: Baixar e Instalar o Extension Pack (Opcional)**
+
+O Extension Pack adiciona funcionalidades extras, como suporte a USB 2.0/3.0 e RDP.
+
+1. **Baixe o Extension Pack:**
+   ```bash
+   wget https://download.virtualbox.org/virtualbox/7.0.10/Oracle_VM_VirtualBox_Extension_Pack-7.0.10.vbox-extpack
+   ```
+
+2. **Instale o Extension Pack:**
+   ```bash
+   sudo VBoxManage extpack install Oracle_VM_VirtualBox_Extension_Pack-7.0.10.vbox-extpack
+   ```
+
+3. **Aceite os termos de licença quando solicitado.**
+
+---
+
+### 🛠️ **Passo 4: Configurar as Máquinas Virtuais**
+
+1. **Crie uma VM para cada sistema operacional:**
+   - Abra o VirtualBox (`virtualbox` no terminal ou pela interface gráfica).
+   - Clique em **"Novo"** para criar uma nova máquina virtual.
+   - Configure o nome, tipo e versão do sistema operacional (Ubuntu, Windows, etc.).
+   - Altere os recursos, como memória RAM e tamanho de disco, conforme necessário.
+
+2. **Anexe os ISOs dos sistemas operacionais:**
+   - No menu de configurações da VM, vá para **Armazenamento**.
+   - Clique no ícone de disco e selecione o arquivo ISO correspondente.
+
+3. **Inicie a instalação do SO na VM.**
+
+---
+
+### ⚙️ **Dicas para Configurações de Múltiplos Sistemas Operacionais**
+
+- **Testando RAID/AHCI:** Durante a instalação do Windows, você pode configurar o modo de armazenamento para simular RAID ou AHCI na seção de **Configurações -> Sistema -> Chipset**.
+- **Rede:** Configure as VMs para usar **rede bridge** ou NAT para simular diferentes ambientes de rede.
+- **Snapshots:** Use **snapshots** para salvar o estado das VMs antes de realizar alterações significativas.
+
+---
+
+### 🐧 **Testando VMs com Ubuntu, Arch e Windows**
+
+- Ubuntu e Arch podem ser instalados diretamente a partir de seus ISOs sem problemas.
+- Para o Windows, lembre-se de baixar o ISO oficial do site da Microsoft e adicionar drivers no modo correto (AHCI ou RAID).
+
+Pronto! Agora você pode testar as configurações de múltiplos sistemas operacionais no seu VirtualBox. 😊
+
+Se o uso de `tr` não resolveu o problema, existem alguns pontos a serem considerados para investigar e corrigir a situação:
+
+---
+
+### Possíveis Motivos e Soluções
+
+#### 1. **Expansão Tardia do `command_output`**
+Se `command_output` contiver uma saída longa ou complexa (com espaços, caracteres especiais ou quebras de linha), ao usá-lo diretamente em `log_message`, a string pode ser expandida de maneira inesperada.
+
+- **Solução:** Certifique-se de encapsular o valor de `command_output` em aspas para evitar interpretações inesperadas:
+  ```bash
+  log_message "Why? \"${command_output}\""
+  ```
+
+---
+
+#### 2. **Caracteres Invisíveis na Saída**
+Às vezes, a saída pode conter caracteres não visíveis (como `\r` ou `\t`), que afetam o formato sem serem imediatamente aparentes.
+
+- **Solução:** Use `cat -A` para verificar a saída real de `command_output`:
+  ```bash
+  echo "${command_output}" | cat -A
+  ```
+
+Se você encontrar caracteres como `^M` ou `$`, isso indica a presença de `\r` ou outras quebras de linha invisíveis.
+
+- **Correção:** Use `tr` para remover caracteres invisíveis:
+  ```bash
+  command_output=$(echo "${command_output}" | tr -d '\r\n\t')
+  ```
+
+---
+
+#### 3. **Execução do `validate_success`**
+O comportamento da função `validate_success` pode estar alterando a saída de `command_output` antes de você manipulá-la.
+
+- **Solução:** Adicione um debug antes e depois de `tr` para inspecionar o conteúdo de `command_output`:
+  ```bash
+  log_message "Original command output: ${command_output}"
+  command_output=$(echo "${command_output}" | tr -d '\r\n\t')
+  log_message "Sanitized command output: ${command_output}"
+  ```
+
+Isso ajuda a confirmar se o `tr` está funcionando corretamente e se está sendo aplicado na variável correta.
+
+---
+
+#### 4. **Formato da Saída de `snap install`**
+O comando `snap install multipass` pode gerar saídas em múltiplas linhas ou incluir mensagens de erro no `stderr`.
+
+- **Solução:** Redirecione tanto o `stdout` quanto o `stderr` para capturar e processar a saída:
+  ```bash
+  validate_success 'sudo snap install multipass 2>&1'
+  ```
+
+Certifique-se de que `command_output` está capturando toda a saída.
+
+---
+
+#### 5. **Uso de `log_message`**
+Se o problema estiver no `log_message`, certifique-se de que ele está formatando corretamente a string.
+
+- **Solução:** Substitua temporariamente `log_message` por `echo` para verificar se há interferência:
+  ```bash
+  echo "Why? ${command_output}"
+  ```
+
+Se `echo` funcionar corretamente, reveja como `log_message` está manipulando as variáveis.
+
+---
+
+### Depuração Final
+1. Verifique o conteúdo completo de `command_output`:
+   ```bash
+   echo "${command_output}" | cat -A
+   ```
+
+2. Aplique `tr` para limpar caracteres indesejados:
+   ```bash
+   command_output=$(echo "${command_output}" | tr -d '\r\n\t')
+   ```
+
+3. Substitua `log_message` por `echo` para isolar o problema.
+
+Com isso, você deve conseguir identificar e resolver a causa exata do comportamento.
