@@ -92,7 +92,7 @@ stdout="$(git --version)"
 log_function "$(echo 'Git ')$(echo "${stdout}" | sed -E 's/^[^0-9]*//')\n"
 
 log_step_progress '----------------- Instalando o MariaDB -----------------'
-validate_success 'sudo apt install mariadb-server'
+#validate_success 'sudo apt install mariadb-server -y' 'Erro ao instalar o MariaDB:'
 
 # ---
 
