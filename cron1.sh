@@ -53,47 +53,50 @@ validate_success() {
 #debug_mode_stdout=0
 
 ### Execução principal do script ###
-log_step_progress ' Preparando o ambiente para a instalação das aplicações '
-log_function 'sudo apt update'
+#log_step_progress ' Preparando o ambiente para a instalação das aplicações '
+#log_function 'sudo apt update'
 #validate_success 'sudo apt update' 'Erro ao atualizar os índices de pacotes:' '\n'
-log_function 'sudo apt upgrade -y'
+#log_function 'sudo apt upgrade -y'
 #validate_success 'sudo apt upgrade -y' 'Erro ao atualizar os pacotes:' '\n'
 
 # Google Chrome
 # TODO: Consigo logar nele através do script?
-log_function 'Baixando o Google Chrome\n'
+#log_function 'Baixando o Google Chrome\n'
 #validate_success 'wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb' '' '' '\n'
-log_step_progress '-------------- Instalando o Google Chrome --------------'
+#log_step_progress '-------------- Instalando o Google Chrome --------------'
 #validate_success 'sudo dpkg -i google-chrome-stable_current_amd64.deb || sudo apt install -fy' '' '\n'
-log_function "$(google-chrome --version)\n"
+#log_function "$(google-chrome --version)\n"
 #validate_success 'rm google-chrome-stable_current_amd64.deb'
 
 # Multipass
-log_step_progress '---------------- Instalando o Multipass ----------------'
+#log_step_progress '---------------- Instalando o Multipass ----------------'
 #validate_success 'sudo snap install multipass > /dev/null'
-stdout="$(multipass version)"
-log_function "$(echo "${stdout:0:1}" | tr '[[:lower:]]' '[[:upper:]]')$(echo "${stdout:1}" | tr -d '\n' | sed -E 's/([0-9]+(\.[0-9]+)*).*/\1/; s/[[:space:]]+/ /')\n"
+log_function "$(echo 'Multipass ')$(multipass version)"
+multipass version
+#stdout="$(multipass version)"
+#log_function "$(echo "${stdout:0:1}" | tr '[[:lower:]]' '[[:upper:]]')$(echo "${stdout:1}" | tr -d '\n' | sed -E 's/([0-9]+(\.[0-9]+)*).*/\1/; s/[[:space:]]+/ /')\n"
+#<F
 
 # VS Code
-log_step_progress '----------------- Instalando o VS Code -----------------'
+#log_step_progress '----------------- Instalando o VS Code -----------------'
 #validate_success 'sudo snap install code --classic > /dev/null'
-stdout="$(code --version)"
-log_function "$(echo "VS Code ${stdout}" | sed -z 's/\n.*//')\n"
+#log_function "$(echo 'VS Code ')$(code --version | sed -z 's/\n.*//')\n"
 
 # Discord
-log_step_progress '----------------- Instalando o Discord -----------------'
+#log_step_progress '----------------- Instalando o Discord -----------------'
 #validate_success 'sudo snap install discord > /dev/null'
-log_function "$(echo 'Discord ')$(snap info discord | grep installed | sed -E 's/^[^0-9]*//; s/([0-9]+(\.[0-9]+)*).*/\1/')\n"
+#log_function "$(echo 'Discord ')$(snap info discord | grep installed | sed -E 's/^[^0-9]*//; s/([0-9]+(\.[0-9]+)*).*/\1/')\n"
 
-# Git <F gerar erro
-log_step_progress '------------------- Instalando o Git -------------------'
+# Git
+#log_step_progress '------------------- Instalando o Git -------------------'
 #validate_success 'sudo apt install git -y' 'Erro ao instalar o Git:' '\n'
-stdout="$(git --version)"
-log_function "$(echo 'Git ')$(echo "${stdout}" | sed -E 's/^[^0-9]*//')\n"
+#log_function "$(echo 'Git ')$(git --version | sed -E 's/^[^0-9]*//')\n"
 
-log_step_progress '----------------- Instalando o MariaDB -----------------'
+# MariaDB
+#log_step_progress '----------------- Instalando o MariaDB -----------------'
 #validate_success 'sudo apt install mariadb-server -y' 'Erro ao instalar o MariaDB:'
-
+#stdout="$(mariadb --version)"
+#log_function "$(echo 'MariaDB ')$(echo ${stdout:13:28})"
 # ---
 
 sudo tail -f /var/log/mail.log
