@@ -2,6 +2,8 @@
 
 #!/bin/bash
 
+# O primeiro passo é, provavelmente, se organizar, tanto quanto em relação a conteúdo, quanto em relação a formatação.
+
 ### Variáveis auxiliares ###
 debug_mode_warning=1
 debug_mode_stdout=1
@@ -60,7 +62,7 @@ validate_success() {
 #validate_success 'sudo apt upgrade -y' 'Erro ao atualizar os pacotes:' '\n'
 
 # Google Chrome
-# TODO: Consigo logar nele através do script?
+# TODO: é possível realizar o login nele através do script?
 #log_function 'Baixando o Google Chrome\n'
 #validate_success 'wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb' '' '' '\n'
 #log_step_progress '-------------- Instalando o Google Chrome --------------'
@@ -71,11 +73,7 @@ validate_success() {
 # Multipass
 #log_step_progress '---------------- Instalando o Multipass ----------------'
 #validate_success 'sudo snap install multipass > /dev/null'
-log_function "$(echo 'Multipass ')$(multipass version)"
-multipass version
-#stdout="$(multipass version)"
-#log_function "$(echo "${stdout:0:1}" | tr '[[:lower:]]' '[[:upper:]]')$(echo "${stdout:1}" | tr -d '\n' | sed -E 's/([0-9]+(\.[0-9]+)*).*/\1/; s/[[:space:]]+/ /')\n"
-#<F
+#log_function "$(echo 'Multipass ')$(multipass version | sed -z 's/\n.*//' | sed -E 's/^[^0-9]*//')\n"
 
 # VS Code
 #log_step_progress '----------------- Instalando o VS Code -----------------'
@@ -92,11 +90,33 @@ multipass version
 #validate_success 'sudo apt install git -y' 'Erro ao instalar o Git:' '\n'
 #log_function "$(echo 'Git ')$(git --version | sed -E 's/^[^0-9]*//')\n"
 
+# NVM
+#log_step_progress '------------------- Instalando o NVM -------------------'
+#validate_success 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash' '' '\n' '\n'
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+#log_function "$(echo 'NVM ')$(nvm --version)\n"
+
+# Node.js
+# TODO: é possível realizar o login no NPM através do script?
+#log_step_progress '----------------- Instalando o Node.js -----------------'
+#nvm install --lts &> /dev/null
+#log_function "$(echo 'Node.js ')$(node --version)"
+#nvm install 8.16.0 &> /dev/null
+#nvm use 8.16.0 > /dev/null
+#log_function "$(echo 'Node.js ')$(node --version)\n"
+# vim.tiny .bashrc
+# rm -rf ~/.nvm && sudo apt remove --purge nvm
+
+# Expect
+
 # MariaDB
 #log_step_progress '----------------- Instalando o MariaDB -----------------'
 #validate_success 'sudo apt install mariadb-server -y' 'Erro ao instalar o MariaDB:'
 #stdout="$(mariadb --version)"
 #log_function "$(echo 'MariaDB ')$(echo ${stdout:13:28})"
+# TODO: sudo mysql_secure_installation
+
 # ---
 
 sudo tail -f /var/log/mail.log
