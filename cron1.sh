@@ -1,3 +1,64 @@
+TODO: revisar a gramática e a lógica das notas abaixo.
+
+Tech Compass (Guia de elaboração do Repositório)
+
+- Ponto de entrada (README): todas as seções, assuntos, poderão ser acessados a partir deste ponto;
+- Dividir em seções:
+    + "Modularidade: cada nota ou tutorial deve ser autocontido e escrito de forma que possa ser atualizado ou substituído sem impactar outras partes do repositório. Se necessário, usa arquivos separados para códigos de exemplo, scripts ou configurações"
+    + "Padronize a terminologia e os exemplos: ao tratar de temas técnicos variados, mantenha uma terminologia consistente. Use exemplos e convenções que sejam claros e que possam ser facilmente compreendidos por você e seu irmão"
+    + **"Feedback e revisões periódicas: estabeleça momentos para revisar o conteúdo, atualizá-lo conforme novas informações ou tecnologias surgem, e até mesmo solicitar feedback de quem utiliza o repositório. Isso mantém a qualidade e a relevância das informações"**
+- Consistência na organização e na formatação
+- "Exemplos práticos e exercícios: sempre que possível, acrescente exercícios ou desafios que permitam praticar o conteúdo apresentado. Essa abordagem ativa ajuda a fixar o conhecimento e torna o repositório um espaço dinâmico de aprendizado"
+
+"Em resumo, um repositório didático e prático depende tanto da organização estrutural quanto da clareza e profundidade do conteúdo. Ao definir uma estrutura modular, usar um padrão consistente e incorporar elementos visuais e práticos, você cria uma ambiente de estudos que não só facilita a revisão, mas também a expansão e colaboração contínua."
+
+> Nota: cada tema terá o seu próprio repositório para uma melhor modularização.
+
+---
+
+TODO: revisar a gramática e a lógica das notas abaixo.
+> Nota: atenção aos "títulos" (posso chamar assim?) das estruturas que sucedem `###`
+
+# Dúvidas Frequentes Relacionadas a Regras Gramáticais
+
+## Dois Pontos
+
+### "A primeira letra após os dois pontos deve ser maiúscula ou miniscúla?"
+
+A utilização de maiúscula ou minúscula após os dois pontos depende do contexto e da função que a informação que se segue desempenha na frase.
+
+- Uso de minúscula: se a informação que segue os dois pontos é uma explicação, enumeração ou complemento que integra a mesma frase, normalmente utiliza-se a letra minúscula. Exemplo: "Ele tinha três opções: correr, lutar ou fugir"
+- Uso de maiúscula: a letra maiúscula deve ser empregada quando o que vem depois dos dois pontos constitui:
+    + Uma citação direta ou discurso reproduzido integralmente. Exemplo: "Ele afirmou: 'Não podemos desistir agora'"
+    + Uma enumeração de elementos que são, por sua natureza, nomes próprios ou quando cada item é apresentado como um enunciado extenso, muitas vezes com caráter explicativo ou descritivo que justifique sua autonomia. Exemplo: "Foram selecionados os seguintes alunos: João, Maria e Pedro."
+    + Quando ocorre mudança de parágrafo após os dois pontos, por exemplo, no caso de diálogos: Exemplo:
+    "Ela perguntou:
+    — Você vai participar?"
+
+## Listas e Pontuação
+
+### "Ao final de itens de listas, devemos utilizar pontuação?"
+
+A utilização de pontuação ao final de itens de listas depende do tipo de lista e do contexto em que ela é apresentada.
+
+#### Listas Informais ou de Itens Curtos
+
+- Itens isolados ou curtos: se a lista consiste em palavras, expressões ou itens que não formam frases completas, normalmente não é necessário usar pontuação ao final de cada item. Por exemplo:
+    + Maçã
+    + Banana
+    + Uva
+- Consistência visual: em listas informais (como listas de compras ou tópicos curtos), muitos autores optam por não pontuar cada item para manter a "limpeza" visual do texto
+
+#### Listas Formais ou com Itens Completos
+
+- Itens que são frases completas: quando os itens da lista constituem orações completas, recomenda-se usar pontuação que indique a separação entre os itens – geralmente ponto-e-vírgula – e finalizar o último item com ponto final. Exemplo:  
+    É fundamental manter a organização:
+    + Os relatórios devem ser enviados até sexta-feira;
+    + As reuniões devem ser agendadas com antecedência;
+    + E os feedbacks devem ser registrados formalmente.
+
+Nesse caso, o ponto final no último item sinaliza o encerramento da lista e, por consequência, do período.
+
 # ---
 
 #!/bin/bash
