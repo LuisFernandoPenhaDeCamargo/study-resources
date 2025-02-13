@@ -162,6 +162,8 @@ No contexto de APIs RESTful, as operações CRUD são mapeadas para os métodos 
 
 Compreender e implementar corretamente as operações CRUD é fundamental para o desenvolvimento de aplicações robustas e eficientes, garantindo uma interação adequada com os sistemas de armazenamento de dados.
 
+Conceito ou modelo conceitual.
+
 ### 8. APIs RESTful
 
 APIs RESTful são interfaces de programação que seguem os princípios da arquitetura REST (Representational State Transfer). Elas permitem que sistemas se comuniquem pela internet de simples e escalável, utilizando o protocolo HTTP para operações como criar, ler, atualizar e deletar recursos.
@@ -227,9 +229,98 @@ https://docs.aws.amazon.com/pt_br/prescriptive-guidance/latest/cloud-design-patt
 
 ### Mais duvidas sobre a arquitetura hexagonal?
 
-### BDD
+### 12. BDD
+
+O Behavior-Driven Development, ou Desenvolvimento Orientado pelo Comportamento, é uma abordagem de desenvolvimento de software que enfatiza a colaboração entre desenvolvedores, testadores e stakeholders para garantir que o software atenda aos requisitos de negócios. Baseado nos princípios do Test-Driven Development (TDD) e do Domain-Driven Design (DDD), o BDD utiliza uma linguagem natural e clara para descrever o comportamento do sistema, facilitando a comunicação entre todas as partes envolvidas no projeto.
+
+Principais características do BDD:
+
+- Cenários em linguagem natural: o BDD utiliza uma linguagem específica de domínio (DSL) com construções em linguagem natural (por exemplo, sentenças semelhantes ao inglês) para expressar o comportamento e os resultados esperados. Isso promove uma compreensão compartilhada entre desenvolvedores, testadores e representantes do cliente
+- Ferramentas de suporte: existem diversas ferramentas que auxiliam na implementação do BDD, como o Cucumber, que permite a execução de testes de aceitação escritos em texto voltado para o negócio. O Cucumber suporta várias linguagens de programação e utiliza a linguagem Gherkin para definir casos de teste de forma legível para humanos
+
+Benefícios do BDD:
+
+- Melhoria na comunicação: ao utilizar uma linguagem comum e compreensível, o BDD facilita a colaboração entre todos os stakeholders, garantindo que todos tenham uma compreensão clara dos requisitos e do comportamento esperado do sistema
+- Desenvolvimento guiado pelo comportamento: focar no comportamento do software ajuda a alinhar o desenvolvimento com os objetivos de negócios e as necessidades dos usuários, resultando em um produto mais relevante e eficaz
+- Facilidade de manutenção: a especificação clara do comportamento esperado facilita a identificação de problemas e a manutenção do código, além de servir como documentação viva do sistema
+
+Em resumo, o BDD é uma prática que integra regras de negócios com linguagem de programação, focando no comportamento do software e promovendo uma colaboração eficaz entre equipes envolvidas no desenvolvimento.
+
+### 13. ARNs
+
+As Amazon Resources Names (ARNs) são identificadores exclusivos que a AWS utiliza para nomear e referenciar seus recursos de forma inequívoca. Elas são essenciais para especificar recursos em políticas do IAM, tags de serviços como o Amazon RDS e em chamadas de API.
+
+Estrutura de um ARN:
+
+A estrutura geral de um ARN é composta pelos seguintes componentes, separados por dois-pontos (:):
+
+- arn: prefixo que indica que se trata de um ARN
+- partition: a partição no qual o recurso está localizado. Para a maioria das regiões da AWS, é aws
+- service: o namespace do serviço AWS ao qual o recurso pertence (por exemplo, s3, para o Amazon S3, ec2 para o Amazon EC2)
+- account-id: o ID da conta AWS que possui o recurso. Este componente também pode ser omitido em alguns casos
+- resource: o identificador específico do recruso, que pode incluir informações adicionais, como o tipo de recurso e um identificador específico
+
+A sintaxe exate de um ARN pode variar dependendo do serviço e do tipo de recurso. Por exemplo, para um bucket do Amazon S3, o ARN pode ser:
+
+arn:aws:s3:::nome-do-bucket
+
+Para uma instância do Amazon EC2:
+
+arn:aws:ec2:us-east-1:123456789012:instance/i-1234567890abcdef0
+
+Os ARNs são fundamentais para identificar recursos de forma única na AWS, permitindo que você espeficique recursos de maneira precisa em políticas de controle de acesso, chamadas de API e outras operações dentro do ecossistema AWS.
+
+###
+
+"é mais sobre protocolos, ex, comunicações HTTP são sincronas, enquanto o Redis pode utilizar canais de comunicação para enviar a mensagem, sendo que se a pessoa vai utilizá-la neste momentou ou não é outra história; o que permite desaclopamento?
+
+A comunicação entre sistemas pode ser classificada como síncrona ou assíncrona, dependendo da necessidade de uma resposta imediata e da forma como os componentes interagem.
+
+Comunicação síncrona:
+
+Na comunicação síncrona, o emissor envia uma solicitação e aguarda uma resposta imediata do receptor, mantendo ambos os lados em sincronia durante a interação. Um exemplo típico é o protocolo HTTP, onde o cliente faz uma requisição ao servidor e espera pela resposta antes de prosseguir. Essa abordagem é direta e simples, mas pode levar a bloqueios ou atrasos se o receptor demorar para reponder ou estiver indisponível.
+
+Comunicação assíncrona:
+
+Na comunicação assíncrona, o emissor envia uma mensagem sem esperar uma resposta imediata, permitindo que ambos os lados operem de forma independente. Isso é comum em sistemas que utilizam filas de mensagens ou mecanismos de publicação/assinatura (Pub/Sub). Por exemplo, o Redis oferece um recurso de Pub/Sub que permite que mensagens sejam publicadas em canais e entregues aos assinantes interessados. Nesse modelo, o emissor não precisa saber se há assinantes ativos no momento da publicação, promovendo um baixo acoplamento entre os componentes do sistema.
+
+Desacoplamento:
+
+A comunicação assíncrona facilita o desacoplamento entre os componentes, pois eles não dependem da disponibilidade imediata uns dos outros para funcionar. Isso melhora a escalabilidade e a resiliência do sistema, permitindo que diferentes partes operem e sejam atualizadas de forma independente. Por outro lado, a comunicação síncrona pode levar a um acoplamento mais forte, já que os componentes dependem de respostas imediatas para continuar suas operações.
+
+Em resumo, a escolha entre comunicação síncrona e assíncrona depende dos requisitos específicos do sistema, como a necessidade de respostas imediatas, tolerância a falhas e o nível de acoplamento desejado entre os componentes. 
+
+###
+
++ Redis
+    - O termo é pub/sub?
++ DDD
++ Gherkin
++ Redis
+
+https://aws.amazon.com/pt/compare/the-difference-between-rabbitmq-and-redis/
+
+https://www.estrategiaconcursos.com.br/blog/engenharia-software-diagramas-estruturais-uml/
 
 ### Meu dia a dia?
+
++ Não utilizamos metodologias agéis
+    - Tudo é prioridade? Nã, mas uma necessidade atravessa a outra sim (depende)
++ strict mode
++ JS
++ Bash
+    - Py
+    - Rust
++ arns
++ Axios
++ Express
+    - Config
++ Babel
++ C8
++ Mocha
++ Chai
++ SinonJS
++ esmock
 
 ###
 
