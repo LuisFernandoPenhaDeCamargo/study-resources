@@ -1,3 +1,6 @@
+.NET
+C#
+
 ## Questões Técnicas Frequentes na Luizalabs
 
 ### 1. O que é uma "Entity Framework"?
