@@ -297,6 +297,8 @@ Em resumo, a escolha entre comunicação síncrona e assíncrona depende dos req
 + DDD
 + Gherkin
 + Redis
++ Linguagem procedural
++ Golang combina paradigmas → Ele pode ser procedural, funcional e concorrente
 
 https://aws.amazon.com/pt/compare/the-difference-between-rabbitmq-and-redis/
 
@@ -306,7 +308,7 @@ https://www.estrategiaconcursos.com.br/blog/engenharia-software-diagramas-estrut
 
 + Não utilizamos metodologias agéis
     - Tudo é prioridade? Nã, mas uma necessidade atravessa a outra sim (depende)
-+ strict mode
++ strict mode ES5
 + JS
 + Bash
     - Py
@@ -316,7 +318,7 @@ https://www.estrategiaconcursos.com.br/blog/engenharia-software-diagramas-estrut
 + Express
     - Config
 + Babel
-+ C8
++ C8 - Istanbul - NYC
 + Mocha
 + Chai
 + SinonJS
