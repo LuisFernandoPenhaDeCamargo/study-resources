@@ -109,5 +109,3 @@ FileNotFoundError: [Errno 2] No such file or directory: '/data/games/logos'
 Quem deveria criar o diretório acima?
 
 credenciais aws ligadas somente ao root?
-
-Desenvolva o subtópico "Conceito e Benefícios do Docker"
